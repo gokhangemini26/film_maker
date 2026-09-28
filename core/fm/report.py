@@ -91,7 +91,9 @@ def render_status(project: Project, state: ProjectState, loaded: Loaded, graph: 
     else:
         L.append("None yet.")
     L += ["", "## Attention", ""]
-    attention = [*all_issues, *[f"stale: {r}" for r in sorted(stale)],
+    feedback = [f"{gid} {state.gates[gid].status} by {state.gates[gid].decided_by}: {state.gates[gid].notes}"
+                for gid in GATES if state.gates[gid].status in ("revise", "rejected") and state.gates[gid].notes]
+    attention = [*feedback, *all_issues, *[f"stale: {r}" for r in sorted(stale)],
                  *[f"change awaiting decision: {c}" for c in pending_changes]]
     L += [f"- {a}" for a in attention] or ["Nothing outstanding."]
     if state.authorizations:

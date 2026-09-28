@@ -21,7 +21,18 @@ ASSET_PREP → BLENDER_BUILD → PREVIEW ─G6→ ANIMATION → ANIMATION_PREVIE
 | G8 Final render | FINAL_RENDER | — |
 
 Deliverables each phase must have before `fm submit` are in
-`core/fm/phases.py` (`CONTRACTS`).
+`core/fm/phases.py` (`CONTRACTS`). Since M2 they include:
+
+- `qa/reviews/G#_REVIEW.md` for G1–G5 — the qa-supervisor's review. Its
+  `derived_from` must list every artifact the gate approves (and every shot
+  for G5); its `verdict` (PASS/WARN/FAIL) is shown to you at approval and is
+  advisory only. Editing any reviewed item makes the review stale, and a stale
+  review blocks approval.
+- `02_screenplay/SCENES.yaml` for SCREENPLAY — the machine-readable scene index.
+- For G5, `fm check continuity` must have no FAIL.
+
+In Claude Code the whole loop below is driven by the `/film-*` commands
+(`docs/COMMANDS.md`).
 
 ## The loop inside a gated phase
 

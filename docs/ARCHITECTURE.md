@@ -58,7 +58,7 @@ When files disagree with the ledger, the ledger wins and `fm validate` says so.
 A process with full disk access could rewrite everything. The protections
 are aimed at accidents and at agents drifting, which is the real risk.
 
-## 4. Agents (M2) — 11 subagents + orchestrator
+## 4. Agents — 11 roles (9 built in M2) + orchestrator
 
 | Subagent | Owns | Covers roles |
 |---|---|---|
@@ -74,6 +74,12 @@ are aimed at accidents and at agents drifting, which is the real risk.
 | blender-td | resolver, builders, render config | 7.14–7.17 |
 | qa-supervisor | technical/visual/continuity QA | 7.18, 7.19 |
 | post-supervisor | EDIT_PLAN, AUDIO_BIBLE, animatic | 7.20 |
+
+blender-td arrives in M3 and post-supervisor in M6. Claude Code allows
+subagents to spawn subagents (up to three levels); FILM_MAKER removes the
+`Agent` tool from every specialist so that coordination stays with the main
+session. Shared rules live in the `film-conventions` skill, preloaded into
+every specialist. Details: `docs/AGENTS.md`, `docs/SKILLS.md`, `docs/COMMANDS.md`.
 
 ## 5. Blender strategy (M3)
 
@@ -105,3 +111,5 @@ else. None are implemented in M1.
 - Artifacts are discovered by their `fm:` block; unmanaged files are ignored.
 - Production-phase contracts (ASSET_PREP → DELIVERY) are empty until their
   tooling lands; those gates currently approve with no covered artifacts.
+- Ownership (which agent may write which file) is advisory: `fm` warns on
+  mismatches but cannot know which agent actually wrote a file.

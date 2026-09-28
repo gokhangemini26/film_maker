@@ -28,6 +28,8 @@ project containing the current directory > the only project.
 | `fm hash REF` | A | Current content hash. |
 | `fm stamp FILE|REF [--note]` | A | Record upstream hashes into `derived_from`. |
 | `fm record REF --from R.. [--file F]` | A | Record a derived product (resolved/blend/render/qa). |
+| `fm intent [--json]` | A | Intent coverage: canon, documents and shots serving each intent; decisions serving none. |
+| `fm check continuity` | A | Shots vs continuity canon, SCENES.yaml, characters, running time. Exit 1 on FAIL. |
 | `fm log [--tail N]` | A | Ledger + chain verification. |
 | `fm doctor` | A | Environment + Blender pin check. Exit 4 if Blender is refused. |
 | `fm schema export [--out DIR]` | A | Write JSON Schemas. |

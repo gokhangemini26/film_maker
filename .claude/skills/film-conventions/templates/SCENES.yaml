@@ -1,0 +1,20 @@
+fm:
+  id: scenes
+  kind: scene_index
+  phase: SCREENPLAY
+  status: PROPOSED
+  owner_role: screenwriter
+  derived_from:
+    - ref: artifact:screenplay
+  serves: []
+  summary: Machine-readable index of the screenplay's scenes.
+scenes:
+  - scene_id: SC01                       # SC + 2-3 digits, in screen order
+    heading: EXT. HARBOUR STREET - NIGHT # exactly as in SCREENPLAY.md
+    summary: Mara walks the empty harbour in the rain.
+    est_duration_s: 12
+    characters: [mara]                   # character ids used in canon
+    location: harbour street
+    time_of_day: night
+    weather: rain
+    sequence_id: SQ01                    # optional grouping of scenes
