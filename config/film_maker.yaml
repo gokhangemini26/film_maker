@@ -1,0 +1,9 @@
+# FILM_MAKER repository configuration.
+# This file also marks the repository root for the `fm` CLI.
+film_maker:
+  schema_version: 1
+  projects_dir: projects
+  library_dir: library
+  # Default human identity recorded in the approval ledger when not overridden.
+  # Leave empty to use `git config user.name`.
+  default_human: ""

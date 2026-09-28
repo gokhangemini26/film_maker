@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(fm approve:*)",
+      "Bash(fm revise:*)",
+      "Bash(fm reject:*)",
+      "Bash(fm authorize:*)",
+      "Bash(fm canon approve:*)",
+      "Bash(fm canon lock:*)",
+      "Bash(fm canon reject:*)",
+      "Bash(fm change approve:*)",
+      "Bash(fm change reject:*)",
+      "Bash(fm status --repair-cache:*)",
+      "Edit(projects/*/state.yaml)",
+      "Write(projects/*/state.yaml)",
+      "Edit(projects/*/STATUS.md)",
+      "Write(projects/*/STATUS.md)",
+      "Edit(projects/*/CHANGELOG.md)",
+      "Write(projects/*/CHANGELOG.md)",
+      "Edit(projects/*/.fm/**)",
+      "Write(projects/*/.fm/**)",
+      "Edit(projects/*/changes/**)",
+      "Write(projects/*/changes/**)"
+    ]
+  },
+  "env": {
+    "FM_ACTOR": "agent:claude-code"
+  }
+}

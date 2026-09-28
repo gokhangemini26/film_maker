@@ -1,0 +1,225 @@
+{
+  "$defs": {
+    "CanonEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "applies_to": {
+          "description": "Scope: scene ids (SC01), shot ids, sequence ids, character ids. Empty = whole film.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Applies To",
+          "type": "array"
+        },
+        "depends_on": {
+          "description": "other canon ids this relies on",
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "history": {
+          "items": {
+            "$ref": "#/$defs/HistoryItem"
+          },
+          "title": "History",
+          "type": "array"
+        },
+        "id": {
+          "description": "domain.path.name, e.g. characters.mara.wardrobe.jacket",
+          "title": "Id",
+          "type": "string"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "WHY this was decided.",
+          "title": "Rationale"
+        },
+        "serves": {
+          "description": "intent.* ids this decision implements",
+          "items": {
+            "type": "string"
+          },
+          "title": "Serves",
+          "type": "array"
+        },
+        "source": {
+          "default": "unknown",
+          "description": "user | agent:<role> | human:<name>",
+          "title": "Source",
+          "type": "string"
+        },
+        "statement": {
+          "description": "Human-readable decision or intent.",
+          "title": "Statement",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/Status",
+          "default": "PROPOSED"
+        },
+        "tag": {
+          "$ref": "#/$defs/Tag",
+          "default": "DECISION"
+        },
+        "value": {
+          "default": null,
+          "description": "Machine-readable implementation value, if any.",
+          "title": "Value"
+        },
+        "version": {
+          "default": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "statement"
+      ],
+      "title": "CanonEntry",
+      "type": "object"
+    },
+    "HistoryItem": {
+      "additionalProperties": false,
+      "properties": {
+        "at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "At"
+        },
+        "change": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Change"
+        },
+        "hash": {
+          "title": "Hash",
+          "type": "string"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "statement": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Statement"
+        },
+        "status": {
+          "$ref": "#/$defs/Status"
+        },
+        "value": {
+          "default": null,
+          "title": "Value"
+        },
+        "version": {
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "version",
+        "hash",
+        "status"
+      ],
+      "title": "HistoryItem",
+      "type": "object"
+    },
+    "Status": {
+      "description": "Lifecycle of every decision, artifact and shot.\n\nPROPOSED    an agent (or the user) suggested it; nothing may rely on it as final\nAPPROVED    a human accepted it (recorded in the ledger)\nLOCKED      approved and frozen; only an approved change request can alter it\nSUPERSEDED  replaced by a newer version through a change request\nREJECTED    a human declined it",
+      "enum": [
+        "PROPOSED",
+        "APPROVED",
+        "LOCKED",
+        "SUPERSEDED",
+        "REJECTED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "Tag": {
+      "description": "Epistemic tag: what kind of statement this is.",
+      "enum": [
+        "FACT",
+        "DECISION",
+        "ASSUMPTION",
+        "RECOMMENDATION",
+        "USER_REQUIREMENT",
+        "DEPENDENCY",
+        "UNKNOWN"
+      ],
+      "title": "Tag",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "domain": {
+      "title": "Domain",
+      "type": "string"
+    },
+    "entries": {
+      "items": {
+        "$ref": "#/$defs/CanonEntry"
+      },
+      "title": "Entries",
+      "type": "array"
+    }
+  },
+  "required": [
+    "domain"
+  ],
+  "title": "CanonFile",
+  "type": "object"
+}

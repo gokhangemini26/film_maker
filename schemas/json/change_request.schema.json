@@ -1,0 +1,130 @@
+{
+  "$defs": {
+    "Status": {
+      "description": "Lifecycle of every decision, artifact and shot.\n\nPROPOSED    an agent (or the user) suggested it; nothing may rely on it as final\nAPPROVED    a human accepted it (recorded in the ledger)\nLOCKED      approved and frozen; only an approved change request can alter it\nSUPERSEDED  replaced by a newer version through a change request\nREJECTED    a human declined it",
+      "enum": [
+        "PROPOSED",
+        "APPROVED",
+        "LOCKED",
+        "SUPERSEDED",
+        "REJECTED"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A proposal to alter an APPROVED/LOCKED canon entry.",
+  "properties": {
+    "base_hash": {
+      "title": "Base Hash",
+      "type": "string"
+    },
+    "base_version": {
+      "title": "Base Version",
+      "type": "integer"
+    },
+    "decided_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Decided At"
+    },
+    "decided_by": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Decided By"
+    },
+    "decision_notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Decision Notes"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "impact": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "title": "Impact",
+      "type": "object"
+    },
+    "new_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "New Hash"
+    },
+    "proposed_at": {
+      "title": "Proposed At",
+      "type": "string"
+    },
+    "proposed_by": {
+      "title": "Proposed By",
+      "type": "string"
+    },
+    "reason": {
+      "minLength": 5,
+      "title": "Reason",
+      "type": "string"
+    },
+    "set": {
+      "additionalProperties": true,
+      "description": "fields of the canon entry to replace",
+      "title": "Set",
+      "type": "object"
+    },
+    "status": {
+      "$ref": "#/$defs/Status",
+      "default": "PROPOSED"
+    },
+    "target": {
+      "description": "canon id",
+      "title": "Target",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "target",
+    "reason",
+    "set",
+    "base_version",
+    "base_hash",
+    "proposed_by",
+    "proposed_at"
+  ],
+  "title": "ChangeRequest",
+  "type": "object"
+}

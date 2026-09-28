@@ -1,0 +1,91 @@
+{
+  "$defs": {
+    "DepRef": {
+      "additionalProperties": false,
+      "description": "An upstream dependency. `hash` is the upstream content hash at the\ntime this node was produced; None means a structural edge only.",
+      "properties": {
+        "hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hash"
+        },
+        "ref": {
+          "title": "Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ref"
+      ],
+      "title": "DepRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A downstream production product (resolved spec, .blend, render, QA\nreport). Written by builders; not authoritative for creative decisions.",
+  "properties": {
+    "content_hash": {
+      "title": "Content Hash",
+      "type": "string"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "derived_from": {
+      "items": {
+        "$ref": "#/$defs/DepRef"
+      },
+      "title": "Derived From",
+      "type": "array"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    },
+    "path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Path"
+    },
+    "producer": {
+      "title": "Producer",
+      "type": "string"
+    },
+    "ref": {
+      "title": "Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ref",
+    "derived_from",
+    "content_hash",
+    "created_at",
+    "producer"
+  ],
+  "title": "DerivedRecord",
+  "type": "object"
+}

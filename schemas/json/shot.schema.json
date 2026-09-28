@@ -1,0 +1,734 @@
+{
+  "$defs": {
+    "Camera": {
+      "additionalProperties": false,
+      "properties": {
+        "dof": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DepthOfField"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "end_position": {
+          "anyOf": [
+            {
+              "maxItems": 3,
+              "minItems": 3,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Position"
+        },
+        "height_m": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height M"
+        },
+        "lens_mm": {
+          "anyOf": [
+            {
+              "maximum": 1200,
+              "minimum": 6,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lens Mm"
+        },
+        "look_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Look At"
+        },
+        "movement": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Movement"
+        },
+        "start_position": {
+          "anyOf": [
+            {
+              "maxItems": 3,
+              "minItems": 3,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Position"
+        }
+      },
+      "title": "Camera",
+      "type": "object"
+    },
+    "Composition": {
+      "additionalProperties": false,
+      "properties": {
+        "aspect_ratio": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Aspect Ratio"
+        },
+        "framing": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Framing"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "subject_position": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subject Position"
+        }
+      },
+      "title": "Composition",
+      "type": "object"
+    },
+    "CreativeIntent": {
+      "additionalProperties": false,
+      "description": "What the shot is FOR, independent of how it is implemented.",
+      "properties": {
+        "audience_effect": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Audience Effect"
+        },
+        "emotional_purpose": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Emotional Purpose"
+        },
+        "narrative_purpose": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Narrative Purpose"
+        },
+        "visual_purpose": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Visual Purpose"
+        }
+      },
+      "title": "CreativeIntent",
+      "type": "object"
+    },
+    "DepRef": {
+      "additionalProperties": false,
+      "description": "An upstream dependency. `hash` is the upstream content hash at the\ntime this node was produced; None means a structural edge only.",
+      "properties": {
+        "hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hash"
+        },
+        "ref": {
+          "title": "Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ref"
+      ],
+      "title": "DepRef",
+      "type": "object"
+    },
+    "DepthOfField": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "f_stop": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "F Stop"
+        },
+        "focus_target": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Focus Target"
+        }
+      },
+      "title": "DepthOfField",
+      "type": "object"
+    },
+    "Environment": {
+      "additionalProperties": false,
+      "properties": {
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location"
+        },
+        "time_of_day": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Of Day"
+        },
+        "weather": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Weather"
+        }
+      },
+      "title": "Environment",
+      "type": "object"
+    },
+    "ShotCharacter": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action"
+        },
+        "facing": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Facing"
+        },
+        "id": {
+          "description": "character id as used in canon: characters.<id>.*",
+          "title": "Id",
+          "type": "string"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "maxItems": 3,
+              "minItems": 3,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Position"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "ShotCharacter",
+      "type": "object"
+    },
+    "ShotRationale": {
+      "additionalProperties": false,
+      "description": "WHY each implementation choice serves the intent.",
+      "properties": {
+        "animation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Animation"
+        },
+        "blocking": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Blocking"
+        },
+        "camera": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Camera"
+        },
+        "color": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Color"
+        },
+        "composition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Composition"
+        },
+        "lighting": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lighting"
+        },
+        "movement": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Movement"
+        }
+      },
+      "title": "ShotRationale",
+      "type": "object"
+    },
+    "Status": {
+      "description": "Lifecycle of every decision, artifact and shot.\n\nPROPOSED    an agent (or the user) suggested it; nothing may rely on it as final\nAPPROVED    a human accepted it (recorded in the ledger)\nLOCKED      approved and frozen; only an approved change request can alter it\nSUPERSEDED  replaced by a newer version through a change request\nREJECTED    a human declined it",
+      "enum": [
+        "PROPOSED",
+        "APPROVED",
+        "LOCKED",
+        "SUPERSEDED",
+        "REJECTED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "StyleBreak": {
+      "additionalProperties": false,
+      "properties": {
+        "approved_by_intent": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Approved By Intent",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 10,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason"
+      ],
+      "title": "StyleBreak",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Machine-readable specification of one shot.\n\nImplementation blocks (lighting/color/animation/render) stay open\ndictionaries in M1; they are tightened as their builders land (M3+).",
+  "properties": {
+    "animation": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Animation"
+    },
+    "assets": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assets",
+      "type": "array"
+    },
+    "camera": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Camera"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "characters": {
+      "items": {
+        "$ref": "#/$defs/ShotCharacter"
+      },
+      "title": "Characters",
+      "type": "array"
+    },
+    "color": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Color"
+    },
+    "composition": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Composition"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "continuity_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Continuity Refs",
+      "type": "array"
+    },
+    "creative_intent": {
+      "$ref": "#/$defs/CreativeIntent"
+    },
+    "derived_from": {
+      "items": {
+        "$ref": "#/$defs/DepRef"
+      },
+      "title": "Derived From",
+      "type": "array"
+    },
+    "duration_s": {
+      "exclusiveMinimum": 0,
+      "maximum": 600,
+      "title": "Duration S",
+      "type": "number"
+    },
+    "environment": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Environment"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "lighting": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Lighting"
+    },
+    "rationale": {
+      "$ref": "#/$defs/ShotRationale"
+    },
+    "render": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Render"
+    },
+    "scene_id": {
+      "title": "Scene Id",
+      "type": "string"
+    },
+    "sequence_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sequence Id"
+    },
+    "serves": {
+      "description": "intent.* ids",
+      "items": {
+        "type": "string"
+      },
+      "title": "Serves",
+      "type": "array"
+    },
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "stamp_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stamp Note"
+    },
+    "stamped_content_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stamped Content Hash"
+    },
+    "status": {
+      "$ref": "#/$defs/Status",
+      "default": "PROPOSED"
+    },
+    "style_break": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StyleBreak"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "shot_id",
+    "scene_id",
+    "duration_s"
+  ],
+  "title": "ShotSpec",
+  "type": "object"
+}

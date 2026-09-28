@@ -1,0 +1,134 @@
+{
+  "$defs": {
+    "DepRef": {
+      "additionalProperties": false,
+      "description": "An upstream dependency. `hash` is the upstream content hash at the\ntime this node was produced; None means a structural edge only.",
+      "properties": {
+        "hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hash"
+        },
+        "ref": {
+          "title": "Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ref"
+      ],
+      "title": "DepRef",
+      "type": "object"
+    },
+    "Status": {
+      "description": "Lifecycle of every decision, artifact and shot.\n\nPROPOSED    an agent (or the user) suggested it; nothing may rely on it as final\nAPPROVED    a human accepted it (recorded in the ledger)\nLOCKED      approved and frozen; only an approved change request can alter it\nSUPERSEDED  replaced by a newer version through a change request\nREJECTED    a human declined it",
+      "enum": [
+        "PROPOSED",
+        "APPROVED",
+        "LOCKED",
+        "SUPERSEDED",
+        "REJECTED"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "The `fm:` block at the top of every managed document.\n\nEverything outside this block is the artifact's content and is hashed.",
+  "properties": {
+    "derived_from": {
+      "items": {
+        "$ref": "#/$defs/DepRef"
+      },
+      "title": "Derived From",
+      "type": "array"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "kind": {
+      "description": "e.g. story_bible, screenplay, color_bible",
+      "title": "Kind",
+      "type": "string"
+    },
+    "owner_role": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Owner Role"
+    },
+    "phase": {
+      "title": "Phase",
+      "type": "string"
+    },
+    "serves": {
+      "description": "intent.* ids",
+      "items": {
+        "type": "string"
+      },
+      "title": "Serves",
+      "type": "array"
+    },
+    "stamp_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stamp Note"
+    },
+    "stamped_content_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stamped Content Hash"
+    },
+    "status": {
+      "$ref": "#/$defs/Status",
+      "default": "PROPOSED"
+    },
+    "summary": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Summary"
+    }
+  },
+  "required": [
+    "id",
+    "kind",
+    "phase"
+  ],
+  "title": "ArtifactMeta",
+  "type": "object"
+}

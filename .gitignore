@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+
+# Heavy / regenerable production outputs (reproducible from source)
+projects/*/10_blender/**/*.blend
+projects/*/10_blender/**/*.blend1
+projects/*/11_render/**/*.png
+projects/*/11_render/**/*.exr
+projects/*/11_render/**/*.jpg
+projects/*/11_render/**/*.mp4
+projects/*/12_post/**/*.mp4
+projects/*/12_post/**/*.wav
+projects/*/13_delivery/**/*.mp4
+library/assets/**/*.blend1
+
+# Local-only
+# regenerable demo project: python scripts/demo_m1.py --clean
+projects/m1_demo/
+projects/*/.fm/logs/
+.fm_local/
+*.log
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

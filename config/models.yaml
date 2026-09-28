@@ -1,0 +1,27 @@
+# Role-class -> model mapping. The pipeline itself is model-independent:
+# every role reads files and writes files that `fm validate` checks.
+# Only the runner layer (currently Claude Code subagents) reads this file.
+models:
+  creative:
+    provider: anthropic
+    model: opus        # Claude Code subagent alias
+  technical:
+    provider: anthropic
+    model: sonnet
+  vision:
+    provider: anthropic
+    model: opus
+
+# Which role-class each subagent uses (agents arrive in M2).
+roles:
+  creative-director: creative
+  story-architect: creative
+  screenwriter: creative
+  world-designer: creative
+  character-designer: creative
+  look-director: creative
+  cinematographer: creative
+  animation-director: creative
+  post-supervisor: creative
+  blender-td: technical
+  qa-supervisor: vision

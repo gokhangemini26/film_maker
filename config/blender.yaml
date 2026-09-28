@@ -1,0 +1,11 @@
+# Blender is the production engine, not the creative database.
+# Every build/render first verifies the Blender version and REFUSES a mismatch.
+blender:
+  # Absolute path to the Blender executable. Can be overridden with the
+  # FM_BLENDER environment variable.
+  executable: "C:/Program Files/Blender Foundation/Blender 5.2/blender.exe"
+  # Pinned series: major.minor must match exactly; any patch release is accepted.
+  required_series: "5.2"
+  # refuse = stop with an error on mismatch (the only supported policy).
+  on_mismatch: refuse
+  version_probe_timeout_s: 60

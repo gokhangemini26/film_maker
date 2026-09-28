@@ -1,0 +1,18 @@
+# Render presets. Consumed from M3 onward. A project may override these in
+# projects/<film>/config/render.yaml.
+profiles:
+  preview:
+    engine: BLENDER_EEVEE
+    resolution_scale: 0.5
+    samples: 16
+    motion_blur: false
+    output: png
+  final:
+    engine: BLENDER_EEVEE
+    resolution_scale: 1.0
+    samples: 64
+    motion_blur: true
+    output: exr
+    # Final renders need a human authorization recorded in the ledger
+    # (`fm authorize final-render`) before any backend may start them.
+    requires_authorization: true

@@ -1,0 +1,260 @@
+{
+  "$defs": {
+    "Authorization": {
+      "additionalProperties": false,
+      "properties": {
+        "at": {
+          "title": "At",
+          "type": "string"
+        },
+        "by": {
+          "title": "By",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "title": "Ledger Seq",
+          "type": "integer"
+        },
+        "scope": {
+          "title": "Scope",
+          "type": "string"
+        },
+        "what": {
+          "title": "What",
+          "type": "string"
+        }
+      },
+      "required": [
+        "what",
+        "scope",
+        "by",
+        "at",
+        "ledger_seq"
+      ],
+      "title": "Authorization",
+      "type": "object"
+    },
+    "CanonLock": {
+      "additionalProperties": false,
+      "properties": {
+        "hash": {
+          "title": "Hash",
+          "type": "string"
+        },
+        "ledger_seq": {
+          "title": "Ledger Seq",
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/$defs/Status"
+        },
+        "version": {
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "status",
+        "hash",
+        "version",
+        "ledger_seq"
+      ],
+      "title": "CanonLock",
+      "type": "object"
+    },
+    "GateRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "approved_hashes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Approved Hashes",
+          "type": "object"
+        },
+        "decided_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decided At"
+        },
+        "decided_by": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decided By"
+        },
+        "ledger_seq": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ledger Seq"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "status": {
+          "default": "pending",
+          "enum": [
+            "pending",
+            "awaiting_approval",
+            "approved",
+            "revise",
+            "rejected"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "title": "GateRecord",
+      "type": "object"
+    },
+    "Status": {
+      "description": "Lifecycle of every decision, artifact and shot.\n\nPROPOSED    an agent (or the user) suggested it; nothing may rely on it as final\nAPPROVED    a human accepted it (recorded in the ledger)\nLOCKED      approved and frozen; only an approved change request can alter it\nSUPERSEDED  replaced by a newer version through a change request\nREJECTED    a human declined it",
+      "enum": [
+        "PROPOSED",
+        "APPROVED",
+        "LOCKED",
+        "SUPERSEDED",
+        "REJECTED"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Projection of the ledger. `state.yaml` is a cache of this; the\nappend-only ledger is authoritative and `fm validate` re-derives it.",
+  "properties": {
+    "artifacts": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Status"
+      },
+      "title": "Artifacts",
+      "type": "object"
+    },
+    "authorizations": {
+      "items": {
+        "$ref": "#/$defs/Authorization"
+      },
+      "title": "Authorizations",
+      "type": "array"
+    },
+    "canon": {
+      "additionalProperties": {
+        "$ref": "#/$defs/CanonLock"
+      },
+      "title": "Canon",
+      "type": "object"
+    },
+    "changes": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Status"
+      },
+      "title": "Changes",
+      "type": "object"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "gates": {
+      "additionalProperties": {
+        "$ref": "#/$defs/GateRecord"
+      },
+      "title": "Gates",
+      "type": "object"
+    },
+    "ledger_head": {
+      "default": "",
+      "title": "Ledger Head",
+      "type": "string"
+    },
+    "ledger_seq": {
+      "default": 0,
+      "title": "Ledger Seq",
+      "type": "integer"
+    },
+    "phase": {
+      "title": "Phase",
+      "type": "string"
+    },
+    "phase_status": {
+      "default": "in_progress",
+      "enum": [
+        "in_progress",
+        "awaiting_approval"
+      ],
+      "title": "Phase Status",
+      "type": "string"
+    },
+    "project": {
+      "title": "Project",
+      "type": "string"
+    },
+    "sandbox": {
+      "default": false,
+      "title": "Sandbox",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "shots": {
+      "additionalProperties": {
+        "enum": [
+          "spec",
+          "resolved",
+          "built",
+          "previewed",
+          "qa_pass",
+          "approved",
+          "final"
+        ],
+        "type": "string"
+      },
+      "title": "Shots",
+      "type": "object"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "project",
+    "title",
+    "created_at",
+    "phase"
+  ],
+  "title": "ProjectState",
+  "type": "object"
+}
