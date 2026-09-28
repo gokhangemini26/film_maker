@@ -1,0 +1,130 @@
+fm:
+  id: brief
+  kind: brief
+  phase: BRIEF
+  status: PROPOSED
+  owner_role: executive-producer
+  summary: 'The user''s creative brief. status: given | assumed | unknown.'
+fields:
+  title:
+    value: Last Signal
+    status: given
+  concept:
+    value: >
+      A young man's attempt to ask his friend to dinner (where he means to tell
+      her he loves her) becomes a race against his dying phone battery; after a
+      chain of failed charging attempts, a hand-crank charger lets him send his
+      message with the last signal, and she reads it and smiles.
+    status: assumed
+    note: >
+      Condensed from the user's story_idea and answers (characters, ending); no
+      new content added. "Young man" per the user's answer that both are about 20.
+  genre:
+    value: romantic comedy-drama (short)
+    status: assumed
+    note: >
+      Inferred from a love confession plus an escalating chain of mishaps;
+      consistent with the user's answer "gently comic, turning quiet and tender".
+  duration_s:
+    value: 60
+    status: given
+    note: User's answer to BRIEF_ANALYSIS Q1.
+  target_audience:
+    value: null
+    status: unknown
+    note: >
+      Not stated. Decided by creative-director at CREATIVE_DIRECTION (young-adult
+      romance, wordless, so broadly accessible is the likely direction).
+  emotional_goal:
+    value: >
+      Gently comic in the middle (car, shop), turning quiet and tender at the
+      crank and the send. Ending open but hopeful: the message sends, she reads
+      it and smiles, his phone dies; no spoken answer.
+    status: given
+    note: User's answers to BRIEF_ANALYSIS Q5 (tone) and Q3 (ending).
+  story_idea:
+    value: >
+      A young boy calls a girl to invite her to dinner, where he plans to tell
+      her he loves her. But his phone battery is almost dead. He tries to
+      charge it in his car, but the car breaks down; he tries a shop, but the
+      electricity fails; finally he uses a hand-crank charger and sends his
+      message with the last signal.
+    status: given
+    note: >
+      User's original words verbatim. The user has since confirmed both
+      characters are about 20 (see characters), so "young boy" means a young man.
+  visual_style:
+    value: Japanese animation style
+    status: given
+  color_palette:
+    value: Pastel colours
+    status: given
+    note: Hex values are the look-director's job (LOOK phase).
+  references:
+    value: null
+    status: unknown
+    note: >
+      No references given. Optional: the user may drop images or titles in
+      references/; we will extract principles only, never copy.
+  realism:
+    value: stylised (anime cel/toon look), not photoreal
+    status: assumed
+    note: >
+      Follows directly from "Japanese animation style" and matches the MVP
+      (stylised proxy characters, toon shading in EEVEE).
+  animation_style:
+    value: Japanese animation style
+    status: given
+    note: >
+      Same user phrase as visual_style. Motion specifics (e.g. held poses,
+      limited-animation timing) are the animation-director's call later.
+  camera_style:
+    value: cinematic angles
+    status: given
+  lighting_style:
+    value: cinematic lighting
+    status: given
+  environment:
+    value: null
+    status: unknown
+    note: >
+      Implied settings: where he makes the call, his car, a shop, wherever the
+      hand-crank charger is found, and where she reads the message. Specifics
+      decided by story-architect / world-designer.
+  characters:
+    value: >
+      He: about 20, university age, drives a small old car; has a crush on her
+      that she doesn't know about yet. She: about 20, university age, his
+      friend. Both adults.
+    status: given
+    note: User's answer to BRIEF_ANALYSIS Q2. Names and designs decided later (character-designer).
+  era:
+    value: contemporary (smartphones)
+    status: assumed
+    note: >
+      A dying phone battery, phone charging in a car and a hand-crank charger
+      all place it in the present day.
+  location:
+    value: null
+    status: unknown
+    note: >
+      Not stated. "Japanese animation style" does not by itself set the story
+      in Japan; decided at STORY / WORLD.
+  aspect_ratio:
+    value: '16:9'
+    status: assumed
+    note: Standard for a short film on screens; change at LOOK/CINEMATOGRAPHY if wanted.
+  fps:
+    value: 24
+    status: assumed
+    note: Film and anime standard; suits limited-animation timing on EEVEE.
+  special_requirements:
+    value: >
+      Almost wordless: the only language is the typed message shown on screen,
+      in English, plus non-verbal sounds. No spoken dialogue, no spoken answer
+      from her.
+    status: given
+    note: >
+      User's answer to BRIEF_ANALYSIS Q4 (and Q3 "no spoken answer"). Production
+      constraint, separately (FACT, not a user requirement): MVP builds with
+      stylised proxy characters in Blender 5.2, EEVEE on a laptop.

@@ -1,0 +1,70 @@
+domain: intent
+entries:
+  - id: intent.race_against_battery
+    statement: >
+      The audience should be with him as he tries to reach the girl he loves
+      before his phone dies: he calls to invite her to dinner, where he plans
+      to tell her he loves her; the car breaks down, the shop's electricity
+      fails, and finally a hand-crank charger lets him send his message with
+      the last signal.
+    tag: USER_REQUIREMENT
+    status: PROPOSED
+    source: user
+    notes: >
+      User's story, lightly edited. User confirmed both characters are about 20
+      (university-age friends), so the protagonist is a young man.
+  - id: intent.anime_feel
+    statement: >
+      The film should look and feel like Japanese animation.
+    tag: USER_REQUIREMENT
+    status: PROPOSED
+    source: user
+    notes: User's words "Japanese animation style".
+  - id: intent.soft_but_cinematic
+    statement: >
+      The viewer should find the film soft and pastel-coloured to look at, yet
+      feel it is framed and lit like cinema rather than flat animation.
+    tag: USER_REQUIREMENT
+    status: PROPOSED
+    source: user
+    notes: User's words "Pastel colours, cinematic angles and lighting."
+  - id: intent.comic_then_tender
+    statement: >
+      The mishaps in the middle (the car, the shop) should feel gently comic,
+      and the film should turn quiet and tender at the crank and the send.
+    tag: USER_REQUIREMENT
+    status: PROPOSED
+    source: user
+    notes: User's answer to BRIEF_ANALYSIS Q5, lightly edited.
+  - id: intent.open_hopeful_ending
+    statement: >
+      The ending should feel open but hopeful: the message sends, she reads it
+      and smiles, his phone dies, and we never hear her answer.
+    tag: USER_REQUIREMENT
+    status: PROPOSED
+    source: user
+    notes: User's answer to BRIEF_ANALYSIS Q3, lightly edited.
+  - id: intent.rising_stakes
+    statement: >
+      The viewer should feel every drop in battery as rising stakes: each
+      setback makes the unsent message matter more, so the audience is
+      leaning in by the last attempt.
+    tag: RECOMMENDATION
+    status: PROPOSED
+    source: agent:creative-director
+    notes: >
+      RECOMMENDATION, not a user requirement. Still distinct from
+      intent.comic_then_tender: the mishaps can be gently funny while the
+      stakes climb. Accept or drop at G1.
+  - id: intent.earned_last_signal
+    statement: >
+      The moment the message finally goes through should land as a small,
+      earned triumph: the viewer feels it was his own effort, turning the
+      crank by hand, that got the words out.
+    tag: RECOMMENDATION
+    status: PROPOSED
+    source: agent:creative-director
+    notes: >
+      RECOMMENDATION, not a user requirement. Still distinct from
+      intent.open_hopeful_ending: that one is about her reaction, this one is
+      about his effort at the crank. Accept or drop at G1.
