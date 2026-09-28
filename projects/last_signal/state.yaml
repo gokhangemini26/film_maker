@@ -4,15 +4,17 @@ title: Last Signal
 sandbox: false
 created_at: '2026-09-28T20:41:45Z'
 phase: CREATIVE_DIRECTION
-phase_status: awaiting_approval
+phase_status: in_progress
 gates:
   G1:
-    status: awaiting_approval
-    decided_by: null
-    decided_at: null
-    notes: null
+    status: revise
+    decided_by: human:gokhan_guler
+    decided_at: '2026-09-28T20:54:31Z'
+    notes: The message is the dinner invitation; the confession stays for the dinner (off screen). The
+      call goes to her voicemail / she doesn't pick up, so he has to text. Lock the wordless rule in canon.
+      Keep earned_last_signal, drop rising_stakes. Audience OK.
     approved_hashes: {}
-    ledger_seq: null
+    ledger_seq: 5
   G2:
     status: pending
     decided_by: null
@@ -67,5 +69,5 @@ artifacts: {}
 shots: {}
 authorizations: []
 changes: {}
-ledger_seq: 4
-ledger_head: sha256:2af9ab666d305fb1e3563a243fb9a7079f3d7d72304698bb3b6c0ad3d6384fe7
+ledger_seq: 5
+ledger_head: sha256:fc4b9bb625147bce8b000c7a8051cfd07d8ddd60c0bb396edb568fd79341a6b4

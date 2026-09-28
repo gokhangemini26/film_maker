@@ -6,17 +6,17 @@
 project: last_signal
 sandbox: false
 current_phase: CREATIVE_DIRECTION
-status: awaiting_approval
-ledger: 4 records, head 2af9ab666d30
+status: in_progress
+ledger: 5 records, head fc4b9bb62514
 ```
 
-**Next:** Human review: `fm approve G1`, or `fm revise G1 --notes ...` / `fm reject G1 --notes ...`
+**Next:** Produce CREATIVE_DIRECTION deliverables (00_brief/CREATIVE_DIRECTION.md, qa/reviews/G1_REVIEW.md), then `fm submit` for G1
 
 ## Gates
 
 | Gate | Name | Status | Decided by | Items approved |
 |---|---|---|---|---|
-| G1 | Creative direction | awaiting_approval | - | - |
+| G1 | Creative direction | revise | human:gokhan_guler | - |
 | G2 | Story and screenplay | pending | - | - |
 | G3 | World and characters | pending | - | - |
 | G4 | Visual direction (style lock) | pending | - | - |
@@ -44,4 +44,4 @@ None yet.
 
 ## Attention
 
-Nothing outstanding.
+- G1 revise by human:gokhan_guler: The message is the dinner invitation; the confession stays for the dinner (off screen). The call goes to her voicemail / she doesn't pick up, so he has to text. Lock the wordless rule in canon. Keep earned_last_signal, drop rising_stakes. Audience OK.
