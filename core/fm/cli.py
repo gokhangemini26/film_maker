@@ -156,8 +156,16 @@ def submit(c: Ctx):
     """Submit the current phase's deliverables for human review at its gate."""
     from .ops import submit as run
 
-    st = run(c.project())
-    click.echo(f"{st.phase} submitted; awaiting human decision")
+    from .phases import GATE_FOR_PHASE
+    from .reviews import review_verdict
+
+    p = c.project()
+    st = run(p)
+    gate = GATE_FOR_PHASE[st.phase]
+    verdict = review_verdict(p, gate.id, p.load())
+    click.echo(f"{st.phase} submitted for {gate.id}; awaiting human decision"
+               + (f" (qa review verdict, advisory: {verdict})" if verdict else ""))
+    click.echo(f"  human, in a terminal: fm approve {gate.id}   |   fm revise {gate.id} --notes \"...\"")
 
 
 @cli.command()
@@ -433,6 +441,52 @@ def record(c: Ctx, ref, from_refs, file_, note):
 
     rec = record_derived(c.project(), ref, list(from_refs), file=file_, note=note)
     click.echo(f"recorded {rec.ref} ({short(rec.content_hash)}) from {len(rec.derived_from)} input(s)")
+
+
+@cli.command()
+@click.option("--json", "as_json", is_flag=True)
+@click.pass_obj
+def intent(c: Ctx, as_json):
+    """Creative-intent coverage: what serves each intent, and unserved decisions."""
+    from .intent import intent_coverage, unserved_decisions
+
+    loaded = c.project().load()
+    rows = intent_coverage(loaded)
+    unserved = unserved_decisions(loaded)
+    if as_json:
+        click.echo(json.dumps({"intents": [r.__dict__ for r in rows], "unserved_decisions": unserved},
+                              indent=2))
+        return
+    if not rows:
+        click.echo("no intents yet (canon/intent.yaml)")
+    for r in rows:
+        gap = "  <- NOT ON SCREEN" if loaded.shots and not r.shots else ""
+        click.echo(f"{r.intent}: {r.statement}{gap}")
+        click.echo(f"    canon ({len(r.canon)}): {', '.join(r.canon) or '-'}")
+        click.echo(f"    docs  ({len(r.artifacts)}): {', '.join(r.artifacts) or '-'}")
+        click.echo(f"    shots ({len(r.shots)}): {', '.join(r.shots) or '-'}")
+    if unserved:
+        click.echo(f"decisions serving no intent ({len(unserved)}): {', '.join(unserved)}")
+
+
+@cli.group()
+def check():
+    """Deterministic production checks."""
+
+
+@check.command("continuity")
+@click.pass_obj
+def check_continuity_cmd(c: Ctx):
+    """Shots vs continuity canon, scene index, characters and running time. Exit 1 on FAIL."""
+    from .continuity import check_continuity
+
+    findings = check_continuity(c.project().load())
+    for f in findings:
+        click.secho(str(f), fg="red" if f.level == "FAIL" else "yellow")
+    fails = sum(1 for f in findings if f.level == "FAIL")
+    click.secho(f"continuity: {fails} FAIL, {len(findings) - fails} WARN", fg="red" if fails else "green")
+    if fails:
+        sys.exit(1)
 
 
 # ------------------------------------------------------------------ ledger / tools

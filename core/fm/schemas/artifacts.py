@@ -75,6 +75,41 @@ class Brief(StrictModel):
 
 
 # --------------------------------------------------------------------- shots
+class SceneEntry(StrictModel):
+    """One row of the screenplay's machine-readable scene index."""
+
+    scene_id: str
+    heading: str
+    summary: str | None = None
+    est_duration_s: float | None = Field(default=None, gt=0)
+    characters: list[str] = Field(default_factory=list)
+    location: str | None = None
+    time_of_day: str | None = None
+    weather: str | None = None
+    sequence_id: str | None = None
+
+    @field_validator("scene_id")
+    @classmethod
+    def _scene(cls, v: str) -> str:
+        if not SCENE_ID_RE.match(v):
+            raise ValueError(f"invalid scene_id '{v}' (expected SC01)")
+        return v
+
+
+class SceneIndex(StrictModel):
+    """02_screenplay/SCENES.yaml"""
+
+    fm: ArtifactMeta
+    scenes: list[SceneEntry] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _unique(self) -> "SceneIndex":
+        ids = [s.scene_id for s in self.scenes]
+        if len(ids) != len(set(ids)):
+            raise ValueError("duplicate scene_id in scene index")
+        return self
+
+
 class CreativeIntent(StrictModel):
     """What the shot is FOR, independent of how it is implemented."""
 

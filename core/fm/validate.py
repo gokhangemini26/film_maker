@@ -7,17 +7,36 @@ humans at gates (and, from M2, by review agents whose findings are advisory).
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 from .deps import Graph, build_graph
 from .io import load_yaml, short
+from .continuity import check_continuity
+from .intent import intent_coverage, unserved_decisions
 from .ledger import Ledger
+from .roles import ARTIFACT_OWNERS, CANON_DOMAINS, VERDICTS
 from .phases import GATES, PHASES, gates_before, phase_index
 from .project import Loaded, Project
 from .schemas import (
     HUMAN_BACKED, RATIONALE_REQUIRED_DOMAINS, ProjectState, Status, Tag,
 )
 from .statemachine import replay
+
+_HEX = re.compile(r"^#[0-9A-Fa-f]{6}$")
+
+
+def _colors(value):
+    """Yield every value that must be a hex colour in a look.color.* entry."""
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, list):
+        for v in value:
+            yield from _colors(v)
+    elif isinstance(value, dict):
+        for k in ("hex", "color", "colour"):
+            if k in value:
+                yield from _colors(value[k])
 
 
 @dataclass
@@ -136,6 +155,15 @@ def validate(project: Project) -> Report:  # noqa: C901 - a checklist by design
                 add("ERROR", "DANGLING_REF", where, f"{cid} serves unknown intent '{s}'")
         if e.tag == Tag.UNKNOWN and eff == Status.LOCKED:
             add("WARN", "LOCKED_UNKNOWN", where, f"{cid} is locked but tagged UNKNOWN")
+        if cid.startswith("look.color.") and e.value is not None:
+            for c in _colors(e.value):
+                if not isinstance(c, str) or not _HEX.match(c):
+                    add("ERROR", "BAD_COLOR", where, f"{cid}: '{c}' is not a #RRGGBB hex colour")
+        if e.source.startswith("agent:"):
+            role = e.source.split(":", 1)[1]
+            if role in CANON_DOMAINS and e.domain not in CANON_DOMAINS[role]:
+                add("WARN", "OWNER_MISMATCH", where,
+                    f"{cid}: '{role}' proposes in '{e.domain}', owned by another role")
     for cid, lock in state.canon.items():
         if cid not in loaded.canon and lock.status in (Status.LOCKED, Status.APPROVED):
             add("ERROR", "LOCKED_CANON_REMOVED", "canon/",
@@ -155,6 +183,12 @@ def validate(project: Project) -> Report:  # noqa: C901 - a checklist by design
                 add("ERROR", "DANGLING_REF", where, f"derived_from unknown '{d.ref}'")
             elif d.hash is None:
                 add("WARN", "UNSTAMPED", where, f"{d.ref} has no recorded hash; run `fm stamp {where}`")
+        owner = ARTIFACT_OWNERS.get(item.meta.kind)
+        if owner and item.meta.owner_role and item.meta.owner_role != owner:
+            add("WARN", "OWNER_MISMATCH", where,
+                f"{aid} ({item.meta.kind}) is owned by {owner}, not {item.meta.owner_role}")
+        if item.meta.kind == "gate_review" and item.extra.get("verdict") not in VERDICTS:
+            add("ERROR", "REVIEW_VERDICT", where, f"verdict must be one of {', '.join(VERDICTS)}")
 
     # ---- shots
     known_chars = {cid.split(".")[1] for cid in loaded.canon if cid.startswith("characters.")}
@@ -175,6 +209,17 @@ def validate(project: Project) -> Report:  # noqa: C901 - a checklist by design
         for d in s.derived_from:
             if not loaded.exists(d.ref):
                 add("ERROR", "DANGLING_REF", where, f"derived_from unknown '{d.ref}'")
+
+    # ---- intent + continuity (advisory here; continuity FAILs block G5 submission)
+    for cid in unserved_decisions(loaded):
+        add("WARN", "UNSERVED_DECISION", project.rel(loaded.canon[cid].path),
+            f"{cid} serves no intent (add `serves:` to say what it is for)")
+    if loaded.shots:
+        for row in intent_coverage(loaded):
+            if not row.shots:
+                add("WARN", "INTENT_NOT_ON_SCREEN", row.intent, "no shot serves this intent")
+    for cf in check_continuity(loaded):
+        add("WARN", "CONTINUITY", cf.where, f"{cf.level}: {cf.message}")
 
     # ---- change requests
     for cid, (cr, path) in loaded.changes.items():

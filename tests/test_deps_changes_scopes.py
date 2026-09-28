@@ -131,6 +131,10 @@ def test_regenerate_and_reapprove_after_change(storyboarded):
         data["environment"]["weather"] = "rain (brown jacket reads warmer)"
         sp.write_text(yaml.safe_dump(data, sort_keys=False))
         ops.stamp(p, f"08_shots/{sid}.shot.yaml")
+    stale = _stale(p)
+    assert set(stale) == {"artifact:g3_review", "artifact:g5_review"}   # reviews must be redone
+    testing.rereview(p, "G3", "jacket now dark brown")
+    testing.rereview(p, "G5", "shots rechecked")
     assert not _stale(p)
     with testing.as_actor("human:director"):
         ops.decide_gate(p, "G3", "approved", "re-approve after jacket change", sandbox_confirm=True)
@@ -179,7 +183,8 @@ def test_plan_limits_regeneration_to_scope(storyboarded):
     with testing.as_actor("human:director"):
         ops.decide_change(p, "CHANGE-001", "approved", sandbox_confirm=True)
     assert "resolved:SC01_SH010" in ops.plan(p, "shot:SC01_SH010")["stale"]
-    assert ops.plan(p, "scene:SC02")["stale"] == []
+    # SC02's own shot and products are untouched; only the G5 review (which covers all shots) needs redoing
+    assert ops.plan(p, "scene:SC02")["stale"] == ["artifact:g5_review"]
 
 
 def test_bad_scopes(storyboarded):

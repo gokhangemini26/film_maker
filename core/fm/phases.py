@@ -9,6 +9,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from .roles import REVIEW_FOR_GATE
+
 PHASES: tuple[str, ...] = (
     "IDEA",
     "BRIEF",
@@ -74,24 +76,27 @@ class PhaseContract:
 
 CONTRACTS: dict[str, PhaseContract] = {
     "BRIEF": PhaseContract(("00_brief/brief.yaml",)),
-    "CREATIVE_DIRECTION": PhaseContract(("00_brief/CREATIVE_DIRECTION.md",)),
+    "CREATIVE_DIRECTION": PhaseContract(("00_brief/CREATIVE_DIRECTION.md", REVIEW_FOR_GATE["G1"])),
     "STORY": PhaseContract(("01_story/STORY_BIBLE.md", "01_story/STORY_STRUCTURE.md")),
-    "SCREENPLAY": PhaseContract(("02_screenplay/SCREENPLAY.md",)),
+    "SCREENPLAY": PhaseContract(("02_screenplay/SCREENPLAY.md", "02_screenplay/SCENES.yaml",
+                                 REVIEW_FOR_GATE["G2"])),
     "WORLD_CHARACTERS": PhaseContract(
         ("03_world/WORLD_BIBLE.md", "03_world/ART_DIRECTION_BIBLE.md",
-         "04_characters/CHARACTER_BIBLE.md")),
+         "04_characters/CHARACTER_BIBLE.md", REVIEW_FOR_GATE["G3"])),
     "LOOK": PhaseContract(
-        ("05_look/VISUAL_BIBLE.md", "05_look/COLOR_BIBLE.md", "05_look/LIGHTING_BIBLE.md")),
+        ("05_look/VISUAL_BIBLE.md", "05_look/COLOR_BIBLE.md", "05_look/LIGHTING_BIBLE.md",
+         REVIEW_FOR_GATE["G4"])),
     "CINEMATOGRAPHY": PhaseContract(("06_cinematography/CINEMATOGRAPHY_BIBLE.md",)),
     "STORYBOARD": PhaseContract(
-        ("07_storyboard/STORYBOARD.md", "07_storyboard/SHOT_LIST.md"), min_shots=1),
+        ("07_storyboard/STORYBOARD.md", "07_storyboard/SHOT_LIST.md", REVIEW_FOR_GATE["G5"]),
+        min_shots=1),
     # Production phases get their contracts as their tooling lands (M3+).
 }
 
 PROJECT_DIRS = (
     "00_brief", "01_story", "02_screenplay", "03_world", "04_characters", "05_look",
     "06_cinematography", "07_storyboard", "08_shots", "09_animation", "10_blender",
-    "11_render", "12_post", "13_delivery", "qa", "canon", "changes", "references", ".fm",
+    "11_render", "12_post", "13_delivery", "qa", "qa/reviews", "canon", "changes", "references", ".fm",
     ".fm/derived",
 )
 

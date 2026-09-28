@@ -43,6 +43,32 @@ def write_md(project: Project, rel: str, aid: str, kind: str, phase: str, deps: 
     return path
 
 
+def write_review(project: Project, gate_id: str, verdict: str = "PASS", note: str = "") -> Path:
+    """A qa-supervisor review covering everything the gate approves."""
+    from .phases import GATES
+    from .roles import REVIEW_FOR_GATE
+    gate = GATES[gate_id]
+    loaded = project.load()
+    rel = REVIEW_FOR_GATE[gate_id]
+    refs = sorted(a.ref for a in loaded.artifacts.values()
+                  if a.meta.phase in gate.covers_phases and project.rel(a.path) != rel)
+    if gate.covers_shots:
+        refs += sorted(s.ref for s in loaded.shots.values())
+    path = project.dir / rel
+    meta = {"fm": {"id": f"{gate_id.lower()}_review", "kind": "gate_review", "phase": gate.closes_phase,
+                   "status": "PROPOSED", "owner_role": "qa-supervisor",
+                   "derived_from": [{"ref": r} for r in refs]},
+            "verdict": verdict, "reviewed_gate": gate_id}
+    write_front_matter(path, meta, f"# {gate_id} review\n\nFixture review. {note}\n")
+    return path
+
+
+def rereview(project: Project, gate_id: str, note: str) -> None:
+    """Rewrite and restamp a gate review after the reviewed content changed."""
+    path = write_review(project, gate_id, note=note)
+    ops.stamp(project, project.rel(path))
+
+
 def write_shot(project: Project, shot_id: str, **fields) -> Path:
     scene = shot_id.split("_")[0]
     spec = {
@@ -77,7 +103,7 @@ def produce(project: Project, phase: str) -> None:
         data = yaml.safe_load(brief_path.read_text(encoding="utf-8"))
         data["fields"].update({
             "concept": {"value": "A lone courier receives a message from someone presumed dead.", "status": "given"},
-            "duration_s": {"value": 30, "status": "given"},
+            "duration_s": {"value": 12, "status": "given"},
             "emotional_goal": {"value": "isolation turning into hope", "status": "given"},
             "color_palette": {"value": "muted blue with warm amber accents", "status": "given"},
             "fps": {"value": 24, "status": "assumed", "note": "cinema default"},
@@ -112,6 +138,15 @@ def produce(project: Project, phase: str) -> None:
     elif phase == "SCREENPLAY":
         write_md(P, "02_screenplay/SCREENPLAY.md", "screenplay", "screenplay", "SCREENPLAY",
                  ["artifact:story_structure"], "EXT. HARBOUR STREET - NIGHT\n\nRain. MARA walks alone.\n")
+        write_yaml(P.dir / "02_screenplay" / "SCENES.yaml", {
+            "fm": {"id": "scenes", "kind": "scene_index", "phase": "SCREENPLAY", "status": "PROPOSED",
+                   "owner_role": "screenwriter", "derived_from": [{"ref": "artifact:screenplay"}]},
+            "scenes": [
+                {"scene_id": "SC01", "heading": "EXT. HARBOUR STREET - NIGHT", "est_duration_s": 8,
+                 "characters": ["mara"], "time_of_day": "night", "weather": "rain", "sequence_id": "SQ01"},
+                {"scene_id": "SC02", "heading": "EXT. HARBOUR STREET - LATER", "est_duration_s": 4,
+                 "time_of_day": "night", "sequence_id": "SQ02"},
+            ]})
     elif phase == "WORLD_CHARACTERS":
         write_canon(P, "world", [
             {"id": "world.city.district", "statement": "An old harbour district, half-abandoned.",
@@ -177,6 +212,12 @@ def produce(project: Project, phase: str) -> None:
                    creative_intent={"narrative_purpose": "Empty street after she leaves."},
                    rationale={"camera": "Same lens as SH010 for a clean match."})
     stamp_all(P)
+    from .phases import GATE_FOR_PHASE
+    from .roles import REVIEW_FOR_GATE
+    gate = GATE_FOR_PHASE.get(phase)
+    if gate is not None and gate.id in REVIEW_FOR_GATE:
+        write_review(P, gate.id)
+        stamp_all(P)
 
 
 def stamp_all(project: Project) -> None:

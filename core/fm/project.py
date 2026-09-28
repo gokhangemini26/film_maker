@@ -17,7 +17,7 @@ from .errors import FMError
 from .io import canonical_json, hash_obj, load_json, load_yaml, normalize_text, read_front_matter, sha256_text
 from .schemas import (
     SHOT_NON_CONTENT, ArtifactMeta, Brief, CanonEntry, CanonFile, ChangeRequest, DerivedRecord,
-    ShotSpec,
+    SceneIndex, ShotSpec,
 )
 from .schemas.common import SLUG_RE
 
@@ -83,6 +83,7 @@ class ArtifactItem:
     path: Path
     hash: str
     fmt: str  # "md" | "yaml"
+    extra: dict = field(default_factory=dict)  # front-matter/top-level keys besides `fm`
 
     @property
     def ref(self) -> str:
@@ -110,6 +111,7 @@ class Loaded:
     derived: dict[str, DerivedRecord] = field(default_factory=dict)
     changes: dict[str, tuple[ChangeRequest, Path]] = field(default_factory=dict)
     brief: Brief | None = None
+    scene_index: SceneIndex | None = None
     errors: list[tuple[str, str]] = field(default_factory=list)  # (path, message)
 
     def current_hash(self, ref: str) -> str | None:
@@ -212,6 +214,7 @@ class Project:
                         continue
                     art_meta = ArtifactMeta.model_validate(meta["fm"])
                     h, fmt = md_artifact_hash(meta, body), "md"
+                    extra = {k: v for k, v in meta.items() if k != "fm"}
                 else:
                     data = load_yaml(path)
                     if not isinstance(data, dict) or "fm" not in data:
@@ -219,7 +222,10 @@ class Project:
                     art_meta = ArtifactMeta.model_validate(data["fm"])
                     if art_meta.kind == "brief":
                         out.brief = Brief.model_validate(data)
+                    elif art_meta.kind == "scene_index":
+                        out.scene_index = SceneIndex.model_validate(data)
                     h, fmt = yaml_artifact_hash(data), "yaml"
+                    extra = {}
             except ValidationError as exc:
                 out.errors.append((self.rel(path), fmt_validation(exc)))
                 continue
@@ -230,7 +236,7 @@ class Project:
                 out.errors.append((self.rel(path), f"duplicate artifact id '{art_meta.id}' "
                                    f"(also {self.rel(out.artifacts[art_meta.id].path)})"))
                 continue
-            out.artifacts[art_meta.id] = ArtifactItem(art_meta, path, h, fmt)
+            out.artifacts[art_meta.id] = ArtifactItem(art_meta, path, h, fmt, extra)
 
     def _load_shots(self, out: Loaded) -> None:
         for path in sorted(self.shots_dir.glob("*.shot.yaml")):

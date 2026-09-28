@@ -145,6 +145,13 @@ def _contract_problems(project: Project, phase: str, loaded: Loaded) -> list[str
             out.append(f"{rel} has no valid `fm:` metadata block")
     if c.min_shots and len(loaded.shots) < c.min_shots:
         out.append(f"needs at least {c.min_shots} shot spec(s) in 08_shots/")
+    gate = GATE_FOR_PHASE.get(phase)
+    if gate is not None:
+        from .reviews import review_problems
+        out += review_problems(project, gate, loaded)
+        if gate.covers_shots:
+            from .continuity import check_continuity
+            out += [f"continuity: {f}" for f in check_continuity(loaded) if f.level == "FAIL"]
     return out
 
 
@@ -243,10 +250,15 @@ def decide_gate(project: Project, gate_id: str, decision: str, notes: str | None
     if problems:
         raise ValidationFailed(f"cannot approve {gate_id}:\n  " + "\n  ".join(problems))
 
-    summary = (f"APPROVE {gate_id} - {gate.name}\n"
-               f"  artifacts approved: {len(covered_art)}   shots approved: {len(covered_shots)}\n"
-               f"  canon entries locked: {len(to_lock)} (domains: {', '.join(gate.locks_domains) or '-'})"
-               + ("\n  (re-approval after drift)" if reapproval else ""))
+    from .reviews import review_verdict
+    verdict = review_verdict(project, gate_id, loaded)
+    summary = "\n".join(line for line in (
+        f"APPROVE {gate_id} - {gate.name}",
+        f"  qa review verdict (advisory): {verdict}" if verdict else "",
+        f"  artifacts approved: {len(covered_art)}   shots approved: {len(covered_shots)}",
+        f"  canon entries locked: {len(to_lock)} (domains: {', '.join(gate.locks_domains) or '-'})",
+        "  (re-approval after drift)" if reapproval else "",
+    ) if line)
     confirm = require_human(summary, gate_id, sandbox=state.sandbox, sandbox_confirm=sandbox_confirm)
     approved_hashes = {r: a.hash for r, a in covered_art.items()}
     approved_hashes |= {r: s.hash for r, s in covered_shots.items()}

@@ -1,7 +1,7 @@
 """FILM_MAKER data model. All models export to JSON Schema (`fm schema export`)."""
 from .artifacts import (  # noqa: F401
     BRIEF_FIELDS, SHOT_NON_CONTENT, ArtifactMeta, Brief, BriefField, Camera, Composition,
-    CreativeIntent,
+    CreativeIntent, SceneEntry, SceneIndex,
     Environment, ShotCharacter, ShotRationale, ShotSpec, StyleBreak,
 )
 from .canon import (  # noqa: F401
@@ -18,6 +18,7 @@ from .state import (  # noqa: F401
 EXPORTED = {
     "canon_file": CanonFile,
     "brief": Brief,
+    "scene_index": SceneIndex,
     "artifact_meta": ArtifactMeta,
     "shot": ShotSpec,
     "project_state": ProjectState,
