@@ -243,7 +243,7 @@ def decide_gate(project: Project, gate_id: str, decision: str, notes: str | None
     if problems:
         raise ValidationFailed(f"cannot approve {gate_id}:\n  " + "\n  ".join(problems))
 
-    summary = (f"APPROVE {gate_id} — {gate.name}\n"
+    summary = (f"APPROVE {gate_id} - {gate.name}\n"
                f"  artifacts approved: {len(covered_art)}   shots approved: {len(covered_shots)}\n"
                f"  canon entries locked: {len(to_lock)} (domains: {', '.join(gate.locks_domains) or '-'})"
                + ("\n  (re-approval after drift)" if reapproval else ""))

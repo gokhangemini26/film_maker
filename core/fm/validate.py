@@ -194,7 +194,7 @@ def validate(project: Project) -> Report:  # noqa: C901 - a checklist by design
     # ---- gates
     for gid in GATES:
         for issue in gate_health(gid, state, loaded, graph):
-            add("WARN", "GATE_DRIFT", gid, issue + " — re-approval required before advancing")
+            add("WARN", "GATE_DRIFT", gid, issue + " - re-approval required before advancing")
     for g in gates_before(state.phase):
         if state.gates[g.id].status != "approved":
             add("ERROR", "GATE_BYPASSED", g.id,

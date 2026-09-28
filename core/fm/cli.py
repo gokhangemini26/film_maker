@@ -76,7 +76,7 @@ sandbox_opt = click.option("--sandbox-confirm", is_flag=True,
 @click.version_option(__version__, prog_name="fm")
 @click.pass_context
 def cli(ctx, project_name):
-    """FILM_MAKER — deterministic production core.
+    """FILM_MAKER - deterministic production core.
 
     Agents propose; humans approve. State lives in an append-only ledger.
     """
@@ -221,7 +221,7 @@ def canon_list(c: Ctx, domain):
             continue
         lk = st.canon.get(cid)
         status = (lk.status if lk else it.entry.status).value
-        click.echo(f"{status:10} v{it.entry.version:<3} {short(it.hash)}  {cid}  — {it.entry.statement}")
+        click.echo(f"{status:10} v{it.entry.version:<3} {short(it.hash)}  {cid}  - {it.entry.statement}")
 
 
 @canon.command("show")
@@ -277,7 +277,7 @@ def change_propose(c: Ctx, cid, sets, reason):
     from .ops import propose_change
 
     cr = propose_change(c.project(), cid, _parse_sets(sets), reason)
-    click.echo(f"{cr.id} proposed for {cid} — awaiting human decision")
+    click.echo(f"{cr.id} proposed for {cid} - awaiting human decision")
     _print_impact(cr.impact)
 
 
@@ -286,7 +286,7 @@ def change_propose(c: Ctx, cid, sets, reason):
 def change_list(c: Ctx):
     loaded = c.project().load()
     for cid, (cr, _) in sorted(loaded.changes.items()):
-        click.echo(f"{cid}  {cr.status.value:9} {cr.target}  — {cr.reason}")
+        click.echo(f"{cid}  {cr.status.value:9} {cr.target}  - {cr.reason}")
 
 
 @change.command("show")
@@ -367,7 +367,7 @@ def plan(c: Ctx, scope, as_json):
     if res["shots"]:
         click.echo("  shots in scope: " + ", ".join(s.split(':', 1)[1] for s in res["shots"]))
     if not res["stale"]:
-        click.echo("  nothing stale — no regeneration needed")
+        click.echo("  nothing stale - no regeneration needed")
     for layer, refs in res["by_layer"].items():
         click.echo(f"  regenerate {layer:9} ({len(refs)}): " + ", ".join(refs))
 
@@ -466,11 +466,11 @@ def doctor(c: Ctx):
     click.echo(f"ffmpeg: {'found' if shutil.which('ffmpeg') else 'missing (needed from M6)'}")
     try:
         info = require_blender(c.repo)
-        click.secho(f"blender: {info.version}{' LTS' if info.lts else ''} OK (pinned {info.series}.x) — {info.executable}",
+        click.secho(f"blender: {info.version}{' LTS' if info.lts else ''} OK (pinned {info.series}.x) - {info.executable}",
                     fg="green")
     except FMError as exc:
         ok = False
-        click.secho(f"blender: REFUSED — {exc}", fg="red")
+        click.secho(f"blender: REFUSED - {exc}", fg="red")
     if not ok:
         sys.exit(4)
 
