@@ -6,17 +6,17 @@
 project: last_signal
 sandbox: false
 current_phase: CREATIVE_DIRECTION
-status: in_progress
-ledger: 5 records, head fc4b9bb62514
+status: awaiting_approval
+ledger: 6 records, head 5511e9921176
 ```
 
-**Next:** Produce CREATIVE_DIRECTION deliverables (00_brief/CREATIVE_DIRECTION.md, qa/reviews/G1_REVIEW.md), then `fm submit` for G1
+**Next:** Human review: `fm approve G1`, or `fm revise G1 --notes ...` / `fm reject G1 --notes ...`
 
 ## Gates
 
 | Gate | Name | Status | Decided by | Items approved |
 |---|---|---|---|---|
-| G1 | Creative direction | revise | human:gokhan_guler | - |
+| G1 | Creative direction | awaiting_approval | human:gokhan_guler | - |
 | G2 | Story and screenplay | pending | - | - |
 | G3 | World and characters | pending | - | - |
 | G4 | Visual direction (style lock) | pending | - | - |
@@ -33,10 +33,10 @@ PROPOSED: 12
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
-| brief | BRIEF | PROPOSED | df35810dd51f |
-| brief_analysis | BRIEF | PROPOSED | 3b841e76a7d5 |
-| creative_direction | CREATIVE_DIRECTION | PROPOSED | b7c238c28c52 |
-| g1_review | CREATIVE_DIRECTION | PROPOSED | a1372a888f9d |
+| brief | BRIEF | PROPOSED | f4a7feac5c70 |
+| brief_analysis | BRIEF | PROPOSED | 1f2799750368 |
+| creative_direction | CREATIVE_DIRECTION | PROPOSED | 2a9437a4219a |
+| g1_review | CREATIVE_DIRECTION | PROPOSED | b1adbcecb1d6 |
 
 ## Shots
 
@@ -44,4 +44,4 @@ None yet.
 
 ## Attention
 
-- G1 revise by human:gokhan_guler: The message is the dinner invitation; the confession stays for the dinner (off screen). The call goes to her voicemail / she doesn't pick up, so he has to text. Lock the wordless rule in canon. Keep earned_last_signal, drop rising_stakes. Audience OK.
+Nothing outstanding.

@@ -11,20 +11,23 @@ fields:
     status: given
   concept:
     value: >
-      A young man's attempt to ask his friend to dinner (where he means to tell
-      her he loves her) becomes a race against his dying phone battery; after a
-      chain of failed charging attempts, a hand-crank charger lets him send his
-      message with the last signal, and she reads it and smiles.
+      A young man calls his friend to invite her to dinner, where he means to
+      tell her he loves her; she doesn't pick up, so he has to text, and his
+      phone is dying. After a chain of failed charging attempts, a hand-crank
+      charger lets him send the dinner invitation with the last signal, and she
+      reads it and smiles. The confession stays for the dinner, off screen.
     status: assumed
     note: >
-      Condensed from the user's story_idea and answers (characters, ending); no
-      new content added. "Young man" per the user's answer that both are about 20.
+      Condensed from the user's story_idea, answers and G1 notes ("The message is
+      the dinner invitation; the confession stays for the dinner (off screen).
+      The call goes to her voicemail / she doesn't pick up, so he has to text.");
+      no new content added. "Young man" per the user's answer that both are about 20.
   genre:
     value: romantic comedy-drama (short)
     status: assumed
     note: >
       Inferred from a love confession plus an escalating chain of mishaps;
-      consistent with the user's answer "gently comic, turning quiet and tender".
+      consistent with the user's answer "Comic, then tender".
   duration_s:
     value: 60
     status: given
@@ -38,14 +41,18 @@ fields:
     note: >
       Decided by creative-director at CREATIVE_DIRECTION, not stated by the user.
       Reasoning: innocent, unspoken romance between two ~20-year-olds, no
-      dialogue beyond one English message, gentle comedy. Confirm or change at G1.
+      dialogue beyond one English message, gentle comedy. Confirmed by the user
+      at G1 ("Audience OK").
   emotional_goal:
     value: >
-      Gently comic in the middle (car, shop), turning quiet and tender at the
+      Comic, then tender: comic through the mishaps (car, shop), tender at the
       crank and the send. Ending open but hopeful: the message sends, she reads
       it and smiles, his phone dies; no spoken answer.
     status: given
-    note: User's answers to BRIEF_ANALYSIS Q5 (tone) and Q3 (ending).
+    note: >
+      User's chosen answers to BRIEF_ANALYSIS Q5 (label "Comic, then tender") and
+      Q3 (label "She reads it, smiles"). The options' descriptive extras
+      ("gently", "quiet", "small") live in tone DECISIONs, not here.
   story_idea:
     value: >
       A young boy calls a girl to invite her to dinner, where he plans to tell
@@ -124,11 +131,13 @@ fields:
     note: Film and anime standard; suits limited-animation timing on EEVEE.
   special_requirements:
     value: >
-      Almost wordless: the only language is the typed message shown on screen,
-      in English, plus non-verbal sounds. No spoken dialogue, no spoken answer
-      from her.
+      Strictly wordless: no spoken dialogue. The typed English dinner invitation
+      is the only readable text; the phone shows icons, numbers and colour only
+      (no words such as "Voicemail" or "Delivered", no readable names); story
+      cues are pictures, not text. Non-verbal sounds allowed.
     status: given
     note: >
-      User's answer to BRIEF_ANALYSIS Q4 (and Q3 "no spoken answer"). Production
-      constraint, separately (FACT, not a user requirement): MVP builds with
-      stylised proxy characters in Blender 5.2, EEVEE on a laptop.
+      User's answer to BRIEF_ANALYSIS Q4 (and Q3 "no spoken answer"), made strict
+      by the user after the G1 re-review; canon: tone.wordless (USER_REQUIREMENT).
+      Production constraint, separately (FACT, not a user requirement): MVP
+      builds with stylised proxy characters in Blender 5.2, EEVEE on a laptop.

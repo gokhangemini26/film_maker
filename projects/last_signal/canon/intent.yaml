@@ -4,15 +4,18 @@ entries:
     statement: >
       The audience should be with him as he tries to reach the girl he loves
       before his phone dies: he calls to invite her to dinner, where he plans
-      to tell her he loves her; the car breaks down, the shop's electricity
-      fails, and finally a hand-crank charger lets him send his message with
-      the last signal.
+      to tell her he loves her, but she doesn't pick up, so he has to text; the
+      car breaks down, the shop's electricity fails, and finally a hand-crank
+      charger lets him send his message, the dinner invitation, with the last
+      signal.
     tag: USER_REQUIREMENT
     status: PROPOSED
     source: user
     notes: >
-      User's story, lightly edited. User confirmed both characters are about 20
-      (university-age friends), so the protagonist is a young man.
+      User's story, lightly edited, plus the user's G1 notes: "The call goes to
+      her voicemail / she doesn't pick up, so he has to text" and "The message
+      is the dinner invitation; the confession stays for the dinner (off
+      screen)." Both characters are about 20 (user's answer).
   - id: intent.anime_feel
     statement: >
       The film should look and feel like Japanese animation.
@@ -30,41 +33,39 @@ entries:
     notes: User's words "Pastel colours, cinematic angles and lighting."
   - id: intent.comic_then_tender
     statement: >
-      The mishaps in the middle (the car, the shop) should feel gently comic,
-      and the film should turn quiet and tender at the crank and the send.
+      The film should be comic, then tender: comic through the mishaps (the
+      car, the shop), tender at the crank and the send.
     tag: USER_REQUIREMENT
     status: PROPOSED
     source: user
-    notes: User's answer to BRIEF_ANALYSIS Q5, lightly edited.
+    notes: >
+      User's chosen answer to BRIEF_ANALYSIS Q5, label "Comic, then tender";
+      the placement (car/shop vs crank/send) is from that option. The option's
+      descriptive extras ("gently", "quiet") are not recorded as the user's
+      words: "gentle" is in tone.comedy_source and "quiet and slow" in
+      tone.the_turn, both DECISIONs.
   - id: intent.open_hopeful_ending
     statement: >
       The ending should feel open but hopeful: the message sends, she reads it
-      and smiles, his phone dies, and we never hear her answer.
+      and smiles, his phone dies, and there is no spoken answer.
     tag: USER_REQUIREMENT
     status: PROPOSED
     source: user
-    notes: User's answer to BRIEF_ANALYSIS Q3, lightly edited.
-  - id: intent.rising_stakes
-    statement: >
-      The viewer should feel every drop in battery as rising stakes: each
-      setback makes the unsent message matter more, so the audience is
-      leaning in by the last attempt.
-    tag: RECOMMENDATION
-    status: PROPOSED
-    source: agent:creative-director
     notes: >
-      RECOMMENDATION, not a user requirement. Still distinct from
-      intent.comic_then_tender: the mishaps can be gently funny while the
-      stakes climb. Accept or drop at G1.
+      User's chosen answer to BRIEF_ANALYSIS Q3, label "She reads it, smiles".
+      The option description's "small smile" is a DECISION in
+      tone.ending_restraint, not the user's words. The message is the dinner
+      invitation (user's G1 note), so her smile answers the invitation; the
+      confession is still to come, off screen.
   - id: intent.earned_last_signal
     statement: >
       The moment the message finally goes through should land as a small,
       earned triumph: the viewer feels it was his own effort, turning the
-      crank by hand, that got the words out.
+      crank by hand, that got the invitation through.
     tag: RECOMMENDATION
     status: PROPOSED
     source: agent:creative-director
     notes: >
-      RECOMMENDATION, not a user requirement. Still distinct from
-      intent.open_hopeful_ending: that one is about her reaction, this one is
-      about his effort at the crank. Accept or drop at G1.
+      RECOMMENDATION from the creative-director, kept by the user at G1 ("Keep
+      earned_last_signal"). Wording refined at G1: "got the words out" became
+      "got the invitation through", because the message is the invitation.

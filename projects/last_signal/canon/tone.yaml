@@ -1,5 +1,40 @@
 domain: tone
 entries:
+  - id: tone.wordless
+    statement: >
+      Strictly wordless. No spoken dialogue: no voices on the phone, no
+      voicemail greeting heard, no spoken answer from her. The typed English
+      dinner invitation is the ONLY readable text in the film. The phone
+      communicates with icons, numbers and colour only (battery percentage, a
+      call icon that goes unanswered, a tick/checkmark for sent), never words
+      such as "Voicemail" or "Delivered", and no readable names. Cues for the
+      dinner and his feelings are pictures, not text (no readable reservation
+      card, no written note). Numbers such as "3%" are allowed. Non-verbal
+      sounds (breaths, sighs, small vocal reactions) are allowed.
+    value:
+      spoken_dialogue: false
+      readable_text: typed_english_invitation_only
+      language: en
+      phone_ui: [icons, numbers, colour]
+      phone_ui_words: false
+      readable_names: false
+      numbers_allowed: true
+      story_cues: pictures_not_text
+      nonverbal_sounds: allowed
+    tag: USER_REQUIREMENT
+    status: PROPOSED
+    source: user
+    serves: [intent.race_against_battery, intent.open_hopeful_ending]
+    depends_on: []
+    applies_to: []
+    notes: >
+      User's answer to BRIEF_ANALYSIS Q4 ("almost wordless — only the typed
+      message on screen in English plus non-verbal sounds") and Q3 ("no spoken
+      answer"). At G1 the user asked for it to be locked in canon, and after the
+      G1 re-review chose the strict reading: the invitation is the only
+      readable text; phone UI uses icons, numbers and colour. Locking is a human
+      action (fm canon lock). The unanswered call is shown as a call icon that
+      rings and gets no answer, with no voice and no "Voicemail" label.
   - id: tone.register
     statement: >
       Warm, light romantic comedy-drama. The film is affectionate toward him:
@@ -10,7 +45,7 @@ entries:
       setback feels like it happens to someone we are rooting for rather than
       to a clown; that is what lets the later tenderness land. Rejected: a
       farce register, where the audience watches him from a distance and would
-      not care whether the message arrives.
+      not care whether the invitation arrives.
     serves: [intent.race_against_battery, intent.comic_then_tender]
     depends_on: []
     applies_to: []
@@ -20,16 +55,21 @@ entries:
   - id: tone.comedy_source
     statement: >
       The comedy comes from the world's bad timing and his stubborn, earnest
-      persistence: each failure arrives at the worst moment and he tries again
-      anyway. No humiliation, no injury, no mockery of him or of her.
-    value: {comic_engine: bad_timing_plus_persistence, excluded: [humiliation, injury_gags, mockery]}
+      persistence: each failure arrives at the worst moment and costs him more
+      than the last, and he tries again anyway. No humiliation, no injury, no
+      mockery of him or of her. The comedy is gentle.
+    value: {comic_engine: bad_timing_plus_persistence, escalation: each_failure_costs_more, excluded: [humiliation, injury_gags, mockery]}
     rationale: >
-      Humour that comes from timing escalates naturally (each failure lands
-      closer to zero battery), so the comedy and the rising stakes run on the
-      same engine instead of fighting each other. Rejected: pratfall slapstick,
-      which resets the tension after every gag and makes the ending's
-      tenderness feel like a different film.
-    serves: [intent.comic_then_tender, intent.rising_stakes]
+      Accepted by the user at G1 (escalation kept after intent.rising_stakes was
+      dropped). "Gentle" is the direction's reading of the chosen answer's
+      description, not the user's label. Humour that comes from timing
+      escalates naturally (each failure lands
+      closer to zero battery), so the comedy and the race against the battery
+      run on the same engine instead of fighting each other, and the second
+      failure never plays as a repeat of the first. Rejected: pratfall
+      slapstick, which resets the tension after every gag and makes the
+      ending's tenderness feel like a different film.
+    serves: [intent.comic_then_tender, intent.race_against_battery]
     depends_on: [tone.register]
     applies_to: []
     tag: DECISION
@@ -40,13 +80,16 @@ entries:
       The film turns from comic to tender once, and for good: when he takes up
       the hand-crank charger. From that moment there are no more gags; the film
       gets quiet and slow, and his effort is treated with sincerity.
-    value: {turn_point: hand_crank_begins, comic_after_turn: false}
+    value: {turn_point: hand_crank_begins, comic_after_turn: false, sound: quiet, pace: slow}
     rationale: >
       A single, clean turn tells the audience the stakes have become emotional
       rather than logistical, and gives the crank the weight it needs to feel
-      earned. Rejected: sprinkling small jokes into the crank sequence, which
-      would undercut both the tenderness the user asked for and the sense that
-      he earned the send.
+      earned. Quiet and slow is this direction's way of delivering the user's
+      "tender" (a DECISION, not the user's word): dropping the comic sound
+      density leaves only the crank's ratchet and his breath, so the viewer
+      listens to his effort. Rejected: sprinkling small jokes into the crank
+      sequence, which would undercut both the tenderness and the sense that he
+      earned the send.
     serves: [intent.comic_then_tender, intent.earned_last_signal]
     depends_on: [tone.register]
     applies_to: []
@@ -55,16 +98,22 @@ entries:
     source: agent:creative-director
   - id: tone.ending_restraint
     statement: >
-      The ending holds back: her small smile is the only answer we get. We do
-      not see the dinner, a reply, or a reunion; his phone going dark is gentle,
-      not a punchline and not a tragedy.
-    value: {her_answer: smile_only, show_dinner: false, show_reply: false, phone_dies: gentle}
+      The ending holds back: her small smile as she reads the dinner invitation
+      is the only answer we get. We do not see the dinner, the confession, a
+      reply, or a reunion; his phone going dark is gentle, not a punchline and
+      not a tragedy.
+    value: {her_answer: smile_only, show_dinner: false, show_confession: false, show_reply: false, phone_dies: gentle}
     rationale: >
-      Withholding the reply makes the audience finish the story themselves,
-      which is what keeps the ending open yet hopeful; the dark phone reads as
-      "it's out of his hands now" rather than as loss. Rejected: a reply text
-      or a meeting, which would close the ending the user asked to keep open,
-      and a sad beat on the dead phone, which would tip hope into bittersweet.
+      A small smile (DECISION, not the user's label "she reads it and smiles")
+      reads as private pleasure rather than a declaration, which keeps the
+      answer open. The audience knows what he plans to say at dinner and she
+      does not, so
+      her smile at the invitation leaves them hoping for a scene the film
+      never shows; that gap is what keeps the ending open yet hopeful, and the
+      dark phone reads as "it's out of his hands now". Rejected: a reply text
+      or the dinner itself, which would close the ending the user asked to keep
+      open, and a sad beat on the dead phone, which would tip hope into
+      bittersweet.
     serves: [intent.open_hopeful_ending, intent.earned_last_signal]
     depends_on: [tone.the_turn]
     applies_to: []
@@ -80,12 +129,13 @@ entries:
     value:
       not: [manic_slapstick, melodrama, saccharine, cynical_irony, anti_tech_message, sexualisation]
     rationale: >
-      Naming the neighbouring tones that the same premise could slide into
-      gives later departments a test: a gag, colour or line that pushes toward
-      any of them is off-tone. The pastel palette in particular can drift into
-      saccharine, and the dying-phone premise into an anti-tech message; both
-      would steer attention away from him and her. Rejected: no stated
-      anti-goals, which leaves those drifts to chance.
+      Naming the neighbouring tones the same premise could slide into gives
+      later departments a test: a gag, colour or line that pushes toward any of
+      them is off-tone. The pastel palette can drift into saccharine and the
+      dying-phone premise into an anti-tech message; both would pull attention
+      from him and her. Rejected: listing only what the film is, which leaves
+      those specific drifts unguarded because each is a plausible reading of
+      "romantic", "pastel" and "phone dies".
     serves: [intent.comic_then_tender, intent.open_hopeful_ending, intent.soft_but_cinematic]
     depends_on: [tone.register]
     applies_to: []

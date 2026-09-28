@@ -4,10 +4,10 @@ title: Last Signal
 sandbox: false
 created_at: '2026-09-28T20:41:45Z'
 phase: CREATIVE_DIRECTION
-phase_status: in_progress
+phase_status: awaiting_approval
 gates:
   G1:
-    status: revise
+    status: awaiting_approval
     decided_by: human:gokhan_guler
     decided_at: '2026-09-28T20:54:31Z'
     notes: The message is the dinner invitation; the confession stays for the dinner (off screen). The
@@ -69,5 +69,5 @@ artifacts: {}
 shots: {}
 authorizations: []
 changes: {}
-ledger_seq: 5
-ledger_head: sha256:fc4b9bb625147bce8b000c7a8051cfd07d8ddd60c0bb396edb568fd79341a6b4
+ledger_seq: 6
+ledger_head: sha256:5511e992117614c70b20c6af87fb8f7666ca141f3e09af7c23344e4049028ca8

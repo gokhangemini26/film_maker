@@ -7,7 +7,7 @@ fm:
   owner_role: creative-director
   derived_from:
   - ref: artifact:brief
-    hash: sha256:df35810dd51f64d6713210e3ddc72d55126a0551d908546cde31dabe79520116
+    hash: sha256:f4a7feac5c702dbb3bf357df65a25228fe90e80230f5cefb364ab9b1782b13ae
   serves:
   - intent.race_against_battery
   - intent.anime_feel
@@ -16,7 +16,7 @@ fm:
   - intent.open_hopeful_ending
   summary: Brief analysis for Last Signal with the user's five answers recorded; five user requirements,
     two recommended intents.
-  stamped_content_hash: sha256:3b841e76a7d59e474cbb0314f167d1c50586a4463157fff582e604b083f343e8
+  stamped_content_hash: sha256:1f2799750368779bb6e30860818c7bd6260f33e955523374951d21912f7415c7
 title: Brief analysis
 ---
 # Brief analysis — Last Signal
@@ -37,20 +37,39 @@ From the user's answers to the five questions:
 - USER_REQUIREMENT — Duration 60 seconds. → brief `duration_s`
 - USER_REQUIREMENT — Both characters about 20, university-age friends; he has a
   crush she doesn't know about yet; he drives a small old car. → brief `characters`
-- USER_REQUIREMENT — Ending: the message sends, cut to her phone lighting up and
-  her small smile as she reads it; his phone dies. Open but hopeful, no spoken
-  answer. → `intent.open_hopeful_ending`
+- USER_REQUIREMENT — Ending: "She reads it, smiles" — the message sends, cut to
+  her phone lighting up as she reads it and smiles; his phone dies. Open but
+  hopeful, no spoken answer. → `intent.open_hopeful_ending`
 - USER_REQUIREMENT — Almost wordless: only the typed message on screen in
-  English, plus non-verbal sounds. → brief `special_requirements`
-- USER_REQUIREMENT — Gently comic in the middle (car, shop), turning quiet and
+  English, plus non-verbal sounds. → brief `special_requirements`, and (after G1)
+  `tone.wordless`
+- USER_REQUIREMENT — "Comic, then tender": comic through the mishaps (car, shop),
   tender at the crank and the send. → `intent.comic_then_tender`
 
-Recommended intents (RECOMMENDATION, not the user's words; accept or drop at G1):
-- `intent.rising_stakes` — each failed charge should raise the stakes, not repeat
-  them. Compatible with the comic middle: the gags can be light while the
-  stakes climb.
-- `intent.earned_last_signal` — the message getting through should feel won by his
-  own effort at the crank. Complements the ending intent (her smile) from his side.
+(The user picked answer options. USER_REQUIREMENTs use the option labels, "Comic,
+then tender" and "She reads it, smiles". The options' descriptive extras —
+"gently", "quiet", "small smile" — are recorded as creative-director DECISIONs in
+`tone.comedy_source`, `tone.the_turn` and `tone.ending_restraint`.)
+
+From the user's G1 notes (verbatim):
+- USER_REQUIREMENT — "The message is the dinner invitation; the confession stays
+  for the dinner (off screen)." → `intent.race_against_battery`,
+  `intent.open_hopeful_ending` (notes), `tone.ending_restraint`
+- USER_REQUIREMENT — "The call goes to her voicemail / she doesn't pick up, so he
+  has to text." → `intent.race_against_battery`
+- USER_REQUIREMENT — "Lock the wordless rule in canon." → `tone.wordless`
+- USER_REQUIREMENT (after the G1 re-review) — wordless is **strict**: the typed
+  invitation is the only readable text; the phone uses icons, numbers and colour;
+  dinner and crush cues are pictures, not text. → `tone.wordless`
+- USER_REQUIREMENT (after the G1 re-review) — keep the escalation rule in
+  `tone.comedy_source` ("each failure costs him more than the last").
+- "Keep earned_last_signal, drop rising_stakes. Audience OK."
+
+Recommended intents (RECOMMENDATION, decided by the user at G1):
+- `intent.earned_last_signal` — kept. The invitation getting through should feel
+  won by his own effort at the crank.
+- `intent.rising_stakes` — dropped by the user at G1. Escalation between failures
+  is still carried by `tone.comedy_source`.
 
 ## What we can infer (tagged ASSUMPTION, each with the reason)
 | Field | Assumed value | Why | Impact if wrong |
@@ -68,26 +87,27 @@ All five were answered by the user; answers are recorded as `given` in brief.yam
 2. How old are the two characters, and what is their relationship? —
    **Answered: both about 20, university-age friends; he has a crush she doesn't
    know about yet; he drives a small old car.**
-3. How does it end? — **Answered: the message sends; cut to her phone lighting
-   up and her small smile as she reads it; his phone dies. Open but hopeful, no
-   spoken answer.**
+3. How does it end? — **Answered: "She reads it, smiles" — the message sends; cut
+   to her phone lighting up as she reads it and smiles; his phone dies. Open but
+   hopeful, no spoken answer.**
 4. Dialogue language? — **Answered: almost wordless; only the typed message on
    screen in English, plus non-verbal sounds.**
-5. Comic or bittersweet? — **Answered: gently comic in the middle (car, shop),
-   turning quiet and tender at the crank and the send.**
+5. Comic or bittersweet? — **Answered: "Comic, then tender" — comic in the middle
+   (car, shop), tender at the crank and the send.**
 
 No further questions at this stage.
 
 ## Not needed yet
 Left `unknown` on purpose; decided later:
-- **target_audience** — creative-director at CREATIVE_DIRECTION. Since set there
-  as `assumed`: general audience, core teens and young adults, international.
+- **target_audience** — set at CREATIVE_DIRECTION as `assumed` (general audience,
+  core teens and young adults, international); user said "Audience OK" at G1.
 - **location, environment** — story-architect / world-designer (STORY, WORLD).
   "Japanese animation style" does not by itself set the story in Japan.
 - **references** — optional; the user may add images or titles to `references/`
   at any time (we take principles only).
-- **Wording of the on-screen message** — screenwriter (SCREENPLAY); it carries
-  the confession, so it will come back to the user at G2.
+- **Wording of the on-screen message** — screenwriter (SCREENPLAY). It is the
+  dinner invitation (not the confession) and the only readable text in the film;
+  it comes back to the user at G2.
 - **Character names and designs** — character-designer (WORLD_CHARACTERS).
 - **Palette hex values, lighting design, lenses** — look-director and
   cinematographer (LOOK, CINEMATOGRAPHY).
