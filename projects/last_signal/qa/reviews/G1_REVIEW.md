@@ -3,7 +3,7 @@ fm:
   id: g1_review
   kind: gate_review
   phase: CREATIVE_DIRECTION
-  status: PROPOSED
+  status: APPROVED
   owner_role: qa-supervisor
   derived_from:
   - ref: artifact:brief

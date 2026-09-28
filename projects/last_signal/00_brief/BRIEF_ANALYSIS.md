@@ -3,7 +3,7 @@ fm:
   id: brief_analysis
   kind: brief_analysis
   phase: BRIEF
-  status: PROPOSED
+  status: APPROVED
   owner_role: creative-director
   derived_from:
   - ref: artifact:brief

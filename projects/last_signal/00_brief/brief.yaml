@@ -2,7 +2,7 @@ fm:
   id: brief
   kind: brief
   phase: BRIEF
-  status: PROPOSED
+  status: APPROVED
   owner_role: executive-producer
   summary: 'The user''s creative brief. status: given | assumed | unknown.'
 fields:
@@ -10,60 +10,38 @@ fields:
     value: Last Signal
     status: given
   concept:
-    value: >
-      A young man calls his friend to invite her to dinner, where he means to
-      tell her he loves her; she doesn't pick up, so he has to text, and his
-      phone is dying. After a chain of failed charging attempts, a hand-crank
-      charger lets him send the dinner invitation with the last signal, and she
-      reads it and smiles. The confession stays for the dinner, off screen.
+    value: |
+      A young man calls his friend to invite her to dinner, where he means to tell her he loves her; she doesn't pick up, so he has to text, and his phone is dying. After a chain of failed charging attempts, a hand-crank charger lets him send the dinner invitation with the last signal, and she reads it and smiles. The confession stays for the dinner, off screen.
     status: assumed
-    note: >
-      Condensed from the user's story_idea, answers and G1 notes ("The message is
-      the dinner invitation; the confession stays for the dinner (off screen).
-      The call goes to her voicemail / she doesn't pick up, so he has to text.");
-      no new content added. "Young man" per the user's answer that both are about 20.
+    note: |
+      Condensed from the user's story_idea, answers and G1 notes ("The message is the dinner invitation; the confession stays for the dinner (off screen). The call goes to her voicemail / she doesn't pick up, so he has to text."); no new content added. "Young man" per the user's answer that both are about 20.
   genre:
     value: romantic comedy-drama (short)
     status: assumed
-    note: >
-      Inferred from a love confession plus an escalating chain of mishaps;
-      consistent with the user's answer "Comic, then tender".
+    note: |
+      Inferred from a love confession plus an escalating chain of mishaps; consistent with the user's answer "Comic, then tender".
   duration_s:
     value: 60
     status: given
     note: User's answer to BRIEF_ANALYSIS Q1.
   target_audience:
-    value: >
-      General audience (suitable for all ages); core audience teens and young
-      adults who recognise the nervousness of a first confession. International,
-      since it is almost wordless.
+    value: |
+      General audience (suitable for all ages); core audience teens and young adults who recognise the nervousness of a first confession. International, since it is almost wordless.
     status: assumed
-    note: >
-      Decided by creative-director at CREATIVE_DIRECTION, not stated by the user.
-      Reasoning: innocent, unspoken romance between two ~20-year-olds, no
-      dialogue beyond one English message, gentle comedy. Confirmed by the user
-      at G1 ("Audience OK").
+    note: |
+      Decided by creative-director at CREATIVE_DIRECTION, not stated by the user. Reasoning: innocent, unspoken romance between two ~20-year-olds, no dialogue beyond one English message, gentle comedy. Confirmed by the user at G1 ("Audience OK").
   emotional_goal:
-    value: >
-      Comic, then tender: comic through the mishaps (car, shop), tender at the
-      crank and the send. Ending open but hopeful: the message sends, she reads
-      it and smiles, his phone dies; no spoken answer.
+    value: |
+      Comic, then tender: comic through the mishaps (car, shop), tender at the crank and the send. Ending open but hopeful: the message sends, she reads it and smiles, his phone dies; no spoken answer.
     status: given
-    note: >
-      User's chosen answers to BRIEF_ANALYSIS Q5 (label "Comic, then tender") and
-      Q3 (label "She reads it, smiles"). The options' descriptive extras
-      ("gently", "quiet", "small") live in tone DECISIONs, not here.
+    note: |
+      User's chosen answers to BRIEF_ANALYSIS Q5 (label "Comic, then tender") and Q3 (label "She reads it, smiles"). The options' descriptive extras ("gently", "quiet", "small") live in tone DECISIONs, not here.
   story_idea:
-    value: >
-      A young boy calls a girl to invite her to dinner, where he plans to tell
-      her he loves her. But his phone battery is almost dead. He tries to
-      charge it in his car, but the car breaks down; he tries a shop, but the
-      electricity fails; finally he uses a hand-crank charger and sends his
-      message with the last signal.
+    value: |
+      A young boy calls a girl to invite her to dinner, where he plans to tell her he loves her. But his phone battery is almost dead. He tries to charge it in his car, but the car breaks down; he tries a shop, but the electricity fails; finally he uses a hand-crank charger and sends his message with the last signal.
     status: given
-    note: >
-      User's original words verbatim. The user has since confirmed both
-      characters are about 20 (see characters), so "young boy" means a young man.
+    note: |
+      User's original words verbatim. The user has since confirmed both characters are about 20 (see characters), so "young boy" means a young man.
   visual_style:
     value: Japanese animation style
     status: given
@@ -74,21 +52,18 @@ fields:
   references:
     value: null
     status: unknown
-    note: >
-      No references given. Optional: the user may drop images or titles in
-      references/; we will extract principles only, never copy.
+    note: |
+      No references given. Optional: the user may drop images or titles in references/; we will extract principles only, never copy.
   realism:
     value: stylised (anime cel/toon look), not photoreal
     status: assumed
-    note: >
-      Follows directly from "Japanese animation style" and matches the MVP
-      (stylised proxy characters, toon shading in EEVEE).
+    note: |
+      Follows directly from "Japanese animation style" and matches the MVP (stylised proxy characters, toon shading in EEVEE).
   animation_style:
     value: Japanese animation style
     status: given
-    note: >
-      Same user phrase as visual_style. Motion specifics (e.g. held poses,
-      limited-animation timing) are the animation-director's call later.
+    note: |
+      Same user phrase as visual_style. Motion specifics (e.g. held poses, limited-animation timing) are the animation-director's call later.
   camera_style:
     value: cinematic angles
     status: given
@@ -98,29 +73,23 @@ fields:
   environment:
     value: null
     status: unknown
-    note: >
-      Implied settings: where he makes the call, his car, a shop, wherever the
-      hand-crank charger is found, and where she reads the message. Specifics
-      decided by story-architect / world-designer.
+    note: |
+      Implied settings: where he makes the call, his car, a shop, wherever the hand-crank charger is found, and where she reads the message. Specifics decided by story-architect / world-designer.
   characters:
-    value: >
-      He: about 20, university age, drives a small old car; has a crush on her
-      that she doesn't know about yet. She: about 20, university age, his
-      friend. Both adults.
+    value: |
+      He: about 20, university age, drives a small old car; has a crush on her that she doesn't know about yet. She: about 20, university age, his friend. Both adults.
     status: given
     note: User's answer to BRIEF_ANALYSIS Q2. Names and designs decided later (character-designer).
   era:
     value: contemporary (smartphones)
     status: assumed
-    note: >
-      A dying phone battery, phone charging in a car and a hand-crank charger
-      all place it in the present day.
+    note: |
+      A dying phone battery, phone charging in a car and a hand-crank charger all place it in the present day.
   location:
     value: null
     status: unknown
-    note: >
-      Not stated. "Japanese animation style" does not by itself set the story
-      in Japan; decided at STORY / WORLD.
+    note: |
+      Not stated. "Japanese animation style" does not by itself set the story in Japan; decided at STORY / WORLD.
   aspect_ratio:
     value: '16:9'
     status: assumed
@@ -130,14 +99,8 @@ fields:
     status: assumed
     note: Film and anime standard; suits limited-animation timing on EEVEE.
   special_requirements:
-    value: >
-      Strictly wordless: no spoken dialogue. The typed English dinner invitation
-      is the only readable text; the phone shows icons, numbers and colour only
-      (no words such as "Voicemail" or "Delivered", no readable names); story
-      cues are pictures, not text. Non-verbal sounds allowed.
+    value: |
+      Strictly wordless: no spoken dialogue. The typed English dinner invitation is the only readable text; the phone shows icons, numbers and colour only (no words such as "Voicemail" or "Delivered", no readable names); story cues are pictures, not text. Non-verbal sounds allowed.
     status: given
-    note: >
-      User's answer to BRIEF_ANALYSIS Q4 (and Q3 "no spoken answer"), made strict
-      by the user after the G1 re-review; canon: tone.wordless (USER_REQUIREMENT).
-      Production constraint, separately (FACT, not a user requirement): MVP
-      builds with stylised proxy characters in Blender 5.2, EEVEE on a laptop.
+    note: |
+      User's answer to BRIEF_ANALYSIS Q4 (and Q3 "no spoken answer"), made strict by the user after the G1 re-review; canon: tone.wordless (USER_REQUIREMENT). Production constraint, separately (FACT, not a user requirement): MVP builds with stylised proxy characters in Blender 5.2, EEVEE on a laptop.

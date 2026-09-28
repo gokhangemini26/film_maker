@@ -3,7 +3,7 @@ fm:
   id: creative_direction
   kind: creative_direction
   phase: CREATIVE_DIRECTION
-  status: PROPOSED
+  status: APPROVED
   owner_role: creative-director
   derived_from:
   - ref: artifact:brief

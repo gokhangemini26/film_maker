@@ -1,71 +1,54 @@
 domain: intent
 entries:
-  - id: intent.race_against_battery
-    statement: >
-      The audience should be with him as he tries to reach the girl he loves
-      before his phone dies: he calls to invite her to dinner, where he plans
-      to tell her he loves her, but she doesn't pick up, so he has to text; the
-      car breaks down, the shop's electricity fails, and finally a hand-crank
-      charger lets him send his message, the dinner invitation, with the last
-      signal.
-    tag: USER_REQUIREMENT
-    status: PROPOSED
-    source: user
-    notes: >
-      User's story, lightly edited, plus the user's G1 notes: "The call goes to
-      her voicemail / she doesn't pick up, so he has to text" and "The message
-      is the dinner invitation; the confession stays for the dinner (off
-      screen)." Both characters are about 20 (user's answer).
-  - id: intent.anime_feel
-    statement: >
-      The film should look and feel like Japanese animation.
-    tag: USER_REQUIREMENT
-    status: PROPOSED
-    source: user
-    notes: User's words "Japanese animation style".
-  - id: intent.soft_but_cinematic
-    statement: >
-      The viewer should find the film soft and pastel-coloured to look at, yet
-      feel it is framed and lit like cinema rather than flat animation.
-    tag: USER_REQUIREMENT
-    status: PROPOSED
-    source: user
-    notes: User's words "Pastel colours, cinematic angles and lighting."
-  - id: intent.comic_then_tender
-    statement: >
-      The film should be comic, then tender: comic through the mishaps (the
-      car, the shop), tender at the crank and the send.
-    tag: USER_REQUIREMENT
-    status: PROPOSED
-    source: user
-    notes: >
-      User's chosen answer to BRIEF_ANALYSIS Q5, label "Comic, then tender";
-      the placement (car/shop vs crank/send) is from that option. The option's
-      descriptive extras ("gently", "quiet") are not recorded as the user's
-      words: "gentle" is in tone.comedy_source and "quiet and slow" in
-      tone.the_turn, both DECISIONs.
-  - id: intent.open_hopeful_ending
-    statement: >
-      The ending should feel open but hopeful: the message sends, she reads it
-      and smiles, his phone dies, and there is no spoken answer.
-    tag: USER_REQUIREMENT
-    status: PROPOSED
-    source: user
-    notes: >
-      User's chosen answer to BRIEF_ANALYSIS Q3, label "She reads it, smiles".
-      The option description's "small smile" is a DECISION in
-      tone.ending_restraint, not the user's words. The message is the dinner
-      invitation (user's G1 note), so her smile answers the invitation; the
-      confession is still to come, off screen.
-  - id: intent.earned_last_signal
-    statement: >
-      The moment the message finally goes through should land as a small,
-      earned triumph: the viewer feels it was his own effort, turning the
-      crank by hand, that got the invitation through.
-    tag: RECOMMENDATION
-    status: PROPOSED
-    source: agent:creative-director
-    notes: >
-      RECOMMENDATION from the creative-director, kept by the user at G1 ("Keep
-      earned_last_signal"). Wording refined at G1: "got the words out" became
-      "got the invitation through", because the message is the invitation.
+- id: intent.race_against_battery
+  statement: |
+    The audience should be with him as he tries to reach the girl he loves before his phone dies: he calls to invite her to dinner, where he plans to tell her he loves her, but she doesn't pick up, so he has to text; the car breaks down, the shop's electricity fails, and finally a hand-crank charger lets him send his message, the dinner invitation, with the last signal.
+  tag: USER_REQUIREMENT
+  status: LOCKED
+  source: user
+  version: 1
+  notes: |
+    User's story, lightly edited, plus the user's G1 notes: "The call goes to her voicemail / she doesn't pick up, so he has to text" and "The message is the dinner invitation; the confession stays for the dinner (off screen)." Both characters are about 20 (user's answer).
+- id: intent.anime_feel
+  statement: |
+    The film should look and feel like Japanese animation.
+  tag: USER_REQUIREMENT
+  status: LOCKED
+  source: user
+  version: 1
+  notes: User's words "Japanese animation style".
+- id: intent.soft_but_cinematic
+  statement: |
+    The viewer should find the film soft and pastel-coloured to look at, yet feel it is framed and lit like cinema rather than flat animation.
+  tag: USER_REQUIREMENT
+  status: LOCKED
+  source: user
+  version: 1
+  notes: User's words "Pastel colours, cinematic angles and lighting."
+- id: intent.comic_then_tender
+  statement: |
+    The film should be comic, then tender: comic through the mishaps (the car, the shop), tender at the crank and the send.
+  tag: USER_REQUIREMENT
+  status: LOCKED
+  source: user
+  version: 1
+  notes: |
+    User's chosen answer to BRIEF_ANALYSIS Q5, label "Comic, then tender"; the placement (car/shop vs crank/send) is from that option. The option's descriptive extras ("gently", "quiet") are not recorded as the user's words: "gentle" is in tone.comedy_source and "quiet and slow" in tone.the_turn, both DECISIONs.
+- id: intent.open_hopeful_ending
+  statement: |
+    The ending should feel open but hopeful: the message sends, she reads it and smiles, his phone dies, and there is no spoken answer.
+  tag: USER_REQUIREMENT
+  status: LOCKED
+  source: user
+  version: 1
+  notes: |
+    User's chosen answer to BRIEF_ANALYSIS Q3, label "She reads it, smiles". The option description's "small smile" is a DECISION in tone.ending_restraint, not the user's words. The message is the dinner invitation (user's G1 note), so her smile answers the invitation; the confession is still to come, off screen.
+- id: intent.earned_last_signal
+  statement: |
+    The moment the message finally goes through should land as a small, earned triumph: the viewer feels it was his own effort, turning the crank by hand, that got the invitation through.
+  tag: RECOMMENDATION
+  status: LOCKED
+  source: agent:creative-director
+  version: 1
+  notes: |
+    RECOMMENDATION from the creative-director, kept by the user at G1 ("Keep earned_last_signal"). Wording refined at G1: "got the words out" became "got the invitation through", because the message is the invitation.

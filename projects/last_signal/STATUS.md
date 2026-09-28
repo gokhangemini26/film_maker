@@ -6,17 +6,17 @@
 project: last_signal
 sandbox: false
 current_phase: CREATIVE_DIRECTION
-status: awaiting_approval
-ledger: 6 records, head 5511e9921176
+status: in_progress
+ledger: 7 records, head 672b9130d73f
 ```
 
-**Next:** Human review: `fm approve G1`, or `fm revise G1 --notes ...` / `fm reject G1 --notes ...`
+**Next:** Gate approved: `fm advance`
 
 ## Gates
 
 | Gate | Name | Status | Decided by | Items approved |
 |---|---|---|---|---|
-| G1 | Creative direction | awaiting_approval | human:gokhan_guler | - |
+| G1 | Creative direction | approved | human:gokhan_guler | 4 |
 | G2 | Story and screenplay | pending | - | - |
 | G3 | World and characters | pending | - | - |
 | G4 | Visual direction (style lock) | pending | - | - |
@@ -27,16 +27,16 @@ ledger: 6 records, head 5511e9921176
 
 ## Canon
 
-PROPOSED: 12
+LOCKED: 12
 
 ## Artifacts
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
-| brief | BRIEF | PROPOSED | f4a7feac5c70 |
-| brief_analysis | BRIEF | PROPOSED | 1f2799750368 |
-| creative_direction | CREATIVE_DIRECTION | PROPOSED | 2a9437a4219a |
-| g1_review | CREATIVE_DIRECTION | PROPOSED | b1adbcecb1d6 |
+| brief | BRIEF | APPROVED | f4a7feac5c70 |
+| brief_analysis | BRIEF | APPROVED | 1f2799750368 |
+| creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
+| g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 
 ## Shots
 
