@@ -1,2 +1,94 @@
 domain: tone
-entries: []
+entries:
+  - id: tone.register
+    statement: >
+      Warm, light romantic comedy-drama. The film is affectionate toward him:
+      we laugh with his bad luck, never at him.
+    value: {register: warm_light_romantic_comedy_drama, stance_to_protagonist: affectionate}
+    rationale: >
+      Affection keeps the audience on his side through three failures, so each
+      setback feels like it happens to someone we are rooting for rather than
+      to a clown; that is what lets the later tenderness land. Rejected: a
+      farce register, where the audience watches him from a distance and would
+      not care whether the message arrives.
+    serves: [intent.race_against_battery, intent.comic_then_tender]
+    depends_on: []
+    applies_to: []
+    tag: DECISION
+    status: PROPOSED
+    source: agent:creative-director
+  - id: tone.comedy_source
+    statement: >
+      The comedy comes from the world's bad timing and his stubborn, earnest
+      persistence: each failure arrives at the worst moment and he tries again
+      anyway. No humiliation, no injury, no mockery of him or of her.
+    value: {comic_engine: bad_timing_plus_persistence, excluded: [humiliation, injury_gags, mockery]}
+    rationale: >
+      Humour that comes from timing escalates naturally (each failure lands
+      closer to zero battery), so the comedy and the rising stakes run on the
+      same engine instead of fighting each other. Rejected: pratfall slapstick,
+      which resets the tension after every gag and makes the ending's
+      tenderness feel like a different film.
+    serves: [intent.comic_then_tender, intent.rising_stakes]
+    depends_on: [tone.register]
+    applies_to: []
+    tag: DECISION
+    status: PROPOSED
+    source: agent:creative-director
+  - id: tone.the_turn
+    statement: >
+      The film turns from comic to tender once, and for good: when he takes up
+      the hand-crank charger. From that moment there are no more gags; the film
+      gets quiet and slow, and his effort is treated with sincerity.
+    value: {turn_point: hand_crank_begins, comic_after_turn: false}
+    rationale: >
+      A single, clean turn tells the audience the stakes have become emotional
+      rather than logistical, and gives the crank the weight it needs to feel
+      earned. Rejected: sprinkling small jokes into the crank sequence, which
+      would undercut both the tenderness the user asked for and the sense that
+      he earned the send.
+    serves: [intent.comic_then_tender, intent.earned_last_signal]
+    depends_on: [tone.register]
+    applies_to: []
+    tag: DECISION
+    status: PROPOSED
+    source: agent:creative-director
+  - id: tone.ending_restraint
+    statement: >
+      The ending holds back: her small smile is the only answer we get. We do
+      not see the dinner, a reply, or a reunion; his phone going dark is gentle,
+      not a punchline and not a tragedy.
+    value: {her_answer: smile_only, show_dinner: false, show_reply: false, phone_dies: gentle}
+    rationale: >
+      Withholding the reply makes the audience finish the story themselves,
+      which is what keeps the ending open yet hopeful; the dark phone reads as
+      "it's out of his hands now" rather than as loss. Rejected: a reply text
+      or a meeting, which would close the ending the user asked to keep open,
+      and a sad beat on the dead phone, which would tip hope into bittersweet.
+    serves: [intent.open_hopeful_ending, intent.earned_last_signal]
+    depends_on: [tone.the_turn]
+    applies_to: []
+    tag: DECISION
+    status: PROPOSED
+    source: agent:creative-director
+  - id: tone.anti_goals
+    statement: >
+      The film is not: manic slapstick; melodrama or tragedy; saccharine
+      sentimentality; ironic or cynical about love; a story about technology
+      being bad. The characters are adults (about 20) and are never
+      sexualised; the romance stays innocent and unspoken.
+    value:
+      not: [manic_slapstick, melodrama, saccharine, cynical_irony, anti_tech_message, sexualisation]
+    rationale: >
+      Naming the neighbouring tones that the same premise could slide into
+      gives later departments a test: a gag, colour or line that pushes toward
+      any of them is off-tone. The pastel palette in particular can drift into
+      saccharine, and the dying-phone premise into an anti-tech message; both
+      would steer attention away from him and her. Rejected: no stated
+      anti-goals, which leaves those drifts to chance.
+    serves: [intent.comic_then_tender, intent.open_hopeful_ending, intent.soft_but_cinematic]
+    depends_on: [tone.register]
+    applies_to: []
+    tag: DECISION
+    status: PROPOSED
+    source: agent:creative-director

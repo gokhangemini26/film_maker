@@ -7,7 +7,7 @@ fm:
   owner_role: creative-director
   derived_from:
   - ref: artifact:brief
-    hash: sha256:935768e0b98d0d3d3b946e139761eb68eac7f5a46f15346dd179f0aa7aa49384
+    hash: sha256:df35810dd51f64d6713210e3ddc72d55126a0551d908546cde31dabe79520116
   serves:
   - intent.race_against_battery
   - intent.anime_feel
@@ -16,7 +16,7 @@ fm:
   - intent.open_hopeful_ending
   summary: Brief analysis for Last Signal with the user's five answers recorded; five user requirements,
     two recommended intents.
-  stamped_content_hash: sha256:9a2e044399e4f7f981bfe2eeabdb6c11832d8cbe26e466831a8f1a37dfbfccda
+  stamped_content_hash: sha256:3b841e76a7d59e474cbb0314f167d1c50586a4463157fff582e604b083f343e8
 title: Brief analysis
 ---
 # Brief analysis — Last Signal
@@ -80,7 +80,8 @@ No further questions at this stage.
 
 ## Not needed yet
 Left `unknown` on purpose; decided later:
-- **target_audience** — creative-director at CREATIVE_DIRECTION.
+- **target_audience** — creative-director at CREATIVE_DIRECTION. Since set there
+  as `assumed`: general audience, core teens and young adults, international.
 - **location, environment** — story-architect / world-designer (STORY, WORLD).
   "Japanese animation style" does not by itself set the story in Japan.
 - **references** — optional; the user may add images or titles to `references/`

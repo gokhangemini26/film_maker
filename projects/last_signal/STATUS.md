@@ -6,17 +6,17 @@
 project: last_signal
 sandbox: false
 current_phase: CREATIVE_DIRECTION
-status: in_progress
-ledger: 3 records, head 3d3551b16e0f
+status: awaiting_approval
+ledger: 4 records, head 2af9ab666d30
 ```
 
-**Next:** Produce CREATIVE_DIRECTION deliverables (00_brief/CREATIVE_DIRECTION.md, qa/reviews/G1_REVIEW.md), then `fm submit` for G1
+**Next:** Human review: `fm approve G1`, or `fm revise G1 --notes ...` / `fm reject G1 --notes ...`
 
 ## Gates
 
 | Gate | Name | Status | Decided by | Items approved |
 |---|---|---|---|---|
-| G1 | Creative direction | pending | - | - |
+| G1 | Creative direction | awaiting_approval | - | - |
 | G2 | Story and screenplay | pending | - | - |
 | G3 | World and characters | pending | - | - |
 | G4 | Visual direction (style lock) | pending | - | - |
@@ -27,14 +27,16 @@ ledger: 3 records, head 3d3551b16e0f
 
 ## Canon
 
-PROPOSED: 7
+PROPOSED: 12
 
 ## Artifacts
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
-| brief | BRIEF | PROPOSED | 935768e0b98d |
-| brief_analysis | BRIEF | PROPOSED | 9a2e044399e4 |
+| brief | BRIEF | PROPOSED | df35810dd51f |
+| brief_analysis | BRIEF | PROPOSED | 3b841e76a7d5 |
+| creative_direction | CREATIVE_DIRECTION | PROPOSED | b7c238c28c52 |
+| g1_review | CREATIVE_DIRECTION | PROPOSED | a1372a888f9d |
 
 ## Shots
 

@@ -30,11 +30,15 @@ fields:
     status: given
     note: User's answer to BRIEF_ANALYSIS Q1.
   target_audience:
-    value: null
-    status: unknown
+    value: >
+      General audience (suitable for all ages); core audience teens and young
+      adults who recognise the nervousness of a first confession. International,
+      since it is almost wordless.
+    status: assumed
     note: >
-      Not stated. Decided by creative-director at CREATIVE_DIRECTION (young-adult
-      romance, wordless, so broadly accessible is the likely direction).
+      Decided by creative-director at CREATIVE_DIRECTION, not stated by the user.
+      Reasoning: innocent, unspoken romance between two ~20-year-olds, no
+      dialogue beyond one English message, gentle comedy. Confirm or change at G1.
   emotional_goal:
     value: >
       Gently comic in the middle (car, shop), turning quiet and tender at the
