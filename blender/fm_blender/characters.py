@@ -34,10 +34,10 @@ def figure(col, cid, canon, props, pos, facing, pose):
     """Build a proxy figure. pos = (x,y,z) of feet/base; facing = unit XY Vector; pose in stand|kneel|sit_car|sit_kerb|sit_chair."""
     P = props
     H = P["height_m"]
-    hh = P["head_height_m"]
-    leg = P["leg_length_m"]
-    sh = P["shoulder_width_m"] / 2
-    hip = P["hip_width_m"] / 2
+    hh = P.get("head_height_m", H / P.get("head_count", 6.5))
+    leg = P.get("leg_length_m", H * 0.49)
+    sh = P.get("shoulder_width_m", H * 0.24) / 2
+    hip = P.get("hip_width_m", H * 0.19) / 2
     hs = _cols(canon, cid)
     skin = U.toon(pick(hs, 0, "#E8B994"))
     cloth = U.toon(pick(hs, 1, "#8F809A"))
@@ -85,7 +85,7 @@ def figure(col, cid, canon, props, pos, facing, pose):
     neck = chest + Vector((0, 0, 0.06)) + f * lean * 0.05
     head = neck + Vector((0, 0, hh * 0.55))
     shL, shR = chest - r * sh, chest + r * sh
-    reach = P["arm_span_m"] / 2 - sh
+    reach = P.get("arm_span_m", H) / 2 - sh
     handL = shL + Vector((0, 0, -reach * 0.85)) + f * 0.05
     handR = shR + Vector((0, 0, -reach * 0.85)) + f * 0.05
     if pose in ("sit_kerb", "kneel"):
@@ -102,7 +102,7 @@ def figure(col, cid, canon, props, pos, facing, pose):
         el = (s + hnd) / 2 + Vector((0, 0, -0.03)) - f * 0.03
         U.between(f"{cid}_uarm{i}", s, el, limb * 0.9, col, cloth)
         U.between(f"{cid}_farm{i}", el, hnd, limb * 0.8, col, skin)
-        U.sphere(f"{cid}_hand{i}", P["hand_length_m"] * 0.3, hnd, col, skin)
+        U.sphere(f"{cid}_hand{i}", P.get("hand_length_m", 0.18) * 0.3, hnd, col, skin)
     hd = U.sphere(f"{cid}_head", hh * 0.5, head, col, skin, scale=(0.85, 0.95, 1.0))
     hd.rotation_euler = (0, 0, math.atan2(f.y, f.x))
     U.sphere(f"{cid}_hair", hh * 0.52, head + Vector((0, 0, hh * 0.14)) - f * hh * 0.1, col, hair, scale=(0.95, 1.0, 0.85))
