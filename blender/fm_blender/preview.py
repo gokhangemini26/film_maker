@@ -273,7 +273,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         for cid, (info, tmp) in figs.items():
             for o in tmp.objects:
                 n_ = o.name.split("_", 1)[1] if "_" in o.name else o.name
-                if n_.startswith(("head", "hair", "eye", "tuft", "neck", "thigh", "shin", "torso")):
+                if n_.startswith(("head", "hair", "eye", "tuft", "neck", "thigh", "shin", "torso", "uarm", "farm", "hand")):
                     o.hide_render = True
     if culled:
         print("FM_CULLED", sid, culled, flush=True)
