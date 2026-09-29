@@ -1,5 +1,5 @@
 id: CHANGE-001
-status: PROPOSED
+status: APPROVED
 target: story.message
 reason: 'Record the invitation wording. The human delegated the open choice to the producer, who chose
   Option A (recommended at G2, G3 and G5 QA; used by the approved SCREENPLAY and all shots: SC01_SH070
@@ -128,3 +128,46 @@ impact:
   - shot:SC05_SH020
   - shot:SC05_SH030
   - shot:SC06_SH010
+  RESOLVED:
+  - resolved:SC01_SH010
+  - resolved:SC01_SH020
+  - resolved:SC01_SH030
+  - resolved:SC01_SH040
+  - resolved:SC01_SH050
+  - resolved:SC01_SH060
+  - resolved:SC01_SH070
+  - resolved:SC01_SH080
+  - resolved:SC01_SH090
+  - resolved:SC01_SH100
+  - resolved:SC01_SH110
+  - resolved:SC01_SH120
+  - resolved:SC01_SH130
+  - resolved:SC01_SH140
+  - resolved:SC01_SH150
+  - resolved:SC02_SH010
+  - resolved:SC02_SH020
+  - resolved:SC02_SH030
+  - resolved:SC03_SH010
+  - resolved:SC03_SH020
+  - resolved:SC03_SH030
+  - resolved:SC03_SH040
+  - resolved:SC03_SH050
+  - resolved:SC03_SH060
+  - resolved:SC03_SH070
+  - resolved:SC04_SH010
+  - resolved:SC04_SH020
+  - resolved:SC04_SH030
+  - resolved:SC04_SH040
+  - resolved:SC04_SH050
+  - resolved:SC04_SH060
+  - resolved:SC04_SH070
+  - resolved:SC04_SH080
+  - resolved:SC04_SH090
+  - resolved:SC05_SH010
+  - resolved:SC05_SH020
+  - resolved:SC05_SH030
+  - resolved:SC06_SH010
+  - resolved:film
+decided_by: human:gokhan_guler
+decided_at: '2026-09-29T19:25:26Z'
+new_hash: sha256:1af4da69fe957aae4808a1834171aeef9813455dde4e69d8fd7103ff068e368e

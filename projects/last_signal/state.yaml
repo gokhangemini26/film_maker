@@ -248,9 +248,9 @@ canon:
     ledger_seq: 11
   story.message:
     status: LOCKED
-    hash: sha256:5225cd2112b4a2e40f5bc368d6c925345067c99b528df66e9af18f1cef4305e6
-    version: 1
-    ledger_seq: 11
+    hash: sha256:1af4da69fe957aae4808a1834171aeef9813455dde4e69d8fd7103ff068e368e
+    version: 2
+    ledger_seq: 25
   story.premise:
     status: LOCKED
     hash: sha256:936c5ad6969fe46f3883da6547f7f556587665f1bc5a10b551796f538bf7782b
@@ -1014,6 +1014,6 @@ shots:
   SC06_SH010: spec
 authorizations: []
 changes:
-  CHANGE-001: PROPOSED
-ledger_seq: 24
-ledger_head: sha256:9b80563a6e32fced27c8985104d4dcd1abfd3535e997176d15d109a73fd1a37b
+  CHANGE-001: APPROVED
+ledger_seq: 25
+ledger_head: sha256:2c2e9d287eff3c4da7b76fd791429d9e6c99812e3d8a217e9552e39dc475dd35

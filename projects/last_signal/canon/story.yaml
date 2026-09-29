@@ -215,18 +215,34 @@ entries:
   notes: Exact on-screen numbers are handed to continuity (cinematographer) as the story's intent; they
     may adjust presentation, not the downward-then-one-step-up shape.
 - id: story.message
-  statement: |
-    The sent message is a short, ordinary English dinner invitation to Hana. It is the only readable text in the film, must be legible at a glance, and must not confess anything. He starts it in beat 2 and finishes it during the crank; the final wording comes from the screenwriter as 2–3 options for the user at G2.
+  statement: 'The sent message is a short, ordinary English dinner invitation to Hana: "Are you free tonight?
+    Dinner at 8? My treat." (9 words, Option A). It is the only readable text in the film, must be legible
+    at a glance, and must not confess anything. He types the first part, "Are you free tonight?", in beat
+    2 (SC01) and finishes it with "Dinner at 8? My treat." during the crank in beat 6 (SC04).'
   value:
     kind: dinner_invitation
     language: en
     confession_in_text: false
     max_words: 12
+    word_count: 9
     typed_in_beats:
     - 2
     - 6
     sent_in_beat: 7
-    wording: UNKNOWN_screenwriter_proposes_options
+    wording: Are you free tonight? Dinner at 8? My treat.
+    part1:
+      text: Are you free tonight?
+      typed_in: SC01
+      shots:
+      - SC01_SH070
+      note: typed before the battery turns red
+    part2:
+      text: Dinner at 8? My treat.
+      typed_in: SC04
+      shots:
+      - SC04_SH050
+      - SC04_SH060
+      note: typed one-thumbed during the crank; Dinner at 8? glided in SC04_SH050, My treat. in SC04_SH060
   rationale: |
     A plain invitation that carries his nerves only in its shortness is what lets the audience's knowledge (the deleted heart) do the confessing. Twelve words is about the most a viewer reads comfortably in an insert of 2–3 seconds. Rejected: a longer or sweeter message, which would give the confession away and turn the only text in the film into a speech.
   serves:
@@ -238,7 +254,27 @@ entries:
   tag: DECISION
   status: LOCKED
   source: agent:story-architect
-  version: 1
+  version: 2
+  history:
+  - version: 1
+    hash: sha256:5225cd2112b4a2e40f5bc368d6c925345067c99b528df66e9af18f1cef4305e6
+    status: SUPERSEDED
+    change: CHANGE-001
+    at: '2026-09-29T19:25:26Z'
+    statement: |
+      The sent message is a short, ordinary English dinner invitation to Hana. It is the only readable text in the film, must be legible at a glance, and must not confess anything. He starts it in beat 2 and finishes it during the crank; the final wording comes from the screenwriter as 2–3 options for the user at G2.
+    value:
+      kind: dinner_invitation
+      language: en
+      confession_in_text: false
+      max_words: 12
+      typed_in_beats:
+      - 2
+      - 6
+      sent_in_beat: 7
+      wording: UNKNOWN_screenwriter_proposes_options
+    rationale: |
+      A plain invitation that carries his nerves only in its shortness is what lets the audience's knowledge (the deleted heart) do the confessing. Twelve words is about the most a viewer reads comfortably in an insert of 2–3 seconds. Rejected: a longer or sweeter message, which would give the confession away and turn the only text in the film into a speech.
 - id: story.locations
   statement: |
     Three spaces in total: (1) a quiet street at golden hour into dusk, with Ren's small old car parked at the kerb (car interior, the kerb beside it); (2) a small corner shop on the same street, a few steps away; (3) Hana's room, at her desk by a window, in the evening. The shop's power fails, not the street's.
