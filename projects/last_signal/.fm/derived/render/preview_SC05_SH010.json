@@ -1,13 +1,13 @@
 {
-  "content_hash": "sha256:97509d3bd5580fd80a4cdce535947e3f83abb4055141fc9e3afda19274c24f7a",
-  "created_at": "2026-09-29T20:26:56Z",
+  "content_hash": "sha256:2226db3ca98a7c8f10031700abeb8f436eb8ba8c283a95ed3481316c5abc0773",
+  "created_at": "2026-09-29T20:35:50Z",
   "derived_from": [
     {
       "hash": "sha256:2bee3a04e7a8914bab0d6a5ee66a7b2b722d6f1c0e5eb6d0a1c9128ac62c24aa",
       "ref": "resolved:SC05_SH010"
     }
   ],
-  "notes": "bpy 5.0.1 (DRAFT, not the pinned series); draft; width 960",
+  "notes": "blender 5.2.1; pinned; width 960",
   "path": "10_blender/previews/SC05_SH010.png",
   "producer": "fm.blender.preview",
   "ref": "render:preview_SC05_SH010"

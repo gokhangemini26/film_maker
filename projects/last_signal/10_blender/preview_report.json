@@ -40,6 +40,6 @@
   "SC06_SH010"
  ],
  "failed": [],
- "backend": "bpy 5.0.1 (DRAFT, not the pinned series)",
- "draft": true
+ "backend": "blender 5.2.1",
+ "draft": false
 }
