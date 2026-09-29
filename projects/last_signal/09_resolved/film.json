@@ -1,0 +1,4990 @@
+{
+  "canon": {
+    "camera.dof.default_deep": {
+      "default_dof": false,
+      "depth_method": "three_layers_value_and_aerial_tint",
+      "exceptions": [
+        "phone_inserts",
+        "crank_inserts"
+      ],
+      "eye_moved_by": [
+        "light_events",
+        "cuts"
+      ],
+      "focus_pulls": 0
+    },
+    "camera.dof.inserts": {
+      "defocused_emissives_allowed": false,
+      "f_stop_range": [
+        5.6,
+        8.0
+      ],
+      "focus_target": "screen_plane_or_pip",
+      "max_angle_to_screen_normal_deg": 15
+    },
+    "camera.format": {
+      "aspect_label": "16:9",
+      "aspect_ratio": 1.7778,
+      "fps": 24,
+      "frame_height_coverage_m_per_m_distance": {
+        "24": 0.844,
+        "35": 0.579,
+        "50": 0.405,
+        "85": 0.238
+      },
+      "resolution_px": [
+        1920,
+        1080
+      ],
+      "sensor_fit": "HORIZONTAL",
+      "sensor_height_mm": 20.25,
+      "sensor_width_mm": 36.0,
+      "shortest_shot_exception": "SC02 elliptical cuts, 14-19 frames",
+      "shortest_shot_frames": 12
+    },
+    "camera.framing.jacket_off_sky": {
+      "allowed_background": [
+        "car_body",
+        "open_passenger_door",
+        "garden_walls",
+        "houses",
+        "pavement",
+        "dusk_sky_positions_0_to_0.35"
+      ],
+      "default_lens_min_z_m_kerb": 0.85,
+      "forbidden_background_behind_jacket": "dusk_sky_positions_above_0.35",
+      "low_angle_side": "pavement_looking_north",
+      "per_shot_check": "ray_through_jacket_top_hits_geometry",
+      "scenes": [
+        "SC04",
+        "SC05",
+        "SC06"
+      ]
+    },
+    "camera.framing.shot_size_arc": {
+      "arc": [
+        {
+          "note": "cramped car",
+          "scene": "SC01",
+          "sizes": [
+            "medium",
+            "medium_close",
+            "close",
+            "insert"
+          ],
+          "t_s": [
+            0,
+            22
+          ],
+          "the only wide is none": null
+        },
+        {
+          "note": "first open exterior",
+          "scene": "SC02",
+          "sizes": [
+            "medium_wide",
+            "wide"
+          ],
+          "t_s": [
+            22,
+            24
+          ]
+        },
+        {
+          "note": "widest frame at the blackout",
+          "scene": "SC03",
+          "sizes": [
+            "wide",
+            "medium_close",
+            "insert"
+          ],
+          "t_s": [
+            24,
+            34
+          ]
+        },
+        {
+          "note": "closes in to the heart and send",
+          "scene": "SC04",
+          "sizes": [
+            "medium_wide",
+            "medium",
+            "medium_close",
+            "close",
+            "insert"
+          ],
+          "t_s": [
+            34,
+            52
+          ]
+        },
+        {
+          "scene": "SC05",
+          "sizes": [
+            "medium",
+            "medium_close"
+          ],
+          "t_s": [
+            52,
+            57
+          ]
+        },
+        {
+          "note": "release",
+          "scene": "SC06",
+          "sizes": [
+            "medium_wide"
+          ],
+          "t_s": [
+            57,
+            60
+          ]
+        }
+      ],
+      "closest_frames": "SC04_heart_and_send_inserts",
+      "extreme_wide": false,
+      "vocabulary": [
+        "wide",
+        "medium_wide",
+        "medium",
+        "medium_close",
+        "close",
+        "insert"
+      ],
+      "widest_frame": "SC03_blackout"
+    },
+    "camera.framing.sky_and_wires": {
+      "kerb_sky_setup": "sc04_sc06_bookend_westward",
+      "matched_pair": [
+        "SC05_window",
+        "SC04_SC06_bookend"
+      ],
+      "max_sky_fraction": 0.67,
+      "sc05_window_wire_spans_max": 1,
+      "sky_cross_cut": false,
+      "sky_needs_subject": true,
+      "sun_disc_in_frame": false,
+      "vanishing_point_min_offset_from_head_frame_width": 0.15,
+      "wires_cross_face_phone_crank": false,
+      "wires_max_spans": 3
+    },
+    "camera.framing.space_and_size": {
+      "car_headliner_in_frame_upright": false,
+      "comic_failures": "centred_or_short_sided",
+      "comic_resets": "lead_room",
+      "ren_min_frame_height": 0.15,
+      "story_prop_min_frame_width": 0.1,
+      "tender_lead_room": "look_direction_screen_left",
+      "tender_negative_space": "screen_left"
+    },
+    "camera.gags.no_repeat": {
+      "car": {
+        "hope_shown_in": "insert",
+        "loss_shown_in": "insert",
+        "reaction": "close_held",
+        "scale": "close_inside",
+        "timing": "immediate"
+      },
+      "shop": {
+        "anticipation": "low_angle_to_ceiling_panels_nothing_happens",
+        "hope_shown_in": "over_shoulder_phone_foreground",
+        "insert_after_loss": true,
+        "loss_shown_in": "high_wide_master",
+        "reaction": "reverse_held_longest_comic_hold",
+        "scale": "wide_room",
+        "timing": "delayed"
+      }
+    },
+    "camera.geography.sc01": {
+      "axis_setups": [
+        "frontal_through_windscreen",
+        "over_shoulder_forward"
+      ],
+      "lateral_side": "passenger_kerb_side",
+      "line": "car_long_axis_through_driver_eyeline",
+      "ren_faces": "screen_left",
+      "wild_method": "camera_clip_start_or_object_camera_visibility_off",
+      "wild_pieces_allowed": [
+        "passenger_door",
+        "passenger_window_glass"
+      ]
+    },
+    "camera.geography.sc02": {
+      "cut_plan": [
+        {
+          "content": "passenger_door_exit",
+          "frames": [
+            17,
+            20
+          ]
+        },
+        {
+          "content": "mid_run_from_behind_axis_into_sun",
+          "frames": [
+            13,
+            15
+          ]
+        },
+        {
+          "content": "shop_door_duck_in_axis_from_west",
+          "frames": [
+            14,
+            17
+          ]
+        }
+      ],
+      "cuts": 3,
+      "distance_m": 12,
+      "lateral_side": "south",
+      "line": "south_pavement_path_east_to_west",
+      "real_time_needed_s": [
+        3,
+        4
+      ],
+      "run_direction": "right_to_left",
+      "total_frames": 48
+    },
+    "camera.geography.sc03": {
+      "line": "west_aisle_axis_door_to_socket",
+      "master": {
+        "lens_mm": 35,
+        "lens_z_m": 2.3,
+        "position": "above_door_on_aisle_axis",
+        "reused_for": [
+          "entry",
+          "blackout"
+        ],
+        "tilt_down_deg": 11
+      },
+      "ren_faces": "screen_left_in_laterals",
+      "ren_frame_height_in_master": "about_0.28",
+      "reverse": {
+        "from": "back_wall",
+        "looking": "north_to_door",
+        "wild_piece": "back_wall_or_fridge"
+      }
+    },
+    "camera.geography.sc04_sc06": {
+      "bookend": {
+        "heading": "west",
+        "lens_mm": 35,
+        "lens_z_m": 0.95,
+        "position": "east_of_ren_on_pavement",
+        "tilt_up_deg": 5,
+        "used_in": [
+          "SC04_first_shot",
+          "SC06_final_image"
+        ]
+      },
+      "face_shot_side": "pavement_south",
+      "line": "ren_eyeline_to_glovebox_through_open_door",
+      "ren_faces": "south",
+      "ren_position_xy_m": [
+        -0.1,
+        -1.0
+      ],
+      "screen_left": [
+        "glovebox",
+        "crank",
+        "afterglow",
+        "open_door"
+      ],
+      "sky_shown_only_in": "bookend"
+    },
+    "camera.geography.sc05": {
+      "layouts": {
+        "as_locked_desk_under_window": {
+          "lens_mm": 50,
+          "lens_z_m": 1.14,
+          "main_angle": "left_profile_from_south",
+          "phone": "far_side_until_picked_up",
+          "window": "ahead_of_her_face"
+        },
+        "if_changed_desk_side_on_south_wall": {
+          "lens_mm": 50,
+          "lens_z_m": 1.14,
+          "main_angle": "three_quarter_front_over_desk",
+          "phone": "near_window_side_foreground",
+          "window": "behind_her_head"
+        }
+      },
+      "phone_photo_min_height_frame": 0.05,
+      "photo_shown_in": "insert_85mm_top_down",
+      "shot_plan": [
+        "insert_her_phone_wakes_his_photo",
+        "medium_headphones_down_picks_up_phone",
+        "medium_close_reads_small_smile"
+      ],
+      "shots": 3,
+      "window": "screen_left_always_in_frame",
+      "window_in_frame": "all_shots_except_the_phone_insert"
+    },
+    "camera.geography.screen_direction": {
+      "axis_shots": "neutral_bridges",
+      "lateral_camera_side": {
+        "car_interior": "passenger_side",
+        "hana_room": "south_of_her",
+        "shop": "east_of_aisle_or_back_wall_reverse",
+        "street": "south_pavement_side"
+      },
+      "ren_effort_direction": "right_to_left",
+      "reversals": false,
+      "west": "screen_left"
+    },
+    "camera.height.eye_level": {
+      "meaning": "with_him_not_judging",
+      "reference_eye_z_m": {
+        "hana_desk": 1.14,
+        "ren_car_seat": 1.2,
+        "ren_kerb_seated": 0.95,
+        "ren_kneeling_shop": 1.05,
+        "ren_standing_pavement": 1.71
+      },
+      "tolerance_m": 0.1
+    },
+    "camera.height.high": {
+      "allowed_at": [
+        "SC01_slump_mild",
+        "SC03_aisle_wide_strong"
+      ],
+      "forbidden_in": [
+        "SC04",
+        "SC05",
+        "SC06"
+      ],
+      "min_above_eye_m": 0.5,
+      "min_tilt_down_deg": 10
+    },
+    "camera.height.low": {
+      "background_behind_jacket": "car_or_walls_or_houses_only",
+      "comic_resets": {
+        "beats": [
+          "SC01_sits_up_to_text",
+          "SC02_exit",
+          "SC03_wary_check_ceiling_panels"
+        ],
+        "below_eye_m": [
+          0.15,
+          0.3
+        ],
+        "max_tilt_up_deg": 8
+      },
+      "the_turn": {
+        "beat": "SC04_sits_back_with_crank_in_both_hands",
+        "camera_side": "pavement_looking_north_car_behind_him",
+        "lens_z_m": [
+          0.45,
+          0.6
+        ],
+        "tilt_up_deg": 12
+      }
+    },
+    "camera.inserts.heart": {
+      "battery_change_after": "separate_insert",
+      "emoji_panel_in_frame": false,
+      "frame": "compose_field_only",
+      "heart_source": "single_press_emoji_face_key",
+      "holds_frames": {
+        "heart_visible": 12,
+        "hover": 20,
+        "plain_after_delete": 12
+      },
+      "status_bar_in_frame": false
+    },
+    "camera.inserts.language": {
+      "emoji_panel_framed": false,
+      "lens_alt_mm": 50,
+      "lens_mm": 85,
+      "max_skew_deg": 15,
+      "movement": "static",
+      "screen_insert_frame_height_m": 0.16,
+      "text_insert_max_frame_height": "ui_cap_height_m / 0.035",
+      "viewpoint": "owner_side_upright"
+    },
+    "camera.inserts.legibility": {
+      "battery_digits": {
+        "hold_frames_after_change": 24,
+        "min_height_frame": 0.03
+      },
+      "call_screen_photo": {
+        "min_height_frame": 0.15
+      },
+      "charging_bolt": {
+        "hold_frames": 18,
+        "min_height_frame": 0.03
+      },
+      "invitation": {
+        "hold_s": "0.5 + 0.3 per new word",
+        "min_cap_height_frame": 0.035
+      },
+      "map_pin": {
+        "hold_frames": 36,
+        "min_height_frame": 0.06,
+        "position": "near_centre"
+      },
+      "sent_tick": {
+        "hold_frames_after_appear": 24,
+        "min_height_frame": 0.05,
+        "thumb_clear": true
+      }
+    },
+    "camera.lens.roles": {
+      "24": {
+        "effect": "wide, deep, slight edge stretch, lines converge hard",
+        "never_for": [
+          "tender_faces",
+          "phone_inserts"
+        ],
+        "used_for": [
+          "car_interior_mediums",
+          "comic_geometric_wides",
+          "shop_low_angle_to_ceiling"
+        ]
+      },
+      "35": {
+        "effect": "wide-normal, keeps the room around him",
+        "never_for": [
+          "phone_inserts",
+          "tender_close_ups"
+        ],
+        "used_for": [
+          "street",
+          "shop_wides_and_mediums",
+          "sc04_sc06_bookend"
+        ]
+      },
+      "50": {
+        "effect": "normal, no distortion, sits at his distance",
+        "never_for": [
+          "comic_wides"
+        ],
+        "used_for": [
+          "tender_mediums",
+          "tender_close_ups",
+          "hana",
+          "final_image",
+          "car_frontal_through_windscreen"
+        ]
+      },
+      "85": {
+        "effect": "compression, flat graphic planes, background falls away",
+        "never_for": [
+          "comic_wides",
+          "establishing"
+        ],
+        "used_for": [
+          "phone_inserts",
+          "crank_inserts",
+          "tender_close_ups"
+        ]
+      },
+      "comic_section": {
+        "exception": "50 for the SC01 frontal through the windscreen",
+        "lenses": [
+          24,
+          35,
+          85
+        ],
+        "scenes": [
+          "SC01",
+          "SC02",
+          "SC03"
+        ]
+      },
+      "tender_section": {
+        "exception": "35 for the kerb bookend only",
+        "lenses": [
+          50,
+          85
+        ],
+        "scenes": [
+          "SC04",
+          "SC05",
+          "SC06"
+        ]
+      }
+    },
+    "camera.lens_set": [
+      24,
+      35,
+      50,
+      85
+    ],
+    "camera.movement.default_static": {
+      "allowed_moves": [
+        "pan_follow",
+        "push_in"
+      ],
+      "default": "static",
+      "motivation_required": true
+    },
+    "camera.movement.forbidden": {
+      "forbidden": [
+        "handheld",
+        "camera_shake",
+        "zoom",
+        "whip_pan",
+        "orbit",
+        "crane_to_sky",
+        "tilt_up_to_sky",
+        "flyover",
+        "move_in_insert"
+      ]
+    },
+    "camera.movement.pan_follow": {
+      "ends": "with_action",
+      "motivation": "character_movement_only",
+      "pivot": "fixed_position",
+      "scenes": [
+        "SC01",
+        "SC02",
+        "SC03"
+      ],
+      "starts": "after_action_begins"
+    },
+    "camera.movement.push_in": {
+      "after_send": "no_camera_movement",
+      "beats": [
+        "choice_of_crank",
+        "glow_steadies_while_cranking"
+      ],
+      "max_count_film": 2,
+      "max_speed_m_s": 0.15,
+      "motivation": "emotional_shift",
+      "scene": "SC04"
+    },
+    "camera.phone_lit.framing": {
+      "applies": [
+        "SC03_blackout",
+        "SC04",
+        "SC05_after_wake",
+        "SC06_before_fade"
+      ],
+      "brightest_near_face": "phone",
+      "camera_within_deg_of_screen_direction": 45,
+      "exempt_setups": [
+        "SC04_SC06_bookend",
+        "SC05_profile_locked_layout"
+      ],
+      "other_practicals_min_distance_from_face_frame_width": 0.2,
+      "sc05_profile_max_deg": 75,
+      "sc06_fade_screen_in_frame": true,
+      "source_in_frame_first_shot_of_setup": true
+    },
+    "camera.rhythm.pace": {
+      "SC01": {
+        "asl_s": 1.6,
+        "min_hold_after_gag_s": 1.0,
+        "shots_about": 14
+      },
+      "SC02": {
+        "frames_each": [
+          13,
+          20
+        ],
+        "shots": 3
+      },
+      "SC03": {
+        "asl_s": 1.4,
+        "final_hold_min_s": 2.0,
+        "shots_about": 7
+      },
+      "SC04": {
+        "asl_s": 2.0,
+        "shots_about": 9,
+        "turn_and_crank_shot_s": [
+          2.5,
+          3.5
+        ]
+      },
+      "SC05": {
+        "durations_s": [
+          1.0,
+          1.33,
+          2.17
+        ],
+        "shots": 3
+      },
+      "SC06": {
+        "shots": 1
+      },
+      "curve": "accelerate_to_sc02_then_hold_at_blackout_then_slow_to_one_shot",
+      "tender_min_exception": "battery_insert",
+      "tender_min_shot_s": 1.0
+    },
+    "camera.rhythm.scene_budget": {
+      "delta_vs_scenes_yaml": {
+        "SC04": -0.048,
+        "SC05": 0.125,
+        "SC06": 0.139
+      },
+      "fps": 24,
+      "frames": {
+        "SC01": 528,
+        "SC02": 48,
+        "SC03": 240,
+        "SC04": 434,
+        "SC05": 108,
+        "SC06": 82
+      },
+      "seconds": {
+        "SC01": 22.0,
+        "SC02": 2.0,
+        "SC03": 10.0,
+        "SC04": 18.08,
+        "SC05": 4.5,
+        "SC06": 3.42
+      },
+      "total_frames": 1440
+    },
+    "camera.rhythm.transitions": {
+      "default": "cut",
+      "fade_in": "head",
+      "fade_out": {
+        "after": "final_image_hold",
+        "at": "tail",
+        "frames": 18
+      },
+      "forbidden": [
+        "dissolve",
+        "wipe",
+        "sky_cutaway",
+        "wire_cutaway"
+      ],
+      "sc03_to_sc04": "hard_cut_black_to_dusk",
+      "sc04_to_sc05": "cut_on_light",
+      "sc05_to_sc06": "cut_on_direction"
+    },
+    "characters.hana.expressions": {
+      "excluded": [
+        "grin",
+        "gasp",
+        "blush",
+        "hand_to_mouth",
+        "squeal"
+      ],
+      "graphic_symbols": false,
+      "lip_sync": false,
+      "sequence": [
+        "absorbed",
+        "noticing",
+        "reading",
+        "small_smile"
+      ],
+      "small_smile": {
+        "blush": false,
+        "eyes": "lower_lids_lift",
+        "head": "slight_dip",
+        "mouth": "corners_up_lips_closed",
+        "teeth": false
+      }
+    },
+    "characters.hana.face": {
+      "blush": false,
+      "brows": "gently_arched",
+      "colors": {
+        "brows": {
+          "hex": "#2A2224",
+          "linear": [
+            0.023153,
+            0.015996,
+            0.017642
+          ],
+          "srgb": [
+            0.164706,
+            0.133333,
+            0.141176
+          ]
+        },
+        "eyes": {
+          "hex": "#4A3A33",
+          "linear": [
+            0.068478,
+            0.042311,
+            0.033105
+          ],
+          "srgb": [
+            0.290196,
+            0.227451,
+            0.2
+          ]
+        },
+        "hair": {
+          "hex": "#2F2629",
+          "linear": [
+            0.028426,
+            0.019382,
+            0.022174
+          ],
+          "srgb": [
+            0.184314,
+            0.14902,
+            0.160784
+          ]
+        },
+        "skin": {
+          "hex": "#F1D3BE",
+          "linear": [
+            0.879622,
+            0.651406,
+            0.514918
+          ],
+          "srgb": [
+            0.945098,
+            0.827451,
+            0.745098
+          ]
+        }
+      },
+      "extras": "none",
+      "eyes": "large_rounded_visible_lower_lids",
+      "face_shape": "round_soft_small_chin",
+      "hair_style": "jaw_length_rounded_bob_short_straight_fringe_above_brows",
+      "mouth": "small",
+      "nose": "tiny"
+    },
+    "characters.hana.identity": {
+      "age": 20,
+      "defining_behaviour": "absorbed_in_drawing",
+      "knows_his_feelings": false,
+      "name_production_only": "Hana",
+      "occupation": "university_student",
+      "on_screen_name": false,
+      "personal_items": [
+        "phone_hana",
+        "hana_headphones",
+        "sketchbook",
+        "pencils"
+      ],
+      "pronoun": "she",
+      "role": "the_person_he_is_trying_to_reach",
+      "wristwatch": false
+    },
+    "characters.hana.movement": {
+      "handedness": "right",
+      "headphones": "two_hand_slide_down",
+      "idle": "head_down_pencil_small_strokes_slow_breath",
+      "notice_order": [
+        "eyes",
+        "head",
+        "hands"
+      ],
+      "on_smile": "shoulders_settle_slightly",
+      "pencil_hand": "right",
+      "phone": "one_hand_pick_up_held_low_near_chest",
+      "stands": false
+    },
+    "characters.hana.proportions": {
+      "build": "slight_soft",
+      "hand_length_m": 0.185,
+      "hand_scale_vs_realistic": 1.1,
+      "head_count": 6.3,
+      "head_height_m": 0.254,
+      "height_m": 1.6,
+      "hip_width_m": 0.33,
+      "seated_at_desk": {
+        "chair_seat_height_m": 0.44,
+        "crown_with_headphones_z_m": 1.3,
+        "crown_z_m": 1.27,
+        "desk_height_m": 0.72,
+        "eye_z_m": 1.14,
+        "head_inside_window_band": true,
+        "window_sill_z_m": 0.9
+      },
+      "shoulder_width_m": 0.36
+    },
+    "characters.hana.representation": {
+      "attach_points": {
+        "hand_r": [
+          "pencil",
+          "phone_hana"
+        ],
+        "head_top": "hana_headphones_on",
+        "neck": "hana_headphones_down"
+      },
+      "build": "slight_soft",
+      "colors_source": "characters.hana.face.colors",
+      "detail_zone": "upper_body_hands_face",
+      "face": {
+        "controls": [
+          "eyes_open",
+          "eyes_down",
+          "eyes_lower_lids_lift",
+          "brows_lift",
+          "blink",
+          "mouth_closed_soft",
+          "mouth_corners_up"
+        ],
+        "lip_sync": false,
+        "method": "drawn_toon_face"
+      },
+      "future_providers_allowed": [
+        "mpfb",
+        "vrm",
+        "generated",
+        "mocap"
+      ],
+      "hands": "five_finger_simplified_1.1x",
+      "head_count": 6.3,
+      "height_m": 1.6,
+      "likeness": "original_no_real_person_no_existing_character",
+      "provider": "proxy",
+      "rig": "humanoid_standard_bone_names",
+      "shading": "toon_cel_per_look_canon",
+      "silhouette_features": [
+        "rounded_jaw_length_bob_short_fringe",
+        "pale_headphones_two_states",
+        "loose_dropped_shoulder_top"
+      ],
+      "wardrobe_source": "characters.hana.wardrobe.*"
+    },
+    "characters.hana.silhouette": {
+      "backlit_by": "window_sky",
+      "distinct_from_ren": "rounded_compact_vs_his_angular_vertical",
+      "read_at_a_glance": [
+        "rounded_bob_with_headphones_on_top",
+        "loose_soft_dropped_shoulders",
+        "head_tilted_down_over_desk"
+      ],
+      "silhouette_states": [
+        "headphones_on_head",
+        "headphones_around_neck"
+      ]
+    },
+    "characters.hana.wardrobe.headphones": {
+      "cushion_color": {
+        "hex": "#CFC7BE",
+        "linear": [
+          0.62396,
+          0.571125,
+          0.514918
+        ],
+        "srgb": [
+          0.811765,
+          0.780392,
+          0.745098
+        ]
+      },
+      "logo": "none",
+      "markings": "none",
+      "position_down": "resting_on_collar_around_neck_cups_turned_out",
+      "position_on": "band_over_crown_cups_over_ears_hair_tucked_in_cups",
+      "shell_color": {
+        "hex": "#EFE8DC",
+        "linear": [
+          0.863157,
+          0.806952,
+          0.715694
+        ],
+        "srgb": [
+          0.937255,
+          0.909804,
+          0.862745
+        ]
+      },
+      "transition": "two_hands_one_smooth_slide"
+    },
+    "characters.hana.wardrobe.outfit": {
+      "accessories": "none",
+      "feet": "out_of_frame",
+      "markings": "none",
+      "top": {
+        "color": {
+          "hex": "#AFC8B6",
+          "linear": [
+            0.42869,
+            0.57758,
+            0.467784
+          ],
+          "srgb": [
+            0.686275,
+            0.784314,
+            0.713725
+          ]
+        },
+        "garment": "loose_crew_neck_knit",
+        "print": "none",
+        "shoulders": "dropped",
+        "sleeves": "long_pushed_to_forearm"
+      },
+      "trousers": {
+        "color": {
+          "hex": "#9A93A6",
+          "linear": [
+            0.323143,
+            0.291771,
+            0.381326
+          ],
+          "srgb": [
+            0.603922,
+            0.576471,
+            0.65098
+          ]
+        },
+        "garment": "soft_lounge_trousers",
+        "visible": "mostly_hidden"
+      }
+    },
+    "characters.ren.expressions": {
+      "comic_set": [
+        "rehearsed_breath",
+        "letdown",
+        "freeze",
+        "relief",
+        "stunned_stillness"
+      ],
+      "comic_style": "held_pose_reactions",
+      "face_hidden_beats": [
+        "forehead_on_wheel_SC01"
+      ],
+      "graphic_symbols": false,
+      "lip_sync": false,
+      "mouth_open_max": "slight",
+      "super_deformed": false,
+      "tender_set": [
+        "focused_calm",
+        "hesitation_at_heart",
+        "release_after_send",
+        "final_look_up"
+      ]
+    },
+    "characters.ren.face": {
+      "brows": "straight_level_expressive",
+      "colors": {
+        "brows": {
+          "hex": "#3E3029",
+          "linear": [
+            0.048172,
+            0.029557,
+            0.022174
+          ],
+          "srgb": [
+            0.243137,
+            0.188235,
+            0.160784
+          ]
+        },
+        "eyes": {
+          "hex": "#5B4637",
+          "linear": [
+            0.104616,
+            0.061246,
+            0.038204
+          ],
+          "srgb": [
+            0.356863,
+            0.27451,
+            0.215686
+          ]
+        },
+        "hair": {
+          "hex": "#4A3A31",
+          "linear": [
+            0.068478,
+            0.042311,
+            0.030713
+          ],
+          "srgb": [
+            0.290196,
+            0.227451,
+            0.192157
+          ]
+        },
+        "skin": {
+          "hex": "#EAC7AB",
+          "linear": [
+            0.822786,
+            0.571125,
+            0.40724
+          ],
+          "srgb": [
+            0.917647,
+            0.780392,
+            0.670588
+          ]
+        }
+      },
+      "extras": "none",
+      "eyes": "medium_almond",
+      "face_shape": "long_soft_oval",
+      "hair_style": "short_soft_messy_fringe_to_brows_crown_tuft",
+      "mouth": "line_that_flattens_presses_opens_slightly",
+      "nose": "small_simple"
+    },
+    "characters.ren.identity": {
+      "age": 20,
+      "bag": false,
+      "defining_behaviour": "earnest_reset_after_each_setback",
+      "name_production_only": "Ren",
+      "need": "value_his_own_effort_over_shortcuts",
+      "occupation": "university_student",
+      "on_screen_name": false,
+      "personal_items": [
+        "phone_ren",
+        "charging_cable",
+        "crank_charger",
+        "car_key"
+      ],
+      "pronoun": "he",
+      "role": "protagonist",
+      "want": "send_the_dinner_invitation_before_the_battery_dies",
+      "wristwatch": false
+    },
+    "characters.ren.movement": {
+      "after_send": {
+        "head": "tipped_up_to_sky",
+        "phone": "dark_on_chest_under_flat_hand",
+        "spine": "loose_leaning_back_against_car"
+      },
+      "before_turn": {
+        "kneel": "one_quick_drop",
+        "phone_grip": "two_hands_close_to_face",
+        "run": "phone_held_out_in_front_arms_not_swinging",
+        "setback_pattern": [
+          "freeze",
+          "sag",
+          "reset"
+        ],
+        "spine": "forward_neck_jut",
+        "tempo": "quick_bursts_between_holds"
+      },
+      "crank_hand": "right",
+      "handedness": "right",
+      "phone_hand_at_crank": "left",
+      "turn": {
+        "breath": "in_time_with_crank",
+        "crank_grip": "two_hands_then_crank_hand_plus_phone_hand",
+        "crank_rhythm": "steady_even_about_1_turn_per_s",
+        "reset": false,
+        "sit": "kerb_knees_up_arms_loose",
+        "tempo": "slow_deliberate"
+      }
+    },
+    "characters.ren.proportions": {
+      "arm_span_m": 1.74,
+      "build": "slim_lanky",
+      "eye_height_standing_m": 1.59,
+      "hand_length_m": 0.205,
+      "hand_scale_vs_realistic": 1.1,
+      "head_count": 6.5,
+      "head_height_m": 0.265,
+      "height_m": 1.72,
+      "hip_width_m": 0.32,
+      "kneeling_eye_z_m": 1.05,
+      "leg_length_m": 0.84,
+      "seated_on_car_seat": {
+        "crown_with_tuft_z_m": 1.36,
+        "crown_z_m": 1.32,
+        "eye_z_m": 1.2,
+        "seat_back_recline_deg": 20,
+        "seat_height_m": 0.45
+      },
+      "seated_on_kerb": {
+        "back_rest_to_heels_m": 0.6,
+        "crown_z_m": 1.06,
+        "knee_top_z_m": 0.62,
+        "seat_surface_z_m": 0.12
+      },
+      "shoulder_width_m": 0.42,
+      "tuft_extra_m": 0.04
+    },
+    "characters.ren.representation": {
+      "attach_points": {
+        "chest": "phone_ren_resting",
+        "hand_l": [
+          "phone_ren"
+        ],
+        "hand_r": [
+          "crank_charger_handle",
+          "car_key"
+        ]
+      },
+      "build": "slim_lanky",
+      "colors_source": "characters.ren.face.colors",
+      "face": {
+        "controls": [
+          "brows_knit",
+          "brows_lift",
+          "eyes_open",
+          "eyes_closed",
+          "eyes_wide_small_pupils",
+          "mouth_line",
+          "mouth_flat",
+          "mouth_pressed",
+          "mouth_slightly_open",
+          "cheeks_fill"
+        ],
+        "lip_sync": false,
+        "method": "drawn_toon_face"
+      },
+      "future_providers_allowed": [
+        "mpfb",
+        "vrm",
+        "generated",
+        "mocap"
+      ],
+      "hands": "five_finger_simplified_1.1x",
+      "head_count": 6.5,
+      "height_m": 1.72,
+      "likeness": "original_no_real_person_no_existing_character",
+      "provider": "proxy",
+      "rig": "humanoid_standard_bone_names",
+      "shading": "toon_cel_per_look_canon",
+      "silhouette_features": [
+        "crown_tuft_0.04m",
+        "open_hip_length_jacket_separate_shell",
+        "pale_centre_strip_tshirt",
+        "dark_trousers_pale_shoes"
+      ],
+      "wardrobe_source": "characters.ren.wardrobe.*"
+    },
+    "characters.ren.silhouette": {
+      "distinct_from_hana": "angular_vertical_vs_her_rounded_compact",
+      "min_readable_height_in_frame": 0.15,
+      "posture_after_turn": "upright_settled_then_leaning_back",
+      "posture_before_turn": "forward_lean_neck_jut_shoulders_curled_over_phone",
+      "read_at_a_glance": [
+        "crown_tuft",
+        "tall_narrow_lanky",
+        "open_hip_length_jacket_with_pale_centre_strip"
+      ]
+    },
+    "characters.ren.wardrobe.jacket": {
+      "changes_between_scenes": "none",
+      "closure": "plain_buttons_worn_open",
+      "collar": "small_point",
+      "color": {
+        "hex": "#7C9CC4",
+        "linear": [
+          0.201556,
+          0.332452,
+          0.552011
+        ],
+        "srgb": [
+          0.486275,
+          0.611765,
+          0.768627
+        ]
+      },
+      "garment": "overshirt_jacket",
+      "length": "hip",
+      "markings": "none",
+      "material": "light_unlined_cotton_twill",
+      "pockets": "two_flat_patch_chest_pockets",
+      "sleeves": "pushed_up_below_elbow",
+      "wear": "soft_fade_at_cuffs_and_elbows",
+      "worn_open": true
+    },
+    "characters.ren.wardrobe.outfit": {
+      "accessories": "none",
+      "changes_between_scenes": "none",
+      "knees_after_shop_kneel": "unmarked",
+      "markings": "none",
+      "shoes": {
+        "color": {
+          "hex": "#ECE7DE",
+          "linear": [
+            0.838799,
+            0.799103,
+            0.730461
+          ],
+          "srgb": [
+            0.92549,
+            0.905882,
+            0.870588
+          ]
+        },
+        "laces": "plain",
+        "sole_color": {
+          "hex": "#CDBFA8",
+          "linear": [
+            0.610496,
+            0.520996,
+            0.391572
+          ],
+          "srgb": [
+            0.803922,
+            0.74902,
+            0.658824
+          ]
+        },
+        "type": "low_top_canvas"
+      },
+      "trousers": {
+        "color": {
+          "hex": "#4F5A6E",
+          "linear": [
+            0.078187,
+            0.102242,
+            0.155926
+          ],
+          "srgb": [
+            0.309804,
+            0.352941,
+            0.431373
+          ]
+        },
+        "fit": "relaxed_slim",
+        "length": "full_to_ankle"
+      },
+      "tshirt": {
+        "color": {
+          "hex": "#EAE2D3",
+          "linear": [
+            0.822786,
+            0.760525,
+            0.651406
+          ],
+          "srgb": [
+            0.917647,
+            0.886275,
+            0.827451
+          ]
+        },
+        "fit": "relaxed",
+        "neck": "crew",
+        "print": "none"
+      }
+    },
+    "look.color.accent_battery_red": {
+      "hex": "#E5483B",
+      "linear": [
+        0.783538,
+        0.064803,
+        0.043735
+      ],
+      "srgb": [
+        0.898039,
+        0.282353,
+        0.231373
+      ]
+    },
+    "look.color.accent_call_green": {
+      "hex": "#5DB37E",
+      "linear": [
+        0.109462,
+        0.450786,
+        0.208637
+      ],
+      "srgb": [
+        0.364706,
+        0.701961,
+        0.494118
+      ]
+    },
+    "look.color.accent_power_amber": {
+      "hex": "#F5B940",
+      "linear": [
+        0.913099,
+        0.48515,
+        0.051269
+      ],
+      "srgb": [
+        0.960784,
+        0.72549,
+        0.25098
+      ]
+    },
+    "look.color.clouds": [
+      {
+        "hex": "#FBE6C4",
+        "linear": [
+          0.964686,
+          0.791298,
+          0.552011
+        ],
+        "part": "lit",
+        "srgb": [
+          0.984314,
+          0.901961,
+          0.768627
+        ],
+        "state": "golden_hour"
+      },
+      {
+        "hex": "#D9CCD3",
+        "linear": [
+          0.693872,
+          0.603827,
+          0.651406
+        ],
+        "part": "shadow",
+        "srgb": [
+          0.85098,
+          0.8,
+          0.827451
+        ],
+        "state": "golden_hour"
+      },
+      {
+        "hex": "#F2C7A8",
+        "linear": [
+          0.887923,
+          0.571125,
+          0.391572
+        ],
+        "part": "lit",
+        "srgb": [
+          0.94902,
+          0.780392,
+          0.658824
+        ],
+        "state": "dusk"
+      },
+      {
+        "hex": "#9D96BE",
+        "linear": [
+          0.337164,
+          0.304987,
+          0.514918
+        ],
+        "part": "shadow",
+        "srgb": [
+          0.615686,
+          0.588235,
+          0.745098
+        ],
+        "state": "dusk"
+      }
+    ],
+    "look.color.hana_room": [
+      {
+        "hex": "#EDE2CF",
+        "item": "wall",
+        "linear": [
+          0.846873,
+          0.760525,
+          0.62396
+        ],
+        "srgb": [
+          0.929412,
+          0.886275,
+          0.811765
+        ]
+      },
+      {
+        "hex": "#C9C2D6",
+        "item": "bedding",
+        "linear": [
+          0.584078,
+          0.539479,
+          0.672443
+        ],
+        "srgb": [
+          0.788235,
+          0.760784,
+          0.839216
+        ]
+      },
+      {
+        "hex": "#B9A58A",
+        "item": "shelf",
+        "linear": [
+          0.48515,
+          0.376262,
+          0.254152
+        ],
+        "srgb": [
+          0.72549,
+          0.647059,
+          0.541176
+        ]
+      },
+      {
+        "hex": "#D9D1E3",
+        "item": "curtains",
+        "linear": [
+          0.693872,
+          0.637597,
+          0.768151
+        ],
+        "srgb": [
+          0.85098,
+          0.819608,
+          0.890196
+        ]
+      },
+      {
+        "hex": "#A9B7C9",
+        "item": "chair",
+        "linear": [
+          0.396755,
+          0.473531,
+          0.584078
+        ],
+        "srgb": [
+          0.662745,
+          0.717647,
+          0.788235
+        ]
+      },
+      {
+        "hex": "#F1EBDD",
+        "item": "pinned_sketch_paper",
+        "linear": [
+          0.879622,
+          0.83077,
+          0.723055
+        ],
+        "srgb": [
+          0.945098,
+          0.921569,
+          0.866667
+        ]
+      },
+      {
+        "hex": "#E6E1D8",
+        "item": "window_frame",
+        "linear": [
+          0.791298,
+          0.752942,
+          0.686685
+        ],
+        "srgb": [
+          0.901961,
+          0.882353,
+          0.847059
+        ]
+      },
+      {
+        "hex": "#5F6088",
+        "item": "neighbour_silhouettes_dusk",
+        "linear": [
+          0.114435,
+          0.116971,
+          0.246201
+        ],
+        "srgb": [
+          0.372549,
+          0.376471,
+          0.533333
+        ]
+      }
+    ],
+    "look.color.light_sources": [
+      {
+        "hex": "#FFD9A0",
+        "kelvin": 3200,
+        "linear": [
+          1.0,
+          0.693872,
+          0.351533
+        ],
+        "source": "sun_golden_hour",
+        "srgb": [
+          1.0,
+          0.85098,
+          0.627451
+        ]
+      },
+      {
+        "hex": "#C8D3EA",
+        "kelvin": 9000,
+        "linear": [
+          0.57758,
+          0.651406,
+          0.822786
+        ],
+        "source": "sky_fill_golden_hour",
+        "srgb": [
+          0.784314,
+          0.827451,
+          0.917647
+        ]
+      },
+      {
+        "hex": "#9CA2D0",
+        "kelvin": 10000,
+        "linear": [
+          0.332452,
+          0.361307,
+          0.630757
+        ],
+        "source": "sky_fill_dusk",
+        "srgb": [
+          0.611765,
+          0.635294,
+          0.815686
+        ]
+      },
+      {
+        "hex": "#F6C69C",
+        "kelvin": 3000,
+        "linear": [
+          0.921582,
+          0.564712,
+          0.332452
+        ],
+        "source": "afterglow_rim_dusk",
+        "srgb": [
+          0.964706,
+          0.776471,
+          0.611765
+        ]
+      },
+      {
+        "hex": "#FFF1DE",
+        "kelvin": 5000,
+        "linear": [
+          1.0,
+          0.879622,
+          0.730461
+        ],
+        "source": "phone_screen",
+        "srgb": [
+          1.0,
+          0.945098,
+          0.870588
+        ]
+      },
+      {
+        "hex": "#EEF5EF",
+        "kelvin": 5000,
+        "linear": [
+          0.854993,
+          0.913099,
+          0.863157
+        ],
+        "source": "shop_ceiling_panels",
+        "srgb": [
+          0.933333,
+          0.960784,
+          0.937255
+        ]
+      },
+      {
+        "hex": "#DDF3F4",
+        "kelvin": 6500,
+        "linear": [
+          0.723055,
+          0.896269,
+          0.904661
+        ],
+        "source": "shop_fridges",
+        "srgb": [
+          0.866667,
+          0.952941,
+          0.956863
+        ]
+      },
+      {
+        "hex": "#F6F0E2",
+        "kelvin": 5000,
+        "linear": [
+          0.921582,
+          0.871367,
+          0.760525
+        ],
+        "source": "shop_fascia_sign",
+        "srgb": [
+          0.964706,
+          0.941176,
+          0.886275
+        ]
+      },
+      {
+        "hex": "#C9A77E",
+        "kelvin": 3200,
+        "linear": [
+          0.584078,
+          0.386429,
+          0.208637
+        ],
+        "source": "shop_door_glass_bounce",
+        "srgb": [
+          0.788235,
+          0.654902,
+          0.494118
+        ]
+      },
+      {
+        "hex": "#D8E6EE",
+        "kelvin": 6000,
+        "linear": [
+          0.686685,
+          0.791298,
+          0.854993
+        ],
+        "source": "car_dash_lights",
+        "srgb": [
+          0.847059,
+          0.901961,
+          0.933333
+        ]
+      },
+      {
+        "hex": "#F5B940",
+        "kelvin": 0,
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "source": "car_adapter_ring",
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ]
+      },
+      {
+        "hex": "#F5B940",
+        "kelvin": 0,
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "source": "crank_pip",
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ]
+      },
+      {
+        "hex": "#FFD6A0",
+        "kelvin": 2700,
+        "linear": [
+          1.0,
+          0.672443,
+          0.351533
+        ],
+        "source": "street_lamp",
+        "srgb": [
+          1.0,
+          0.839216,
+          0.627451
+        ]
+      },
+      {
+        "hex": "#F6DCA6",
+        "kelvin": 2700,
+        "linear": [
+          0.921582,
+          0.715694,
+          0.381326
+        ],
+        "source": "house_window_glow",
+        "srgb": [
+          0.964706,
+          0.862745,
+          0.65098
+        ]
+      },
+      {
+        "hex": "#FFD29A",
+        "kelvin": 2700,
+        "linear": [
+          1.0,
+          0.64448,
+          0.323143
+        ],
+        "source": "desk_lamp",
+        "srgb": [
+          1.0,
+          0.823529,
+          0.603922
+        ]
+      }
+    ],
+    "look.color.outline": [
+      {
+        "hex": "#3B3346",
+        "linear": [
+          0.043735,
+          0.033105,
+          0.061246
+        ],
+        "srgb": [
+          0.231373,
+          0.2,
+          0.27451
+        ],
+        "target": "characters"
+      },
+      {
+        "hex": "#3F3C48",
+        "linear": [
+          0.049707,
+          0.045186,
+          0.064803
+        ],
+        "srgb": [
+          0.247059,
+          0.235294,
+          0.282353
+        ],
+        "target": "hero_props"
+      },
+      {
+        "hex": "#4A4655",
+        "linear": [
+          0.068478,
+          0.061246,
+          0.090842
+        ],
+        "srgb": [
+          0.290196,
+          0.27451,
+          0.333333
+        ],
+        "target": "car"
+      }
+    ],
+    "look.color.phone_glow": {
+      "hex": "#FFF1DE",
+      "linear": [
+        1.0,
+        0.879622,
+        0.730461
+      ],
+      "srgb": [
+        1.0,
+        0.945098,
+        0.870588
+      ]
+    },
+    "look.color.primary": {
+      "hex": "#F1E4CF",
+      "linear": [
+        0.879622,
+        0.775822,
+        0.62396
+      ],
+      "srgb": [
+        0.945098,
+        0.894118,
+        0.811765
+      ]
+    },
+    "look.color.props": [
+      {
+        "hex": "#E8D8A8",
+        "item": "car_paint",
+        "linear": [
+          0.806952,
+          0.686685,
+          0.391572
+        ],
+        "srgb": [
+          0.909804,
+          0.847059,
+          0.658824
+        ]
+      },
+      {
+        "hex": "#EFE5C8",
+        "item": "car_paint_sun_faded_roof_bonnet",
+        "linear": [
+          0.863157,
+          0.783538,
+          0.57758
+        ],
+        "srgb": [
+          0.937255,
+          0.898039,
+          0.784314
+        ]
+      },
+      {
+        "hex": "#3E3F47",
+        "item": "car_rubber_trim_tyres",
+        "linear": [
+          0.048172,
+          0.049707,
+          0.06301
+        ],
+        "srgb": [
+          0.243137,
+          0.247059,
+          0.278431
+        ]
+      },
+      {
+        "hex": "#7A7478",
+        "item": "car_dashboard",
+        "linear": [
+          0.194618,
+          0.174647,
+          0.187821
+        ],
+        "srgb": [
+          0.478431,
+          0.454902,
+          0.470588
+        ]
+      },
+      {
+        "hex": "#8C8698",
+        "item": "car_seats",
+        "linear": [
+          0.262251,
+          0.238398,
+          0.313989
+        ],
+        "srgb": [
+          0.54902,
+          0.52549,
+          0.596078
+        ]
+      },
+      {
+        "hex": "#CFC8BE",
+        "item": "car_headliner",
+        "linear": [
+          0.62396,
+          0.57758,
+          0.514918
+        ],
+        "srgb": [
+          0.811765,
+          0.784314,
+          0.745098
+        ]
+      },
+      {
+        "hex": "#9FB0C4",
+        "item": "car_glass_tint",
+        "linear": [
+          0.346704,
+          0.434154,
+          0.552011
+        ],
+        "srgb": [
+          0.623529,
+          0.690196,
+          0.768627
+        ]
+      },
+      {
+        "hex": "#D6C592",
+        "item": "crank_body",
+        "linear": [
+          0.672443,
+          0.55834,
+          0.287441
+        ],
+        "srgb": [
+          0.839216,
+          0.772549,
+          0.572549
+        ]
+      },
+      {
+        "hex": "#5E5B58",
+        "item": "crank_grip",
+        "linear": [
+          0.111932,
+          0.104616,
+          0.097587
+        ],
+        "srgb": [
+          0.368627,
+          0.356863,
+          0.345098
+        ]
+      },
+      {
+        "hex": "#EDE6D6",
+        "item": "crank_knob",
+        "linear": [
+          0.846873,
+          0.791298,
+          0.672443
+        ],
+        "srgb": [
+          0.929412,
+          0.901961,
+          0.839216
+        ]
+      },
+      {
+        "hex": "#E4E1DA",
+        "item": "charging_cable",
+        "linear": [
+          0.775822,
+          0.752942,
+          0.701102
+        ],
+        "srgb": [
+          0.894118,
+          0.882353,
+          0.854902
+        ]
+      },
+      {
+        "hex": "#5E6B7A",
+        "item": "phone_case_ren",
+        "linear": [
+          0.111932,
+          0.147027,
+          0.194618
+        ],
+        "srgb": [
+          0.368627,
+          0.419608,
+          0.478431
+        ]
+      },
+      {
+        "hex": "#E9DFCF",
+        "item": "phone_case_hana",
+        "linear": [
+          0.814847,
+          0.73791,
+          0.62396
+        ],
+        "srgb": [
+          0.913725,
+          0.87451,
+          0.811765
+        ]
+      },
+      {
+        "hex": "#4A4B52",
+        "item": "car_adapter_body",
+        "linear": [
+          0.068478,
+          0.07036,
+          0.084376
+        ],
+        "srgb": [
+          0.290196,
+          0.294118,
+          0.321569
+        ]
+      },
+      {
+        "hex": "#EEEAE2",
+        "item": "shop_socket",
+        "linear": [
+          0.854993,
+          0.822786,
+          0.760525
+        ],
+        "srgb": [
+          0.933333,
+          0.917647,
+          0.886275
+        ]
+      },
+      {
+        "hex": "#BFCFE3",
+        "item": "desk_lamp_body",
+        "linear": [
+          0.520996,
+          0.62396,
+          0.768151
+        ],
+        "srgb": [
+          0.74902,
+          0.811765,
+          0.890196
+        ]
+      },
+      {
+        "hex": "#C9A77C",
+        "item": "desk_wood",
+        "linear": [
+          0.584078,
+          0.386429,
+          0.201556
+        ],
+        "srgb": [
+          0.788235,
+          0.654902,
+          0.486275
+        ]
+      },
+      {
+        "hex": "#F3EEE2",
+        "item": "sketchbook_paper",
+        "linear": [
+          0.896269,
+          0.854993,
+          0.760525
+        ],
+        "srgb": [
+          0.952941,
+          0.933333,
+          0.886275
+        ]
+      },
+      {
+        "hex": "#7D7A86",
+        "item": "pencil_lines",
+        "linear": [
+          0.205079,
+          0.194618,
+          0.238398
+        ],
+        "srgb": [
+          0.490196,
+          0.478431,
+          0.52549
+        ]
+      },
+      {
+        "hex": "#9EB4C8",
+        "item": "pencil_cup",
+        "linear": [
+          0.341914,
+          0.456411,
+          0.57758
+        ],
+        "srgb": [
+          0.619608,
+          0.705882,
+          0.784314
+        ]
+      }
+    ],
+    "look.color.rule.only_red": {
+      "applies_to_everything": [
+        "sets",
+        "props",
+        "characters",
+        "lights",
+        "sky",
+        "phone_ui"
+      ],
+      "exceptions_proposed": [
+        "ui_heart_sc04"
+      ],
+      "hex": "#E5483B",
+      "linear": [
+        0.783538,
+        0.064803,
+        0.043735
+      ],
+      "max_saturation_outside_battery": 0.35,
+      "pink_band_deg": [
+        300,
+        345
+      ],
+      "red_band_deg": [
+        345,
+        20
+      ],
+      "srgb": [
+        0.898039,
+        0.282353,
+        0.231373
+      ]
+    },
+    "look.color.rule.pastel_range": {
+      "exempt": [
+        "accent_battery_red",
+        "accent_power_amber",
+        "accent_call_green",
+        "ui_heart",
+        "character_hair_brows_eyes",
+        "outlines",
+        "overhead_wire",
+        "car_rubber_trim_tyres",
+        "car_adapter_body",
+        "screen_off",
+        "ui_ink",
+        "sc03_blackout"
+      ],
+      "max_saturation": 0.45,
+      "min_lit_value": 0.35
+    },
+    "look.color.scene.sc01": {
+      "accent": {
+        "hex": "#E5483B",
+        "linear": [
+          0.783538,
+          0.064803,
+          0.043735
+        ],
+        "srgb": [
+          0.898039,
+          0.282353,
+          0.231373
+        ]
+      },
+      "accent_2": {
+        "hex": "#F5B940",
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ]
+      },
+      "accent_3": {
+        "hex": "#5DB37E",
+        "linear": [
+          0.109462,
+          0.450786,
+          0.208637
+        ],
+        "srgb": [
+          0.364706,
+          0.701961,
+          0.494118
+        ]
+      },
+      "dominant": {
+        "hex": "#F6D7A7",
+        "linear": [
+          0.921582,
+          0.679542,
+          0.386429
+        ],
+        "srgb": [
+          0.964706,
+          0.843137,
+          0.654902
+        ]
+      },
+      "key_light": {
+        "hex": "#FFD9A0",
+        "linear": [
+          1.0,
+          0.693872,
+          0.351533
+        ],
+        "srgb": [
+          1.0,
+          0.85098,
+          0.627451
+        ]
+      },
+      "saturation": "medium_low",
+      "secondary": {
+        "hex": "#8F809A",
+        "linear": [
+          0.274677,
+          0.215861,
+          0.323143
+        ],
+        "srgb": [
+          0.560784,
+          0.501961,
+          0.603922
+        ]
+      },
+      "shadow_tint": {
+        "hex": "#B7A9C9",
+        "linear": [
+          0.473531,
+          0.396755,
+          0.584078
+        ],
+        "srgb": [
+          0.717647,
+          0.662745,
+          0.788235
+        ]
+      },
+      "sky": "golden_hour",
+      "value_key": "high_key_backlit"
+    },
+    "look.color.scene.sc02": {
+      "accent": {
+        "hex": "#E5483B",
+        "linear": [
+          0.783538,
+          0.064803,
+          0.043735
+        ],
+        "srgb": [
+          0.898039,
+          0.282353,
+          0.231373
+        ]
+      },
+      "dominant": {
+        "hex": "#F3D9AE",
+        "linear": [
+          0.896269,
+          0.693872,
+          0.423268
+        ],
+        "srgb": [
+          0.952941,
+          0.85098,
+          0.682353
+        ]
+      },
+      "key_light": {
+        "hex": "#FFD9A0",
+        "linear": [
+          1.0,
+          0.693872,
+          0.351533
+        ],
+        "srgb": [
+          1.0,
+          0.85098,
+          0.627451
+        ]
+      },
+      "saturation": "medium_low",
+      "secondary": {
+        "hex": "#A69CBF",
+        "linear": [
+          0.381326,
+          0.332452,
+          0.520996
+        ],
+        "srgb": [
+          0.65098,
+          0.611765,
+          0.74902
+        ]
+      },
+      "shadow_tint": {
+        "hex": "#BDB2D2",
+        "linear": [
+          0.508881,
+          0.445201,
+          0.64448
+        ],
+        "srgb": [
+          0.741176,
+          0.698039,
+          0.823529
+        ]
+      },
+      "sky": "golden_hour",
+      "value_key": "high_key"
+    },
+    "look.color.scene.sc03": {
+      "accent": {
+        "hex": "#F5B940",
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ]
+      },
+      "blackout": {
+        "accent": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        },
+        "dominant": {
+          "hex": "#1E2030",
+          "linear": [
+            0.012983,
+            0.014444,
+            0.029557
+          ],
+          "srgb": [
+            0.117647,
+            0.12549,
+            0.188235
+          ]
+        },
+        "door_rectangle": {
+          "hex": "#C9A77E",
+          "linear": [
+            0.584078,
+            0.386429,
+            0.208637
+          ],
+          "srgb": [
+            0.788235,
+            0.654902,
+            0.494118
+          ]
+        },
+        "key_light": {
+          "hex": "#FFF1DE",
+          "linear": [
+            1.0,
+            0.879622,
+            0.730461
+          ],
+          "srgb": [
+            1.0,
+            0.945098,
+            0.870588
+          ]
+        }
+      },
+      "dominant": {
+        "hex": "#E7F0EA",
+        "linear": [
+          0.799103,
+          0.871367,
+          0.822786
+        ],
+        "srgb": [
+          0.905882,
+          0.941176,
+          0.917647
+        ]
+      },
+      "key_light": {
+        "hex": "#EEF5EF",
+        "linear": [
+          0.854993,
+          0.913099,
+          0.863157
+        ],
+        "srgb": [
+          0.933333,
+          0.960784,
+          0.937255
+        ]
+      },
+      "saturation": "low",
+      "secondary": {
+        "hex": "#C6D8EE",
+        "linear": [
+          0.564712,
+          0.686685,
+          0.854993
+        ],
+        "srgb": [
+          0.776471,
+          0.847059,
+          0.933333
+        ]
+      },
+      "shadow_tint": {
+        "hex": "#C9C6DA",
+        "linear": [
+          0.584078,
+          0.564712,
+          0.701102
+        ],
+        "srgb": [
+          0.788235,
+          0.776471,
+          0.854902
+        ]
+      },
+      "sky": "golden_hour_via_door_only",
+      "value_key": "high_key_then_lowest_key_in_film"
+    },
+    "look.color.scene.sc04": {
+      "accent": {
+        "hex": "#F5B940",
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ]
+      },
+      "accent_2": {
+        "hex": "#E5483B",
+        "linear": [
+          0.783538,
+          0.064803,
+          0.043735
+        ],
+        "srgb": [
+          0.898039,
+          0.282353,
+          0.231373
+        ]
+      },
+      "dominant": {
+        "hex": "#6F7099",
+        "linear": [
+          0.158961,
+          0.162029,
+          0.318547
+        ],
+        "srgb": [
+          0.435294,
+          0.439216,
+          0.6
+        ]
+      },
+      "key_light": {
+        "hex": "#FFF1DE",
+        "linear": [
+          1.0,
+          0.879622,
+          0.730461
+        ],
+        "srgb": [
+          1.0,
+          0.945098,
+          0.870588
+        ]
+      },
+      "practicals": {
+        "hex": "#F6DCA6",
+        "linear": [
+          0.921582,
+          0.715694,
+          0.381326
+        ],
+        "srgb": [
+          0.964706,
+          0.862745,
+          0.65098
+        ]
+      },
+      "rim_light": {
+        "hex": "#F6C69C",
+        "linear": [
+          0.921582,
+          0.564712,
+          0.332452
+        ],
+        "srgb": [
+          0.964706,
+          0.776471,
+          0.611765
+        ]
+      },
+      "saturation": "low",
+      "secondary": {
+        "hex": "#ABA5CE",
+        "linear": [
+          0.40724,
+          0.376262,
+          0.617207
+        ],
+        "srgb": [
+          0.670588,
+          0.647059,
+          0.807843
+        ]
+      },
+      "shadow_tint": {
+        "hex": "#8E88B4",
+        "linear": [
+          0.270498,
+          0.246201,
+          0.456411
+        ],
+        "srgb": [
+          0.556863,
+          0.533333,
+          0.705882
+        ]
+      },
+      "silhouette": {
+        "hex": "#5F6088",
+        "linear": [
+          0.114435,
+          0.116971,
+          0.246201
+        ],
+        "srgb": [
+          0.372549,
+          0.376471,
+          0.533333
+        ]
+      },
+      "sky": "dusk",
+      "value_key": "mid_low_key_soft"
+    },
+    "look.color.scene.sc05": {
+      "dominant": {
+        "hex": "#E9CFA8",
+        "linear": [
+          0.814847,
+          0.62396,
+          0.391572
+        ],
+        "srgb": [
+          0.913725,
+          0.811765,
+          0.658824
+        ]
+      },
+      "key_light": {
+        "hex": "#FFD29A",
+        "linear": [
+          1.0,
+          0.64448,
+          0.323143
+        ],
+        "srgb": [
+          1.0,
+          0.823529,
+          0.603922
+        ]
+      },
+      "saturation": "low_medium",
+      "second_key": {
+        "hex": "#FFF1DE",
+        "linear": [
+          1.0,
+          0.879622,
+          0.730461
+        ],
+        "srgb": [
+          1.0,
+          0.945098,
+          0.870588
+        ]
+      },
+      "secondary": {
+        "hex": "#ABA5CE",
+        "linear": [
+          0.40724,
+          0.376262,
+          0.617207
+        ],
+        "srgb": [
+          0.670588,
+          0.647059,
+          0.807843
+        ]
+      },
+      "shadow_tint": {
+        "hex": "#A59CC0",
+        "linear": [
+          0.376262,
+          0.332452,
+          0.527115
+        ],
+        "srgb": [
+          0.647059,
+          0.611765,
+          0.752941
+        ]
+      },
+      "silhouette": {
+        "hex": "#5F6088",
+        "linear": [
+          0.114435,
+          0.116971,
+          0.246201
+        ],
+        "srgb": [
+          0.372549,
+          0.376471,
+          0.533333
+        ]
+      },
+      "sky": "dusk",
+      "value_key": "mid_key_balanced"
+    },
+    "look.color.scene.sc06": {
+      "dominant": {
+        "hex": "#6F7099",
+        "linear": [
+          0.158961,
+          0.162029,
+          0.318547
+        ],
+        "srgb": [
+          0.435294,
+          0.439216,
+          0.6
+        ]
+      },
+      "key_light_after_fade": {
+        "hex": "#F6C69C",
+        "linear": [
+          0.921582,
+          0.564712,
+          0.332452
+        ],
+        "srgb": [
+          0.964706,
+          0.776471,
+          0.611765
+        ]
+      },
+      "key_light_before_fade": {
+        "hex": "#FFF1DE",
+        "linear": [
+          1.0,
+          0.879622,
+          0.730461
+        ],
+        "srgb": [
+          1.0,
+          0.945098,
+          0.870588
+        ]
+      },
+      "saturation": "low",
+      "screen_off": {
+        "hex": "#1F2029",
+        "linear": [
+          0.013702,
+          0.014444,
+          0.022174
+        ],
+        "srgb": [
+          0.121569,
+          0.12549,
+          0.160784
+        ]
+      },
+      "secondary": {
+        "hex": "#ABA5CE",
+        "linear": [
+          0.40724,
+          0.376262,
+          0.617207
+        ],
+        "srgb": [
+          0.670588,
+          0.647059,
+          0.807843
+        ]
+      },
+      "shadow_tint": {
+        "hex": "#8E88B4",
+        "linear": [
+          0.270498,
+          0.246201,
+          0.456411
+        ],
+        "srgb": [
+          0.556863,
+          0.533333,
+          0.705882
+        ]
+      },
+      "silhouette": {
+        "hex": "#5F6088",
+        "linear": [
+          0.114435,
+          0.116971,
+          0.246201
+        ],
+        "srgb": [
+          0.372549,
+          0.376471,
+          0.533333
+        ]
+      },
+      "sky": "dusk",
+      "value_key": "mid_low_key_soft"
+    },
+    "look.color.secondary": {
+      "hex": "#A79FC6",
+      "linear": [
+        0.386429,
+        0.346704,
+        0.564712
+      ],
+      "srgb": [
+        0.654902,
+        0.623529,
+        0.776471
+      ]
+    },
+    "look.color.shop": [
+      {
+        "hex": "#BFE0D2",
+        "item": "awning_stripe_a",
+        "linear": [
+          0.520996,
+          0.745404,
+          0.64448
+        ],
+        "srgb": [
+          0.74902,
+          0.878431,
+          0.823529
+        ]
+      },
+      {
+        "hex": "#F4EEDF",
+        "item": "awning_stripe_b",
+        "linear": [
+          0.904661,
+          0.854993,
+          0.73791
+        ],
+        "srgb": [
+          0.956863,
+          0.933333,
+          0.87451
+        ]
+      },
+      {
+        "hex": "#F6F0E2",
+        "item": "fascia_panel",
+        "linear": [
+          0.921582,
+          0.871367,
+          0.760525
+        ],
+        "srgb": [
+          0.964706,
+          0.941176,
+          0.886275
+        ]
+      },
+      {
+        "hex": "#3F5C73",
+        "item": "fascia_basket_pictogram",
+        "linear": [
+          0.049707,
+          0.107023,
+          0.171441
+        ],
+        "srgb": [
+          0.247059,
+          0.360784,
+          0.45098
+        ]
+      },
+      {
+        "hex": "#EEF1EC",
+        "item": "walls",
+        "linear": [
+          0.854993,
+          0.879622,
+          0.838799
+        ],
+        "srgb": [
+          0.933333,
+          0.945098,
+          0.92549
+        ]
+      },
+      {
+        "hex": "#D9DCD6",
+        "item": "floor_vinyl",
+        "linear": [
+          0.693872,
+          0.715694,
+          0.672443
+        ],
+        "srgb": [
+          0.85098,
+          0.862745,
+          0.839216
+        ]
+      },
+      {
+        "hex": "#E3E6E1",
+        "item": "shelving",
+        "linear": [
+          0.768151,
+          0.791298,
+          0.752942
+        ],
+        "srgb": [
+          0.890196,
+          0.901961,
+          0.882353
+        ]
+      },
+      {
+        "hex": "#D8CCB8",
+        "item": "counter",
+        "linear": [
+          0.686685,
+          0.603827,
+          0.47932
+        ],
+        "srgb": [
+          0.847059,
+          0.8,
+          0.721569
+        ]
+      },
+      {
+        "hex": "#B8BCC4",
+        "item": "till_box",
+        "linear": [
+          0.47932,
+          0.502886,
+          0.552011
+        ],
+        "srgb": [
+          0.721569,
+          0.737255,
+          0.768627
+        ]
+      },
+      {
+        "hex": "#CFE0DA",
+        "item": "strip_curtain",
+        "linear": [
+          0.62396,
+          0.745404,
+          0.701102
+        ],
+        "srgb": [
+          0.811765,
+          0.878431,
+          0.854902
+        ]
+      },
+      {
+        "hex": "#C8CDD2",
+        "item": "fridge_frame",
+        "linear": [
+          0.57758,
+          0.610496,
+          0.64448
+        ],
+        "srgb": [
+          0.784314,
+          0.803922,
+          0.823529
+        ]
+      },
+      {
+        "hex": "#D2C9BA",
+        "item": "display_stand",
+        "linear": [
+          0.64448,
+          0.584078,
+          0.491021
+        ],
+        "srgb": [
+          0.823529,
+          0.788235,
+          0.729412
+        ]
+      },
+      {
+        "hex": "#BFE3D0",
+        "item": "merch_round_tins_mint",
+        "linear": [
+          0.520996,
+          0.768151,
+          0.630757
+        ],
+        "srgb": [
+          0.74902,
+          0.890196,
+          0.815686
+        ]
+      },
+      {
+        "hex": "#F4E3A6",
+        "item": "merch_tall_boxes_butter",
+        "linear": [
+          0.904661,
+          0.768151,
+          0.381326
+        ],
+        "srgb": [
+          0.956863,
+          0.890196,
+          0.65098
+        ]
+      },
+      {
+        "hex": "#C6D8EE",
+        "item": "merch_pillow_bags_powder_blue",
+        "linear": [
+          0.564712,
+          0.686685,
+          0.854993
+        ],
+        "srgb": [
+          0.776471,
+          0.847059,
+          0.933333
+        ]
+      },
+      {
+        "hex": "#D4C8E8",
+        "item": "merch_bottle_caps_lilac",
+        "linear": [
+          0.658375,
+          0.57758,
+          0.806952
+        ],
+        "srgb": [
+          0.831373,
+          0.784314,
+          0.909804
+        ]
+      },
+      {
+        "hex": "#F3CDB0",
+        "item": "merch_misc_peach",
+        "linear": [
+          0.896269,
+          0.610496,
+          0.434154
+        ],
+        "srgb": [
+          0.952941,
+          0.803922,
+          0.690196
+        ]
+      },
+      {
+        "hex": "#CDB9E6",
+        "item": "poster_ice_lolly",
+        "linear": [
+          0.610496,
+          0.48515,
+          0.791298
+        ],
+        "srgb": [
+          0.803922,
+          0.72549,
+          0.901961
+        ]
+      },
+      {
+        "hex": "#F6DE8E",
+        "item": "poster_starburst",
+        "linear": [
+          0.921582,
+          0.730461,
+          0.270498
+        ],
+        "srgb": [
+          0.964706,
+          0.870588,
+          0.556863
+        ]
+      },
+      {
+        "hex": "#BCD3EC",
+        "item": "poster_steaming_cup",
+        "linear": [
+          0.502886,
+          0.651406,
+          0.838799
+        ],
+        "srgb": [
+          0.737255,
+          0.827451,
+          0.92549
+        ]
+      },
+      {
+        "hex": "#1E2030",
+        "item": "blackout_ambient",
+        "linear": [
+          0.012983,
+          0.014444,
+          0.029557
+        ],
+        "srgb": [
+          0.117647,
+          0.12549,
+          0.188235
+        ]
+      }
+    ],
+    "look.color.sky.dusk": [
+      {
+        "hex": "#F4C49A",
+        "linear": [
+          0.904661,
+          0.552011,
+          0.323143
+        ],
+        "pos": 0.0,
+        "srgb": [
+          0.956863,
+          0.768627,
+          0.603922
+        ]
+      },
+      {
+        "hex": "#EFC3AE",
+        "linear": [
+          0.863157,
+          0.545724,
+          0.423268
+        ],
+        "pos": 0.12,
+        "srgb": [
+          0.937255,
+          0.764706,
+          0.682353
+        ]
+      },
+      {
+        "hex": "#D7BFC8",
+        "linear": [
+          0.679542,
+          0.520996,
+          0.57758
+        ],
+        "pos": 0.35,
+        "srgb": [
+          0.843137,
+          0.74902,
+          0.784314
+        ]
+      },
+      {
+        "hex": "#ABA5CE",
+        "linear": [
+          0.40724,
+          0.376262,
+          0.617207
+        ],
+        "pos": 0.65,
+        "srgb": [
+          0.670588,
+          0.647059,
+          0.807843
+        ]
+      },
+      {
+        "hex": "#8C93C2",
+        "linear": [
+          0.262251,
+          0.291771,
+          0.539479
+        ],
+        "pos": 1.0,
+        "srgb": [
+          0.54902,
+          0.576471,
+          0.760784
+        ]
+      }
+    ],
+    "look.color.sky.golden_hour": [
+      {
+        "hex": "#FFF0CC",
+        "linear": [
+          1.0,
+          0.871367,
+          0.603827
+        ],
+        "pos": 0.0,
+        "srgb": [
+          1.0,
+          0.941176,
+          0.8
+        ]
+      },
+      {
+        "hex": "#F9D9A6",
+        "linear": [
+          0.947307,
+          0.693872,
+          0.381326
+        ],
+        "pos": 0.15,
+        "srgb": [
+          0.976471,
+          0.85098,
+          0.65098
+        ]
+      },
+      {
+        "hex": "#EFDCC4",
+        "linear": [
+          0.863157,
+          0.715694,
+          0.552011
+        ],
+        "pos": 0.4,
+        "srgb": [
+          0.937255,
+          0.862745,
+          0.768627
+        ]
+      },
+      {
+        "hex": "#C9D6E3",
+        "linear": [
+          0.584078,
+          0.672443,
+          0.768151
+        ],
+        "pos": 0.7,
+        "srgb": [
+          0.788235,
+          0.839216,
+          0.890196
+        ]
+      },
+      {
+        "hex": "#AFC3DC",
+        "linear": [
+          0.42869,
+          0.545724,
+          0.715694
+        ],
+        "pos": 1.0,
+        "srgb": [
+          0.686275,
+          0.764706,
+          0.862745
+        ]
+      }
+    ],
+    "look.color.street": [
+      {
+        "hex": "#B9B2AA",
+        "item": "asphalt",
+        "linear": [
+          0.48515,
+          0.445201,
+          0.401978
+        ],
+        "srgb": [
+          0.72549,
+          0.698039,
+          0.666667
+        ]
+      },
+      {
+        "hex": "#CCC6BB",
+        "item": "pavement",
+        "linear": [
+          0.603827,
+          0.564712,
+          0.496933
+        ],
+        "srgb": [
+          0.8,
+          0.776471,
+          0.733333
+        ]
+      },
+      {
+        "hex": "#D5CFC4",
+        "item": "kerb",
+        "linear": [
+          0.665387,
+          0.62396,
+          0.552011
+        ],
+        "srgb": [
+          0.835294,
+          0.811765,
+          0.768627
+        ]
+      },
+      {
+        "hex": "#CFC8BB",
+        "item": "garden_wall",
+        "linear": [
+          0.62396,
+          0.57758,
+          0.496933
+        ],
+        "srgb": [
+          0.811765,
+          0.784314,
+          0.733333
+        ]
+      },
+      {
+        "hex": "#EFE6D5",
+        "item": "house_plaster_cream",
+        "linear": [
+          0.863157,
+          0.791298,
+          0.665387
+        ],
+        "srgb": [
+          0.937255,
+          0.901961,
+          0.835294
+        ]
+      },
+      {
+        "hex": "#D5DACD",
+        "item": "house_plaster_sage",
+        "linear": [
+          0.665387,
+          0.701102,
+          0.610496
+        ],
+        "srgb": [
+          0.835294,
+          0.854902,
+          0.803922
+        ]
+      },
+      {
+        "hex": "#CCD3DB",
+        "item": "house_plaster_blue",
+        "linear": [
+          0.603827,
+          0.651406,
+          0.708376
+        ],
+        "srgb": [
+          0.8,
+          0.827451,
+          0.858824
+        ]
+      },
+      {
+        "hex": "#E3D3BD",
+        "item": "house_plaster_beige",
+        "linear": [
+          0.768151,
+          0.651406,
+          0.508881
+        ],
+        "srgb": [
+          0.890196,
+          0.827451,
+          0.741176
+        ]
+      },
+      {
+        "hex": "#6E7486",
+        "item": "roof_slate",
+        "linear": [
+          0.155926,
+          0.174647,
+          0.238398
+        ],
+        "srgb": [
+          0.431373,
+          0.454902,
+          0.52549
+        ]
+      },
+      {
+        "hex": "#6F8588",
+        "item": "roof_teal_grey",
+        "linear": [
+          0.158961,
+          0.234551,
+          0.246201
+        ],
+        "srgb": [
+          0.435294,
+          0.521569,
+          0.533333
+        ]
+      },
+      {
+        "hex": "#9C968E",
+        "item": "utility_pole",
+        "linear": [
+          0.332452,
+          0.304987,
+          0.270498
+        ],
+        "srgb": [
+          0.611765,
+          0.588235,
+          0.556863
+        ]
+      },
+      {
+        "hex": "#3C3A45",
+        "item": "overhead_wire",
+        "linear": [
+          0.045186,
+          0.042311,
+          0.059511
+        ],
+        "srgb": [
+          0.235294,
+          0.227451,
+          0.270588
+        ]
+      },
+      {
+        "hex": "#8F95A3",
+        "item": "railing",
+        "linear": [
+          0.274677,
+          0.300544,
+          0.366253
+        ],
+        "srgb": [
+          0.560784,
+          0.584314,
+          0.639216
+        ]
+      },
+      {
+        "hex": "#7D7F88",
+        "item": "lamp_head",
+        "linear": [
+          0.205079,
+          0.212231,
+          0.246201
+        ],
+        "srgb": [
+          0.490196,
+          0.498039,
+          0.533333
+        ]
+      },
+      {
+        "hex": "#8E97AE",
+        "item": "window_glass_unlit",
+        "linear": [
+          0.270498,
+          0.309469,
+          0.423268
+        ],
+        "srgb": [
+          0.556863,
+          0.592157,
+          0.682353
+        ]
+      },
+      {
+        "hex": "#F6DCA6",
+        "item": "window_lit",
+        "linear": [
+          0.921582,
+          0.715694,
+          0.381326
+        ],
+        "srgb": [
+          0.964706,
+          0.862745,
+          0.65098
+        ]
+      },
+      {
+        "hex": "#4E5566",
+        "item": "bicycle",
+        "linear": [
+          0.076185,
+          0.090842,
+          0.132868
+        ],
+        "srgb": [
+          0.305882,
+          0.333333,
+          0.4
+        ]
+      },
+      {
+        "hex": "#8FB08A",
+        "item": "plants",
+        "linear": [
+          0.274677,
+          0.434154,
+          0.254152
+        ],
+        "srgb": [
+          0.560784,
+          0.690196,
+          0.541176
+        ]
+      },
+      {
+        "hex": "#B7A9B8",
+        "item": "distant_roof_silhouette_golden",
+        "linear": [
+          0.473531,
+          0.396755,
+          0.47932
+        ],
+        "srgb": [
+          0.717647,
+          0.662745,
+          0.721569
+        ]
+      },
+      {
+        "hex": "#5F6088",
+        "item": "distant_roof_silhouette_dusk",
+        "linear": [
+          0.114435,
+          0.116971,
+          0.246201
+        ],
+        "srgb": [
+          0.372549,
+          0.376471,
+          0.533333
+        ]
+      }
+    ],
+    "look.color.ui": [
+      {
+        "hex": "#F6F2EC",
+        "linear": [
+          0.921582,
+          0.887923,
+          0.838799
+        ],
+        "role": "screen_background",
+        "srgb": [
+          0.964706,
+          0.94902,
+          0.92549
+        ]
+      },
+      {
+        "hex": "#2B303B",
+        "linear": [
+          0.024158,
+          0.029557,
+          0.043735
+        ],
+        "role": "ink_text_and_glyphs",
+        "srgb": [
+          0.168627,
+          0.188235,
+          0.231373
+        ]
+      },
+      {
+        "hex": "#6B7280",
+        "linear": [
+          0.147027,
+          0.168269,
+          0.215861
+        ],
+        "role": "icon_neutral",
+        "srgb": [
+          0.419608,
+          0.447059,
+          0.501961
+        ]
+      },
+      {
+        "hex": "#A3A8B0",
+        "linear": [
+          0.366253,
+          0.391572,
+          0.434154
+        ],
+        "role": "icon_unanswered_grey",
+        "srgb": [
+          0.639216,
+          0.658824,
+          0.690196
+        ]
+      },
+      {
+        "hex": "#2B303B",
+        "linear": [
+          0.024158,
+          0.029557,
+          0.043735
+        ],
+        "role": "battery_outline_and_normal_fill",
+        "srgb": [
+          0.168627,
+          0.188235,
+          0.231373
+        ]
+      },
+      {
+        "hex": "#D3E0F2",
+        "linear": [
+          0.651406,
+          0.745404,
+          0.887923
+        ],
+        "role": "sent_bubble",
+        "srgb": [
+          0.827451,
+          0.878431,
+          0.94902
+        ]
+      },
+      {
+        "hex": "#FDFCFA",
+        "linear": [
+          0.982251,
+          0.973445,
+          0.955973
+        ],
+        "role": "compose_field",
+        "srgb": [
+          0.992157,
+          0.988235,
+          0.980392
+        ]
+      },
+      {
+        "hex": "#DCD8D1",
+        "linear": [
+          0.715694,
+          0.686685,
+          0.637597
+        ],
+        "role": "keyboard_base",
+        "srgb": [
+          0.862745,
+          0.847059,
+          0.819608
+        ]
+      },
+      {
+        "hex": "#F7F5F1",
+        "linear": [
+          0.930111,
+          0.913099,
+          0.879622
+        ],
+        "role": "keyboard_key",
+        "srgb": [
+          0.968627,
+          0.960784,
+          0.945098
+        ]
+      },
+      {
+        "hex": "#C9C4BC",
+        "linear": [
+          0.584078,
+          0.552011,
+          0.502886
+        ],
+        "role": "keyboard_key_pressed",
+        "srgb": [
+          0.788235,
+          0.768627,
+          0.737255
+        ]
+      },
+      {
+        "hex": "#E8EAE3",
+        "linear": [
+          0.806952,
+          0.822786,
+          0.768151
+        ],
+        "role": "map_land",
+        "srgb": [
+          0.909804,
+          0.917647,
+          0.890196
+        ]
+      },
+      {
+        "hex": "#FBFAF7",
+        "linear": [
+          0.964686,
+          0.955973,
+          0.930111
+        ],
+        "role": "map_road",
+        "srgb": [
+          0.984314,
+          0.980392,
+          0.968627
+        ]
+      },
+      {
+        "hex": "#CFE3CF",
+        "linear": [
+          0.62396,
+          0.768151,
+          0.62396
+        ],
+        "role": "map_park",
+        "srgb": [
+          0.811765,
+          0.890196,
+          0.811765
+        ]
+      },
+      {
+        "hex": "#C9DCEB",
+        "linear": [
+          0.584078,
+          0.715694,
+          0.83077
+        ],
+        "role": "map_water",
+        "srgb": [
+          0.788235,
+          0.862745,
+          0.921569
+        ]
+      },
+      {
+        "hex": "#4A6FA5",
+        "linear": [
+          0.068478,
+          0.158961,
+          0.376262
+        ],
+        "role": "map_pin",
+        "srgb": [
+          0.290196,
+          0.435294,
+          0.647059
+        ]
+      },
+      {
+        "hex": "#FDFCFA",
+        "linear": [
+          0.982251,
+          0.973445,
+          0.955973
+        ],
+        "role": "map_pin_glyph",
+        "srgb": [
+          0.992157,
+          0.988235,
+          0.980392
+        ]
+      },
+      {
+        "hex": "#E3DED6",
+        "linear": [
+          0.768151,
+          0.730461,
+          0.672443
+        ],
+        "role": "photo_frame_ring",
+        "srgb": [
+          0.890196,
+          0.870588,
+          0.839216
+        ]
+      },
+      {
+        "hex": "#1F2029",
+        "linear": [
+          0.013702,
+          0.014444,
+          0.022174
+        ],
+        "role": "screen_off",
+        "srgb": [
+          0.121569,
+          0.12549,
+          0.160784
+        ]
+      }
+    ],
+    "look.color.ui_heart": {
+      "hex": "#E5483B",
+      "linear": [
+        0.783538,
+        0.064803,
+        0.043735
+      ],
+      "srgb": [
+        0.898039,
+        0.282353,
+        0.231373
+      ]
+    },
+    "look.exposure.scene_keys": {
+      "SC01": 0.62,
+      "SC02": 0.7,
+      "SC03_blackout": 0.08,
+      "SC03_lit": 0.74,
+      "SC04": 0.46,
+      "SC05": 0.52,
+      "SC06": 0.42,
+      "tolerance": 0.06
+    },
+    "look.exposure.value_structure": {
+      "film_floor_hex": {
+        "hex": "#1B1C29",
+        "linear": [
+          0.01096,
+          0.011612,
+          0.022174
+        ],
+        "srgb": [
+          0.105882,
+          0.109804,
+          0.160784
+        ]
+      },
+      "film_floor_scenes": [
+        "SC03"
+      ],
+      "floor_elsewhere_hex": {
+        "hex": "#34354F",
+        "linear": [
+          0.03434,
+          0.035601,
+          0.078187
+        ],
+        "srgb": [
+          0.203922,
+          0.207843,
+          0.309804
+        ]
+      },
+      "floor_elsewhere_value": 0.3,
+      "lit_tone_tolerance_value": 0.08,
+      "may_clip": [
+        "phone_ui_background",
+        "emissive_cores",
+        "amber_indicators",
+        "red_indicators"
+      ],
+      "never_clip": [
+        "skin",
+        "cloth",
+        "car_paint",
+        "dusk_sky",
+        "golden_sky_above_horizon_band"
+      ],
+      "phone_brighter_than_sky_while_on": [
+        "SC04",
+        "SC05",
+        "SC06"
+      ]
+    },
+    "look.lighting.eevee_feasibility": {
+      "afterglow_rim": "large_low_area_light_west",
+      "light_probes": "defaults_only",
+      "max_lights_per_shot": 8,
+      "phone_cast_light": "emissive_plane_plus_small_area_light",
+      "raytracing": false,
+      "sky": "world_colour_no_hdri",
+      "sun": "sun_lamp",
+      "volumetrics": false
+    },
+    "look.lighting.power_indicators": {
+      "car_adapter_ring": {
+        "lit_while": "engine_running",
+        "off_frames": 0
+      },
+      "charging_bolt": {
+        "lit_while": "cable_in_live_source",
+        "off_frames": 0
+      },
+      "crank_pip": {
+        "brightness": "follows_crank_speed",
+        "lit_while": "handle_turning",
+        "off_within_frames": 6
+      },
+      "progress_line": {
+        "fill_s": 1.0
+      },
+      "sent_tick": {
+        "appears_after": "progress_complete"
+      }
+    },
+    "look.lighting.principles": {
+      "comic_key": "world_light",
+      "final_warmth_source": "sky_afterglow",
+      "motivation_required": true,
+      "tender_key": "personal_light",
+      "unnamed_fill_or_rim": false
+    },
+    "look.lighting.sc01": {
+      "ambient": {
+        "kelvin": 9000,
+        "source": "sky_through_side_windows"
+      },
+      "contrast": "4:1",
+      "fill": {
+        "quality": "soft",
+        "source": "dash_and_bonnet_bounce"
+      },
+      "key": {
+        "direction": "from_plus_y_along_street",
+        "elevation_deg": 6,
+        "kelvin": 3200,
+        "quality": "hard",
+        "source": "sun"
+      },
+      "phone_glow_visible_on_face": false,
+      "practical_off_event": "engine_stall_same_frame",
+      "practicals": [
+        "car_dash_lights",
+        "car_adapter_ring"
+      ],
+      "rim": "sun_when_camera_faces_west",
+      "volumetrics": "none"
+    },
+    "look.lighting.sc02": {
+      "contrast": "4:1",
+      "fill": {
+        "kelvin": 9000,
+        "quality": "soft",
+        "source": "sky_and_north_wall_bounce"
+      },
+      "key": {
+        "direction": "from_plus_y",
+        "elevation_deg": 6,
+        "kelvin": 3200,
+        "quality": "hard",
+        "source": "sun"
+      },
+      "practicals": [
+        "shop_fascia_sign_weak"
+      ],
+      "rim": "sun",
+      "shadows": "long_toward_minus_y",
+      "volumetrics": "none"
+    },
+    "look.lighting.sc03": {
+      "blackout": {
+        "background": {
+          "level": "faint",
+          "source": "door_glass_bounce"
+        },
+        "contrast": "16:1",
+        "fill": "none",
+        "key": {
+          "direction": "below_front",
+          "falloff_m": 0.5,
+          "quality": "soft",
+          "source": "phone_screen"
+        }
+      },
+      "blackout_event": {
+        "restored": false,
+        "sources_off": [
+          "ceiling_panels",
+          "fridges",
+          "fascia_sign"
+        ],
+        "sync": "clunk_sound",
+        "transition_frames": 1
+      },
+      "lit": {
+        "background": "door_glass_warm_rectangle",
+        "contrast": "2:1",
+        "key": {
+          "kelvin": 5000,
+          "quality": "soft_top",
+          "source": "ceiling_panels"
+        },
+        "rim": {
+          "kelvin": 6500,
+          "source": "fridges"
+        }
+      },
+      "volumetrics": "none"
+    },
+    "look.lighting.sc04": {
+      "ambient": {
+        "kelvin": 10000,
+        "quality": "very_soft_top",
+        "source": "dusk_sky"
+      },
+      "background_practicals": [
+        "street_lamp_by_shop",
+        "house_windows"
+      ],
+      "contrast": "4:1",
+      "fill": "sky_only",
+      "hand_light": {
+        "lit_while": "turning",
+        "reach_m": 0.1,
+        "source": "crank_pip"
+      },
+      "key": {
+        "direction": "below_front",
+        "quality": "soft",
+        "source": "phone_screen"
+      },
+      "key_states": {
+        "after_send": "steady",
+        "before_crank": "flicker_dips_to_70pct",
+        "from_first_crank_turn": "steady"
+      },
+      "rim": {
+        "kelvin": 3000,
+        "quality": "soft_low",
+        "source": "afterglow_west"
+      },
+      "street_lamp_reaches_ren": false,
+      "volumetrics": "none"
+    },
+    "look.lighting.sc05": {
+      "contrast": "2.5:1",
+      "fill": {
+        "kelvin": 10000,
+        "quality": "soft",
+        "side": "in_front_of_her",
+        "source": "dusk_sky_through_window"
+      },
+      "key": {
+        "kelvin": 2700,
+        "quality": "soft",
+        "side": "her_left",
+        "source": "desk_lamp"
+      },
+      "second_key": {
+        "on_event": "phone_wakes",
+        "side": "her_right_then_below",
+        "source": "phone_screen"
+      },
+      "volumetrics": "none"
+    },
+    "look.lighting.sc06": {
+      "ambient": {
+        "kelvin": 10000,
+        "source": "dusk_sky"
+      },
+      "contrast": "2:1",
+      "key_after_fade": {
+        "catches": [
+          "upturned_face",
+          "crown_tuft"
+        ],
+        "kelvin": 3000,
+        "source": "afterglow_west"
+      },
+      "other_light_changes": "none",
+      "phone": {
+        "curve": "ease_out",
+        "end_state": "screen_off",
+        "fade_frames": 24
+      },
+      "volumetrics": "none"
+    },
+    "look.style.atmosphere": {
+      "aerial_perspective": {
+        "end_m": 60,
+        "implementation": "mist_pass_mix_in_compositor",
+        "silhouette_cards_tint": 0.6,
+        "start_m": 10,
+        "tint_at_end": 0.35,
+        "tint_target": "scene_horizon_colour"
+      },
+      "fog": false,
+      "god_rays": false,
+      "lens_flares": false,
+      "particles": false,
+      "volumetrics": false
+    },
+    "look.style.background_shading": {
+      "detail_falloff_m": 20,
+      "outlines": false,
+      "ramp_steps": 3,
+      "terminator": "feathered",
+      "texture": "paper_brush_low_amplitude",
+      "texture_value_variation_max": 0.05
+    },
+    "look.style.character_shading": {
+      "extra_rim_tone": "only_when_source_behind",
+      "gradients_on_skin_hair_cloth": false,
+      "implementation": "shader_to_rgb_plus_constant_colour_ramp",
+      "lit_colour": "mix(base, base_x_key_colour, 0.30)",
+      "shadow_colour": "base_x_scene_shadow_tint",
+      "specular": "eye_catchlight_only",
+      "terminator": "hard",
+      "tones": 2
+    },
+    "look.style.composition": {
+      "comic": {
+        "framing": "geometric_ground_heavy",
+        "horizon": "middle_or_upper_third",
+        "scenes": [
+          "SC01",
+          "SC02",
+          "SC03"
+        ],
+        "symmetry": "allowed_for_world_beats_him_frames"
+      },
+      "depth_separation": "value_and_aerial_tint",
+      "min_depth_layers": 3,
+      "phone_brightest_near_face_from": "SC03_blackout",
+      "tender": {
+        "framing": "off_centre_closer_lead_space",
+        "horizon": "lower_third",
+        "scenes": [
+          "SC04",
+          "SC05",
+          "SC06"
+        ],
+        "symmetry": false
+      }
+    },
+    "look.style.glow": {
+      "bokeh_discs": false,
+      "ghosts": false,
+      "glow_sources": "emissives_only",
+      "implementation": "compositor_glare_bloom_on_emission_pass",
+      "max_radius_pct_frame_width": 1.5,
+      "star_glare": false,
+      "streaks": false
+    },
+    "look.style.motifs": {
+      "one_sky": {
+        "matched_pair": [
+          "SC05_window",
+          "SC04_SC06_kerb"
+        ],
+        "scenes": [
+          "SC01",
+          "SC02",
+          "SC04",
+          "SC05",
+          "SC06"
+        ]
+      },
+      "phone_glow": {
+        "scenes": [
+          "SC03",
+          "SC04",
+          "SC05",
+          "SC06"
+        ],
+        "states": [
+          "invisible_in_sun",
+          "emerges_at_blackout",
+          "flickers_at_1pct",
+          "steady_while_cranking",
+          "lights_hana",
+          "fades_out"
+        ]
+      },
+      "power_amber": {
+        "carriers": [
+          "car_adapter_ring",
+          "charging_bolt",
+          "crank_pip",
+          "send_progress_line",
+          "sent_tick"
+        ],
+        "hex_ref": "look.color.accent_power_amber",
+        "pattern": "fails_twice_works_third_time",
+        "scenes": [
+          "SC01",
+          "SC03",
+          "SC04"
+        ]
+      }
+    },
+    "look.style.originality_guards": {
+      "borrowed_as_principle": [
+        "everyday_townscape_vocabulary",
+        "one_sky_link_between_two_people"
+      ],
+      "film_light_identity": "handheld_phone_glow_and_amber_power_pip",
+      "max_sky_saturation": 0.4,
+      "not_borrowed": [
+        "hyper_detailed_luminous_backgrounds",
+        "lens_flares",
+        "light_particles_and_sparkles",
+        "sky_or_wire_cutaways",
+        "sky_cross_cut_transitions",
+        "saturated_magic_hour_skies"
+      ],
+      "sky_link_rule": "colour_match_only_one_matched_pair_sc05_window_and_sc04_sc06_kerb"
+    },
+    "look.style.outlines": {
+      "method_alternative": "grease_pencil_line_art",
+      "method_primary": "inverted_hull_solidify",
+      "not_outlined": [
+        "street_set",
+        "houses",
+        "shop_set",
+        "hana_room_set",
+        "sky",
+        "clouds"
+      ],
+      "outlined": [
+        "ren",
+        "hana",
+        "phone_ren",
+        "phone_hana",
+        "crank_charger",
+        "charging_cable",
+        "hana_headphones",
+        "sketchbook",
+        "ren_car"
+      ],
+      "pure_black_allowed": false,
+      "width_pct_frame_height": {
+        "car": 0.1,
+        "character_max": 0.28,
+        "character_medium": 0.14,
+        "character_min": 0.1,
+        "hero_prop": 0.1
+      }
+    },
+    "look.style.phone_ui": {
+      "battery": {
+        "blink_at": 1,
+        "blink_duty": 0.5,
+        "blink_hz": 1.0,
+        "blinking_part": "icon_only",
+        "charging_indicator": "amber_bolt_left_of_icon",
+        "normal_from": 5,
+        "red_from": 4
+      },
+      "call_screen": [
+        "circular_photo_no_name",
+        "green_call_button_handset_glyph",
+        "ring_pulse",
+        "grey_when_unanswered"
+      ],
+      "font": "open_licence_humanist_sans",
+      "hana_phone": {
+        "screen_text": "same_invitation_only_if_shown",
+        "wake": "circular_photo_of_ren_no_name"
+      },
+      "icon_set": "drawn_in_house",
+      "keyboard": {
+        "allowed_glyphs": [
+          "emoji_face_key",
+          "backspace_arrow"
+        ],
+        "key_legends": "none",
+        "press_feedback": "key_darkens"
+      },
+      "map": [
+        "unlabelled_blocks_and_roads",
+        "blue_pin_white_fork_and_knife"
+      ],
+      "message": {
+        "bubble": "sent_bubble_pale_blue",
+        "min_cap_height_pct_frame": 3.5,
+        "min_contrast_ratio": 7.0,
+        "only_readable_text": true,
+        "text": "ink_on_bubble"
+      },
+      "screen_behaviour": {
+        "dip_when_charge_lost": "one_3_frame_dip_to_70pct_in_the_frame_the_bolt_vanishes_sc01_sc03",
+        "flicker_at_1pct": "brightness_dips_to_70pct_for_2_to_3_frames_irregular",
+        "power_off_sc06": "fade_to_screen_off_over_24_frames_ease_out",
+        "steady_from": "first_crank_turn"
+      },
+      "send": {
+        "button": "arrow_pictogram",
+        "delivered": "single_amber_tick",
+        "labels": "none",
+        "progress": "amber_line_about_1s"
+      },
+      "status_bar": [
+        "battery_icon",
+        "battery_percent"
+      ],
+      "status_bar_forbidden": [
+        "clock",
+        "carrier",
+        "signal_bars",
+        "wifi",
+        "any_text"
+      ]
+    },
+    "look.style.realism": {
+      "backgrounds": "soft_painted_no_outlines",
+      "characters": "flat_cel_with_coloured_outlines",
+      "detail_budget": [
+        "faces",
+        "hands",
+        "phone_screen",
+        "crank_charger"
+      ],
+      "engine": "blender_eevee_toon",
+      "hero_props": "flat_cel_with_coloured_outlines",
+      "photographic_elements": "none",
+      "realism_scale_1_graphic_10_photoreal": 3
+    },
+    "look.style.render_constraints": {
+      "display": "sRGB",
+      "engine": "eevee",
+      "exposure": 0.0,
+      "gamma": 1.0,
+      "glass": "painted_highlight_shapes",
+      "look": "None",
+      "motion_blur": false,
+      "raytracing": false,
+      "screen_space_refraction": false,
+      "shadow_softness": "light_radius",
+      "toon_material": "shader_to_rgb_constant_ramp",
+      "view_transform": "Standard",
+      "volumetrics": false
+    },
+    "look.style.sky": {
+      "cloud_tones": 2,
+      "dusk_sky_shared_asset": true,
+      "max_sky_frame_fraction": 0.67,
+      "method": "painted_gradient_plus_flat_cloud_cards",
+      "moon": false,
+      "sky_only_shots": false,
+      "stars": 0,
+      "states": {
+        "dusk": [
+          "SC04",
+          "SC05",
+          "SC06"
+        ],
+        "golden_hour": [
+          "SC01",
+          "SC02",
+          "SC03"
+        ]
+      },
+      "sun_disc_flare": false,
+      "wire_featured_shots": false
+    },
+    "look.style.style_break_protocol": {
+      "declaration": "shot_spec_style_break_block",
+      "max_per_sequence": 1,
+      "pre_approved": [],
+      "required_fields": [
+        "rule",
+        "reason",
+        "serves"
+      ],
+      "review_gate": "G5",
+      "unbreakable": [
+        "L6",
+        "L8",
+        "L12"
+      ]
+    },
+    "look.style.texture_and_grain": {
+      "bump_or_noise_wear": false,
+      "chromatic_aberration": false,
+      "extra_lut": false,
+      "grain": {
+        "amplitude_luma": 0.015,
+        "type": "monochrome",
+        "uniform_across_film": true
+      },
+      "surface_detail": "flat_tone_patches",
+      "vignette_max": 0.1
+    },
+    "world.locations.corner_shop": {
+      "after_blackout": "dark_for_rest_of_film",
+      "ceiling_m": 2.7,
+      "depth_m": 9.0,
+      "direct_sun_inside": false,
+      "door_bell": "mechanical_bell",
+      "frontage_faces": "north",
+      "light_sources": [
+        "ceiling_panels",
+        "fridge_interiors",
+        "fascia_pictogram_sign"
+      ],
+      "sign": "pictogram_basket_icon_no_text",
+      "width_m": 4.5
+    },
+    "world.locations.hana_room": {
+      "ceiling_m": 2.4,
+      "depth_m": 3.6,
+      "desk_under_window": true,
+      "floor": "upstairs",
+      "phone": "face_up_beside_sketchbook",
+      "practical": "desk_lamp_on",
+      "time_of_day": "dusk",
+      "width_m": 3.0,
+      "window_faces": "west",
+      "window_view": "same_dusk_sky_rooftops_wires_silhouette"
+    },
+    "world.locations.hana_room.sketches": {
+      "excluded": [
+        "ren",
+        "hearts",
+        "writing"
+      ],
+      "subjects": [
+        "window_view",
+        "rooftops_and_wires",
+        "plant",
+        "cat",
+        "hands",
+        "cups"
+      ]
+    },
+    "world.locations.ren_car": {
+      "age_years": "15-20",
+      "badges_or_logos": "none",
+      "body": "two_door_hatchback_small_old",
+      "drive": "right_hand",
+      "glovebox_side": "passenger_kerb_side",
+      "kerb_side_door": "passenger",
+      "moves_in_film": false,
+      "parked": "south_kerb_facing_west"
+    },
+    "world.locations.street": {
+      "building_height_m": "6.0-7.5",
+      "car_to_shop_door_m": 12,
+      "carriageway_width_m": 5.5,
+      "east_end": "fades_into_more_houses",
+      "garden_wall_height_m": 1.0,
+      "kerb_height_m": 0.12,
+      "lamp_height_m": 5.0,
+      "length_m": 60,
+      "pavement_width_m": 1.8,
+      "utility_pole_height_m": 9.0,
+      "west_end": "low_railing_open_sky"
+    },
+    "world.props.car_usb_adapter": {
+      "ring_light": "on_until_engine_dies",
+      "size_m": {
+        "diameter": 0.03,
+        "protrusion": 0.04
+      }
+    },
+    "world.props.charging_cable": {
+      "count": 1,
+      "diameter_m": 0.004,
+      "ends": [
+        "phone_plug",
+        "usb_source_plug"
+      ],
+      "length_m": 1.0,
+      "markings": "none",
+      "route": [
+        "SC01_car_adapter",
+        "SC03_shop_socket",
+        "SC04_crank_charger"
+      ]
+    },
+    "world.props.crank_charger": {
+      "body_m": [
+        0.13,
+        0.065,
+        0.042
+      ],
+      "corner_radius_m": 0.012,
+      "crank_arm_length_m": 0.085,
+      "crank_knob_m": {
+        "diameter": 0.02,
+        "length": 0.022
+      },
+      "extras": "none",
+      "folded": "flush_in_top_groove",
+      "indicator_pip": {
+        "diameter_m": 0.006,
+        "glows_while_cranking": true
+      },
+      "markings": "none",
+      "pivot": "one_axis_at_body_end",
+      "port": "usb_same_shape_as_other_sources",
+      "sound": "ratchet_click_per_turn",
+      "wear": "scuffed_corners_unworn_hinge"
+    },
+    "world.props.desk_lamp": {
+      "head": "small_cone",
+      "height_m": 0.4,
+      "switched_on": true
+    },
+    "world.props.hana_headphones": {
+      "band_width_m": 0.18,
+      "cup_diameter_m": 0.085,
+      "logo": "none",
+      "rig": "rigid_prop_two_positions_on_head_and_around_neck",
+      "wireless": true
+    },
+    "world.props.phone_hana": {
+      "distinct_from": "phone_ren",
+      "logo": "none",
+      "not_charging": true,
+      "resting": "face_up_on_desk",
+      "size_m": [
+        0.15,
+        0.072,
+        0.009
+      ]
+    },
+    "world.props.phone_ren": {
+      "case": "plain_soft_matte_worn_corners",
+      "corner_radius_m": 0.009,
+      "logo": "none",
+      "screen": "emissive_plane_ui_from_look_director",
+      "size_m": [
+        0.147,
+        0.071,
+        0.0085
+      ]
+    },
+    "world.props.shop_socket": {
+      "height_from_floor_m": 0.3,
+      "markings": "none",
+      "size_m": [
+        0.146,
+        0.086
+      ],
+      "usb_ports": 2
+    },
+    "world.props.sketchbook": {
+      "drawing": "window_view_in_progress",
+      "open": true,
+      "size_m": [
+        0.3,
+        0.21
+      ],
+      "writing": "none"
+    },
+    "world.rules.no_readable_text": {
+      "allowed_instead": [
+        "pictograms",
+        "simple_shapes",
+        "colour_blocks",
+        "numbers_only_on_phone_ui"
+      ],
+      "clocks": "none",
+      "exceptions": [
+        "the_typed_invitation_on_phone_screens"
+      ],
+      "house_numbers": "none",
+      "number_plates": "blank_plates",
+      "readable_text_in_world": false
+    },
+    "world.rules.nobody_else": {
+      "extras_on_screen": "none",
+      "people_in_windows": false,
+      "shopkeeper": "implied_back_room_never_seen",
+      "traffic": "none_dead_end_street"
+    },
+    "world.rules.one_port": {
+      "cable_count": 1,
+      "same_port_shape": true,
+      "sources": {
+        "SC01": "car_dash_usb_adapter",
+        "SC03": "shop_wall_socket_with_usb_ports",
+        "SC04": "crank_charger_usb_port"
+      }
+    },
+    "world.rules.power": {
+      "car": {
+        "cause": "engine_stalls_weak_old_battery_goes_flat",
+        "restarts": false,
+        "smoke_or_particles": false
+      },
+      "house_windows": "lit_at_dusk",
+      "other_sources_in_reach": "none",
+      "shop": {
+        "cause": "old_single_circuit_trips_when_fridge_compressors_start",
+        "emergency_lighting": false,
+        "his_fault": false,
+        "restored_on_screen": false
+      },
+      "street_lamps": "on_from_sc04_switch_on_off_screen",
+      "street_power": "on_throughout"
+    },
+    "world.rules.season": {
+      "dusk_window": "about_19_15_to_19_45",
+      "season": "early_summer",
+      "sunset_local_time": "about_19_15",
+      "temperature": "mild_warm"
+    },
+    "world.rules.time_and_sun": {
+      "gap_sc03_sc04_min": "about_10",
+      "sc01_sc03": {
+        "continuous": true,
+        "sun_elevation_deg": "about_6",
+        "time_of_day": "golden hour"
+      },
+      "sc04_sc06": {
+        "continuous": true,
+        "phase": "civil_twilight",
+        "sun_elevation_deg": "about_minus_3",
+        "time_of_day": "dusk"
+      },
+      "sc05": {
+        "same_sky_as": [
+          "SC04",
+          "SC06"
+        ],
+        "scenes_heading_says": "evening",
+        "time_of_day": "dusk"
+      },
+      "street_axis": "east_west",
+      "sun_azimuth": "along_street_axis_west",
+      "sunset_on_screen": false
+    },
+    "world.rules.weather": {
+      "clouds": "few_thin_high_clouds_low_in_west",
+      "fog": "none",
+      "ground": "dry",
+      "precipitation": "none",
+      "weather": "clear",
+      "wind": "calm"
+    },
+    "world.sets.corner_shop": {
+      "aisles": {
+        "aisle_width_m": 0.9,
+        "count": 2,
+        "gondola_height_m": 1.5,
+        "gondola_length_m": 5.0
+      },
+      "awning": {
+        "depth_m": 1.0,
+        "height_m": 2.3,
+        "striped": true
+      },
+      "back_room_doorway": {
+        "behind_counter": true,
+        "size_m": [
+          0.8,
+          2.0
+        ],
+        "strip_curtain": true
+      },
+      "ceiling_m": 2.7,
+      "ceiling_panels": 4,
+      "counter": {
+        "position": "front_left",
+        "size_m": [
+          1.8,
+          0.6,
+          1.0
+        ]
+      },
+      "display_stand": {
+        "gap_to_wall_m": 0.25,
+        "size_m": [
+          0.6,
+          0.4,
+          1.3
+        ],
+        "tiered": true
+      },
+      "fascia_sign": {
+        "content": "basket_pictogram",
+        "lit_before_blackout": true,
+        "size_m": [
+          3.0,
+          0.5
+        ]
+      },
+      "footprint_m": [
+        4.5,
+        9.0
+      ],
+      "fridges": {
+        "count": 3,
+        "size_m": [
+          0.7,
+          0.7,
+          2.0
+        ],
+        "wall": "back"
+      },
+      "socket": {
+        "corner": "right",
+        "depth_from_door_m": 8.9,
+        "height_m": 0.3,
+        "wall": "back"
+      }
+    },
+    "world.sets.hana_room": {
+      "ceiling_m": 2.4,
+      "chair": "simple_desk_chair",
+      "desk": {
+        "against": "window_wall",
+        "height_m": 0.72,
+        "size_m": [
+          1.1,
+          0.55
+        ]
+      },
+      "desk_lamp": {
+        "position": "desk_left",
+        "switched_on": true
+      },
+      "detail_zone": "window_wall_and_desk",
+      "footprint_m": [
+        3.0,
+        3.6
+      ],
+      "phone_position": "desk_right_of_sketchbook_face_up",
+      "rest_of_room": "low_detail_in_shadow",
+      "wall_sketches": "4-6_pinned_above_desk",
+      "window": {
+        "curtains": "open",
+        "height_m": 1.1,
+        "sill_height_m": 0.9,
+        "wall": "west",
+        "width_m": 1.2
+      }
+    },
+    "world.sets.ren_car": {
+      "dash_socket": "centre_console_12v_with_usb_adapter",
+      "door_length_m": 1.05,
+      "door_open_angle_deg": 60,
+      "glovebox": {
+        "contents": [
+          "crank_charger",
+          "charging_cable",
+          "paper_napkins"
+        ],
+        "depth_m": 0.2,
+        "lid": "hinged_at_bottom_drops_down",
+        "opening_m": [
+          0.32,
+          0.15
+        ],
+        "reach_from_driver_seat_m": 0.75
+      },
+      "height_m": 1.45,
+      "interior_detail": "front_half_only",
+      "length_m": 3.4,
+      "rear_view_mirror_m": [
+        0.22,
+        0.06
+      ],
+      "seat_height_m": 0.45,
+      "sill_height_m": 0.32,
+      "wheelbase_m": 2.3,
+      "width_m": 1.48,
+      "windscreen_rake_deg": 30
+    },
+    "world.sets.street": {
+      "axes": {
+        "plus_x": "north_across_road",
+        "plus_y": "west_sun_and_shop",
+        "z": "up"
+      },
+      "beyond_railing": "open_sky_and_distant_rooftop_silhouettes",
+      "building_line_north_x": 7.3,
+      "building_line_south_x": -1.8,
+      "car_body_x": [
+        0.2,
+        1.68
+      ],
+      "car_body_y": [
+        -1.85,
+        1.55
+      ],
+      "carriageway_x": [
+        0.0,
+        5.5
+      ],
+      "detail_zone_y": [
+        -20,
+        30
+      ],
+      "lamp_poles": [
+        [
+          -1.5,
+          15.5
+        ],
+        [
+          -1.5,
+          -18.0
+        ]
+      ],
+      "north_pavement_x": [
+        5.5,
+        7.3
+      ],
+      "origin": "south_kerb_edge_at_car_passenger_door_centre",
+      "pavement_z": 0.12,
+      "road_surface_z": 0.0,
+      "shop_door_centre": [
+        -1.8,
+        12.0
+      ],
+      "shop_frontage_y": [
+        10.5,
+        15.0
+      ],
+      "south_pavement_x": [
+        -1.8,
+        0.0
+      ],
+      "utility_poles_extra": [
+        [
+          -1.5,
+          45.0
+        ]
+      ],
+      "west_railing_y": 30
+    }
+  },
+  "format": {
+    "aspect_ratio": 1.7778,
+    "fps": 24,
+    "resolution_px": [
+      1920,
+      1080
+    ],
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0
+  },
+  "scenes": [
+    {
+      "characters": [
+        "ren"
+      ],
+      "frame_end": 527,
+      "frame_start": 0,
+      "heading": "INT. REN'S CAR - GOLDEN HOUR",
+      "location": "ren's car (interior), parked on the street",
+      "scene_id": "SC01",
+      "shots": [
+        "SC01_SH010",
+        "SC01_SH020",
+        "SC01_SH030",
+        "SC01_SH040",
+        "SC01_SH050",
+        "SC01_SH060",
+        "SC01_SH070",
+        "SC01_SH080",
+        "SC01_SH090",
+        "SC01_SH100",
+        "SC01_SH110",
+        "SC01_SH120",
+        "SC01_SH130",
+        "SC01_SH140",
+        "SC01_SH150"
+      ],
+      "time_of_day": "golden hour",
+      "weather": "clear"
+    },
+    {
+      "characters": [
+        "ren"
+      ],
+      "frame_end": 575,
+      "frame_start": 528,
+      "heading": "EXT. STREET - GOLDEN HOUR",
+      "location": "street",
+      "scene_id": "SC02",
+      "shots": [
+        "SC02_SH010",
+        "SC02_SH020",
+        "SC02_SH030"
+      ],
+      "time_of_day": "golden hour",
+      "weather": "clear"
+    },
+    {
+      "characters": [
+        "ren"
+      ],
+      "frame_end": 815,
+      "frame_start": 576,
+      "heading": "INT. CORNER SHOP - GOLDEN HOUR",
+      "location": "corner shop (interior)",
+      "scene_id": "SC03",
+      "shots": [
+        "SC03_SH010",
+        "SC03_SH020",
+        "SC03_SH030",
+        "SC03_SH040",
+        "SC03_SH050",
+        "SC03_SH060",
+        "SC03_SH070"
+      ],
+      "time_of_day": "golden hour",
+      "weather": "clear"
+    },
+    {
+      "characters": [
+        "ren"
+      ],
+      "frame_end": 1249,
+      "frame_start": 816,
+      "heading": "EXT. STREET, KERB BY REN'S CAR - DUSK",
+      "location": "street, kerb beside ren's car",
+      "scene_id": "SC04",
+      "shots": [
+        "SC04_SH010",
+        "SC04_SH020",
+        "SC04_SH030",
+        "SC04_SH040",
+        "SC04_SH050",
+        "SC04_SH060",
+        "SC04_SH070",
+        "SC04_SH080",
+        "SC04_SH090"
+      ],
+      "time_of_day": "dusk",
+      "weather": "clear"
+    },
+    {
+      "characters": [
+        "hana"
+      ],
+      "frame_end": 1357,
+      "frame_start": 1250,
+      "heading": "INT. HANA'S ROOM - EVENING",
+      "location": "hana's room, desk by the window",
+      "scene_id": "SC05",
+      "shots": [
+        "SC05_SH010",
+        "SC05_SH020",
+        "SC05_SH030"
+      ],
+      "time_of_day": "evening",
+      "weather": "clear"
+    },
+    {
+      "characters": [
+        "ren"
+      ],
+      "frame_end": 1439,
+      "frame_start": 1358,
+      "heading": "EXT. STREET, KERB BY REN'S CAR - DUSK - MOMENTS LATER",
+      "location": "street, kerb beside ren's car",
+      "scene_id": "SC06",
+      "shots": [
+        "SC06_SH010"
+      ],
+      "time_of_day": "dusk",
+      "weather": "clear"
+    }
+  ],
+  "schema": "fm.resolved_film/1",
+  "shots": {
+    "SC01_SH010": {
+      "frames": 40,
+      "start": 0
+    },
+    "SC01_SH020": {
+      "frames": 38,
+      "start": 40
+    },
+    "SC01_SH030": {
+      "frames": 28,
+      "start": 78
+    },
+    "SC01_SH040": {
+      "frames": 30,
+      "start": 106
+    },
+    "SC01_SH050": {
+      "frames": 44,
+      "start": 136
+    },
+    "SC01_SH060": {
+      "frames": 34,
+      "start": 180
+    },
+    "SC01_SH070": {
+      "frames": 58,
+      "start": 214
+    },
+    "SC01_SH080": {
+      "frames": 30,
+      "start": 272
+    },
+    "SC01_SH090": {
+      "frames": 24,
+      "start": 302
+    },
+    "SC01_SH100": {
+      "frames": 48,
+      "start": 326
+    },
+    "SC01_SH110": {
+      "frames": 32,
+      "start": 374
+    },
+    "SC01_SH120": {
+      "frames": 20,
+      "start": 406
+    },
+    "SC01_SH130": {
+      "frames": 34,
+      "start": 426
+    },
+    "SC01_SH140": {
+      "frames": 32,
+      "start": 460
+    },
+    "SC01_SH150": {
+      "frames": 36,
+      "start": 492
+    },
+    "SC02_SH010": {
+      "frames": 18,
+      "start": 528
+    },
+    "SC02_SH020": {
+      "frames": 14,
+      "start": 546
+    },
+    "SC02_SH030": {
+      "frames": 16,
+      "start": 560
+    },
+    "SC03_SH010": {
+      "frames": 52,
+      "start": 576
+    },
+    "SC03_SH020": {
+      "frames": 36,
+      "start": 628
+    },
+    "SC03_SH030": {
+      "frames": 26,
+      "start": 664
+    },
+    "SC03_SH040": {
+      "frames": 22,
+      "start": 690
+    },
+    "SC03_SH050": {
+      "frames": 30,
+      "start": 712
+    },
+    "SC03_SH060": {
+      "frames": 26,
+      "start": 742
+    },
+    "SC03_SH070": {
+      "frames": 48,
+      "start": 768
+    },
+    "SC04_SH010": {
+      "frames": 46,
+      "start": 816
+    },
+    "SC04_SH020": {
+      "frames": 32,
+      "start": 862
+    },
+    "SC04_SH030": {
+      "frames": 36,
+      "start": 894
+    },
+    "SC04_SH040": {
+      "frames": 60,
+      "start": 930
+    },
+    "SC04_SH050": {
+      "frames": 80,
+      "start": 990
+    },
+    "SC04_SH060": {
+      "frames": 68,
+      "start": 1070
+    },
+    "SC04_SH070": {
+      "frames": 26,
+      "start": 1138
+    },
+    "SC04_SH080": {
+      "frames": 58,
+      "start": 1164
+    },
+    "SC04_SH090": {
+      "frames": 28,
+      "start": 1222
+    },
+    "SC05_SH010": {
+      "frames": 24,
+      "start": 1250
+    },
+    "SC05_SH020": {
+      "frames": 32,
+      "start": 1274
+    },
+    "SC05_SH030": {
+      "frames": 52,
+      "start": 1306
+    },
+    "SC06_SH010": {
+      "frames": 82,
+      "start": 1358
+    }
+  },
+  "total_frames": 1440
+}

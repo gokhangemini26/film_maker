@@ -134,6 +134,35 @@ def resolve_shot(project: Project, loaded: Loaded, shot_id: str, table: dict, fm
     return out, sorted(r for r in from_refs if loaded.current_hash(r) is not None)
 
 
+BUNDLE_PREFIXES = ("world.sets.", "world.props.", "world.locations.", "world.rules.", "characters.",
+                   "look.color.", "look.style.", "look.lighting.", "look.exposure.", "camera.")
+
+
+def film_bundle(loaded: Loaded, fmt: dict, table: dict) -> tuple[dict[str, Any], list[str]]:
+    """Everything a builder needs that is not per-shot: format, scene ranges, expanded canon subsets."""
+    ex = _Expander(loaded)
+    canon = {cid: ex.walk(it.entry.value, expand_refs=False)
+             for cid, it in sorted(loaded.canon.items()) if cid.startswith(BUNDLE_PREFIXES)}
+    scenes = []
+    idx = loaded.scene_index
+    for sc in (idx.scenes if idx else []):
+        rows = [(sid, t) for sid, t in table.items()
+                if next((s for s in loaded.shots.values() if s.spec.shot_id == sid), None).spec.scene_id == sc.scene_id]
+        start = min((t["start"] for _, t in rows), default=None)
+        end = max((t["start"] + t["frames"] - 1 for _, t in rows), default=None)
+        scenes.append({"scene_id": sc.scene_id, "heading": sc.heading, "location": sc.location,
+                       "time_of_day": sc.time_of_day, "weather": sc.weather,
+                       "characters": sc.characters, "frame_start": start, "frame_end": end,
+                       "shots": [sid for sid, _ in rows]})
+    total = sum(v["frames"] for v in table.values())
+    data = {"schema": "fm.resolved_film/1", "format": fmt, "total_frames": total, "scenes": scenes,
+            "shots": table, "canon": canon}
+    refs = sorted({f"canon:{c}" for c in canon} | {s.ref for s in loaded.shots.values()})
+    if loaded.scene_index is not None:
+        refs += [a.ref for a in loaded.artifacts.values() if a.meta.kind == "scene_index"]
+    return data, sorted(set(r for r in refs if loaded.current_hash(r) is not None))
+
+
 def resolve(project: Project, scope: str = "film") -> dict[str, Any]:
     """Resolve every shot in SCOPE. Rewrites a file only when its content changed."""
     loaded = project.load()
@@ -161,6 +190,17 @@ def resolve(project: Project, scope: str = "film") -> dict[str, Any]:
             continue
         record_derived(project, f"resolved:{sid}", from_refs, file=path, producer="fm.resolve")
         changed.append(sid)
+    # the film bundle is always current: cheap, and every builder needs it
+    bundle, brefs = film_bundle(loaded, fmt, table)
+    bpath = project.dir / RESOLVED_DIR / "film.json"
+    before = hash_file_bytes(bpath) if bpath.exists() else None
+    write_json(bpath, bundle)
+    brec = loaded.derived.get("resolved:film")
+    if not (before == hash_file_bytes(bpath) and brec is not None
+            and all(loaded.current_hash(d.ref) == d.hash for d in brec.derived_from)
+            and {d.ref for d in brec.derived_from} == set(brefs)):
+        record_derived(project, "resolved:film", brefs, file=bpath, producer="fm.resolve")
+        changed.append("film")
     total = sum(v["frames"] for v in table.values())
     return {"scope": scope, "resolved": changed, "unchanged": unchanged,
             "film_frames": total, "film_seconds": round(total / fmt["fps"], 4), "fps": fmt["fps"]}

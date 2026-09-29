@@ -26,22 +26,23 @@ def test_resolve_writes_deterministic_files_and_records_derived_nodes(sandbox):
     _storyboard(sandbox)
     r = resolve(sandbox)
     assert r["resolved"] and r["film_frames"] > 0
-    files = sorted((sandbox.dir / "09_resolved").glob("*.json"))
-    assert len(files) == len(r["resolved"])
+    files = sorted(f for f in (sandbox.dir / "09_resolved").glob("*.json") if f.name != "film.json")
+    assert (sandbox.dir / "09_resolved" / "film.json").exists()
+    assert len(files) == len([x for x in r["resolved"] if x != "film"])
     data = json.loads(files[0].read_text())
     assert data["schema"] == "fm.resolved_shot/1"
     assert data["frames"]["count"] >= 1 and data["frames"]["start"] == 0
     loaded = sandbox.load()
     assert f"resolved:{data['shot_id']}" in loaded.derived
     again = resolve(sandbox)                              # idempotent: nothing changes
-    assert again["resolved"] == [] and set(again["unchanged"]) == set(r["resolved"])
+    assert again["resolved"] == [] and set(again["unchanged"]) == set(r["resolved"]) - {"film"}
     assert files[0].read_bytes() == (sandbox.dir / "09_resolved" / files[0].name).read_bytes()
 
 
 def test_resolved_goes_stale_when_a_shot_changes_and_only_that_shot_is_redone(sandbox):
     _storyboard(sandbox)
     first = resolve(sandbox)
-    if len(first["resolved"]) < 2:
+    if len(first["resolved"]) < 3:
         pytest.skip("fixture has a single shot")
     victim = sandbox.load().shots
     item = sorted(victim.values(), key=lambda s: s.spec.shot_id)[0]
