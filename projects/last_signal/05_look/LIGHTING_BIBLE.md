@@ -3,7 +3,7 @@ fm:
   id: lighting_bible
   kind: lighting_bible
   phase: LOOK
-  status: PROPOSED
+  status: APPROVED
   owner_role: look-director
   derived_from:
   - ref: artifact:color_bible

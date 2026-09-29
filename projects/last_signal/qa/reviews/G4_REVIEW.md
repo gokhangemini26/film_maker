@@ -3,7 +3,7 @@ fm:
   id: g4_review
   kind: gate_review
   phase: LOOK
-  status: PROPOSED
+  status: APPROVED
   owner_role: qa-supervisor
   derived_from:
   - ref: artifact:visual_bible

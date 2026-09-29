@@ -1,7 +1,5 @@
 domain: look
 entries:
-
-# ---------------------------------------------------------------- style
 - id: look.style.realism
   statement: |
     Cel-shaded Japanese-animation stylisation, about 3 on a scale where 1 is flat graphic
@@ -14,7 +12,11 @@ entries:
     characters: flat_cel_with_coloured_outlines
     hero_props: flat_cel_with_coloured_outlines
     backgrounds: soft_painted_no_outlines
-    detail_budget: [faces, hands, phone_screen, crank_charger]
+    detail_budget:
+    - faces
+    - hands
+    - phone_screen
+    - crank_charger
     photographic_elements: none
     engine: blender_eevee_toon
   rationale: |
@@ -27,13 +29,16 @@ entries:
     intent.soft_but_cinematic. Rejected: a semi-real 3D look with subsurface skin and PBR
     cloth, which exposes the proxy bodies and cannot hold a pastel palette. Also rejected: a
     fully flat, unlit graphic look, which is soft but not cinematic.
-  serves: [intent.anime_feel, intent.soft_but_cinematic]
-  depends_on: [characters.ren.representation, characters.hana.representation]
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  depends_on:
+  - characters.ren.representation
+  - characters.hana.representation
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.character_shading
   statement: |
     Characters and hero props use hard two-tone cel shading: a lit tone and a shadow tone
@@ -65,13 +70,15 @@ entries:
     Limiting specular to the eyes keeps faces readable in the phone glow, where glossy skin
     would compete with the screen. Rejected: three or more tones (a painterly-3D look that
     shows up simple proxy geometry) and soft-ramp toon (reads as unfinished CG).
-  serves: [intent.anime_feel, intent.soft_but_cinematic]
-  depends_on: [look.style.realism]
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.style.realism
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.background_shading
   statement: |
     Sets (street, houses, shop, car exterior beyond the hero panels, Hana's room) are
@@ -93,13 +100,15 @@ entries:
     hyper-detailed, photo-based backgrounds (expensive, pull toward one well-known
     director's signature, see look.style.originality_guards) and outlined backgrounds
     (busy, and they flatten the depth staging).
-  serves: [intent.anime_feel, intent.soft_but_cinematic]
-  depends_on: [look.style.realism]
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.style.realism
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.outlines
   statement: |
     Coloured outlines on characters and hero props only: Ren, Hana, both phones, the crank
@@ -118,13 +127,19 @@ entries:
     - hana_headphones
     - sketchbook
     - ren_car
-    not_outlined: [street_set, houses, shop_set, hana_room_set, sky, clouds]
+    not_outlined:
+    - street_set
+    - houses
+    - shop_set
+    - hana_room_set
+    - sky
+    - clouds
     width_pct_frame_height:
       character_medium: 0.14
-      character_min: 0.10
+      character_min: 0.1
       character_max: 0.28
-      hero_prop: 0.10
-      car: 0.10
+      hero_prop: 0.1
+      car: 0.1
     pure_black_allowed: false
     method_primary: inverted_hull_solidify
     method_alternative: grease_pencil_line_art
@@ -136,16 +151,20 @@ entries:
     image. Inverted hull is engine-independent and works in EEVEE with no extra render
     pass. Rejected: black ink lines (hard, comic-book), and lines on everything (clutter,
     and the painted-background depth is lost).
-  serves: [intent.anime_feel, intent.soft_but_cinematic, intent.race_against_battery]
-  depends_on: [look.style.realism, look.color.outline]
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - look.style.realism
+  - look.color.outline
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
   notes: |
     ASSUMPTION: Blender 5.2 EEVEE supports inverted-hull outlines (solidify, flipped
     normals, backface culling) and Grease Pencil Line Art as today. Verify at M3.
-
 - id: look.style.texture_and_grain
   statement: |
     Surfaces are matte and simple. Wear, as the art direction describes it (fade, scuffs),
@@ -161,7 +180,7 @@ entries:
       type: monochrome
       amplitude_luma: 0.015
       uniform_across_film: true
-    vignette_max: 0.10
+    vignette_max: 0.1
     chromatic_aberration: false
     extra_lut: false
   rationale: |
@@ -172,13 +191,15 @@ entries:
     grain or paper overlays (gritty, and they fight the phone text), and no grain at all
     (a clean digital surface reads as flat animation, the thing
     intent.soft_but_cinematic says it should not be).
-  serves: [intent.soft_but_cinematic, intent.anime_feel]
-  depends_on: [look.style.realism]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.anime_feel
+  depends_on:
+  - look.style.realism
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.atmosphere
   statement: |
     No fog, haze volumes, rain, dust motes, floating light particles, god rays or lens
@@ -195,7 +216,7 @@ entries:
       start_m: 10
       end_m: 60
       tint_at_end: 0.35
-      silhouette_cards_tint: 0.60
+      silhouette_cards_tint: 0.6
       tint_target: scene_horizon_colour
       implementation: mist_pass_mix_in_compositor
   rationale: |
@@ -206,13 +227,16 @@ entries:
     with the well-known director G3 named (see look.style.originality_guards). Rejected:
     light volumetric haze at golden hour (beautiful but expensive in EEVEE, not motivated
     by clear air, and it softens the phone glow's contrast later).
-  serves: [intent.soft_but_cinematic, intent.anime_feel]
-  depends_on: [world.rules.weather, look.style.originality_guards]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.anime_feel
+  depends_on:
+  - world.rules.weather
+  - look.style.originality_guards
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.glow
   statement: |
     Only emissive sources glow: the phone screens, the amber power lights, the shop
@@ -233,13 +257,15 @@ entries:
     washing out and keeps light sources small and personal. Rejected: wide bloom over
     the sky and highlights (dreamy, saccharine, tone.anti_goals) and bokeh discs from the
     lamps and windows (a sparkle look the film avoids, look.style.originality_guards).
-  serves: [intent.soft_but_cinematic, intent.race_against_battery]
-  depends_on: [look.style.atmosphere]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - look.style.atmosphere
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.sky
   statement: |
     The sky is a painted gradient with a few flat cloud cards, each cloud in two tones
@@ -253,8 +279,14 @@ entries:
     method: painted_gradient_plus_flat_cloud_cards
     cloud_tones: 2
     states:
-      golden_hour: [SC01, SC02, SC03]
-      dusk: [SC04, SC05, SC06]
+      golden_hour:
+      - SC01
+      - SC02
+      - SC03
+      dusk:
+      - SC04
+      - SC05
+      - SC06
     dusk_sky_shared_asset: true
     max_sky_frame_fraction: 0.67
     sky_only_shots: false
@@ -272,14 +304,25 @@ entries:
     (tone.anti_goals). Rejected: sky-dominant cutaways and wire-silhouette transitions (the
     signature G3 warned against), and an HDRI or photographic sky (licence UNKNOWN,
     photographic detail breaks the cel look).
-  serves: [intent.soft_but_cinematic, intent.open_hopeful_ending, intent.anime_feel]
-  depends_on: [world.rules.time_and_sun, world.rules.weather, look.style.originality_guards]
-  applies_to: [SC01, SC02, SC03, SC04, SC05, SC06]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.open_hopeful_ending
+  - intent.anime_feel
+  depends_on:
+  - world.rules.time_and_sun
+  - world.rules.weather
+  - look.style.originality_guards
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC05
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.originality_guards
   statement: |
     Originality choices against the Shinkai-adjacency risk (G3 finding 9). This film
@@ -303,7 +346,7 @@ entries:
     - saturated_magic_hour_skies
     film_light_identity: handheld_phone_glow_and_amber_power_pip
     sky_link_rule: colour_match_only_one_matched_pair_sc05_window_and_sc04_sc06_kerb
-    max_sky_saturation: 0.40
+    max_sky_saturation: 0.4
   rationale: |
     CREATIVE_DIRECTION's originality statement makes the phone the second character and
     the crank the heart. The look puts the film's light where those are: in the hand, not
@@ -313,16 +356,21 @@ entries:
     world canon's townscape and shared sky intact. Rejected: dropping the wires or the
     shared sky (both are locked world canon and carry intent.anime_feel and the ending)
     and a deliberately "anti-anime" look (would break intent.anime_feel).
-  serves: [intent.anime_feel, intent.earned_last_signal, intent.soft_but_cinematic]
-  depends_on: [world.setting, world.locations.street, world.rules.time_and_sun]
+  serves:
+  - intent.anime_feel
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.setting
+  - world.locations.street
+  - world.rules.time_and_sun
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
   notes: |
     Named works appear here only as the risk to avoid, as the G3 review names them. Nothing
     is taken from them as a spec (film-conventions/ORIGINALITY.md).
-
 - id: look.style.composition
   statement: |
     Composition rules for the cinematographer. (1) Comic section (SC01-SC03): geometric,
@@ -335,12 +383,18 @@ entries:
     element inside the head-and-hands area of any frame it appears in.
   value:
     comic:
-      scenes: [SC01, SC02, SC03]
+      scenes:
+      - SC01
+      - SC02
+      - SC03
       horizon: middle_or_upper_third
       symmetry: allowed_for_world_beats_him_frames
       framing: geometric_ground_heavy
     tender:
-      scenes: [SC04, SC05, SC06]
+      scenes:
+      - SC04
+      - SC05
+      - SC06
       horizon: lower_third
       symmetry: false
       framing: off_centre_closer_lead_space
@@ -355,13 +409,17 @@ entries:
     frames give him air. The phone-brightest rule extends ART_DIRECTION_BIBLE principle 2
     into composition. Rejected: a single consistent framing grammar (loses the turn) and
     DoF-only depth (flattens painted backgrounds and invites bokeh).
-  serves: [intent.comic_then_tender, intent.soft_but_cinematic, intent.race_against_battery]
-  depends_on: [tone.the_turn, look.style.sky]
+  serves:
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - tone.the_turn
+  - look.style.sky
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.motifs
   statement: |
     Three visual motifs. (1) The phone's glow on a face: invisible in the sun (it only
@@ -372,17 +430,41 @@ entries:
     over the comedy, dusk over the tenderness, the same dusk at his kerb and in her window.
   value:
     phone_glow:
-      scenes: [SC03, SC04, SC05, SC06]
-      states: [invisible_in_sun, emerges_at_blackout, flickers_at_1pct, steady_while_cranking,
-        lights_hana, fades_out]
+      scenes:
+      - SC03
+      - SC04
+      - SC05
+      - SC06
+      states:
+      - invisible_in_sun
+      - emerges_at_blackout
+      - flickers_at_1pct
+      - steady_while_cranking
+      - lights_hana
+      - fades_out
     power_amber:
       hex_ref: look.color.accent_power_amber
-      carriers: [car_adapter_ring, charging_bolt, crank_pip, send_progress_line, sent_tick]
+      carriers:
+      - car_adapter_ring
+      - charging_bolt
+      - crank_pip
+      - send_progress_line
+      - sent_tick
       pattern: fails_twice_works_third_time
-      scenes: [SC01, SC03, SC04]
+      scenes:
+      - SC01
+      - SC03
+      - SC04
     one_sky:
-      scenes: [SC01, SC02, SC04, SC05, SC06]
-      matched_pair: [SC05_window, SC04_SC06_kerb]
+      scenes:
+      - SC01
+      - SC02
+      - SC04
+      - SC05
+      - SC06
+      matched_pair:
+      - SC05_window
+      - SC04_SC06_kerb
   rationale: |
     The glow is the thread CREATIVE_DIRECTION recommends for the look, and giving it states
     turns the phone's light into the emotional track of the film. Giving every
@@ -393,13 +475,20 @@ entries:
     link. Rejected: more motifs (with a 60 s film, a fourth motif would not be learned),
     and a green charging bolt and tick (the usual phone convention), which would split the
     power story across two colours.
-  serves: [intent.earned_last_signal, intent.race_against_battery, intent.open_hopeful_ending, intent.comic_then_tender]
-  depends_on: [world.rules.one_port, world.props.crank_charger, world.props.car_usb_adapter, world.rules.time_and_sun]
+  serves:
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  - intent.open_hopeful_ending
+  - intent.comic_then_tender
+  depends_on:
+  - world.rules.one_port
+  - world.props.crank_charger
+  - world.props.car_usb_adapter
+  - world.rules.time_and_sun
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.style.phone_ui
   statement: |
     The phone screen talks in icons, numbers and colour only. Status bar: the battery icon
@@ -417,8 +506,15 @@ entries:
     charging is lost (SC01, SC03), an irregular flicker at 1 % until the first crank turn,
     then steady, and a 24-frame fade to off in SC06.
   value:
-    status_bar: [battery_icon, battery_percent]
-    status_bar_forbidden: [clock, carrier, signal_bars, wifi, any_text]
+    status_bar:
+    - battery_icon
+    - battery_percent
+    status_bar_forbidden:
+    - clock
+    - carrier
+    - signal_bars
+    - wifi
+    - any_text
     battery:
       normal_from: 5
       red_from: 4
@@ -427,11 +523,19 @@ entries:
       blink_duty: 0.5
       blinking_part: icon_only
       charging_indicator: amber_bolt_left_of_icon
-    call_screen: [circular_photo_no_name, green_call_button_handset_glyph, ring_pulse, grey_when_unanswered]
-    map: [unlabelled_blocks_and_roads, blue_pin_white_fork_and_knife]
+    call_screen:
+    - circular_photo_no_name
+    - green_call_button_handset_glyph
+    - ring_pulse
+    - grey_when_unanswered
+    map:
+    - unlabelled_blocks_and_roads
+    - blue_pin_white_fork_and_knife
     keyboard:
       key_legends: none
-      allowed_glyphs: [emoji_face_key, backspace_arrow]
+      allowed_glyphs:
+      - emoji_face_key
+      - backspace_arrow
       press_feedback: key_darkens
     message:
       bubble: sent_bubble_pale_blue
@@ -464,12 +568,28 @@ entries:
     the number readable at 1 %. Rejected: a realistic OS UI (status-bar text, carrier,
     clock), a dark-mode UI (too little light on his face for the glow motif), and blurred
     keyboard letters (they still read as text, world.rules.no_readable_text).
-  serves: [intent.race_against_battery, intent.earned_last_signal, intent.open_hopeful_ending]
-  depends_on: [tone.wordless, story.escalation, story.message, story.inciting_incident, story.setup_cues,
-    world.rules.no_readable_text, world.props.phone_ren, world.props.phone_hana]
-  applies_to: [SC01, SC02, SC03, SC04, SC05, SC06]
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  - intent.open_hopeful_ending
+  depends_on:
+  - tone.wordless
+  - story.escalation
+  - story.message
+  - story.inciting_incident
+  - story.setup_cues
+  - world.rules.no_readable_text
+  - world.props.phone_ren
+  - world.props.phone_hana
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC05
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
   notes: |
@@ -477,7 +597,6 @@ entries:
     as Noto Sans or Inter (their OFL status is an ASSUMPTION to verify at M3). The icon set
     is drawn in-house, so no licence question. The call-button green is from the approved
     SCREENPLAY ("A green call icon").
-
 - id: look.style.render_constraints
   statement: |
     Render-look constraints for M3: Blender 5.2 EEVEE; toon materials built as Shader to
@@ -510,17 +629,21 @@ entries:
     laptop. Rejected: AgX with a grade (more cinematic range, but the hexes would stop
     meaning what canon says) and ray-traced glass (cost, and realistic reflections break
     the cel look).
-  serves: [intent.anime_feel, intent.soft_but_cinematic, intent.race_against_battery]
-  depends_on: [look.style.realism, look.style.character_shading]
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - look.style.realism
+  - look.style.character_shading
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
   notes: |
     ASSUMPTION: Blender 5.2 keeps the Standard view transform, Shader to RGB in EEVEE, and
     the compositor Glare node. All three exist in Blender 4.x. Verify with `fm doctor` / the
     M3 builder.
-
 - id: look.style.style_break_protocol
   statement: |
     A shot may break a style-lock rule (VISUAL_BIBLE L1-L23) only by declaring
@@ -529,71 +652,88 @@ entries:
     L8 (phone UI text) and L12 (sky/originality) may not be broken at all.
   value:
     declaration: shot_spec_style_break_block
-    required_fields: [rule, reason, serves]
+    required_fields:
+    - rule
+    - reason
+    - serves
     review_gate: G5
     max_per_sequence: 1
     pre_approved: []
-    unbreakable: [L6, L8, L12]
+    unbreakable:
+    - L6
+    - L8
+    - L12
   rationale: |
     A style lock with no exit gets broken quietly. A declared, reviewed break keeps
     exceptions visible and traceable. The three unbreakable rules protect user
     requirements and G3's originality finding: breaking them would undo tone.wordless or
     the one meter. Rejected: pre-approving a break (none is needed by the approved
     screenplay).
-  serves: [intent.soft_but_cinematic, intent.race_against_battery]
-  depends_on: [look.style.phone_ui, look.color.rule.only_red, look.style.sky]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - look.style.phone_ui
+  - look.color.rule.only_red
+  - look.style.sky
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
-# ---------------------------------------------------------------- colour
 - id: look.color.primary
   statement: Warm cream, the lit side of the world (plaster, paper, pale surfaces in key light).
-  value: "#F1E4CF"
+  value: '#F1E4CF'
   rationale: |
     A warm, light, low-saturation base makes the film read as pastel at first sight
     (intent.soft_but_cinematic) and leaves the saturated accents (battery red, power
     amber) with nothing competing. Rejected: pure white (clinical, and brighter than the
     phone screen near faces) and a saturated golden base (spends saturation the accents need).
-  serves: [intent.soft_but_cinematic]
+  serves:
+  - intent.soft_but_cinematic
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.secondary
-  statement: Dusk lavender, the shadow and ambient family (shadow tints, dusk ambient, cool side of the split).
-  value: "#A79FC6"
+  statement: Dusk lavender, the shadow and ambient family (shadow tints, dusk ambient, cool side of the
+    split).
+  value: '#A79FC6'
   rationale: |
     Lavender shadows are the cool half of the warm/cool split, and they keep shadows pastel
     rather than grey or black (tone.anti_goals: never gritty). The same family is the dusk
     ambient, so the tender section is literally made of the comic section's shadows, which
     ties the two halves into one film. Rejected: blue-grey shadows (cold, sad) and warm
     brown shadows (muddy with the golden light).
-  serves: [intent.soft_but_cinematic, intent.comic_then_tender]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.comic_then_tender
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.accent_battery_red
   statement: Battery red. The battery icon fill and percentage from 4 % down, and blinking at 1 %.
-  value: "#E5483B"
+  value: '#E5483B'
   rationale: |
     The most saturated colour in the film, so the eye finds the stake in any insert
     (intent.race_against_battery, CREATIVE_DIRECTION "Colour as story"). It is a warm red
     at hue about 5 degrees, clearly apart from the power amber (hue about 40) so the two
     never read as one signal. Rejected: an orange-red (too close to amber and to the
     afterglow).
-  serves: [intent.race_against_battery]
-  depends_on: [story.escalation]
-  applies_to: [SC01, SC02, SC03, SC04, SC06]
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - story.escalation
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.rule.only_red
   statement: |
     Battery red is the only red. Nowhere else in any frame, on sets, props, characters,
@@ -604,12 +744,23 @@ entries:
     room, and both characters. One proposed exception, for the human to confirm: the heart
     pictogram typed and deleted in SC04 uses battery red (look.color.ui_heart).
   value:
-    hex: "#E5483B"
-    red_band_deg: [345, 20]
-    pink_band_deg: [300, 345]
+    hex: '#E5483B'
+    red_band_deg:
+    - 345
+    - 20
+    pink_band_deg:
+    - 300
+    - 345
     max_saturation_outside_battery: 0.35
-    applies_to_everything: [sets, props, characters, lights, sky, phone_ui]
-    exceptions_proposed: [ui_heart_sc04]
+    applies_to_everything:
+    - sets
+    - props
+    - characters
+    - lights
+    - sky
+    - phone_ui
+    exceptions_proposed:
+    - ui_heart_sc04
   rationale: |
     The battery percentage is the film's only meter (story.escalation). If red appears
     anywhere else the eye has to sort signals, and at 1 % a red pip beside a red battery
@@ -618,44 +769,52 @@ entries:
     low cap still allows the peach and mauve of dusk. The heart exception is argued in
     look.color.ui_heart. Rejected: "few reds" as in the direction (not checkable) and
     banning warm hues altogether (kills golden hour).
-  serves: [intent.race_against_battery, intent.earned_last_signal]
-  depends_on: [story.escalation, world.props.crank_charger, world.props.car_usb_adapter]
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - story.escalation
+  - world.props.crank_charger
+  - world.props.car_usb_adapter
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
   notes: |
     Characters already comply (CHARACTER_BIBLE ground rule: no red or pink). The sky's dusty
     mauve stop (#D7BFC8, hue about 338, S about 0.11) is inside the pink band but far below
     the cap.
-
 - id: look.color.ui_heart
   statement: |
     The heart pictogram Ren types at the end of the invitation and then deletes (SC04) is
     battery red. It is the one proposed exception to look.color.rule.only_red, on screen
     for about 2 s, inside the phone only.
-  value: "#E5483B"
+  value: '#E5483B'
   rationale: |
     A heart must read as "love" at a glance in an insert with no words (story.setup_cues).
     The red heart does that best. Sharing the battery's red says the one thing he is
     risking alongside the battery, and deleting it takes the second red off the screen,
     leaving only the stake, which is what he keeps for the dinner. Rejected: an ink-dark
     heart (reads as sad or ironic) and an amber heart (confuses the power colour).
-  serves: [intent.open_hopeful_ending, intent.race_against_battery]
-  depends_on: [story.setup_cues, look.color.accent_battery_red]
-  applies_to: [SC04]
+  serves:
+  - intent.open_hopeful_ending
+  - intent.race_against_battery
+  depends_on:
+  - story.setup_cues
+  - look.color.accent_battery_red
+  applies_to:
+  - SC04
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
   notes: Human question at G4 (keep the red exception, or an ink heart with no exception).
-
 - id: look.color.accent_power_amber
   statement: |
     Power amber: the one colour for power flowing. Used on the car adapter's ring light,
     the charging bolt, the crank's indicator pip, the send progress line and the sent tick,
     and nowhere else at this saturation.
-  value: "#F5B940"
+  value: '#F5B940'
   rationale: |
     One colour for every sign of power makes world.rules.one_port's rhyme readable (it
     fails twice, then works) and lets the tick inherit the pip's colour, so delivery reads
@@ -665,36 +824,46 @@ entries:
     never read as this accent. Rejected: a red pip and ring (G3 finding 8), and green for
     the bolt and tick (the usual convention, but it splits the power story across two
     colours).
-  serves: [intent.earned_last_signal, intent.race_against_battery]
-  depends_on: [world.rules.one_port, world.props.crank_charger, world.props.car_usb_adapter]
-  applies_to: [SC01, SC03, SC04]
+  serves:
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  depends_on:
+  - world.rules.one_port
+  - world.props.crank_charger
+  - world.props.car_usb_adapter
+  applies_to:
+  - SC01
+  - SC03
+  - SC04
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.accent_call_green
   statement: The call button green, only on the call screen in SC01.
-  value: "#5DB37E"
+  value: '#5DB37E'
   rationale: |
     The approved SCREENPLAY specifies a green call icon, and green is the one colour every
     viewer reads as "call" without a label (tone.wordless). A soft, slightly blue green
     stays in the pastel family and keeps it apart from the amber and the red. It turns grey
     when the call goes unanswered, so it never returns. Rejected: a saturated pure green
     (too loud for the palette).
-  serves: [intent.race_against_battery]
-  depends_on: [story.inciting_incident, tone.wordless]
-  applies_to: [SC01]
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - story.inciting_incident
+  - tone.wordless
+  applies_to:
+  - SC01
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.phone_glow
   statement: |
     The phone screens' light colour: a soft warm white. It is the colour of the screen
     glow on faces (Ren SC03-SC06, Hana SC05) and of the UI background.
-  value: "#FFF1DE"
+  value: '#FFF1DE'
   rationale: |
     The glow is the film's light motif and, after the turn, the warmest light on his face
     in a cool dusk. A slightly warm white reads as company, not as cold technology. A
@@ -702,37 +871,58 @@ entries:
     the anti-tech message tone.anti_goals excludes. Both phones share it, so the same light
     lands on both faces. Rejected: realistic cool 6500K screen light (anti_tech_message
     risk; it also merges with the dusk ambient) and amber (confuses the power colour).
-  serves: [intent.soft_but_cinematic, intent.open_hopeful_ending, intent.earned_last_signal]
-  depends_on: [tone.anti_goals]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.open_hopeful_ending
+  - intent.earned_last_signal
+  depends_on:
+  - tone.anti_goals
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.ui
   statement: |
     Phone UI palette, shared by both phones. Light-mode UI: warm off-white screen, dark
     ink for text and glyphs, pale blue sent bubble, blank keyboard, pastel unlabelled map,
     blue map pin. Accents (red, amber, green) come from their own entries.
   value:
-  - {role: screen_background, hex: "#F6F2EC"}
-  - {role: ink_text_and_glyphs, hex: "#2B303B"}
-  - {role: icon_neutral, hex: "#6B7280"}
-  - {role: icon_unanswered_grey, hex: "#A3A8B0"}
-  - {role: battery_outline_and_normal_fill, hex: "#2B303B"}
-  - {role: sent_bubble, hex: "#D3E0F2"}
-  - {role: compose_field, hex: "#FDFCFA"}
-  - {role: keyboard_base, hex: "#DCD8D1"}
-  - {role: keyboard_key, hex: "#F7F5F1"}
-  - {role: keyboard_key_pressed, hex: "#C9C4BC"}
-  - {role: map_land, hex: "#E8EAE3"}
-  - {role: map_road, hex: "#FBFAF7"}
-  - {role: map_park, hex: "#CFE3CF"}
-  - {role: map_water, hex: "#C9DCEB"}
-  - {role: map_pin, hex: "#4A6FA5"}
-  - {role: map_pin_glyph, hex: "#FDFCFA"}
-  - {role: photo_frame_ring, hex: "#E3DED6"}
-  - {role: screen_off, hex: "#1F2029"}
+  - role: screen_background
+    hex: '#F6F2EC'
+  - role: ink_text_and_glyphs
+    hex: '#2B303B'
+  - role: icon_neutral
+    hex: '#6B7280'
+  - role: icon_unanswered_grey
+    hex: '#A3A8B0'
+  - role: battery_outline_and_normal_fill
+    hex: '#2B303B'
+  - role: sent_bubble
+    hex: '#D3E0F2'
+  - role: compose_field
+    hex: '#FDFCFA'
+  - role: keyboard_base
+    hex: '#DCD8D1'
+  - role: keyboard_key
+    hex: '#F7F5F1'
+  - role: keyboard_key_pressed
+    hex: '#C9C4BC'
+  - role: map_land
+    hex: '#E8EAE3'
+  - role: map_road
+    hex: '#FBFAF7'
+  - role: map_park
+    hex: '#CFE3CF'
+  - role: map_water
+    hex: '#C9DCEB'
+  - role: map_pin
+    hex: '#4A6FA5'
+  - role: map_pin_glyph
+    hex: '#FDFCFA'
+  - role: photo_frame_ring
+    hex: '#E3DED6'
+  - role: screen_off
+    hex: '#1F2029'
   rationale: |
     A light UI puts the most light on the faces, which the glow motif needs, and dark ink
     on a pale blue bubble gives the invitation high contrast (9.9:1, see COLOR_BIBLE).
@@ -740,14 +930,23 @@ entries:
     as his. Neutral greys keep every non-accent element quiet so the battery number
     dominates. Rejected: a red map pin (the usual convention; forbidden by
     look.color.rule.only_red) and a dark-mode UI (too little glow).
-  serves: [intent.race_against_battery, intent.soft_but_cinematic]
-  depends_on: [look.style.phone_ui, look.color.rule.only_red]
-  applies_to: [SC01, SC02, SC03, SC04, SC05, SC06]
+  serves:
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.style.phone_ui
+  - look.color.rule.only_red
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC05
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.sky.golden_hour
   statement: |
     Golden-hour sky (SC01-SC03; seen through the windscreen, down the street, and as the
@@ -755,24 +954,35 @@ entries:
     apricot and cream to soft powder blue at the zenith. Positions run 0 at the western
     horizon to 1 at the zenith.
   value:
-  - {pos: 0.00, hex: "#FFF0CC"}
-  - {pos: 0.15, hex: "#F9D9A6"}
-  - {pos: 0.40, hex: "#EFDCC4"}
-  - {pos: 0.70, hex: "#C9D6E3"}
-  - {pos: 1.00, hex: "#AFC3DC"}
+  - pos: 0.0
+    hex: '#FFF0CC'
+  - pos: 0.15
+    hex: '#F9D9A6'
+  - pos: 0.4
+    hex: '#EFDCC4'
+  - pos: 0.7
+    hex: '#C9D6E3'
+  - pos: 1.0
+    hex: '#AFC3DC'
   rationale: |
     Golden hour is the brighter, airier comic middle CREATIVE_DIRECTION asks for. Keeping
     the gold pale and the blue powdery keeps saturation for the accents and stays well
     away from the saturated magic-hour skies of look.style.originality_guards.
     Rejected: an orange-to-deep-blue sky (dramatic, saturated, and signature-adjacent).
-  serves: [intent.soft_but_cinematic, intent.comic_then_tender]
-  depends_on: [world.rules.time_and_sun, look.style.sky]
-  applies_to: [SC01, SC02, SC03]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.comic_then_tender
+  depends_on:
+  - world.rules.time_and_sun
+  - look.style.sky
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.sky.dusk
   statement: |
     The one dusk sky (SC04, SC05, SC06), used unchanged at his kerb and in her window. An
@@ -780,11 +990,16 @@ entries:
     periwinkle at the zenith. Positions run 0 at the western horizon to 1 at the zenith.
     Distant rooftop, pole and wire silhouettes against it use look.color.scene.* silhouette.
   value:
-  - {pos: 0.00, hex: "#F4C49A"}
-  - {pos: 0.12, hex: "#EFC3AE"}
-  - {pos: 0.35, hex: "#D7BFC8"}
-  - {pos: 0.65, hex: "#ABA5CE"}
-  - {pos: 1.00, hex: "#8C93C2"}
+  - pos: 0.0
+    hex: '#F4C49A'
+  - pos: 0.12
+    hex: '#EFC3AE'
+  - pos: 0.35
+    hex: '#D7BFC8'
+  - pos: 0.65
+    hex: '#ABA5CE'
+  - pos: 1.0
+    hex: '#8C93C2'
   rationale: |
     This is the dimmer, warmer-at-the-horizon tender end the direction asks for, "still
     soft, never dark". The warm band sits low, so the afterglow gives Ren a warm rim from
@@ -794,82 +1009,139 @@ entries:
     red. Rejected: a sky that darkens between SC04 and SC06 (breaks the same-minute rule
     for SC05 and makes the ending feel like nightfall) and a rose-pink band (breaks
     look.color.rule.only_red, reads saccharine).
-  serves: [intent.open_hopeful_ending, intent.soft_but_cinematic, intent.comic_then_tender]
-  depends_on: [world.rules.time_and_sun, world.locations.hana_room, look.style.sky]
-  applies_to: [SC04, SC05, SC06]
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  - intent.comic_then_tender
+  depends_on:
+  - world.rules.time_and_sun
+  - world.locations.hana_room
+  - look.style.sky
+  applies_to:
+  - SC04
+  - SC05
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.clouds
   statement: Flat two-tone cloud cards for each sky state (lit underside and shadow body).
   value:
-  - {state: golden_hour, part: lit, hex: "#FBE6C4"}
-  - {state: golden_hour, part: shadow, hex: "#D9CCD3"}
-  - {state: dusk, part: lit, hex: "#F2C7A8"}
-  - {state: dusk, part: shadow, hex: "#9D96BE"}
+  - state: golden_hour
+    part: lit
+    hex: '#FBE6C4'
+  - state: golden_hour
+    part: shadow
+    hex: '#D9CCD3'
+  - state: dusk
+    part: lit
+    hex: '#F2C7A8'
+  - state: dusk
+    part: shadow
+    hex: '#9D96BE'
   rationale: |
     world.rules.weather puts a few thin high clouds low in the west to catch the colour.
     Two flat tones per cloud match the cel language and never become the luminous,
     detailed clouds look.style.originality_guards avoids. Rejected: volumetric or painted
     multi-tone clouds (cost, signature risk).
-  serves: [intent.soft_but_cinematic, intent.anime_feel]
-  depends_on: [world.rules.weather, look.style.sky]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.anime_feel
+  depends_on:
+  - world.rules.weather
+  - look.style.sky
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.outline
-  statement: Outline colours. Dark plum-grey for characters, slightly cooler for hero props, a softer grey-violet for the car.
+  statement: Outline colours. Dark plum-grey for characters, slightly cooler for hero props, a softer
+    grey-violet for the car.
   value:
-  - {target: characters, hex: "#3B3346"}
-  - {target: hero_props, hex: "#3F3C48"}
-  - {target: car, hex: "#4A4655"}
+  - target: characters
+    hex: '#3B3346'
+  - target: hero_props
+    hex: '#3F3C48'
+  - target: car
+    hex: '#4A4655'
   rationale: |
     Tinted dark lines stay soft against pastel fills and never read as comic-book ink. A
     warm plum for people and a cooler grey for objects keeps faces slightly warmer than
     things. Rejected: pure black (#000000) lines (hard, loud).
-  serves: [intent.soft_but_cinematic, intent.anime_feel]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.anime_feel
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.light_sources
   statement: |
     Colour of every light source in the world, as rendered (hex governs the render; the
     Kelvin figure is the physical motivation it stylises).
   value:
-  - {source: sun_golden_hour, kelvin: 3200, hex: "#FFD9A0"}
-  - {source: sky_fill_golden_hour, kelvin: 9000, hex: "#C8D3EA"}
-  - {source: sky_fill_dusk, kelvin: 10000, hex: "#9CA2D0"}
-  - {source: afterglow_rim_dusk, kelvin: 3000, hex: "#F6C69C"}
-  - {source: phone_screen, kelvin: 5000, hex: "#FFF1DE"}
-  - {source: shop_ceiling_panels, kelvin: 5000, hex: "#EEF5EF"}
-  - {source: shop_fridges, kelvin: 6500, hex: "#DDF3F4"}
-  - {source: shop_fascia_sign, kelvin: 5000, hex: "#F6F0E2"}
-  - {source: shop_door_glass_bounce, kelvin: 3200, hex: "#C9A77E"}
-  - {source: car_dash_lights, kelvin: 6000, hex: "#D8E6EE"}
-  - {source: car_adapter_ring, kelvin: 0, hex: "#F5B940"}
-  - {source: crank_pip, kelvin: 0, hex: "#F5B940"}
-  - {source: street_lamp, kelvin: 2700, hex: "#FFD6A0"}
-  - {source: house_window_glow, kelvin: 2700, hex: "#F6DCA6"}
-  - {source: desk_lamp, kelvin: 2700, hex: "#FFD29A"}
+  - source: sun_golden_hour
+    kelvin: 3200
+    hex: '#FFD9A0'
+  - source: sky_fill_golden_hour
+    kelvin: 9000
+    hex: '#C8D3EA'
+  - source: sky_fill_dusk
+    kelvin: 10000
+    hex: '#9CA2D0'
+  - source: afterglow_rim_dusk
+    kelvin: 3000
+    hex: '#F6C69C'
+  - source: phone_screen
+    kelvin: 5000
+    hex: '#FFF1DE'
+  - source: shop_ceiling_panels
+    kelvin: 5000
+    hex: '#EEF5EF'
+  - source: shop_fridges
+    kelvin: 6500
+    hex: '#DDF3F4'
+  - source: shop_fascia_sign
+    kelvin: 5000
+    hex: '#F6F0E2'
+  - source: shop_door_glass_bounce
+    kelvin: 3200
+    hex: '#C9A77E'
+  - source: car_dash_lights
+    kelvin: 6000
+    hex: '#D8E6EE'
+  - source: car_adapter_ring
+    kelvin: 0
+    hex: '#F5B940'
+  - source: crank_pip
+    kelvin: 0
+    hex: '#F5B940'
+  - source: street_lamp
+    kelvin: 2700
+    hex: '#FFD6A0'
+  - source: house_window_glow
+    kelvin: 2700
+    hex: '#F6DCA6'
+  - source: desk_lamp
+    kelvin: 2700
+    hex: '#FFD29A'
   rationale: |
     Naming every source with a colour is what makes "no unmotivated light" checkable in
     the LIGHTING_BIBLE. Warm practicals are capped at saturation 0.40 so only the power
     amber reads as an accent (look.color.accent_power_amber). Kelvin 0 marks the coloured
     LEDs (ring, pip), which have no colour temperature. Rejected: physically exact Kelvin
     conversions (a 2700K lamp is a saturated orange that breaks the pastel range).
-  serves: [intent.soft_but_cinematic, intent.race_against_battery]
-  depends_on: [look.color.phone_glow, look.color.accent_power_amber]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - look.color.phone_glow
+  - look.color.accent_power_amber
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.props
   statement: |
     Hero-prop colours: Ren's car in faded butter cream, the crank charger in a faded
@@ -877,26 +1149,46 @@ entries:
     Hana warm cream, as the character-designer recommended), a dark adapter body, a
     pale socket, and Hana's desk things.
   value:
-  - {item: car_paint, hex: "#E8D8A8"}
-  - {item: car_paint_sun_faded_roof_bonnet, hex: "#EFE5C8"}
-  - {item: car_rubber_trim_tyres, hex: "#3E3F47"}
-  - {item: car_dashboard, hex: "#7A7478"}
-  - {item: car_seats, hex: "#8C8698"}
-  - {item: car_headliner, hex: "#CFC8BE"}
-  - {item: car_glass_tint, hex: "#9FB0C4"}
-  - {item: crank_body, hex: "#D6C592"}
-  - {item: crank_grip, hex: "#5E5B58"}
-  - {item: crank_knob, hex: "#EDE6D6"}
-  - {item: charging_cable, hex: "#E4E1DA"}
-  - {item: phone_case_ren, hex: "#5E6B7A"}
-  - {item: phone_case_hana, hex: "#E9DFCF"}
-  - {item: car_adapter_body, hex: "#4A4B52"}
-  - {item: shop_socket, hex: "#EEEAE2"}
-  - {item: desk_lamp_body, hex: "#BFCFE3"}
-  - {item: desk_wood, hex: "#C9A77C"}
-  - {item: sketchbook_paper, hex: "#F3EEE2"}
-  - {item: pencil_lines, hex: "#7D7A86"}
-  - {item: pencil_cup, hex: "#9EB4C8"}
+  - item: car_paint
+    hex: '#E8D8A8'
+  - item: car_paint_sun_faded_roof_bonnet
+    hex: '#EFE5C8'
+  - item: car_rubber_trim_tyres
+    hex: '#3E3F47'
+  - item: car_dashboard
+    hex: '#7A7478'
+  - item: car_seats
+    hex: '#8C8698'
+  - item: car_headliner
+    hex: '#CFC8BE'
+  - item: car_glass_tint
+    hex: '#9FB0C4'
+  - item: crank_body
+    hex: '#D6C592'
+  - item: crank_grip
+    hex: '#5E5B58'
+  - item: crank_knob
+    hex: '#EDE6D6'
+  - item: charging_cable
+    hex: '#E4E1DA'
+  - item: phone_case_ren
+    hex: '#5E6B7A'
+  - item: phone_case_hana
+    hex: '#E9DFCF'
+  - item: car_adapter_body
+    hex: '#4A4B52'
+  - item: shop_socket
+    hex: '#EEEAE2'
+  - item: desk_lamp_body
+    hex: '#BFCFE3'
+  - item: desk_wood
+    hex: '#C9A77C'
+  - item: sketchbook_paper
+    hex: '#F3EEE2'
+  - item: pencil_lines
+    hex: '#7D7A86'
+  - item: pencil_cup
+    hex: '#9EB4C8'
   rationale: |
     Butter cream is the warm complement of Ren's cornflower jacket, so he separates from
     the car he leans on in the final image, and it reads friendly and old, not flashy
@@ -908,37 +1200,64 @@ entries:
     two phones (world.props.phone_hana). Rejected: a red or orange crank (the usual
     emergency-gadget colour; forbidden by look.color.rule.only_red) and a mint car (at
     dusk it merges with his blue).
-  serves: [intent.earned_last_signal, intent.soft_but_cinematic, intent.race_against_battery]
-  depends_on: [world.props.crank_charger, world.props.charging_cable, world.props.phone_ren,
-    world.props.phone_hana, world.locations.ren_car, characters.ren.wardrobe.jacket]
+  serves:
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - world.props.crank_charger
+  - world.props.charging_cable
+  - world.props.phone_ren
+  - world.props.phone_hana
+  - world.locations.ren_car
+  - characters.ren.wardrobe.jacket
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.street
   statement: Street set colours (asphalt, kerbs, houses, roofs, poles, wires, lamps, windows, dressing).
   value:
-  - {item: asphalt, hex: "#B9B2AA"}
-  - {item: pavement, hex: "#CCC6BB"}
-  - {item: kerb, hex: "#D5CFC4"}
-  - {item: garden_wall, hex: "#CFC8BB"}
-  - {item: house_plaster_cream, hex: "#EFE6D5"}
-  - {item: house_plaster_sage, hex: "#D5DACD"}
-  - {item: house_plaster_blue, hex: "#CCD3DB"}
-  - {item: house_plaster_beige, hex: "#E3D3BD"}
-  - {item: roof_slate, hex: "#6E7486"}
-  - {item: roof_teal_grey, hex: "#6F8588"}
-  - {item: utility_pole, hex: "#9C968E"}
-  - {item: overhead_wire, hex: "#3C3A45"}
-  - {item: railing, hex: "#8F95A3"}
-  - {item: lamp_head, hex: "#7D7F88"}
-  - {item: window_glass_unlit, hex: "#8E97AE"}
-  - {item: window_lit, hex: "#F6DCA6"}
-  - {item: bicycle, hex: "#4E5566"}
-  - {item: plants, hex: "#8FB08A"}
-  - {item: distant_roof_silhouette_golden, hex: "#B7A9B8"}
-  - {item: distant_roof_silhouette_dusk, hex: "#5F6088"}
+  - item: asphalt
+    hex: '#B9B2AA'
+  - item: pavement
+    hex: '#CCC6BB'
+  - item: kerb
+    hex: '#D5CFC4'
+  - item: garden_wall
+    hex: '#CFC8BB'
+  - item: house_plaster_cream
+    hex: '#EFE6D5'
+  - item: house_plaster_sage
+    hex: '#D5DACD'
+  - item: house_plaster_blue
+    hex: '#CCD3DB'
+  - item: house_plaster_beige
+    hex: '#E3D3BD'
+  - item: roof_slate
+    hex: '#6E7486'
+  - item: roof_teal_grey
+    hex: '#6F8588'
+  - item: utility_pole
+    hex: '#9C968E'
+  - item: overhead_wire
+    hex: '#3C3A45'
+  - item: railing
+    hex: '#8F95A3'
+  - item: lamp_head
+    hex: '#7D7F88'
+  - item: window_glass_unlit
+    hex: '#8E97AE'
+  - item: window_lit
+    hex: '#F6DCA6'
+  - item: bicycle
+    hex: '#4E5566'
+  - item: plants
+    hex: '#8FB08A'
+  - item: distant_roof_silhouette_golden
+    hex: '#B7A9B8'
+  - item: distant_roof_silhouette_dusk
+    hex: '#5F6088'
   rationale: |
     A narrow family of warm and cool pale plasters gives the neighbourhood variety without
     any colour reading as a landmark (world.setting: no national markers). Slate and
@@ -946,38 +1265,67 @@ entries:
     wires are the darkest non-character value on the street, so they read as thin lines,
     not features. Rejected: terracotta roofs and brick (red band) and strong house colours
     (a street of accents).
-  serves: [intent.soft_but_cinematic, intent.anime_feel]
-  depends_on: [world.locations.street, world.sets.street, look.color.rule.only_red]
-  applies_to: [SC01, SC02, SC04, SC06]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.anime_feel
+  depends_on:
+  - world.locations.street
+  - world.sets.street
+  - look.color.rule.only_red
+  applies_to:
+  - SC01
+  - SC02
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.shop
   statement: Corner-shop colours (shell, awning, fascia pictogram, fittings, merchandise families, posters).
   value:
-  - {item: awning_stripe_a, hex: "#BFE0D2"}
-  - {item: awning_stripe_b, hex: "#F4EEDF"}
-  - {item: fascia_panel, hex: "#F6F0E2"}
-  - {item: fascia_basket_pictogram, hex: "#3F5C73"}
-  - {item: walls, hex: "#EEF1EC"}
-  - {item: floor_vinyl, hex: "#D9DCD6"}
-  - {item: shelving, hex: "#E3E6E1"}
-  - {item: counter, hex: "#D8CCB8"}
-  - {item: till_box, hex: "#B8BCC4"}
-  - {item: strip_curtain, hex: "#CFE0DA"}
-  - {item: fridge_frame, hex: "#C8CDD2"}
-  - {item: display_stand, hex: "#D2C9BA"}
-  - {item: merch_round_tins_mint, hex: "#BFE3D0"}
-  - {item: merch_tall_boxes_butter, hex: "#F4E3A6"}
-  - {item: merch_pillow_bags_powder_blue, hex: "#C6D8EE"}
-  - {item: merch_bottle_caps_lilac, hex: "#D4C8E8"}
-  - {item: merch_misc_peach, hex: "#F3CDB0"}
-  - {item: poster_ice_lolly, hex: "#CDB9E6"}
-  - {item: poster_starburst, hex: "#F6DE8E"}
-  - {item: poster_steaming_cup, hex: "#BCD3EC"}
-  - {item: blackout_ambient, hex: "#1E2030"}
+  - item: awning_stripe_a
+    hex: '#BFE0D2'
+  - item: awning_stripe_b
+    hex: '#F4EEDF'
+  - item: fascia_panel
+    hex: '#F6F0E2'
+  - item: fascia_basket_pictogram
+    hex: '#3F5C73'
+  - item: walls
+    hex: '#EEF1EC'
+  - item: floor_vinyl
+    hex: '#D9DCD6'
+  - item: shelving
+    hex: '#E3E6E1'
+  - item: counter
+    hex: '#D8CCB8'
+  - item: till_box
+    hex: '#B8BCC4'
+  - item: strip_curtain
+    hex: '#CFE0DA'
+  - item: fridge_frame
+    hex: '#C8CDD2'
+  - item: display_stand
+    hex: '#D2C9BA'
+  - item: merch_round_tins_mint
+    hex: '#BFE3D0'
+  - item: merch_tall_boxes_butter
+    hex: '#F4E3A6'
+  - item: merch_pillow_bags_powder_blue
+    hex: '#C6D8EE'
+  - item: merch_bottle_caps_lilac
+    hex: '#D4C8E8'
+  - item: merch_misc_peach
+    hex: '#F3CDB0'
+  - item: poster_ice_lolly
+    hex: '#CDB9E6'
+  - item: poster_starburst
+    hex: '#F6DE8E'
+  - item: poster_steaming_cup
+    hex: '#BCD3EC'
+  - item: blackout_ambient
+    hex: '#1E2030'
   rationale: |
     The shop is the busiest, brightest, most ordered space. Five pastel merchandise
     families in rows make the "busy order" of the art direction, and its cool mint-white
@@ -986,25 +1334,42 @@ entries:
     forbids. Rejected: saturated convenience-store colours (loud, and they compete with the
     phone) and a warm shop interior (would blend with the golden street and weaken the
     change of world when he runs in).
-  serves: [intent.comic_then_tender, intent.soft_but_cinematic, intent.race_against_battery]
-  depends_on: [world.locations.corner_shop, world.sets.corner_shop, look.color.rule.only_red]
-  applies_to: [SC02, SC03, SC04, SC06]
+  serves:
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - world.locations.corner_shop
+  - world.sets.corner_shop
+  - look.color.rule.only_red
+  applies_to:
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.hana_room
   statement: Hana's room colours (walls, bedding, shelf, curtains, chair), in lamp light.
   value:
-  - {item: wall, hex: "#EDE2CF"}
-  - {item: bedding, hex: "#C9C2D6"}
-  - {item: shelf, hex: "#B9A58A"}
-  - {item: curtains, hex: "#D9D1E3"}
-  - {item: chair, hex: "#A9B7C9"}
-  - {item: pinned_sketch_paper, hex: "#F1EBDD"}
-  - {item: window_frame, hex: "#E6E1D8"}
-  - {item: neighbour_silhouettes_dusk, hex: "#5F6088"}
+  - item: wall
+    hex: '#EDE2CF'
+  - item: bedding
+    hex: '#C9C2D6'
+  - item: shelf
+    hex: '#B9A58A'
+  - item: curtains
+    hex: '#D9D1E3'
+  - item: chair
+    hex: '#A9B7C9'
+  - item: pinned_sketch_paper
+    hex: '#F1EBDD'
+  - item: window_frame
+    hex: '#E6E1D8'
+  - item: neighbour_silhouettes_dusk
+    hex: '#5F6088'
   rationale: |
     Warm cream walls in lamp light with lavender and powder-blue soft furnishings make the
     first frame that feels complete: a balanced warm/cool split, where his frames were
@@ -1012,27 +1377,32 @@ entries:
     window's silhouettes use the same colour as his distant rooftops at dusk, so the
     two views read as one sky. Rejected: a warm-only cosy room (saccharine) and pink
     furnishings (look.color.rule.only_red, romantic signalling).
-  serves: [intent.open_hopeful_ending, intent.soft_but_cinematic]
-  depends_on: [world.locations.hana_room, world.sets.hana_room, look.color.sky.dusk]
-  applies_to: [SC05]
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.locations.hana_room
+  - world.sets.hana_room
+  - look.color.sky.dusk
+  applies_to:
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.scene.sc01
   statement: |
     SC01 car, golden hour. Dominant pale gold in the sunlit cabin and windscreen, lavender
     shadows inside the car, Ren's blue as the main cool block. Accents in order: call
     green, battery red at 4 %, power amber (ring, bolt).
   value:
-    dominant: "#F6D7A7"
-    secondary: "#8F809A"
-    shadow_tint: "#B7A9C9"
-    key_light: "#FFD9A0"
-    accent: "#E5483B"
-    accent_2: "#F5B940"
-    accent_3: "#5DB37E"
+    dominant: '#F6D7A7'
+    secondary: '#8F809A'
+    shadow_tint: '#B7A9C9'
+    key_light: '#FFD9A0'
+    accent: '#E5483B'
+    accent_2: '#F5B940'
+    accent_3: '#5DB37E'
     sky: golden_hour
     saturation: medium_low
     value_key: high_key_backlit
@@ -1041,25 +1411,31 @@ entries:
     cabin shadows stay lavender, not black, so the backlit comedy is soft
     (intent.comic_then_tender). All three UI accents are introduced here, so the audience
     learns red = stake and amber = power before the shop.
-  serves: [intent.comic_then_tender, intent.race_against_battery, intent.soft_but_cinematic]
-  depends_on: [look.color.sky.golden_hour, look.color.accent_battery_red, look.color.accent_power_amber]
-  applies_to: [SC01]
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.color.sky.golden_hour
+  - look.color.accent_battery_red
+  - look.color.accent_power_amber
+  applies_to:
+  - SC01
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.scene.sc02
   statement: |
     SC02 street, golden hour. Long raking gold down the street, long lilac shadows toward
     camera-east, Ren's blue running into the light. No accent except the battery in his
     outstretched hand.
   value:
-    dominant: "#F3D9AE"
-    secondary: "#A69CBF"
-    shadow_tint: "#BDB2D2"
-    key_light: "#FFD9A0"
-    accent: "#E5483B"
+    dominant: '#F3D9AE'
+    secondary: '#A69CBF'
+    shadow_tint: '#BDB2D2'
+    key_light: '#FFD9A0'
+    accent: '#E5483B'
     sky: golden_hour
     saturation: medium_low
     value_key: high_key
@@ -1067,14 +1443,18 @@ entries:
     The brightest, most open exterior: the dash toward the shop is still hopeful. Blue
     against gold is the strongest complementary separation in the film, which makes a small
     figure readable at 2 s (characters.ren.silhouette).
-  serves: [intent.comic_then_tender, intent.race_against_battery]
-  depends_on: [look.color.sky.golden_hour, characters.ren.wardrobe.jacket]
-  applies_to: [SC02]
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - look.color.sky.golden_hour
+  - characters.ren.wardrobe.jacket
+  applies_to:
+  - SC02
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.scene.sc03
   statement: |
     SC03 shop. Before the blackout: cool mint-white, bright and flat, pastel merchandise in
@@ -1082,16 +1462,16 @@ entries:
     blue-violet, the warm-white phone glow on his face, a dim warm door rectangle far
     behind, and the red 2 %.
   value:
-    dominant: "#E7F0EA"
-    secondary: "#C6D8EE"
-    shadow_tint: "#C9C6DA"
-    key_light: "#EEF5EF"
-    accent: "#F5B940"
+    dominant: '#E7F0EA'
+    secondary: '#C6D8EE'
+    shadow_tint: '#C9C6DA'
+    key_light: '#EEF5EF'
+    accent: '#F5B940'
     blackout:
-      dominant: "#1E2030"
-      key_light: "#FFF1DE"
-      door_rectangle: "#C9A77E"
-      accent: "#E5483B"
+      dominant: '#1E2030'
+      key_light: '#FFF1DE'
+      door_rectangle: '#C9A77E'
+      accent: '#E5483B'
     sky: golden_hour_via_door_only
     saturation: low
     value_key: high_key_then_lowest_key_in_film
@@ -1100,14 +1480,20 @@ entries:
     frame to the darkest frame in the film. That turns "every light goes out at once" into
     an event the eye feels (CREATIVE_DIRECTION: light failing is a story event), and it
     makes the phone glow appear for the first time as the only light.
-  serves: [intent.comic_then_tender, intent.race_against_battery, intent.soft_but_cinematic]
-  depends_on: [look.color.shop, look.color.phone_glow, world.rules.power]
-  applies_to: [SC03]
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.color.shop
+  - look.color.phone_glow
+  - world.rules.power
+  applies_to:
+  - SC03
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.scene.sc04
   statement: |
     SC04 kerb, dusk. Cool lavender-blue ambient on everything in shade, an apricot
@@ -1115,15 +1501,15 @@ entries:
     his hand. Battery red at 1 %, then 2 %. The sent tick in amber. Small warm windows and
     the lamp-lit dark shop front far behind.
   value:
-    dominant: "#6F7099"
-    secondary: "#ABA5CE"
-    shadow_tint: "#8E88B4"
-    key_light: "#FFF1DE"
-    rim_light: "#F6C69C"
-    accent: "#F5B940"
-    accent_2: "#E5483B"
-    practicals: "#F6DCA6"
-    silhouette: "#5F6088"
+    dominant: '#6F7099'
+    secondary: '#ABA5CE'
+    shadow_tint: '#8E88B4'
+    key_light: '#FFF1DE'
+    rim_light: '#F6C69C'
+    accent: '#F5B940'
+    accent_2: '#E5483B'
+    practicals: '#F6DCA6'
+    silhouette: '#5F6088'
     sky: dusk
     saturation: low
     value_key: mid_low_key_soft
@@ -1133,14 +1519,20 @@ entries:
     colour idea: the world has cooled, and the warmth is in his hands
     (intent.earned_last_signal). The ambient stays a lifted lavender, never black, so it is
     "still soft, never dark or gritty" (CREATIVE_DIRECTION).
-  serves: [intent.comic_then_tender, intent.earned_last_signal, intent.soft_but_cinematic]
-  depends_on: [look.color.sky.dusk, look.color.phone_glow, look.color.accent_power_amber]
-  applies_to: [SC04]
+  serves:
+  - intent.comic_then_tender
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.color.sky.dusk
+  - look.color.phone_glow
+  - look.color.accent_power_amber
+  applies_to:
+  - SC04
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.scene.sc05
   statement: |
     SC05 Hana's room, dusk (same minute). Warm lamp-lit cream on the wall and desk, the
@@ -1148,12 +1540,12 @@ entries:
     arrives as a second light on her face. No accent colour: the screen shows his photo,
     then only the invitation.
   value:
-    dominant: "#E9CFA8"
-    secondary: "#ABA5CE"
-    shadow_tint: "#A59CC0"
-    key_light: "#FFD29A"
-    second_key: "#FFF1DE"
-    silhouette: "#5F6088"
+    dominant: '#E9CFA8'
+    secondary: '#ABA5CE'
+    shadow_tint: '#A59CC0'
+    key_light: '#FFD29A'
+    second_key: '#FFF1DE'
+    silhouette: '#5F6088'
     sky: dusk
     saturation: low_medium
     value_key: mid_key_balanced
@@ -1161,14 +1553,19 @@ entries:
     Her frame is the first complete one: warm and cool in balance, no alarm colour, no red.
     No battery is on screen here, which makes it feel like a held breath. The same sky in the window and the same phone-glow colour on her face as
     on his are the two colour links between them (intent.open_hopeful_ending).
-  serves: [intent.open_hopeful_ending, intent.soft_but_cinematic]
-  depends_on: [look.color.sky.dusk, look.color.hana_room, look.color.phone_glow]
-  applies_to: [SC05]
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.color.sky.dusk
+  - look.color.hana_room
+  - look.color.phone_glow
+  applies_to:
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.scene.sc06
   statement: |
     SC06 kerb, moments later. The same dusk sky as SC04. His screen fades to off
@@ -1176,13 +1573,13 @@ entries:
     afterglow rim. The final image: a cool, lifted frame with the one warm edge on his
     upturned face.
   value:
-    dominant: "#6F7099"
-    secondary: "#ABA5CE"
-    shadow_tint: "#8E88B4"
-    key_light_before_fade: "#FFF1DE"
-    key_light_after_fade: "#F6C69C"
-    screen_off: "#1F2029"
-    silhouette: "#5F6088"
+    dominant: '#6F7099'
+    secondary: '#ABA5CE'
+    shadow_tint: '#8E88B4'
+    key_light_before_fade: '#FFF1DE'
+    key_light_after_fade: '#F6C69C'
+    screen_off: '#1F2029'
+    silhouette: '#5F6088'
     sky: dusk
     saturation: low
     value_key: mid_low_key_soft
@@ -1192,14 +1589,18 @@ entries:
     phone read as "out of my hands, and that's fine": hope rather than loss
     (intent.open_hopeful_ending, tone.ending_restraint). Rejected: letting the frame go
     cold and dark after the fade, which tips the ending toward sadness.
-  serves: [intent.open_hopeful_ending, intent.soft_but_cinematic]
-  depends_on: [look.color.sky.dusk, tone.ending_restraint]
-  applies_to: [SC06]
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.color.sky.dusk
+  - tone.ending_restraint
+  applies_to:
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.color.rule.pastel_range
   statement: |
     Pastel range for world surfaces, props, sky and lights (the phone UI is governed by
@@ -1209,22 +1610,34 @@ entries:
   value:
     max_saturation: 0.45
     min_lit_value: 0.35
-    exempt: [accent_battery_red, accent_power_amber, accent_call_green, ui_heart, character_hair_brows_eyes,
-      outlines, overhead_wire, car_rubber_trim_tyres, car_adapter_body, screen_off, ui_ink, sc03_blackout]
+    exempt:
+    - accent_battery_red
+    - accent_power_amber
+    - accent_call_green
+    - ui_heart
+    - character_hair_brows_eyes
+    - outlines
+    - overhead_wire
+    - car_rubber_trim_tyres
+    - car_adapter_body
+    - screen_off
+    - ui_ink
+    - sc03_blackout
   rationale: |
     Turns the user's "pastel colours" into a number QA can test on any sampled colour. The
     exemptions are the few things that must be dark or saturated to do their job (the
     stakes and the line work), so the rule protects contrast without making the film
     washed out (tone.anti_goals: saccharine is guarded by keeping real darks). Rejected: no
     numeric rule (pastel drift is the direction's named risk).
-  serves: [intent.soft_but_cinematic]
-  depends_on: [look.color.primary, look.color.secondary]
+  serves:
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.color.primary
+  - look.color.secondary
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
-# ---------------------------------------------------------------- exposure
 - id: look.exposure.value_structure
   statement: |
     Where blacks and whites sit. Film floor: #1B1C29, used only in the SC03 blackout.
@@ -1235,14 +1648,27 @@ entries:
     renders within 8 % value of its lit colour (look.style.character_shading). While a
     phone screen is on in SC04-SC06, it is brighter than any part of the sky.
   value:
-    film_floor_hex: "#1B1C29"
-    film_floor_scenes: [SC03]
-    floor_elsewhere_value: 0.30
-    floor_elsewhere_hex: "#34354F"
-    may_clip: [phone_ui_background, emissive_cores, amber_indicators, red_indicators]
-    never_clip: [skin, cloth, car_paint, dusk_sky, golden_sky_above_horizon_band]
+    film_floor_hex: '#1B1C29'
+    film_floor_scenes:
+    - SC03
+    floor_elsewhere_value: 0.3
+    floor_elsewhere_hex: '#34354F'
+    may_clip:
+    - phone_ui_background
+    - emissive_cores
+    - amber_indicators
+    - red_indicators
+    never_clip:
+    - skin
+    - cloth
+    - car_paint
+    - dusk_sky
+    - golden_sky_above_horizon_band
     lit_tone_tolerance_value: 0.08
-    phone_brighter_than_sky_while_on: [SC04, SC05, SC06]
+    phone_brighter_than_sky_while_on:
+    - SC04
+    - SC05
+    - SC06
   rationale: |
     "How dark is night" is answered as: not very. The tender section stays lifted so the
     ending is soft (CREATIVE_DIRECTION: never dark or gritty). The one true black is
@@ -1250,13 +1676,17 @@ entries:
     the phone brighter than the sky keeps the phone the brightest thing near him (AD
     principle 2) even with the sky in frame. Rejected: crushed blacks at dusk
     (melodrama) and a uniformly bright dusk (no dusk).
-  serves: [intent.soft_but_cinematic, intent.comic_then_tender, intent.race_against_battery]
-  depends_on: [look.style.render_constraints, look.color.scene.sc03]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - look.style.render_constraints
+  - look.color.scene.sc03
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.exposure.scene_keys
   statement: |
     Target mean frame luminance per scene (0-1, display-referred): SC01 0.62, SC02 0.70,
@@ -1264,7 +1694,7 @@ entries:
     plus or minus 0.06 per shot.
   value:
     SC01: 0.62
-    SC02: 0.70
+    SC02: 0.7
     SC03_lit: 0.74
     SC03_blackout: 0.08
     SC04: 0.46
@@ -1276,15 +1706,22 @@ entries:
     peaking at the shop, a drop at the blackout, then a lower, steady tender key that
     settles slightly for the final image without going dark. Numbers make the arc testable
     at G6 on rendered frames. Rejected: one exposure for the whole film (loses the arc).
-  serves: [intent.comic_then_tender, intent.soft_but_cinematic]
-  depends_on: [look.exposure.value_structure]
-  applies_to: [SC01, SC02, SC03, SC04, SC05, SC06]
+  serves:
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.exposure.value_structure
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC05
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
-# ---------------------------------------------------------------- lighting
 - id: look.lighting.principles
   statement: |
     Every light names a source in the world (look.color.light_sources, the LIGHTING_BIBLE
@@ -1305,13 +1742,17 @@ entries:
     fails, his own power works) told in light, so it serves intent.earned_last_signal.
     Rejected: a beauty-lit anime look with free rims on every shot (flat, and it would erase
     the light arc).
-  serves: [intent.soft_but_cinematic, intent.earned_last_signal, intent.comic_then_tender]
-  depends_on: [story.theme, look.color.light_sources]
+  serves:
+  - intent.soft_but_cinematic
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - story.theme
+  - look.color.light_sources
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.lighting.sc01
   statement: |
     SC01 car, golden hour. Key: the low sun (6 degrees up) straight down the street
@@ -1322,12 +1763,23 @@ entries:
     ring, both off in the frame the engine stops. The phone's glow is not visible on his
     face in the sun.
   value:
-    key: {source: sun, kelvin: 3200, direction: from_plus_y_along_street, elevation_deg: 6, quality: hard}
-    fill: {source: dash_and_bonnet_bounce, quality: soft}
-    ambient: {source: sky_through_side_windows, kelvin: 9000}
-    contrast: "4:1"
+    key:
+      source: sun
+      kelvin: 3200
+      direction: from_plus_y_along_street
+      elevation_deg: 6
+      quality: hard
+    fill:
+      source: dash_and_bonnet_bounce
+      quality: soft
+    ambient:
+      source: sky_through_side_windows
+      kelvin: 9000
+    contrast: '4:1'
     rim: sun_when_camera_faces_west
-    practicals: [car_dash_lights, car_adapter_ring]
+    practicals:
+    - car_dash_lights
+    - car_adapter_ring
     practical_off_event: engine_stall_same_frame
     phone_glow_visible_on_face: false
     volumetrics: none
@@ -1339,14 +1791,21 @@ entries:
     CREATIVE_DIRECTION: sound, a slump and a light change). Rejected: a soft fill light
     inside the car to "see his face" (unmotivated, and the backlit silhouette is the
     design, characters.ren.silhouette).
-  serves: [intent.comic_then_tender, intent.race_against_battery, intent.soft_but_cinematic]
-  depends_on: [world.rules.time_and_sun, world.sets.ren_car, world.props.car_usb_adapter, world.rules.power]
-  applies_to: [SC01]
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.rules.time_and_sun
+  - world.sets.ren_car
+  - world.props.car_usb_adapter
+  - world.rules.power
+  applies_to:
+  - SC01
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.lighting.sc02
   statement: |
     SC02 street, golden hour. Key: the same sun, raking down the street from the west.
@@ -1355,26 +1814,39 @@ entries:
     the sunlit north-side house walls. No practicals lit (the lamps are off, the shop sign
     is lit but weak in daylight).
   value:
-    key: {source: sun, kelvin: 3200, direction: from_plus_y, elevation_deg: 6, quality: hard}
-    fill: {source: sky_and_north_wall_bounce, kelvin: 9000, quality: soft}
-    contrast: "4:1"
+    key:
+      source: sun
+      kelvin: 3200
+      direction: from_plus_y
+      elevation_deg: 6
+      quality: hard
+    fill:
+      source: sky_and_north_wall_bounce
+      kelvin: 9000
+      quality: soft
+    contrast: '4:1'
     rim: sun
     shadows: long_toward_minus_y
-    practicals: [shop_fascia_sign_weak]
+    practicals:
+    - shop_fascia_sign_weak
     volumetrics: none
   rationale: |
     The long raking light makes a two-second dash read as a chase toward the light and
     the shop (ART_DIRECTION_BIBLE hierarchy), and the long shadows are the most graphic
     golden-hour cue a cel look can use. Rejected: shooting the run in shade (loses the
     hope in the first failure's aftermath).
-  serves: [intent.comic_then_tender, intent.race_against_battery]
-  depends_on: [world.rules.time_and_sun, world.sets.street]
-  applies_to: [SC02]
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - world.rules.time_and_sun
+  - world.sets.street
+  applies_to:
+  - SC02
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.lighting.sc03
   statement: |
     SC03 shop. Lit state: key is the four ceiling panels, soft and cool, near-shadowless,
@@ -1387,20 +1859,34 @@ entries:
     ambient.
   value:
     lit:
-      key: {source: ceiling_panels, kelvin: 5000, quality: soft_top}
-      rim: {source: fridges, kelvin: 6500}
+      key:
+        source: ceiling_panels
+        kelvin: 5000
+        quality: soft_top
+      rim:
+        source: fridges
+        kelvin: 6500
       background: door_glass_warm_rectangle
-      contrast: "2:1"
+      contrast: '2:1'
     blackout_event:
-      sources_off: [ceiling_panels, fridges, fascia_sign]
+      sources_off:
+      - ceiling_panels
+      - fridges
+      - fascia_sign
       transition_frames: 1
       sync: clunk_sound
       restored: false
     blackout:
-      key: {source: phone_screen, direction: below_front, falloff_m: 0.5, quality: soft}
-      background: {source: door_glass_bounce, level: faint}
+      key:
+        source: phone_screen
+        direction: below_front
+        falloff_m: 0.5
+        quality: soft
+      background:
+        source: door_glass_bounce
+        level: faint
       fill: none
-      contrast: "16:1"
+      contrast: '16:1'
     volumetrics: none
   rationale: |
     A shadowless, bright, uniform shop is comic order, and a one-frame blackout is the
@@ -1409,14 +1895,21 @@ entries:
     born. The faint door keeps a sense of the room and the golden world outside he has lost
     (ART_DIRECTION_BIBLE hierarchy). Rejected: a slow fade-down (reads as a dimmer, not a
     trip) and emergency lighting (world.rules.power forbids it).
-  serves: [intent.comic_then_tender, intent.race_against_battery, intent.soft_but_cinematic]
-  depends_on: [world.rules.power, world.sets.corner_shop, world.locations.corner_shop, look.color.scene.sc03]
-  applies_to: [SC03]
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.rules.power
+  - world.sets.corner_shop
+  - world.locations.corner_shop
+  - look.color.scene.sc03
+  applies_to:
+  - SC03
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.lighting.sc04
   statement: |
     SC04 kerb, dusk. Ambient: the dusk sky, a large soft cool source from above. Rim: the
@@ -1427,14 +1920,31 @@ entries:
     only the shop front in the background. Lit windows across the street are small, dim
     warm shapes. No fill beyond the sky.
   value:
-    ambient: {source: dusk_sky, kelvin: 10000, quality: very_soft_top}
-    rim: {source: afterglow_west, kelvin: 3000, quality: soft_low}
-    key: {source: phone_screen, direction: below_front, quality: soft}
-    key_states: {before_crank: flicker_dips_to_70pct, from_first_crank_turn: steady, after_send: steady}
-    hand_light: {source: crank_pip, reach_m: 0.1, lit_while: turning}
-    background_practicals: [street_lamp_by_shop, house_windows]
+    ambient:
+      source: dusk_sky
+      kelvin: 10000
+      quality: very_soft_top
+    rim:
+      source: afterglow_west
+      kelvin: 3000
+      quality: soft_low
+    key:
+      source: phone_screen
+      direction: below_front
+      quality: soft
+    key_states:
+      before_crank: flicker_dips_to_70pct
+      from_first_crank_turn: steady
+      after_send: steady
+    hand_light:
+      source: crank_pip
+      reach_m: 0.1
+      lit_while: turning
+    background_practicals:
+    - street_lamp_by_shop
+    - house_windows
     street_lamp_reaches_ren: false
-    contrast: "4:1"
+    contrast: '4:1'
     fill: sky_only
     volumetrics: none
   rationale: |
@@ -1445,14 +1955,22 @@ entries:
     and gives the tender section a warm edge. Rejected: a lamp or window as his key (it
     would out-shine the phone), and a hard phone key (too dramatic for "quiet and slow",
     tone.the_turn).
-  serves: [intent.earned_last_signal, intent.comic_then_tender, intent.soft_but_cinematic]
-  depends_on: [world.sets.street, world.rules.power, world.props.crank_charger, tone.the_turn, look.color.scene.sc04]
-  applies_to: [SC04]
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.sets.street
+  - world.rules.power
+  - world.props.crank_charger
+  - tone.the_turn
+  - look.color.scene.sc04
+  applies_to:
+  - SC04
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.lighting.sc05
   statement: |
     SC05 Hana's room, dusk. Lighting is described relative to her, so it holds whichever
@@ -1462,10 +1980,21 @@ entries:
     its warm-white glow arrives as a second key from below-right. When she holds it low to
     read, it lights her face from below. Contrast is the softest in the film.
   value:
-    key: {source: desk_lamp, kelvin: 2700, side: her_left, quality: soft}
-    fill: {source: dusk_sky_through_window, kelvin: 10000, side: in_front_of_her, quality: soft}
-    second_key: {source: phone_screen, side: her_right_then_below, on_event: phone_wakes}
-    contrast: "2.5:1"
+    key:
+      source: desk_lamp
+      kelvin: 2700
+      side: her_left
+      quality: soft
+    fill:
+      source: dusk_sky_through_window
+      kelvin: 10000
+      side: in_front_of_her
+      quality: soft
+    second_key:
+      source: phone_screen
+      side: her_right_then_below
+      on_event: phone_wakes
+    contrast: 2.5:1
     volumetrics: none
   rationale: |
     world.sets.hana_room and world.props.desk_lamp place the lamp and the phone on opposite
@@ -1474,11 +2003,18 @@ entries:
     the light that left his hands arrives on her face (look.style.motifs). Rejected: a hard
     or dramatic key (makes the smile an event rather than a private pleasure,
     tone.ending_restraint).
-  serves: [intent.open_hopeful_ending, intent.soft_but_cinematic]
-  depends_on: [world.sets.hana_room, world.props.desk_lamp, world.props.phone_hana, look.color.scene.sc05]
-  applies_to: [SC05]
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.sets.hana_room
+  - world.props.desk_lamp
+  - world.props.phone_hana
+  - look.color.scene.sc05
+  applies_to:
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
   notes: |
@@ -1486,7 +2022,6 @@ entries:
     The lighting works for either fix. If she faces the window, the sky is front fill. If
     the desk moves side-on to the window, the sky becomes a back or side edge. Rule L13 (her
     window shows his sky) needs the window in her frame either way.
-
 - id: look.lighting.sc06
   statement: |
     SC06 kerb, moments later. The same sky and afterglow as SC04. His screen fades from
@@ -1494,10 +2029,20 @@ entries:
     is no key on his face except the warm afterglow rim, which catches his upturned face
     and the tuft as he looks up. Ambient sky on the rest. The contrast softens.
   value:
-    ambient: {source: dusk_sky, kelvin: 10000}
-    phone: {fade_frames: 24, curve: ease_out, end_state: screen_off}
-    key_after_fade: {source: afterglow_west, kelvin: 3000, catches: [upturned_face, crown_tuft]}
-    contrast: "2:1"
+    ambient:
+      source: dusk_sky
+      kelvin: 10000
+    phone:
+      fade_frames: 24
+      curve: ease_out
+      end_state: screen_off
+    key_after_fade:
+      source: afterglow_west
+      kelvin: 3000
+      catches:
+      - upturned_face
+      - crown_tuft
+    contrast: '2:1'
     other_light_changes: none
     volumetrics: none
   rationale: |
@@ -1506,14 +2051,20 @@ entries:
     light that does not depend on the phone: "it's out of my hands, and that's fine"
     (story.ending). Rejected: a street lamp flicking on (ironic gag, world.rules.power) and
     a cold, unlit final face (sad).
-  serves: [intent.open_hopeful_ending, intent.soft_but_cinematic]
-  depends_on: [story.ending, tone.ending_restraint, world.rules.power, look.color.scene.sc06]
-  applies_to: [SC06]
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - story.ending
+  - tone.ending_restraint
+  - world.rules.power
+  - look.color.scene.sc06
+  applies_to:
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.lighting.power_indicators
   statement: |
     Behaviour of the amber power lights. Adapter ring: on while the car runs, off in the
@@ -1522,24 +2073,40 @@ entries:
     following crank speed, fully off within 6 frames of the handle stopping. Progress line
     and tick: amber, shown once, after the send.
   value:
-    car_adapter_ring: {lit_while: engine_running, off_frames: 0}
-    charging_bolt: {lit_while: cable_in_live_source, off_frames: 0}
-    crank_pip: {lit_while: handle_turning, brightness: follows_crank_speed, off_within_frames: 6}
-    progress_line: {fill_s: 1.0}
-    sent_tick: {appears_after: progress_complete}
+    car_adapter_ring:
+      lit_while: engine_running
+      off_frames: 0
+    charging_bolt:
+      lit_while: cable_in_live_source
+      off_frames: 0
+    crank_pip:
+      lit_while: handle_turning
+      brightness: follows_crank_speed
+      off_within_frames: 6
+    progress_line:
+      fill_s: 1.0
+    sent_tick:
+      appears_after: progress_complete
   rationale: |
     Instant off for the car and shop makes each failure a cut in the power story. The
     pip's gentle 6-frame decay makes it feel like his effort's afterglow, not a switch,
     which fits the tender section. Rejected: a pip that stays on after he lets go (it
     would read as the crank powering itself, which undermines the earned send).
-  serves: [intent.earned_last_signal, intent.race_against_battery]
-  depends_on: [look.color.accent_power_amber, world.props.crank_charger, world.props.car_usb_adapter]
-  applies_to: [SC01, SC03, SC04]
+  serves:
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  depends_on:
+  - look.color.accent_power_amber
+  - world.props.crank_charger
+  - world.props.car_usb_adapter
+  applies_to:
+  - SC01
+  - SC03
+  - SC04
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
-
 - id: look.lighting.eevee_feasibility
   statement: |
     Lighting budget for EEVEE on a laptop. At most 8 lights per shot. Sun and sky are a
@@ -1561,10 +2128,13 @@ entries:
     to one world source, so the budget and the motivation rule agree. Rejected: HDRI skies
     (licence UNKNOWN, photographic) and volumetric light (cost, forbidden by
     look.style.atmosphere).
-  serves: [intent.soft_but_cinematic]
-  depends_on: [look.style.render_constraints, look.style.atmosphere]
+  serves:
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.style.render_constraints
+  - look.style.atmosphere
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:look-director
   version: 1
   notes: ASSUMPTION that EEVEE in Blender 5.2 behaves like 4.x for these features; verify at M3.
