@@ -68,6 +68,7 @@ def toon(color, shadow=None, threshold=0.5, outline=False, name=None):
     if m is not None:
         return m
     m = _mat(key)
+    m["fm_shadow"] = list(sh)
     nt = m.node_tree
     d = nt.nodes.new("ShaderNodeBsdfDiffuse")
     s2r = nt.nodes.new("ShaderNodeShaderToRGB")

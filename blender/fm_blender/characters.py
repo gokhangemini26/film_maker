@@ -105,7 +105,10 @@ def figure(col, cid, canon, props, pos, facing, pose):
         U.sphere(f"{cid}_hand{i}", P["hand_length_m"] * 0.3, hnd, col, skin)
     hd = U.sphere(f"{cid}_head", hh * 0.5, head, col, skin, scale=(0.85, 0.95, 1.0))
     hd.rotation_euler = (0, 0, math.atan2(f.y, f.x))
-    U.sphere(f"{cid}_hair", hh * 0.53, head + Vector((0, 0, hh * 0.12)) - f * 0.02, col, hair, scale=(0.9, 0.95, 0.85))
+    U.sphere(f"{cid}_hair", hh * 0.52, head + Vector((0, 0, hh * 0.14)) - f * hh * 0.1, col, hair, scale=(0.95, 1.0, 0.85))
+    eye = U.flat({"hex": "#2A2230", "linear": U.lin("#2A2230")})
+    for i, sgn in enumerate((-1, 1)):
+        U.sphere(f"{cid}_eye{i}", 0.012, head + f * hh * 0.42 + r * sgn * hh * 0.17 + Vector((0, 0, hh * 0.02)), col, eye)
     tuft = P.get("tuft_extra_m")
     if tuft:
         U.sphere(f"{cid}_tuft", 0.03, head + Vector((0, 0, hh * 0.62 + tuft)), col, hair)

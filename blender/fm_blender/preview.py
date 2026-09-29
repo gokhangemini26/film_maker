@@ -238,6 +238,16 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
     if cam_c.get("dof", {}).get("enabled"):
         cam_data.dof.focus_distance = max((target(cam_c["look_at"]) - cpos).length, 0.1)
 
+    if "ren" in figs and scene != "SC02":
+        i = figs["ren"][0]
+        ph = U.box("phone_ren." + sid, (0.071, 0.147, 0.0085), i["hands"] + i["facing"] * 0.12 + Vector((0, 0, 0.12)), figs["ren"][1],
+                   U.toon({"hex": "#33333D", "linear": U.lin("#33333D")}))
+        ph.rotation_euler = (0, 0, math.atan2(i["facing"].y, i["facing"].x) + math.pi / 2)
+        sc = U.box("phone_ren_screen." + sid, (0.06, 0.13, 0.002), ph.location, figs["ren"][1],
+                   U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=2.5))
+        sc.rotation_euler = ph.rotation_euler
+        sc.location = ph.location + Vector((0, 0, 0.005))
+        mark(ph), mark(sc)
     # lights
     ls = canon.get("look.color.light_sources") or []
     def ls_col(src, default):
@@ -273,6 +283,12 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         add_light("POINT", "lamp." + sid, S.ROOM_ORIGIN + Vector((-0.35, -0.28, 1.1)), 60, ls_col("desk_lamp", "#FFD6A0"), col, size=0.08)
         add_light("POINT", "phone." + sid, S.ROOM_ORIGIN + Vector((0.25, -0.3, 0.85)), 8, ls_col("phone_glow", "#FFF1DE"), col, size=0.05)
 
+    dark_k = 0.04 if (scene == "SC03" and n >= 50) else 1.0
+    for m in bpy.data.materials:
+        if "fm_shadow" in m and m.node_tree:
+            for nd in m.node_tree.nodes:
+                if nd.type == "VALTORGB":
+                    nd.color_ramp.elements[0].color = (*[c * dark_k for c in m["fm_shadow"]], 1)
     path = os.path.join(out_dir, sid + ".png")
     bpy.context.scene.render.filepath = path
     bpy.ops.render.render(write_still=True)

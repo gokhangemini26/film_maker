@@ -211,5 +211,8 @@ def build_room(col, canon):
     U.cyl("desk_lamp_base", 0.07, 0.02, (O.x - 0.45, O.y - 0.2, dh + 0.03), col, dark)
     U.between("desk_lamp_arm", (O.x - 0.45, O.y - 0.2, dh + 0.03), (O.x - 0.35, O.y - 0.28, dh + 0.42), 0.012, col, dark)
     U.sphere("desk_lamp_head", 0.07, (O.x - 0.35, O.y - 0.28, dh + 0.42), col, U.flat({"hex": "#FFD6A0", "linear": U.lin("#FFD6A0")}, strength=4.0))
+    U.box("phone_hana", (0.071, 0.147, 0.0085), (O.x + 0.25, O.y - 0.3, dh + 0.03), col, _t(col, pal(7)))
+    U.box("phone_hana_screen", (0.06, 0.13, 0.002), (O.x + 0.25, O.y - 0.3, dh + 0.036), col,
+          U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=2.5))
     for i in range(5):
         U.box(f"wall_sketch{i}", (0.25, 0.01, 0.3), (O.x - 0.5 + i * 0.28, O.y - 0.06, 1.75), col, _t(col, pal(3 + i)))
