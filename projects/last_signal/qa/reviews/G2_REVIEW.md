@@ -3,7 +3,7 @@ fm:
   id: g2_review
   kind: gate_review
   phase: SCREENPLAY
-  status: PROPOSED
+  status: APPROVED
   owner_role: qa-supervisor
   derived_from:
   - ref: artifact:story_bible

@@ -6,7 +6,8 @@ entries:
   value:
     protagonist: ren
     want: send hana the dinner invitation before his phone dies
-    obstacle: an unanswered call, then a dying battery that every outside power source fails to charge (car, shop)
+    obstacle: an unanswered call, then a dying battery that every outside power source fails to charge
+      (car, shop)
     cost: his dignity in small doses, his running and his patience; in the end, his own physical effort
     message: dinner_invitation
     confession: at_the_dinner_off_screen
@@ -18,10 +19,10 @@ entries:
   depends_on:
   - tone.wordless
   - tone.comedy_source
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1
 - id: story.theme
   statement: |
     The question the film asks: how much of yourself will you spend just to reach the one person you want to reach, when every shortcut fails?
@@ -35,10 +36,10 @@ entries:
   - intent.comic_then_tender
   depends_on:
   - story.premise
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1
 - id: story.cast
   statement: |
     Two characters on screen: Ren (he, about 20, university student, drives a small old car, secretly in love with Hana) and Hana (she, about 20, his university friend, does not know how he feels). Names are for production only and never appear on screen. No other character is needed; a shopkeeper, if the world-designer wants one, is a background silhouette with no interaction.
@@ -59,11 +60,12 @@ entries:
   - intent.earned_last_signal
   depends_on:
   - tone.anti_goals
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
-  notes: Ages and relationship are USER_REQUIREMENT (brief characters). The names are an ASSUMPTION the human may replace at no cost.
+  version: 1
+  notes: Ages and relationship are USER_REQUIREMENT (brief characters). The names are an ASSUMPTION the
+    human may replace at no cost.
 - id: story.arc.ren
   statement: |
     Ren starts nervous and in a hurry, reaching for any outside power source that will save him (the car, the shop). He ends calm and spent: he has put his own effort into the invitation, sent it, and let the phone go dark without panic. The change happens at the turn, on the curb, when he stops looking for a socket and chooses the crank he had shoved back into the glovebox.
@@ -87,8 +89,9 @@ entries:
   applies_to:
   - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1
 - id: story.arc.hana
   statement: |
     Hana has no arc of her own in the film; she is the destination. She missed his call innocently (big headphones on, sketching at her desk), and her only moment is noticing: the phone lights up, she slides the headphones down, reads, and gives a small smile.
@@ -108,8 +111,9 @@ entries:
   applies_to:
   - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1
 - id: story.inciting_incident
   statement: |
     Ren calls Hana from his parked car; her photo (no name) is on the call screen; the call icon rings and gets no answer, with no voice and no label. That is why he has to text, and as he starts typing the battery icon turns red.
@@ -125,10 +129,10 @@ entries:
   - intent.race_against_battery
   depends_on:
   - tone.wordless
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1
 - id: story.setup_cues
   statement: |
     The crush, the dinner plan and what he means to say at dinner are told only in pictures. Crush: before calling he checks his hair in the rear-view mirror and takes a rehearsed breath; her photo is on the call screen. Dinner plan: a map pin with a fork-and-knife icon on his phone before he opens the call, and the word "dinner" in the invitation itself. What he means to say at dinner: during the crank, he types a heart emoji at the end of the invitation, hesitates, and deletes it before sending.
@@ -150,11 +154,12 @@ entries:
   - intent.open_hopeful_ending
   depends_on:
   - tone.wordless
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
-  notes: The map pin must have no street names or labels (tone.wordless). The emoji is a pictogram, not text (G1 review).
+  version: 1
+  notes: The map pin must have no street names or labels (tone.wordless). The emoji is a pictogram, not
+    text (G1 review).
 - id: story.crank_plant
   statement: |
     The hand-crank charger is Ren's own and lives in his car's glovebox. It is planted in the car beat: he opens the glovebox for the charging cable, the chunky crank charger clunks out onto his lap, and he shoves it back as useless. It pays off at the turn, when he sits by the dead car, looks at the glovebox, and takes it out.
@@ -173,10 +178,10 @@ entries:
   depends_on:
   - story.locations
   - tone.the_turn
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1
 - id: story.escalation
   statement: |
     The battery percentage is the film's only meter and it falls one step per setback: 5% at the call, 4% and red as he starts typing, 3% when the car dies, 2% when the shop goes dark, 1% and blinking at the turn. The crank lifts it back to 2%, enough to send. After the send he lets go of the handle and the screen fades to black. Each failure costs more than the last: the car is his own small hope, the shop is a place he runs to in public and the whole room goes dark around him.
@@ -192,7 +197,8 @@ entries:
       beat_9: 0
     red_from: 4
     blinking_at: 1
-    meters: [battery_percent]
+    meters:
+    - battery_percent
     network_signal_meter: false
   rationale: |
     A single number the eye can read keeps the race legible without words, and one step down per setback makes the comedy and the stakes run on the same engine (tone.comedy_source). The crank only buys back one percent, so the triumph is small and hard-won rather than a rescue. "Last signal" keeps its G1 meaning, the last of the battery. Rejected: a signal-bar crisis at the send, which introduces a second meter in the last 10 s.
@@ -202,11 +208,12 @@ entries:
   depends_on:
   - tone.comedy_source
   - tone.wordless
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
-  notes: Exact on-screen numbers are handed to continuity (cinematographer) as the story's intent; they may adjust presentation, not the downward-then-one-step-up shape.
+  version: 1
+  notes: Exact on-screen numbers are handed to continuity (cinematographer) as the story's intent; they
+    may adjust presentation, not the downward-then-one-step-up shape.
 - id: story.message
   statement: |
     The sent message is a short, ordinary English dinner invitation to Hana. It is the only readable text in the film, must be legible at a glance, and must not confess anything. He starts it in beat 2 and finishes it during the crank; the final wording comes from the screenwriter as 2–3 options for the user at G2.
@@ -215,7 +222,9 @@ entries:
     language: en
     confession_in_text: false
     max_words: 12
-    typed_in_beats: [2, 6]
+    typed_in_beats:
+    - 2
+    - 6
     sent_in_beat: 7
     wording: UNKNOWN_screenwriter_proposes_options
   rationale: |
@@ -226,10 +235,10 @@ entries:
   depends_on:
   - tone.wordless
   - tone.ending_restraint
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1
 - id: story.locations
   statement: |
     Three spaces in total: (1) a quiet street at golden hour into dusk, with Ren's small old car parked at the kerb (car interior, the kerb beside it); (2) a small corner shop on the same street, a few steps away; (3) Hana's room, at her desk by a window, in the evening. The shop's power fails, not the street's.
@@ -250,10 +259,10 @@ entries:
   - intent.race_against_battery
   depends_on:
   - tone.comedy_source
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1
   notes: Street design, architecture, country and signage (shapes only, no words) belong to the world-designer.
 - id: story.ending
   statement: |
@@ -264,7 +273,8 @@ entries:
     - she_reads_smiles
     - his_screen_fades
     - final_image
-    final_image: ren leaning back against the car on the kerb, dark phone on his chest, looking up at the dusk sky
+    final_image: ren leaning back against the car on the kerb, dark phone on his chest, looking up at
+      the dusk sky
     reply_shown: false
     dinner_shown: false
     confession_shown: false
@@ -278,7 +288,7 @@ entries:
   - tone.ending_restraint
   - story.setup_cues
   - story.arc.ren
-  applies_to: []
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:story-architect
+  version: 1

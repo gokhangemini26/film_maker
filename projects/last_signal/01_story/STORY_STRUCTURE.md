@@ -3,7 +3,7 @@ fm:
   id: story_structure
   kind: story_structure
   phase: STORY
-  status: PROPOSED
+  status: APPROVED
   owner_role: story-architect
   derived_from:
   - ref: artifact:story_bible

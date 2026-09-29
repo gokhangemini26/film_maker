@@ -3,7 +3,7 @@ fm:
   id: screenplay
   kind: screenplay
   phase: SCREENPLAY
-  status: PROPOSED
+  status: APPROVED
   owner_role: screenwriter
   derived_from:
   - ref: artifact:story_structure

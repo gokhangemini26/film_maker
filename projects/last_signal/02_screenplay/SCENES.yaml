@@ -2,7 +2,7 @@ fm:
   id: scenes
   kind: scene_index
   phase: SCREENPLAY
-  status: PROPOSED
+  status: APPROVED
   owner_role: screenwriter
   derived_from:
   - ref: artifact:screenplay
