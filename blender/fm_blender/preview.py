@@ -77,7 +77,7 @@ def world_sky(dusk, canon):
     return bg
 
 
-def parse_facing(text, pos, cam, street):
+def parse_facing(text, pos, cam, street, scene=""):
     t = text.lower()
     to_cam = Vector((cam.x - pos.x, cam.y - pos.y, 0))
     if "away" in t:
@@ -91,7 +91,7 @@ def parse_facing(text, pos, cam, street):
                 v = Vector((d[0], d[1], 0))
                 break
         if v.length == 0:
-            v = to_cam
+            v = {"SC01": Vector((0, 1, 0)), "SC04": Vector((-1, 0, 0)), "SC06": Vector((-1, 0, 0))}.get(scene, to_cam)
     else:
         v = Vector((0, 1, 0)) if any(w in t for w in ("south", "west", "stand", "phone")) else to_cam
     if v.length < 1e-6:
@@ -208,13 +208,13 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
     for ch in shot["characters"]:
         pos = Vector(ch["position"]) + off
         pose = pose_for(scene, sid, ch["id"])
-        facing = parse_facing(ch["facing"], pos, cpos, street)
+        facing = parse_facing(ch["facing"], pos, cpos, street, scene)
         if pose.startswith("sit") or pose == "kneel":
             pos.z = off.z
         props = ch["canon"]["proportions"]
         tmp = bpy.data.collections.new("fm.tmp." + ch["id"])
         rig.children.link(tmp) if False else bpy.context.scene.collection.children.link(tmp)
-        info = figure(tmp, ch["id"], canon, props, pos, facing, pose)
+        info = figure(tmp, ch["id"], canon, props, pos, facing, pose, hold=(ch["id"] == "ren" and scene not in ("SC02",) and pose != "kneel"))
         for o in tmp.objects:
             mark(o)
         figs[ch["id"]] = (info, tmp)
@@ -223,8 +223,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         if name in figs:
             return figs[name][0]["head"] - Vector((0, 0, 0.1))
         if name in ("phone_ren", "crank_charger") and "ren" in figs:
-            i = figs["ren"][0]
-            return i["chest"] + i["facing"] * 0.3 - Vector((0, 0, 0.25))
+            return figs["ren"][0]["phone"]
         return {
             "passenger_door": Vector((0.2, 0.0, 0.7)),
             "shop_door": Vector((-1.8, 12.0, 1.0)),
@@ -240,7 +239,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
 
     if "ren" in figs and scene != "SC02":
         i = figs["ren"][0]
-        ph = U.box("phone_ren." + sid, (0.071, 0.147, 0.0085), i["hands"] + i["facing"] * 0.12 + Vector((0, 0, 0.12)), figs["ren"][1],
+        ph = U.box("phone_ren." + sid, (0.071, 0.147, 0.0085), i["phone"], figs["ren"][1],
                    U.toon({"hex": "#33333D", "linear": U.lin("#33333D")}))
         ph.rotation_euler = (0, 0, math.atan2(i["facing"].y, i["facing"].x) + math.pi / 2)
         sc = U.box("phone_ren_screen." + sid, (0.06, 0.13, 0.002), ph.location, figs["ren"][1],
@@ -248,6 +247,10 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         sc.rotation_euler = ph.rotation_euler
         sc.location = ph.location + Vector((0, 0, 0.005))
         mark(ph), mark(sc)
+    if scene == "SC05":
+        for w, cond in (("room_wall_south", cpos.x < S.ROOM_ORIGIN.x - 1.4), ("room_wall_north", cpos.x > S.ROOM_ORIGIN.x + 1.4)):
+            if w in bpy.data.objects:
+                bpy.data.objects[w].hide_render = cond
     # lights
     ls = canon.get("look.color.light_sources") or []
     def ls_col(src, default):

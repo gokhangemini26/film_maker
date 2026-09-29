@@ -6,31 +6,34 @@ from mathutils import Vector
 from . import util as U
 
 
-def _cols(canon, cid):
-    ent = canon.get(f"characters.{cid}.face") or {}
-    hs = []
+def _dig(v, *path):
+    for p in path:
+        if not isinstance(v, dict) or p not in v:
+            return None
+        v = v[p]
+    return v if isinstance(v, dict) and "hex" in v else None
 
-    def walk(v):
-        if isinstance(v, dict):
-            if "hex" in v and "linear" in v:
-                hs.append(v)
-            else:
-                for x in v.values():
-                    walk(x)
-        elif isinstance(v, list):
-            for x in v:
-                walk(x)
-    for k in (f"characters.{cid}.face", f"characters.{cid}.wardrobe.outfit", f"characters.{cid}.wardrobe.jacket",
-              f"characters.{cid}.silhouette"):
-        walk(canon.get(k))
-    return hs
+
+def _cols(canon, cid):
+    face = canon.get(f"characters.{cid}.face") or {}
+    out = canon.get(f"characters.{cid}.wardrobe.outfit") or {}
+    jac = canon.get(f"characters.{cid}.wardrobe.jacket") or {}
+    d = lambda h: {"hex": h, "linear": U.lin(h)}  # noqa: E731
+    return {
+        "skin": _dig(face, "colors", "skin") or d("#EAC7AB"),
+        "hair": _dig(face, "colors", "hair") or d("#3A2F2A"),
+        "eyes": _dig(face, "colors", "eyes") or d("#2A2230"),
+        "top": _dig(jac, "color") or _dig(out, "top", "color") or _dig(out, "tshirt", "color") or d("#8F809A"),
+        "legs": _dig(out, "trousers", "color") or d("#5A4A6A"),
+        "shoes": _dig(out, "shoes", "color") or d("#ECE7DE"),
+    }
 
 
 def pick(hs, i, default):
     return hs[i % len(hs)] if hs else {"hex": default, "linear": U.lin(default)}
 
 
-def figure(col, cid, canon, props, pos, facing, pose):
+def figure(col, cid, canon, props, pos, facing, pose, hold=False):
     """Build a proxy figure. pos = (x,y,z) of feet/base; facing = unit XY Vector; pose in stand|kneel|sit_car|sit_kerb|sit_chair."""
     P = props
     H = P["height_m"]
@@ -38,11 +41,8 @@ def figure(col, cid, canon, props, pos, facing, pose):
     leg = P.get("leg_length_m", H * 0.49)
     sh = P.get("shoulder_width_m", H * 0.24) / 2
     hip = P.get("hip_width_m", H * 0.19) / 2
-    hs = _cols(canon, cid)
-    skin = U.toon(pick(hs, 0, "#E8B994"))
-    cloth = U.toon(pick(hs, 1, "#8F809A"))
-    cloth2 = U.toon(pick(hs, 2, "#5A4A6A"))
-    hair = U.toon(pick(hs, 3, "#2B2430"))
+    cc = _cols(canon, cid)
+    skin, cloth, cloth2, hair = U.toon(cc["skin"]), U.toon(cc["top"]), U.toon(cc["legs"]), U.toon(cc["hair"])
     f = Vector((facing.x, facing.y, 0)).normalized()
     r = Vector((f.y, -f.x, 0))  # figure's right
     base = Vector(pos)
@@ -92,6 +92,9 @@ def figure(col, cid, canon, props, pos, facing, pose):
         handL, handR = knee[0] + Vector((0, 0, 0.1)), knee[1] + Vector((0, 0, 0.1))
     elif pose == "sit_chair":
         handL, handR = chest + f * 0.35 - r * 0.15 - Vector((0, 0, 0.35)), chest + f * 0.35 + r * 0.15 - Vector((0, 0, 0.35))
+    phone = chest + f * 0.24 + Vector((0, 0, -0.16))
+    if hold and pose in ("sit_car", "sit_kerb", "stand", "sit_chair"):
+        handL, handR = phone - r * 0.05, phone + r * 0.05
     limb = 0.055 if H > 1.6 else 0.05
     U.between(f"{cid}_torso", hipc, chest, limb * 2.6, col, cloth)
     U.between(f"{cid}_neck", chest, neck + Vector((0, 0, 0.02)), 0.035, col, skin)
@@ -106,10 +109,10 @@ def figure(col, cid, canon, props, pos, facing, pose):
     hd = U.sphere(f"{cid}_head", hh * 0.5, head, col, skin, scale=(0.85, 0.95, 1.0))
     hd.rotation_euler = (0, 0, math.atan2(f.y, f.x))
     U.sphere(f"{cid}_hair", hh * 0.52, head + Vector((0, 0, hh * 0.14)) - f * hh * 0.1, col, hair, scale=(0.95, 1.0, 0.85))
-    eye = U.flat({"hex": "#2A2230", "linear": U.lin("#2A2230")})
+    eye = U.flat(cc["eyes"])
     for i, sgn in enumerate((-1, 1)):
         U.sphere(f"{cid}_eye{i}", 0.012, head + f * hh * 0.42 + r * sgn * hh * 0.17 + Vector((0, 0, hh * 0.02)), col, eye)
     tuft = P.get("tuft_extra_m")
     if tuft:
         U.sphere(f"{cid}_tuft", 0.03, head + Vector((0, 0, hh * 0.62 + tuft)), col, hair)
-    return {"head": head, "chest": chest, "hands": (handL + handR) / 2, "facing": f}
+    return {"head": head, "chest": chest, "hands": (handL + handR) / 2, "phone": phone, "facing": f}
