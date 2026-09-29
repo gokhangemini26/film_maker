@@ -5,12 +5,12 @@
 ```yaml
 project: last_signal
 sandbox: false
-current_phase: WORLD_CHARACTERS
-status: in_progress
-ledger: 14 records, head b55441c1d846
+current_phase: LOOK
+status: awaiting_approval
+ledger: 16 records, head 086d11307363
 ```
 
-**Next:** Gate approved: `fm advance`
+**Next:** Human review: `fm approve G4`, or `fm revise G4 --notes ...` / `fm reject G4 --notes ...`
 
 ## Gates
 
@@ -19,7 +19,7 @@ ledger: 14 records, head b55441c1d846
 | G1 | Creative direction | approved | human:gokhan_guler | 4 |
 | G2 | Story and screenplay | approved | human:gokhan_guler | 5 |
 | G3 | World and characters | approved | human:gokhan_guler | 4 |
-| G4 | Visual direction (style lock) | pending | - | - |
+| G4 | Visual direction (style lock) | awaiting_approval | - | - |
 | G5 | Storyboard and shots | pending | - | - |
 | G6 | First Blender preview | pending | - | - |
 | G7 | Animation preview | pending | - | - |
@@ -27,7 +27,7 @@ ledger: 14 records, head b55441c1d846
 
 ## Canon
 
-LOCKED: 69
+LOCKED: 69, PROPOSED: 50
 
 ## Artifacts
 
@@ -37,14 +37,18 @@ LOCKED: 69
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
 | character_bible | WORLD_CHARACTERS | APPROVED | 44a136f55dc3 |
+| color_bible | LOOK | PROPOSED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
 | g3_review | WORLD_CHARACTERS | APPROVED | be33e9db03f1 |
+| g4_review | LOOK | PROPOSED | cc0491da18b7 |
+| lighting_bible | LOOK | PROPOSED | 95224320170d |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
 | story_bible | STORY | APPROVED | 1604e946f2ee |
 | story_structure | STORY | APPROVED | d8a12c83b7c3 |
+| visual_bible | LOOK | PROPOSED | 4cb45f98d39b |
 | world_bible | WORLD_CHARACTERS | APPROVED | 6fca966b474a |
 
 ## Shots
