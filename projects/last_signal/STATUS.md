@@ -5,12 +5,12 @@
 ```yaml
 project: last_signal
 sandbox: false
-current_phase: STORYBOARD
+current_phase: PREVIEW
 status: in_progress
-ledger: 25 records, head 2c2e9d287eff
+ledger: 28 records, head f6678ffdaabd
 ```
 
-**Next:** Gate approved: `fm advance`
+**Next:** Produce PREVIEW deliverables, then `fm submit` for G6
 
 ## Gates
 
