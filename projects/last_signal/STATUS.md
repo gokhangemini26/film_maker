@@ -46,6 +46,7 @@ LOCKED: 161
 | g4_review | LOOK | APPROVED | a2c83484c758 |
 | g5_review | STORYBOARD | APPROVED | 51c65bce1415 |
 | lighting_bible | LOOK | APPROVED | 95224320170d |
+| preview_review | PREVIEW | PROPOSED | b8aa461ed622 |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
 | shot_list | STORYBOARD | APPROVED | a6a2b5dffb75 |
