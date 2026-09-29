@@ -216,3 +216,10 @@ def build_room(col, canon):
           U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=2.5))
     for i in range(5):
         U.box(f"wall_sketch{i}", (0.25, 0.01, 0.3), (O.x - 0.5 + i * 0.28, O.y - 0.06, 1.75), col, _t(col, pal(3 + i)))
+
+
+def build_generic(col, canon):
+    """Fallback stage for films whose canon has no set dimensions: ground plane + far backdrop."""
+    ground = U.toon({"hex": "#B9B4AA", "linear": U.lin("#B9B4AA")})
+    U.box("stage_ground", (60, 60, 0.05), (0, 0, -0.025), col, ground)
+    U.box("stage_backdrop", (60, 0.2, 12), (0, 30, 6), col, U.toon({"hex": "#C9D6E3", "linear": U.lin("#C9D6E3")}))

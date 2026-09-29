@@ -21,15 +21,16 @@ CLAUDE = REPO / ".claude"
 M2_AGENTS = {"creative-director", "story-architect", "screenwriter", "world-designer",
              "character-designer", "look-director", "cinematographer", "animation-director",
              "qa-supervisor"}
-LATER_AGENTS = {"blender-td", "post-supervisor"}          # M3 / M6
+LATER_AGENTS = {"post-supervisor"}          # M6
+M3_AGENTS = {"blender-td"}
 DOMAIN_SKILLS = {"film-development", "story-development", "screenwriting", "world-building",
                  "production-design", "character-design", "visual-development", "color-design",
                  "lighting-design", "cinematography", "storyboarding", "animation-design",
-                 "continuity-check", "creative-review"}
+                 "continuity-check", "creative-review", "blender-production"}
 SUPPORT_SKILLS = {"film-conventions", "project-management"}
 COMMANDS = {"film-new", "film-direction", "film-story", "film-script", "film-world", "film-look",
             "film-cinematography", "film-storyboard", "film-review", "film-continuity",
-            "film-revise", "film-status", "film-next"}
+            "film-revise", "film-status", "film-next", "film-blender"}
 SECTIONS = ("## Purpose", "## When to use", "## Required inputs", "## Process", "## Output format",
             "## Validation rules", "## Failure conditions", "## Examples")
 HUMAN_ONLY = ("fm approve", "fm revise G", "fm reject", "fm authorize", "fm canon approve",
@@ -61,10 +62,10 @@ def _tools(meta):
 
 # ------------------------------------------------------------------ agents
 def test_exactly_the_m2_agents():
-    assert set(agents()) == M2_AGENTS
+    assert set(agents()) == M2_AGENTS | M3_AGENTS
 
 
-@pytest.mark.parametrize("name", sorted(M2_AGENTS))
+@pytest.mark.parametrize("name", sorted(M2_AGENTS | M3_AGENTS))
 def test_agent_definition(name):
     meta, body = agents()[name]
     assert meta["name"] == name
@@ -83,13 +84,13 @@ def test_agent_models_match_config():
     for name, (meta, _) in agents().items():
         role_class = cfg["roles"][name]
         assert meta["model"] == cfg["models"][role_class]["model"], name
-    assert set(cfg["roles"]) == M2_AGENTS | LATER_AGENTS
+    assert set(cfg["roles"]) == M2_AGENTS | M3_AGENTS | LATER_AGENTS
 
 
 def test_roles_known_to_core_have_agents():
     owners = set(ARTIFACT_OWNERS.values()) - {"executive-producer"}
-    assert owners <= M2_AGENTS
-    assert set(CANON_DOMAINS) <= M2_AGENTS | LATER_AGENTS
+    assert owners <= M2_AGENTS | M3_AGENTS
+    assert set(CANON_DOMAINS) <= M2_AGENTS | M3_AGENTS | LATER_AGENTS
 
 
 def test_writers_and_reviewer_tools():

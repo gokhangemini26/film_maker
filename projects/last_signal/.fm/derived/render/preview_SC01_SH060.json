@@ -1,0 +1,14 @@
+{
+  "content_hash": "sha256:0ef468544c10eabc8985bf958efc1efa7c7fd524f6f4ea143447128ac4b42265",
+  "created_at": "2026-09-29T20:26:44Z",
+  "derived_from": [
+    {
+      "hash": "sha256:749b64628d5d346a2ea0814100d92f2848fb1cff62ffff70facf9a5f76ff885f",
+      "ref": "resolved:SC01_SH060"
+    }
+  ],
+  "notes": "bpy 5.0.1 (DRAFT, not the pinned series); draft; width 960",
+  "path": "10_blender/previews/SC01_SH060.png",
+  "producer": "fm.blender.preview",
+  "ref": "render:preview_SC01_SH060"
+}

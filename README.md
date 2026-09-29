@@ -26,7 +26,7 @@ engine, not the database: every scene is reproducible from text files.
 ```powershell
 cd C:\Users\ggule\film_maker
 python -m pip install -e ".[dev]"
-python -m pytest              # 131 tests
+python -m pytest              # 144 tests
 fm doctor                     # checks the pinned Blender (5.2.x)
 fm init my_film --title "My Film"
 fm status
@@ -49,6 +49,7 @@ Full walkthrough: [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
 | [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) | Install, first project, daily use |
 | [docs/WORKFLOW.md](docs/WORKFLOW.md) | Phases, gates, proposals vs locked decisions, change requests |
 | [docs/DATA_MODEL.md](docs/DATA_MODEL.md) | Canon, intent, artifacts, shots, ledger, dependency graph |
+| [docs/BLENDER.md](docs/BLENDER.md) | Resolver, Blender builders, previews, draft vs pinned |
 | [docs/CLI.md](docs/CLI.md) | Every `fm` command, who may run it, exit codes |
 | [docs/COMMANDS.md](docs/COMMANDS.md) | The `/film-*` commands in Claude Code |
 | [docs/AGENTS.md](docs/AGENTS.md) | The specialist agents, what they own, what they can never do |

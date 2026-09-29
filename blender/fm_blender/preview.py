@@ -172,12 +172,12 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
     clear_shot_objects()
 
     cam_c = shot["camera"]
-    sp = Vector(cam_c["start_position"])
-    ep = Vector(cam_c.get("end_position", cam_c["start_position"]))
+    sp = Vector(cam_c.get("start_position") or (0, -5, 1.5))
+    ep = Vector(cam_c.get("end_position") or cam_c.get("start_position") or (0, -5, 1.5))
     cpos = (sp + ep) / 2 + off
     cam_data = bpy.data.cameras.new("cam." + sid)
-    cam_data.lens = cam_c["lens_mm"]
-    cam_data.sensor_width = cam_c["sensor_width_mm"]
+    cam_data.lens = cam_c.get("lens_mm", 35)
+    cam_data.sensor_width = cam_c.get("sensor_width_mm", 36)
     cam_data.sensor_fit = "HORIZONTAL"
     cam_data.clip_start = 0.02
     if cam_c.get("dof", {}).get("enabled"):
@@ -189,7 +189,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
     bpy.context.scene.camera = cam
 
     # car door
-    door = bpy.data.objects.get(door_name)
+    door = bpy.data.objects.get(door_name) if door_name else None
     if door is not None:
         hinge = Vector(door["fm_hinge_xy"]) if False else None
         dl = door.dimensions.y
@@ -206,12 +206,12 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
 
     figs = {}
     for ch in shot["characters"]:
-        pos = Vector(ch["position"]) + off
+        pos = Vector(ch.get("position") or (0, 0, 0)) + off
         pose = pose_for(scene, sid, ch["id"])
-        facing = parse_facing(ch["facing"], pos, cpos, street, scene)
+        facing = parse_facing(ch.get("facing", "camera"), pos, cpos, street, scene)
         if pose.startswith("sit") or pose == "kneel":
             pos.z = off.z
-        props = ch["canon"]["proportions"]
+        props = (ch.get("canon") or {}).get("proportions") or {"height_m": 1.7}
         tmp = bpy.data.collections.new("fm.tmp." + ch["id"])
         rig.children.link(tmp) if False else bpy.context.scene.collection.children.link(tmp)
         info = figure(tmp, ch["id"], canon, props, pos, facing, pose, hold=(ch["id"] == "ren" and scene not in ("SC02",) and pose != "kneel"))
@@ -233,8 +233,8 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
             "west_along_pavement": Vector((cpos.x, cpos.y + 10, cpos.z - 0.05)),
         }.get(name, Vector((cpos.x, cpos.y + 3, cpos.z)))
 
-    tgt = target(cam_c["look_at"])
-    if shot["composition"].get("framing") == "insert" and cam_c["look_at"] in ("phone_ren", "crank_charger") and (tgt - cpos).length < 0.75:
+    tgt = target(cam_c.get("look_at", ""))
+    if (shot.get("composition") or {}).get("framing") == "insert" and cam_c.get("look_at", "") in ("phone_ren", "crank_charger") and (tgt - cpos).length < 0.75:
         cam.location = tgt - (tgt - cpos).normalized() * 0.75  # blockout adjustment: keep the prop out of the near plane
         cpos = cam.location.copy()
     if "ren" in figs and ((scene == "SC01" and n == 110) or (scene == "SC04" and n >= 50)):
@@ -245,7 +245,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         mark(cr)
     aim(cam, tgt)
     if cam_c.get("dof", {}).get("enabled"):
-        cam_data.dof.focus_distance = max((target(cam_c["look_at"]) - cpos).length, 0.1)
+        cam_data.dof.focus_distance = max((target(cam_c.get("look_at", "")) - cpos).length, 0.1)
 
     if "ren" in figs and scene != "SC02":
         i = figs["ren"][0]
@@ -290,7 +290,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
                 o.hide_render = True
                 o["fm_culled_by_preview"] = 1
                 culled.append(o.name)
-    if shot["composition"].get("framing") == "insert":
+    if (shot.get("composition") or {}).get("framing") == "insert":
         for cid, (info, tmp) in figs.items():
             for o in tmp.objects:
                 n_ = o.name.split("_", 1)[1] if "_" in o.name else o.name
@@ -369,10 +369,17 @@ def main(argv):
     for name in ("street", "shop", "room"):
         c = U.get_collection("fm." + name)
         units[name] = c
-    S.build_street(units["street"], canon)
-    door = S.build_car(units["street"], canon)["door"]
-    S.build_shop(units["shop"], canon)
-    S.build_room(units["room"], canon)
+    door = None
+    if "world.sets.street" in canon:
+        S.build_street(units["street"], canon)
+        if "world.sets.ren_car" in canon:
+            door = S.build_car(units["street"], canon)["door"]
+    else:
+        S.build_generic(units["street"], canon)   # any film without street canon still gets a stage
+    if "world.sets.corner_shop" in canon:
+        S.build_shop(units["shop"], canon)
+    if "world.sets.hana_room" in canon:
+        S.build_room(units["room"], canon)
     rig = U.get_collection("fm.rig")
     done = []
     for sid, shot in shots.items():

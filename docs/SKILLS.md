@@ -38,6 +38,7 @@ procedure, B. after a human decision, C. revision procedure.
 | lighting-design | look-director | lighting bible, motivated lighting canon |
 | cinematography | cinematographer | camera language, lens set, continuity canon |
 | storyboarding | cinematographer | storyboard, shot list, shot specs |
+| blender-production | blender-td | resolver -> builders -> previews, pinned vs draft, reading a still |
 | animation-design | animation-director | shot animation blocks |
 | continuity-check | qa-supervisor | continuity findings |
 | creative-review | qa-supervisor | gate reviews |

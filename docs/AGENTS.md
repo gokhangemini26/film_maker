@@ -23,6 +23,7 @@ validation result, limits).
 | character-designer | WORLD_CHARACTERS | CHARACTER_BIBLE.md | characters | character-design |
 | look-director | LOOK | VISUAL/COLOR/LIGHTING_BIBLE.md | look (style lock at G4) | visual-development, color-design, lighting-design |
 | cinematographer | CINEMATOGRAPHY, STORYBOARD | CINEMATOGRAPHY_BIBLE.md, STORYBOARD.md, SHOT_LIST.md, shot specs | camera, continuity | cinematography, storyboarding |
+| blender-td | ASSET_PREP, BLENDER_BUILD, PREVIEW | runs `fm resolve` / `fm blender preview`, reads stills, reports builder vs spec problems; builder code in `blender/` | (none) | blender-production |
 | animation-director | STORYBOARD | each shot's `animation` block + `rationale.animation` | (animation, from M6) | animation-design |
 | qa-supervisor | every gate | `qa/reviews/G#_REVIEW.md` only | — | creative-review, continuity-check |
 

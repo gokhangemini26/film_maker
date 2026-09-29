@@ -23,6 +23,7 @@ Gate decisions are always yours, typed in your own terminal:
 | `/film-look` | LOOK | look-director → qa-supervisor | **G4** (style lock) |
 | `/film-cinematography` | CINEMATOGRAPHY | cinematographer | advance to STORYBOARD |
 | `/film-storyboard` | STORYBOARD | cinematographer → animation-director → qa-supervisor | **G5** |
+| `/film-blender [shots]` | ASSET_PREP → PREVIEW | blender-td | previews + per-shot report (G6 is yours) |
 | `/film-next` | whatever is next | — | runs the right command above |
 | `/film-status` | any | — | plain-language status + next step |
 | `/film-review` | any | qa-supervisor | review written, nothing submitted |

@@ -399,6 +399,27 @@ def resolve_cmd(c: Ctx, scope):
                f"film = {r['film_frames']} frames at {r['fps']:g} fps ({r['film_seconds']:g} s)")
 
 
+@cli.group("blender")
+def blender_group():
+    """Blender-side production (M3): previews from resolved shot files."""
+
+
+@blender_group.command("preview")
+@click.option("--shots", help="Comma-separated shot ids (default: all).")
+@click.option("--width", default=768, show_default=True)
+@click.option("--draft", is_flag=True, help="Use the bpy module (not the pinned Blender): fast drafts only, never G6 evidence.")
+@click.option("--jobs", default=1, show_default=True, help="Parallel Blender processes.")
+@click.pass_obj
+def blender_preview(c: Ctx, shots, width, draft, jobs):
+    """Render one still per shot into 10_blender/previews/ and record each as a derived node."""
+    from .blenderrun import preview as run
+
+    r = run(c.project(), c.repo, shots=shots.split(",") if shots else None, width=width, draft=draft, jobs=jobs)
+    click.echo(f"rendered {len(r['rendered'])} preview(s) with {r['backend']}; failed: {', '.join(r['failed']) or 'none'}")
+    if r["failed"]:
+        sys.exit(1)
+
+
 @cli.command()
 @click.option("--scope", default="film", help="film | shot:ID | shots:A..B | scene:SC01 | sequence:SQ01 | character:ID | asset:ID | ref:REF")
 @click.option("--json", "as_json", is_flag=True)

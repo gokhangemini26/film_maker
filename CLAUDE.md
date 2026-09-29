@@ -25,9 +25,10 @@ the matching command's procedure.
 | look-director | VISUAL/COLOR/LIGHTING bibles, look canon (style lock) |
 | cinematographer | CINEMATOGRAPHY_BIBLE, STORYBOARD, SHOT_LIST, shots, camera + continuity canon |
 | animation-director | shots' `animation` blocks |
+| blender-td | resolved shots, Blender previews, per-shot builder/spec problem report |
 | qa-supervisor | gate reviews (advisory) |
 
-Blender, rendering and post-production are not available yet (M3+); say so if asked.
+Blender previews are available (`/film-blender`, `fm blender preview`, blender-td). Animation, final render and post-production are not available yet (M6+); say so if asked.
 
 ## Hard rules
 
