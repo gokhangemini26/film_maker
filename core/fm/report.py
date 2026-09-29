@@ -93,7 +93,10 @@ def render_status(project: Project, state: ProjectState, loaded: Loaded, graph: 
     L += ["", "## Attention", ""]
     feedback = [f"{gid} {state.gates[gid].status} by {state.gates[gid].decided_by}: {state.gates[gid].notes}"
                 for gid in GATES if state.gates[gid].status in ("revise", "rejected") and state.gates[gid].notes]
-    attention = [*feedback, *all_issues, *[f"stale: {r}" for r in sorted(stale)],
+    carried = [f"{gid} approved past a {state.gates[gid].review_verdict} QA review (acknowledged); "
+               f"open findings are in qa/reviews/{gid}_REVIEW.md"
+               for gid in GATES if state.gates[gid].review_acknowledged]
+    attention = [*feedback, *[f"carried forward: {c}" for c in carried], *all_issues, *[f"stale: {r}" for r in sorted(stale)],
                  *[f"change awaiting decision: {c}" for c in pending_changes]]
     L += [f"- {a}" for a in attention] or ["Nothing outstanding."]
     if state.authorizations:

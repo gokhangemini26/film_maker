@@ -47,6 +47,9 @@ def _apply(st: ProjectState, r: LedgerRecord) -> None:  # noqa: C901 - flat disp
         g.decided_by, g.decided_at, g.notes, g.ledger_seq = r.actor, r.ts, p.get("notes"), r.seq
         if p["decision"] == "approved":
             g.approved_hashes = dict(p.get("approved_hashes", {}))
+            g.review_verdict = p.get("review_verdict")
+            g.review_acknowledged = bool(p.get("review_acknowledged", False))
+            g.amendments = 0
             for cid, lk in p.get("locked", {}).items():
                 st.canon[cid] = CanonLock(status=Status.LOCKED, hash=lk["hash"],
                                           version=lk["version"], ledger_seq=r.seq)
@@ -78,6 +81,13 @@ def _apply(st: ProjectState, r: LedgerRecord) -> None:  # noqa: C901 - flat disp
     elif a == "authorize":
         st.authorizations.append(Authorization(what=p["what"], scope=p.get("scope", "film"),
                                                by=r.actor, at=r.ts, ledger_seq=r.seq))
+    elif a == "gate.amend":
+        g = st.gates[p["gate"]]
+        for ref, ch in p["changed"].items():
+            g.approved_hashes[ref] = ch["new"]
+        g.amendments += 1
+    elif a == "canon.annotate":
+        return  # notes are not part of the decision hash; the record is the audit trail
     elif a == "shot.stage":
         st.shots[p["shot"]] = p["stage"]
     else:

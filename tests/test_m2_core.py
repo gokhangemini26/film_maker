@@ -76,7 +76,7 @@ def test_fail_verdict_is_advisory_and_shown_to_the_human(production, monkeypatch
         return "G1"
     monkeypatch.setenv("FM_ACTOR", "human:director")
     monkeypatch.setattr(authority, "_prompt", fake_prompt)
-    st = ops.decide_gate(production, "G1", "approved", "overruling the reviewer")
+    st = ops.decide_gate(production, "G1", "approved", "overruling the reviewer", ack_review=True)
     assert "qa review verdict (advisory): FAIL" in seen["msg"]
     assert st.gates["G1"].status == "approved"          # the human decides, not the reviewer
 

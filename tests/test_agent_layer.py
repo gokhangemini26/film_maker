@@ -33,7 +33,7 @@ COMMANDS = {"film-new", "film-direction", "film-story", "film-script", "film-wor
 SECTIONS = ("## Purpose", "## When to use", "## Required inputs", "## Process", "## Output format",
             "## Validation rules", "## Failure conditions", "## Examples")
 HUMAN_ONLY = ("fm approve", "fm revise G", "fm reject", "fm authorize", "fm canon approve",
-              "fm canon lock", "fm canon reject", "fm change approve", "fm change reject",
+              "fm canon lock", "fm canon reject", "fm change approve", "fm change reject", "fm amend",
               "--sandbox-confirm")
 
 

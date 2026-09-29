@@ -180,13 +180,16 @@ def advance(c: Ctx):
 
 def _gate_cmd(decision):
     @click.argument("gate", type=click.Choice(list(GATES)))
-    @click.option("--notes", help="Feedback / reasons (required for revise and reject).")
+    @click.option("--notes", help="Feedback / reasons (required for revise and reject; on approve, "
+                                  "record your answers to the review's open questions).")
+    @click.option("--ack-review", is_flag=True, help="Acknowledge a WARN/FAIL QA review (required to approve past one).")
     @sandbox_opt
     @click.pass_obj
-    def _cmd(c: Ctx, gate, notes, sandbox_confirm):
+    def _cmd(c: Ctx, gate, notes, ack_review, sandbox_confirm):
         from .ops import decide_gate
 
-        st = decide_gate(c.project(), gate, decision, notes, sandbox_confirm=sandbox_confirm)
+        st = decide_gate(c.project(), gate, decision, notes, sandbox_confirm=sandbox_confirm,
+                         ack_review=ack_review)
         click.echo(f"{gate}: {st.gates[gate].status} by {st.gates[gate].decided_by}")
     return _cmd
 
@@ -241,6 +244,31 @@ def canon_show(c: Ctx, cid):
     if cid not in loaded.canon:
         raise FMError(f"unknown canon id '{cid}'")
     click.echo(dump_yaml(loaded.canon[cid].entry.model_dump(mode="json", exclude_none=True)))
+
+
+@canon.command("annotate", help="Correct the free-text notes of a canon entry (allowed on LOCKED entries; "
+                                "logged in the ledger; cannot change a decision).")
+@click.argument("cid")
+@click.option("--notes", required=True, help="The corrected notes text.")
+@click.pass_obj
+def canon_annotate(c: Ctx, cid, notes):
+    from .ops import annotate_canon
+
+    annotate_canon(c.project(), cid, notes)
+    click.echo(f"{cid}: notes updated (recorded in the ledger)")
+
+
+@cli.command("amend", help="HUMAN: accept a wording-only edit to approved documents without re-approving the gate.")
+@click.argument("gate", type=click.Choice(list(GATES)))
+@click.argument("refs", nargs=-1, required=True)
+@click.option("--note", required=True, help="What changed and why the meaning is unchanged.")
+@sandbox_opt
+@click.pass_obj
+def amend(c: Ctx, gate, refs, note, sandbox_confirm):
+    from .ops import amend_gate
+
+    st = amend_gate(c.project(), gate, list(refs), note, sandbox_confirm=sandbox_confirm)
+    click.echo(f"{gate}: amended ({st.gates[gate].amendments} amendment(s) since approval)")
 
 
 for _action in ("approve", "lock", "reject"):

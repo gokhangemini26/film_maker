@@ -14,7 +14,8 @@
       "Bash(fm deps:*)",
       "Bash(fm hash:*)",
       "Bash(fm change list:*)",
-      "Bash(fm change show:*)"
+      "Bash(fm change show:*)",
+      "Bash(fm canon annotate:*)"
     ],
     "deny": [
       "Bash(fm approve:*)",
@@ -24,6 +25,7 @@
       "Bash(fm canon approve:*)",
       "Bash(fm canon lock:*)",
       "Bash(fm canon reject:*)",
+      "Bash(fm amend:*)",
       "Bash(fm change approve:*)",
       "Bash(fm change reject:*)",
       "Bash(fm status --repair-cache:*)",
@@ -34,6 +36,7 @@
       "Bash(*fm canon approve*)",
       "Bash(*fm canon lock*)",
       "Bash(*fm canon reject*)",
+      "Bash(*fm amend*)",
       "Bash(*fm change approve*)",
       "Bash(*fm change reject*)",
       "Bash(*--sandbox-confirm*)",

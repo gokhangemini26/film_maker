@@ -198,7 +198,7 @@ def advance(project: Project) -> ProjectState:
 
 # ================================================================ gates (human)
 def decide_gate(project: Project, gate_id: str, decision: str, notes: str | None = None, *,
-                sandbox_confirm: bool = False) -> ProjectState:
+                sandbox_confirm: bool = False, ack_review: bool = False) -> ProjectState:
     if gate_id not in GATES:
         raise FMError(f"unknown gate '{gate_id}' ({', '.join(GATES)})")
     if decision not in ("approved", "revise", "rejected"):
@@ -252,9 +252,14 @@ def decide_gate(project: Project, gate_id: str, decision: str, notes: str | None
 
     from .reviews import review_verdict
     verdict = review_verdict(project, gate_id, loaded)
+    if verdict in ("WARN", "FAIL") and not ack_review:
+        raise FMError(
+            f"the QA review for {gate_id} has verdict {verdict}: read qa/reviews/{gate_id}_REVIEW.md, then "
+            f"re-run with --ack-review to acknowledge its open findings (they are carried forward in "
+            f"STATUS.md). Use --notes to record your answers to its open questions.")
     summary = "\n".join(line for line in (
         f"APPROVE {gate_id} - {gate.name}",
-        f"  qa review verdict (advisory): {verdict}" if verdict else "",
+        f"  qa review verdict (advisory): {verdict}" + (" - acknowledged, carried forward" if ack_review and verdict in ("WARN", "FAIL") else "") if verdict else "",
         f"  artifacts approved: {len(covered_art)}   shots approved: {len(covered_shots)}",
         f"  canon entries locked: {len(to_lock)} (domains: {', '.join(gate.locks_domains) or '-'})",
         "  (re-approval after drift)" if reapproval else "",
@@ -265,6 +270,8 @@ def decide_gate(project: Project, gate_id: str, decision: str, notes: str | None
     locked = {e.id: {"hash": canon_hash(e), "version": e.version} for e in to_lock}
     state = _append(project, current_actor(), "gate.decide", gate_id,
                     {"gate": gate_id, "decision": "approved", "notes": notes,
+                     "review_verdict": verdict,
+                     "review_acknowledged": bool(ack_review and verdict in ("WARN", "FAIL")),
                      "phase": gate.closes_phase if in_review else None,
                      "approved_hashes": approved_hashes, "locked": locked, **confirm})
     # mirror statuses into files (content hashes are unaffected)
@@ -402,6 +409,73 @@ def decide_change(project: Project, change_id: str, decision: str, notes: str | 
     write_yaml(path, cr.model_dump(mode="json", exclude_none=True))
     refresh(project)
     return cr
+
+
+def annotate_canon(project: Project, cid: str, notes: str) -> None:
+    """Correct the free-text `notes` of a canon entry, even a LOCKED one.
+
+    Notes are commentary, not part of the decision hash, so this cannot change
+    a decision. Every annotation is recorded in the ledger with old and new text.
+    """
+    loaded = project.load()
+    if cid not in loaded.canon:
+        raise FMError(f"unknown canon id '{cid}'")
+    entry = loaded.canon[cid].entry
+    if (entry.notes or "") == notes:
+        raise FMError("the notes are already identical")
+    _append(project, current_actor(), "canon.annotate", cid,
+            {"id": cid, "old_notes": entry.notes, "new_notes": notes})
+    _write_canon_entry(project, loaded, entry.model_copy(update={"notes": notes}))
+    refresh(project)
+
+
+def amend_gate(project: Project, gate_id: str, refs: list[str], note: str, *,
+               sandbox_confirm: bool = False) -> ProjectState:
+    """HUMAN: accept a wording-only edit to already-approved documents without re-approving the gate.
+
+    Records the new content hash of the named artifacts as approved, and restamps
+    (with the note) everything downstream that only went stale because of them. The
+    typed confirmation is the human's statement that meaning did not change.
+    """
+    assert_human(f"amend {gate_id}")
+    if gate_id not in GATES:
+        raise FMError(f"unknown gate '{gate_id}'")
+    if not note:
+        raise FMError("--note is required: say what changed and why it does not change the meaning")
+    state = load_state(project)
+    rec = state.gates[gate_id]
+    if rec.status != "approved":
+        raise StateError(f"{gate_id} is not approved; amendments apply to approved gates")
+    loaded = project.load()
+    report = validate(project)
+    loaded, graph = report.loaded, report.graph
+    changed = {}
+    for ref in refs:
+        ref = ref if ":" in ref else f"artifact:{ref}"
+        if not ref.startswith("artifact:"):
+            raise FMError(f"{ref}: only documents can be amended (canon changes need a change request)")
+        if ref not in rec.approved_hashes:
+            raise FMError(f"{ref} is not part of {gate_id}'s approval")
+        cur = loaded.current_hash(ref)
+        if cur is None:
+            raise FMError(f"{ref} no longer exists")
+        if cur == rec.approved_hashes[ref]:
+            raise FMError(f"{ref} has not been modified since approval")
+        changed[ref] = {"old": rec.approved_hashes[ref], "new": cur}
+    down = sorted(r for r in graph.downstream(list(changed)) if r in graph.stale()
+                  and (r.startswith("artifact:") or r.startswith("shot:")) and r not in changed)
+    summary = "\n".join([
+        f"AMEND {gate_id} ({GATES[gate_id].name}) - wording-only",
+        f"  note: {note}",
+        *[f"  approved content updated: {r} ({short(c['old'])} -> {short(c['new'])})" for r, c in changed.items()],
+        f"  downstream restamped with this note: {len(down)}",
+        "  You are stating that the meaning is unchanged."])
+    confirm = require_human(summary, gate_id, sandbox=state.sandbox, sandbox_confirm=sandbox_confirm)
+    _append(project, current_actor(), "gate.amend", gate_id,
+            {"gate": gate_id, "changed": changed, "note": note, "restamped": down, **confirm})
+    for r in down:
+        stamp(project, r, note=f"amendment to {gate_id}: {note}", _refresh=False)
+    return refresh(project)
 
 
 # ================================================================ authorization (human)

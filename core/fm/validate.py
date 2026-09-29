@@ -107,6 +107,10 @@ def validate(project: Project) -> Report:  # noqa: C901 - a checklist by design
             add("WARN", "STATE_CACHE_MISSING", "state.yaml", "missing; `fm status` regenerates it")
         else:
             cached = load_yaml(project.state_path)
+            try:  # tolerate caches written before newer optional fields existed (defaults fill in)
+                cached = ProjectState.model_validate(cached).model_dump(mode="json")
+            except Exception:  # noqa: BLE001 - malformed cache counts as tampered
+                pass
             if cached != state.model_dump(mode="json"):
                 add("ERROR", "STATE_TAMPERED", "state.yaml",
                     "does not match the ledger replay; state is only changed through fm commands "

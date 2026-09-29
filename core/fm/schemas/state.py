@@ -20,6 +20,10 @@ class GateRecord(StrictModel):
     # ref -> content hash of everything the human approved at this gate
     approved_hashes: dict[str, str] = Field(default_factory=dict)
     ledger_seq: int | None = None
+    # advisory QA verdict shown at approval and whether the human acknowledged it (carried forward)
+    review_verdict: str | None = None
+    review_acknowledged: bool = False
+    amendments: int = 0
 
 
 class CanonLock(StrictModel):

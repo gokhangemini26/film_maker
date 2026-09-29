@@ -13,12 +13,14 @@ project containing the current directory > the only project.
 | `fm validate [-q] [--json]` | A | All checks. Exit 1 on errors. |
 | `fm submit` | A | Submit the current gated phase for review. |
 | `fm advance` | A | Next phase, if gates allow. |
-| `fm approve G#` | **H** | Approve a gate: record hashes, lock its canon domains. Re-approves a drifted gate. |
+| `fm approve G# [--notes T] [--ack-review]` | **H** | Approve a gate: record hashes, lock its canon domains. Re-approves a drifted gate. `--notes` records your answers to the review's open questions. A WARN/FAIL QA review needs `--ack-review`; the acknowledgement is carried forward in STATUS.md. |
+| `fm amend G# REF.. --note T` | **H** | Accept a wording-only edit to approved documents without re-approving the gate: records their new hashes as approved and restamps downstream stale nodes with the note. Documents only; canon changes still need a change request. |
 | `fm revise G# --notes ..` | **H** | Send back with feedback. |
 | `fm reject G# --notes ..` | **H** | Reject the submission. |
 | `fm authorize final-render [--scope]` | **H** | Required before entering FINAL_RENDER. |
 | `fm canon list [--domain D]` / `show ID` | A | Inspect canon (status comes from the ledger). |
 | `fm canon approve|lock|reject ID` | **H** | Decide a single entry. |
+| `fm canon annotate ID --notes T` | A | Correct the free-text notes of an entry, even a LOCKED one. Notes are not part of the decision hash; every annotation is logged in the ledger with old and new text. |
 | `fm change propose ID --set f=v .. --reason ..` | A | Propose changing an approved/locked entry. Values parsed as YAML. |
 | `fm change list` / `show CHANGE-NNN` | A | Inspect change requests. |
 | `fm change approve|reject CHANGE-NNN` | **H** | Decide a change request. |

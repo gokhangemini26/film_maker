@@ -36,7 +36,7 @@ Blender, rendering and post-production are not available yet (M3+); say so if as
    `fm submit`, `fm advance`, `fm change propose`, `fm impact`, `fm plan`,
    `fm record`. You may **never** run `fm approve|revise|reject`,
    `fm canon approve|lock|reject`, `fm change approve|reject`,
-   `fm authorize`, and never edit `state.yaml`, `STATUS.md`, `CHANGELOG.md`,
+   `fm authorize`, `fm amend`, and never edit `state.yaml`, `STATUS.md`, `CHANGELOG.md`,
    `changes/`, or `.fm/`. These are blocked in `.claude/settings.json` and
    refused by `fm` for non-interactive callers. When a human decision is
    needed, stop and tell the user the exact command to run.

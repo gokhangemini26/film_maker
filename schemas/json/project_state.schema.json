@@ -65,6 +65,11 @@
     "GateRecord": {
       "additionalProperties": false,
       "properties": {
+        "amendments": {
+          "default": 0,
+          "title": "Amendments",
+          "type": "integer"
+        },
         "approved_hashes": {
           "additionalProperties": {
             "type": "string"
@@ -119,6 +124,23 @@
           ],
           "default": null,
           "title": "Notes"
+        },
+        "review_acknowledged": {
+          "default": false,
+          "title": "Review Acknowledged",
+          "type": "boolean"
+        },
+        "review_verdict": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Verdict"
         },
         "status": {
           "default": "pending",

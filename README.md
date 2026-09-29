@@ -26,7 +26,7 @@ engine, not the database: every scene is reproducible from text files.
 ```powershell
 cd C:\Users\ggule\film_maker
 python -m pip install -e ".[dev]"
-python -m pytest              # 125 tests
+python -m pytest              # 131 tests
 fm doctor                     # checks the pinned Blender (5.2.x)
 fm init my_film --title "My Film"
 fm status

@@ -54,6 +54,23 @@ Approving a gate:
 5. locks the canon in its domains,
 6. needs a person at a terminal typing the gate id.
 
+## Amending approved documents (wording only)
+
+Editing an approved document drifts its gate and everything stale below it.
+If the edit only clarifies wording, the human can run
+`fm amend G3 artifact:world_bible --note "..."`: the new hashes become the
+approved ones and stale downstream nodes are restamped with the note. It is a
+typed, ledger-recorded statement that the meaning did not change. Anything that
+changes meaning still needs re-approval, and LOCKED canon still needs a change
+request (`fm canon annotate` only fixes the free-text notes).
+
+## Approving past a QA warning
+
+A WARN or FAIL review needs `fm approve G# --ack-review`. The acknowledgement is
+recorded and STATUS.md lists the gate under "carried forward" so later phases
+resolve the open findings. Use `--notes` to record your answers to the review's
+open questions.
+
 ## Proposal vs locked decision
 
 ```
