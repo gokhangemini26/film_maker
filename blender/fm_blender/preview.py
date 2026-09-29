@@ -332,6 +332,10 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
             for nd in m.node_tree.nodes:
                 if nd.type == "VALTORGB":
                     nd.color_ramp.elements[0].color = (*[c * dark_k for c in m["fm_shadow"]], 1)
+    if os.environ.get("FM_DEBUG"):
+        near = sorted(((o.matrix_world.translation - cpos).length, o.name) for o in bpy.data.objects
+                      if o.type in ("MESH", "LIGHT") and not o.hide_render)[:6]
+        print("FM_NEAR", sid, [(round(d, 2), nme) for d, nme in near], flush=True)
     path = os.path.join(out_dir, sid + ".png")
     bpy.context.scene.render.filepath = path
     bpy.ops.render.render(write_still=True)
