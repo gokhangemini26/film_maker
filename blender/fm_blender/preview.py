@@ -234,8 +234,8 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         }.get(name, Vector((cpos.x, cpos.y + 3, cpos.z)))
 
     tgt = target(cam_c["look_at"])
-    if shot["composition"].get("framing") == "insert" and cam_c["look_at"] in ("phone_ren", "crank_charger") and (tgt - cpos).length < 0.45:
-        cam.location = tgt - (tgt - cpos).normalized() * 0.45  # blockout adjustment: keep the prop out of the near plane
+    if shot["composition"].get("framing") == "insert" and cam_c["look_at"] in ("phone_ren", "crank_charger") and (tgt - cpos).length < 0.75:
+        cam.location = tgt - (tgt - cpos).normalized() * 0.75  # blockout adjustment: keep the prop out of the near plane
         cpos = cam.location.copy()
     if "ren" in figs and ((scene == "SC01" and n == 110) or (scene == "SC04" and n >= 50)):
         amb = canon.get("look.color.accent_power_amber") or {}
@@ -256,6 +256,17 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
                    U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=0.9))
         sc.rotation_euler = ph.rotation_euler
         sc.location = ph.location + Vector((0, 0, 0.005))
+        rot = ph.rotation_euler
+        for k, (dx, dy, w_, h_, hx) in enumerate(((0.0, 0.058, 0.056, 0.012, "#3A3F55"), (-0.018, 0.0, 0.018, 0.008, "#F5B940"))):
+            ui = U.box(f"phone_ui{k}." + sid, (w_ * (1 if k == 0 else 1), h_, 0.0015), (0, 0, 0), figs["ren"][1],
+                       U.flat({"hex": hx, "linear": U.lin(hx)}, strength=0.9))
+            ui.rotation_euler = rot
+            off_ = Vector((dy if k == 0 else 0.06, dx if k == 0 else 0.02, 0)) if False else Vector((0, 0, 0))
+            ui.location = sc.location + Vector((0, 0, 0.002))
+            mark(ui)
+            ui.rotation_euler = rot
+            loc_local = Vector((-0.02 if k else 0.0, 0.055 if k == 0 else 0.055, 0))
+            ui.location = sc.location + rot.to_matrix() @ Vector((0.0 if k == 0 else 0.018, 0.05 if k == 0 else 0.05, 0.002))
         mark(ph), mark(sc)
     # cull static objects the camera sits inside (car body, seat backs, walls)
     culled = []
@@ -320,7 +331,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
             i = figs["ren"][0]
             add_light("POINT", "phone." + sid, i["hands"] + i["facing"] * 0.15, 15, ls_col("phone_glow", "#FFF1DE"), col, size=0.1)
     else:
-        bg.inputs[1].default_value = 0.0
+        bg.inputs[1].default_value = 0.25
         add_light("AREA", "window." + sid, S.ROOM_ORIGIN + Vector((0, -0.3, 1.45)), 250, ls_col("sky_fill_dusk", "#9CA2D0"), col, size=1.0,
                   rot=(math.radians(-90), 0, 0))
         add_light("POINT", "lamp." + sid, S.ROOM_ORIGIN + Vector((-0.35, -0.28, 1.1)), 60, ls_col("desk_lamp", "#FFD6A0"), col, size=0.08)
