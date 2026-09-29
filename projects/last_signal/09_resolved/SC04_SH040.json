@@ -1,0 +1,631 @@
+{
+  "animation": {
+    "camera": {
+      "easing": "none",
+      "notes": "locked off at the strongest low angle"
+    },
+    "characters": {
+      "ren": {
+        "eyeline": "the glovebox f0-36, the crank in his hands f37-59",
+        "face": "focused calm (brows level, eyes on the glovebox, then on the crank); no comic expression",
+        "keys": [
+          {
+            "f": 0,
+            "pose": "hands off his knees (from SH030), weight shifting west, eyes on the glovebox; phone in the left hand",
+            "t": 0.0
+          },
+          {
+            "f": 6,
+            "pose": "pivots onto the right knee, left foot steps forward (west) into a low lunge (ease-in-out, f6-16)",
+            "t": 0.25
+          },
+          {
+            "f": 16,
+            "pose": "leans in through the doorway: left forearm braces on the passenger seat edge with the phone still in the hand; right arm extends to the glovebox (ease-out, f16-24)",
+            "t": 0.67
+          },
+          {
+            "f": 24,
+            "pose": "right hand thumbs the latch and lowers the lid by hand (controlled ease-in-out, f24-30); no drop, no clunk",
+            "t": 1.0
+          },
+          {
+            "f": 30,
+            "pose": "hand into the glovebox, closes on the crank",
+            "t": 1.25
+          },
+          {
+            "f": 33,
+            "pose": "lifts it out: the wrist dips 1 cm under its weight, then rises (f33-36)",
+            "t": 1.38
+          },
+          {
+            "f": 36,
+            "pose": "backs out of the doorway, crank drawn toward his chest (f36-44)",
+            "t": 1.5
+          },
+          {
+            "f": 42,
+            "pose": "left hand leaves the seat and joins beneath the crank: phone flat in the left palm, screen up, against the crank's underside",
+            "t": 1.75
+          },
+          {
+            "f": 44,
+            "pose": "reverses the lunge: left foot back, pivots and lowers onto the kerb at the same spot, back to the car (ease-in, f44-52)",
+            "t": 1.83
+          },
+          {
+            "f": 52,
+            "pose": "seat lands softly; 2-frame settle of the weight (f52-54)",
+            "t": 2.17
+          },
+          {
+            "f": 54,
+            "pose": "holds the crank in both hands in his lap, looks down at it; slow breath in (f54-59)",
+            "t": 2.25
+          }
+        ],
+        "locomotion": {
+          "path": "street coords: from the kerb seat (x -0.1, y -1.0) onto the right knee, left foot steps west to about y -0.55 into a low lunge; torso leans in through the doorway (shoulders to about x 0.2, y -0.2); back to the same seat (x -0.1, y -1.0)",
+          "speed_mps": "about 1.1 on the lunge step (0.45 m in 10 f)",
+          "type": "kneel_lunge_and_return"
+        },
+        "secondary": [
+          "jacket fronts swing forward on the lean-in and settle on the sit (skinning only)",
+          "cable from the phone hangs in a short posed loop from the left hand"
+        ]
+      }
+    },
+    "props": {
+      "crank_charger": "lifted from the glovebox f30-36, parented to the right hand, then to both hands from f42; arm folded, pip off",
+      "glovebox_lid": "lowered by hand f24-30 (ease-in-out), left down",
+      "phone_ren": "in the left hand throughout (continuity.props.phone_ren); 1 % flicker continues, dips at f9-10, f31-33 and f47-48"
+    },
+    "risks_m3": [
+      "ASSUMPTION: the glovebox face sits about y +0.5 (just forward of the door opening); the reach from the lunge is about 0.7 m, at the limit of the proxy's arm; verify at G6",
+      "the phone-under-crank two-hand hold needs a second attach point on hand_l; posed per frame if needed",
+      "tempo: this is the busiest tender shot; the action is continuous and overlapped to fit 60 frames. If the G6 preview reads rushed, about 12 more frames would make it truly slow (duration is the cinematographer's)"
+    ],
+    "timing": {
+      "fps": 24,
+      "frames": 60,
+      "index": "0-based; f0 is the first frame, t = f / 24"
+    }
+  },
+  "assets": [
+    "world.sets.street",
+    "world.sets.ren_car",
+    "world.props.phone_ren",
+    "world.props.crank_charger"
+  ],
+  "camera": {
+    "dof": {
+      "enabled": false
+    },
+    "fov_h_deg": 39.5978,
+    "height_m": 0.5,
+    "lens_mm": 50.0,
+    "look_at": "ren",
+    "movement": "static",
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0,
+    "start_position": [
+      -1.75,
+      -0.8,
+      0.5
+    ]
+  },
+  "characters": [
+    {
+      "action": "onto one knee, leans into the open door, glovebox lid down, lifts the crank out with both hands, sits back down on the kerb holding it in his lap",
+      "canon": {
+        "proportions": {
+          "arm_span_m": 1.74,
+          "build": "slim_lanky",
+          "eye_height_standing_m": 1.59,
+          "hand_length_m": 0.205,
+          "hand_scale_vs_realistic": 1.1,
+          "head_count": 6.5,
+          "head_height_m": 0.265,
+          "height_m": 1.72,
+          "hip_width_m": 0.32,
+          "kneeling_eye_z_m": 1.05,
+          "leg_length_m": 0.84,
+          "seated_on_car_seat": {
+            "crown_with_tuft_z_m": 1.36,
+            "crown_z_m": 1.32,
+            "eye_z_m": 1.2,
+            "seat_back_recline_deg": 20,
+            "seat_height_m": 0.45
+          },
+          "seated_on_kerb": {
+            "back_rest_to_heels_m": 0.6,
+            "crown_z_m": 1.06,
+            "knee_top_z_m": 0.62,
+            "seat_surface_z_m": 0.12
+          },
+          "shoulder_width_m": 0.42,
+          "tuft_extra_m": 0.04
+        },
+        "representation": {
+          "attach_points": {
+            "chest": "phone_ren_resting",
+            "hand_l": [
+              "phone_ren"
+            ],
+            "hand_r": [
+              "crank_charger_handle",
+              "car_key"
+            ]
+          },
+          "build": "slim_lanky",
+          "colors_source": "characters.ren.face.colors",
+          "face": {
+            "controls": [
+              "brows_knit",
+              "brows_lift",
+              "eyes_open",
+              "eyes_closed",
+              "eyes_wide_small_pupils",
+              "mouth_line",
+              "mouth_flat",
+              "mouth_pressed",
+              "mouth_slightly_open",
+              "cheeks_fill"
+            ],
+            "lip_sync": false,
+            "method": "drawn_toon_face"
+          },
+          "future_providers_allowed": [
+            "mpfb",
+            "vrm",
+            "generated",
+            "mocap"
+          ],
+          "hands": "five_finger_simplified_1.1x",
+          "head_count": 6.5,
+          "height_m": 1.72,
+          "likeness": "original_no_real_person_no_existing_character",
+          "provider": "proxy",
+          "rig": "humanoid_standard_bone_names",
+          "shading": "toon_cel_per_look_canon",
+          "silhouette_features": [
+            "crown_tuft_0.04m",
+            "open_hip_length_jacket_separate_shell",
+            "pale_centre_strip_tshirt",
+            "dark_trousers_pale_shoes"
+          ],
+          "wardrobe_source": "characters.ren.wardrobe.*"
+        },
+        "wardrobe.jacket": {
+          "changes_between_scenes": "none",
+          "closure": "plain_buttons_worn_open",
+          "collar": "small_point",
+          "color": {
+            "hex": "#7C9CC4",
+            "linear": [
+              0.201556,
+              0.332452,
+              0.552011
+            ],
+            "srgb": [
+              0.486275,
+              0.611765,
+              0.768627
+            ]
+          },
+          "garment": "overshirt_jacket",
+          "length": "hip",
+          "markings": "none",
+          "material": "light_unlined_cotton_twill",
+          "pockets": "two_flat_patch_chest_pockets",
+          "sleeves": "pushed_up_below_elbow",
+          "wear": "soft_fade_at_cuffs_and_elbows",
+          "worn_open": true
+        },
+        "wardrobe.outfit": {
+          "accessories": "none",
+          "changes_between_scenes": "none",
+          "knees_after_shop_kneel": "unmarked",
+          "markings": "none",
+          "shoes": {
+            "color": {
+              "hex": "#ECE7DE",
+              "linear": [
+                0.838799,
+                0.799103,
+                0.730461
+              ],
+              "srgb": [
+                0.92549,
+                0.905882,
+                0.870588
+              ]
+            },
+            "laces": "plain",
+            "sole_color": {
+              "hex": "#CDBFA8",
+              "linear": [
+                0.610496,
+                0.520996,
+                0.391572
+              ],
+              "srgb": [
+                0.803922,
+                0.74902,
+                0.658824
+              ]
+            },
+            "type": "low_top_canvas"
+          },
+          "trousers": {
+            "color": {
+              "hex": "#4F5A6E",
+              "linear": [
+                0.078187,
+                0.102242,
+                0.155926
+              ],
+              "srgb": [
+                0.309804,
+                0.352941,
+                0.431373
+              ]
+            },
+            "fit": "relaxed_slim",
+            "length": "full_to_ankle"
+          },
+          "tshirt": {
+            "color": {
+              "hex": "#EAE2D3",
+              "linear": [
+                0.822786,
+                0.760525,
+                0.651406
+              ],
+              "srgb": [
+                0.917647,
+                0.886275,
+                0.827451
+              ]
+            },
+            "fit": "relaxed",
+            "neck": "crew",
+            "print": "none"
+          }
+        }
+      },
+      "facing": "north-west into the car, then south with the crank",
+      "id": "ren",
+      "position": [
+        -0.1,
+        -1.0,
+        0.12
+      ]
+    }
+  ],
+  "color": {
+    "accent": {
+      "$canon": "look.color.phone_glow",
+      "value": {
+        "hex": "#FFF1DE",
+        "linear": [
+          1.0,
+          0.879622,
+          0.730461
+        ],
+        "srgb": [
+          1.0,
+          0.945098,
+          0.870588
+        ]
+      }
+    },
+    "dominant": {
+      "$canon": "look.color.scene.sc04",
+      "value": {
+        "accent": {
+          "hex": "#F5B940",
+          "linear": [
+            0.913099,
+            0.48515,
+            0.051269
+          ],
+          "srgb": [
+            0.960784,
+            0.72549,
+            0.25098
+          ]
+        },
+        "accent_2": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        },
+        "dominant": {
+          "hex": "#6F7099",
+          "linear": [
+            0.158961,
+            0.162029,
+            0.318547
+          ],
+          "srgb": [
+            0.435294,
+            0.439216,
+            0.6
+          ]
+        },
+        "key_light": {
+          "hex": "#FFF1DE",
+          "linear": [
+            1.0,
+            0.879622,
+            0.730461
+          ],
+          "srgb": [
+            1.0,
+            0.945098,
+            0.870588
+          ]
+        },
+        "practicals": {
+          "hex": "#F6DCA6",
+          "linear": [
+            0.921582,
+            0.715694,
+            0.381326
+          ],
+          "srgb": [
+            0.964706,
+            0.862745,
+            0.65098
+          ]
+        },
+        "rim_light": {
+          "hex": "#F6C69C",
+          "linear": [
+            0.921582,
+            0.564712,
+            0.332452
+          ],
+          "srgb": [
+            0.964706,
+            0.776471,
+            0.611765
+          ]
+        },
+        "saturation": "low",
+        "secondary": {
+          "hex": "#ABA5CE",
+          "linear": [
+            0.40724,
+            0.376262,
+            0.617207
+          ],
+          "srgb": [
+            0.670588,
+            0.647059,
+            0.807843
+          ]
+        },
+        "shadow_tint": {
+          "hex": "#8E88B4",
+          "linear": [
+            0.270498,
+            0.246201,
+            0.456411
+          ],
+          "srgb": [
+            0.556863,
+            0.533333,
+            0.705882
+          ]
+        },
+        "silhouette": {
+          "hex": "#5F6088",
+          "linear": [
+            0.114435,
+            0.116971,
+            0.246201
+          ],
+          "srgb": [
+            0.372549,
+            0.376471,
+            0.533333
+          ]
+        },
+        "sky": "dusk",
+        "value_key": "mid_low_key_soft"
+      }
+    },
+    "sky": {
+      "$canon": "look.color.sky.dusk",
+      "value": [
+        {
+          "hex": "#F4C49A",
+          "linear": [
+            0.904661,
+            0.552011,
+            0.323143
+          ],
+          "pos": 0.0,
+          "srgb": [
+            0.956863,
+            0.768627,
+            0.603922
+          ]
+        },
+        {
+          "hex": "#EFC3AE",
+          "linear": [
+            0.863157,
+            0.545724,
+            0.423268
+          ],
+          "pos": 0.12,
+          "srgb": [
+            0.937255,
+            0.764706,
+            0.682353
+          ]
+        },
+        {
+          "hex": "#D7BFC8",
+          "linear": [
+            0.679542,
+            0.520996,
+            0.57758
+          ],
+          "pos": 0.35,
+          "srgb": [
+            0.843137,
+            0.74902,
+            0.784314
+          ]
+        },
+        {
+          "hex": "#ABA5CE",
+          "linear": [
+            0.40724,
+            0.376262,
+            0.617207
+          ],
+          "pos": 0.65,
+          "srgb": [
+            0.670588,
+            0.647059,
+            0.807843
+          ]
+        },
+        {
+          "hex": "#8C93C2",
+          "linear": [
+            0.262251,
+            0.291771,
+            0.539479
+          ],
+          "pos": 1.0,
+          "srgb": [
+            0.54902,
+            0.576471,
+            0.760784
+          ]
+        }
+      ]
+    }
+  },
+  "composition": {
+    "aspect_ratio": 1.778,
+    "framing": "medium",
+    "notes": "Lens 0.5 m, tilt up 12 deg (camera.height.low the_turn). He never stands: kneeling and leaning in keeps his jacket below the car roof line, so the ray from the lens through the jacket top hits the car (about 1.16-1.28 m < 1.45 m roof; camera.framing.jacket_off_sky). The crank at 10 % of frame width or more when held.",
+    "subject_position": "centre_right"
+  },
+  "environment": {
+    "location": "street, kerb beside ren's car",
+    "time_of_day": "dusk",
+    "weather": "clear"
+  },
+  "frames": {
+    "count": 60,
+    "duration_s_spec": 2.5,
+    "end": 989,
+    "fps": 24,
+    "start": 930
+  },
+  "lighting": {
+    "ambient": {
+      "source": "dusk sky",
+      "temperature_k": 10000
+    },
+    "background_practicals": [
+      "street lamp by the shop (lights only the shop front)",
+      "house windows"
+    ],
+    "fill": "sky only",
+    "key": {
+      "quality": "soft",
+      "source": "phone screen, below-front"
+    },
+    "key_state": "flicker",
+    "ref": {
+      "$canon": "look.lighting.sc04",
+      "value": {
+        "ambient": {
+          "kelvin": 10000,
+          "quality": "very_soft_top",
+          "source": "dusk_sky"
+        },
+        "background_practicals": [
+          "street_lamp_by_shop",
+          "house_windows"
+        ],
+        "contrast": "4:1",
+        "fill": "sky_only",
+        "hand_light": {
+          "lit_while": "turning",
+          "reach_m": 0.1,
+          "source": "crank_pip"
+        },
+        "key": {
+          "direction": "below_front",
+          "quality": "soft",
+          "source": "phone_screen"
+        },
+        "key_states": {
+          "after_send": "steady",
+          "before_crank": "flicker_dips_to_70pct",
+          "from_first_crank_turn": "steady"
+        },
+        "rim": {
+          "kelvin": 3000,
+          "quality": "soft_low",
+          "source": "afterglow_west"
+        },
+        "street_lamp_reaches_ren": false,
+        "volumetrics": "none"
+      }
+    },
+    "rim": {
+      "source": "afterglow from the west (his right, screen left)",
+      "temperature_k": 3000
+    }
+  },
+  "provenance": {
+    "canon": [
+      "characters.ren.expressions",
+      "characters.ren.face",
+      "characters.ren.identity",
+      "characters.ren.movement",
+      "characters.ren.proportions",
+      "characters.ren.representation",
+      "characters.ren.silhouette",
+      "characters.ren.wardrobe.jacket",
+      "characters.ren.wardrobe.outfit",
+      "look.color.phone_glow",
+      "look.color.scene.sc04",
+      "look.color.sky.dusk",
+      "look.lighting.sc04"
+    ],
+    "shot": "shot:SC04_SH040"
+  },
+  "render": {
+    "aspect_ratio": 1.7778,
+    "resolution_px": [
+      1920,
+      1080
+    ]
+  },
+  "scene_id": "SC04",
+  "schema": "fm.resolved_shot/1",
+  "sequence_id": "SQ02",
+  "shot_id": "SC04_SH040"
+}

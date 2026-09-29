@@ -17,6 +17,9 @@ gates:
       artifact:creative_direction: sha256:2a9437a4219a84067e09241c02b4df8f14e921dda206ac46d9b8d93faaeb44a3
       artifact:g1_review: sha256:b1adbcecb1d6d91fdb8ca00eef11c7937ff176a77c33c4b7a097e2690f5894dd
     ledger_seq: 7
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
   G2:
     status: approved
     decided_by: human:gokhan_guler
@@ -29,6 +32,9 @@ gates:
       artifact:story_bible: sha256:1604e946f2eeda770e916acb21b0dcf1777fb847dc583f6ba72fb9659452742e
       artifact:story_structure: sha256:d8a12c83b7c349e115615b4a1d07b7f27082e08ec5109da940295a188ee99f3c
     ledger_seq: 11
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
   G3:
     status: approved
     decided_by: human:gokhan_guler
@@ -40,6 +46,9 @@ gates:
       artifact:g3_review: sha256:d26db206b8cf3d05c12fee52b938b3ddcfbffb50fc3dd4b5976c757e85f75c05
       artifact:world_bible: sha256:c5a7ce8fda071ddd40c2fb846dbd5485c8ee63945a0408df7dec3423e7072dc7
     ledger_seq: 20
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
   G4:
     status: approved
     decided_by: human:gokhan_guler
@@ -51,6 +60,9 @@ gates:
       artifact:lighting_bible: sha256:95224320170d0ddbd153032d19139e397472ec4d9c95e12212ea9a97a78ca2f3
       artifact:visual_bible: sha256:4cb45f98d39bc0aba8096d37abb48e51feaa34e435b64897cb0b7253833303ea
     ledger_seq: 21
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
   G5:
     status: approved
     decided_by: human:gokhan_guler
@@ -100,6 +112,9 @@ gates:
       shot:SC05_SH030: sha256:fe59950a5823efe8c8ad34c1a74192a78ea62fa7a90efb08872e242264b7d7b3
       shot:SC06_SH010: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd
     ledger_seq: 23
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
   G6:
     status: pending
     decided_by: null
@@ -107,6 +122,9 @@ gates:
     notes: null
     approved_hashes: {}
     ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
   G7:
     status: pending
     decided_by: null
@@ -114,6 +132,9 @@ gates:
     notes: null
     approved_hashes: {}
     ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
   G8:
     status: pending
     decided_by: null
@@ -121,6 +142,9 @@ gates:
     notes: null
     approved_hashes: {}
     ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
 canon:
   intent.anime_feel:
     status: LOCKED
@@ -989,6 +1013,7 @@ shots:
   SC05_SH030: spec
   SC06_SH010: spec
 authorizations: []
-changes: {}
-ledger_seq: 23
-ledger_head: sha256:d37cd86fa523343a87d699857593e48602857ded6929dfe13e66920c148bc8fb
+changes:
+  CHANGE-001: PROPOSED
+ledger_seq: 24
+ledger_head: sha256:9b80563a6e32fced27c8985104d4dcd1abfd3535e997176d15d109a73fd1a37b

@@ -1,0 +1,268 @@
+{
+  "animation": {
+    "camera": {
+      "easing": "none",
+      "notes": "locked off (no move in inserts)"
+    },
+    "characters": {},
+    "props": {
+      "phone_hana": "face up on the desk, no vibration or shift (she has headphones on; the light is what reaches her)",
+      "sketchbook_and_pencil": "static at the frame edge"
+    },
+    "timing": {
+      "fps": 24,
+      "frames": 24,
+      "index": "0-based; f0 is the first frame, t = f / 24"
+    },
+    "ui": {
+      "hana_phone_screen": [
+        {
+          "f": 0,
+          "state": "dark (2 frames): the cut on light lands on the dark glass",
+          "t": 0.0
+        },
+        {
+          "f": 2,
+          "state": "wakes: brightness 0 -> 100 % over f2-4 (ease-out)",
+          "t": 0.08
+        },
+        {
+          "f": 2,
+          "state": "his circular photo, no name, scales 96 -> 100 % over f2-5 (ease-out), then still",
+          "t": 0.08
+        },
+        {
+          "f": 5,
+          "state": "photo held still f5-23 (19 frames)",
+          "t": 0.21
+        }
+      ]
+    }
+  },
+  "assets": [
+    "world.props.phone_hana",
+    "world.props.sketchbook",
+    "world.sets.hana_room"
+  ],
+  "camera": {
+    "dof": {
+      "enabled": true,
+      "f_stop": 5.6,
+      "focus_target": "phone_hana_screen_plane"
+    },
+    "fov_h_deg": 23.9132,
+    "height_m": 1.39,
+    "lens_mm": 85.0,
+    "look_at": "phone_hana",
+    "movement": "static",
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0,
+    "start_position": [
+      0.35,
+      -0.3,
+      1.39
+    ]
+  },
+  "characters": [],
+  "color": {
+    "accent": {
+      "$canon": "look.color.phone_glow",
+      "value": {
+        "hex": "#FFF1DE",
+        "linear": [
+          1.0,
+          0.879622,
+          0.730461
+        ],
+        "srgb": [
+          1.0,
+          0.945098,
+          0.870588
+        ]
+      }
+    },
+    "dominant": {
+      "$canon": "look.color.hana_room",
+      "value": [
+        {
+          "hex": "#EDE2CF",
+          "item": "wall",
+          "linear": [
+            0.846873,
+            0.760525,
+            0.62396
+          ],
+          "srgb": [
+            0.929412,
+            0.886275,
+            0.811765
+          ]
+        },
+        {
+          "hex": "#C9C2D6",
+          "item": "bedding",
+          "linear": [
+            0.584078,
+            0.539479,
+            0.672443
+          ],
+          "srgb": [
+            0.788235,
+            0.760784,
+            0.839216
+          ]
+        },
+        {
+          "hex": "#B9A58A",
+          "item": "shelf",
+          "linear": [
+            0.48515,
+            0.376262,
+            0.254152
+          ],
+          "srgb": [
+            0.72549,
+            0.647059,
+            0.541176
+          ]
+        },
+        {
+          "hex": "#D9D1E3",
+          "item": "curtains",
+          "linear": [
+            0.693872,
+            0.637597,
+            0.768151
+          ],
+          "srgb": [
+            0.85098,
+            0.819608,
+            0.890196
+          ]
+        },
+        {
+          "hex": "#A9B7C9",
+          "item": "chair",
+          "linear": [
+            0.396755,
+            0.473531,
+            0.584078
+          ],
+          "srgb": [
+            0.662745,
+            0.717647,
+            0.788235
+          ]
+        },
+        {
+          "hex": "#F1EBDD",
+          "item": "pinned_sketch_paper",
+          "linear": [
+            0.879622,
+            0.83077,
+            0.723055
+          ],
+          "srgb": [
+            0.945098,
+            0.921569,
+            0.866667
+          ]
+        },
+        {
+          "hex": "#E6E1D8",
+          "item": "window_frame",
+          "linear": [
+            0.791298,
+            0.752942,
+            0.686685
+          ],
+          "srgb": [
+            0.901961,
+            0.882353,
+            0.847059
+          ]
+        },
+        {
+          "hex": "#5F6088",
+          "item": "neighbour_silhouettes_dusk",
+          "linear": [
+            0.114435,
+            0.116971,
+            0.246201
+          ],
+          "srgb": [
+            0.372549,
+            0.376471,
+            0.533333
+          ]
+        }
+      ]
+    }
+  },
+  "composition": {
+    "aspect_ratio": 1.778,
+    "framing": "insert",
+    "notes": "Room-local coords (x north, y west, z up). Screen insert (about 0.16 m of frame height; 85 mm straight down from about 0.67 m), oriented upright for her (screen top toward the window). His photo at about 25 % of frame height (minimum 5 %). Sketchbook corner and a pencil at the frame edge; no lamp or other emissive in the soft area. Window not in this frame (camera.geography.sc05 exemption).",
+    "subject_position": "centre"
+  },
+  "environment": {
+    "location": "hana's room, desk by the window",
+    "time_of_day": "evening (dusk)",
+    "weather": "clear"
+  },
+  "frames": {
+    "count": 24,
+    "duration_s_spec": 1.0,
+    "end": 1273,
+    "fps": 24,
+    "start": 1250
+  },
+  "lighting": {
+    "ambient": "lamp spill on the desk from the south edge",
+    "key": "phone screen wakes (warm white)",
+    "ref": {
+      "$canon": "look.lighting.sc05",
+      "value": {
+        "contrast": "2.5:1",
+        "fill": {
+          "kelvin": 10000,
+          "quality": "soft",
+          "side": "in_front_of_her",
+          "source": "dusk_sky_through_window"
+        },
+        "key": {
+          "kelvin": 2700,
+          "quality": "soft",
+          "side": "her_left",
+          "source": "desk_lamp"
+        },
+        "second_key": {
+          "on_event": "phone_wakes",
+          "side": "her_right_then_below",
+          "source": "phone_screen"
+        },
+        "volumetrics": "none"
+      }
+    }
+  },
+  "provenance": {
+    "canon": [
+      "look.color.hana_room",
+      "look.color.phone_glow",
+      "look.lighting.sc05"
+    ],
+    "shot": "shot:SC05_SH010"
+  },
+  "render": {
+    "aspect_ratio": 1.7778,
+    "resolution_px": [
+      1920,
+      1080
+    ]
+  },
+  "scene_id": "SC05",
+  "schema": "fm.resolved_shot/1",
+  "sequence_id": "SQ02",
+  "shot_id": "SC05_SH010"
+}

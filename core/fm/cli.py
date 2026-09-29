@@ -387,6 +387,18 @@ def impact(c: Ctx, refs, as_json):
     _print_impact(res)
 
 
+@cli.command("resolve")
+@click.option("--scope", default="film", help="film | shot:ID | shots:A..B | scene:SC01 | sequence:SQ01 | character:ID")
+@click.pass_obj
+def resolve_cmd(c: Ctx, scope):
+    """Resolve shot specs + canon into engine-ready JSON (09_resolved/), recorded as derived nodes."""
+    from .resolve import resolve
+
+    r = resolve(c.project(), scope)
+    click.echo(f"resolved {len(r['resolved'])} shot(s), {len(r['unchanged'])} unchanged; "
+               f"film = {r['film_frames']} frames at {r['fps']:g} fps ({r['film_seconds']:g} s)")
+
+
 @cli.command()
 @click.option("--scope", default="film", help="film | shot:ID | shots:A..B | scene:SC01 | sequence:SQ01 | character:ID | asset:ID | ref:REF")
 @click.option("--json", "as_json", is_flag=True)

@@ -1,0 +1,621 @@
+{
+  "animation": {
+    "camera": {
+      "easing": "none",
+      "notes": "locked off (no move in inserts)"
+    },
+    "characters": {
+      "ren": {
+        "eyeline": "off frame",
+        "keys": [
+          {
+            "f": 0,
+            "pose": "no hand in frame; phone still; he keeps cranking off frame",
+            "t": 0.0
+          }
+        ],
+        "locomotion": {
+          "type": "none"
+        },
+        "secondary": []
+      }
+    },
+    "sound_sync": "ratchet click on f4 (phase from SC04_SH050); no UI sound",
+    "timing": {
+      "fps": 24,
+      "frames": 26,
+      "index": "0-based; f0 is the first frame, t = f / 24"
+    },
+    "ui": {
+      "battery": [
+        {
+          "f": 0,
+          "state": "1 %, red, icon in its visible blink phase, bolt on",
+          "t": 0.0
+        },
+        {
+          "f": 2,
+          "state": "2 %, red, switched in one frame; the icon stops blinking (blink is at 1 % only)",
+          "t": 0.08
+        }
+      ],
+      "bolt": "on for the whole shot (crank turning)",
+      "hold": "2 % held f2-25 (24 frames, minimum 24)"
+    }
+  },
+  "assets": [
+    "world.props.phone_ren",
+    "ui.status_bar"
+  ],
+  "camera": {
+    "dof": {
+      "enabled": true,
+      "f_stop": 5.6,
+      "focus_target": "phone_ren_screen_plane"
+    },
+    "fov_h_deg": 23.9132,
+    "height_m": 0.62,
+    "lens_mm": 85.0,
+    "look_at": "phone_ren",
+    "movement": "static",
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0,
+    "start_position": [
+      -0.35,
+      -1.0,
+      0.62
+    ]
+  },
+  "characters": [
+    {
+      "action": "(off frame) keeps cranking; ratchet heard",
+      "canon": {
+        "proportions": {
+          "arm_span_m": 1.74,
+          "build": "slim_lanky",
+          "eye_height_standing_m": 1.59,
+          "hand_length_m": 0.205,
+          "hand_scale_vs_realistic": 1.1,
+          "head_count": 6.5,
+          "head_height_m": 0.265,
+          "height_m": 1.72,
+          "hip_width_m": 0.32,
+          "kneeling_eye_z_m": 1.05,
+          "leg_length_m": 0.84,
+          "seated_on_car_seat": {
+            "crown_with_tuft_z_m": 1.36,
+            "crown_z_m": 1.32,
+            "eye_z_m": 1.2,
+            "seat_back_recline_deg": 20,
+            "seat_height_m": 0.45
+          },
+          "seated_on_kerb": {
+            "back_rest_to_heels_m": 0.6,
+            "crown_z_m": 1.06,
+            "knee_top_z_m": 0.62,
+            "seat_surface_z_m": 0.12
+          },
+          "shoulder_width_m": 0.42,
+          "tuft_extra_m": 0.04
+        },
+        "representation": {
+          "attach_points": {
+            "chest": "phone_ren_resting",
+            "hand_l": [
+              "phone_ren"
+            ],
+            "hand_r": [
+              "crank_charger_handle",
+              "car_key"
+            ]
+          },
+          "build": "slim_lanky",
+          "colors_source": "characters.ren.face.colors",
+          "face": {
+            "controls": [
+              "brows_knit",
+              "brows_lift",
+              "eyes_open",
+              "eyes_closed",
+              "eyes_wide_small_pupils",
+              "mouth_line",
+              "mouth_flat",
+              "mouth_pressed",
+              "mouth_slightly_open",
+              "cheeks_fill"
+            ],
+            "lip_sync": false,
+            "method": "drawn_toon_face"
+          },
+          "future_providers_allowed": [
+            "mpfb",
+            "vrm",
+            "generated",
+            "mocap"
+          ],
+          "hands": "five_finger_simplified_1.1x",
+          "head_count": 6.5,
+          "height_m": 1.72,
+          "likeness": "original_no_real_person_no_existing_character",
+          "provider": "proxy",
+          "rig": "humanoid_standard_bone_names",
+          "shading": "toon_cel_per_look_canon",
+          "silhouette_features": [
+            "crown_tuft_0.04m",
+            "open_hip_length_jacket_separate_shell",
+            "pale_centre_strip_tshirt",
+            "dark_trousers_pale_shoes"
+          ],
+          "wardrobe_source": "characters.ren.wardrobe.*"
+        },
+        "wardrobe.jacket": {
+          "changes_between_scenes": "none",
+          "closure": "plain_buttons_worn_open",
+          "collar": "small_point",
+          "color": {
+            "hex": "#7C9CC4",
+            "linear": [
+              0.201556,
+              0.332452,
+              0.552011
+            ],
+            "srgb": [
+              0.486275,
+              0.611765,
+              0.768627
+            ]
+          },
+          "garment": "overshirt_jacket",
+          "length": "hip",
+          "markings": "none",
+          "material": "light_unlined_cotton_twill",
+          "pockets": "two_flat_patch_chest_pockets",
+          "sleeves": "pushed_up_below_elbow",
+          "wear": "soft_fade_at_cuffs_and_elbows",
+          "worn_open": true
+        },
+        "wardrobe.outfit": {
+          "accessories": "none",
+          "changes_between_scenes": "none",
+          "knees_after_shop_kneel": "unmarked",
+          "markings": "none",
+          "shoes": {
+            "color": {
+              "hex": "#ECE7DE",
+              "linear": [
+                0.838799,
+                0.799103,
+                0.730461
+              ],
+              "srgb": [
+                0.92549,
+                0.905882,
+                0.870588
+              ]
+            },
+            "laces": "plain",
+            "sole_color": {
+              "hex": "#CDBFA8",
+              "linear": [
+                0.610496,
+                0.520996,
+                0.391572
+              ],
+              "srgb": [
+                0.803922,
+                0.74902,
+                0.658824
+              ]
+            },
+            "type": "low_top_canvas"
+          },
+          "trousers": {
+            "color": {
+              "hex": "#4F5A6E",
+              "linear": [
+                0.078187,
+                0.102242,
+                0.155926
+              ],
+              "srgb": [
+                0.309804,
+                0.352941,
+                0.431373
+              ]
+            },
+            "fit": "relaxed_slim",
+            "length": "full_to_ankle"
+          },
+          "tshirt": {
+            "color": {
+              "hex": "#EAE2D3",
+              "linear": [
+                0.822786,
+                0.760525,
+                0.651406
+              ],
+              "srgb": [
+                0.917647,
+                0.886275,
+                0.827451
+              ]
+            },
+            "fit": "relaxed",
+            "neck": "crew",
+            "print": "none"
+          }
+        }
+      },
+      "facing": "the phone",
+      "id": "ren",
+      "position": [
+        -0.1,
+        -1.0,
+        0.12
+      ]
+    }
+  ],
+  "color": {
+    "accent": {
+      "$canon": "look.color.accent_power_amber",
+      "value": {
+        "hex": "#F5B940",
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ]
+      }
+    },
+    "dominant": {
+      "$canon": "look.color.ui",
+      "value": [
+        {
+          "hex": "#F6F2EC",
+          "linear": [
+            0.921582,
+            0.887923,
+            0.838799
+          ],
+          "role": "screen_background",
+          "srgb": [
+            0.964706,
+            0.94902,
+            0.92549
+          ]
+        },
+        {
+          "hex": "#2B303B",
+          "linear": [
+            0.024158,
+            0.029557,
+            0.043735
+          ],
+          "role": "ink_text_and_glyphs",
+          "srgb": [
+            0.168627,
+            0.188235,
+            0.231373
+          ]
+        },
+        {
+          "hex": "#6B7280",
+          "linear": [
+            0.147027,
+            0.168269,
+            0.215861
+          ],
+          "role": "icon_neutral",
+          "srgb": [
+            0.419608,
+            0.447059,
+            0.501961
+          ]
+        },
+        {
+          "hex": "#A3A8B0",
+          "linear": [
+            0.366253,
+            0.391572,
+            0.434154
+          ],
+          "role": "icon_unanswered_grey",
+          "srgb": [
+            0.639216,
+            0.658824,
+            0.690196
+          ]
+        },
+        {
+          "hex": "#2B303B",
+          "linear": [
+            0.024158,
+            0.029557,
+            0.043735
+          ],
+          "role": "battery_outline_and_normal_fill",
+          "srgb": [
+            0.168627,
+            0.188235,
+            0.231373
+          ]
+        },
+        {
+          "hex": "#D3E0F2",
+          "linear": [
+            0.651406,
+            0.745404,
+            0.887923
+          ],
+          "role": "sent_bubble",
+          "srgb": [
+            0.827451,
+            0.878431,
+            0.94902
+          ]
+        },
+        {
+          "hex": "#FDFCFA",
+          "linear": [
+            0.982251,
+            0.973445,
+            0.955973
+          ],
+          "role": "compose_field",
+          "srgb": [
+            0.992157,
+            0.988235,
+            0.980392
+          ]
+        },
+        {
+          "hex": "#DCD8D1",
+          "linear": [
+            0.715694,
+            0.686685,
+            0.637597
+          ],
+          "role": "keyboard_base",
+          "srgb": [
+            0.862745,
+            0.847059,
+            0.819608
+          ]
+        },
+        {
+          "hex": "#F7F5F1",
+          "linear": [
+            0.930111,
+            0.913099,
+            0.879622
+          ],
+          "role": "keyboard_key",
+          "srgb": [
+            0.968627,
+            0.960784,
+            0.945098
+          ]
+        },
+        {
+          "hex": "#C9C4BC",
+          "linear": [
+            0.584078,
+            0.552011,
+            0.502886
+          ],
+          "role": "keyboard_key_pressed",
+          "srgb": [
+            0.788235,
+            0.768627,
+            0.737255
+          ]
+        },
+        {
+          "hex": "#E8EAE3",
+          "linear": [
+            0.806952,
+            0.822786,
+            0.768151
+          ],
+          "role": "map_land",
+          "srgb": [
+            0.909804,
+            0.917647,
+            0.890196
+          ]
+        },
+        {
+          "hex": "#FBFAF7",
+          "linear": [
+            0.964686,
+            0.955973,
+            0.930111
+          ],
+          "role": "map_road",
+          "srgb": [
+            0.984314,
+            0.980392,
+            0.968627
+          ]
+        },
+        {
+          "hex": "#CFE3CF",
+          "linear": [
+            0.62396,
+            0.768151,
+            0.62396
+          ],
+          "role": "map_park",
+          "srgb": [
+            0.811765,
+            0.890196,
+            0.811765
+          ]
+        },
+        {
+          "hex": "#C9DCEB",
+          "linear": [
+            0.584078,
+            0.715694,
+            0.83077
+          ],
+          "role": "map_water",
+          "srgb": [
+            0.788235,
+            0.862745,
+            0.921569
+          ]
+        },
+        {
+          "hex": "#4A6FA5",
+          "linear": [
+            0.068478,
+            0.158961,
+            0.376262
+          ],
+          "role": "map_pin",
+          "srgb": [
+            0.290196,
+            0.435294,
+            0.647059
+          ]
+        },
+        {
+          "hex": "#FDFCFA",
+          "linear": [
+            0.982251,
+            0.973445,
+            0.955973
+          ],
+          "role": "map_pin_glyph",
+          "srgb": [
+            0.992157,
+            0.988235,
+            0.980392
+          ]
+        },
+        {
+          "hex": "#E3DED6",
+          "linear": [
+            0.768151,
+            0.730461,
+            0.672443
+          ],
+          "role": "photo_frame_ring",
+          "srgb": [
+            0.890196,
+            0.870588,
+            0.839216
+          ]
+        },
+        {
+          "hex": "#1F2029",
+          "linear": [
+            0.013702,
+            0.014444,
+            0.022174
+          ],
+          "role": "screen_off",
+          "srgb": [
+            0.121569,
+            0.12549,
+            0.160784
+          ]
+        }
+      ]
+    }
+  },
+  "composition": {
+    "aspect_ratio": 1.778,
+    "framing": "insert",
+    "notes": "Battery insert after the heart is gone (camera.inserts.heart). Change at frame 2, held 24 frames (minimum). Bolt at 3 % or more, on the whole shot (continuity.battery SC04_bolt_on while_cranking). 26 frames (1.08 s), above the tender section's 1.0 s minimum.",
+    "subject_position": "upper_right"
+  },
+  "environment": {
+    "location": "street, kerb beside ren's car",
+    "time_of_day": "dusk",
+    "weather": "clear"
+  },
+  "frames": {
+    "count": 26,
+    "duration_s_spec": 1.0833,
+    "end": 1163,
+    "fps": 24,
+    "start": 1138
+  },
+  "lighting": {
+    "key": "phone screen emission, steady",
+    "ref": {
+      "$canon": "look.lighting.sc04",
+      "value": {
+        "ambient": {
+          "kelvin": 10000,
+          "quality": "very_soft_top",
+          "source": "dusk_sky"
+        },
+        "background_practicals": [
+          "street_lamp_by_shop",
+          "house_windows"
+        ],
+        "contrast": "4:1",
+        "fill": "sky_only",
+        "hand_light": {
+          "lit_while": "turning",
+          "reach_m": 0.1,
+          "source": "crank_pip"
+        },
+        "key": {
+          "direction": "below_front",
+          "quality": "soft",
+          "source": "phone_screen"
+        },
+        "key_states": {
+          "after_send": "steady",
+          "before_crank": "flicker_dips_to_70pct",
+          "from_first_crank_turn": "steady"
+        },
+        "rim": {
+          "kelvin": 3000,
+          "quality": "soft_low",
+          "source": "afterglow_west"
+        },
+        "street_lamp_reaches_ren": false,
+        "volumetrics": "none"
+      }
+    }
+  },
+  "provenance": {
+    "canon": [
+      "characters.ren.expressions",
+      "characters.ren.face",
+      "characters.ren.identity",
+      "characters.ren.movement",
+      "characters.ren.proportions",
+      "characters.ren.representation",
+      "characters.ren.silhouette",
+      "characters.ren.wardrobe.jacket",
+      "characters.ren.wardrobe.outfit",
+      "look.color.accent_power_amber",
+      "look.color.ui",
+      "look.lighting.sc04"
+    ],
+    "shot": "shot:SC04_SH070"
+  },
+  "render": {
+    "aspect_ratio": 1.7778,
+    "resolution_px": [
+      1920,
+      1080
+    ]
+  },
+  "scene_id": "SC04",
+  "schema": "fm.resolved_shot/1",
+  "sequence_id": "SQ02",
+  "shot_id": "SC04_SH070"
+}

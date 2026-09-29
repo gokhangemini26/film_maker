@@ -1,0 +1,796 @@
+{
+  "animation": {
+    "camera": {
+      "easing": "none",
+      "notes": "locked off"
+    },
+    "characters": {
+      "ren": {
+        "eyeline": "closed from f8",
+        "face": "relief (eyes close, long exhale, head back); no graphic symbols",
+        "keys": [
+          {
+            "f": 0,
+            "pose": "shoulders already dropping (match on action from SH030 f23-25)",
+            "t": 0.0
+          },
+          {
+            "f": 0,
+            "pose": "long exhale f0-14: chest and shoulders fall 3 cm, ease-out (quick start, long slow tail)",
+            "t": 0.0
+          },
+          {
+            "f": 4,
+            "pose": "head tips back about 8 deg (f4-14)",
+            "t": 0.17
+          },
+          {
+            "f": 6,
+            "pose": "eyes close (f6-8)",
+            "t": 0.25
+          },
+          {
+            "f": 14,
+            "pose": "held relief: eyes closed, mouth soft, head back (f14-21)",
+            "t": 0.58
+          }
+        ],
+        "locomotion": {
+          "note": "kneeling",
+          "type": "none"
+        },
+        "secondary": [
+          "jacket shoulders settle with the exhale (skinning only)"
+        ]
+      }
+    },
+    "props": {
+      "phone_ren": "still in the left hand, plugged in; cable unchanged"
+    },
+    "timing": {
+      "fps": 24,
+      "frames": 22,
+      "index": "0-based; f0 is the first frame, t = f / 24"
+    }
+  },
+  "assets": [
+    "world.sets.corner_shop",
+    "world.props.phone_ren",
+    "world.props.charging_cable"
+  ],
+  "camera": {
+    "dof": {
+      "enabled": false
+    },
+    "fov_h_deg": 54.4322,
+    "height_m": 1.05,
+    "lens_mm": 35.0,
+    "look_at": "ren",
+    "movement": "static",
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0,
+    "start_position": [
+      0.9,
+      8.0,
+      1.05
+    ]
+  },
+  "characters": [
+    {
+      "action": "long exhale; shoulders drop; head tips back a little",
+      "canon": {
+        "proportions": {
+          "arm_span_m": 1.74,
+          "build": "slim_lanky",
+          "eye_height_standing_m": 1.59,
+          "hand_length_m": 0.205,
+          "hand_scale_vs_realistic": 1.1,
+          "head_count": 6.5,
+          "head_height_m": 0.265,
+          "height_m": 1.72,
+          "hip_width_m": 0.32,
+          "kneeling_eye_z_m": 1.05,
+          "leg_length_m": 0.84,
+          "seated_on_car_seat": {
+            "crown_with_tuft_z_m": 1.36,
+            "crown_z_m": 1.32,
+            "eye_z_m": 1.2,
+            "seat_back_recline_deg": 20,
+            "seat_height_m": 0.45
+          },
+          "seated_on_kerb": {
+            "back_rest_to_heels_m": 0.6,
+            "crown_z_m": 1.06,
+            "knee_top_z_m": 0.62,
+            "seat_surface_z_m": 0.12
+          },
+          "shoulder_width_m": 0.42,
+          "tuft_extra_m": 0.04
+        },
+        "representation": {
+          "attach_points": {
+            "chest": "phone_ren_resting",
+            "hand_l": [
+              "phone_ren"
+            ],
+            "hand_r": [
+              "crank_charger_handle",
+              "car_key"
+            ]
+          },
+          "build": "slim_lanky",
+          "colors_source": "characters.ren.face.colors",
+          "face": {
+            "controls": [
+              "brows_knit",
+              "brows_lift",
+              "eyes_open",
+              "eyes_closed",
+              "eyes_wide_small_pupils",
+              "mouth_line",
+              "mouth_flat",
+              "mouth_pressed",
+              "mouth_slightly_open",
+              "cheeks_fill"
+            ],
+            "lip_sync": false,
+            "method": "drawn_toon_face"
+          },
+          "future_providers_allowed": [
+            "mpfb",
+            "vrm",
+            "generated",
+            "mocap"
+          ],
+          "hands": "five_finger_simplified_1.1x",
+          "head_count": 6.5,
+          "height_m": 1.72,
+          "likeness": "original_no_real_person_no_existing_character",
+          "provider": "proxy",
+          "rig": "humanoid_standard_bone_names",
+          "shading": "toon_cel_per_look_canon",
+          "silhouette_features": [
+            "crown_tuft_0.04m",
+            "open_hip_length_jacket_separate_shell",
+            "pale_centre_strip_tshirt",
+            "dark_trousers_pale_shoes"
+          ],
+          "wardrobe_source": "characters.ren.wardrobe.*"
+        },
+        "wardrobe.jacket": {
+          "changes_between_scenes": "none",
+          "closure": "plain_buttons_worn_open",
+          "collar": "small_point",
+          "color": {
+            "hex": "#7C9CC4",
+            "linear": [
+              0.201556,
+              0.332452,
+              0.552011
+            ],
+            "srgb": [
+              0.486275,
+              0.611765,
+              0.768627
+            ]
+          },
+          "garment": "overshirt_jacket",
+          "length": "hip",
+          "markings": "none",
+          "material": "light_unlined_cotton_twill",
+          "pockets": "two_flat_patch_chest_pockets",
+          "sleeves": "pushed_up_below_elbow",
+          "wear": "soft_fade_at_cuffs_and_elbows",
+          "worn_open": true
+        },
+        "wardrobe.outfit": {
+          "accessories": "none",
+          "changes_between_scenes": "none",
+          "knees_after_shop_kneel": "unmarked",
+          "markings": "none",
+          "shoes": {
+            "color": {
+              "hex": "#ECE7DE",
+              "linear": [
+                0.838799,
+                0.799103,
+                0.730461
+              ],
+              "srgb": [
+                0.92549,
+                0.905882,
+                0.870588
+              ]
+            },
+            "laces": "plain",
+            "sole_color": {
+              "hex": "#CDBFA8",
+              "linear": [
+                0.610496,
+                0.520996,
+                0.391572
+              ],
+              "srgb": [
+                0.803922,
+                0.74902,
+                0.658824
+              ]
+            },
+            "type": "low_top_canvas"
+          },
+          "trousers": {
+            "color": {
+              "hex": "#4F5A6E",
+              "linear": [
+                0.078187,
+                0.102242,
+                0.155926
+              ],
+              "srgb": [
+                0.309804,
+                0.352941,
+                0.431373
+              ]
+            },
+            "fit": "relaxed_slim",
+            "length": "full_to_ankle"
+          },
+          "tshirt": {
+            "color": {
+              "hex": "#EAE2D3",
+              "linear": [
+                0.822786,
+                0.760525,
+                0.651406
+              ],
+              "srgb": [
+                0.917647,
+                0.886275,
+                0.827451
+              ]
+            },
+            "fit": "relaxed",
+            "neck": "crew",
+            "print": "none"
+          }
+        }
+      },
+      "facing": "south (screen left)",
+      "id": "ren",
+      "position": [
+        2.2,
+        8.0,
+        0.0
+      ]
+    }
+  ],
+  "color": {
+    "dominant": {
+      "$canon": "look.color.scene.sc03",
+      "value": {
+        "accent": {
+          "hex": "#F5B940",
+          "linear": [
+            0.913099,
+            0.48515,
+            0.051269
+          ],
+          "srgb": [
+            0.960784,
+            0.72549,
+            0.25098
+          ]
+        },
+        "blackout": {
+          "accent": {
+            "hex": "#E5483B",
+            "linear": [
+              0.783538,
+              0.064803,
+              0.043735
+            ],
+            "srgb": [
+              0.898039,
+              0.282353,
+              0.231373
+            ]
+          },
+          "dominant": {
+            "hex": "#1E2030",
+            "linear": [
+              0.012983,
+              0.014444,
+              0.029557
+            ],
+            "srgb": [
+              0.117647,
+              0.12549,
+              0.188235
+            ]
+          },
+          "door_rectangle": {
+            "hex": "#C9A77E",
+            "linear": [
+              0.584078,
+              0.386429,
+              0.208637
+            ],
+            "srgb": [
+              0.788235,
+              0.654902,
+              0.494118
+            ]
+          },
+          "key_light": {
+            "hex": "#FFF1DE",
+            "linear": [
+              1.0,
+              0.879622,
+              0.730461
+            ],
+            "srgb": [
+              1.0,
+              0.945098,
+              0.870588
+            ]
+          }
+        },
+        "dominant": {
+          "hex": "#E7F0EA",
+          "linear": [
+            0.799103,
+            0.871367,
+            0.822786
+          ],
+          "srgb": [
+            0.905882,
+            0.941176,
+            0.917647
+          ]
+        },
+        "key_light": {
+          "hex": "#EEF5EF",
+          "linear": [
+            0.854993,
+            0.913099,
+            0.863157
+          ],
+          "srgb": [
+            0.933333,
+            0.960784,
+            0.937255
+          ]
+        },
+        "saturation": "low",
+        "secondary": {
+          "hex": "#C6D8EE",
+          "linear": [
+            0.564712,
+            0.686685,
+            0.854993
+          ],
+          "srgb": [
+            0.776471,
+            0.847059,
+            0.933333
+          ]
+        },
+        "shadow_tint": {
+          "hex": "#C9C6DA",
+          "linear": [
+            0.584078,
+            0.564712,
+            0.701102
+          ],
+          "srgb": [
+            0.788235,
+            0.776471,
+            0.854902
+          ]
+        },
+        "sky": "golden_hour_via_door_only",
+        "value_key": "high_key_then_lowest_key_in_film"
+      }
+    },
+    "shop": {
+      "$canon": "look.color.shop",
+      "value": [
+        {
+          "hex": "#BFE0D2",
+          "item": "awning_stripe_a",
+          "linear": [
+            0.520996,
+            0.745404,
+            0.64448
+          ],
+          "srgb": [
+            0.74902,
+            0.878431,
+            0.823529
+          ]
+        },
+        {
+          "hex": "#F4EEDF",
+          "item": "awning_stripe_b",
+          "linear": [
+            0.904661,
+            0.854993,
+            0.73791
+          ],
+          "srgb": [
+            0.956863,
+            0.933333,
+            0.87451
+          ]
+        },
+        {
+          "hex": "#F6F0E2",
+          "item": "fascia_panel",
+          "linear": [
+            0.921582,
+            0.871367,
+            0.760525
+          ],
+          "srgb": [
+            0.964706,
+            0.941176,
+            0.886275
+          ]
+        },
+        {
+          "hex": "#3F5C73",
+          "item": "fascia_basket_pictogram",
+          "linear": [
+            0.049707,
+            0.107023,
+            0.171441
+          ],
+          "srgb": [
+            0.247059,
+            0.360784,
+            0.45098
+          ]
+        },
+        {
+          "hex": "#EEF1EC",
+          "item": "walls",
+          "linear": [
+            0.854993,
+            0.879622,
+            0.838799
+          ],
+          "srgb": [
+            0.933333,
+            0.945098,
+            0.92549
+          ]
+        },
+        {
+          "hex": "#D9DCD6",
+          "item": "floor_vinyl",
+          "linear": [
+            0.693872,
+            0.715694,
+            0.672443
+          ],
+          "srgb": [
+            0.85098,
+            0.862745,
+            0.839216
+          ]
+        },
+        {
+          "hex": "#E3E6E1",
+          "item": "shelving",
+          "linear": [
+            0.768151,
+            0.791298,
+            0.752942
+          ],
+          "srgb": [
+            0.890196,
+            0.901961,
+            0.882353
+          ]
+        },
+        {
+          "hex": "#D8CCB8",
+          "item": "counter",
+          "linear": [
+            0.686685,
+            0.603827,
+            0.47932
+          ],
+          "srgb": [
+            0.847059,
+            0.8,
+            0.721569
+          ]
+        },
+        {
+          "hex": "#B8BCC4",
+          "item": "till_box",
+          "linear": [
+            0.47932,
+            0.502886,
+            0.552011
+          ],
+          "srgb": [
+            0.721569,
+            0.737255,
+            0.768627
+          ]
+        },
+        {
+          "hex": "#CFE0DA",
+          "item": "strip_curtain",
+          "linear": [
+            0.62396,
+            0.745404,
+            0.701102
+          ],
+          "srgb": [
+            0.811765,
+            0.878431,
+            0.854902
+          ]
+        },
+        {
+          "hex": "#C8CDD2",
+          "item": "fridge_frame",
+          "linear": [
+            0.57758,
+            0.610496,
+            0.64448
+          ],
+          "srgb": [
+            0.784314,
+            0.803922,
+            0.823529
+          ]
+        },
+        {
+          "hex": "#D2C9BA",
+          "item": "display_stand",
+          "linear": [
+            0.64448,
+            0.584078,
+            0.491021
+          ],
+          "srgb": [
+            0.823529,
+            0.788235,
+            0.729412
+          ]
+        },
+        {
+          "hex": "#BFE3D0",
+          "item": "merch_round_tins_mint",
+          "linear": [
+            0.520996,
+            0.768151,
+            0.630757
+          ],
+          "srgb": [
+            0.74902,
+            0.890196,
+            0.815686
+          ]
+        },
+        {
+          "hex": "#F4E3A6",
+          "item": "merch_tall_boxes_butter",
+          "linear": [
+            0.904661,
+            0.768151,
+            0.381326
+          ],
+          "srgb": [
+            0.956863,
+            0.890196,
+            0.65098
+          ]
+        },
+        {
+          "hex": "#C6D8EE",
+          "item": "merch_pillow_bags_powder_blue",
+          "linear": [
+            0.564712,
+            0.686685,
+            0.854993
+          ],
+          "srgb": [
+            0.776471,
+            0.847059,
+            0.933333
+          ]
+        },
+        {
+          "hex": "#D4C8E8",
+          "item": "merch_bottle_caps_lilac",
+          "linear": [
+            0.658375,
+            0.57758,
+            0.806952
+          ],
+          "srgb": [
+            0.831373,
+            0.784314,
+            0.909804
+          ]
+        },
+        {
+          "hex": "#F3CDB0",
+          "item": "merch_misc_peach",
+          "linear": [
+            0.896269,
+            0.610496,
+            0.434154
+          ],
+          "srgb": [
+            0.952941,
+            0.803922,
+            0.690196
+          ]
+        },
+        {
+          "hex": "#CDB9E6",
+          "item": "poster_ice_lolly",
+          "linear": [
+            0.610496,
+            0.48515,
+            0.791298
+          ],
+          "srgb": [
+            0.803922,
+            0.72549,
+            0.901961
+          ]
+        },
+        {
+          "hex": "#F6DE8E",
+          "item": "poster_starburst",
+          "linear": [
+            0.921582,
+            0.730461,
+            0.270498
+          ],
+          "srgb": [
+            0.964706,
+            0.870588,
+            0.556863
+          ]
+        },
+        {
+          "hex": "#BCD3EC",
+          "item": "poster_steaming_cup",
+          "linear": [
+            0.502886,
+            0.651406,
+            0.838799
+          ],
+          "srgb": [
+            0.737255,
+            0.827451,
+            0.92549
+          ]
+        },
+        {
+          "hex": "#1E2030",
+          "item": "blackout_ambient",
+          "linear": [
+            0.012983,
+            0.014444,
+            0.029557
+          ],
+          "srgb": [
+            0.117647,
+            0.12549,
+            0.188235
+          ]
+        }
+      ]
+    }
+  },
+  "composition": {
+    "aspect_ratio": 1.778,
+    "framing": "medium_close",
+    "notes": "Lateral from the east, in the back cross-aisle (behind the gondola ends): he faces screen left toward the socket and the fridges (camera.geography.sc03).",
+    "subject_position": "right_third_facing_left"
+  },
+  "environment": {
+    "location": "corner shop (interior)",
+    "time_of_day": "golden hour",
+    "weather": "clear"
+  },
+  "frames": {
+    "count": 22,
+    "duration_s_spec": 0.9167,
+    "end": 711,
+    "fps": 24,
+    "start": 690
+  },
+  "lighting": {
+    "background": "warm door-glass rectangle",
+    "contrast": "2:1",
+    "key": {
+      "quality": "soft top",
+      "source": "four ceiling panels",
+      "temperature_k": 5000
+    },
+    "ref": {
+      "$canon": "look.lighting.sc03",
+      "value": {
+        "blackout": {
+          "background": {
+            "level": "faint",
+            "source": "door_glass_bounce"
+          },
+          "contrast": "16:1",
+          "fill": "none",
+          "key": {
+            "direction": "below_front",
+            "falloff_m": 0.5,
+            "quality": "soft",
+            "source": "phone_screen"
+          }
+        },
+        "blackout_event": {
+          "restored": false,
+          "sources_off": [
+            "ceiling_panels",
+            "fridges",
+            "fascia_sign"
+          ],
+          "sync": "clunk_sound",
+          "transition_frames": 1
+        },
+        "lit": {
+          "background": "door_glass_warm_rectangle",
+          "contrast": "2:1",
+          "key": {
+            "kelvin": 5000,
+            "quality": "soft_top",
+            "source": "ceiling_panels"
+          },
+          "rim": {
+            "kelvin": 6500,
+            "source": "fridges"
+          }
+        },
+        "volumetrics": "none"
+      }
+    },
+    "rim": "fridges on the back wall (6500 K)",
+    "state": "lit"
+  },
+  "provenance": {
+    "canon": [
+      "characters.ren.expressions",
+      "characters.ren.face",
+      "characters.ren.identity",
+      "characters.ren.movement",
+      "characters.ren.proportions",
+      "characters.ren.representation",
+      "characters.ren.silhouette",
+      "characters.ren.wardrobe.jacket",
+      "characters.ren.wardrobe.outfit",
+      "look.color.scene.sc03",
+      "look.color.shop",
+      "look.lighting.sc03"
+    ],
+    "shot": "shot:SC03_SH040"
+  },
+  "render": {
+    "aspect_ratio": 1.7778,
+    "resolution_px": [
+      1920,
+      1080
+    ]
+  },
+  "scene_id": "SC03",
+  "schema": "fm.resolved_shot/1",
+  "sequence_id": "SQ01",
+  "shot_id": "SC03_SH040"
+}

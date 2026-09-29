@@ -1,0 +1,636 @@
+{
+  "animation": {
+    "camera": {
+      "easing": "none",
+      "notes": "locked off (nothing moves after the send)"
+    },
+    "characters": {
+      "hana": {
+        "eyeline": "the page f0-2, the lit phone from f3 (eyes before head), the screen in her hands from f25",
+        "face": "absorbed -> noticing (brows lift a touch) -> reading begins; no gasp, no grin, no blush, no graphic symbols",
+        "keys": [
+          {
+            "f": 0,
+            "pose": "absorbed: head tilted down over the sketchbook, headphones on, right hand finishing a small pencil stroke (f0-2); slow breath",
+            "t": 0.0
+          },
+          {
+            "f": 3,
+            "pose": "eyes flick to the lit phone on her right (f3-5); the pencil stops at f4",
+            "t": 0.12
+          },
+          {
+            "f": 5,
+            "pose": "head turns about 25 deg toward the phone after the eyes (ease-out, f5-10); brows lift a touch at f6 (noticing)",
+            "t": 0.21
+          },
+          {
+            "f": 6,
+            "pose": "right hand lays the pencil down on the sketchbook (f6-8)",
+            "t": 0.25
+          },
+          {
+            "f": 8,
+            "pose": "both hands rise to the ear cups (f8-12)",
+            "t": 0.33
+          },
+          {
+            "f": 12,
+            "pose": "slides the headphones down in one smooth two-handed move (ease-in-out, f12-19)",
+            "t": 0.5
+          },
+          {
+            "f": 19,
+            "pose": "headphones resting around her neck on the collar, cups turned slightly out; hands leave the cups",
+            "t": 0.79
+          },
+          {
+            "f": 19,
+            "pose": "right hand reaches the short way to the phone (about 0.2 m, f19-23); left hand lowers to the desk edge",
+            "t": 0.79
+          },
+          {
+            "f": 23,
+            "pose": "grips the phone",
+            "t": 0.96
+          },
+          {
+            "f": 24,
+            "pose": "lifts it and brings it low toward her chest (f24-29), eyes following it",
+            "t": 1.0
+          },
+          {
+            "f": 28,
+            "pose": "left hand joins the phone (f28-30)",
+            "t": 1.17
+          },
+          {
+            "f": 30,
+            "pose": "held low near her chest in both hands, eyes on the screen (matches SH030 f0)",
+            "t": 1.25
+          }
+        ],
+        "locomotion": {
+          "note": "seated at the desk; she does not stand",
+          "type": "none"
+        },
+        "secondary": [
+          "bob is a rigid mesh: the cups slide off over it without deforming it",
+          "top's collar takes the band (skinning only)",
+          "shoulders drop a little as the headphones come off (f19-22)"
+        ]
+      }
+    },
+    "props": {
+      "hana_headphones": "rigid prop: attached to the head f0-12, animated along an arc from head to neck f12-19, constraint switched to the neck position at f19 (world.props.hana_headphones: two positions)",
+      "pencil": "laid down on the sketchbook f6-8, still after",
+      "phone_hana": "lit (from SH010); picked up with the right hand f23-29, held low in both hands from f30"
+    },
+    "risks_m3": [
+      "headphone cups passing over the bob: a rigid-on-rigid slide may intersect for 1-3 frames; check at G6 and offset the arc outward if needed (no hair simulation)"
+    ],
+    "timing": {
+      "fps": 24,
+      "frames": 32,
+      "index": "0-based; f0 is the first frame, t = f / 24"
+    }
+  },
+  "assets": [
+    "world.sets.hana_room",
+    "world.props.hana_headphones",
+    "world.props.phone_hana",
+    "world.props.sketchbook",
+    "world.props.desk_lamp"
+  ],
+  "camera": {
+    "dof": {
+      "enabled": false
+    },
+    "fov_h_deg": 39.5978,
+    "height_m": 1.14,
+    "lens_mm": 50.0,
+    "look_at": "hana",
+    "movement": "static",
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0,
+    "start_position": [
+      -2.2,
+      -0.85,
+      1.14
+    ]
+  },
+  "characters": [
+    {
+      "action": "glances to the light on her right, slides the headphones down with both hands, picks up the phone with her right hand",
+      "canon": {
+        "proportions": {
+          "build": "slight_soft",
+          "hand_length_m": 0.185,
+          "hand_scale_vs_realistic": 1.1,
+          "head_count": 6.3,
+          "head_height_m": 0.254,
+          "height_m": 1.6,
+          "hip_width_m": 0.33,
+          "seated_at_desk": {
+            "chair_seat_height_m": 0.44,
+            "crown_with_headphones_z_m": 1.3,
+            "crown_z_m": 1.27,
+            "desk_height_m": 0.72,
+            "eye_z_m": 1.14,
+            "head_inside_window_band": true,
+            "window_sill_z_m": 0.9
+          },
+          "shoulder_width_m": 0.36
+        },
+        "representation": {
+          "attach_points": {
+            "hand_r": [
+              "pencil",
+              "phone_hana"
+            ],
+            "head_top": "hana_headphones_on",
+            "neck": "hana_headphones_down"
+          },
+          "build": "slight_soft",
+          "colors_source": "characters.hana.face.colors",
+          "detail_zone": "upper_body_hands_face",
+          "face": {
+            "controls": [
+              "eyes_open",
+              "eyes_down",
+              "eyes_lower_lids_lift",
+              "brows_lift",
+              "blink",
+              "mouth_closed_soft",
+              "mouth_corners_up"
+            ],
+            "lip_sync": false,
+            "method": "drawn_toon_face"
+          },
+          "future_providers_allowed": [
+            "mpfb",
+            "vrm",
+            "generated",
+            "mocap"
+          ],
+          "hands": "five_finger_simplified_1.1x",
+          "head_count": 6.3,
+          "height_m": 1.6,
+          "likeness": "original_no_real_person_no_existing_character",
+          "provider": "proxy",
+          "rig": "humanoid_standard_bone_names",
+          "shading": "toon_cel_per_look_canon",
+          "silhouette_features": [
+            "rounded_jaw_length_bob_short_fringe",
+            "pale_headphones_two_states",
+            "loose_dropped_shoulder_top"
+          ],
+          "wardrobe_source": "characters.hana.wardrobe.*"
+        },
+        "wardrobe.headphones": {
+          "cushion_color": {
+            "hex": "#CFC7BE",
+            "linear": [
+              0.62396,
+              0.571125,
+              0.514918
+            ],
+            "srgb": [
+              0.811765,
+              0.780392,
+              0.745098
+            ]
+          },
+          "logo": "none",
+          "markings": "none",
+          "position_down": "resting_on_collar_around_neck_cups_turned_out",
+          "position_on": "band_over_crown_cups_over_ears_hair_tucked_in_cups",
+          "shell_color": {
+            "hex": "#EFE8DC",
+            "linear": [
+              0.863157,
+              0.806952,
+              0.715694
+            ],
+            "srgb": [
+              0.937255,
+              0.909804,
+              0.862745
+            ]
+          },
+          "transition": "two_hands_one_smooth_slide"
+        },
+        "wardrobe.outfit": {
+          "accessories": "none",
+          "feet": "out_of_frame",
+          "markings": "none",
+          "top": {
+            "color": {
+              "hex": "#AFC8B6",
+              "linear": [
+                0.42869,
+                0.57758,
+                0.467784
+              ],
+              "srgb": [
+                0.686275,
+                0.784314,
+                0.713725
+              ]
+            },
+            "garment": "loose_crew_neck_knit",
+            "print": "none",
+            "shoulders": "dropped",
+            "sleeves": "long_pushed_to_forearm"
+          },
+          "trousers": {
+            "color": {
+              "hex": "#9A93A6",
+              "linear": [
+                0.323143,
+                0.291771,
+                0.381326
+              ],
+              "srgb": [
+                0.603922,
+                0.576471,
+                0.65098
+              ]
+            },
+            "garment": "soft_lounge_trousers",
+            "visible": "mostly_hidden"
+          }
+        }
+      },
+      "facing": "west (screen left)",
+      "id": "hana",
+      "position": [
+        0.0,
+        -0.85,
+        0.0
+      ]
+    }
+  ],
+  "color": {
+    "dominant": {
+      "$canon": "look.color.scene.sc05",
+      "value": {
+        "dominant": {
+          "hex": "#E9CFA8",
+          "linear": [
+            0.814847,
+            0.62396,
+            0.391572
+          ],
+          "srgb": [
+            0.913725,
+            0.811765,
+            0.658824
+          ]
+        },
+        "key_light": {
+          "hex": "#FFD29A",
+          "linear": [
+            1.0,
+            0.64448,
+            0.323143
+          ],
+          "srgb": [
+            1.0,
+            0.823529,
+            0.603922
+          ]
+        },
+        "saturation": "low_medium",
+        "second_key": {
+          "hex": "#FFF1DE",
+          "linear": [
+            1.0,
+            0.879622,
+            0.730461
+          ],
+          "srgb": [
+            1.0,
+            0.945098,
+            0.870588
+          ]
+        },
+        "secondary": {
+          "hex": "#ABA5CE",
+          "linear": [
+            0.40724,
+            0.376262,
+            0.617207
+          ],
+          "srgb": [
+            0.670588,
+            0.647059,
+            0.807843
+          ]
+        },
+        "shadow_tint": {
+          "hex": "#A59CC0",
+          "linear": [
+            0.376262,
+            0.332452,
+            0.527115
+          ],
+          "srgb": [
+            0.647059,
+            0.611765,
+            0.752941
+          ]
+        },
+        "silhouette": {
+          "hex": "#5F6088",
+          "linear": [
+            0.114435,
+            0.116971,
+            0.246201
+          ],
+          "srgb": [
+            0.372549,
+            0.376471,
+            0.533333
+          ]
+        },
+        "sky": "dusk",
+        "value_key": "mid_key_balanced"
+      }
+    },
+    "room": {
+      "$canon": "look.color.hana_room",
+      "value": [
+        {
+          "hex": "#EDE2CF",
+          "item": "wall",
+          "linear": [
+            0.846873,
+            0.760525,
+            0.62396
+          ],
+          "srgb": [
+            0.929412,
+            0.886275,
+            0.811765
+          ]
+        },
+        {
+          "hex": "#C9C2D6",
+          "item": "bedding",
+          "linear": [
+            0.584078,
+            0.539479,
+            0.672443
+          ],
+          "srgb": [
+            0.788235,
+            0.760784,
+            0.839216
+          ]
+        },
+        {
+          "hex": "#B9A58A",
+          "item": "shelf",
+          "linear": [
+            0.48515,
+            0.376262,
+            0.254152
+          ],
+          "srgb": [
+            0.72549,
+            0.647059,
+            0.541176
+          ]
+        },
+        {
+          "hex": "#D9D1E3",
+          "item": "curtains",
+          "linear": [
+            0.693872,
+            0.637597,
+            0.768151
+          ],
+          "srgb": [
+            0.85098,
+            0.819608,
+            0.890196
+          ]
+        },
+        {
+          "hex": "#A9B7C9",
+          "item": "chair",
+          "linear": [
+            0.396755,
+            0.473531,
+            0.584078
+          ],
+          "srgb": [
+            0.662745,
+            0.717647,
+            0.788235
+          ]
+        },
+        {
+          "hex": "#F1EBDD",
+          "item": "pinned_sketch_paper",
+          "linear": [
+            0.879622,
+            0.83077,
+            0.723055
+          ],
+          "srgb": [
+            0.945098,
+            0.921569,
+            0.866667
+          ]
+        },
+        {
+          "hex": "#E6E1D8",
+          "item": "window_frame",
+          "linear": [
+            0.791298,
+            0.752942,
+            0.686685
+          ],
+          "srgb": [
+            0.901961,
+            0.882353,
+            0.847059
+          ]
+        },
+        {
+          "hex": "#5F6088",
+          "item": "neighbour_silhouettes_dusk",
+          "linear": [
+            0.114435,
+            0.116971,
+            0.246201
+          ],
+          "srgb": [
+            0.372549,
+            0.376471,
+            0.533333
+          ]
+        }
+      ]
+    },
+    "sky": {
+      "$canon": "look.color.sky.dusk",
+      "value": [
+        {
+          "hex": "#F4C49A",
+          "linear": [
+            0.904661,
+            0.552011,
+            0.323143
+          ],
+          "pos": 0.0,
+          "srgb": [
+            0.956863,
+            0.768627,
+            0.603922
+          ]
+        },
+        {
+          "hex": "#EFC3AE",
+          "linear": [
+            0.863157,
+            0.545724,
+            0.423268
+          ],
+          "pos": 0.12,
+          "srgb": [
+            0.937255,
+            0.764706,
+            0.682353
+          ]
+        },
+        {
+          "hex": "#D7BFC8",
+          "linear": [
+            0.679542,
+            0.520996,
+            0.57758
+          ],
+          "pos": 0.35,
+          "srgb": [
+            0.843137,
+            0.74902,
+            0.784314
+          ]
+        },
+        {
+          "hex": "#ABA5CE",
+          "linear": [
+            0.40724,
+            0.376262,
+            0.617207
+          ],
+          "pos": 0.65,
+          "srgb": [
+            0.670588,
+            0.647059,
+            0.807843
+          ]
+        },
+        {
+          "hex": "#8C93C2",
+          "linear": [
+            0.262251,
+            0.291771,
+            0.539479
+          ],
+          "pos": 1.0,
+          "srgb": [
+            0.54902,
+            0.576471,
+            0.760784
+          ]
+        }
+      ]
+    }
+  },
+  "composition": {
+    "aspect_ratio": 1.778,
+    "framing": "medium",
+    "notes": "Main angle for the locked layout: her left profile from the south, 50 mm at her eye level (camera.geography.sc05). The south wall is wild (lens about 2.2 m from her, beyond the 1.5 m wall) to reach a medium. Window (west) at screen left, in frame, at most one wire span; horizon (sill) low; lamp near the lens side. Three layers: lamp and desk edge / Hana / window and sky.",
+    "subject_position": "right_third_facing_left"
+  },
+  "environment": {
+    "location": "hana's room, desk by the window",
+    "time_of_day": "evening (dusk)",
+    "weather": "clear"
+  },
+  "frames": {
+    "count": 32,
+    "duration_s_spec": 1.3333,
+    "end": 1305,
+    "fps": 24,
+    "start": 1274
+  },
+  "lighting": {
+    "contrast": "2.5:1",
+    "fill": "dusk sky through the west window, in front of her (10000 K)",
+    "key": {
+      "quality": "soft",
+      "source": "desk lamp, her left",
+      "temperature_k": 2700
+    },
+    "ref": {
+      "$canon": "look.lighting.sc05",
+      "value": {
+        "contrast": "2.5:1",
+        "fill": {
+          "kelvin": 10000,
+          "quality": "soft",
+          "side": "in_front_of_her",
+          "source": "dusk_sky_through_window"
+        },
+        "key": {
+          "kelvin": 2700,
+          "quality": "soft",
+          "side": "her_left",
+          "source": "desk_lamp"
+        },
+        "second_key": {
+          "on_event": "phone_wakes",
+          "side": "her_right_then_below",
+          "source": "phone_screen"
+        },
+        "volumetrics": "none"
+      }
+    },
+    "second_key": "phone screen from her right, then below, from the wake"
+  },
+  "provenance": {
+    "canon": [
+      "characters.hana.expressions",
+      "characters.hana.face",
+      "characters.hana.identity",
+      "characters.hana.movement",
+      "characters.hana.proportions",
+      "characters.hana.representation",
+      "characters.hana.silhouette",
+      "characters.hana.wardrobe.headphones",
+      "characters.hana.wardrobe.outfit",
+      "look.color.hana_room",
+      "look.color.scene.sc05",
+      "look.color.sky.dusk",
+      "look.lighting.sc05"
+    ],
+    "shot": "shot:SC05_SH020"
+  },
+  "render": {
+    "aspect_ratio": 1.7778,
+    "resolution_px": [
+      1920,
+      1080
+    ]
+  },
+  "scene_id": "SC05",
+  "schema": "fm.resolved_shot/1",
+  "sequence_id": "SQ02",
+  "shot_id": "SC05_SH020"
+}

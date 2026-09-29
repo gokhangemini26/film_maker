@@ -1,0 +1,513 @@
+{
+  "animation": {
+    "camera": {
+      "easing": "none",
+      "notes": "locked off; no shake on the clunk"
+    },
+    "characters": {
+      "ren": {
+        "eyeline": "dash f0-14, glovebox f15-30, lap and crank f33-47",
+        "face": "freeze during the cough, neutral-busy, then brows lifted at the crank; no graphic symbols",
+        "keys": [
+          {
+            "f": 0,
+            "pose": "right hand already on the ignition key (quick burst in from the cut), phone in the left hand on his thigh, eyes to the dash",
+            "t": 0.0
+          },
+          {
+            "f": 3,
+            "pose": "turns the key: wrist rotates about 60 deg over 2 frames",
+            "t": 0.12
+          },
+          {
+            "f": 5,
+            "pose": "small freeze while the engine coughs: shoulders up 1 cm, eyes on the dash (f5-13)",
+            "t": 0.21
+          },
+          {
+            "f": 14,
+            "pose": "engine catches: shoulders drop 1 cm, right hand leaves the key",
+            "t": 0.58
+          },
+          {
+            "f": 15,
+            "pose": "leans across to the glovebox (frame left): torso tips, right arm reaches about 0.75 m, eyes on the glovebox (quick burst, ease-out)",
+            "t": 0.62
+          },
+          {
+            "f": 22,
+            "pose": "fingers on the latch",
+            "t": 0.92
+          },
+          {
+            "f": 23,
+            "pose": "latch released; lid drops by itself",
+            "t": 0.96
+          },
+          {
+            "f": 31,
+            "pose": "the crank lands on his thighs (clunk): he freezes mid-lean",
+            "t": 1.29
+          },
+          {
+            "f": 33,
+            "pose": "head turns down to his lap (f33-36)",
+            "t": 1.38
+          },
+          {
+            "f": 36,
+            "pose": "held look at the crank (12 f): brows lifted slightly, mouth flat",
+            "t": 1.5
+          }
+        ],
+        "locomotion": {
+          "note": "seated; leans across toward the glovebox",
+          "type": "none"
+        },
+        "secondary": [
+          "jacket hem swings with the lean (skinning only)",
+          "tuft lags the lean by 1 frame"
+        ]
+      }
+    },
+    "props": {
+      "car_body": "cough: two small shudders f5-8 and f9-12 (about 4 mm, 0.4 deg roll); catches at f14; idle tremble from f14, 1 mm alternating every 2 frames (sets up the stall in SH130)",
+      "charging_cable": "still in the glovebox, posed",
+      "crank_charger": "tips out f25, falls about 0.3 m on an arc (gravity ease-in), lands on his thighs f31, 1 cm bounce f32-33, settles f34; arm folded, pip off",
+      "dash_lights_and_adapter_ring": "on in one frame at f14",
+      "glovebox_lid": "drops by gravity f23-25 (ease-in), 2-frame bounce at the stop f26-27, rests open",
+      "phone_ren": "stays in the left hand on his thigh; glow not visible"
+    },
+    "risks_m3": [
+      "crank fall keyed on an arc, not a rigid-body simulation",
+      "0.75 m reach from the driver's seat needs the torso lean; check proxy reach and seat-belt-free clearance at G6"
+    ],
+    "sound_sync": "key turn f3, coughs f5 and f9, catch f14, lid f25, clunk f31",
+    "timing": {
+      "fps": 24,
+      "frames": 48,
+      "index": "0-based; f0 is the first frame, t = f / 24"
+    }
+  },
+  "assets": [
+    "world.sets.ren_car",
+    "world.sets.street",
+    "world.props.phone_ren",
+    "world.props.crank_charger",
+    "world.props.charging_cable",
+    "world.props.car_usb_adapter"
+  ],
+  "camera": {
+    "dof": {
+      "enabled": false
+    },
+    "fov_h_deg": 73.7398,
+    "height_m": 1.2,
+    "lens_mm": 24.0,
+    "look_at": "ren",
+    "movement": "static",
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0,
+    "start_position": [
+      -0.3,
+      0.1,
+      1.2
+    ]
+  },
+  "characters": [
+    {
+      "action": "turns the key (engine coughs, catches); drops the glovebox lid; the crank clunks onto his lap",
+      "canon": {
+        "proportions": {
+          "arm_span_m": 1.74,
+          "build": "slim_lanky",
+          "eye_height_standing_m": 1.59,
+          "hand_length_m": 0.205,
+          "hand_scale_vs_realistic": 1.1,
+          "head_count": 6.5,
+          "head_height_m": 0.265,
+          "height_m": 1.72,
+          "hip_width_m": 0.32,
+          "kneeling_eye_z_m": 1.05,
+          "leg_length_m": 0.84,
+          "seated_on_car_seat": {
+            "crown_with_tuft_z_m": 1.36,
+            "crown_z_m": 1.32,
+            "eye_z_m": 1.2,
+            "seat_back_recline_deg": 20,
+            "seat_height_m": 0.45
+          },
+          "seated_on_kerb": {
+            "back_rest_to_heels_m": 0.6,
+            "crown_z_m": 1.06,
+            "knee_top_z_m": 0.62,
+            "seat_surface_z_m": 0.12
+          },
+          "shoulder_width_m": 0.42,
+          "tuft_extra_m": 0.04
+        },
+        "representation": {
+          "attach_points": {
+            "chest": "phone_ren_resting",
+            "hand_l": [
+              "phone_ren"
+            ],
+            "hand_r": [
+              "crank_charger_handle",
+              "car_key"
+            ]
+          },
+          "build": "slim_lanky",
+          "colors_source": "characters.ren.face.colors",
+          "face": {
+            "controls": [
+              "brows_knit",
+              "brows_lift",
+              "eyes_open",
+              "eyes_closed",
+              "eyes_wide_small_pupils",
+              "mouth_line",
+              "mouth_flat",
+              "mouth_pressed",
+              "mouth_slightly_open",
+              "cheeks_fill"
+            ],
+            "lip_sync": false,
+            "method": "drawn_toon_face"
+          },
+          "future_providers_allowed": [
+            "mpfb",
+            "vrm",
+            "generated",
+            "mocap"
+          ],
+          "hands": "five_finger_simplified_1.1x",
+          "head_count": 6.5,
+          "height_m": 1.72,
+          "likeness": "original_no_real_person_no_existing_character",
+          "provider": "proxy",
+          "rig": "humanoid_standard_bone_names",
+          "shading": "toon_cel_per_look_canon",
+          "silhouette_features": [
+            "crown_tuft_0.04m",
+            "open_hip_length_jacket_separate_shell",
+            "pale_centre_strip_tshirt",
+            "dark_trousers_pale_shoes"
+          ],
+          "wardrobe_source": "characters.ren.wardrobe.*"
+        },
+        "wardrobe.jacket": {
+          "changes_between_scenes": "none",
+          "closure": "plain_buttons_worn_open",
+          "collar": "small_point",
+          "color": {
+            "hex": "#7C9CC4",
+            "linear": [
+              0.201556,
+              0.332452,
+              0.552011
+            ],
+            "srgb": [
+              0.486275,
+              0.611765,
+              0.768627
+            ]
+          },
+          "garment": "overshirt_jacket",
+          "length": "hip",
+          "markings": "none",
+          "material": "light_unlined_cotton_twill",
+          "pockets": "two_flat_patch_chest_pockets",
+          "sleeves": "pushed_up_below_elbow",
+          "wear": "soft_fade_at_cuffs_and_elbows",
+          "worn_open": true
+        },
+        "wardrobe.outfit": {
+          "accessories": "none",
+          "changes_between_scenes": "none",
+          "knees_after_shop_kneel": "unmarked",
+          "markings": "none",
+          "shoes": {
+            "color": {
+              "hex": "#ECE7DE",
+              "linear": [
+                0.838799,
+                0.799103,
+                0.730461
+              ],
+              "srgb": [
+                0.92549,
+                0.905882,
+                0.870588
+              ]
+            },
+            "laces": "plain",
+            "sole_color": {
+              "hex": "#CDBFA8",
+              "linear": [
+                0.610496,
+                0.520996,
+                0.391572
+              ],
+              "srgb": [
+                0.803922,
+                0.74902,
+                0.658824
+              ]
+            },
+            "type": "low_top_canvas"
+          },
+          "trousers": {
+            "color": {
+              "hex": "#4F5A6E",
+              "linear": [
+                0.078187,
+                0.102242,
+                0.155926
+              ],
+              "srgb": [
+                0.309804,
+                0.352941,
+                0.431373
+              ]
+            },
+            "fit": "relaxed_slim",
+            "length": "full_to_ankle"
+          },
+          "tshirt": {
+            "color": {
+              "hex": "#EAE2D3",
+              "linear": [
+                0.822786,
+                0.760525,
+                0.651406
+              ],
+              "srgb": [
+                0.917647,
+                0.886275,
+                0.827451
+              ]
+            },
+            "fit": "relaxed",
+            "neck": "crew",
+            "print": "none"
+          }
+        }
+      },
+      "facing": "west, then down to the glovebox",
+      "id": "ren",
+      "position": [
+        1.29,
+        -0.3,
+        0.45
+      ]
+    }
+  ],
+  "color": {
+    "accent": {
+      "$canon": "look.color.accent_power_amber",
+      "value": {
+        "hex": "#F5B940",
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ]
+      }
+    },
+    "dominant": {
+      "$canon": "look.color.scene.sc01",
+      "value": {
+        "accent": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        },
+        "accent_2": {
+          "hex": "#F5B940",
+          "linear": [
+            0.913099,
+            0.48515,
+            0.051269
+          ],
+          "srgb": [
+            0.960784,
+            0.72549,
+            0.25098
+          ]
+        },
+        "accent_3": {
+          "hex": "#5DB37E",
+          "linear": [
+            0.109462,
+            0.450786,
+            0.208637
+          ],
+          "srgb": [
+            0.364706,
+            0.701961,
+            0.494118
+          ]
+        },
+        "dominant": {
+          "hex": "#F6D7A7",
+          "linear": [
+            0.921582,
+            0.679542,
+            0.386429
+          ],
+          "srgb": [
+            0.964706,
+            0.843137,
+            0.654902
+          ]
+        },
+        "key_light": {
+          "hex": "#FFD9A0",
+          "linear": [
+            1.0,
+            0.693872,
+            0.351533
+          ],
+          "srgb": [
+            1.0,
+            0.85098,
+            0.627451
+          ]
+        },
+        "saturation": "medium_low",
+        "secondary": {
+          "hex": "#8F809A",
+          "linear": [
+            0.274677,
+            0.215861,
+            0.323143
+          ],
+          "srgb": [
+            0.560784,
+            0.501961,
+            0.603922
+          ]
+        },
+        "shadow_tint": {
+          "hex": "#B7A9C9",
+          "linear": [
+            0.473531,
+            0.396755,
+            0.584078
+          ],
+          "srgb": [
+            0.717647,
+            0.662745,
+            0.788235
+          ]
+        },
+        "sky": "golden_hour",
+        "value_key": "high_key_backlit"
+      }
+    }
+  },
+  "composition": {
+    "aspect_ratio": 1.778,
+    "framing": "medium",
+    "notes": "Wild passenger door (camera.geography.sc01), yawed about 10 deg west so the glovebox sits at frame left at 10 % of frame width or more; ignition key and the USB adapter (amber ring lit) visible beyond him.",
+    "subject_position": "right_third_facing_left"
+  },
+  "environment": {
+    "location": "ren's car (interior), parked on the street",
+    "time_of_day": "golden hour",
+    "weather": "clear"
+  },
+  "frames": {
+    "count": 48,
+    "duration_s_spec": 2.0,
+    "end": 373,
+    "fps": 24,
+    "start": 326
+  },
+  "lighting": {
+    "ambient": "cool sky through the side windows (9000 K)",
+    "fill": "warm bounce from the sunlit dash and bonnet",
+    "key": {
+      "quality": "hard",
+      "source": "sun through the windscreen, 6 deg up, from +Y",
+      "temperature_k": 3200
+    },
+    "notes": "Phone glow not visible on his face in the sun.",
+    "practicals": [
+      "dash lights",
+      "USB adapter amber ring"
+    ],
+    "ref": {
+      "$canon": "look.lighting.sc01",
+      "value": {
+        "ambient": {
+          "kelvin": 9000,
+          "source": "sky_through_side_windows"
+        },
+        "contrast": "4:1",
+        "fill": {
+          "quality": "soft",
+          "source": "dash_and_bonnet_bounce"
+        },
+        "key": {
+          "direction": "from_plus_y_along_street",
+          "elevation_deg": 6,
+          "kelvin": 3200,
+          "quality": "hard",
+          "source": "sun"
+        },
+        "phone_glow_visible_on_face": false,
+        "practical_off_event": "engine_stall_same_frame",
+        "practicals": [
+          "car_dash_lights",
+          "car_adapter_ring"
+        ],
+        "rim": "sun_when_camera_faces_west",
+        "volumetrics": "none"
+      }
+    }
+  },
+  "provenance": {
+    "canon": [
+      "characters.ren.expressions",
+      "characters.ren.face",
+      "characters.ren.identity",
+      "characters.ren.movement",
+      "characters.ren.proportions",
+      "characters.ren.representation",
+      "characters.ren.silhouette",
+      "characters.ren.wardrobe.jacket",
+      "characters.ren.wardrobe.outfit",
+      "look.color.accent_power_amber",
+      "look.color.scene.sc01",
+      "look.lighting.sc01"
+    ],
+    "shot": "shot:SC01_SH100"
+  },
+  "render": {
+    "aspect_ratio": 1.7778,
+    "resolution_px": [
+      1920,
+      1080
+    ]
+  },
+  "scene_id": "SC01",
+  "schema": "fm.resolved_shot/1",
+  "sequence_id": "SQ01",
+  "shot_id": "SC01_SH100"
+}

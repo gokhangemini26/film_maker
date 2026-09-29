@@ -1,0 +1,508 @@
+{
+  "animation": {
+    "camera": {
+      "easing": "none",
+      "notes": "locked off; he runs away from the lens"
+    },
+    "characters": {
+      "ren": {
+        "eyeline": "ahead, over the phone",
+        "face": "not visible (from behind)",
+        "keys": [
+          {
+            "f": 0,
+            "pose": "right foot contact; left arm straight out ahead holding the phone, right forearm tucked to the chest",
+            "t": 0.0
+          },
+          {
+            "f": 3,
+            "pose": "airborne / passing, body up 4 cm",
+            "t": 0.12
+          },
+          {
+            "f": 6,
+            "pose": "left foot contact, body down 3 cm",
+            "t": 0.25
+          },
+          {
+            "f": 9,
+            "pose": "airborne",
+            "t": 0.38
+          },
+          {
+            "f": 12,
+            "pose": "right foot contact",
+            "t": 0.5
+          },
+          {
+            "f": 13,
+            "pose": "toe-off; cut",
+            "t": 0.54
+          }
+        ],
+        "locomotion": {
+          "cadence": "one step every 6 frames (4 steps/s, stride about 1.05 m)",
+          "path": "along the pavement away from the lens, about 4.8 m -> 7.2 m from the camera (2.4 m in 14 f); centred on the shot's position y 6.0",
+          "speed_mps": 4.2,
+          "type": "run"
+        },
+        "secondary": [
+          "head bob 3-4 cm on contacts",
+          "jacket hem flares and swings with the hips (skinning / shape keys)",
+          "cable loop swings opposite each stride (two posed shapes)",
+          "the phone arm stays rigid: no swing"
+        ]
+      }
+    },
+    "timing": {
+      "fps": 24,
+      "frames": 14,
+      "index": "0-based; f0 is the first frame, t = f / 24"
+    }
+  },
+  "assets": [
+    "world.sets.street",
+    "world.sets.corner_shop",
+    "world.props.phone_ren",
+    "world.props.charging_cable"
+  ],
+  "camera": {
+    "dof": {
+      "enabled": false
+    },
+    "fov_h_deg": 54.4322,
+    "height_m": 1.72,
+    "lens_mm": 35.0,
+    "look_at": "ren",
+    "movement": "static",
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0,
+    "start_position": [
+      -0.9,
+      2.5,
+      1.72
+    ]
+  },
+  "characters": [
+    {
+      "action": "running, phone held out ahead in his left hand, cable loop swinging",
+      "canon": {
+        "proportions": {
+          "arm_span_m": 1.74,
+          "build": "slim_lanky",
+          "eye_height_standing_m": 1.59,
+          "hand_length_m": 0.205,
+          "hand_scale_vs_realistic": 1.1,
+          "head_count": 6.5,
+          "head_height_m": 0.265,
+          "height_m": 1.72,
+          "hip_width_m": 0.32,
+          "kneeling_eye_z_m": 1.05,
+          "leg_length_m": 0.84,
+          "seated_on_car_seat": {
+            "crown_with_tuft_z_m": 1.36,
+            "crown_z_m": 1.32,
+            "eye_z_m": 1.2,
+            "seat_back_recline_deg": 20,
+            "seat_height_m": 0.45
+          },
+          "seated_on_kerb": {
+            "back_rest_to_heels_m": 0.6,
+            "crown_z_m": 1.06,
+            "knee_top_z_m": 0.62,
+            "seat_surface_z_m": 0.12
+          },
+          "shoulder_width_m": 0.42,
+          "tuft_extra_m": 0.04
+        },
+        "representation": {
+          "attach_points": {
+            "chest": "phone_ren_resting",
+            "hand_l": [
+              "phone_ren"
+            ],
+            "hand_r": [
+              "crank_charger_handle",
+              "car_key"
+            ]
+          },
+          "build": "slim_lanky",
+          "colors_source": "characters.ren.face.colors",
+          "face": {
+            "controls": [
+              "brows_knit",
+              "brows_lift",
+              "eyes_open",
+              "eyes_closed",
+              "eyes_wide_small_pupils",
+              "mouth_line",
+              "mouth_flat",
+              "mouth_pressed",
+              "mouth_slightly_open",
+              "cheeks_fill"
+            ],
+            "lip_sync": false,
+            "method": "drawn_toon_face"
+          },
+          "future_providers_allowed": [
+            "mpfb",
+            "vrm",
+            "generated",
+            "mocap"
+          ],
+          "hands": "five_finger_simplified_1.1x",
+          "head_count": 6.5,
+          "height_m": 1.72,
+          "likeness": "original_no_real_person_no_existing_character",
+          "provider": "proxy",
+          "rig": "humanoid_standard_bone_names",
+          "shading": "toon_cel_per_look_canon",
+          "silhouette_features": [
+            "crown_tuft_0.04m",
+            "open_hip_length_jacket_separate_shell",
+            "pale_centre_strip_tshirt",
+            "dark_trousers_pale_shoes"
+          ],
+          "wardrobe_source": "characters.ren.wardrobe.*"
+        },
+        "wardrobe.jacket": {
+          "changes_between_scenes": "none",
+          "closure": "plain_buttons_worn_open",
+          "collar": "small_point",
+          "color": {
+            "hex": "#7C9CC4",
+            "linear": [
+              0.201556,
+              0.332452,
+              0.552011
+            ],
+            "srgb": [
+              0.486275,
+              0.611765,
+              0.768627
+            ]
+          },
+          "garment": "overshirt_jacket",
+          "length": "hip",
+          "markings": "none",
+          "material": "light_unlined_cotton_twill",
+          "pockets": "two_flat_patch_chest_pockets",
+          "sleeves": "pushed_up_below_elbow",
+          "wear": "soft_fade_at_cuffs_and_elbows",
+          "worn_open": true
+        },
+        "wardrobe.outfit": {
+          "accessories": "none",
+          "changes_between_scenes": "none",
+          "knees_after_shop_kneel": "unmarked",
+          "markings": "none",
+          "shoes": {
+            "color": {
+              "hex": "#ECE7DE",
+              "linear": [
+                0.838799,
+                0.799103,
+                0.730461
+              ],
+              "srgb": [
+                0.92549,
+                0.905882,
+                0.870588
+              ]
+            },
+            "laces": "plain",
+            "sole_color": {
+              "hex": "#CDBFA8",
+              "linear": [
+                0.610496,
+                0.520996,
+                0.391572
+              ],
+              "srgb": [
+                0.803922,
+                0.74902,
+                0.658824
+              ]
+            },
+            "type": "low_top_canvas"
+          },
+          "trousers": {
+            "color": {
+              "hex": "#4F5A6E",
+              "linear": [
+                0.078187,
+                0.102242,
+                0.155926
+              ],
+              "srgb": [
+                0.309804,
+                0.352941,
+                0.431373
+              ]
+            },
+            "fit": "relaxed_slim",
+            "length": "full_to_ankle"
+          },
+          "tshirt": {
+            "color": {
+              "hex": "#EAE2D3",
+              "linear": [
+                0.822786,
+                0.760525,
+                0.651406
+              ],
+              "srgb": [
+                0.917647,
+                0.886275,
+                0.827451
+              ]
+            },
+            "fit": "relaxed",
+            "neck": "crew",
+            "print": "none"
+          }
+        }
+      },
+      "facing": "west, away from camera",
+      "id": "ren",
+      "position": [
+        -0.9,
+        6.0,
+        0.12
+      ]
+    }
+  ],
+  "color": {
+    "dominant": {
+      "$canon": "look.color.scene.sc02",
+      "value": {
+        "accent": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        },
+        "dominant": {
+          "hex": "#F3D9AE",
+          "linear": [
+            0.896269,
+            0.693872,
+            0.423268
+          ],
+          "srgb": [
+            0.952941,
+            0.85098,
+            0.682353
+          ]
+        },
+        "key_light": {
+          "hex": "#FFD9A0",
+          "linear": [
+            1.0,
+            0.693872,
+            0.351533
+          ],
+          "srgb": [
+            1.0,
+            0.85098,
+            0.627451
+          ]
+        },
+        "saturation": "medium_low",
+        "secondary": {
+          "hex": "#A69CBF",
+          "linear": [
+            0.381326,
+            0.332452,
+            0.520996
+          ],
+          "srgb": [
+            0.65098,
+            0.611765,
+            0.74902
+          ]
+        },
+        "shadow_tint": {
+          "hex": "#BDB2D2",
+          "linear": [
+            0.508881,
+            0.445201,
+            0.64448
+          ],
+          "srgb": [
+            0.741176,
+            0.698039,
+            0.823529
+          ]
+        },
+        "sky": "golden_hour",
+        "value_key": "high_key"
+      }
+    },
+    "sky": {
+      "$canon": "look.color.sky.golden_hour",
+      "value": [
+        {
+          "hex": "#FFF0CC",
+          "linear": [
+            1.0,
+            0.871367,
+            0.603827
+          ],
+          "pos": 0.0,
+          "srgb": [
+            1.0,
+            0.941176,
+            0.8
+          ]
+        },
+        {
+          "hex": "#F9D9A6",
+          "linear": [
+            0.947307,
+            0.693872,
+            0.381326
+          ],
+          "pos": 0.15,
+          "srgb": [
+            0.976471,
+            0.85098,
+            0.65098
+          ]
+        },
+        {
+          "hex": "#EFDCC4",
+          "linear": [
+            0.863157,
+            0.715694,
+            0.552011
+          ],
+          "pos": 0.4,
+          "srgb": [
+            0.937255,
+            0.862745,
+            0.768627
+          ]
+        },
+        {
+          "hex": "#C9D6E3",
+          "linear": [
+            0.584078,
+            0.672443,
+            0.768151
+          ],
+          "pos": 0.7,
+          "srgb": [
+            0.788235,
+            0.839216,
+            0.890196
+          ]
+        },
+        {
+          "hex": "#AFC3DC",
+          "linear": [
+            0.42869,
+            0.545724,
+            0.715694
+          ],
+          "pos": 1.0,
+          "srgb": [
+            0.686275,
+            0.764706,
+            0.862745
+          ]
+        }
+      ]
+    }
+  },
+  "composition": {
+    "aspect_ratio": 1.778,
+    "framing": "medium_wide",
+    "notes": "On-axis (neutral bridge, camera.geography.screen_direction). Tilt down about 11 deg so the frame top sits below the sun (sun disc never in frame, camera.framing.sky_and_wires); a ground-heavy one-point frame (look.style.composition comic). His body stays between the lens and the sun's direction. 14 frames (elliptical cut 2 of 3).",
+    "subject_position": "centre_upper"
+  },
+  "environment": {
+    "location": "street, south pavement from the car to the shop door",
+    "time_of_day": "golden hour",
+    "weather": "clear"
+  },
+  "frames": {
+    "count": 14,
+    "duration_s_spec": 0.5833,
+    "end": 559,
+    "fps": 24,
+    "start": 546
+  },
+  "lighting": {
+    "fill": "pale sky and north-wall bounce",
+    "key": {
+      "quality": "hard",
+      "source": "sun from +Y (west), 6 deg up",
+      "temperature_k": 3200
+    },
+    "notes": "Long shadows toward -Y (east). Street lamps off.",
+    "practicals": [
+      "shop fascia sign (weak in daylight)"
+    ],
+    "ref": {
+      "$canon": "look.lighting.sc02",
+      "value": {
+        "contrast": "4:1",
+        "fill": {
+          "kelvin": 9000,
+          "quality": "soft",
+          "source": "sky_and_north_wall_bounce"
+        },
+        "key": {
+          "direction": "from_plus_y",
+          "elevation_deg": 6,
+          "kelvin": 3200,
+          "quality": "hard",
+          "source": "sun"
+        },
+        "practicals": [
+          "shop_fascia_sign_weak"
+        ],
+        "rim": "sun",
+        "shadows": "long_toward_minus_y",
+        "volumetrics": "none"
+      }
+    }
+  },
+  "provenance": {
+    "canon": [
+      "characters.ren.expressions",
+      "characters.ren.face",
+      "characters.ren.identity",
+      "characters.ren.movement",
+      "characters.ren.proportions",
+      "characters.ren.representation",
+      "characters.ren.silhouette",
+      "characters.ren.wardrobe.jacket",
+      "characters.ren.wardrobe.outfit",
+      "look.color.scene.sc02",
+      "look.color.sky.golden_hour",
+      "look.lighting.sc02"
+    ],
+    "shot": "shot:SC02_SH020"
+  },
+  "render": {
+    "aspect_ratio": 1.7778,
+    "resolution_px": [
+      1920,
+      1080
+    ]
+  },
+  "scene_id": "SC02",
+  "schema": "fm.resolved_shot/1",
+  "sequence_id": "SQ01",
+  "shot_id": "SC02_SH020"
+}

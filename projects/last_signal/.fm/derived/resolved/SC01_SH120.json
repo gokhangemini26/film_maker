@@ -1,0 +1,198 @@
+{
+  "content_hash": "sha256:92df717b5bcb9b503bcfa229a34b379c4446298fd4373d8385d0043a6f40e5bd",
+  "created_at": "2026-09-29T19:13:26Z",
+  "derived_from": [
+    {
+      "hash": "sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea",
+      "ref": "canon:camera.format"
+    },
+    {
+      "hash": "sha256:e268a6d91364cc5e7dd5818f91e0bddcdd747334c64e72808b3021f423b03971",
+      "ref": "canon:camera.gags.no_repeat"
+    },
+    {
+      "hash": "sha256:94f775f6b00cbf59b6c0d7bac2358bed443eee5cbfa483a212d4c42dffb6d032",
+      "ref": "canon:camera.geography.sc01"
+    },
+    {
+      "hash": "sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3",
+      "ref": "canon:characters.ren.expressions"
+    },
+    {
+      "hash": "sha256:d63dc6a6bbfd4e2727ffacbab7f2bee8865a5c2ee0adce14c658f8b82489657d",
+      "ref": "canon:characters.ren.face"
+    },
+    {
+      "hash": "sha256:ece7a44a3e5d391d5fa0931cbfca8d088b4845069ce11c8987d6943db0cf299f",
+      "ref": "canon:characters.ren.identity"
+    },
+    {
+      "hash": "sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314",
+      "ref": "canon:characters.ren.movement"
+    },
+    {
+      "hash": "sha256:02821b5246c17397347d94f2c9048e1a2a065b353cfde019c0cff0bb4b5229ca",
+      "ref": "canon:characters.ren.proportions"
+    },
+    {
+      "hash": "sha256:237e8bf8c747568c8ef1084848c202746c7a8052b893c641e80c79abde90f150",
+      "ref": "canon:characters.ren.representation"
+    },
+    {
+      "hash": "sha256:c0fa4bdf2d56ea008626b1a88ecc228bf8a3933472e76e02cb553c05274edcce",
+      "ref": "canon:characters.ren.silhouette"
+    },
+    {
+      "hash": "sha256:ed689e3256da875967607b2fd1622201fdac8b4113f5e57f73d68e8c77810eef",
+      "ref": "canon:characters.ren.wardrobe.jacket"
+    },
+    {
+      "hash": "sha256:ac1eeaf0825bc764899e2ddd2a6c519a08b58a042d35956b6c7347052e63a5e4",
+      "ref": "canon:characters.ren.wardrobe.outfit"
+    },
+    {
+      "hash": "sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e",
+      "ref": "canon:continuity.battery"
+    },
+    {
+      "hash": "sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b",
+      "ref": "canon:continuity.props.cable"
+    },
+    {
+      "hash": "sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a",
+      "ref": "canon:continuity.props.glovebox_and_crank"
+    },
+    {
+      "hash": "sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937",
+      "ref": "canon:continuity.props.passenger_door"
+    },
+    {
+      "hash": "sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae",
+      "ref": "canon:continuity.props.phone_ren"
+    },
+    {
+      "hash": "sha256:f9c2539706ed77bc0049f9b94c094dceb0c61f1534926afea28f01b0c07bf28c",
+      "ref": "canon:continuity.sc01.environment"
+    },
+    {
+      "hash": "sha256:470a5a95955efc7d581f5cf9fbf010cf479f60ad92ace91013d7e6523e8de8b7",
+      "ref": "canon:intent.comic_then_tender"
+    },
+    {
+      "hash": "sha256:0f143f4624a8c8cebe71b8b7c11549ffdc6b37263c85d07695afa1cba4a5a0a0",
+      "ref": "canon:intent.race_against_battery"
+    },
+    {
+      "hash": "sha256:d2fd886fad9c10a7ce4385766a0a0d2489cb6f63e55ec6fa35efb1a2b53ccf59",
+      "ref": "canon:look.color.accent_battery_red"
+    },
+    {
+      "hash": "sha256:41a1f1f4f76e1bbd214831d25aa2bbdead29b12cac976239016de7aaf12ea8d1",
+      "ref": "canon:look.color.accent_call_green"
+    },
+    {
+      "hash": "sha256:53c0e9be6879c2a2d465a16e10aaaac1a03d9bddc301888ab8f2ce62505f8bef",
+      "ref": "canon:look.color.accent_power_amber"
+    },
+    {
+      "hash": "sha256:14a3283d35fb9f9026c9b3676b0c4923090af972e22dd15465b2e2470ebcdc77",
+      "ref": "canon:look.color.scene.sc01"
+    },
+    {
+      "hash": "sha256:e527e1de7eb8844a48c35480e09d7faef05648cc8fa2d64925cd5e61f7174f97",
+      "ref": "canon:look.color.sky.golden_hour"
+    },
+    {
+      "hash": "sha256:652d1553733dc781d82ed598810e57d8fb8cc03a71f8d2b49ce32b08e9e45187",
+      "ref": "canon:look.color.street"
+    },
+    {
+      "hash": "sha256:49235e9a19e9b700bba3d04920fa7fde0c5d289497156fc41c09afd59b27d540",
+      "ref": "canon:look.color.ui"
+    },
+    {
+      "hash": "sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4",
+      "ref": "canon:look.exposure.scene_keys"
+    },
+    {
+      "hash": "sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f",
+      "ref": "canon:look.lighting.power_indicators"
+    },
+    {
+      "hash": "sha256:0456faefddfd67f2c2c6febcf99a936c5ed6f16e1d13efef673b603911e38a4a",
+      "ref": "canon:look.lighting.sc01"
+    },
+    {
+      "hash": "sha256:5b1bcd7579ec10d43bbfefbd045d981b00248cbbc4ca45550862e8c0df97c0e6",
+      "ref": "canon:look.style.phone_ui"
+    },
+    {
+      "hash": "sha256:b8be91e245be13f6f11c3c45c1f81e09fc14f47d7e6c889e442db9db6a6d4222",
+      "ref": "canon:look.style.sky"
+    },
+    {
+      "hash": "sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8",
+      "ref": "canon:story.arc.ren"
+    },
+    {
+      "hash": "sha256:e2ea8c58a8e1521ad7bcbe895601ed58797871db836afc4de4e6ebfb6b0d4e26",
+      "ref": "canon:world.locations.ren_car"
+    },
+    {
+      "hash": "sha256:e09ba271cd970fdd3c33f388e6992e0c63d5c98b2ff8e42b94428d4d4628b3db",
+      "ref": "canon:world.locations.street"
+    },
+    {
+      "hash": "sha256:a72ecd61a4028d019ce62c8e22e9fcf0d6251af698ffdd745d89661d5fd95844",
+      "ref": "canon:world.props.car_usb_adapter"
+    },
+    {
+      "hash": "sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605",
+      "ref": "canon:world.props.charging_cable"
+    },
+    {
+      "hash": "sha256:6831cc87e82e108ae32e6d7bc1757f27563d8d23a1f7278b97e810b439bb259d",
+      "ref": "canon:world.props.crank_charger"
+    },
+    {
+      "hash": "sha256:307dcf5af82826c64a95436d6dc4dbe3d6491992f4e8374e97abede7d6ac07bf",
+      "ref": "canon:world.props.phone_ren"
+    },
+    {
+      "hash": "sha256:bd037db7dbe914e4de28689d0158ccfa9abecd229a2aadf8d569138988cf93f3",
+      "ref": "canon:world.rules.nobody_else"
+    },
+    {
+      "hash": "sha256:0b69045958e1916ad7910a6e9e88a3f99f6e90eac2963d760ffe7e889ae47df8",
+      "ref": "canon:world.rules.one_port"
+    },
+    {
+      "hash": "sha256:c55ced58e01c09a2eb6cd4897caac2571d2eaae59bbffe362b6fea76d7986c4d",
+      "ref": "canon:world.rules.power"
+    },
+    {
+      "hash": "sha256:c4c98157eca0e16d776700681100256bb25eb79bb16e3807bfa0f4aa6ae47899",
+      "ref": "canon:world.rules.time_and_sun"
+    },
+    {
+      "hash": "sha256:c70bcf2a9d9cd7fe8b52cd5f776e34560f22966cd4302637ccc527c22c54de66",
+      "ref": "canon:world.rules.weather"
+    },
+    {
+      "hash": "sha256:238ade8c11d56ccb22e595cd9e42829e593e23808c6d83fbff3d5e00f541cb99",
+      "ref": "canon:world.sets.ren_car"
+    },
+    {
+      "hash": "sha256:f512f2320f0fdb1de518a7e82ed173a6a4f51a31f62540e2f3e4d2c4149180f1",
+      "ref": "canon:world.sets.street"
+    },
+    {
+      "hash": "sha256:d98e26a8cdd5b6c50d855c6b6f5229b3a108bf9fa80662b3dc8ed00935b4f49b",
+      "ref": "shot:SC01_SH120"
+    }
+  ],
+  "notes": null,
+  "path": "09_resolved/SC01_SH120.json",
+  "producer": "fm.resolve",
+  "ref": "resolved:SC01_SH120"
+}

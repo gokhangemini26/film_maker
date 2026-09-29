@@ -7,7 +7,7 @@ project: last_signal
 sandbox: false
 current_phase: STORYBOARD
 status: in_progress
-ledger: 23 records, head d37cd86fa523
+ledger: 24 records, head 9b80563a6e32
 ```
 
 **Next:** Gate approved: `fm advance`
@@ -100,4 +100,4 @@ LOCKED: 161
 
 ## Attention
 
-Nothing outstanding.
+- change awaiting decision: CHANGE-001

@@ -1,0 +1,150 @@
+{
+  "content_hash": "sha256:56c512e2bbc9b1f6059a17cfbfdab4a6de2a472d005c939970910eaf61759b1d",
+  "created_at": "2026-09-29T19:13:35Z",
+  "derived_from": [
+    {
+      "hash": "sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea",
+      "ref": "canon:camera.format"
+    },
+    {
+      "hash": "sha256:4a2b9a9f368b1deafcd37875023198c61e71d29bffe70c0d79d670061e3c886d",
+      "ref": "canon:camera.geography.sc05"
+    },
+    {
+      "hash": "sha256:489e56798bb001a8026e56f8f482436ed4c3a4df186ecf755e94450b6756335c",
+      "ref": "canon:characters.hana.expressions"
+    },
+    {
+      "hash": "sha256:ea70683cdb299a74f0bf5427ada34d522f47dbfbde8b28d5de357a4d80db7850",
+      "ref": "canon:characters.hana.face"
+    },
+    {
+      "hash": "sha256:f218dca9d3a0943cd03a6d0df81802f742cc145a2d752b14ce6c482c39af484a",
+      "ref": "canon:characters.hana.identity"
+    },
+    {
+      "hash": "sha256:55f3b5718c3183edc21042ed66555c8298293d01934ca2a38b64078d6e5d1120",
+      "ref": "canon:characters.hana.movement"
+    },
+    {
+      "hash": "sha256:5bf2b9f2388ac5a930033d34439357f0c7f9099f682e2532f78c1cb620ee9511",
+      "ref": "canon:characters.hana.proportions"
+    },
+    {
+      "hash": "sha256:649b213874a3dcaa68d4203033f4699add00c836c2ce98edab44183d32bee8d7",
+      "ref": "canon:characters.hana.representation"
+    },
+    {
+      "hash": "sha256:16a151395f98daaa5574c133be1d26b76a1f5b07df1e4562ca5a3713a20d765d",
+      "ref": "canon:characters.hana.silhouette"
+    },
+    {
+      "hash": "sha256:a21efa3803324880c7de7089d73130e8f84ddcb2b6b09183ba0cb9bcc542d77d",
+      "ref": "canon:characters.hana.wardrobe.headphones"
+    },
+    {
+      "hash": "sha256:fb3c726721e76893771602010b34c74035bcef7e29f4d0d7634b3a3a834f5585",
+      "ref": "canon:characters.hana.wardrobe.outfit"
+    },
+    {
+      "hash": "sha256:00dc5293c2843c67e26e1b1a163b027eb1d134338a1ac0927ef2f552bd4dd106",
+      "ref": "canon:continuity.hana.headphones"
+    },
+    {
+      "hash": "sha256:3cb1474beaa88cf977f61c38a00617dfa396b48588dae7b7eef0e8b75e572f4e",
+      "ref": "canon:continuity.sc05.environment"
+    },
+    {
+      "hash": "sha256:d00fb87fa639a0f256795fd7d6646100e1b6515fb07a70d641db163777d047fc",
+      "ref": "canon:intent.open_hopeful_ending"
+    },
+    {
+      "hash": "sha256:35eb1dec38d475cfd9f63f627450051df79b9102dd7ce598913762dc050e8e7a",
+      "ref": "canon:intent.soft_but_cinematic"
+    },
+    {
+      "hash": "sha256:7ad7fb1ad1a9eeb2ed4f705d9ecf361a32622ad95d2b7663adcd9848ed580460",
+      "ref": "canon:look.color.hana_room"
+    },
+    {
+      "hash": "sha256:702d9a824c3f100b4789d0a9904d65feece6d500339bf76ff2d00b029fef5909",
+      "ref": "canon:look.color.phone_glow"
+    },
+    {
+      "hash": "sha256:b1a78d48918a7c2680e15164744414cfef15418b774a59273336aeca4406cea9",
+      "ref": "canon:look.color.scene.sc05"
+    },
+    {
+      "hash": "sha256:66684732cc0d45ef02f50580ca41ca19f01ed21c5240703849f2044841db228d",
+      "ref": "canon:look.color.sky.dusk"
+    },
+    {
+      "hash": "sha256:49235e9a19e9b700bba3d04920fa7fde0c5d289497156fc41c09afd59b27d540",
+      "ref": "canon:look.color.ui"
+    },
+    {
+      "hash": "sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4",
+      "ref": "canon:look.exposure.scene_keys"
+    },
+    {
+      "hash": "sha256:526913497d45cd223a58e43efcb4f91852e4c7c03be2ef23c9534879420c5176",
+      "ref": "canon:look.lighting.sc05"
+    },
+    {
+      "hash": "sha256:5b1bcd7579ec10d43bbfefbd045d981b00248cbbc4ca45550862e8c0df97c0e6",
+      "ref": "canon:look.style.phone_ui"
+    },
+    {
+      "hash": "sha256:b8be91e245be13f6f11c3c45c1f81e09fc14f47d7e6c889e442db9db6a6d4222",
+      "ref": "canon:look.style.sky"
+    },
+    {
+      "hash": "sha256:b4a1dc03fb920de195729535214fdeba08ddd285547f90709e4cba5445956240",
+      "ref": "canon:story.arc.hana"
+    },
+    {
+      "hash": "sha256:17e13065e635469a52bccc8be174a1bbec98443a8a5f2bc0ae52e6311a2d8e2e",
+      "ref": "canon:world.locations.hana_room"
+    },
+    {
+      "hash": "sha256:506360c1d2fb47c587d52b28d8a6ed0c40bfbfa51d085468c2b65cd603ceb908",
+      "ref": "canon:world.locations.hana_room.sketches"
+    },
+    {
+      "hash": "sha256:c562dba5e5bd2c9125e2d894f6f7f2d4410c78c39c018e94f27abfe195b79250",
+      "ref": "canon:world.props.desk_lamp"
+    },
+    {
+      "hash": "sha256:af520fd0df7cd5a3797f8f646dd1d4e9e524d97e98d4fddc4bdf4415ab6401c8",
+      "ref": "canon:world.props.hana_headphones"
+    },
+    {
+      "hash": "sha256:99a3dc7748e00e5aaa6c4a2b46aaae4c8758d83ec2f119e67d050928da98a4eb",
+      "ref": "canon:world.props.phone_hana"
+    },
+    {
+      "hash": "sha256:e79b33b0f4bce7ea091363f9b7b0b86e8dfcfe48c5e3324bb91acf6d571936eb",
+      "ref": "canon:world.props.sketchbook"
+    },
+    {
+      "hash": "sha256:c4c98157eca0e16d776700681100256bb25eb79bb16e3807bfa0f4aa6ae47899",
+      "ref": "canon:world.rules.time_and_sun"
+    },
+    {
+      "hash": "sha256:c70bcf2a9d9cd7fe8b52cd5f776e34560f22966cd4302637ccc527c22c54de66",
+      "ref": "canon:world.rules.weather"
+    },
+    {
+      "hash": "sha256:e19f0783497b907cbcdc58e82b81c8905c0c3456cc964bf467302f3e053c3114",
+      "ref": "canon:world.sets.hana_room"
+    },
+    {
+      "hash": "sha256:fe59950a5823efe8c8ad34c1a74192a78ea62fa7a90efb08872e242264b7d7b3",
+      "ref": "shot:SC05_SH030"
+    }
+  ],
+  "notes": null,
+  "path": "09_resolved/SC05_SH030.json",
+  "producer": "fm.resolve",
+  "ref": "resolved:SC05_SH030"
+}

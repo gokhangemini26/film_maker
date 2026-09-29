@@ -1,0 +1,662 @@
+{
+  "animation": {
+    "camera": {
+      "easing": "none",
+      "notes": "locked off (no move in inserts)"
+    },
+    "characters": {
+      "ren": {
+        "eyeline": "off frame; implied on the brick, then away",
+        "keys": [
+          {
+            "f": 0,
+            "pose": "crank lying folded on his thighs, pip off; no hand yet",
+            "t": 0.0
+          },
+          {
+            "f": 1,
+            "pose": "right hand enters from frame right (quick burst)",
+            "t": 0.04
+          },
+          {
+            "f": 3,
+            "pose": "grips the brick",
+            "t": 0.12
+          },
+          {
+            "f": 4,
+            "pose": "lifts it 5 cm; the brick lags the wrist by 1 frame (weight)",
+            "t": 0.17
+          },
+          {
+            "f": 6,
+            "pose": "turns it over once in the hand: wrist roll 180 deg (ease-in-out) - the 'not now' look",
+            "t": 0.25
+          },
+          {
+            "f": 11,
+            "pose": "2-frame hold, brick back upright",
+            "t": 0.46
+          },
+          {
+            "f": 13,
+            "pose": "one-handed shove out frame left toward the glovebox (ease-in, accelerates out); brick gone by f17",
+            "t": 0.54
+          },
+          {
+            "f": 18,
+            "pose": "hand comes back in from frame left holding the cable end",
+            "t": 0.75
+          },
+          {
+            "f": 21,
+            "pose": "pulls the cable across the frame toward the console adapter; hand leaves frame by f29",
+            "t": 0.88
+          },
+          {
+            "f": 29,
+            "pose": "empty lap with the cable lying across it; still to the cut",
+            "t": 1.21
+          }
+        ],
+        "locomotion": {
+          "note": "only his right hand is in frame; the left keeps the phone out of frame",
+          "type": "none"
+        },
+        "secondary": [
+          "cable: a posed curve with a hook at the hand, dragged along the hand path (no simulation)"
+        ]
+      }
+    },
+    "props": {
+      "crank_charger": "rigid; arm stays folded, pip off throughout"
+    },
+    "risks_m3": [
+      "cable drag across the lap needs a hook-driven curve; keep its visible length short"
+    ],
+    "timing": {
+      "fps": 24,
+      "frames": 32,
+      "index": "0-based; f0 is the first frame, t = f / 24"
+    }
+  },
+  "assets": [
+    "world.props.crank_charger",
+    "world.props.charging_cable"
+  ],
+  "camera": {
+    "dof": {
+      "enabled": true,
+      "f_stop": 8.0,
+      "focus_target": "crank_charger"
+    },
+    "fov_h_deg": 23.9132,
+    "height_m": 1.0,
+    "lens_mm": 85.0,
+    "look_at": "crank_charger",
+    "movement": "static",
+    "sensor_fit": "HORIZONTAL",
+    "sensor_height_mm": 20.25,
+    "sensor_width_mm": 36.0,
+    "start_position": [
+      0.5,
+      -0.2,
+      1.0
+    ]
+  },
+  "characters": [
+    {
+      "action": "picks the brick up, turns it once in his hands, shoves it back toward the glovebox (out frame left), pulls the cable back through",
+      "canon": {
+        "proportions": {
+          "arm_span_m": 1.74,
+          "build": "slim_lanky",
+          "eye_height_standing_m": 1.59,
+          "hand_length_m": 0.205,
+          "hand_scale_vs_realistic": 1.1,
+          "head_count": 6.5,
+          "head_height_m": 0.265,
+          "height_m": 1.72,
+          "hip_width_m": 0.32,
+          "kneeling_eye_z_m": 1.05,
+          "leg_length_m": 0.84,
+          "seated_on_car_seat": {
+            "crown_with_tuft_z_m": 1.36,
+            "crown_z_m": 1.32,
+            "eye_z_m": 1.2,
+            "seat_back_recline_deg": 20,
+            "seat_height_m": 0.45
+          },
+          "seated_on_kerb": {
+            "back_rest_to_heels_m": 0.6,
+            "crown_z_m": 1.06,
+            "knee_top_z_m": 0.62,
+            "seat_surface_z_m": 0.12
+          },
+          "shoulder_width_m": 0.42,
+          "tuft_extra_m": 0.04
+        },
+        "representation": {
+          "attach_points": {
+            "chest": "phone_ren_resting",
+            "hand_l": [
+              "phone_ren"
+            ],
+            "hand_r": [
+              "crank_charger_handle",
+              "car_key"
+            ]
+          },
+          "build": "slim_lanky",
+          "colors_source": "characters.ren.face.colors",
+          "face": {
+            "controls": [
+              "brows_knit",
+              "brows_lift",
+              "eyes_open",
+              "eyes_closed",
+              "eyes_wide_small_pupils",
+              "mouth_line",
+              "mouth_flat",
+              "mouth_pressed",
+              "mouth_slightly_open",
+              "cheeks_fill"
+            ],
+            "lip_sync": false,
+            "method": "drawn_toon_face"
+          },
+          "future_providers_allowed": [
+            "mpfb",
+            "vrm",
+            "generated",
+            "mocap"
+          ],
+          "hands": "five_finger_simplified_1.1x",
+          "head_count": 6.5,
+          "height_m": 1.72,
+          "likeness": "original_no_real_person_no_existing_character",
+          "provider": "proxy",
+          "rig": "humanoid_standard_bone_names",
+          "shading": "toon_cel_per_look_canon",
+          "silhouette_features": [
+            "crown_tuft_0.04m",
+            "open_hip_length_jacket_separate_shell",
+            "pale_centre_strip_tshirt",
+            "dark_trousers_pale_shoes"
+          ],
+          "wardrobe_source": "characters.ren.wardrobe.*"
+        },
+        "wardrobe.jacket": {
+          "changes_between_scenes": "none",
+          "closure": "plain_buttons_worn_open",
+          "collar": "small_point",
+          "color": {
+            "hex": "#7C9CC4",
+            "linear": [
+              0.201556,
+              0.332452,
+              0.552011
+            ],
+            "srgb": [
+              0.486275,
+              0.611765,
+              0.768627
+            ]
+          },
+          "garment": "overshirt_jacket",
+          "length": "hip",
+          "markings": "none",
+          "material": "light_unlined_cotton_twill",
+          "pockets": "two_flat_patch_chest_pockets",
+          "sleeves": "pushed_up_below_elbow",
+          "wear": "soft_fade_at_cuffs_and_elbows",
+          "worn_open": true
+        },
+        "wardrobe.outfit": {
+          "accessories": "none",
+          "changes_between_scenes": "none",
+          "knees_after_shop_kneel": "unmarked",
+          "markings": "none",
+          "shoes": {
+            "color": {
+              "hex": "#ECE7DE",
+              "linear": [
+                0.838799,
+                0.799103,
+                0.730461
+              ],
+              "srgb": [
+                0.92549,
+                0.905882,
+                0.870588
+              ]
+            },
+            "laces": "plain",
+            "sole_color": {
+              "hex": "#CDBFA8",
+              "linear": [
+                0.610496,
+                0.520996,
+                0.391572
+              ],
+              "srgb": [
+                0.803922,
+                0.74902,
+                0.658824
+              ]
+            },
+            "type": "low_top_canvas"
+          },
+          "trousers": {
+            "color": {
+              "hex": "#4F5A6E",
+              "linear": [
+                0.078187,
+                0.102242,
+                0.155926
+              ],
+              "srgb": [
+                0.309804,
+                0.352941,
+                0.431373
+              ]
+            },
+            "fit": "relaxed_slim",
+            "length": "full_to_ankle"
+          },
+          "tshirt": {
+            "color": {
+              "hex": "#EAE2D3",
+              "linear": [
+                0.822786,
+                0.760525,
+                0.651406
+              ],
+              "srgb": [
+                0.917647,
+                0.886275,
+                0.827451
+              ]
+            },
+            "fit": "relaxed",
+            "neck": "crew",
+            "print": "none"
+          }
+        }
+      },
+      "facing": "down at his lap",
+      "id": "ren",
+      "position": [
+        1.29,
+        -0.3,
+        0.45
+      ]
+    }
+  ],
+  "color": {
+    "accent": null,
+    "dominant": {
+      "$canon": "look.color.props",
+      "value": [
+        {
+          "hex": "#E8D8A8",
+          "item": "car_paint",
+          "linear": [
+            0.806952,
+            0.686685,
+            0.391572
+          ],
+          "srgb": [
+            0.909804,
+            0.847059,
+            0.658824
+          ]
+        },
+        {
+          "hex": "#EFE5C8",
+          "item": "car_paint_sun_faded_roof_bonnet",
+          "linear": [
+            0.863157,
+            0.783538,
+            0.57758
+          ],
+          "srgb": [
+            0.937255,
+            0.898039,
+            0.784314
+          ]
+        },
+        {
+          "hex": "#3E3F47",
+          "item": "car_rubber_trim_tyres",
+          "linear": [
+            0.048172,
+            0.049707,
+            0.06301
+          ],
+          "srgb": [
+            0.243137,
+            0.247059,
+            0.278431
+          ]
+        },
+        {
+          "hex": "#7A7478",
+          "item": "car_dashboard",
+          "linear": [
+            0.194618,
+            0.174647,
+            0.187821
+          ],
+          "srgb": [
+            0.478431,
+            0.454902,
+            0.470588
+          ]
+        },
+        {
+          "hex": "#8C8698",
+          "item": "car_seats",
+          "linear": [
+            0.262251,
+            0.238398,
+            0.313989
+          ],
+          "srgb": [
+            0.54902,
+            0.52549,
+            0.596078
+          ]
+        },
+        {
+          "hex": "#CFC8BE",
+          "item": "car_headliner",
+          "linear": [
+            0.62396,
+            0.57758,
+            0.514918
+          ],
+          "srgb": [
+            0.811765,
+            0.784314,
+            0.745098
+          ]
+        },
+        {
+          "hex": "#9FB0C4",
+          "item": "car_glass_tint",
+          "linear": [
+            0.346704,
+            0.434154,
+            0.552011
+          ],
+          "srgb": [
+            0.623529,
+            0.690196,
+            0.768627
+          ]
+        },
+        {
+          "hex": "#D6C592",
+          "item": "crank_body",
+          "linear": [
+            0.672443,
+            0.55834,
+            0.287441
+          ],
+          "srgb": [
+            0.839216,
+            0.772549,
+            0.572549
+          ]
+        },
+        {
+          "hex": "#5E5B58",
+          "item": "crank_grip",
+          "linear": [
+            0.111932,
+            0.104616,
+            0.097587
+          ],
+          "srgb": [
+            0.368627,
+            0.356863,
+            0.345098
+          ]
+        },
+        {
+          "hex": "#EDE6D6",
+          "item": "crank_knob",
+          "linear": [
+            0.846873,
+            0.791298,
+            0.672443
+          ],
+          "srgb": [
+            0.929412,
+            0.901961,
+            0.839216
+          ]
+        },
+        {
+          "hex": "#E4E1DA",
+          "item": "charging_cable",
+          "linear": [
+            0.775822,
+            0.752942,
+            0.701102
+          ],
+          "srgb": [
+            0.894118,
+            0.882353,
+            0.854902
+          ]
+        },
+        {
+          "hex": "#5E6B7A",
+          "item": "phone_case_ren",
+          "linear": [
+            0.111932,
+            0.147027,
+            0.194618
+          ],
+          "srgb": [
+            0.368627,
+            0.419608,
+            0.478431
+          ]
+        },
+        {
+          "hex": "#E9DFCF",
+          "item": "phone_case_hana",
+          "linear": [
+            0.814847,
+            0.73791,
+            0.62396
+          ],
+          "srgb": [
+            0.913725,
+            0.87451,
+            0.811765
+          ]
+        },
+        {
+          "hex": "#4A4B52",
+          "item": "car_adapter_body",
+          "linear": [
+            0.068478,
+            0.07036,
+            0.084376
+          ],
+          "srgb": [
+            0.290196,
+            0.294118,
+            0.321569
+          ]
+        },
+        {
+          "hex": "#EEEAE2",
+          "item": "shop_socket",
+          "linear": [
+            0.854993,
+            0.822786,
+            0.760525
+          ],
+          "srgb": [
+            0.933333,
+            0.917647,
+            0.886275
+          ]
+        },
+        {
+          "hex": "#BFCFE3",
+          "item": "desk_lamp_body",
+          "linear": [
+            0.520996,
+            0.62396,
+            0.768151
+          ],
+          "srgb": [
+            0.74902,
+            0.811765,
+            0.890196
+          ]
+        },
+        {
+          "hex": "#C9A77C",
+          "item": "desk_wood",
+          "linear": [
+            0.584078,
+            0.386429,
+            0.201556
+          ],
+          "srgb": [
+            0.788235,
+            0.654902,
+            0.486275
+          ]
+        },
+        {
+          "hex": "#F3EEE2",
+          "item": "sketchbook_paper",
+          "linear": [
+            0.896269,
+            0.854993,
+            0.760525
+          ],
+          "srgb": [
+            0.952941,
+            0.933333,
+            0.886275
+          ]
+        },
+        {
+          "hex": "#7D7A86",
+          "item": "pencil_lines",
+          "linear": [
+            0.205079,
+            0.194618,
+            0.238398
+          ],
+          "srgb": [
+            0.490196,
+            0.478431,
+            0.52549
+          ]
+        },
+        {
+          "hex": "#9EB4C8",
+          "item": "pencil_cup",
+          "linear": [
+            0.341914,
+            0.456411,
+            0.57758
+          ],
+          "srgb": [
+            0.619608,
+            0.705882,
+            0.784314
+          ]
+        }
+      ]
+    }
+  },
+  "composition": {
+    "aspect_ratio": 1.778,
+    "framing": "insert",
+    "notes": "Crank insert (camera.inserts.language, crank_inserts): frame about 0.2 m tall at the brick, the folded arm and knob side-on; the crank at 30 % of frame width or more. Pip off (not turning). No emissive in the soft background.",
+    "subject_position": "centre"
+  },
+  "environment": {
+    "location": "ren's car (interior), parked on the street",
+    "time_of_day": "golden hour",
+    "weather": "clear"
+  },
+  "frames": {
+    "count": 32,
+    "duration_s_spec": 1.3333,
+    "end": 405,
+    "fps": 24,
+    "start": 374
+  },
+  "lighting": {
+    "fill": "warm dash bounce",
+    "key": "sun spill across his lap from frame left",
+    "ref": {
+      "$canon": "look.lighting.sc01",
+      "value": {
+        "ambient": {
+          "kelvin": 9000,
+          "source": "sky_through_side_windows"
+        },
+        "contrast": "4:1",
+        "fill": {
+          "quality": "soft",
+          "source": "dash_and_bonnet_bounce"
+        },
+        "key": {
+          "direction": "from_plus_y_along_street",
+          "elevation_deg": 6,
+          "kelvin": 3200,
+          "quality": "hard",
+          "source": "sun"
+        },
+        "phone_glow_visible_on_face": false,
+        "practical_off_event": "engine_stall_same_frame",
+        "practicals": [
+          "car_dash_lights",
+          "car_adapter_ring"
+        ],
+        "rim": "sun_when_camera_faces_west",
+        "volumetrics": "none"
+      }
+    }
+  },
+  "provenance": {
+    "canon": [
+      "characters.ren.expressions",
+      "characters.ren.face",
+      "characters.ren.identity",
+      "characters.ren.movement",
+      "characters.ren.proportions",
+      "characters.ren.representation",
+      "characters.ren.silhouette",
+      "characters.ren.wardrobe.jacket",
+      "characters.ren.wardrobe.outfit",
+      "look.color.props",
+      "look.lighting.sc01"
+    ],
+    "shot": "shot:SC01_SH110"
+  },
+  "render": {
+    "aspect_ratio": 1.7778,
+    "resolution_px": [
+      1920,
+      1080
+    ]
+  },
+  "scene_id": "SC01",
+  "schema": "fm.resolved_shot/1",
+  "sequence_id": "SQ01",
+  "shot_id": "SC01_SH110"
+}
