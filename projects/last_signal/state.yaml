@@ -4,7 +4,7 @@ title: Last Signal
 sandbox: false
 created_at: '2026-09-28T20:41:45Z'
 phase: WORLD_CHARACTERS
-phase_status: awaiting_approval
+phase_status: in_progress
 gates:
   G1:
     status: approved
@@ -30,12 +30,16 @@ gates:
       artifact:story_structure: sha256:d8a12c83b7c349e115615b4a1d07b7f27082e08ec5109da940295a188ee99f3c
     ledger_seq: 11
   G3:
-    status: awaiting_approval
-    decided_by: null
-    decided_at: null
+    status: approved
+    decided_by: human:gokhan_guler
+    decided_at: '2026-09-29T06:41:22Z'
     notes: null
-    approved_hashes: {}
-    ledger_seq: null
+    approved_hashes:
+      artifact:art_direction_bible: sha256:3f6417db6caacd48626af618568a9b279f8692228f067d43df77eb7f38e520d2
+      artifact:character_bible: sha256:44a136f55dc3b56fce92fbd8c5f2ad27b5bd10f9cf2bcbdf46734a07709e9f81
+      artifact:g3_review: sha256:be33e9db03f1ec4f718a786c6243a326d40811e3d7002fdd6ceaf46ae77a05cd
+      artifact:world_bible: sha256:6fca966b474afc3e3252fa9b922efc28cb1f755cdfbacfa62a930b83aa083a65
+    ledger_seq: 14
   G4:
     status: pending
     decided_by: null
@@ -192,6 +196,231 @@ canon:
     hash: sha256:0a4183b2104659865ae6fa28cde750f49c70a5eff8851d427f4c7ea0a1732d96
     version: 1
     ledger_seq: 11
+  characters.hana.expressions:
+    status: LOCKED
+    hash: sha256:489e56798bb001a8026e56f8f482436ed4c3a4df186ecf755e94450b6756335c
+    version: 1
+    ledger_seq: 14
+  characters.hana.face:
+    status: LOCKED
+    hash: sha256:ea70683cdb299a74f0bf5427ada34d522f47dbfbde8b28d5de357a4d80db7850
+    version: 1
+    ledger_seq: 14
+  characters.hana.identity:
+    status: LOCKED
+    hash: sha256:f218dca9d3a0943cd03a6d0df81802f742cc145a2d752b14ce6c482c39af484a
+    version: 1
+    ledger_seq: 14
+  characters.hana.movement:
+    status: LOCKED
+    hash: sha256:55f3b5718c3183edc21042ed66555c8298293d01934ca2a38b64078d6e5d1120
+    version: 1
+    ledger_seq: 14
+  characters.hana.proportions:
+    status: LOCKED
+    hash: sha256:5bf2b9f2388ac5a930033d34439357f0c7f9099f682e2532f78c1cb620ee9511
+    version: 1
+    ledger_seq: 14
+  characters.hana.representation:
+    status: LOCKED
+    hash: sha256:649b213874a3dcaa68d4203033f4699add00c836c2ce98edab44183d32bee8d7
+    version: 1
+    ledger_seq: 14
+  characters.hana.silhouette:
+    status: LOCKED
+    hash: sha256:16a151395f98daaa5574c133be1d26b76a1f5b07df1e4562ca5a3713a20d765d
+    version: 1
+    ledger_seq: 14
+  characters.hana.wardrobe.headphones:
+    status: LOCKED
+    hash: sha256:a21efa3803324880c7de7089d73130e8f84ddcb2b6b09183ba0cb9bcc542d77d
+    version: 1
+    ledger_seq: 14
+  characters.hana.wardrobe.outfit:
+    status: LOCKED
+    hash: sha256:fb3c726721e76893771602010b34c74035bcef7e29f4d0d7634b3a3a834f5585
+    version: 1
+    ledger_seq: 14
+  characters.ren.expressions:
+    status: LOCKED
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+    version: 1
+    ledger_seq: 14
+  characters.ren.face:
+    status: LOCKED
+    hash: sha256:d63dc6a6bbfd4e2727ffacbab7f2bee8865a5c2ee0adce14c658f8b82489657d
+    version: 1
+    ledger_seq: 14
+  characters.ren.identity:
+    status: LOCKED
+    hash: sha256:ece7a44a3e5d391d5fa0931cbfca8d088b4845069ce11c8987d6943db0cf299f
+    version: 1
+    ledger_seq: 14
+  characters.ren.movement:
+    status: LOCKED
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+    version: 1
+    ledger_seq: 14
+  characters.ren.proportions:
+    status: LOCKED
+    hash: sha256:02821b5246c17397347d94f2c9048e1a2a065b353cfde019c0cff0bb4b5229ca
+    version: 1
+    ledger_seq: 14
+  characters.ren.representation:
+    status: LOCKED
+    hash: sha256:237e8bf8c747568c8ef1084848c202746c7a8052b893c641e80c79abde90f150
+    version: 1
+    ledger_seq: 14
+  characters.ren.silhouette:
+    status: LOCKED
+    hash: sha256:c0fa4bdf2d56ea008626b1a88ecc228bf8a3933472e76e02cb553c05274edcce
+    version: 1
+    ledger_seq: 14
+  characters.ren.wardrobe.jacket:
+    status: LOCKED
+    hash: sha256:ed689e3256da875967607b2fd1622201fdac8b4113f5e57f73d68e8c77810eef
+    version: 1
+    ledger_seq: 14
+  characters.ren.wardrobe.outfit:
+    status: LOCKED
+    hash: sha256:ac1eeaf0825bc764899e2ddd2a6c519a08b58a042d35956b6c7347052e63a5e4
+    version: 1
+    ledger_seq: 14
+  world.era:
+    status: LOCKED
+    hash: sha256:4a21db61e19accea7e683cbb7d9ca08eb348ac49611c917fc066d1c94973e8f7
+    version: 1
+    ledger_seq: 14
+  world.locations.corner_shop:
+    status: LOCKED
+    hash: sha256:921371c19d6f67f5749477530d1e5851498ad8785fd1c76166ce3c80f2b6cba6
+    version: 1
+    ledger_seq: 14
+  world.locations.hana_room:
+    status: LOCKED
+    hash: sha256:17e13065e635469a52bccc8be174a1bbec98443a8a5f2bc0ae52e6311a2d8e2e
+    version: 1
+    ledger_seq: 14
+  world.locations.hana_room.sketches:
+    status: LOCKED
+    hash: sha256:506360c1d2fb47c587d52b28d8a6ed0c40bfbfa51d085468c2b65cd603ceb908
+    version: 1
+    ledger_seq: 14
+  world.locations.ren_car:
+    status: LOCKED
+    hash: sha256:e2ea8c58a8e1521ad7bcbe895601ed58797871db836afc4de4e6ebfb6b0d4e26
+    version: 1
+    ledger_seq: 14
+  world.locations.street:
+    status: LOCKED
+    hash: sha256:e09ba271cd970fdd3c33f388e6992e0c63d5c98b2ff8e42b94428d4d4628b3db
+    version: 1
+    ledger_seq: 14
+  world.props.car_usb_adapter:
+    status: LOCKED
+    hash: sha256:a72ecd61a4028d019ce62c8e22e9fcf0d6251af698ffdd745d89661d5fd95844
+    version: 1
+    ledger_seq: 14
+  world.props.charging_cable:
+    status: LOCKED
+    hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
+    version: 1
+    ledger_seq: 14
+  world.props.crank_charger:
+    status: LOCKED
+    hash: sha256:6831cc87e82e108ae32e6d7bc1757f27563d8d23a1f7278b97e810b439bb259d
+    version: 1
+    ledger_seq: 14
+  world.props.desk_lamp:
+    status: LOCKED
+    hash: sha256:c562dba5e5bd2c9125e2d894f6f7f2d4410c78c39c018e94f27abfe195b79250
+    version: 1
+    ledger_seq: 14
+  world.props.hana_headphones:
+    status: LOCKED
+    hash: sha256:af520fd0df7cd5a3797f8f646dd1d4e9e524d97e98d4fddc4bdf4415ab6401c8
+    version: 1
+    ledger_seq: 14
+  world.props.phone_hana:
+    status: LOCKED
+    hash: sha256:99a3dc7748e00e5aaa6c4a2b46aaae4c8758d83ec2f119e67d050928da98a4eb
+    version: 1
+    ledger_seq: 14
+  world.props.phone_ren:
+    status: LOCKED
+    hash: sha256:307dcf5af82826c64a95436d6dc4dbe3d6491992f4e8374e97abede7d6ac07bf
+    version: 1
+    ledger_seq: 14
+  world.props.shop_socket:
+    status: LOCKED
+    hash: sha256:f4dbaade29a56d1efd2cf089287cbab5cdef6078c1e8293ace9afcb51bb10d90
+    version: 1
+    ledger_seq: 14
+  world.props.sketchbook:
+    status: LOCKED
+    hash: sha256:e79b33b0f4bce7ea091363f9b7b0b86e8dfcfe48c5e3324bb91acf6d571936eb
+    version: 1
+    ledger_seq: 14
+  world.rules.no_readable_text:
+    status: LOCKED
+    hash: sha256:a21cccd660b3af6cffb29094f0fab852e3e2fe1bd316dd2e7dcb094615bad1ae
+    version: 1
+    ledger_seq: 14
+  world.rules.nobody_else:
+    status: LOCKED
+    hash: sha256:bd037db7dbe914e4de28689d0158ccfa9abecd229a2aadf8d569138988cf93f3
+    version: 1
+    ledger_seq: 14
+  world.rules.one_port:
+    status: LOCKED
+    hash: sha256:0b69045958e1916ad7910a6e9e88a3f99f6e90eac2963d760ffe7e889ae47df8
+    version: 1
+    ledger_seq: 14
+  world.rules.power:
+    status: LOCKED
+    hash: sha256:c55ced58e01c09a2eb6cd4897caac2571d2eaae59bbffe362b6fea76d7986c4d
+    version: 1
+    ledger_seq: 14
+  world.rules.season:
+    status: LOCKED
+    hash: sha256:1967ab59a5f5c1baee41a094affa551817f4e6f9b71b77c2b12f2c8409de695b
+    version: 1
+    ledger_seq: 14
+  world.rules.time_and_sun:
+    status: LOCKED
+    hash: sha256:c4c98157eca0e16d776700681100256bb25eb79bb16e3807bfa0f4aa6ae47899
+    version: 1
+    ledger_seq: 14
+  world.rules.weather:
+    status: LOCKED
+    hash: sha256:c70bcf2a9d9cd7fe8b52cd5f776e34560f22966cd4302637ccc527c22c54de66
+    version: 1
+    ledger_seq: 14
+  world.sets.corner_shop:
+    status: LOCKED
+    hash: sha256:ec237fef5176be584b10788bc38d48cf14cd937c1e42b64cb332319ef4e59f26
+    version: 1
+    ledger_seq: 14
+  world.sets.hana_room:
+    status: LOCKED
+    hash: sha256:e19f0783497b907cbcdc58e82b81c8905c0c3456cc964bf467302f3e053c3114
+    version: 1
+    ledger_seq: 14
+  world.sets.ren_car:
+    status: LOCKED
+    hash: sha256:238ade8c11d56ccb22e595cd9e42829e593e23808c6d83fbff3d5e00f541cb99
+    version: 1
+    ledger_seq: 14
+  world.sets.street:
+    status: LOCKED
+    hash: sha256:f512f2320f0fdb1de518a7e82ed173a6a4f51a31f62540e2f3e4d2c4149180f1
+    version: 1
+    ledger_seq: 14
+  world.setting:
+    status: LOCKED
+    hash: sha256:6fedf48f156ea49f849be8ad32b76e75edb26c98f701aa6b1718535812345867
+    version: 1
+    ledger_seq: 14
 artifacts:
   artifact:brief: APPROVED
   artifact:brief_analysis: APPROVED
@@ -202,8 +431,12 @@ artifacts:
   artifact:screenplay: APPROVED
   artifact:story_bible: APPROVED
   artifact:story_structure: APPROVED
+  artifact:art_direction_bible: APPROVED
+  artifact:character_bible: APPROVED
+  artifact:g3_review: APPROVED
+  artifact:world_bible: APPROVED
 shots: {}
 authorizations: []
 changes: {}
-ledger_seq: 13
-ledger_head: sha256:b675ab2fd9391e187e696fde41a439e9e50c52277fa72cf99e753e2c1a5a8fb2
+ledger_seq: 14
+ledger_head: sha256:b55441c1d84612904bd46a5c292702f14e58d1e9e6be07921b5287ed06553c2f

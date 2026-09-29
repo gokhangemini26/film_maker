@@ -3,7 +3,7 @@ fm:
   id: g3_review
   kind: gate_review
   phase: WORLD_CHARACTERS
-  status: PROPOSED
+  status: APPROVED
   owner_role: qa-supervisor
   derived_from:
   - ref: artifact:world_bible

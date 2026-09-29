@@ -1,6 +1,5 @@
 domain: world
 entries:
-# ---------------------------------------------------------------- era and setting
 - id: world.era
   statement: |
     Present day. Ordinary contemporary technology: smartphones with USB charging, cars old
@@ -24,8 +23,9 @@ entries:
   depends_on:
   - story.premise
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.setting
   statement: |
     An unnamed, fictional small-town residential neighbourhood with no country markers: no
@@ -61,13 +61,12 @@ entries:
   - story.locations
   - tone.wordless
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
   notes: |
     Traffic side is a staging convenience, not a story point. The human may flip it at no
     cost before G5 (mirror the street set); after G5 it touches every exterior shot.
-
-# ---------------------------------------------------------------- world rules
 - id: world.rules.no_readable_text
   statement: |
     No surface in the world carries readable text: no shop names, signs, posters, labels,
@@ -102,8 +101,9 @@ entries:
   - tone.wordless
   - story.escalation
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.rules.weather
   statement: |
     Clear, dry and calm for the whole film. A few thin, high clouds sit low in the western sky
@@ -116,13 +116,6 @@ entries:
     wind: calm
     clouds: few_thin_high_clouds_low_in_west
     fog: none
-  applies_to:
-  - SC01
-  - SC02
-  - SC03
-  - SC04
-  - SC05
-  - SC06
   rationale: |
     Resolves the untagged "weather: clear" in SCENES.yaml (G2 review finding 12) as a world
     decision. Clear weather is what lets golden hour pour through the windscreen and lets the
@@ -137,9 +130,17 @@ entries:
   - intent.comic_then_tender
   depends_on:
   - story.locations
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC05
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.rules.season
   statement: |
     Early summer, a mild, warm evening. Long daylight: the sun sets a little after seven, so
@@ -163,8 +164,9 @@ entries:
   - story.message
   - story.locations
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
   notes: Wardrobe consequences belong to the character-designer (light clothing, no coats).
 - id: world.rules.time_and_sun
   statement: |
@@ -191,14 +193,9 @@ entries:
     sc05:
       time_of_day: dusk
       scenes_heading_says: evening
-      same_sky_as: [SC04, SC06]
-  applies_to:
-  - SC01
-  - SC02
-  - SC03
-  - SC04
-  - SC05
-  - SC06
+      same_sky_as:
+      - SC04
+      - SC06
   rationale: |
     Fixing the geography of the sun turns story.locations' "golden hour into dusk" into a
     buildable fact: one sun direction for the whole street, a real passage of time between the
@@ -217,9 +214,17 @@ entries:
   - story.locations
   - story.ending
   - story.escalation
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC05
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
   notes: |
     SC05 is headed EVENING in SCENES.yaml; in world terms it is dusk. Shot environment for
     SC05 should carry both words (e.g. "evening (dusk)") so the continuity check against
@@ -248,11 +253,6 @@ entries:
       restarts: false
       smoke_or_particles: false
     other_sources_in_reach: none
-  applies_to:
-  - SC01
-  - SC03
-  - SC04
-  - SC06
   rationale: |
     Implements story.locations' "blackout_scope: shop_only" as a mechanism the sets can show:
     lit windows and street lamps around a dark shop say "bad timing, not disaster", and the
@@ -275,9 +275,15 @@ entries:
   - story.escalation
   - tone.comedy_source
   - tone.the_turn
+  applies_to:
+  - SC01
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.rules.nobody_else
   statement: |
     No one but Ren appears on the street or in the shop. The street is a quiet dead end that
@@ -290,12 +296,6 @@ entries:
     traffic: none_dead_end_street
     people_in_windows: false
     shopkeeper: implied_back_room_never_seen
-  applies_to:
-  - SC01
-  - SC02
-  - SC03
-  - SC04
-  - SC06
   rationale: |
     story.cast needs no extras and wants nobody to help him. A dead-end street at dinner time
     makes that emptiness natural rather than eerie, and the lit windows of other households
@@ -310,9 +310,16 @@ entries:
   - intent.open_hopeful_ending
   depends_on:
   - story.cast
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.rules.one_port
   statement: |
     Every power source in the film offers the same USB port shape, and Ren uses one cable for
@@ -326,11 +333,6 @@ entries:
       SC03: shop_wall_socket_with_usb_ports
       SC04: crank_charger_usb_port
     same_port_shape: true
-  applies_to:
-  - SC01
-  - SC02
-  - SC03
-  - SC04
   rationale: |
     One cable and one port shape make the three plug-ins a visual rhyme the audience learns:
     the same small gesture fails twice and works the third time, which is the shape of the
@@ -342,12 +344,16 @@ entries:
   - intent.race_against_battery
   depends_on:
   - story.crank_plant
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
   notes: Continuity (cinematographer) tracks the cable car -> shop -> kerb (G2 review finding 12).
-
-# ---------------------------------------------------------------- locations
 - id: world.locations.street
   statement: |
     A short, quiet, east-west residential street of low two-storey houses behind low garden
@@ -368,11 +374,6 @@ entries:
     car_to_shop_door_m: 12
     west_end: low_railing_open_sky
     east_end: fades_into_more_houses
-  applies_to:
-  - SC01
-  - SC02
-  - SC04
-  - SC06
   rationale: |
     One short street holds both of Ren's spaces, as story.locations requires, and a twelve-metre
     sprint fits the 2 s of SC02. The open western end is the film's one big sky: it sends the
@@ -389,9 +390,15 @@ entries:
   - story.locations
   - world.setting
   - world.rules.time_and_sun
+  applies_to:
+  - SC01
+  - SC02
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.locations.ren_car
   statement: |
     Ren's small old two-door hatchback, right-hand drive, parked at the south kerb facing
@@ -408,11 +415,6 @@ entries:
     kerb_side_door: passenger
     glovebox_side: passenger_kerb_side
     badges_or_logos: none
-  applies_to:
-  - SC01
-  - SC02
-  - SC04
-  - SC06
   rationale: |
     The brief says a small old car. Old enough to have a key and a weak battery makes the
     stall believable without smoke; small makes it his (a first car, bought cheap) and puts
@@ -430,9 +432,15 @@ entries:
   - story.cast
   - tone.register
   - world.setting
+  applies_to:
+  - SC01
+  - SC02
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
   notes: |
     Door continuity (G2 review finding 3, screenwriter's): he leaves by the driver's door in
     SC02 (road side); the passenger door is open in SC04. The set supports either fix
@@ -459,11 +467,6 @@ entries:
     door_bell: mechanical_bell
     sign: pictogram_basket_icon_no_text
     after_blackout: dark_for_rest_of_film
-  applies_to:
-  - SC02
-  - SC03
-  - SC04
-  - SC06
   rationale: |
     A deep, north-facing shop is what makes the blackout total in golden hour: with no sun
     coming in and the front glass covered, the back of the shop falls to near-dark when the
@@ -481,9 +484,15 @@ entries:
   - world.rules.power
   - world.rules.no_readable_text
   - world.rules.time_and_sun
+  applies_to:
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.locations.hana_room
   statement: |
     Hana's small upstairs bedroom in a similar low-rise neighbourhood elsewhere in town (never
@@ -502,8 +511,6 @@ entries:
     practical: desk_lamp_on
     phone: face_up_beside_sketchbook
     time_of_day: dusk
-  applies_to:
-  - SC05
   rationale: |
     The window is the thread between the two characters: the same afterglow, the same kind of
     rooftops and wires, so her room is plainly under his sky without a map or an establishing
@@ -520,9 +527,12 @@ entries:
   - story.arc.hana
   - story.ending
   - world.rules.time_and_sun
+  applies_to:
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.locations.hana_room.sketches
   statement: |
     Everything Hana has drawn, in the sketchbook and pinned on the wall, is of ordinary things:
@@ -540,8 +550,6 @@ entries:
     - ren
     - hearts
     - writing
-  applies_to:
-  - SC05
   rationale: |
     A drawing of Ren would tell the audience she already loves him and close the ending the
     user asked to keep open (tone.ending_restraint: she does not know how he feels). Drawing
@@ -554,11 +562,12 @@ entries:
   - tone.ending_restraint
   - story.arc.hana
   - world.rules.no_readable_text
+  applies_to:
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
-
-# ---------------------------------------------------------------- sets (buildable)
+  version: 1
 - id: world.sets.street
   statement: |
     Street set in scene coordinates (metres, Z up): +Y points west down the street toward the
@@ -566,29 +575,49 @@ entries:
     the centre of the car's passenger door. Only the stretch from y = -20 to y = +30 is built
     in detail; beyond it, silhouette cards and the open sky.
   value:
-    axes: {plus_y: west_sun_and_shop, plus_x: north_across_road, z: up}
+    axes:
+      plus_y: west_sun_and_shop
+      plus_x: north_across_road
+      z: up
     origin: south_kerb_edge_at_car_passenger_door_centre
     road_surface_z: 0.0
     pavement_z: 0.12
-    south_pavement_x: [-1.8, 0.0]
-    carriageway_x: [0.0, 5.5]
-    north_pavement_x: [5.5, 7.3]
+    south_pavement_x:
+    - -1.8
+    - 0.0
+    carriageway_x:
+    - 0.0
+    - 5.5
+    north_pavement_x:
+    - 5.5
+    - 7.3
     building_line_south_x: -1.8
     building_line_north_x: 7.3
-    car_body_x: [0.2, 1.68]
-    car_body_y: [-1.85, 1.55]
-    shop_frontage_y: [10.5, 15.0]
-    shop_door_centre: [-1.8, 12.0]
-    lamp_poles: [[-1.5, 15.5], [-1.5, -18.0]]
-    utility_poles_extra: [[-1.5, 45.0]]
-    detail_zone_y: [-20, 30]
+    car_body_x:
+    - 0.2
+    - 1.68
+    car_body_y:
+    - -1.85
+    - 1.55
+    shop_frontage_y:
+    - 10.5
+    - 15.0
+    shop_door_centre:
+    - -1.8
+    - 12.0
+    lamp_poles:
+    - - -1.5
+      - 15.5
+    - - -1.5
+      - -18.0
+    utility_poles_extra:
+    - - -1.5
+      - 45.0
+    detail_zone_y:
+    - -20
+    - 30
     west_railing_y: 30
     beyond_railing: open_sky_and_distant_rooftop_silhouettes
-  applies_to:
-  - SC01
-  - SC02
-  - SC04
-  - SC06
   rationale: |
     One shared coordinate frame lets the cinematographer, the look-director (sun along +Y) and
     the M3 builder place the car, shop, lamps and sun without re-deciding geography per shot.
@@ -605,9 +634,15 @@ entries:
   - world.locations.street
   - world.rules.time_and_sun
   - world.rules.power
+  applies_to:
+  - SC01
+  - SC02
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.sets.ren_car
   statement: |
     Hero car model, exterior plus the front half of the interior (driver seat, passenger seat,
@@ -624,19 +659,21 @@ entries:
     seat_height_m: 0.45
     windscreen_rake_deg: 30
     glovebox:
-      opening_m: [0.32, 0.15]
+      opening_m:
+      - 0.32
+      - 0.15
       depth_m: 0.2
       lid: hinged_at_bottom_drops_down
       reach_from_driver_seat_m: 0.75
-      contents: [crank_charger, charging_cable, paper_napkins]
+      contents:
+      - crank_charger
+      - charging_cable
+      - paper_napkins
     dash_socket: centre_console_12v_with_usb_adapter
-    rear_view_mirror_m: [0.22, 0.06]
+    rear_view_mirror_m:
+    - 0.22
+    - 0.06
     interior_detail: front_half_only
-  applies_to:
-  - SC01
-  - SC02
-  - SC04
-  - SC06
   rationale: |
     The car carries three beats (plant, stall, final image), so it is the one set built as a
     hero. The narrow body (1.48 m) keeps the glovebox 0.75 m from the driver's hand, so the
@@ -651,9 +688,15 @@ entries:
   depends_on:
   - world.locations.ren_car
   - story.crank_plant
+  applies_to:
+  - SC01
+  - SC02
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.sets.corner_shop
   statement: |
     Shop interior in shop-local coordinates (origin at the door threshold centre, +depth into
@@ -663,22 +706,57 @@ entries:
     freestanding tiered display stand. Exterior: fascia with a pictogram sign, a striped
     awning, door glass and window mostly covered from inside.
   value:
-    footprint_m: [4.5, 9.0]
+    footprint_m:
+    - 4.5
+    - 9.0
     ceiling_m: 2.7
-    counter: {size_m: [1.8, 0.6, 1.0], position: front_left}
-    back_room_doorway: {size_m: [0.8, 2.0], behind_counter: true, strip_curtain: true}
-    aisles: {count: 2, gondola_height_m: 1.5, gondola_length_m: 5.0, aisle_width_m: 0.9}
-    fridges: {count: 3, size_m: [0.7, 0.7, 2.0], wall: back}
-    socket: {wall: back, corner: right, height_m: 0.3, depth_from_door_m: 8.9}
-    display_stand: {size_m: [0.6, 0.4, 1.3], gap_to_wall_m: 0.25, tiered: true}
+    counter:
+      size_m:
+      - 1.8
+      - 0.6
+      - 1.0
+      position: front_left
+    back_room_doorway:
+      size_m:
+      - 0.8
+      - 2.0
+      behind_counter: true
+      strip_curtain: true
+    aisles:
+      count: 2
+      gondola_height_m: 1.5
+      gondola_length_m: 5.0
+      aisle_width_m: 0.9
+    fridges:
+      count: 3
+      size_m:
+      - 0.7
+      - 0.7
+      - 2.0
+      wall: back
+    socket:
+      wall: back
+      corner: right
+      height_m: 0.3
+      depth_from_door_m: 8.9
+    display_stand:
+      size_m:
+      - 0.6
+      - 0.4
+      - 1.3
+      gap_to_wall_m: 0.25
+      tiered: true
     ceiling_panels: 4
-    awning: {depth_m: 1.0, height_m: 2.3, striped: true}
-    fascia_sign: {size_m: [3.0, 0.5], content: basket_pictogram, lit_before_blackout: true}
-  applies_to:
-  - SC02
-  - SC03
-  - SC04
-  - SC06
+    awning:
+      depth_m: 1.0
+      height_m: 2.3
+      striped: true
+    fascia_sign:
+      size_m:
+      - 3.0
+      - 0.5
+      content: basket_pictogram
+      lit_before_blackout: true
   rationale: |
     Putting the socket at the very back, low and behind a stand, makes him cross the whole shop
     and kneel for it (the public, effortful dash that makes this failure cost more than the
@@ -693,26 +771,44 @@ entries:
   depends_on:
   - world.locations.corner_shop
   - world.rules.power
+  applies_to:
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.sets.hana_room
   statement: |
     Build only the window wall and the desk corner in detail; the rest of the room falls away
     into soft, low-detail shapes (bed edge, shelf, door) in lamp-light and shadow.
   value:
-    footprint_m: [3.0, 3.6]
+    footprint_m:
+    - 3.0
+    - 3.6
     ceiling_m: 2.4
-    window: {width_m: 1.2, height_m: 1.1, sill_height_m: 0.9, wall: west, curtains: open}
-    desk: {size_m: [1.1, 0.55], height_m: 0.72, against: window_wall}
+    window:
+      width_m: 1.2
+      height_m: 1.1
+      sill_height_m: 0.9
+      wall: west
+      curtains: open
+    desk:
+      size_m:
+      - 1.1
+      - 0.55
+      height_m: 0.72
+      against: window_wall
     chair: simple_desk_chair
-    desk_lamp: {position: desk_left, switched_on: true}
+    desk_lamp:
+      position: desk_left
+      switched_on: true
     phone_position: desk_right_of_sketchbook_face_up
     wall_sketches: 4-6_pinned_above_desk
     detail_zone: window_wall_and_desk
     rest_of_room: low_detail_in_shadow
-  applies_to:
-  - SC05
   rationale: |
     SC05 is four seconds, framed at her desk; building the window wall and desk and letting
     the rest fall into shadow gives a complete, cosy frame at minimum cost. Phone face-up to
@@ -723,28 +819,25 @@ entries:
   - intent.soft_but_cinematic
   depends_on:
   - world.locations.hana_room
+  applies_to:
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
-
-# ---------------------------------------------------------------- hero props
+  version: 1
 - id: world.props.phone_ren
   statement: |
     Ren's phone: an ordinary modern slab smartphone in a plain soft case with slightly worn
     corners. No logo, no brand shape. The screen is the film's key practical light.
   value:
-    size_m: [0.147, 0.071, 0.0085]
+    size_m:
+    - 0.147
+    - 0.071
+    - 0.0085
     corner_radius_m: 0.009
     case: plain_soft_matte_worn_corners
     logo: none
     screen: emissive_plane_ui_from_look_director
-  applies_to:
-  - SC01
-  - SC02
-  - SC03
-  - SC04
-  - SC06
-  - ren
   rationale: |
     The phone carries the meter and the glow motif, so it must be instantly generic: any
     distinctive shape would read as a brand, and a plain, slightly worn case says it is his
@@ -755,23 +848,31 @@ entries:
   - intent.soft_but_cinematic
   depends_on:
   - world.rules.no_readable_text
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.props.phone_hana
   statement: |
     Hana's phone: same class of plain slab smartphone, in a case whose shape or finish differs
     from Ren's so the two phones are never confused in inserts. No logo. Lies face-up on the
     desk and lights when his message arrives.
   value:
-    size_m: [0.15, 0.072, 0.009]
+    size_m:
+    - 0.15
+    - 0.072
+    - 0.009
     logo: none
     distinct_from: phone_ren
     resting: face_up_on_desk
     not_charging: true
-  applies_to:
-  - SC05
-  - hana
   rationale: |
     SC05 cuts from his phone to hers in the same minute, so the audience must know at a glance
     that this is a different phone. Face-up so its light can wake in frame. It is deliberately
@@ -782,9 +883,13 @@ entries:
   depends_on:
   - world.rules.no_readable_text
   - tone.the_turn
+  applies_to:
+  - SC05
+  - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
   notes: Case colour/finish to be agreed between the character-designer and the look-director.
 - id: world.props.crank_charger
   statement: |
@@ -795,22 +900,25 @@ entries:
     glovebox, the hinge unworn because it has never been used. No torch, no radio, no solar
     panel, no markings.
   value:
-    body_m: [0.13, 0.065, 0.042]
+    body_m:
+    - 0.13
+    - 0.065
+    - 0.042
     corner_radius_m: 0.012
     crank_arm_length_m: 0.085
-    crank_knob_m: {diameter: 0.02, length: 0.022}
+    crank_knob_m:
+      diameter: 0.02
+      length: 0.022
     pivot: one_axis_at_body_end
     folded: flush_in_top_groove
     port: usb_same_shape_as_other_sources
-    indicator_pip: {diameter_m: 0.006, glows_while_cranking: true}
+    indicator_pip:
+      diameter_m: 0.006
+      glows_while_cranking: true
     extras: none
     markings: none
     wear: scuffed_corners_unworn_hinge
     sound: ratchet_click_per_turn
-  applies_to:
-  - SC01
-  - SC04
-  - ren
   rationale: |
     No label may say "turn this for power", so the shape must: a fold-out arm with a knob is
     read as "crank" by anyone. Chunky enough to clunk comically onto his lap in SC01 and to
@@ -827,9 +935,14 @@ entries:
   - story.crank_plant
   - tone.the_turn
   - world.rules.one_port
+  applies_to:
+  - SC01
+  - SC04
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.props.charging_cable
   statement: |
     One plain charging cable, about a metre long, matte soft sheath, phone plug at one end and
@@ -837,17 +950,15 @@ entries:
   value:
     length_m: 1.0
     diameter_m: 0.004
-    ends: [phone_plug, usb_source_plug]
+    ends:
+    - phone_plug
+    - usb_source_plug
     count: 1
-    route: [SC01_car_adapter, SC03_shop_socket, SC04_crank_charger]
+    route:
+    - SC01_car_adapter
+    - SC03_shop_socket
+    - SC04_crank_charger
     markings: none
-  applies_to:
-  - SC01
-  - SC02
-  - SC03
-  - SC04
-  - SC06
-  - ren
   rationale: |
     The one cable is the thread through all three attempts (world.rules.one_port), so it must
     be the same object in every shot. A metre is long enough to reach the socket behind the
@@ -857,18 +968,26 @@ entries:
   - intent.earned_last_signal
   depends_on:
   - world.rules.one_port
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.props.car_usb_adapter
   statement: |
     A small USB adapter in the car's 12 V dash socket, with a thin ring light that is lit while
     the car has power and goes out with the dash when the engine dies.
   value:
-    size_m: {diameter: 0.03, protrusion: 0.04}
+    size_m:
+      diameter: 0.03
+      protrusion: 0.04
     ring_light: on_until_engine_dies
-  applies_to:
-  - SC01
   rationale: |
     The ring going out next to his plug is the car's failure told in light, right in the
     insert, without smoke or text. Rejected: a built-in dash USB port (unlikely in an old car).
@@ -878,20 +997,23 @@ entries:
   depends_on:
   - world.rules.power
   - world.rules.one_port
+  applies_to:
+  - SC01
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.props.shop_socket
   statement: |
     A plain double wall socket with two built-in USB ports, low on the shop's back wall behind
     the display stand. No markings, no indicator light.
   value:
-    size_m: [0.146, 0.086]
+    size_m:
+    - 0.146
+    - 0.086
     height_from_floor_m: 0.3
     usb_ports: 2
     markings: none
-  applies_to:
-  - SC03
   rationale: |
     Gives the shop beat its target in one shape the audience already knows from the car
     adapter, low enough that he must kneel. No indicator light, so the only sign of power is
@@ -901,9 +1023,12 @@ entries:
   depends_on:
   - world.rules.one_port
   - world.sets.corner_shop
+  applies_to:
+  - SC03
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.props.hana_headphones
   statement: |
     Hana's headphones: large, soft over-ear headphones with a wide band, big enough to read as
@@ -915,9 +1040,6 @@ entries:
     rig: rigid_prop_two_positions_on_head_and_around_neck
     wireless: true
     logo: none
-  applies_to:
-  - SC05
-  - hana
   rationale: |
     story.arc.hana makes the headphones the entire explanation of the missed call, with no
     words, so they must be big and unmistakable in silhouette. Wireless means no cable to
@@ -926,23 +1048,26 @@ entries:
   - intent.open_hopeful_ending
   depends_on:
   - story.arc.hana
+  applies_to:
+  - SC05
+  - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
-  notes: How they sit on her hair and neck, and their colour, are for the character-designer
-    and look-director to agree; size and rigidity are the world's.
+  version: 1
+  notes: How they sit on her hair and neck, and their colour, are for the character-designer and look-director
+    to agree; size and rigidity are the world's.
 - id: world.props.sketchbook
   statement: |
     An open landscape sketchbook on Hana's desk with a pencil drawing in progress (her window
     view), pencils in a cup beside it. No writing anywhere.
   value:
-    size_m: [0.3, 0.21]
+    size_m:
+    - 0.3
+    - 0.21
     open: true
     drawing: window_view_in_progress
     writing: none
-  applies_to:
-  - SC05
-  - hana
   rationale: |
     Tells us what she was absorbed in when he called, in one picture, and ties her room to the
     sky outside (world.locations.hana_room.sketches).
@@ -950,17 +1075,19 @@ entries:
   - intent.open_hopeful_ending
   depends_on:
   - world.locations.hana_room.sketches
+  applies_to:
+  - SC05
+  - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1
 - id: world.props.desk_lamp
   statement: A small, simple arm desk lamp on the left of Hana's desk, switched on.
   value:
     height_m: 0.4
     head: small_cone
     switched_on: true
-  applies_to:
-  - SC05
   rationale: |
     A motivated warm practical for the first "complete" frame, placed opposite the phone so the
     phone's light arrives as a second, new light on her face. Light colour and strength are
@@ -969,6 +1096,9 @@ entries:
   - intent.soft_but_cinematic
   depends_on:
   - world.sets.hana_room
+  applies_to:
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:world-designer
+  version: 1

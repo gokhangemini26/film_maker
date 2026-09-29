@@ -3,7 +3,7 @@ fm:
   id: character_bible
   kind: character_bible
   phase: WORLD_CHARACTERS
-  status: PROPOSED
+  status: APPROVED
   owner_role: character-designer
   derived_from:
   - ref: artifact:creative_direction

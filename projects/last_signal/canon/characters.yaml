@@ -1,6 +1,5 @@
 domain: characters
 entries:
-# ================================================================ REN
 - id: characters.ren.identity
   statement: |
     Ren, 20, university student, the protagonist. He has finally found the nerve to invite
@@ -19,7 +18,11 @@ entries:
     want: send_the_dinner_invitation_before_the_battery_dies
     need: value_his_own_effort_over_shortcuts
     defining_behaviour: earnest_reset_after_each_setback
-    personal_items: [phone_ren, charging_cable, crank_charger, car_key]
+    personal_items:
+    - phone_ren
+    - charging_cable
+    - crank_charger
+    - car_key
     wristwatch: false
     bag: false
   rationale: |
@@ -40,10 +43,12 @@ entries:
   - story.arc.ren
   - tone.comedy_source
   - tone.wordless
-  applies_to: [ren]
+  applies_to:
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: |
     Age 20 implements the user's "about 20" (USER_REQUIREMENT via story.cast). The name is an
     ASSUMPTION from story.cast that the human may replace at no cost.
@@ -82,10 +87,12 @@ entries:
   depends_on:
   - story.setup_cues
   - story.arc.ren
-  applies_to: [ren]
+  applies_to:
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
 - id: characters.ren.proportions
   statement: |
     Height 1.72 m (crown, excluding the tuft; the tuft adds about 0.04 m). Slim, lanky
@@ -110,7 +117,7 @@ entries:
       seat_back_recline_deg: 20
       crown_z_m: 1.32
       crown_with_tuft_z_m: 1.36
-      eye_z_m: 1.20
+      eye_z_m: 1.2
     seated_on_kerb:
       seat_surface_z_m: 0.12
       back_rest_to_heels_m: 0.6
@@ -140,10 +147,12 @@ entries:
   - world.sets.street
   - world.sets.corner_shop
   - tone.anti_goals
-  applies_to: [ren]
+  applies_to:
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: |
     DEPENDENCY for the M3 build and the cinematographer: seated in the car with the seat
     back upright, his crown plus tuft reaches about 1.41 m against a roof of 1.45 m
@@ -188,10 +197,12 @@ entries:
   depends_on:
   - characters.ren.silhouette
   - story.setup_cues
-  applies_to: [ren]
+  applies_to:
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: |
     Hex values are proposals for coordination; the look-director may request changes to
     fit the palette (via change request once approved). Not tied to any nationality, in
@@ -247,10 +258,12 @@ entries:
   - tone.anti_goals
   - tone.ending_restraint
   - story.setup_cues
-  applies_to: [ren]
+  applies_to:
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
 - id: characters.ren.wardrobe.jacket
   statement: |
     A light, unlined cotton overshirt jacket in soft cornflower blue, cut to the hip, with
@@ -270,7 +283,6 @@ entries:
     markings: none
     worn_open: true
     changes_between_scenes: none
-  applies_to: [ren, SC01, SC02, SC03, SC04, SC06]
   rationale: |
     The jacket is the biggest colour block on him and the main carrier of his silhouette,
     so its colour works hardest. A cool, medium-value blue separates him from the warm
@@ -294,9 +306,17 @@ entries:
   - world.rules.season
   - world.rules.no_readable_text
   - tone.wordless
+  applies_to:
+  - ren
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: |
     Kept as its own canon entry so that a colour change is a single edit whose downstream
     effect shows in `fm impact canon:characters.ren.wardrobe.jacket`. The hex is proposed
@@ -309,14 +329,24 @@ entries:
     The same in every Ren scene. The phone lives in his hand; the car key stays in the
     ignition.
   value:
-    tshirt: {color: '#EAE2D3', neck: crew, fit: relaxed, print: none}
-    trousers: {color: '#4F5A6E', fit: relaxed_slim, length: full_to_ankle}
-    shoes: {color: '#ECE7DE', sole_color: '#CDBFA8', type: low_top_canvas, laces: plain}
+    tshirt:
+      color: '#EAE2D3'
+      neck: crew
+      fit: relaxed
+      print: none
+    trousers:
+      color: '#4F5A6E'
+      fit: relaxed_slim
+      length: full_to_ankle
+    shoes:
+      color: '#ECE7DE'
+      sole_color: '#CDBFA8'
+      type: low_top_canvas
+      laces: plain
     accessories: none
     markings: none
     changes_between_scenes: none
     knees_after_shop_kneel: unmarked
-  applies_to: [ren, SC01, SC02, SC03, SC04, SC06]
   rationale: |
     The oat T-shirt is the pale centre strip that makes the open jacket read. It is warm
     off-white, not white, so it catches the phone's light without becoming a brighter shape
@@ -338,9 +368,17 @@ entries:
   - world.rules.no_readable_text
   - world.rules.season
   - story.escalation
+  applies_to:
+  - ren
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
 - id: characters.ren.movement
   statement: |
     Before the turn (SC01-SC03): quick, jerky bursts between held poses. The phone is held
@@ -358,7 +396,10 @@ entries:
       tempo: quick_bursts_between_holds
       phone_grip: two_hands_close_to_face
       spine: forward_neck_jut
-      setback_pattern: [freeze, sag, reset]
+      setback_pattern:
+      - freeze
+      - sag
+      - reset
       run: phone_held_out_in_front_arms_not_swinging
       kneel: one_quick_drop
     turn:
@@ -375,7 +416,6 @@ entries:
     handedness: right
     crank_hand: right
     phone_hand_at_crank: left
-  applies_to: [ren, SC01, SC02, SC03, SC04, SC06]
   rationale: |
     story.arc.ren plays his change entirely through posture, staging and silhouette, so the
     movement is the arc. The comedy runs on held poses and the freeze-sag-reset rhythm
@@ -400,9 +440,17 @@ entries:
   - tone.the_turn
   - tone.comedy_source
   - world.props.crank_charger
+  applies_to:
+  - ren
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: |
     Crank tempo (about 1 turn per second) is a RECOMMENDATION for the animation-director
     and sound; it is not a story fact.
@@ -426,19 +474,35 @@ entries:
     - dark_trousers_pale_shoes
     face:
       method: drawn_toon_face
-      controls: [brows_knit, brows_lift, eyes_open, eyes_closed, eyes_wide_small_pupils,
-        mouth_line, mouth_flat, mouth_pressed, mouth_slightly_open, cheeks_fill]
+      controls:
+      - brows_knit
+      - brows_lift
+      - eyes_open
+      - eyes_closed
+      - eyes_wide_small_pupils
+      - mouth_line
+      - mouth_flat
+      - mouth_pressed
+      - mouth_slightly_open
+      - cheeks_fill
       lip_sync: false
     hands: five_finger_simplified_1.1x
     rig: humanoid_standard_bone_names
     attach_points:
-      hand_r: [crank_charger_handle, car_key]
-      hand_l: [phone_ren]
+      hand_r:
+      - crank_charger_handle
+      - car_key
+      hand_l:
+      - phone_ren
       chest: phone_ren_resting
     shading: toon_cel_per_look_canon
     wardrobe_source: characters.ren.wardrobe.*
     colors_source: characters.ren.face.colors
-    future_providers_allowed: [mpfb, vrm, generated, mocap]
+    future_providers_allowed:
+    - mpfb
+    - vrm
+    - generated
+    - mocap
     likeness: original_no_real_person_no_existing_character
   rationale: |
     The direction makes stylised proxies a style choice: detail goes into faces and hero
@@ -458,12 +522,12 @@ entries:
   - characters.ren.expressions
   - characters.ren.wardrobe.jacket
   - characters.ren.wardrobe.outfit
-  applies_to: [ren]
+  applies_to:
+  - ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
-
-# ================================================================ HANA
+  version: 1
 - id: characters.hana.identity
   statement: |
     Hana, 20, Ren's university friend. She is the person he is trying to reach and has no
@@ -480,7 +544,11 @@ entries:
     occupation: university_student
     knows_his_feelings: false
     defining_behaviour: absorbed_in_drawing
-    personal_items: [phone_hana, hana_headphones, sketchbook, pencils]
+    personal_items:
+    - phone_hana
+    - hana_headphones
+    - sketchbook
+    - pencils
     wristwatch: false
   rationale: |
     story.arc.hana gives her one moment, so her identity has to be legible in the first
@@ -496,10 +564,12 @@ entries:
   - story.cast
   - story.arc.hana
   - world.locations.hana_room.sketches
-  applies_to: [hana]
+  applies_to:
+  - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: |
     Age 20 implements the user's "about 20" (via story.cast). The name is an ASSUMPTION from
     story.cast. That she studies something involving drawing is an ASSUMPTION, never shown.
@@ -537,10 +607,12 @@ entries:
   - story.arc.hana
   - world.props.hana_headphones
   - world.sets.hana_room
-  applies_to: [hana]
+  applies_to:
+  - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
 - id: characters.hana.proportions
   statement: |
     Height 1.60 m. Slight, soft build, about 6.3 heads tall, with the same stylisation as
@@ -560,7 +632,7 @@ entries:
       desk_height_m: 0.72
       eye_z_m: 1.14
       crown_z_m: 1.27
-      crown_with_headphones_z_m: 1.30
+      crown_with_headphones_z_m: 1.3
       window_sill_z_m: 0.9
       head_inside_window_band: true
   rationale: |
@@ -580,10 +652,12 @@ entries:
   - world.sets.hana_room
   - world.rules.time_and_sun
   - tone.anti_goals
-  applies_to: [hana]
+  applies_to:
+  - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: Chair seat height 0.44 m is an ASSUMPTION; world canon gives only "simple desk chair".
 - id: characters.hana.face
   statement: |
@@ -622,10 +696,12 @@ entries:
   - tone.ending_restraint
   - story.arc.hana
   - characters.hana.silhouette
-  applies_to: [hana]
+  applies_to:
+  - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: Hex values are proposals for coordination with the look-director.
 - id: characters.hana.expressions
   statement: |
@@ -635,14 +711,23 @@ entries:
     smile (lower lids lift, mouth corners rise with lips closed, head dips slightly). No
     open-mouthed grin, no gasp, no blush, no hand to the mouth.
   value:
-    sequence: [absorbed, noticing, reading, small_smile]
+    sequence:
+    - absorbed
+    - noticing
+    - reading
+    - small_smile
     small_smile:
       mouth: corners_up_lips_closed
       eyes: lower_lids_lift
       head: slight_dip
       blush: false
       teeth: false
-    excluded: [grin, gasp, blush, hand_to_mouth, squeal]
+    excluded:
+    - grin
+    - gasp
+    - blush
+    - hand_to_mouth
+    - squeal
     lip_sync: false
     graphic_symbols: false
   rationale: |
@@ -658,10 +743,13 @@ entries:
   depends_on:
   - tone.ending_restraint
   - story.arc.hana
-  applies_to: [hana, SC05]
+  applies_to:
+  - hana
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
 - id: characters.hana.wardrobe.outfit
   statement: |
     At home in the evening: a loose, soft crew-neck knit top in pale sage, long sleeves
@@ -669,13 +757,19 @@ entries:
     mostly hidden under the desk. Barefoot or plain socks, never in frame. No print, text,
     logo, jewellery or watch.
   value:
-    top: {color: '#AFC8B6', garment: loose_crew_neck_knit, sleeves: long_pushed_to_forearm,
-      shoulders: dropped, print: none}
-    trousers: {color: '#9A93A6', garment: soft_lounge_trousers, visible: mostly_hidden}
+    top:
+      color: '#AFC8B6'
+      garment: loose_crew_neck_knit
+      sleeves: long_pushed_to_forearm
+      shoulders: dropped
+      print: none
+    trousers:
+      color: '#9A93A6'
+      garment: soft_lounge_trousers
+      visible: mostly_hidden
     feet: out_of_frame
     accessories: none
     markings: none
-  applies_to: [hana, SC05]
   rationale: |
     The crew neck leaves a clean collar line for the headphones to rest on when she slides
     them down; a hood or high collar would collide with them. The loose knit and dropped
@@ -694,9 +788,13 @@ entries:
   - world.rules.season
   - world.rules.no_readable_text
   - world.sets.hana_room
+  applies_to:
+  - hana
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: Hex values are proposals for coordination with the look-director.
 - id: characters.hana.wardrobe.headphones
   statement: |
@@ -713,7 +811,6 @@ entries:
     transition: two_hands_one_smooth_slide
     logo: none
     markings: none
-  applies_to: [hana, SC05]
   rationale: |
     The headphones are the whole explanation of the missed call (story.arc.hana), so they
     must be the most readable shape on her. Warm cream is light-valued, so it stands out
@@ -730,9 +827,13 @@ entries:
   - story.arc.hana
   - characters.hana.silhouette
   - characters.hana.wardrobe.outfit
+  applies_to:
+  - hana
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
   notes: |
     Size, rigidity and wirelessness are the world-designer's (world.props.hana_headphones);
     fit and colour are proposed here, as that entry's notes asked. Colour may be adjusted by
@@ -746,14 +847,16 @@ entries:
     of the shoulders. No big gestures; she does not stand up.
   value:
     idle: head_down_pencil_small_strokes_slow_breath
-    notice_order: [eyes, head, hands]
+    notice_order:
+    - eyes
+    - head
+    - hands
     headphones: two_hand_slide_down
     phone: one_hand_pick_up_held_low_near_chest
     on_smile: shoulders_settle_slightly
     stands: false
     handedness: right
     pencil_hand: right
-  applies_to: [hana, SC05]
   rationale: |
     After his street, her room is the "first frame that feels complete", and stillness is
     what makes it feel settled. Moving eyes before head before hands is a clear anime
@@ -768,9 +871,13 @@ entries:
   - story.arc.hana
   - tone.ending_restraint
   - world.sets.hana_room
+  applies_to:
+  - hana
+  - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1
 - id: characters.hana.representation
   statement: |
     MVP: a stylised proxy on the same humanoid skeleton and toon-face system as Ren, with a
@@ -789,20 +896,32 @@ entries:
     - loose_dropped_shoulder_top
     face:
       method: drawn_toon_face
-      controls: [eyes_open, eyes_down, eyes_lower_lids_lift, brows_lift, blink, mouth_closed_soft,
-        mouth_corners_up]
+      controls:
+      - eyes_open
+      - eyes_down
+      - eyes_lower_lids_lift
+      - brows_lift
+      - blink
+      - mouth_closed_soft
+      - mouth_corners_up
       lip_sync: false
     hands: five_finger_simplified_1.1x
     rig: humanoid_standard_bone_names
     attach_points:
       head_top: hana_headphones_on
       neck: hana_headphones_down
-      hand_r: [pencil, phone_hana]
+      hand_r:
+      - pencil
+      - phone_hana
     detail_zone: upper_body_hands_face
     shading: toon_cel_per_look_canon
     wardrobe_source: characters.hana.wardrobe.*
     colors_source: characters.hana.face.colors
-    future_providers_allowed: [mpfb, vrm, generated, mocap]
+    future_providers_allowed:
+    - mpfb
+    - vrm
+    - generated
+    - mocap
     likeness: original_no_real_person_no_existing_character
   rationale: |
     She appears in one 4 s scene, seated, so the proxy spends its detail where the camera
@@ -821,7 +940,9 @@ entries:
   - characters.hana.wardrobe.outfit
   - characters.hana.wardrobe.headphones
   - characters.ren.representation
-  applies_to: [hana]
+  applies_to:
+  - hana
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:character-designer
+  version: 1

@@ -3,7 +3,7 @@ fm:
   id: world_bible
   kind: world_bible
   phase: WORLD_CHARACTERS
-  status: PROPOSED
+  status: APPROVED
   owner_role: world-designer
   derived_from:
   - ref: artifact:screenplay
