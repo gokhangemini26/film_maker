@@ -247,6 +247,35 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         sc.rotation_euler = ph.rotation_euler
         sc.location = ph.location + Vector((0, 0, 0.005))
         mark(ph), mark(sc)
+    # cull static objects the camera sits inside (car body, seat backs, walls)
+    culled = []
+    for o in bpy.data.objects:
+        if o.get("fm_shot") or o.type != "MESH" or o.name.startswith(("fm.",)):
+            continue
+        if o.get("fm_culled_by_preview") is not None:
+            o.hide_render = False
+            o["fm_culled_by_preview"] = None
+    for coll in (units["street"], units["shop"], units["room"]):
+        if coll.hide_render:
+            continue
+        for o in coll.objects:
+            if o.type != "MESH":
+                continue
+            pts = [o.matrix_world @ Vector(c) for c in o.bound_box]
+            lo = Vector((min(v.x for v in pts), min(v.y for v in pts), min(v.z for v in pts)))
+            hi = Vector((max(v.x for v in pts), max(v.y for v in pts), max(v.z for v in pts)))
+            if all(lo[k] - 0.03 <= cpos[k] <= hi[k] + 0.03 for k in range(3)):
+                o.hide_render = True
+                o["fm_culled_by_preview"] = 1
+                culled.append(o.name)
+    if shot["composition"].get("framing") == "insert":
+        for cid, (info, tmp) in figs.items():
+            for o in tmp.objects:
+                n_ = o.name.split("_", 1)[1] if "_" in o.name else o.name
+                if n_.startswith(("head", "hair", "eye", "tuft", "neck", "thigh", "shin")):
+                    o.hide_render = True
+    if culled:
+        print("FM_CULLED", sid, culled, flush=True)
     if scene == "SC05":
         for w, cond in (("room_wall_south", cpos.x < S.ROOM_ORIGIN.x - 1.4), ("room_wall_north", cpos.x > S.ROOM_ORIGIN.x + 1.4)):
             if w in bpy.data.objects:
