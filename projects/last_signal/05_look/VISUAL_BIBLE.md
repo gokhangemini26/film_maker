@@ -9,17 +9,17 @@ fm:
   - ref: artifact:creative_direction
     hash: sha256:2a9437a4219a84067e09241c02b4df8f14e921dda206ac46d9b8d93faaeb44a3
   - ref: artifact:world_bible
-    hash: sha256:6fca966b474afc3e3252fa9b922efc28cb1f755cdfbacfa62a930b83aa083a65
+    hash: sha256:c5a7ce8fda071ddd40c2fb846dbd5485c8ee63945a0408df7dec3423e7072dc7
   - ref: artifact:art_direction_bible
-    hash: sha256:3f6417db6caacd48626af618568a9b279f8692228f067d43df77eb7f38e520d2
+    hash: sha256:b55a2438747bcd566ab5452b1c55534e8808728c2840c4ced1c1339201f6c001
   - ref: artifact:character_bible
-    hash: sha256:44a136f55dc3b56fce92fbd8c5f2ad27b5bd10f9cf2bcbdf46734a07709e9f81
+    hash: sha256:71e9d285acb36dc68c5f5a59a3678b05dccd38d1f34595550de52325379cfbec
   - ref: artifact:screenplay
     hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
   - ref: artifact:scenes
     hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
   - ref: artifact:g3_review
-    hash: sha256:be33e9db03f1ec4f718a786c6243a326d40811e3d7002fdd6ceaf46ae77a05cd
+    hash: sha256:d26db206b8cf3d05c12fee52b938b3ddcfbffb50fc3dd4b5976c757e85f75c05
   - ref: canon:intent.anime_feel
     hash: sha256:3206d035843005dca7956fdf1cd27273af35423e8f5eee72077d947ab905171c
   - ref: canon:intent.soft_but_cinematic
@@ -95,6 +95,8 @@ fm:
     softly painted pastel backgrounds, three motifs (phone glow, power amber, one sky), a wordless phone
     UI, originality guards against the Shinkai-adjacency risk, and 23 frame-checkable style-lock rules.
   stamped_content_hash: sha256:4cb45f98d39bc0aba8096d37abb48e51feaa34e435b64897cb0b7253833303ea
+  stamp_note: only G3 review/world bibles changed (door-route wording, human decision); document does
+    not state the door route
 title: Visual Bible
 ---
 # Visual Bible: Last Signal

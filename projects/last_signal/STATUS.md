@@ -18,8 +18,8 @@ ledger: 19 records, head 8810573e9d59
 |---|---|---|---|---|
 | G1 | Creative direction | approved | human:gokhan_guler | 4 |
 | G2 | Story and screenplay | approved | human:gokhan_guler | 5 |
-| G3 | World and characters | approved | human:gokhan_guler | 4 |
-| G4 | Visual direction (style lock) | approved | human:gokhan_guler | 4 |
+| G3 | World and characters | approved (DRIFTED) | human:gokhan_guler | 4 |
+| G4 | Visual direction (style lock) | approved (DRIFTED) | human:gokhan_guler | 4 |
 | G5 | Storyboard and shots | pending | - | - |
 | G6 | First Blender preview | pending | - | - |
 | G7 | Animation preview | pending | - | - |
@@ -33,24 +33,24 @@ LOCKED: 119, PROPOSED: 42
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
-| art_direction_bible | WORLD_CHARACTERS | APPROVED | 3f6417db6caa |
+| art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
-| character_bible | WORLD_CHARACTERS | APPROVED | 44a136f55dc3 |
-| cinematography_bible | CINEMATOGRAPHY | PROPOSED | c1fc8e6e554b |
+| character_bible | WORLD_CHARACTERS | APPROVED | 71e9d285acb3 |
+| cinematography_bible | CINEMATOGRAPHY | PROPOSED | 4c89bb6e06e4 |
 | color_bible | LOOK | APPROVED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
-| g3_review | WORLD_CHARACTERS | APPROVED | be33e9db03f1 |
-| g4_review | LOOK | APPROVED | cc0491da18b7 |
+| g3_review | WORLD_CHARACTERS | APPROVED | d26db206b8cf |
+| g4_review | LOOK | APPROVED | a2c83484c758 |
 | lighting_bible | LOOK | APPROVED | 95224320170d |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
 | story_bible | STORY | APPROVED | 1604e946f2ee |
 | story_structure | STORY | APPROVED | d8a12c83b7c3 |
 | visual_bible | LOOK | APPROVED | 4cb45f98d39b |
-| world_bible | WORLD_CHARACTERS | APPROVED | 6fca966b474a |
+| world_bible | WORLD_CHARACTERS | APPROVED | c5a7ce8fda07 |
 
 ## Shots
 
@@ -58,4 +58,8 @@ None yet.
 
 ## Attention
 
-Nothing outstanding.
+- G3: artifact:art_direction_bible was modified after approval (3f6417db6caa -> b55a2438747b)
+- G3: artifact:character_bible was modified after approval (44a136f55dc3 -> 71e9d285acb3)
+- G3: artifact:g3_review was modified after approval (be33e9db03f1 -> d26db206b8cf)
+- G3: artifact:world_bible was modified after approval (6fca966b474a -> c5a7ce8fda07)
+- G4: artifact:g4_review was modified after approval (cc0491da18b7 -> a2c83484c758)

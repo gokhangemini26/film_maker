@@ -17,9 +17,9 @@ fm:
   - ref: artifact:g2_review
     hash: sha256:0913c3ea1c368eb0b69d78afbe541f6d909745e730239cb9d598c420b20b5565
   - ref: artifact:world_bible
-    hash: sha256:6fca966b474afc3e3252fa9b922efc28cb1f755cdfbacfa62a930b83aa083a65
+    hash: sha256:c5a7ce8fda071ddd40c2fb846dbd5485c8ee63945a0408df7dec3423e7072dc7
   - ref: artifact:art_direction_bible
-    hash: sha256:3f6417db6caacd48626af618568a9b279f8692228f067d43df77eb7f38e520d2
+    hash: sha256:b55a2438747bcd566ab5452b1c55534e8808728c2840c4ced1c1339201f6c001
   - ref: canon:tone.wordless
     hash: sha256:4b51cfae6e27a0a98fa06c7d64961ef46dfde5ae60ac2bc6680280a3d56f4975
   - ref: canon:tone.comedy_source
@@ -104,7 +104,10 @@ fm:
   summary: Character bible for Last Signal. Ren (1.72 m, lanky, crown tuft, open cornflower-blue jacket)
     and Hana (1.60 m, rounded bob, pale headphones, sage knit), with silhouettes, proportions checked
     against the sets, wardrobe per scene, movement, expressions and provider-agnostic proxy representation.
-  stamped_content_hash: sha256:44a136f55dc3b56fce92fbd8c5f2ad27b5bd10f9cf2bcbdf46734a07709e9f81
+  stamped_content_hash: sha256:71e9d285acb36dc68c5f5a59a3678b05dccd38d1f34595550de52325379cfbec
+  stamp_note: 'G3 findings 23/24: human decided SC02 exit door (kerb-side passenger door, left open) and
+    kept Hana''s locked desk layout (left profile, window ahead of her face); minimal bible wording only,
+    no canon change'
 title: Character Bible
 ---
 # Character Bible: Last Signal
@@ -356,7 +359,8 @@ sketching with big headphones on. She does not know how he feels.
 - Carries: her phone (on the desk), headphones, sketchbook, pencils.
 
 ### Silhouette (`characters.hana.silhouette`)
-She is framed against the west window, partly backlit by the dusk sky, so her
+She sits at her desk under the west window and is seen in left profile (facing
+screen left, the window ahead of her face), side-lit by the dusk sky, so her
 outline has to tell the story before her face does.
 1. **Rounded bob, headphones on top.** A jaw-length rounded bob with a short
    straight fringe makes a smooth head shape, and the big pale headphones sit on
@@ -382,10 +386,11 @@ high collar (no room for the headphones on the neck).
 | Shoulders / hips | 0.36 / 0.33 m | |
 | Hands | 0.185 m, 1.1x | Pencil, headphones, phone |
 | Seated | chair seat 0.44 (ASSUMPTION), desk 0.72: eye 1.14, crown 1.27, with headphones 1.30 | |
-| Against the window | sill 0.9, head top 1.30: **her head sits inside the window band** | The dusk sky, the same sky as his, is right behind her head |
+| Against the window | sill 0.9, head top 1.30: **her head sits inside the window band** | In her left profile (SC05) the dusk sky, the same sky as his, is in frame ahead of her face |
 
 The window placement is the one visual link between two people who never share a
-frame (`world.rules.time_and_sun`). Her proportions keep it in frame for free.
+frame (`world.rules.time_and_sun`). Her proportions keep her head level with the
+window band, so her profile and the sky share the frame.
 
 ### Face and hair (`characters.hana.face`)
 - **Face:** round and soft, small chin.
@@ -425,8 +430,8 @@ read, recommended staging, in order:
    screenwriter noted).
 2. Let the phone's light arrive on her face as the smile lands, so the light
    change carries it.
-3. Show the head dip and the settle of her shoulders in a medium shot backlit
-   by the window, where the gesture reads without facial detail.
+3. Show the head dip and the settle of her shoulders in a medium profile shot
+   side-lit by the window, where the gesture reads without facial detail.
 
 ### Wardrobe (SC05 only)
 | Item | Canon | Colour | Description |
@@ -442,7 +447,7 @@ read, recommended staging, in order:
 - The loose knit says she is comfortable at home, not dressed to go out: she has
   no idea an invitation is coming.
 - **Pale sage** separates her from the warm lamp and from the peach-lavender sky
-  behind her, and it is a different hue from Ren's blue, so the cut reads as a
+  in the window, and it is a different hue from Ren's blue, so the cut reads as a
   new person and a new place.
 - **Cream headphones** are light-valued, so they stand out against her
   near-black hair in every light, including backlight. That is the one place
@@ -532,8 +537,10 @@ he lets go, she opens up.
   left. Hana's order is eyes, then head, then hands.
 
 ## Not decided here
-- **The door continuity in SC02/SC04 (G2 finding 3)** belongs to the screenwriter.
-  Either fix works with these designs. If Ren opens the passenger door himself in
-  SC04, it is a slow, deliberate action in his tender movement set, not a reset.
+- **Door continuity in SC02/SC04 (G2 finding 3): decided by the human.** In SC02
+  Ren scrambles across the passenger seat and out of the kerb-side passenger door,
+  leaving it open; it stands open in SC04 and SC06 (`continuity.props.passenger_door`).
+  The scramble is a hurried, awkward action in his comic movement set (a held
+  pose at the door, not slapstick).
 - The title card or credits question (G1 item 1) belongs to the creative-director
   and the human.

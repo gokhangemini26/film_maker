@@ -7,7 +7,7 @@ fm:
   owner_role: world-designer
   derived_from:
   - ref: artifact:world_bible
-    hash: sha256:6fca966b474afc3e3252fa9b922efc28cb1f755cdfbacfa62a930b83aa083a65
+    hash: sha256:c5a7ce8fda071ddd40c2fb846dbd5485c8ee63945a0408df7dec3423e7072dc7
   - ref: artifact:screenplay
     hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
   - ref: artifact:creative_direction
@@ -69,7 +69,8 @@ fm:
   - intent.soft_but_cinematic
   summary: Art direction bible for Last Signal — buildable sets in metres for the street, car, shop and
     Hana's room, visual hierarchy per space, material families, the hero-prop table and the M3 build list.
-  stamped_content_hash: sha256:3f6417db6caacd48626af618568a9b279f8692228f067d43df77eb7f38e520d2
+  stamped_content_hash: sha256:b55a2438747bcd566ab5452b1c55534e8808728c2840c4ced1c1339201f6c001
+  stamp_note: door route decided by human; minimal wording fix
 title: Art Direction Bible
 ---
 # Art Direction Bible — Last Signal
@@ -135,8 +136,8 @@ z = 0; pavement z = 0.12.
     crossing it, the low distant roofline.
 - **Looking east (reverse):** houses, lit windows, the east lamp; a flatter,
   darker frame for the comic "world beats him" wides.
-- **Entrances and eyelines:** he runs out of the car's driver door (road side)
-  up the pavement to the shop door at y 12 (SC02). At the kerb (SC04) his
+- **Entrances and eyelines:** he scrambles across the passenger seat and out of
+  the car's kerb-side passenger door, leaving it open, and runs up the pavement to the shop door at y 12 (SC02). At the kerb (SC04) his
   eyeline to the glovebox runs through the open passenger door. In SC06 his
   eyeline goes up, to the western sky.
 - **Visual hierarchy.** SC02: the running figure against the long, raking light

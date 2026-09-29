@@ -15,11 +15,11 @@ fm:
   - ref: artifact:scenes
     hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
   - ref: artifact:world_bible
-    hash: sha256:6fca966b474afc3e3252fa9b922efc28cb1f755cdfbacfa62a930b83aa083a65
+    hash: sha256:c5a7ce8fda071ddd40c2fb846dbd5485c8ee63945a0408df7dec3423e7072dc7
   - ref: artifact:art_direction_bible
-    hash: sha256:3f6417db6caacd48626af618568a9b279f8692228f067d43df77eb7f38e520d2
+    hash: sha256:b55a2438747bcd566ab5452b1c55534e8808728c2840c4ced1c1339201f6c001
   - ref: artifact:character_bible
-    hash: sha256:44a136f55dc3b56fce92fbd8c5f2ad27b5bd10f9cf2bcbdf46734a07709e9f81
+    hash: sha256:71e9d285acb36dc68c5f5a59a3678b05dccd38d1f34595550de52325379cfbec
   - ref: artifact:visual_bible
     hash: sha256:4cb45f98d39bc0aba8096d37abb48e51feaa34e435b64897cb0b7253833303ea
   - ref: artifact:color_bible
@@ -29,9 +29,9 @@ fm:
   - ref: artifact:g2_review
     hash: sha256:0913c3ea1c368eb0b69d78afbe541f6d909745e730239cb9d598c420b20b5565
   - ref: artifact:g3_review
-    hash: sha256:be33e9db03f1ec4f718a786c6243a326d40811e3d7002fdd6ceaf46ae77a05cd
+    hash: sha256:d26db206b8cf3d05c12fee52b938b3ddcfbffb50fc3dd4b5976c757e85f75c05
   - ref: artifact:g4_review
-    hash: sha256:cc0491da18b7ae7100bb4aa4c481453e1f4c6190b6f223ae4aa8c9d3df3179ec
+    hash: sha256:a2c83484c758fb2bd7eefe88eae9c4f4880389e4f874eee69c8de357a1374987
   - ref: canon:intent.race_against_battery
     hash: sha256:0f143f4624a8c8cebe71b8b7c11549ffdc6b37263c85d07695afa1cba4a5a0a0
   - ref: canon:intent.anime_feel
@@ -228,7 +228,8 @@ fm:
   summary: Camera language for Last Signal - 16:9/24 fps, four primes split at the turn, heights that
     mean judgement/decision, a static camera with two pushes, west-is-screen-left geography, phone-insert
     legibility rules, the jacket-off-sky commitment, and a 1440-frame rhythm plan.
-  stamped_content_hash: sha256:c1fc8e6e554b947ef2a461ff2756f5c7646b87e1392acaebd5849a32e4d95db1
+  stamped_content_hash: sha256:4c89bb6e06e4ee8fcca60f6aedaa93d906b6bccd5e42281a7e83224764b19109
+  stamp_note: upstream reviews/character bible re-stamped for human wording decisions; no camera change
 title: Cinematography Bible
 ---
 # Cinematography Bible: Last Signal
@@ -524,8 +525,9 @@ lens and the kerb.
 - **Exit door (DECISION, `continuity.props.passenger_door`):** he scrambles
   across the passenger seat and out of the kerb-side door, the side the shop is
   on, and leaves it open. This is what makes "the passenger door stands open" in
-  SC04 true (G3 finding 2, Q5 option a). Human confirmation needed: see open
-  questions.
+  SC04 true (G3 finding 2, Q5 option a). USER_REQUIREMENT (human decision,
+  2026-09-29): confirmed. Ren leaves by the kerb-side passenger door and leaves
+  it open; the world bibles have been updated to match.
 - **Line:** his path west along the south pavement; lateral camera on the
   pavement or garden side; he runs right to left.
 - **Elliptical cutting (G3 finding 6).** 12 m from a standing start plus a door
@@ -580,10 +582,13 @@ lens and the kerb.
   screen alive. See `continuity.battery`.
 
 ### SC05 — Hana's room (`camera.geography.sc05`)
-Her window (west) is screen left and always in frame (L13). **Designed for both
-desk layouts (DEPENDENCY on G3 finding 1 / G4 Q2, still open):**
+Her window (west) is screen left and always in frame (L13). **Desk layout
+(G3 finding 1 / G4 Q2): USER_REQUIREMENT (human decision, 2026-09-29): the
+layout stays as locked, no change.** The left column is the plan in use; the
+right column is kept only as the record of the alternative that was designed and
+not taken.
 
-| | Layout as locked: desk under the west window, she faces west | Layout if changed: desk side-on on the south wall, she faces south |
+| | Layout as locked (in use): desk under the west window, she faces west | Alternative (not taken): desk side-on on the south wall, she faces south |
 |---|---|---|
 | Main angle | Her left profile from the south, 50 mm, lens 1.14 m | Three-quarter front from over the desk, 50 mm, lens 1.14 m |
 | Window | Ahead of her face, screen left | Behind her head, screen left |
@@ -598,11 +603,12 @@ the small smile, held). His photo on her phone ≥ 5 % of frame height (a
 recognition cue, not a reading cue). *Rejected:* one 4 s shot (the smile too
 small on a proxy face, CHARACTER_BIBLE staging risk).
 
-**RECOMMENDATION:** keep the locked layout. The profile toward screen left
-matches the SC06 bookend by direction and colour, which is the "same sky" link
-without cross-cutting skies, and it needs no change request. The side-on layout
-is QA's preference for hair-against-sky separation; the camera plan works for it
-too.
+**DECISION (follows the human's decision to keep the locked layout):** the
+profile toward screen left matches the SC06 bookend by direction and colour,
+which is the "same sky" link without cross-cutting skies, and it needs no change
+request. *Rejected:* the side-on layout (QA's preference for hair-against-sky
+separation); it would have needed a world change request and loses the shared
+screen-left direction with the bookend.
 
 ## 11. How the two gags avoid repeating (`camera.gags.no_repeat`)
 G2 finding 2 and G3 finding 7: the shop runs beat for beat like the car. The
@@ -624,7 +630,12 @@ the sound, which keeps the same sequence of shots. The "wary relief" pose is the
 animation-director's to time (G3 finding 7).
 
 ## 12. Rhythm (`camera.rhythm.*`)
-### 12.1 Frame budget (DECISION, needs the human's nod: see open questions)
+### 12.1 Frame budget (DECISION; accepted by the human, 2026-09-29)
+USER_REQUIREMENT: the redistribution below is accepted. SCENES.yaml stays
+untouched (approved at G2 with its original estimates); the accepted durations
+(SC04 18.08 s, SC05 4.50 s, SC06 3.42 s) are carried in the shot specs, each
+within the ±15 % tolerance of its SCENES.yaml estimate.
+
 | Scene | SCENES.yaml | Camera budget | Frames | Change |
 |---|---|---|---|---|
 | SC01 | 22 s | 22.00 s | 528 | 0 |
@@ -701,15 +712,15 @@ cutaways.
 ## 14. Review notes carried to the camera
 | Note | Where answered |
 |---|---|
-| G2 f1 / timing of the smile and the ending | 12.1 (22 frames moved; needs the human's nod) |
+| G2 f1 / timing of the smile and the ending | 12.1 (22 frames moved; accepted by the human, carried in shot specs) |
 | G2 f2, G3 f7 / shop gag repeats the car | 11 |
-| G2 f3, G3 f2 / door continuity | 10 SC02, `continuity.props.passenger_door` (needs confirmation) |
+| G2 f3, G3 f2 / door continuity | 10 SC02, `continuity.props.passenger_door` (confirmed by the human) |
 | G2 f4, G3 f11 / "why not send at 1 %?" | 10 SC04 stutter insert, `continuity.battery` |
 | G2 f10 / map pin held long enough | 8 (pin ≥ 6 %, ≥ 36 frames) |
 | G2 f12 / cable tracking, same sky | `continuity.props.cable`; 6.4 |
 | G3 f6 / 12 m sprint in 2 s | 10 SC02 (three elliptical cuts) |
 | G3 f9, G4 f18 / originality: sky and wires | 6.4, 12.4 (no sky cutaways or cross-cuts; wires minor in her window) |
-| G3 f1, G4 Q2 / Hana's room layout | 10 SC05 (both layouts designed; open) |
+| G3 f1, G4 Q2 / Hana's room layout | 10 SC05 (locked layout kept by the human) |
 | G3 f3 / car headroom | 6.2 (headliner kept out of upright car frames until G6) |
 | G4 Q4, f8 / jacket against dusk | 6.3 (committed; per-shot ray check) |
 | G4 f2-f3 / red heart, emoji panel | 8 (compose field only; panel never framed) |
@@ -731,14 +742,15 @@ cutaways.
   under the phone's under-light is a G6 test.
 
 ## 16. Open items and dependencies
-- **Open for the human (see handoff):** the SC02 exit door; the timing
-  redistribution; Hana's desk layout.
+- **Human decisions (2026-09-29), formerly open:**
+  - SC02 exit door: confirmed, kerb-side passenger door, left open (section 10
+    SC02, `continuity.props.passenger_door`). The world bibles were edited to
+    match.
+  - Hana's desk layout: stays as locked, no change request (section 10 SC05).
+  - Timing redistribution: accepted (SC04 18.08 s, SC05 4.50 s, SC06 3.42 s);
+    SCENES.yaml unchanged, durations carried in the shot specs (section 12.1).
 - **DEPENDENCY, look-director:** UI text and digit sizes on the phone model
   (section 8); tick and bolt contrast (G4 finding 4).
-- **DEPENDENCY, world-designer:** if the human confirms the passenger-door exit,
-  the ART_DIRECTION_BIBLE line "he runs out of the car's driver door" needs
-  revising; if the human changes Hana's desk layout, a change request on
-  `world.sets.hana_room` and `world.locations.hana_room`.
 - **DEPENDENCY, animation-director:** the scramble out of the passenger side, the
   wary relief (SC03), the stutter attempt at 1 %, crank and type timing inside
   the 18.08 s budget.

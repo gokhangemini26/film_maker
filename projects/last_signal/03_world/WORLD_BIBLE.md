@@ -84,7 +84,8 @@ fm:
   summary: World bible for Last Signal — a fictional, wordless present-day neighbourhood; one east-west
     street (car + corner shop) under a clear early-summer golden hour into dusk, a shop-only blackout,
     and Hana's upstairs room under the same sky.
-  stamped_content_hash: sha256:6fca966b474afc3e3252fa9b922efc28cb1f755cdfbacfa62a930b83aa083a65
+  stamped_content_hash: sha256:c5a7ce8fda071ddd40c2fb846dbd5485c8ee63945a0408df7dec3423e7072dc7
+  stamp_note: door route decided by human; minimal wording fix
 title: World Bible
 ---
 # World Bible — Last Signal
@@ -289,9 +290,9 @@ kerb side).
   3. **The glovebox faces the pavement:** the object he rejected sits within
      reach of where he ends up, so the payoff is a look and a reach, not a search
      (`intent.earned_last_signal`).
-- **Door continuity (not decided by the world).** He leaves by the driver's door
-  in SC02 (road side); the passenger door is open in SC04. The set supports
-  either of the G2 review's fixes (finding 3, owner: screenwriter).
+- **Door continuity (decided by the human).** In SC02 he scrambles across the
+  passenger seat and out of the kerb-side passenger door, leaving it open; it
+  stands open in SC04 and SC06 (`continuity.props.passenger_door`).
 
 ### 3. The corner shop — `world.locations.corner_shop`, `world.sets.corner_shop`
 **Scenes:** SC02 (exterior, he runs in), SC03 (interior), SC04/SC06 (dark

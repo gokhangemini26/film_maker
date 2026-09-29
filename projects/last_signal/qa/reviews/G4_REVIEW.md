@@ -15,17 +15,17 @@ fm:
   - ref: artifact:creative_direction
     hash: sha256:2a9437a4219a84067e09241c02b4df8f14e921dda206ac46d9b8d93faaeb44a3
   - ref: artifact:world_bible
-    hash: sha256:6fca966b474afc3e3252fa9b922efc28cb1f755cdfbacfa62a930b83aa083a65
+    hash: sha256:c5a7ce8fda071ddd40c2fb846dbd5485c8ee63945a0408df7dec3423e7072dc7
   - ref: artifact:art_direction_bible
-    hash: sha256:3f6417db6caacd48626af618568a9b279f8692228f067d43df77eb7f38e520d2
+    hash: sha256:b55a2438747bcd566ab5452b1c55534e8808728c2840c4ced1c1339201f6c001
   - ref: artifact:character_bible
-    hash: sha256:44a136f55dc3b56fce92fbd8c5f2ad27b5bd10f9cf2bcbdf46734a07709e9f81
+    hash: sha256:71e9d285acb36dc68c5f5a59a3678b05dccd38d1f34595550de52325379cfbec
   - ref: artifact:screenplay
     hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
   - ref: artifact:scenes
     hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
   - ref: artifact:g3_review
-    hash: sha256:be33e9db03f1ec4f718a786c6243a326d40811e3d7002fdd6ceaf46ae77a05cd
+    hash: sha256:d26db206b8cf3d05c12fee52b938b3ddcfbffb50fc3dd4b5976c757e85f75c05
   - ref: canon:intent.race_against_battery
     hash: sha256:0f143f4624a8c8cebe71b8b7c11549ffdc6b37263c85d07695afa1cba4a5a0a0
   - ref: canon:intent.anime_feel
@@ -168,13 +168,26 @@ fm:
     hash: sha256:25fd47dc4a017cd5e98bdedcaf798337d0e78515e900d5e2b2387c73f83e3c67
   summary: G4 (style lock) review of the three look bibles and all 50 look.* canon entries. Advisory verdict
     WARN. Nothing contradicts locked canon, but four human decisions are open and several style-lock numbers
-    conflict with each other or with the approved direction.
-  stamped_content_hash: sha256:cc0491da18b7ae7100bb4aa4c481453e1f4c6190b6f223ae4aa8c9d3df3179ec
+    conflict with each other or with the approved direction. Re-stamped 2026-09-29 after the G3 door edits
+    (no look content depends on the door route); Q2 / finding 9 (Hana's room) resolved by human decision
+    - keep the locked layout. All other findings unchanged.
+  stamped_content_hash: sha256:a2c83484c758fb2bd7eefe88eae9c4f4880389e4f874eee69c8de357a1374987
+  stamp_note: character bible wording changed only for human decisions (door, desk); no G4 finding affected
 verdict: WARN
 reviewed_gate: G4
 title: G4 review — Visual direction (style lock)
 ---
 # G4 review — Visual direction (style lock)
+
+> **Re-stamp note, 2026-09-29.** After G4 was approved, the WORLD_BIBLE and
+> ART_DIRECTION_BIBLE were edited to record the human's SC02 door decision
+> (kerb-side passenger door, left open), and the G3 review was updated. This
+> review is re-stamped against those hashes. **No G4 finding concerns the
+> door.** A grep of the three look bibles finds no statement of the exit route
+> (LIGHTING_BIBLE uses the passenger door only as a coordinate origin), so
+> every look finding stands as written. One item is annotated: **Q2 / finding 9
+> (Hana's room) is resolved by human decision. Keep the locked layout.** The
+> verdict stays **WARN**, because findings 1–8 and 10–12 are unaffected.
 
 **Verdict: WARN.** The look serves all six locked intents and breaks no locked
 canon. It closes G3 finding 8 (red rule, amber pip and ring) and responds to G3
@@ -213,7 +226,7 @@ would produce false FAILs at G6.
 | # | Question | Options | Why it matters | QA view |
 |---|---|---|---|---|
 | Q1 | **Red heart in SC04** (`look.color.ui_heart`, `look.color.rule.only_red`, L6) | (a) battery-red heart as one declared exception (look-director's recommendation) · (b) ink heart `#2B303B`, rule absolute · (c) pastel rose heart inside the rule (HSV S ≤ 0.35, e.g. about `#E4A0A6`: hue 355°, S 0.30, *computed*) with an ink outline | Red is the film's one meter, and L6 is billed as "unbreakable". The heart is also the only picture of what he means to say at dinner (`story.setup_cues`, LOCKED). All three options are icons, so all three comply with `tone.wordless`. | **Lean (c)**. It still reads as a heart by shape and warm hue. It keeps L6 absolute, and it avoids a second saturated red beside the blinking 1 %. It needs the ink outline, because a pastel fill alone is only about 2:1 against the compose field (*computed*). (a) is defensible if you want the red rhyme between heart and battery. (b) risks reading cold, as the look-director says. Whichever you choose, the four places that carry it must change together (finding 2). |
-| Q2 | **Hana's room layout** (G3 finding 1, still open: `world.sets.hana_room` `desk.against: window_wall`, LOCKED; `changes/` is empty) | (a) desk side-on to the west window, so a three-quarter front shot has the window behind her head · (b) keep the desk under the window and make the main angle a profile with the window ahead of her face | L13 ("her window shows his sky") needs the window in her frame. The look's lighting works for both options. Colour prefers (a): her lamp-lit sage top against the window's sky bands is only 1.15–1.25:1, but her hair against the sky is strong (COLOR_BIBLE 8.5:1). | **(a)**, as at G3. It needs a world change request (`world.sets.hana_room`, `world.locations.hana_room` `desk_under_window`), so decide before G5. |
+| Q2 | **DECIDED by the human, 2026-09-29: keep the locked layout** (desk under the west window, no change request; staged as a profile with the window ahead of her face, CINEMATOGRAPHY_BIBLE §10 SC05, PROPOSED). Original question: **Hana's room layout** (G3 finding 1, still open: `world.sets.hana_room` `desk.against: window_wall`, LOCKED; `changes/` is empty) | (a) desk side-on to the west window, so a three-quarter front shot has the window behind her head · (b) keep the desk under the window and make the main angle a profile with the window ahead of her face | L13 ("her window shows his sky") needs the window in her frame. The look's lighting works for both options. Colour prefers (a): her lamp-lit sage top against the window's sky bands is only 1.15–1.25:1, but her hair against the sky is strong (COLOR_BIBLE 8.5:1). | **(a)**, as at G3. It needs a world change request (`world.sets.hana_room`, `world.locations.hana_room` `desk_under_window`), so decide before G5. |
 | Q3 | **Sky restraint level** (`look.style.sky`, `look.style.originality_guards`, L12, L23) | (a) as proposed: all of L12 unbreakable, including sky ≤ ⅔ of the frame and every sky frame holding a person or hero prop · (b) split L12: the originality core stays unbreakable (no flares, particles or bokeh; no sky or wire cutaways; no cross-cut skies; sky S ≤ 0.40), and the ⅔ frame cap becomes breakable once per sequence by a declared `style_break` | G3 finding 9 asked only for the core. Making the frame-fraction cap unbreakable also takes away any sky-dominant frame of him under her sky in SC06, even as a reviewed, declared exception. | **(b)**. It keeps everything G3 asked for, and it leaves the cinematographer one argued option for the final image. |
 | Q4 | **Jacket vs dusk** (`characters.ren.wardrobe.jacket` `#7C9CC4`, LOCKED) | (a) keep the jacket and constrain the camera: at the turn, frame the low angle against the car, the houses or the warm lower sky bands (phone-lit jacket 1.7–1.85:1, *computed*), rely on the outline and afterglow rim, and test at G6 · (b) character-designer proposes a **darker** jacket by change request before G5 | Separation from dusk is one of the jacket's three written constraints. The approved direction wants a low angle at the turn, and a low angle puts him against the upper sky. | **(a)**, provided the cinematographer commits to it at G5 and G6 tests it early. If you would rather not depend on staging, choose (b), and choose "darker", not the bible's "greener" (finding 8). |
 | Q5 | **Tender-section colour** (QA's) | (a) accept the cool dusk with warmth only in his hands, recorded as a deliberate departure from CREATIVE_DIRECTION · (b) look-director warms the SC04/SC06 ambient toward the afterglow, as the direction wrote | The ending's feeling (`intent.open_hopeful_ending`, `tone.anti_goals`: not melodrama) depends on it. | **(a)** is a good idea and serves `intent.earned_last_signal`, but it should be your choice, not a silent one (finding 1). |
@@ -230,7 +243,7 @@ would produce false FAILs at G6.
 | 6 | Internal consistency (style lock L21 vs L15) | WARN | `look.exposure.scene_keys` (SC04 0.46, SC03 blackout 0.08); `look.exposure.value_structure` (film floor `#1B1C29`); *computed*: Rec.709 luma of `#6F7099` = 0.45, of `#1E2030` = 0.128, of `#1B1C29` = 0.113; relative luminance Y of `#6F7099` = 0.17 | The metric for "mean frame luminance" is not defined. SC04's target matches the display-referred luma of its dominant colour. Under that metric, the SC03 blackout target of 0.08 is below both the blackout ambient and the film floor, so the frame would have to be mostly darker than L15 allows. Under relative luminance, SC04's 0.46 is far above its own dominant colour. Either way, one number is wrong, and G6 would report false FAILs. | Define the metric in `scene_keys` (for example, mean Rec.709 luma of display sRGB values). Then either raise the SC03 blackout target to about 0.12–0.15 or lower the floor. | look-director |
 | 7 | Internal consistency (L15 vs L18) | WARN (minor) | COLOR_BIBLE §Character separation (trousers in SC04/SC06 shadow `#2C304E`, V 0.306); L15 (nothing larger than the key darks below V 0.30); L18 (vignette ≤ 10 %); `look.color.street` bicycle in dusk shadow `#2B2D48`, V 0.28 (*computed*) | The locked trousers in the dusk shadow tone sit 0.006 above the floor. The permitted 10 % vignette puts them at 0.275, which fails L15 on a large area (he sits knees-up in close tender frames). The bicycle in dusk shadow is also below the floor, though it is small. | Measure L15 before vignette and grain, or add the trousers to the key darks, or set the floor at 0.27. | look-director |
 | 8 | Character consistency (jacket constraint 3) | WARN | COLOR_BIBLE §Ren's jacket vs the palette ("about 1.2:1"); *computed*: phone-lit jacket `#7C99BC` vs zenith `#8C93C2` **1.01:1** (hue gap 19°), vs `#ABA5CE` 1.26:1, vs the lower bands 1.71–1.85:1; fallback `#7FA6C0` phone-lit vs zenith 1.11:1; CREATIVE_DIRECTION §Cinematic angles ("Low angles when he makes up his mind"); L23 (tender horizon in the lower third) | The concern is correctly raised, and all other figures in the section reproduce. But the worst case is understated: against the zenith there is no luminance separation at all. The approved camera guidance and L23 steer the key moment, the turn, toward exactly that framing. The proposed "greener" fallback mostly changes hue. Only "darker" improves separation by value. | Human answers Q4. Correct the figure in the COLOR_BIBLE and drop or qualify the greener fallback. The cinematographer carries the constraint into G5. | human; look-director; cinematographer; character-designer (only if Q4 (b)) |
-| 9 | World consistency (dependency) | WARN | `world.sets.hana_room` (`desk.against: window_wall`, LOCKED); `look.lighting.sc05` notes; L13; COLOR_BIBLE §Hana vs the window (1.1–1.5:1) | G3 finding 1 is still unresolved in canon, and no change request exists. The look handles it correctly: the lighting is written relative to her and the dependency is declared. It still blocks a firm SC05 frame. | Human answers Q2, then the world-designer runs `fm change propose`. | human; world-designer |
+| 9 | World consistency (dependency) | RESOLVED (human decision, 2026-09-29: keep the locked layout) | `world.sets.hana_room` (`desk.against: window_wall`, LOCKED); `look.lighting.sc05` notes; L13; COLOR_BIBLE §Hana vs the window (1.1–1.5:1) | G3 finding 1 is still unresolved in canon, and no change request exists. The look handles it correctly: the lighting is written relative to her and the dependency is declared. It still blocks a firm SC05 frame. | Human answers Q2, then the world-designer runs `fm change propose`. **Resolution:** the human kept the locked layout, so no change request is needed. The look was written relative to her and the dependency was declared, so the SC05 lighting (`look.lighting.sc05`) needs no revision. In the profile staging her window is ahead of her face, so the window light is side-light, not backlight. The COLOR_BIBLE hair-against-sky figure (8.5:1) holds wherever her head overlaps the window in profile. The lamp-lit top against the sky bands (1.15–1.25:1) matters less when the window is ahead of her. QA checks this at G5 against the SC05 frames. | human; world-designer |
 | 10 | Originality / style-lock design | WARN | `look.style.sky` (`max_sky_frame_fraction: 0.67`, `sky_only_shots: false`); `look.style.style_break_protocol` (`unbreakable: [L6, L8, L12]`); G3 finding 9 fix ("one matched window/kerb pair; no lens flares; wires as background") | L12 bundles G3's originality core with layout limits (the ⅔ cap, a subject in every sky frame, no moon or stars) and makes all of it unbreakable. That is stricter than G3 asked. L12 together with L23 is also tight: with a lower-third horizon, the sky nears ⅔ of the frame whenever nothing occludes it. | Human answers Q3. If (b), split L12 into L12a (core, unbreakable) and L12b (layout, breakable once per sequence). | human; look-director |
 | 11 | Internal consistency (small items) | WARN (minor) | L8 ("any legible letter other than the invitation = FAIL") vs G2 open item 5 (title and credits); `look.color.ui` (only `sent_bubble`; on Hana's phone the invitation arrives as a *received* bubble); `look.style.motifs` `one_sky.scenes` omits SC03 while VISUAL_BIBLE §Motifs says "Pale gold over the comedy (SC01-SC03)"; `look.color.light_sources` `kelvin: 0` for the LEDs; `look.style.render_constraints` `screen_space_refraction` | (i) As written, the unbreakable L8 fails any title card or credits, and that question is still open with the creative-director. (ii) The received bubble on Hana's phone has no colour and no contrast check. (iii) The SC03 motif lists disagree. (iv) Kelvin 0 is not a valid temperature, and a resolver that converts Kelvin would break on it; use null. (v) "Screen-space refraction" is an EEVEE Legacy setting; EEVEE since 4.2 uses raytracing and transmission settings. | Scope L8 to the story frames, or get the human's call on titles. Add `received_bubble` with ≥ 7:1. Align the motif lists. Set LED Kelvin to null. Restate (v) as "no refraction or raytraced transmission". | look-director; creative-director and human (titles) |
 | 12 | Feasibility (outlines) | WARN (minor) | `look.style.outlines` (props and car 0.10 % of frame height; `method_primary: inverted_hull_solidify`); brief `aspect_ratio` 16:9 and 1080p (assumed); COLOR_BIBLE §Other checks (cable vs asphalt 1.6:1 "which the prop outline covers") | 0.10 % of 1080 px is about 1.1 px, and lines that thin tend to break up under anti-aliasing. Inverted-hull thickness is set in world space, so holding a width as a fraction of frame height needs per-shot or distance-driven thickness. The cable's separation from the asphalt depends on exactly those lines. | Raise the props minimum to about 0.14 %. State which method is used for which shot size (Line Art gives screen-space width). Add a line test to G6. | look-director; Blender TD (M3) |
@@ -244,6 +257,11 @@ would produce false FAILs at G6.
 | 20 | Pacing / budget | n/a | `look.style.phone_ui`, `look.lighting.power_indicators` | The look sets no durations. Frame timings (3-frame dip, 24-frame fade, 6-frame pip decay, 1 Hz blink) assume the brief's 24 fps, which is recorded as `assumed`. | If fps changes at G5, convert the timings. | cinematographer |
 
 ## Deterministic checks
+- **Re-stamp, 2026-09-29, after the G3 review update:** `fm validate` gave
+  0 errors and 12 warnings, all STALE or GATE_DRIFT from the door edits. G3
+  and G4 are approved and DRIFTED.
+
+*Original checks (G4 submission):*
 - `fm validate` (before writing this review): 0 errors, 0 warnings, 1 info
   (`BRIEF_UNKNOWN`: references, environment, location; expected).
 - `fm intent`: all 6 intents are served. Look canon adds to each. By canon
@@ -277,3 +295,6 @@ would produce false FAILs at G6.
   There was no image search.
 - STORY_BIBLE and STORY_STRUCTURE were not re-read. Locked story canon and the
   approved SCREENPLAY and SCENES were used instead.
+- At the 2026-09-29 re-stamp, the look bibles were only grepped for door and
+  route wording and their diffs were read (fm-block metadata only: upstream
+  hashes and the orchestrator's `stamp_note`). They were not re-reviewed.
