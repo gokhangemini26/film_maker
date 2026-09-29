@@ -233,7 +233,17 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
             "west_along_pavement": Vector((cpos.x, cpos.y + 10, cpos.z - 0.05)),
         }.get(name, Vector((cpos.x, cpos.y + 3, cpos.z)))
 
-    aim(cam, target(cam_c["look_at"]))
+    tgt = target(cam_c["look_at"])
+    if shot["composition"].get("framing") == "insert" and cam_c["look_at"] in ("phone_ren", "crank_charger") and (tgt - cpos).length < 0.45:
+        cam.location = tgt - (tgt - cpos).normalized() * 0.45  # blockout adjustment: keep the prop out of the near plane
+        cpos = cam.location.copy()
+    if "ren" in figs and ((scene == "SC01" and n == 110) or (scene == "SC04" and n >= 50)):
+        amb = canon.get("look.color.accent_power_amber") or {}
+        ac = amb.get("hex") and amb or {"hex": "#F5B940", "linear": U.lin("#F5B940")}
+        cr = U.box("crank." + sid, (0.16, 0.09, 0.09), figs["ren"][0]["phone"] + Vector((0.0, 0.0, -0.13)) + figs["ren"][0]["facing"] * 0.05,
+                   figs["ren"][1], U.toon(ac))
+        mark(cr)
+    aim(cam, tgt)
     if cam_c.get("dof", {}).get("enabled"):
         cam_data.dof.focus_distance = max((target(cam_c["look_at"]) - cpos).length, 0.1)
 
@@ -243,7 +253,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
                    U.toon({"hex": "#33333D", "linear": U.lin("#33333D")}))
         ph.rotation_euler = (0, 0, math.atan2(i["facing"].y, i["facing"].x) + math.pi / 2)
         sc = U.box("phone_ren_screen." + sid, (0.06, 0.13, 0.002), ph.location, figs["ren"][1],
-                   U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=2.5))
+                   U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=0.9))
         sc.rotation_euler = ph.rotation_euler
         sc.location = ph.location + Vector((0, 0, 0.005))
         mark(ph), mark(sc)
