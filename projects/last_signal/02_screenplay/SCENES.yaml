@@ -1,0 +1,88 @@
+fm:
+  id: scenes
+  kind: scene_index
+  phase: SCREENPLAY
+  status: PROPOSED
+  owner_role: screenwriter
+  derived_from:
+  - ref: artifact:screenplay
+    hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
+  - ref: artifact:story_structure
+    hash: sha256:d8a12c83b7c349e115615b4a1d07b7f27082e08ec5109da940295a188ee99f3c
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  - intent.earned_last_signal
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  summary: Six-scene index of the Last Signal screenplay, 60 s total; beats 1-9 mapped to SC01-SC06.
+  stamped_content_hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
+scenes:
+- scene_id: SC01
+  heading: INT. REN'S CAR - GOLDEN HOUR
+  summary: Beats 1-3 (0-22 s). Mirror check, fork-and-knife map pin, call to her photo rings out (5%).
+    He starts typing; battery turns red (4%). Engine on, crank charger clunks out of the glovebox and
+    is shoved back (plant); plugs in, engine dies, dash goes dark (3%). Forehead to the wheel.
+  est_duration_s: 22
+  characters:
+  - ren
+  location: ren's car (interior), parked on the street
+  time_of_day: golden hour
+  weather: clear
+  sequence_id: SQ01
+- scene_id: SC02
+  heading: EXT. STREET - GOLDEN HOUR
+  summary: Beat 4, first part (22-24 s). He runs from the car up the empty pavement into the corner shop.
+  est_duration_s: 2
+  characters:
+  - ren
+  location: street
+  time_of_day: golden hour
+  weather: clear
+  sequence_id: SQ01
+- scene_id: SC03
+  heading: INT. CORNER SHOP - GOLDEN HOUR
+  summary: Beat 4, second part (24-34 s). Socket behind a display, on his knees, bolt appears; the whole
+    shop goes dark (2%). His lit face is the only light.
+  est_duration_s: 10
+  characters:
+  - ren
+  location: corner shop (interior)
+  time_of_day: golden hour
+  weather: clear
+  sequence_id: SQ01
+- scene_id: SC04
+  heading: EXT. STREET, KERB BY REN'S CAR - DUSK
+  summary: 'Beats 5-7 (34-53 s). The turn: on the kerb at 1% blinking, he takes the crank from the glovebox
+    with care. Slow cranking, finishes the invitation, types and deletes a heart, 1% to 2%. Send, progress,
+    tick; he lets go of the handle.'
+  est_duration_s: 19
+  characters:
+  - ren
+  location: street, kerb beside ren's car
+  time_of_day: dusk
+  weather: clear
+  sequence_id: SQ02
+- scene_id: SC05
+  heading: INT. HANA'S ROOM - EVENING
+  summary: Beat 8 (53-57 s). Sketching with headphones on; her phone lights with his photo; she slides
+    the headphones down, reads, small smile.
+  est_duration_s: 4
+  characters:
+  - hana
+  location: hana's room, desk by the window
+  time_of_day: evening
+  weather: clear
+  sequence_id: SQ02
+- scene_id: SC06
+  heading: EXT. STREET, KERB BY REN'S CAR - DUSK - MOMENTS LATER
+  summary: Beat 9 (57-60 s). His screen fades to black; he leans back against the car, dark phone on his
+    chest, looking up at the dusk sky. Final image.
+  est_duration_s: 3
+  characters:
+  - ren
+  location: street, kerb beside ren's car
+  time_of_day: dusk
+  weather: clear
+  sequence_id: SQ02

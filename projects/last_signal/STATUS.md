@@ -5,19 +5,19 @@
 ```yaml
 project: last_signal
 sandbox: false
-current_phase: CREATIVE_DIRECTION
-status: in_progress
-ledger: 7 records, head 672b9130d73f
+current_phase: SCREENPLAY
+status: awaiting_approval
+ledger: 10 records, head 62c2fd177690
 ```
 
-**Next:** Gate approved: `fm advance`
+**Next:** Human review: `fm approve G2`, or `fm revise G2 --notes ...` / `fm reject G2 --notes ...`
 
 ## Gates
 
 | Gate | Name | Status | Decided by | Items approved |
 |---|---|---|---|---|
 | G1 | Creative direction | approved | human:gokhan_guler | 4 |
-| G2 | Story and screenplay | pending | - | - |
+| G2 | Story and screenplay | awaiting_approval | - | - |
 | G3 | World and characters | pending | - | - |
 | G4 | Visual direction (style lock) | pending | - | - |
 | G5 | Storyboard and shots | pending | - | - |
@@ -27,7 +27,7 @@ ledger: 7 records, head 672b9130d73f
 
 ## Canon
 
-LOCKED: 12
+LOCKED: 12, PROPOSED: 12
 
 ## Artifacts
 
@@ -37,6 +37,11 @@ LOCKED: 12
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
+| g2_review | SCREENPLAY | PROPOSED | 0913c3ea1c36 |
+| scenes | SCREENPLAY | PROPOSED | 137da02c736e |
+| screenplay | SCREENPLAY | PROPOSED | 56d22d2e73f9 |
+| story_bible | STORY | PROPOSED | 1604e946f2ee |
+| story_structure | STORY | PROPOSED | d8a12c83b7c3 |
 
 ## Shots
 

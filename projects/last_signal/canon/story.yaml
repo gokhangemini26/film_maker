@@ -1,2 +1,284 @@
 domain: story
-entries: []
+entries:
+- id: story.premise
+  statement: |
+    Ren, about 20, has finally found the nerve to invite his university friend Hana to dinner, where he means to tell her he loves her. She doesn't pick up his call, so he has to text, and his phone is on its last few percent. His old car and a corner shop both fail him at the worst moment, and in the end only his own hands, turning a hand-crank charger he had shoved aside, can buy enough power to send the invitation.
+  value:
+    protagonist: ren
+    want: send hana the dinner invitation before his phone dies
+    obstacle: an unanswered call, then a dying battery that every outside power source fails to charge (car, shop)
+    cost: his dignity in small doses, his running and his patience; in the end, his own physical effort
+    message: dinner_invitation
+    confession: at_the_dinner_off_screen
+  rationale: |
+    One want (send the invitation), one meter (the battery %) and one obstacle pattern (outside power fails him) is the right size for 60 s: the viewer only has to track a number and a face. Making the solution his own effort rather than another outside source is what lets the send feel earned. Rejected: a premise where he also has to get somewhere (to her door, to the restaurant), which adds a second race and a second meter the film has no time to build.
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - tone.wordless
+  - tone.comedy_source
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+- id: story.theme
+  statement: |
+    The question the film asks: how much of yourself will you spend just to reach the one person you want to reach, when every shortcut fails?
+  value:
+    question: how much of yourself will you spend to reach someone, when every shortcut fails?
+    answered_by: action_not_statement
+  rationale: |
+    Phrased as a question about effort, the theme lines up with the film's single mechanism (borrowed power fails, his own power works), so every beat tests it without anyone saying it. Rejected: a theme about courage to confess, because the confession is off screen by the user's decision and the film would be asking a question it never shows being answered.
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - story.premise
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+- id: story.cast
+  statement: |
+    Two characters on screen: Ren (he, about 20, university student, drives a small old car, secretly in love with Hana) and Hana (she, about 20, his university friend, does not know how he feels). Names are for production only and never appear on screen. No other character is needed; a shopkeeper, if the world-designer wants one, is a background silhouette with no interaction.
+  value:
+    ren:
+      age: about 20
+      role: protagonist
+      on_screen_name: false
+    hana:
+      age: about 20
+      role: the person he is trying to reach
+      on_screen_name: false
+    extras: none_required
+  rationale: |
+    Two characters keep the proxy-character build and the 60 s both manageable, and a shop with no one to ask for help keeps the solution in his hands. Names give later departments stable ids (characters.ren.*, characters.hana.*); short, soft two-syllable names suit the anime register without placing the story in a specific country. Rejected: a helpful shopkeeper who hands him the crank, which would make the send a gift rather than earned. The characters' designs belong to the character-designer.
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - tone.anti_goals
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+  notes: Ages and relationship are USER_REQUIREMENT (brief characters). The names are an ASSUMPTION the human may replace at no cost.
+- id: story.arc.ren
+  statement: |
+    Ren starts nervous and in a hurry, reaching for any outside power source that will save him (the car, the shop). He ends calm and spent: he has put his own effort into the invitation, sent it, and let the phone go dark without panic. The change happens at the turn, on the curb, when he stops looking for a socket and chooses the crank he had shoved back into the glovebox.
+  value:
+    start: nervous, rushing, looking for a shortcut
+    end: calm, spent, at peace with the dark phone
+    turning_beat: 5
+    turning_action: he looks at the glovebox and chooses the crank
+    shown_through:
+    - posture
+    - staging
+    - silhouette
+  rationale: |
+    In 60 s the arc can only be one small choice, so it is placed on a physical action a proxy character can play in silhouette: the look to the glovebox and the reach for the crank. Choosing what he rejected earlier turns a gadget into a decision, which is the difference between luck and effort. His end state (leaning back, loose shoulders, dark phone on his chest) is played through posture, not facial acting. Rejected: an arc from shy to brave, which would need the confession on screen to pay off.
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - story.crank_plant
+  - tone.the_turn
+  applies_to:
+  - ren
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+- id: story.arc.hana
+  statement: |
+    Hana has no arc of her own in the film; she is the destination. She missed his call innocently (big headphones on, sketching at her desk), and her only moment is noticing: the phone lights up, she slides the headphones down, reads, and gives a small smile.
+  value:
+    missed_call_reason: headphones_on
+    moment: notices_reads_smiles
+    knows_his_feelings: false
+    screen_time_beats:
+    - 8
+  rationale: |
+    The headphones answer, in one prop and no words, the question the unanswered call raises ("is she ignoring him?"), so the audience never reads rejection into the call and the ending stays hopeful. Keeping her to a single moment makes her smile the film's only answer. Rejected: showing her missing the call in real time at the start, which costs a fourth location beat early and gives away that the call was harmless before the audience has worried about it.
+  serves:
+  - intent.open_hopeful_ending
+  depends_on:
+  - tone.ending_restraint
+  - tone.wordless
+  applies_to:
+  - hana
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+- id: story.inciting_incident
+  statement: |
+    Ren calls Hana from his parked car; her photo (no name) is on the call screen; the call icon rings and gets no answer, with no voice and no label. That is why he has to text, and as he starts typing the battery icon turns red.
+  value:
+    event: call_unanswered
+    shown_as: call_icon_rings_no_answer
+    voice: false
+    labels: false
+    then: he_starts_typing_battery_turns_red
+  rationale: |
+    The user's note makes the unanswered call the reason for the text. Putting it in the car lets the car beat start in place, which saves a location and a transition. Rejected: calling from home and then driving, which adds a space the 60 s cannot afford.
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - tone.wordless
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+- id: story.setup_cues
+  statement: |
+    The crush, the dinner plan and what he means to say at dinner are told only in pictures. Crush: before calling he checks his hair in the rear-view mirror and takes a rehearsed breath; her photo is on the call screen. Dinner plan: a map pin with a fork-and-knife icon on his phone before he opens the call, and the word "dinner" in the invitation itself. What he means to say at dinner: during the crank, he types a heart emoji at the end of the invitation, hesitates, and deletes it before sending.
+  value:
+    crush:
+    - mirror_hair_check
+    - rehearsed_breath
+    - her_photo_on_call_screen
+    dinner:
+    - map_pin_fork_and_knife_icon
+    - invitation_text
+    unsaid_confession:
+      cue: heart_emoji_typed_then_deleted
+      beat: 6
+  rationale: |
+    Each cue is a gesture or an icon a proxy character can play without facial acting, and none of them is readable text. The heart is placed at the crank rather than in the opening because it is the tender cue and it has to still be fresh at the ending: the audience watches him hold back the heart, so when she smiles at a plain invitation they know what he is keeping for the dinner and she does not. Rejected: a flower or gift on the passenger seat, which reads as "date" rather than "confession" and adds a prop continuity must track through two spaces.
+  serves:
+  - intent.race_against_battery
+  - intent.open_hopeful_ending
+  depends_on:
+  - tone.wordless
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+  notes: The map pin must have no street names or labels (tone.wordless). The emoji is a pictogram, not text (G1 review).
+- id: story.crank_plant
+  statement: |
+    The hand-crank charger is Ren's own and lives in his car's glovebox. It is planted in the car beat: he opens the glovebox for the charging cable, the chunky crank charger clunks out onto his lap, and he shoves it back as useless. It pays off at the turn, when he sits by the dead car, looks at the glovebox, and takes it out.
+  value:
+    owner: ren
+    location: car_glovebox
+    plant_beat: 3
+    payoff_beat: 5
+    plant_action: falls_out_he_shoves_it_back
+    payoff_action: he_chooses_it
+  rationale: |
+    Planting it inside the car beat costs no extra screen time, and having him reject it first turns the payoff into a choice rather than a lucky find, which is what makes the send earned. Because the car is parked on the same street as the shop, he can walk back to it after the blackout without a new location. The plant is a small comic beat, so the object the film later treats tenderly is introduced as a joke: that contrast is the turn. Rejected: finding it on a shop shelf, which makes it something he takes from the world rather than something he already had and had to value.
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - story.locations
+  - tone.the_turn
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+- id: story.escalation
+  statement: |
+    The battery percentage is the film's only meter and it falls one step per setback: 5% at the call, 4% and red as he starts typing, 3% when the car dies, 2% when the shop goes dark, 1% and blinking at the turn. The crank lifts it back to 2%, enough to send. After the send he lets go of the handle and the screen fades to black. Each failure costs more than the last: the car is his own small hope, the shop is a place he runs to in public and the whole room goes dark around him.
+  value:
+    battery_track:
+      beat_1: 5
+      beat_2: 4
+      beat_3: 3
+      beat_4: 2
+      beat_5: 1
+      beat_6: 2
+      beat_7: 2
+      beat_9: 0
+    red_from: 4
+    blinking_at: 1
+    meters: [battery_percent]
+    network_signal_meter: false
+  rationale: |
+    A single number the eye can read keeps the race legible without words, and one step down per setback makes the comedy and the stakes run on the same engine (tone.comedy_source). The crank only buys back one percent, so the triumph is small and hard-won rather than a rescue. "Last signal" keeps its G1 meaning, the last of the battery. Rejected: a signal-bar crisis at the send, which introduces a second meter in the last 10 s.
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - tone.comedy_source
+  - tone.wordless
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+  notes: Exact on-screen numbers are handed to continuity (cinematographer) as the story's intent; they may adjust presentation, not the downward-then-one-step-up shape.
+- id: story.message
+  statement: |
+    The sent message is a short, ordinary English dinner invitation to Hana. It is the only readable text in the film, must be legible at a glance, and must not confess anything. He starts it in beat 2 and finishes it during the crank; the final wording comes from the screenwriter as 2–3 options for the user at G2.
+  value:
+    kind: dinner_invitation
+    language: en
+    confession_in_text: false
+    max_words: 12
+    typed_in_beats: [2, 6]
+    sent_in_beat: 7
+    wording: UNKNOWN_screenwriter_proposes_options
+  rationale: |
+    A plain invitation that carries his nerves only in its shortness is what lets the audience's knowledge (the deleted heart) do the confessing. Twelve words is about the most a viewer reads comfortably in an insert of 2–3 seconds. Rejected: a longer or sweeter message, which would give the confession away and turn the only text in the film into a speech.
+  serves:
+  - intent.race_against_battery
+  - intent.open_hopeful_ending
+  depends_on:
+  - tone.wordless
+  - tone.ending_restraint
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+- id: story.locations
+  statement: |
+    Three spaces in total: (1) a quiet street at golden hour into dusk, with Ren's small old car parked at the kerb (car interior, the kerb beside it); (2) a small corner shop on the same street, a few steps away; (3) Hana's room, at her desk by a window, in the evening. The shop's power fails, not the street's.
+  value:
+    ren:
+    - street_and_car
+    - corner_shop_interior
+    hana:
+    - her_room_desk
+    shared_exterior: car_and_shop_on_same_street
+    blackout_scope: shop_only
+    time_of_day: golden_hour_into_dusk
+    country: UNKNOWN_world_designer
+  rationale: |
+    Putting the car and the shop on one street gives him two spaces plus hers, one fewer than the direction's ceiling, and lets him walk back to the glovebox after the blackout. Golden hour sliding into dusk gives the brighter comic middle and the dimmer, warmer tender end the direction asks for as a real passage of time rather than a grade. Keeping the blackout to the shop avoids reading as a disaster and keeps it bad timing. Rejected: a separate location for the crank (a park bench, his room), which costs a set and breaks the plant/payoff chain.
+  serves:
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - tone.comedy_source
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
+  notes: Street design, architecture, country and signage (shapes only, no words) belong to the world-designer.
+- id: story.ending
+  statement: |
+    The invitation sends: the progress completes and a tick appears, and Ren lets go of the crank. Hana's phone lights on her desk; she slides her headphones down, reads, and gives a small smile. Back on the kerb, his screen fades to black. He does not panic: he leans back against the car, dark phone resting on his chest, and looks up at the dusk sky. The film ends on that image. No reply, no dinner, no confession on screen.
+  value:
+    order:
+    - send_tick
+    - she_reads_smiles
+    - his_screen_fades
+    - final_image
+    final_image: ren leaning back against the car on the kerb, dark phone on his chest, looking up at the dusk sky
+    reply_shown: false
+    dinner_shown: false
+    confession_shown: false
+    phone_death_tone: gentle
+  rationale: |
+    Ending on him rather than her keeps the final beat where the effort was, and his relaxed posture with a dead phone says "it's out of my hands now, and that's fine", which is hope rather than loss. The order follows the user's words (sends, she smiles, his phone dies). Because the audience saw him delete the heart, her smile answers the invitation while the confession is still ahead, so the ending is open and hopeful at the same time. Rejected: ending on her smile, which is sweeter but leaves his phone's death as an afterthought or a punchline; and ending on the black screen, which reads as a sad cut-off.
+  serves:
+  - intent.open_hopeful_ending
+  - intent.earned_last_signal
+  depends_on:
+  - tone.ending_restraint
+  - story.setup_cues
+  - story.arc.ren
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:story-architect
