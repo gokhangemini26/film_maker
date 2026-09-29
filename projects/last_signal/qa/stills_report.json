@@ -1,0 +1,563 @@
+{
+ "summary": {
+  "shots": 38,
+  "fail": 0,
+  "warn": 0
+ },
+ "rows": [
+  {
+   "shot": "SC01_SH010",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.666,
+    "std_lum": 0.134,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     171,
+     170,
+     170
+    ]
+   },
+   "colour_distance_to_dominant": 88
+  },
+  {
+   "shot": "SC01_SH020",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.529,
+    "std_lum": 0.137,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     130,
+     135,
+     145
+    ]
+   }
+  },
+  {
+   "shot": "SC01_SH030",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.52,
+    "std_lum": 0.142,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     128,
+     133,
+     143
+    ]
+   }
+  },
+  {
+   "shot": "SC01_SH040",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.644,
+    "std_lum": 0.127,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     161,
+     165,
+     169
+    ]
+   },
+   "colour_distance_to_dominant": 99
+  },
+  {
+   "shot": "SC01_SH050",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.529,
+    "std_lum": 0.137,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     130,
+     135,
+     145
+    ]
+   }
+  },
+  {
+   "shot": "SC01_SH060",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.61,
+    "std_lum": 0.091,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     148,
+     157,
+     168
+    ]
+   },
+   "colour_distance_to_dominant": 114
+  },
+  {
+   "shot": "SC01_SH070",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.436,
+    "std_lum": 0.171,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     109,
+     111,
+     119
+    ]
+   }
+  },
+  {
+   "shot": "SC01_SH080",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.543,
+    "std_lum": 0.13,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     133,
+     139,
+     149
+    ]
+   }
+  },
+  {
+   "shot": "SC01_SH090",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.666,
+    "std_lum": 0.134,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     171,
+     170,
+     170
+    ]
+   },
+   "colour_distance_to_dominant": 88
+  },
+  {
+   "shot": "SC01_SH100",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.612,
+    "std_lum": 0.09,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     148,
+     157,
+     168
+    ]
+   },
+   "colour_distance_to_dominant": 114
+  },
+  {
+   "shot": "SC01_SH110",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.668,
+    "std_lum": 0.178,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     178,
+     169,
+     157
+    ]
+   }
+  },
+  {
+   "shot": "SC01_SH120",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.543,
+    "std_lum": 0.13,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     133,
+     139,
+     149
+    ]
+   }
+  },
+  {
+   "shot": "SC01_SH130",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.612,
+    "std_lum": 0.09,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     148,
+     157,
+     168
+    ]
+   },
+   "colour_distance_to_dominant": 114
+  },
+  {
+   "shot": "SC01_SH140",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.543,
+    "std_lum": 0.13,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     133,
+     139,
+     149
+    ]
+   }
+  },
+  {
+   "shot": "SC01_SH150",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.653,
+    "std_lum": 0.09,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     158,
+     168,
+     180
+    ]
+   },
+   "colour_distance_to_dominant": 101
+  },
+  {
+   "shot": "SC02_SH010",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.623,
+    "std_lum": 0.171,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     153,
+     160,
+     166
+    ]
+   },
+   "colour_distance_to_dominant": 107
+  },
+  {
+   "shot": "SC02_SH020",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.699,
+    "std_lum": 0.107,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     176,
+     179,
+     180
+    ]
+   },
+   "colour_distance_to_dominant": 77
+  },
+  {
+   "shot": "SC02_SH030",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.708,
+    "std_lum": 0.168,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     183,
+     181,
+     174
+    ]
+   },
+   "colour_distance_to_dominant": 70
+  },
+  {
+   "shot": "SC03_SH010",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.812,
+    "std_lum": 0.19,
+    "clipped_frac": 0.035,
+    "mean_rgb": [
+     198,
+     210,
+     201
+    ]
+   },
+   "colour_distance_to_dominant": 55
+  },
+  {
+   "shot": "SC03_SH020",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.71,
+    "std_lum": 0.142,
+    "clipped_frac": 0.025,
+    "mean_rgb": [
+     167,
+     183,
+     198
+    ]
+   },
+   "colour_distance_to_dominant": 93
+  },
+  {
+   "shot": "SC03_SH030",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.799,
+    "std_lum": 0.159,
+    "clipped_frac": 0.035,
+    "mean_rgb": [
+     198,
+     206,
+     198
+    ]
+   },
+   "colour_distance_to_dominant": 60
+  },
+  {
+   "shot": "SC03_SH040",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.8,
+    "std_lum": 0.156,
+    "clipped_frac": 0.043,
+    "mean_rgb": [
+     202,
+     205,
+     198
+    ]
+   },
+   "colour_distance_to_dominant": 58
+  },
+  {
+   "shot": "SC03_SH050",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.147,
+    "std_lum": 0.044,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     36,
+     38,
+     36
+    ]
+   }
+  },
+  {
+   "shot": "SC03_SH060",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.19,
+    "std_lum": 0.165,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     46,
+     49,
+     47
+    ]
+   }
+  },
+  {
+   "shot": "SC03_SH070",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.139,
+    "std_lum": 0.037,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     33,
+     36,
+     35
+    ]
+   }
+  },
+  {
+   "shot": "SC04_SH010",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.634,
+    "std_lum": 0.137,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     158,
+     162,
+     166
+    ]
+   },
+   "colour_distance_to_dominant": 70
+  },
+  {
+   "shot": "SC04_SH020",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.651,
+    "std_lum": 0.176,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     171,
+     165,
+     157
+    ]
+   }
+  },
+  {
+   "shot": "SC04_SH030",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.556,
+    "std_lum": 0.172,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     137,
+     142,
+     151
+    ]
+   },
+   "colour_distance_to_dominant": 40
+  },
+  {
+   "shot": "SC04_SH040",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.631,
+    "std_lum": 0.11,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     154,
+     162,
+     173
+    ]
+   },
+   "colour_distance_to_dominant": 69
+  },
+  {
+   "shot": "SC04_SH050",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.595,
+    "std_lum": 0.148,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     147,
+     152,
+     160
+    ]
+   },
+   "colour_distance_to_dominant": 54
+  },
+  {
+   "shot": "SC04_SH060",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.648,
+    "std_lum": 0.176,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     172,
+     165,
+     153
+    ]
+   }
+  },
+  {
+   "shot": "SC04_SH070",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.648,
+    "std_lum": 0.176,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     172,
+     165,
+     153
+    ]
+   }
+  },
+  {
+   "shot": "SC04_SH080",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.648,
+    "std_lum": 0.176,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     172,
+     165,
+     153
+    ]
+   }
+  },
+  {
+   "shot": "SC04_SH090",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.587,
+    "std_lum": 0.148,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     144,
+     150,
+     159
+    ]
+   },
+   "colour_distance_to_dominant": 51
+  },
+  {
+   "shot": "SC05_SH010",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.7,
+    "std_lum": 0.155,
+    "clipped_frac": 0.179,
+    "mean_rgb": [
+     192,
+     177,
+     159
+    ]
+   }
+  },
+  {
+   "shot": "SC05_SH020",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.593,
+    "std_lum": 0.238,
+    "clipped_frac": 0.014,
+    "mean_rgb": [
+     157,
+     150,
+     148
+    ]
+   },
+   "colour_distance_to_dominant": 97
+  },
+  {
+   "shot": "SC05_SH030",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.551,
+    "std_lum": 0.224,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     146,
+     139,
+     137
+    ]
+   },
+   "colour_distance_to_dominant": 115
+  },
+  {
+   "shot": "SC06_SH010",
+   "findings": [],
+   "metrics": {
+    "mean_lum": 0.634,
+    "std_lum": 0.137,
+    "clipped_frac": 0.0,
+    "mean_rgb": [
+     158,
+     162,
+     166
+    ]
+   },
+   "colour_distance_to_dominant": 70
+  }
+ ]
+}

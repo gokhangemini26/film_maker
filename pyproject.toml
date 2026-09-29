@@ -15,6 +15,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+vision = ["pillow>=10"]
 
 [project.scripts]
 fm = "fm.cli:main"

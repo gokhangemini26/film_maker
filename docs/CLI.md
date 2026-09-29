@@ -26,6 +26,7 @@ project containing the current directory > the only project.
 | `fm change approve|reject CHANGE-NNN` | **H** | Decide a change request. |
 | `fm resolve [--scope S]` | A | Resolve shots + canon into engine-ready JSON (`09_resolved/`), recorded as derived nodes. |
 | `fm blender preview [--shots ..] [--width N] [--draft] [--jobs N]` | A | One still per shot into `10_blender/previews/`, one Blender process per shot, each recorded as `render:preview_<shot>`. Uses the pinned Blender (refused on mismatch); `--draft` uses the bpy module and is never G6 evidence. |
+| `fm qa stills` | A | Deterministic checks on `10_blender/previews/` (missing, flat, near-black, clipped-white frames, colour drift); writes `qa/stills_report.json`, records `qa:stills`. Exit 1 on FAIL. Technical only: never evidence of creative correctness. Needs Pillow (`pip install -e ".[vision]"`). |
 | `fm impact REF..` | A | Downstream of REFs, grouped by layer (nothing is modified). |
 | `fm plan --scope S` | A | What in scope is stale and must be regenerated. |
 | `fm deps REF` | A | Hash, upstream (ok/CHANGED/structural), downstream. |

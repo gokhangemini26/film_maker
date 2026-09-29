@@ -399,6 +399,27 @@ def resolve_cmd(c: Ctx, scope):
                f"film = {r['film_frames']} frames at {r['fps']:g} fps ({r['film_seconds']:g} s)")
 
 
+@cli.group("qa")
+def qa_group():
+    """Quality checks on produced material (M4)."""
+
+
+@qa_group.command("stills")
+@click.pass_obj
+def qa_stills(c: Ctx):
+    """Deterministic checks on 10_blender/previews (blank, blown-out, black frames, colour drift)."""
+    from .qa_stills import check
+
+    r = check(c.project())
+    for row in r["rows"]:
+        for sev, msg in row["findings"]:
+            click.echo(f"{sev:4} {row['shot']}: {msg}")
+    s = r["summary"]
+    click.echo(f"{s['shots']} stills: {s['fail']} FAIL, {s['warn']} WARN")
+    if s["fail"]:
+        sys.exit(1)
+
+
 @cli.group("blender")
 def blender_group():
     """Blender-side production (M3): previews from resolved shot files."""
