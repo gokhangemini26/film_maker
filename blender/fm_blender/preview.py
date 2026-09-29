@@ -222,7 +222,10 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
 
     def target(name):
         if name in figs:
-            return figs[name][0]["head"] - Vector((0, 0, 0.1))
+            i_ = figs[name][0]
+            if name == "ren" and scene == "SC04" and n in (50, 90):  # eyes-on-crank/phone beats: hold head and lap in frame
+                return (i_["head"] + i_["hip"]) / 2 - Vector((0, 0, 0.05))
+            return i_["head"] - Vector((0, 0, 0.1))
         if name == "crank_charger" and "ren" in figs:
             return figs["ren"][0]["hip"] + figs["ren"][0]["facing"] * 0.16 + Vector((0, 0, 0.14))
         if name == "phone_ren" and "ren" in figs:
@@ -333,6 +336,24 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
                 o.hide_render = True
                 o["fm_culled_by_preview"] = 1
                 culled.append(o.name)
+    if (shot.get("composition") or {}).get("framing") == "insert" and cam_c.get("look_at", "") in ("crank_charger", "phone_ren"):
+        # insert sight-line clearance: hide static set pieces standing between lens and subject
+        dg = bpy.context.evaluated_depsgraph_get()
+        org = cam.location.copy()
+        goal = tgt.copy()
+        for _ in range(8):
+            d_ = goal - org
+            dist = d_.length
+            if dist < 0.05:
+                break
+            hit, loc, _nrm, _idx, ho, _m = bpy.context.scene.ray_cast(dg, org, d_.normalized(), distance=dist - 0.03)
+            if not hit:
+                break
+            if not ho.get("fm_shot") and not ho.hide_render:
+                ho.hide_render = True
+                ho["fm_culled_by_preview"] = 1
+                culled.append(ho.name)
+            org = loc + d_.normalized() * 0.01
     if (shot.get("composition") or {}).get("framing") == "insert":
         for cid, (info, tmp) in figs.items():
             for o in tmp.objects:

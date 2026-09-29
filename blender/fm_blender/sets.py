@@ -101,9 +101,12 @@ def build_car(col, canon):
     s = canon["world.sets.street"]
     c = canon["world.sets.ren_car"]
     pal = Pal(canon, "look.color.props", "#9FB0C4")
-    body = _t(col, pal(6))
-    dark = _t(col, pal(2))
-    seat = _t(col, pal(3))
+    named = {c.get("item"): c for c in pal.c if isinstance(c, dict) and c.get("item")}
+    pick = lambda item, i: named.get(item) or pal(i)  # noqa: E731
+    body = _t(col, pick("car_paint", 6))
+    roofm = _t(col, pick("car_paint_sun_faded_roof_bonnet", 6))
+    dark = _t(col, pick("car_rubber_trim_tyres", 2))
+    seat = _t(col, pick("car_seats", 3))
     x0, x1 = s["car_body_x"]
     y0, y1 = s["car_body_y"]
     W, L = x1 - x0, y1 - y0
@@ -111,7 +114,7 @@ def build_car(col, canon):
     sill, H = c["sill_height_m"], c["height_m"]
     # lower body, roof, pillars (open windows so the interior reads), wheels
     U.box("car_lower", (W, L, sill + 0.35), (cx, cy, (sill + 0.35) / 2 + 0.1), col, body)
-    U.box("car_roof", (W, L * 0.62, 0.06), (cx, cy - 0.1, H), col, body)
+    U.box("car_roof", (W, L * 0.62, 0.06), (cx, cy - 0.1, H), col, roofm)
     for i, (dx, dy) in enumerate([(-1, -1), (1, -1), (-1, 1), (1, 1)]):
         U.box(f"car_pillar{i}", (0.06, 0.06, H - sill - 0.4), (cx + dx * (W / 2 - 0.03), cy - 0.1 + dy * L * 0.31, (H + sill + 0.4) / 2), col, body)
     for i, (dx, dy) in enumerate([(-1, -1), (1, -1), (-1, 1), (1, 1)]):
