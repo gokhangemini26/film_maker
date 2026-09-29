@@ -1,2 +1,1131 @@
 domain: camera
-entries: []
+entries:
+- id: camera.format
+  statement: |
+    16:9 at 1920x1080, 24 fps, square pixels. Every Blender camera uses a 36 x 20.25 mm
+    sensor with horizontal sensor fit, so a focal length in this canon means the same field
+    of view in every shot. All size rules in camera and look canon are fractions of frame
+    height, so they hold at any resolution.
+  value:
+    aspect_ratio: 1.7778
+    aspect_label: '16:9'
+    resolution_px: [1920, 1080]
+    fps: 24
+    sensor_width_mm: 36.0
+    sensor_height_mm: 20.25
+    sensor_fit: HORIZONTAL
+    frame_height_coverage_m_per_m_distance:
+      '24': 0.844
+      '35': 0.579
+      '50': 0.405
+      '85': 0.238
+    shortest_shot_frames: 12
+    shortest_shot_exception: SC02 elliptical cuts, 14-19 frames
+  rationale: |
+    16:9 gives the phone, a tall object, the most frame height of any common ratio, and the
+    film's only text has to be read inside that height (look.style.phone_ui cap height
+    3.5 %); a seated figure on a kerb and a girl at a desk also fill a 16:9 frame without
+    dead side space. 24 fps confirms the brief's assumption, so every frame timing in the
+    look canon (3-frame dip, 24-frame fade, 6-frame pip decay) holds unchanged (G4 finding
+    20). A fixed sensor makes the lens table below predictable in Blender. Rejected: 2.39:1
+    scope, which reads "cinematic" at a glance but costs a quarter of the frame height the
+    phone inserts need and pushes the kerb and desk frames toward empty sides.
+  serves:
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  - intent.anime_feel
+  depends_on:
+  - look.style.phone_ui
+  - look.style.render_constraints
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: |
+    Brief fields aspect_ratio and fps are `assumed`; this entry is the camera department's
+    proposal to confirm them. 1080p is carried over from the look canon's line-width
+    figures (G4 finding 12).
+- id: camera.lens_set
+  statement: |
+    Four primes: 24, 35, 50 and 85 mm (on the 36 mm sensor). No zooms, no focal length
+    change inside a shot. Any other focal length needs a declared style_break.
+  value: [24, 35, 50, 85]
+  rationale: |
+    Four primes cover every space in the film: 24 mm is the only lens that fits a medium
+    inside a 1.48 m wide car, 35 mm holds the street and the 9 m shop, 50 mm is the
+    tender section's working lens, and 85 mm flattens the phone into a readable graphic
+    insert. A small fixed set makes the change of lenses at the turn visible as a change
+    of world. Rejected: a zoom or a wider spread (18-135 mm), which would let each shot be
+    picked for convenience and blur the comic/tender split.
+  serves:
+  - intent.soft_but_cinematic
+  - intent.comic_then_tender
+  depends_on:
+  - world.sets.ren_car
+  - world.sets.corner_shop
+  - world.sets.street
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.lens.roles
+  statement: |
+    What each lens is for. 24 mm: the car interior and the geometric comic wides; never
+    for a face in the tender section. 35 mm: the street, the shop and the comic mediums;
+    the widest lens after the turn, only for the kerb bookend frame. 50 mm: the tender
+    section's mediums and close-ups, Hana, and the final image. 85 mm: every phone and
+    crank insert and the tender close-ups; never for the comic wides. The comic section
+    (SC01-SC03) works on 24/35 plus 85 inserts; the tender section (SC04-SC06) works on
+    50/85 plus one 35 bookend.
+  value:
+    '24':
+      effect: wide, deep, slight edge stretch, lines converge hard
+      used_for: [car_interior_mediums, comic_geometric_wides, shop_low_angle_to_ceiling]
+      never_for: [tender_faces, phone_inserts]
+    '35':
+      effect: wide-normal, keeps the room around him
+      used_for: [street, shop_wides_and_mediums, sc04_sc06_bookend]
+      never_for: [phone_inserts, tender_close_ups]
+    '50':
+      effect: normal, no distortion, sits at his distance
+      used_for: [tender_mediums, tender_close_ups, hana, final_image, car_frontal_through_windscreen]
+      never_for: [comic_wides]
+    '85':
+      effect: compression, flat graphic planes, background falls away
+      used_for: [phone_inserts, crank_inserts, tender_close_ups]
+      never_for: [comic_wides, establishing]
+    comic_section: {scenes: [SC01, SC02, SC03], lenses: [24, 35, 85], exception: 50 for the SC01 frontal through the windscreen}
+    tender_section: {scenes: [SC04, SC05, SC06], lenses: [50, 85], exception: 35 for the kerb bookend only}
+  rationale: |
+    Wide lenses in the comedy make the ordered world (street lines, shelves, the dashboard)
+    press in on him and let a held pose play against busy geometry, which is where
+    look.style.composition puts the gags. Switching to 50/85 at the turn flattens the world
+    behind him and brings the camera to his distance: the audience feels the film get
+    closer and quieter without a single move (tone.the_turn). 85 mm for inserts keeps the
+    phone square and undistorted so the text and numbers read. Rejected: one lens for the
+    whole film (loses the turn) and 24 mm close-ups for comic faces (rubbery distortion
+    pushes toward manic slapstick, tone.anti_goals).
+  serves:
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - tone.the_turn
+  - tone.anti_goals
+  - look.style.composition
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.height.eye_level
+  statement: |
+    Eye level (lens within 0.1 m of the subject's eye height) is the default and means
+    "we are with him, not judging". Comic reactions are observed at eye level, deadpan;
+    tender close-ups and Hana are at their seated eye level. Reference heights: Ren seated
+    in the car 1.20 m, standing on the pavement 1.71 m, kneeling in the shop 1.05 m, seated
+    on the kerb about 0.95 m; Hana seated 1.14 m.
+  value:
+    tolerance_m: 0.1
+    reference_eye_z_m:
+      ren_car_seat: 1.2
+      ren_standing_pavement: 1.71
+      ren_kneeling_shop: 1.05
+      ren_kerb_seated: 0.95
+      hana_desk: 1.14
+    meaning: with_him_not_judging
+  rationale: |
+    Held-pose comedy lands when the camera does not comment: an eye-level, locked frame
+    lets bad timing be funny without the camera mocking him (tone.register: we laugh with
+    him). Keeping heights at the characters' own eye lines also makes the two tender
+    frames of Ren and Hana match (same height relation), which carries the ending's link
+    without a sky cross-cut. Rejected: a slightly high "observer" default, which makes
+    every setback look like a judgement and wears out the high angle before the shop.
+  serves:
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  depends_on:
+  - characters.ren.proportions
+  - characters.hana.proportions
+  - tone.register
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.height.high
+  statement: |
+    High angle (lens at least 0.5 m above his eye, looking down at least 10 degrees) means
+    "the world beats him" and is used only at the failures: a mild high on the SC01 slump
+    onto the wheel, and the strongest high of the film for the SC03 blackout (the shop
+    wide from above the door). Never after the turn.
+  value:
+    min_above_eye_m: 0.5
+    min_tilt_down_deg: 10
+    allowed_at: [SC01_slump_mild, SC03_aisle_wide_strong]
+    forbidden_in: [SC04, SC05, SC06]
+  rationale: |
+    The creative direction asks for high or wide angles when the world beats him. Spending
+    the high angle only twice, and saving the stronger one for the bigger failure, makes the
+    shop read as the car's failure scaled up (tone.comedy_source: each failure costs more).
+    Banning it after the turn keeps the tender section from looking down on him. Rejected:
+    a high angle for every setback (the call, the red battery), which would flatten the
+    escalation into a pattern.
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - tone.comedy_source
+  - look.style.composition
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.height.low
+  statement: |
+    Low angle (lens below his eye, looking up) means "he makes up his mind". In the comic
+    section it is mild (0.15-0.3 m below eye, tilt up at most 8 degrees) and only on his
+    resets (sitting up to text, bursting out of the car). At the turn it is the strongest
+    low angle of the film (lens about 0.45-0.6 m above the pavement, tilt up about 12
+    degrees) on the moment he sits back with the crank held in both hands. Every low angle
+    must have car body, walls or houses behind his jacket, never sky (see
+    camera.framing.jacket_off_sky).
+  value:
+    comic_resets:
+      below_eye_m: [0.15, 0.3]
+      max_tilt_up_deg: 8
+      beats: [SC01_sits_up_to_text, SC02_exit]
+    the_turn:
+      lens_z_m: [0.45, 0.6]
+      tilt_up_deg: 12
+      beat: SC04_sits_back_with_crank_in_both_hands
+      camera_side: pavement_looking_north_car_behind_him
+    background_behind_jacket: car_or_walls_or_houses_only
+  rationale: |
+    The creative direction asks for low angles when he makes up his mind. Making the resets
+    mild and the turn strong turns the low angle into its own small escalation: his
+    quick comic decisions get a hint of it, the real decision gets all of it. Placing the
+    strong low angle on the pavement side with the car's flank behind him is how the
+    camera honours the jacket's separation constraint at dusk (G4 Q4 option a). Rejected:
+    the low angle on the look to the glovebox, which is a hesitation, not the decision, and
+    a low angle from the road side, which puts the upper dusk sky behind the jacket (1.01:1,
+    G4 finding 8).
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - characters.ren.wardrobe.jacket
+  - look.color.sky.dusk
+  - world.sets.street
+  - story.arc.ren
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.movement.default_static
+  statement: |
+    The camera is locked off by default. It does not move to make a shot feel alive; the
+    characters and the light do that. Every move is one of the two named moves below, and
+    each names its motivation in the shot's rationale.movement.
+  value:
+    default: static
+    allowed_moves: [pan_follow, push_in]
+    motivation_required: true
+  rationale: |
+    Held frames with bursts of action inside them are the timing grammar of Japanese TV
+    and feature animation, and a still frame is what lets a comic freeze or a light going
+    out land on the beat (intent.anime_feel, tone.comedy_source). It is also the cheapest
+    and most reliable camera in the MVP. Rejected: constant gentle drift, the "cinematic"
+    CG default, which blurs held poses and competes with the phone's small changes.
+  serves:
+  - intent.anime_feel
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  depends_on:
+  - characters.ren.expressions
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.movement.pan_follow
+  statement: |
+    A pan (or pan with tilt) from a fixed position, following a character only while that
+    character moves across the frame and stopping when they stop. Used in the comic section
+    for his bursts (the exit, the dash, the drop to his knees). Speed follows the
+    character; the pan starts after the move begins and ends as it ends.
+  value:
+    motivation: character_movement_only
+    pivot: fixed_position
+    starts: after_action_begins
+    ends: with_action
+    scenes: [SC01, SC02, SC03]
+  rationale: |
+    A follow-pan across a painted background is a classic animation layout move and keeps
+    the camera reactive, one step behind him, which is funny in a chase that fails.
+    Following only while he moves keeps the camera from anticipating or commenting.
+    Rejected: tracking alongside him (the camera becomes his companion in the comedy and
+    steals the turn's closeness) and whip pans (manic, tone.anti_goals).
+  serves:
+  - intent.comic_then_tender
+  - intent.anime_feel
+  depends_on:
+  - characters.ren.movement
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.movement.push_in
+  statement: |
+    A slow, straight dolly toward him, at most 0.15 m/s, used at most twice in the film and
+    only in SC04: once as he chooses the crank (his look through the open door to the
+    glovebox), and once as he starts cranking and the glow stops flickering. After the send the
+    camera does not move again: SC05 and SC06 are locked.
+  value:
+    max_speed_m_s: 0.15
+    max_count_film: 2
+    scene: SC04
+    beats: [choice_of_crank, glow_steadies_while_cranking]
+    motivation: emotional_shift
+    after_send: no_camera_movement
+  rationale: |
+    The direction asks the crank sequence to move closer and hold. Two slow pushes, tied to
+    the two moments his effort changes something (the choice, the steadying light), move the
+    audience toward him exactly when the story does, and stopping all movement after the send
+    says "it's out of his hands now" (story.ending). Rejected: a push on the send insert
+    (it would soften the text and tick the viewer must read) and a crane up to the sky at the
+    end (a sky-led move, look.style.originality_guards).
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  depends_on:
+  - tone.the_turn
+  - story.ending
+  - look.style.originality_guards
+  applies_to:
+  - SC04
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.movement.forbidden
+  statement: |
+    Never used: handheld or simulated shake (including on the shop's clunk), zooms, whip
+    pans, orbits, crane or tilt moves up to the sky, drone-style flyovers, and any move in a
+    phone insert.
+  value:
+    forbidden: [handheld, camera_shake, zoom, whip_pan, orbit, crane_to_sky, tilt_up_to_sky, flyover, move_in_insert]
+  rationale: |
+    Each of these either adds energy the comedy does not need (shake, whip pans read as
+    manic slapstick, tone.anti_goals), makes the sky the subject (G3 finding 9), or
+    softens the text the viewer must read (story.message). Rejected: allowing shake on the
+    blackout for impact, because the gag is that nothing moves when the lights go.
+  serves:
+  - intent.comic_then_tender
+  - intent.anime_feel
+  - intent.race_against_battery
+  depends_on:
+  - tone.anti_goals
+  - look.style.originality_guards
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.framing.shot_size_arc
+  statement: |
+    The film's shot sizes follow one arc. It opens close and cramped in the car (mediums,
+    close-ups, inserts), widens through the street to the widest frame of the film at the
+    shop blackout (about 32 s), collapses inward after the turn to the closest frames at the
+    heart and the send (about 48-52 s), gives Hana a medium then a medium close-up, and
+    releases to a medium-wide for the final image. Shot scale vocabulary: wide, medium_wide,
+    medium, medium_close, close, insert. No extreme wides.
+  value:
+    vocabulary: [wide, medium_wide, medium, medium_close, close, insert]
+    extreme_wide: false
+    arc:
+    - {t_s: [0, 22], scene: SC01, sizes: [medium, medium_close, close, insert], note: cramped car, the only wide is none}
+    - {t_s: [22, 24], scene: SC02, sizes: [medium_wide, wide], note: first open exterior}
+    - {t_s: [24, 34], scene: SC03, sizes: [wide, medium_close, insert], note: widest frame at the blackout}
+    - {t_s: [34, 52], scene: SC04, sizes: [medium_wide, medium, medium_close, close, insert], note: closes in to the heart and send}
+    - {t_s: [52, 57], scene: SC05, sizes: [medium, medium_close]}
+    - {t_s: [57, 60], scene: SC06, sizes: [medium_wide], note: release}
+    widest_frame: SC03_blackout
+    closest_frames: SC04_heart_and_send_inserts
+  rationale: |
+    Opening wider and wider through the failures lets the world get bigger than him as the
+    costs rise (tone.comedy_source), so the blackout lands as the whole room beating him.
+    Closing in after the turn is the direction's "moves closer and holds" as a structure the
+    whole film builds toward, and releasing to a medium-wide at the end gives him air: an
+    open frame for an open ending (intent.open_hopeful_ending). Rejected: ending on a close-up
+    of his face, which would ask the audience to read an emotion the proxy face may not
+    carry and closes the frame on the moment the story opens it.
+  serves:
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - tone.the_turn
+  - tone.comedy_source
+  - look.style.composition
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.framing.space_and_size
+  statement: |
+    Comic section: when he fails he is centred or short-sided (looking into the near frame
+    edge), boxed in by geometry; resets get lead room. Tender section: lead room always in
+    his look direction, which is screen left, and the negative space sits on screen left
+    (west, toward the afterglow and toward Hana's window). Ren is at least 15 % of frame
+    height wherever his state matters; props whose state carries a beat (crank, glovebox,
+    socket) are at least 10 % of frame width in that shot. In the car, the top frame line
+    stays below the headliner in his upright beats.
+  value:
+    comic_failures: centred_or_short_sided
+    comic_resets: lead_room
+    tender_lead_room: look_direction_screen_left
+    tender_negative_space: screen_left
+    ren_min_frame_height: 0.15
+    story_prop_min_frame_width: 0.10
+    car_headliner_in_frame_upright: false
+  rationale: |
+    Short-siding a failure traps him against the frame edge, a visual "nowhere to go" the
+    comedy can use without a gag symbol; giving him air in the tender frames lets the viewer
+    feel the space he is sending into, and putting it on the west side makes it the same
+    direction as the light and her window. The 15 % minimum is the character bible's
+    readability limit for the tuft and centre strip. Keeping the headliner out of upright car
+    frames avoids showing an unresolved headroom clash (G3 finding 3) before the G6 proxy
+    test. Rejected: symmetric centring in the tender section (forbidden by
+    look.style.composition) and generous lead room in the failures (it would promise an
+    escape the story denies).
+  serves:
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  - intent.race_against_battery
+  depends_on:
+  - look.style.composition
+  - characters.ren.silhouette
+  - characters.ren.proportions
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.framing.jacket_off_sky
+  statement: |
+    From SC04 to SC06 Ren's phone-lit jacket is never framed against the upper dusk sky
+    (gradient positions above 0.35: mauve, lavender, periwinkle). Behind the jacket there
+    must be the car body, the open passenger door, garden walls, houses, pavement, or the
+    warm lower sky bands (positions 0-0.35). Default method: keep the lens at or above the
+    top of his jacket (about 0.85 m when seated on the kerb), which puts everything behind
+    the jacket below the horizon. The one low angle at the turn is shot from the pavement
+    looking north so the car fills everything behind him. Check per shot: the ray from the
+    lens through the top of the jacket must hit geometry, not sky.
+  value:
+    scenes: [SC04, SC05, SC06]
+    forbidden_background_behind_jacket: dusk_sky_positions_above_0.35
+    allowed_background: [car_body, open_passenger_door, garden_walls, houses, pavement, dusk_sky_positions_0_to_0.35]
+    default_lens_min_z_m_kerb: 0.85
+    low_angle_side: pavement_looking_north
+    per_shot_check: ray_through_jacket_top_hits_geometry
+  rationale: |
+    The locked jacket (#7C9CC4) measures about 1.01:1 against the dusk zenith when phone-lit
+    (G4 finding 8), and G4 was approved with the jacket kept, so the camera carries
+    Q4 option (a). A horizon-based rule is simple to build and to check: if the lens is
+    above the jacket, nothing behind the jacket can be sky. Against the car (#E8D8A8) the
+    jacket shadow tone separates at about 4.1:1 (COLOR_BIBLE). Rejected: relying on the
+    outline and rim alone, which G4 showed is not enough at the zenith, and asking for a
+    darker jacket, which would reopen locked character canon.
+  serves:
+  - intent.soft_but_cinematic
+  - intent.earned_last_signal
+  depends_on:
+  - characters.ren.wardrobe.jacket
+  - look.color.sky.dusk
+  - look.color.props
+  - world.sets.street
+  applies_to:
+  - SC04
+  - SC06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.framing.sky_and_wires
+  statement: |
+    Sky and wires stay setting, never subject. Sky is at most two thirds of any frame and
+    always behind a person or a hero prop (L12, unbreakable). The kerb's dusk sky is shown in
+    one setup only, the SC04/SC06 bookend looking west along the pavement, and her window is
+    its matched pair; the two skies are never cut against each other. Overhead wires, when in
+    frame, are at most three thin spans, never cross a face, a phone or the crank, and never
+    converge on his head; in westward frames the street's vanishing point sits at least 15 %
+    of frame width away from his head. SC05's window shows at most one wire span. No sun
+    disc in frame.
+  value:
+    max_sky_fraction: 0.67
+    sky_needs_subject: true
+    kerb_sky_setup: sc04_sc06_bookend_westward
+    matched_pair: [SC05_window, SC04_SC06_bookend]
+    sky_cross_cut: false
+    wires_max_spans: 3
+    wires_cross_face_phone_crank: false
+    vanishing_point_min_offset_from_head_frame_width: 0.15
+    sc05_window_wire_spans_max: 1
+    sun_disc_in_frame: false
+  rationale: |
+    This turns G3 finding 9 and look.style.originality_guards into camera rules a frame can
+    fail: the sky and wire imagery the neighbourhood makes available is exactly what a
+    well-known body of work is recognised by, so the camera shows it once, behind him, and
+    lets colour carry the "same sky" link. Keeping the vanishing point off his head stops
+    the wires from becoming leading lines onto him. Rejected: a sky cutaway after the send
+    (explicitly excluded) and hiding the sky entirely at the kerb, which would leave her
+    window with nothing to match (L13).
+  serves:
+  - intent.soft_but_cinematic
+  - intent.open_hopeful_ending
+  - intent.anime_feel
+  depends_on:
+  - look.style.sky
+  - look.style.originality_guards
+  - world.locations.street
+  - world.locations.hana_room
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.dof.default_deep
+  statement: |
+    Depth of field is off (everything sharp) in every shot except phone and crank inserts.
+    Depth comes from staging in at least three layers separated by value and aerial tint,
+    as look canon requires. No focus pulls anywhere in the film: the eye is moved by light
+    events and cuts instead.
+  value:
+    default_dof: false
+    exceptions: [phone_inserts, crank_inserts]
+    focus_pulls: 0
+    depth_method: three_layers_value_and_aerial_tint
+    eye_moved_by: [light_events, cuts]
+  rationale: |
+    In cel animation the background is painted soft and the characters are drawn sharp;
+    optical blur on top of that makes the outlines smear and turns lamps and windows into
+    bokeh discs, which look.style.glow forbids. The film's light changes (blackout, flicker
+    steadying, her phone waking) already move the eye more strongly than a rack focus could.
+    Rejected: shallow-focus close-ups for a "cinematic" feel, which in EEVEE blur the
+    coloured outlines and would put bokeh on the lit windows behind him at dusk.
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.style.glow
+  - look.style.composition
+  - look.style.outlines
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.dof.inserts
+  statement: |
+    Phone and crank inserts use depth of field at f/5.6 to f/8 on the 36 mm sensor, focused
+    on the screen plane (or the pip), with the lens within 15 degrees of perpendicular to
+    the screen so the whole screen is in focus. The background (his lap, trousers, the car
+    seat, the desk) softens. No emissive other than the phone or pip may sit in the
+    defocused area; if one would, frame it out or switch DOF off.
+  value:
+    f_stop_range: [5.6, 8.0]
+    focus_target: screen_plane_or_pip
+    max_angle_to_screen_normal_deg: 15
+    defocused_emissives_allowed: false
+  rationale: |
+    At 85 mm and 0.3 m, f/5.6-8 gives roughly 1-2 cm of sharp depth: enough to hold a flat
+    screen and a thumb above it, while the background drops away, which is what makes a
+    small UI read as the subject. Keeping the lens square to the screen keeps the invitation
+    undistorted and fully sharp (story.message). Rejected: DOF off in inserts (his lap and
+    clothes compete with the icons) and f/2.8 (the thumb and the screen edges would blur).
+  serves:
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.style.phone_ui
+  - look.style.glow
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: ASSUMPTION that Blender 5.2 EEVEE camera DOF behaves as in 4.x (physical f-stop on the
+    camera sensor). Verify at M3.
+- id: camera.inserts.language
+  statement: |
+    The phone has its own shot grammar. Inserts are 85 mm (50 mm when hands and both
+    objects must share the frame), locked, from the owner's side of the screen (never
+    upside down), square to the screen within 15 degrees. Two insert sizes: a screen insert
+    (the whole screen, vertical frame coverage at the screen about 0.16 m) for icons such as
+    the call screen and the map, and a text insert (frame coverage at most the UI cap height
+    divided by 0.035, about half the screen) for the invitation, the heart, the battery
+    number and the tick. The emoji panel is never framed.
+  value:
+    lens_mm: 85
+    lens_alt_mm: 50
+    movement: static
+    viewpoint: owner_side_upright
+    max_skew_deg: 15
+    screen_insert_frame_height_m: 0.16
+    text_insert_max_frame_height: ui_cap_height_m / 0.035
+    emoji_panel_framed: false
+  rationale: |
+    The phone is the film's second character and its only voice (CREATIVE_DIRECTION
+    originality statement, tone.wordless), so its shots need to be as legible as dialogue:
+    flat, frontal, still. Two fixed sizes make the legibility rules below checkable. Never
+    framing the emoji panel closes G4 finding 3 on the camera side: a realistic panel would
+    put dozens of coloured pictograms, reds and pinks among them, next to the battery.
+    Rejected: over-the-shoulder phone shots as the main reading shot (screens at an angle,
+    small text) and animated UI zooms (not a camera, and they read as a phone advert).
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - look.style.phone_ui
+  - tone.wordless
+  - world.props.phone_ren
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.inserts.legibility
+  statement: |
+    Minimum sizes and holds in inserts. The invitation: cap height at least 3.5 % of frame
+    height (L8), held for at least 0.5 s plus 0.3 s per newly visible word after the last
+    word appears. Battery number: digit height at least 3.0 % of frame height whenever the
+    number changes or is the beat, held at least 24 frames after the change. Map pin: at
+    least 6 % of frame height, near centre, held at least 36 frames. Charging bolt: at least
+    3 % of frame height, held at least 18 frames after it appears or vanishes. Sent tick: at
+    least 5 % of frame height, with his thumb clear of it, in the frame's eye path, held at
+    least 24 frames after it appears. Her photo on the call screen: at least 15 % of frame
+    height.
+  value:
+    invitation:
+      min_cap_height_frame: 0.035
+      hold_s: 0.5 + 0.3 per new word
+    battery_digits:
+      min_height_frame: 0.03
+      hold_frames_after_change: 24
+    map_pin:
+      min_height_frame: 0.06
+      position: near_centre
+      hold_frames: 36
+    charging_bolt:
+      min_height_frame: 0.03
+      hold_frames: 18
+    sent_tick:
+      min_height_frame: 0.05
+      thumb_clear: true
+      hold_frames_after_appear: 24
+    call_screen_photo:
+      min_height_frame: 0.15
+  rationale: |
+    G2 finding 10 and G4 asked for the pin to be held long enough to read and for minimum
+    sizes on the battery, bolt and tick; the tick is the payoff of intent.earned_last_signal
+    and currently sits at a weak 1.3-1.6:1 contrast (G4 finding 4, unresolved in look
+    canon), so size, placement and hold are the camera's part of fixing it. The hold rule
+    for text is a standard reading-speed allowance (about three words a second after a
+    half-second to find the text). Rejected: framing the whole screen for every beat, which
+    makes a 2 mm number about 1.3 % of frame height, too small to read at a glance.
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - look.style.phone_ui
+  - look.color.accent_power_amber
+  - story.message
+  - story.setup_cues
+  - story.escalation
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: |
+    DEPENDENCY (look-director / M3 UI build): these frame sizes are achievable only if the
+    UI texture puts the invitation at a cap height of at least 2.5 mm and the battery digits
+    at least 2.2 mm on the 0.147 m phone model. The tick's low contrast is a look-canon
+    matter (G4 finding 4); the camera can only compensate with size and hold.
+- id: camera.inserts.heart
+  statement: |
+    The heart beat is a text insert of the compose field only: the status bar (and so the
+    red battery) is outside the frame while the red heart is on screen. The heart appears on
+    one press of the emoji-face key at the frame's lower edge; the emoji panel never enters
+    frame. Hold: heart appears, at least 12 frames; hover, at least 20 frames; deleted, and
+    the plain text held at least 12 frames. The 1 % to 2 % change is its own battery insert,
+    after the heart is gone.
+  value:
+    frame: compose_field_only
+    status_bar_in_frame: false
+    emoji_panel_in_frame: false
+    heart_source: single_press_emoji_face_key
+    holds_frames: {heart_visible: 12, hover: 20, plain_after_delete: 12}
+    battery_change_after: separate_insert
+  rationale: |
+    The heart was locked as battery red (look.color.ui_heart), so two reds would sit on the
+    same small screen; G4 finding 2 names that as muddying the one meter. The camera can
+    keep them in separate frames so the eye never has to sort signals, and so the red heart
+    reads as the one thing he is risking, then leaves. Rejected: one screen insert holding
+    heart and battery together, which is where the two reds would compete.
+  serves:
+  - intent.open_hopeful_ending
+  - intent.race_against_battery
+  depends_on:
+  - look.color.ui_heart
+  - look.color.rule.only_red
+  - story.setup_cues
+  applies_to:
+  - SC04
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.phone_lit.framing
+  statement: |
+    Rules for phone-lit faces (SC03 blackout, SC04, SC05 after the wake, SC06 before the
+    fade). The camera sits on the lit side: within 45 degrees of the direction the screen
+    faces. The phone, or its glowing edge, is in frame in the first shot of every phone-lit
+    setup so the light is seen to come from it. The screen is the brightest thing in the
+    head-and-hands area (L9). No other light source is framed within 20 % of frame width of
+    his face. In the SC06 fade the screen itself is in frame so the fade reads on the screen
+    even if the cel face switches in one frame.
+  value:
+    camera_within_deg_of_screen_direction: 45
+    source_in_frame_first_shot_of_setup: true
+    brightest_near_face: phone
+    other_practicals_min_distance_from_face_frame_width: 0.20
+    sc06_fade_screen_in_frame: true
+    applies: [SC03_blackout, SC04, SC05_after_wake, SC06_before_fade]
+  rationale: |
+    Keeping the lit side of the face toward the lens is what makes a single small source
+    read on a two-tone cel face; showing the source once per setup ties the glow to the
+    phone so the motif is understood, not just seen (look.style.motifs). The SC06 rule is
+    the camera's answer to G4 finding 5: the constant colour ramp may flip his face from lit
+    to shadow in one frame, so the audience is given the screen fading as the primary read.
+    Rejected: shooting the phone-lit face from the dark side for mood (rim-only faces lose
+    the expressions the tender section depends on).
+  serves:
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  - intent.open_hopeful_ending
+  depends_on:
+  - look.style.motifs
+  - look.style.composition
+  - look.lighting.sc03
+  - look.lighting.sc04
+  - look.lighting.sc06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.geography.screen_direction
+  statement: |
+    West is screen left, for the whole film, and west is where he is trying to get to: the
+    sun and the windscreen in the car, the shop down the pavement, the socket, the glovebox
+    and the crank at the kerb, the afterglow he looks up at, and Hana's window. His effort
+    and his look travel right to left. Lateral shots keep this; axis shots (looking straight
+    along the street, the aisle or the car's length) are neutral and may be used to bridge,
+    never to reverse it.
+  value:
+    west: screen_left
+    ren_effort_direction: right_to_left
+    lateral_camera_side:
+      street: south_pavement_side
+      car_interior: passenger_side
+      shop: east_of_aisle_or_back_wall_reverse
+      hana_room: south_of_her
+    axis_shots: neutral_bridges
+    reversals: false
+  rationale: |
+    One compass for every space means the audience never re-learns the geography in a
+    60 s film, and it lets the ending link the two characters by direction alone: he looks
+    up-left, her window is on the left. Right-to-left runs against the usual reading
+    direction, which fits a man the world keeps pushing back; at the end the direction
+    stays the same but the posture changes from pushing to resting. It also puts the camera
+    on the pavement side, where the kerb, the open door and the final image are. Rejected:
+    left-to-right "progress", which needs the camera on the road side with the car between
+    the lens and the kerb where the turn and the ending happen.
+  serves:
+  - intent.race_against_battery
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.setting
+  - world.locations.street
+  - world.sets.street
+  - world.rules.time_and_sun
+  - world.locations.hana_room
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.geography.sc01
+  statement: |
+    SC01 car. Line: the car's long axis through the driver's seat (his forward eyeline,
+    west). Lateral camera always on the passenger (kerb) side, so he faces screen left and
+    the glovebox is between the lens and him. The frontal through the windscreen and the
+    over-shoulder toward the windscreen are on-axis. The passenger door and window may be
+    hidden from the camera (a wild door) for 24 mm setups that need more distance than the
+    1.48 m cabin allows; the frontal through the windscreen keeps its glass and painted
+    highlights, away from his face.
+  value:
+    line: car_long_axis_through_driver_eyeline
+    lateral_side: passenger_kerb_side
+    ren_faces: screen_left
+    axis_setups: [frontal_through_windscreen, over_shoulder_forward]
+    wild_pieces_allowed: [passenger_door, passenger_window_glass]
+    wild_method: camera_clip_start_or_object_camera_visibility_off
+  rationale: |
+    The cabin is 1.48 m wide, so a 24 mm medium from the passenger seat is at most about
+    0.7 m from him (0.57 m of frame height). Hiding the passenger door gives up to 1.2 m and a
+    readable medium with the glovebox in frame, which the plant needs. The frontal through
+    the windscreen uses the sun as a frontal key, as the lighting bible describes. Rejected:
+    shooting from the driver's side (the lens would sit in the road, and he would face
+    screen right).
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - world.sets.ren_car
+  - world.locations.ren_car
+  - look.lighting.sc01
+  applies_to:
+  - SC01
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: ASSUMPTION that Blender 5.2 EEVEE supports per-object camera visibility; camera clip
+    start is the fallback and works in any version.
+- id: camera.geography.sc02
+  statement: |
+    SC02 street, 2 s. He leaves by the kerb-side passenger door (see
+    continuity.props.passenger_door) and runs west along the south pavement to the shop
+    door 12 m away. Line: his path along the pavement; lateral camera on the pavement or
+    garden side, so he runs right to left. The 12 m is covered by three elliptical cuts:
+    the exit (he leaves frame left), mid-run from behind on the axis into the sun, and the
+    shop door from the west on the axis as he ducks in (door bell). Screen time is not
+    real time; each cut skips distance.
+  value:
+    line: south_pavement_path_east_to_west
+    lateral_side: south
+    run_direction: right_to_left
+    cuts: 3
+    cut_plan:
+    - {content: passenger_door_exit, frames: [17, 20]}
+    - {content: mid_run_from_behind_axis_into_sun, frames: [13, 15]}
+    - {content: shop_door_duck_in_axis_from_west, frames: [14, 17]}
+    total_frames: 48
+    distance_m: 12
+    real_time_needed_s: [3, 4]
+  rationale: |
+    Getting out of a car, sprinting 12 m and ducking through a door takes 3-4 s in real
+    time; 2 s works only as elliptical cutting (G3 finding 6), which also gives the dash a
+    comic breathlessness. Three angles that each start mid-action read as speed rather than
+    as jumps. Rejected: one follow-pan in real time (would need 3-4 s from a 2 s scene) and
+    moving the shop closer (world canon, and 12 m keeps the shop readable behind him at the
+    kerb).
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  depends_on:
+  - world.locations.street
+  - world.sets.street
+  - world.sets.corner_shop
+  - look.lighting.sc02
+  applies_to:
+  - SC02
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.geography.sc03
+  statement: |
+    SC03 shop. Line: the west aisle axis, door (north) to the socket corner (south-west).
+    He kneels facing the back wall. Lateral shots from the east side of him show him facing
+    screen left toward the socket. The master is an on-axis high wide from above the door
+    looking down the aisle (35 mm, lens about 2.3 m, tilted down about 11 degrees), used for
+    his entry and again, unchanged, for the blackout. The reverse from the back wall toward
+    the door (the back wall may be wild) holds his phone-lit face with the faint door
+    rectangle behind him.
+  value:
+    line: west_aisle_axis_door_to_socket
+    ren_faces: screen_left_in_laterals
+    master: {lens_mm: 35, lens_z_m: 2.3, tilt_down_deg: 11, position: above_door_on_aisle_axis, reused_for: [entry, blackout]}
+    reverse: {from: back_wall, looking: north_to_door, wild_piece: back_wall_or_fridge}
+    ren_frame_height_in_master: about_0.28
+  rationale: |
+    Using the same high wide for the entry and the blackout makes the lights going out the
+    only change between two identical frames: the gag is the room, not a cut (and the
+    strongest high angle is spent on the biggest failure, camera.height.high). At 7.5 m on
+    35 mm, the kneeling figure is about 28 % of frame height, above the 15 % readability
+    limit. The reverse gives the lighting bible's hierarchy after the blackout: his face,
+    then the door rectangle, nothing else. Rejected: a close-up at the blackout moment,
+    which would repeat the car's close reaction beat for beat (G2 finding 2).
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - world.sets.corner_shop
+  - look.lighting.sc03
+  - look.style.composition
+  applies_to:
+  - SC03
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.geography.sc04_sc06
+  statement: |
+    SC04 and SC06 kerb. He sits on the pavement edge at the car's rear quarter (y about
+    -1.0), facing south, back to the car; the open passenger door and the glovebox are west
+    of him. Line: his eyeline to the glovebox through the open door. All face shots are from
+    the pavement side, so the glovebox, the crank and the afterglow are screen left and the
+    car is behind him. One westward bookend setup (35 mm, lens about 0.95 m, east of him on
+    the pavement, tilted up about 5 degrees) opens SC04 with him hunched at 1 % and closes
+    the film in SC06 with him leaning back: same frame, changed posture. It is the only
+    kerb setup that shows the dusk sky.
+  value:
+    ren_position_xy_m: [-0.1, -1.0]
+    ren_faces: south
+    line: ren_eyeline_to_glovebox_through_open_door
+    face_shot_side: pavement_south
+    screen_left: [glovebox, crank, afterglow, open_door]
+    bookend: {lens_mm: 35, lens_z_m: 0.95, position: east_of_ren_on_pavement, heading: west, tilt_up_deg: 5, used_in: [SC04_first_shot, SC06_final_image]}
+    sky_shown_only_in: bookend
+  rationale: |
+    Repeating one frame at the start of the tender section and at the end lets the audience
+    compare his body directly: the forward "?" at 1 % becomes the relaxed diagonal against
+    the car (characters.ren.silhouette, story.arc.ren) without any cut telling them so. The
+    westward view is the only kerb angle with open sky (houses on both sides block it
+    elsewhere), so the matched sky lives here; with the lens above his jacket, the jacket is
+    below the horizon and never against the sky. Rejected: a new, wider angle for the final
+    image, which would lose the before/after comparison and add a sky-led frame.
+  serves:
+  - intent.open_hopeful_ending
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.sets.street
+  - world.sets.ren_car
+  - characters.ren.silhouette
+  - story.ending
+  - look.lighting.sc04
+  - look.lighting.sc06
+  applies_to:
+  - SC04
+  - SC06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: The kerb spot is the ART_DIRECTION_BIBLE and CHARACTER_BIBLE recommendation, adopted
+    here.
+- id: camera.geography.sc05
+  statement: |
+    SC05 Hana's room. Her window (west) is screen left in every frame and always in frame
+    (L13). Designed for both desk layouts. Layout as locked (desk under the west window, she
+    faces west): the main angle is her left profile from the south, 50 mm at her eye level
+    (1.14 m), window ahead of her face on screen left, lamp near the lens. Layout if changed
+    (desk side-on on the south wall, she faces south): a three-quarter front from over the
+    desk, 50 mm, window behind her on screen left. Either way: two shots, a medium in which
+    the phone wakes and the headphones slide down, then a medium close-up for reading and
+    the small smile, held.
+  value:
+    window: screen_left_always_in_frame
+    layouts:
+      as_locked_desk_under_window:
+        main_angle: left_profile_from_south
+        lens_mm: 50
+        lens_z_m: 1.14
+        window: ahead_of_her_face
+        phone: far_side_until_picked_up
+      if_changed_desk_side_on_south_wall:
+        main_angle: three_quarter_front_over_desk
+        lens_mm: 50
+        lens_z_m: 1.14
+        window: behind_her_head
+        phone: near_window_side_foreground
+    shots: 2
+    shot_plan: [medium_phone_wakes_headphones_down, medium_close_reads_small_smile]
+    phone_photo_min_height_frame: 0.05
+  rationale: |
+    Both layouts keep west on screen left, so her window sits on the same side as the sky he
+    looks up at, and both keep the window in frame. The locked layout's profile matches the
+    SC06 bookend (both face screen left toward the same western sky), which carries the link
+    by direction and colour without cross-cutting skies (G3 finding 9); the side-on layout
+    gives a fuller view of her face and the stronger hair-against-sky separation (G4 Q2).
+    Rejected: a single 4 s shot, which leaves the smile too small to read on a proxy face
+    (CHARACTER_BIBLE staging risk).
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.sets.hana_room
+  - world.locations.hana_room
+  - look.lighting.sc05
+  - characters.hana.proportions
+  - characters.hana.expressions
+  applies_to:
+  - SC05
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: |
+    DEPENDENCY: G3 finding 1 / G4 Q2 (desk orientation) is still open; world.sets.hana_room is
+    LOCKED with desk.against window_wall. The camera plan works for either; the choice is the
+    human's and, if changed, the world-designer's change request.
+- id: camera.gags.no_repeat
+  statement: |
+    The car failure and the shop failure are shot differently so the second is not a
+    repeat. Car: close and inside, told through inserts; hope arrives in an insert (bolt),
+    loss arrives in an insert (bolt gone, 3 %), then a close held reaction. Shop: the room
+    tells it; hope is seen over his shoulder with the phone large in foreground (no insert),
+    then a mild low angle up at the ceiling panels as he warily checks them and nothing
+    happens (the delay), then his exhale, and only then the blackout in the high wide master;
+    the insert (2 %) comes after the room has gone dark, and the reaction is held on the
+    reverse, the longest comic hold of the film.
+  value:
+    car: {scale: close_inside, hope_shown_in: insert, loss_shown_in: insert, reaction: close_held, timing: immediate}
+    shop: {scale: wide_room, hope_shown_in: over_shoulder_phone_foreground, anticipation: low_angle_to_ceiling_panels_nothing_happens, loss_shown_in: high_wide_master, insert_after_loss: true, reaction: reverse_held_longest_comic_hold, timing: delayed}
+  rationale: |
+    G2 finding 2 and G3 finding 7 found the shop gag repeating the car's beat for beat. The
+    audience now expects the pattern, so the shop plays on the expectation: the camera looks
+    where he fears the failure will come from, nothing happens, and it arrives only after he
+    relaxes, all at once and room-sized. Different shot sizes, a reversed order of insert and
+    reaction, and a delay make it the same joke told bigger. Rejected: a different bolt
+    animation or sound only, which leaves the viewer watching the same sequence of shots.
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - tone.comedy_source
+  - look.lighting.sc03
+  - look.lighting.sc01
+  applies_to:
+  - SC01
+  - SC03
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: The "wary relief" reaction (G3 finding 7) is the animation-director's to time; the shot
+    order above gives it room.
+- id: camera.rhythm.scene_budget
+  statement: |
+    Frame budget per scene at 24 fps, film total 1440 frames (60 s). SC01 528, SC02 48,
+    SC03 240, SC04 434, SC05 108, SC06 82. This moves 22 frames (0.92 s) from the crank to
+    Hana's smile and the final image, each scene within 15 % of its SCENES.yaml estimate.
+  value:
+    fps: 24
+    total_frames: 1440
+    frames:
+      SC01: 528
+      SC02: 48
+      SC03: 240
+      SC04: 434
+      SC05: 108
+      SC06: 82
+    seconds:
+      SC01: 22.0
+      SC02: 2.0
+      SC03: 10.0
+      SC04: 18.08
+      SC05: 4.5
+      SC06: 3.42
+    delta_vs_scenes_yaml:
+      SC04: -0.048
+      SC05: 0.125
+      SC06: 0.139
+  rationale: |
+    G2 finding 1 found the smile (4 s) and the final image (3 s) too short for what they
+    carry, and the story structure already lets the crank beat give time back. Moving
+    under a second, inside each scene's 15 % tolerance, lets the smile be held and the final
+    image breathe without reopening the approved screenplay. Rejected: the full G2 proposal
+    (smile 5 s, final image 4-5 s), which would move SC05/SC06 more than 15 % from the
+    approved estimates and needs the screenwriter and a G2 revision.
+  serves:
+  - intent.open_hopeful_ending
+  - intent.comic_then_tender
+  depends_on:
+  - story.ending
+  - tone.ending_restraint
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: Open human question in the handoff (keep SCENES.yaml timings exactly, or accept this
+    redistribution).
+- id: camera.rhythm.pace
+  statement: |
+    Cutting pace. SC01 about 14 shots, average about 1.6 s, reactions held at least 1 s after
+    each gag. SC02 3 cuts of 13-20 frames. SC03 about 7 shots, average about 1.4 s, then the
+    longest comic hold (at least 2 s) on the reverse after the blackout. SC04 about 9 shots,
+    average about 2.0 s, turn and crank shots 2.5-3.5 s. SC05 2 shots of about 2 and 2.5 s.
+    SC06 one shot. After the turn no shot is shorter than 1.0 s except the battery insert.
+  value:
+    SC01: {shots_about: 14, asl_s: 1.6, min_hold_after_gag_s: 1.0}
+    SC02: {shots: 3, frames_each: [13, 20]}
+    SC03: {shots_about: 7, asl_s: 1.4, final_hold_min_s: 2.0}
+    SC04: {shots_about: 9, asl_s: 2.0, turn_and_crank_shot_s: [2.5, 3.5]}
+    SC05: {shots: 2, durations_s: [2.0, 2.5]}
+    SC06: {shots: 1}
+    tender_min_shot_s: 1.0
+    tender_min_exception: battery_insert
+    curve: accelerate_to_sc02_then_hold_at_blackout_then_slow_to_one_shot
+  rationale: |
+    The comedy speeds up toward the dash (about 1.6 s, then under a second) so the failures
+    feel like a chain closing in, and each gag keeps a held beat after it because held
+    reactions are where anime comedy lands (characters.ren.expressions). The blackout's long
+    hold is the hinge: the first time the film stops. After the turn the average shot is
+    about half again as long and ends in a single held shot, which is "quiet and slow" as a
+    cutting pattern (tone.the_turn). Rejected: an even pace throughout (the turn would have
+    no rhythm of its own) and fast cutting in the crank (it would read as urgency, not
+    effort).
+  serves:
+  - intent.comic_then_tender
+  - intent.earned_last_signal
+  - intent.anime_feel
+  depends_on:
+  - tone.the_turn
+  - tone.comedy_source
+  - characters.ren.expressions
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: camera.rhythm.transitions
+  statement: |
+    Hard cuts everywhere. The only fades are the screenplay's FADE IN at the head and FADE
+    OUT at the tail (18 frames, after the final image has held). SC03 to SC04 (about ten
+    minutes later) is a hard cut from the near-black shop to the dusk kerb. SC04 to SC05 is a
+    cut on light: from the sent tick and his release to her phone waking. SC05 to SC06 is a
+    cut on direction: her profile or look toward screen left to his westward bookend. No
+    dissolves, wipes, sky or wire cutaways between scenes.
+  value:
+    default: cut
+    fade_in: head
+    fade_out: {at: tail, frames: 18, after: final_image_hold}
+    sc03_to_sc04: hard_cut_black_to_dusk
+    sc04_to_sc05: cut_on_light
+    sc05_to_sc06: cut_on_direction
+    forbidden: [dissolve, wipe, sky_cutaway, wire_cutaway]
+  rationale: |
+    The near-black end of SC03 already works as a fade, so a hard cut to the dusk sky reads
+    as time passing without a device. Cutting on light and on direction joins Ren and Hana
+    through the motifs the look already built (the same phone glow, the same western sky)
+    instead of through a shared sky shot, which G3 finding 9 excludes. Rejected: a dissolve
+    across the time jump (softens the blackout gag's end) and a sky transition into her room
+    (the signature transition the originality guard names).
+  serves:
+  - intent.open_hopeful_ending
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.style.motifs
+  - look.style.originality_guards
+  - world.rules.time_and_sun
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1

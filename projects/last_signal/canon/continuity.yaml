@@ -1,2 +1,370 @@
 domain: continuity
-entries: []
+entries:
+- id: continuity.sc01.environment
+  statement: |
+    SC01: inside Ren's car, parked at the south kerb facing west; golden hour, sun about 6
+    degrees up straight down the street through the windscreen; clear. West (windscreen)
+    is screen left.
+  value:
+    time_of_day: golden hour
+    weather: clear
+    location: ren's car
+    screen_direction: west_screen_left_ren_faces_screen_left
+  rationale: Restates locked world canon for the shot checker; the screen direction is
+    camera.geography.screen_direction.
+  serves:
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.rules.time_and_sun
+  - world.rules.weather
+  - world.locations.ren_car
+  applies_to:
+  - SC01
+  tag: FACT
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: continuity.sc02.environment
+  statement: |
+    SC02: the street, south pavement from the car to the shop door (12 m west); golden hour,
+    same minute as SC01; clear; street lamps off, shop fascia sign lit. He runs right to left.
+  value:
+    time_of_day: golden hour
+    weather: clear
+    location: street
+    screen_direction: west_screen_left_runs_right_to_left
+    street_lamps: off
+    shop_sign: lit
+  rationale: Restates locked world canon (time_and_sun, power) for the shot checker.
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  depends_on:
+  - world.rules.time_and_sun
+  - world.rules.weather
+  - world.rules.power
+  - world.locations.street
+  applies_to:
+  - SC02
+  tag: FACT
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: continuity.sc03.environment
+  statement: |
+    SC03: inside the corner shop; golden hour outside (seen only as the warm door
+    rectangle); clear. All shop lights on until the clunk, then all off in one frame and
+    never restored.
+  value:
+    time_of_day: golden hour
+    weather: clear
+    location: corner shop
+    screen_direction: ren_faces_screen_left_toward_socket_in_laterals
+    shop_lights: on_until_blackout_then_off_for_rest_of_film
+  rationale: Restates locked world and look canon for the shot checker.
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - world.rules.time_and_sun
+  - world.rules.power
+  - world.locations.corner_shop
+  - look.lighting.sc03
+  applies_to:
+  - SC03
+  tag: FACT
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: continuity.sc04.environment
+  statement: |
+    SC04: the kerb beside Ren's car, about ten minutes after SC03; dusk (civil twilight,
+    sun set); clear; street lamps on (switched on off screen), house windows lit, shop dark.
+    West (glovebox, crank, afterglow) is screen left.
+  value:
+    time_of_day: dusk
+    weather: clear
+    location: kerb beside ren's car
+    screen_direction: west_screen_left_ren_looks_screen_left
+    street_lamps: on
+    house_windows: lit
+    shop: dark
+  rationale: Restates locked world canon (time_and_sun, power) for the shot checker.
+  serves:
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.rules.time_and_sun
+  - world.rules.weather
+  - world.rules.power
+  - world.sets.street
+  applies_to:
+  - SC04
+  tag: FACT
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: continuity.sc05.environment
+  statement: |
+    SC05: Hana's room, the same minute as the send; dusk (headed EVENING in SCENES.yaml, so
+    shot environments write "evening (dusk)"); clear; desk lamp on; the same dusk sky in the
+    west window, which is screen left.
+  value:
+    time_of_day: dusk
+    weather: clear
+    location: hana's room
+    screen_direction: window_west_screen_left
+    desk_lamp: on
+    sky: same_dusk_asset_as_sc04_sc06
+  rationale: Restates locked world canon; the "evening (dusk)" wording follows the
+    world.rules.time_and_sun notes so both the canon and SCENES.yaml checks pass.
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.rules.time_and_sun
+  - world.rules.weather
+  - world.locations.hana_room
+  - look.color.sky.dusk
+  applies_to:
+  - SC05
+  tag: FACT
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: continuity.sc06.environment
+  statement: |
+    SC06: the kerb beside Ren's car, moments after SC05; the same dusk; clear; lamps and
+    windows unchanged from SC04.
+  value:
+    time_of_day: dusk
+    weather: clear
+    location: kerb beside ren's car
+    screen_direction: west_screen_left_ren_looks_up_screen_left
+    street_lamps: on
+    house_windows: lit
+    shop: dark
+  rationale: Restates locked world canon for the shot checker.
+  serves:
+  - intent.open_hopeful_ending
+  depends_on:
+  - world.rules.time_and_sun
+  - world.rules.weather
+  - world.rules.power
+  - world.sets.street
+  applies_to:
+  - SC06
+  tag: FACT
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: continuity.battery
+  statement: |
+    The battery number on screen, by beat: 5 % at the map and call (charcoal); 4 % and red
+    from the moment he types; bolt beside 4 % while the car runs; 3 % when the car dies;
+    bolt beside 3 % in the shop; 2 % at the blackout; 1 % blinking (icon only) at the kerb,
+    with the screen stuttering when he tries to type; 2 % after the crank; screen fades to
+    off in SC06. The number never changes off screen except 2 % to 1 % between SC03 and
+    SC04.
+  value:
+    SC01: [5, 4, 3]
+    SC01_red_from: 4
+    SC01_bolt_on: 4
+    SC02: 3
+    SC03: [3, 2]
+    SC03_bolt_on: 3
+    SC04: [1, 2]
+    SC04_blink_at: 1
+    SC04_stutter_before_crank: true
+    SC05: none_on_screen
+    SC06: [2, 0]
+    SC06_end_state: screen_off
+    off_screen_change: SC03_to_SC04_2_to_1
+  rationale: |
+    Tracks the locked meter (story.escalation, look.style.phone_ui) shot by shot. The
+    stutter at 1 % before the crank answers "why not just send at 1 %?" (G2 finding 4,
+    G3 finding 11) by showing that the phone cannot work at 1 % before the crank starts.
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - story.escalation
+  - look.style.phone_ui
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: The stutter is the existing look.style.phone_ui flicker at 1 % (dips to 70 % for 2-3
+    frames) timed to his typing attempt; no new UI behaviour is needed.
+- id: continuity.props.passenger_door
+  statement: |
+    The kerb-side passenger door is closed through SC01. In SC02 he scrambles across the
+    passenger seat and out of that door onto the pavement (the shop is on that side) and
+    leaves it open at 60 degrees. It stays open, untouched, through SC04 and SC06. The
+    driver's door stays closed all film.
+  value:
+    SC01: closed
+    SC02: flung_open_by_ren_exiting_left_open
+    SC04: open_60deg
+    SC06: open_60deg
+    driver_door: closed_all_film
+  rationale: |
+    The approved screenplay has "the passenger door stands open" at the kerb, and nothing
+    else opens it; leaving through it in his rush closes that gap without touching any
+    approved text (G3 Q5 option a, QA's recommendation). The scramble is a quick comic
+    move, not a pratfall (tone.comedy_source), and the open door becomes the frame within a
+    frame for his look to the glovebox. Rejected: the driver's door plus opening the
+    passenger door himself in SC04 (G3 Q5 option b), which contradicts the approved SC04
+    line and spends a second of the turn.
+  serves:
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  depends_on:
+  - world.locations.ren_car
+  - world.sets.ren_car
+  - tone.comedy_source
+  applies_to:
+  - SC01
+  - SC02
+  - SC04
+  - SC06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: |
+    The ART_DIRECTION_BIBLE (APPROVED at G3) still says he runs out of the driver's door. This
+    entry needs the human's confirmation; if confirmed, that line is the world-designer's to
+    revise (it would drift G3). Open human question in the handoff.
+- id: continuity.props.glovebox_and_crank
+  statement: |
+    SC01: glovebox closed; he drops the lid for the cable, the crank falls onto his lap, he
+    shoves it back, takes the cable and snaps the lid shut. The crank stays folded inside
+    the closed glovebox until SC04, where he opens the lid, takes it out in both hands and
+    sits back on the kerb; he plugs in, unfolds the arm and cranks with his right hand. After
+    the send he lets go: the arm stops, the pip dies within 6 frames; the crank rests in his
+    lap for SC06, arm out, pip off. Glovebox lid left down in SC04 and SC06.
+  value:
+    SC01: {glovebox: closed_open_closed, crank: lap_then_back_in_glovebox_folded}
+    SC04: {glovebox: opened_left_down, crank: both_hands_then_right_hand_cranking, arm: unfolded, pip: on_while_turning}
+    SC04_end: {crank: in_lap, arm: stopped, pip: off_within_6_frames}
+    SC06: {glovebox: lid_down, crank: in_lap_arm_out_pip_off}
+  rationale: Keeps the plant and payoff (story.crank_plant) consistent across the two spaces
+    and the pip behaviour (look.lighting.power_indicators) consistent across cuts.
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - story.crank_plant
+  - world.props.crank_charger
+  - look.lighting.power_indicators
+  - characters.ren.movement
+  applies_to:
+  - SC01
+  - SC04
+  - SC06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: continuity.props.cable
+  statement: |
+    One cable, always plugged into the phone. SC01: from the glovebox to the car's USB
+    adapter. SC02: he pulls it out of the adapter as he goes; it loops in his left (phone)
+    hand while he runs. SC03: into the shop socket behind the display stand; after the
+    blackout he stays plugged in (still). SC04: from the phone to the crank's port, a short
+    loop over his knee. SC06: still connecting phone and crank. In wides most of its length
+    stays out of frame or behind his hands; it is posed per shot, never simulated.
+  value:
+    ends: [phone_ren, source]
+    SC01: car_usb_adapter
+    SC02: looped_in_left_hand
+    SC03: shop_socket_stays_plugged_after_blackout
+    SC04: crank_charger_port_loop_over_knee
+    SC06: crank_charger_port
+    framing: short_visible_length_posed_per_shot
+  rationale: Implements world.rules.one_port's single-cable rhyme and the character bible's
+    recommendation (loop in the phone hand); keeping most of its length out of wides is the
+    art direction's cable flag (no cable simulation in the MVP).
+  serves:
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  depends_on:
+  - world.rules.one_port
+  - world.props.charging_cable
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+  notes: How he gets the source end out of the shop socket before walking back happens off
+    screen in the ten-minute gap.
+- id: continuity.props.phone_ren
+  statement: |
+    Ren's phone is in his left hand in every Ren scene (both hands while typing in SC01).
+    Screen: on throughout, with one 3-frame dip when charging is lost (SC01, SC03); glow
+    visible on his face from the SC03 blackout on; flickering at 1 % until the first crank
+    turn, steady after; fades to off over 24 frames at the start of SC06, then rests dark on
+    his chest under his flat hand, screen facing out.
+  value:
+    hand: left
+    SC01: {grip: two_hands_typing, dip: at_car_death}
+    SC03: {dip: at_blackout, glow_on_face: from_blackout}
+    SC04: {state: flicker_until_first_crank_then_steady}
+    SC06: {state: fade_24f_then_off, rest: chest_under_flat_hand_screen_out}
+  rationale: Keeps the glow motif's states (look.style.motifs) in order across cuts; the
+    screen facing out in SC06 lets the fade be seen on the screen itself
+    (camera.phone_lit.framing).
+  serves:
+  - intent.race_against_battery
+  - intent.open_hopeful_ending
+  depends_on:
+  - look.style.phone_ui
+  - look.style.motifs
+  - characters.ren.movement
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1
+- id: continuity.hana.headphones
+  statement: |
+    SC05 opens with the headphones on her head; she slides them down with both hands after
+    the phone wakes; they rest around her neck for the rest of the scene. Her phone is face
+    up on the desk to the right of the sketchbook until she picks it up with her right hand.
+  value:
+    SC05_start: on_head
+    SC05_after_wake: around_neck
+    phone_start: face_up_right_of_sketchbook
+    phone_pickup_hand: right
+  rationale: Tracks the only state change in her scene (characters.hana.wardrobe.headphones,
+    world.sets.hana_room) so the two SC05 shots cut together.
+  serves:
+  - intent.open_hopeful_ending
+  depends_on:
+  - characters.hana.wardrobe.headphones
+  - characters.hana.movement
+  - world.sets.hana_room
+  applies_to:
+  - SC05
+  tag: DECISION
+  status: PROPOSED
+  source: agent:cinematographer
+  version: 1

@@ -5,12 +5,12 @@
 ```yaml
 project: last_signal
 sandbox: false
-current_phase: LOOK
+current_phase: STORYBOARD
 status: in_progress
-ledger: 17 records, head 94f05db1f1a6
+ledger: 19 records, head 8810573e9d59
 ```
 
-**Next:** Gate approved: `fm advance`
+**Next:** Produce STORYBOARD deliverables (07_storyboard/STORYBOARD.md, 07_storyboard/SHOT_LIST.md, qa/reviews/G5_REVIEW.md), then `fm submit` for G5
 
 ## Gates
 
@@ -27,7 +27,7 @@ ledger: 17 records, head 94f05db1f1a6
 
 ## Canon
 
-LOCKED: 119
+LOCKED: 119, PROPOSED: 42
 
 ## Artifacts
 
@@ -37,6 +37,7 @@ LOCKED: 119
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
 | character_bible | WORLD_CHARACTERS | APPROVED | 44a136f55dc3 |
+| cinematography_bible | CINEMATOGRAPHY | PROPOSED | c1fc8e6e554b |
 | color_bible | LOOK | APPROVED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
