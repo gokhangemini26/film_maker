@@ -1,0 +1,268 @@
+shot_id: SC06_SH010
+scene_id: SC06
+sequence_id: SQ02
+status: PROPOSED
+duration_s: 3.4167
+serves:
+- intent.open_hopeful_ending
+- intent.earned_last_signal
+- intent.soft_but_cinematic
+- intent.anime_feel
+creative_intent:
+  narrative_purpose: His screen fades to black. He does not reach for it; he leans back against the car,
+    the dark phone on his chest, and looks up at the dusk sky. Fade out.
+  emotional_purpose: 'Calm, open hope: it is out of his hands, and that is fine.'
+  visual_purpose: 'The SC04 bookend frame again: the screen visibly fading in his hand, then his body
+    changing from the hunched ''?'' to a relaxed diagonal against the car, face up in the afterglow.'
+  audience_effect: The viewer compares this frame with the tender section's first and feels the change
+    in him; the film ends open.
+camera:
+  lens_mm: 35
+  height_m: 0.95
+  movement: static
+  start_position:
+  - -0.8
+  - -4.0
+  - 0.95
+  end_position: null
+  look_at: west_along_pavement
+  dof:
+    enabled: false
+composition:
+  framing: medium_wide
+  aspect_ratio: 1.778
+  subject_position: right_third_facing_left
+  notes: 'Identical to SC04_SH010 (the bookend). Frames 0-24: screen fades (the phone at his left knee,
+    screen turned toward the lens so the fade reads on the screen, camera.phone_lit.framing SC06). Frames
+    about 20-46: leans back against the car, phone to his chest under a flat hand. About 40-56: looks
+    up. Hold. Frames 64-82: FADE OUT 18 frames. Lens above the jacket top (leaning back lowers it).'
+characters:
+- id: ren
+  position:
+  - -0.1
+  - -1.0
+  - 0.12
+  facing: south (screen left), face tilting up
+  action: lets the screen fade without reaching for it; leans back against the car; lays the dark phone
+    on his chest under his flat hand; looks up
+environment:
+  location: street, kerb beside ren's car
+  weather: clear
+  time_of_day: dusk
+lighting:
+  ref: look.lighting.sc06
+  ambient:
+    source: dusk sky
+    temperature_k: 10000
+  phone: fade from full to off over 24 frames, ease-out
+  key_after_fade: afterglow from the west on his upturned face and the tuft
+  contrast: '2:1'
+  other_light_changes: none
+color:
+  dominant: look.color.scene.sc06
+  sky: look.color.sky.dusk
+  accent: null
+animation:
+  timing:
+    fps: 24
+    frames: 82
+    index: 0-based; f0 is the first frame, t = f / 24
+  characters:
+    ren:
+      locomotion:
+        type: none
+        note: seated on the kerb, back to the car
+      keys:
+      - f: 0
+        t: 0.0
+        pose: 'sitting as SC04_SH090 ended but eyes open: phone at his left knee, screen turned toward
+          the lens; crank in his lap, arm out, right hand resting on it; eyes on the phone'
+      - f: 0
+        t: 0.0
+        pose: 'watches the screen fade (f0-24) without reaching for it: completely still'
+      - f: 20
+        t: 0.83
+        pose: 'lean back begins: spine loosens and reclines against the car''s rear quarter, slow ease-in-out
+          (f20-46); knees stay up but open about 10 deg'
+      - f: 24
+        t: 1.0
+        pose: left hand carries the dark phone to his chest (f24-40)
+      - f: 40
+        t: 1.67
+        pose: phone laid flat on the oat centre strip, screen facing out; hand lies flat over it and settles
+          (f40-46)
+      - f: 40
+        t: 1.67
+        pose: eyes lift first (f40-43), then the head tips up toward the sky, up and to screen left (ease-in-out,
+          f42-56)
+      - f: 50
+        t: 2.08
+        pose: 'final look up arrives: eyelids low, mouth soft, the faintest ease at the corners (f50-60)'
+      - f: 56
+        t: 2.33
+        pose: 'hold: one slow breath (in f56-68, out f68-81), shoulders rise and fall 0.5 cm; nothing
+          else moves'
+      - f: 64
+        t: 2.67
+        pose: FADE OUT f64-81 (18 frames, post) over the held pose
+      face: final_look_up (eyelids low, mouth soft, faintest ease at the corners); short of a smile; no
+        graphic symbols
+      secondary:
+      - tuft catches the afterglow rim as the head tips up (from about f50, lighting)
+      - jacket fronts fall open as he leans back (skinning only)
+      - cable from the phone to the crank follows the hand from knee to chest on a hooked curve (no simulation)
+      eyeline: the fading screen f0-39, then up and to screen left (west, the afterglow) from f40 to the
+        end
+  props:
+    phone_ren: screen fades 100 % -> off over f0-24, ease-out (look.lighting.sc06); dark from f24; on
+      his chest under the flat left hand from f40, screen out
+    crank_charger: in his lap, arm out, pip off, still
+    passenger_door: open 60 deg, still
+  camera:
+    easing: none
+    notes: locked off, identical to SC04_SH010; the lens stays above the jacket top as he leans back
+  risks_m3:
+  - the cel face may switch from lit to shadow in one frame during the screen fade (G4 finding 5); the
+    fade is read on the screen itself
+  - cable length from the lap to the chest (about 0.4 m of the 1 m) is fine; its posed curve must be keyed
+    with the hand
+render: {}
+assets:
+- world.sets.street
+- world.sets.ren_car
+- world.props.phone_ren
+- world.props.crank_charger
+- world.props.charging_cable
+- world.sets.corner_shop
+rationale:
+  camera: 'The 35 mm bookend at 0.95 m, unchanged from SC04_SH010: same frame, changed body (camera.geography.sc04_sc06).
+    Rejected: a new wider angle or a crane to the sky (sky-led, look.style.originality_guards; camera.movement.forbidden).'
+  composition: 'Medium-wide release after the film''s closest frames (camera.framing.shot_size_arc); the
+    space at screen left toward the afterglow is now where he looks, not where he strains. Sky under two
+    thirds and behind him. Rejected: ending on a close-up of his face (closes the frame as the story opens).'
+  lighting: The phone fades gently (24 frames, ease-out); afterwards only the warm afterglow finds his
+    upturned face (look.lighting.sc06). No lamp or window changes. Profile exemption from the 45 deg rule;
+    the fade is read on the screen itself.
+  movement: 'Static: after the send the camera never moves; the stillness is ''it''s out of his hands
+    now'' (story.ending).'
+  color: Dusk sky and afterglow only; the phone's warm white leaves the palette, and the warmth that remains
+    is the sky's (look.color.scene.sc06).
+  blocking: The relaxed diagonal against the car (characters.ren.silhouette), crank in his lap arm out,
+    pip off (continuity.props.glovebox_and_crank SC06); dark phone on his chest, screen out (continuity.props.phone_ren
+    SC06).
+  animation: 'It is out of his hands, and the body says so in order. He watches the screen die and does
+    not reach for it, then leans back, lays the dark phone on his chest under a flat hand, and only then
+    looks up to the west. Each move starts before the last ends and eases in and out with no overshoot,
+    so the three actions read as one long exhale in the same frame that opened SC04 hunched (characters.ren.movement
+    after_send, camera.geography.sc04_sc06). The look up stops short of a smile: the answer is hers, not
+    his (tone.ending_restraint). The last 26 frames hold with a single breath under the fade out, so the
+    ending is calm and open, not frozen. Rejected: a glance back at the phone (worry, tipping hope into
+    bittersweet) and a stretch or a sigh (a comic release after the turn).'
+style_break: null
+continuity_refs:
+- continuity.sc06.environment
+- continuity.props.phone_ren
+- continuity.props.glovebox_and_crank
+- continuity.props.passenger_door
+- continuity.props.cable
+- continuity.battery
+derived_from:
+- ref: artifact:shot_list
+  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+- ref: artifact:cinematography_bible
+  hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
+- ref: artifact:screenplay
+  hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
+- ref: artifact:scenes
+  hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
+- ref: canon:intent.open_hopeful_ending
+  hash: sha256:d00fb87fa639a0f256795fd7d6646100e1b6515fb07a70d641db163777d047fc
+- ref: canon:intent.earned_last_signal
+  hash: sha256:9bfa4a6653ffe02fa47dc7e8c03e506b5cc69fdbf0d60fc7c8833b279f12d802
+- ref: canon:intent.soft_but_cinematic
+  hash: sha256:35eb1dec38d475cfd9f63f627450051df79b9102dd7ce598913762dc050e8e7a
+- ref: canon:intent.anime_feel
+  hash: sha256:3206d035843005dca7956fdf1cd27273af35423e8f5eee72077d947ab905171c
+- ref: canon:characters.ren.identity
+  hash: sha256:ece7a44a3e5d391d5fa0931cbfca8d088b4845069ce11c8987d6943db0cf299f
+- ref: canon:characters.ren.silhouette
+  hash: sha256:c0fa4bdf2d56ea008626b1a88ecc228bf8a3933472e76e02cb553c05274edcce
+- ref: canon:characters.ren.proportions
+  hash: sha256:02821b5246c17397347d94f2c9048e1a2a065b353cfde019c0cff0bb4b5229ca
+- ref: canon:characters.ren.face
+  hash: sha256:d63dc6a6bbfd4e2727ffacbab7f2bee8865a5c2ee0adce14c658f8b82489657d
+- ref: canon:characters.ren.expressions
+  hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+- ref: canon:characters.ren.wardrobe.jacket
+  hash: sha256:ed689e3256da875967607b2fd1622201fdac8b4113f5e57f73d68e8c77810eef
+- ref: canon:characters.ren.wardrobe.outfit
+  hash: sha256:ac1eeaf0825bc764899e2ddd2a6c519a08b58a042d35956b6c7347052e63a5e4
+- ref: canon:characters.ren.movement
+  hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+- ref: canon:characters.ren.representation
+  hash: sha256:237e8bf8c747568c8ef1084848c202746c7a8052b893c641e80c79abde90f150
+- ref: canon:continuity.sc06.environment
+  hash: sha256:dfa94a545863f3bcb3a7d9ab53e2ba6f41d04f8f54626d1703cd164d60d42e1a
+- ref: canon:continuity.props.phone_ren
+  hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+- ref: canon:continuity.props.glovebox_and_crank
+  hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+- ref: canon:continuity.props.passenger_door
+  hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+- ref: canon:continuity.props.cable
+  hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+- ref: canon:continuity.battery
+  hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+- ref: canon:camera.framing.jacket_off_sky
+  hash: sha256:a1b44051ca76f0e7d7a0eb179647edf7e77901f22cefde1c098253a122b0963d
+- ref: canon:camera.geography.sc04_sc06
+  hash: sha256:f3523dd5f594b8501d1b6232af934e15492d4a4751b1327aac4a2dae17dbf115
+- ref: canon:look.style.sky
+  hash: sha256:b8be91e245be13f6f11c3c45c1f81e09fc14f47d7e6c889e442db9db6a6d4222
+- ref: canon:look.style.phone_ui
+  hash: sha256:5b1bcd7579ec10d43bbfefbd045d981b00248cbbc4ca45550862e8c0df97c0e6
+- ref: canon:look.color.accent_battery_red
+  hash: sha256:d2fd886fad9c10a7ce4385766a0a0d2489cb6f63e55ec6fa35efb1a2b53ccf59
+- ref: canon:look.color.ui
+  hash: sha256:49235e9a19e9b700bba3d04920fa7fde0c5d289497156fc41c09afd59b27d540
+- ref: canon:look.color.sky.dusk
+  hash: sha256:66684732cc0d45ef02f50580ca41ca19f01ed21c5240703849f2044841db228d
+- ref: canon:look.color.street
+  hash: sha256:652d1553733dc781d82ed598810e57d8fb8cc03a71f8d2b49ce32b08e9e45187
+- ref: canon:look.color.shop
+  hash: sha256:19582f003960e2024bea81f3fcf362461b87300331f83b13bf5d9b5c52f0f028
+- ref: canon:look.color.scene.sc06
+  hash: sha256:fc82371740c32b8306e12778b8389f7c265427f4bc4679b402724bc86798affb
+- ref: canon:look.exposure.scene_keys
+  hash: sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4
+- ref: canon:look.lighting.sc06
+  hash: sha256:ba5eb42513d8c3407c6ec6d390ac59bed8a91647085321471a6a83c91b975886
+- ref: canon:world.rules.weather
+  hash: sha256:c70bcf2a9d9cd7fe8b52cd5f776e34560f22966cd4302637ccc527c22c54de66
+- ref: canon:world.rules.time_and_sun
+  hash: sha256:c4c98157eca0e16d776700681100256bb25eb79bb16e3807bfa0f4aa6ae47899
+- ref: canon:world.rules.power
+  hash: sha256:c55ced58e01c09a2eb6cd4897caac2571d2eaae59bbffe362b6fea76d7986c4d
+- ref: canon:world.rules.nobody_else
+  hash: sha256:bd037db7dbe914e4de28689d0158ccfa9abecd229a2aadf8d569138988cf93f3
+- ref: canon:world.locations.street
+  hash: sha256:e09ba271cd970fdd3c33f388e6992e0c63d5c98b2ff8e42b94428d4d4628b3db
+- ref: canon:world.locations.ren_car
+  hash: sha256:e2ea8c58a8e1521ad7bcbe895601ed58797871db836afc4de4e6ebfb6b0d4e26
+- ref: canon:world.locations.corner_shop
+  hash: sha256:921371c19d6f67f5749477530d1e5851498ad8785fd1c76166ce3c80f2b6cba6
+- ref: canon:world.sets.street
+  hash: sha256:f512f2320f0fdb1de518a7e82ed173a6a4f51a31f62540e2f3e4d2c4149180f1
+- ref: canon:world.sets.ren_car
+  hash: sha256:238ade8c11d56ccb22e595cd9e42829e593e23808c6d83fbff3d5e00f541cb99
+- ref: canon:world.sets.corner_shop
+  hash: sha256:ec237fef5176be584b10788bc38d48cf14cd937c1e42b64cb332319ef4e59f26
+- ref: canon:world.props.phone_ren
+  hash: sha256:307dcf5af82826c64a95436d6dc4dbe3d6491992f4e8374e97abede7d6ac07bf
+- ref: canon:world.props.charging_cable
+  hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
+- ref: canon:story.arc.ren
+  hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
+- ref: canon:world.props.crank_charger
+  hash: sha256:6831cc87e82e108ae32e6d7bc1757f27563d8d23a1f7278b97e810b439bb259d
+stamped_content_hash: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd

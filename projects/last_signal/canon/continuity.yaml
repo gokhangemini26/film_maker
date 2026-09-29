@@ -164,9 +164,10 @@ entries:
     The battery number on screen, by beat: 5 % at the map and call (charcoal); 4 % and red
     from the moment he types; bolt beside 4 % while the car runs; 3 % when the car dies;
     bolt beside 3 % in the shop; 2 % at the blackout; 1 % blinking (icon only) at the kerb,
-    with the screen stuttering when he tries to type; 2 % after the crank; screen fades to
-    off in SC06. The number never changes off screen except 2 % to 1 % between SC03 and
-    SC04.
+    with the screen stuttering when he tries to type; the bolt beside the number while the
+    crank turns (the crank is a live source only while turning, look.lighting.power_indicators);
+    2 % after the crank; screen fades to off in SC06. The number never changes off screen
+    except 2 % to 1 % between SC03 and SC04.
   value:
     SC01: [5, 4, 3]
     SC01_red_from: 4
@@ -177,6 +178,7 @@ entries:
     SC04: [1, 2]
     SC04_blink_at: 1
     SC04_stutter_before_crank: true
+    SC04_bolt_on: while_cranking
     SC05: none_on_screen
     SC06: [2, 0]
     SC06_end_state: screen_off
@@ -191,6 +193,7 @@ entries:
   depends_on:
   - story.escalation
   - look.style.phone_ui
+  - look.lighting.power_indicators
   applies_to:
   - SC01
   - SC02

@@ -1,0 +1,257 @@
+shot_id: SC04_SH060
+scene_id: SC04
+sequence_id: SQ02
+status: PROPOSED
+duration_s: 2.8333
+serves:
+- intent.race_against_battery
+- intent.open_hopeful_ending
+- intent.earned_last_signal
+creative_intent:
+  narrative_purpose: With his thumb he finishes the invitation, 'Are you free tonight? Dinner at 8? My
+    treat.', adds a heart, looks at it, hovers, and deletes it.
+  emotional_purpose: 'The most tender beat: what he feels, and his choice to save it for dinner.'
+  visual_purpose: The compose field alone, the full invitation at 3.5 % cap height or more, a red heart
+    appearing at its end from one press of the emoji-face key at the frame's lower edge, the thumb hovering,
+    then the heart gone.
+  audience_effect: The viewer reads the whole invitation and understands, through the deleted heart, what
+    he means to say at dinner.
+camera:
+  lens_mm: 85
+  height_m: 0.62
+  movement: static
+  start_position:
+  - -0.35
+  - -1.0
+  - 0.62
+  end_position: null
+  look_at: phone_ren
+  dof:
+    enabled: true
+    f_stop: 5.6
+    focus_target: phone_ren_screen_plane
+composition:
+  framing: insert
+  aspect_ratio: 1.778
+  subject_position: upper_half_of_frame
+  notes: 'Text insert of the compose field only (camera.inserts.heart): status bar and red battery out
+    of frame; emoji-face key at the lower edge; the emoji panel never framed. Timing: typing 14 f, pause
+    6, press 2, heart looked at 12, hover 20, delete 2, plain text 12. After the last word 54 frames (minimum
+    0.5 s + 5 x 0.3 s = 48 frames).'
+characters:
+- id: ren
+  position:
+  - -0.1
+  - -1.0
+  - 0.12
+  facing: the phone
+  action: types with his left thumb while the right hand keeps cranking out of frame; one press adds the
+    heart; hover; backspace
+environment:
+  location: street, kerb beside ren's car
+  weather: clear
+  time_of_day: dusk
+lighting:
+  ref: look.lighting.sc04
+  key: phone screen emission, steady
+color:
+  dominant: look.color.ui
+  accent: look.color.ui_heart
+animation:
+  timing:
+    fps: 24
+    frames: 68
+    index: 0-based; f0 is the first frame, t = f / 24
+  characters:
+    ren:
+      locomotion:
+        type: none
+      keys:
+      - f: 0
+        t: 0.0
+        pose: left thumb on the keys; 'Are you free tonight? Dinner at 8?' already in the field (the last
+          two words glided in SC04_SH050 f56-79)
+      - f: 0
+        t: 0.0
+        pose: slow glide for 'My' (f0-5), lifts on f6
+      - f: 7
+        t: 0.29
+        pose: slow glide for 'treat' (f7-12) and a tap on '.' at f13
+      - f: 14
+        t: 0.58
+        pose: thumb lifts and hovers above the keys, still (the pause, f14-19)
+      - f: 20
+        t: 0.83
+        pose: one press on the emoji-face key at the lower edge (f20-21)
+      - f: 22
+        t: 0.92
+        pose: 'thumb lifts back 5 mm and stays still: he looks at the heart (f22-33)'
+      - f: 34
+        t: 1.42
+        pose: thumb drifts slowly to the backspace key (ease-in-out, f34-40)
+      - f: 40
+        t: 1.67
+        pose: hovers just above backspace, completely still (f40-53)
+      - f: 54
+        t: 2.25
+        pose: presses backspace once (f54-55)
+      - f: 56
+        t: 2.33
+        pose: thumb lifts and leaves downward, below the frame by f62; plain text alone to the cut
+      secondary: []
+      eyeline: off frame; implied on the heart
+  ui:
+    text: '''My'' appears on f6, ''treat.'' on f13 (last word); held f14-67 (54 frames after the last
+      word, minimum 48)'
+    keys: the glided keys darken briefly along the thumb path; emoji-face key darkens f20-21; backspace
+      darkens f54-55
+    heart: red heart appears on f21, visible f21-54 (looked at 12 f, hover 20 f); gone on f55
+    plain_text_after_delete: f55-67 (13 frames, minimum 12)
+    frame_contents: compose field only; status bar and emoji panel never in frame (camera.inserts.heart)
+  props:
+    phone_ren: locked to the frame for legibility; the crank's rhythm is heard, not seen
+  camera:
+    easing: none
+    notes: locked off (no move in inserts)
+  sound_sync: ratchet clicks carry on at the handle tops, f0, f24 and f48 (phase from SC04_SH050)
+  notes: 'ASSUMPTION: the words ''Dinner at 8?'' are glided in SC04_SH050 so that only ''My treat.'' is
+    typed inside the 14 typing frames here; the shot''s ''finishes the invitation'' holds, and the legibility
+    count (5 new words for the viewer) is unchanged'
+render: {}
+assets:
+- world.props.phone_ren
+- ui.compose_field
+- ui.keyboard_blank
+rationale:
+  camera: '85 mm text insert, the closest frame of the film (camera.framing.shot_size_arc closest_frames).
+    Rejected: a cutaway to his face during the hover (the hesitation reads more exactly in the thumb,
+    and the face shot would split the heart''s holds).'
+  composition: Compose field only, so the battery-red number and the heart-red never share a frame (camera.inserts.heart,
+    G4 finding 2); the heart lands at the end of the line where the eye already is.
+  lighting: 'Steady screen: the crank is working (no flicker from here on).'
+  movement: Static (no move in inserts).
+  color: The red heart (look.color.ui_heart) is the only red in this frame; after the delete the frame
+    is ink on pale blue.
+  blocking: Thumb types, lifts, presses the emoji-face key at the lower edge once, hovers over backspace,
+    presses it; then rests below the frame.
+  animation: 'The most tender beat is carried by one thumb because his face is not in the shot: the canon''s
+    hesitation at the heart becomes a thumb that stops and looks (12 frames), drifts slowly to delete
+    and hovers, perfectly still, for 14 frames before it presses. Typing is a slow glide per word rather
+    than taps: an unhurried thumb (characters.ren.movement) that still fits the 14 typing frames, and
+    the opposite of the two-thumb burst in SC01. The thumb stays out of the text line and leaves downward,
+    so the plain invitation holds alone at the end. Rejected: the thumb trembling on the hover (melodrama,
+    tone.anti_goals) and deleting in two presses (hesitation turned into a gag).'
+style_break: null
+continuity_refs:
+- continuity.sc04.environment
+- continuity.props.phone_ren
+derived_from:
+- ref: artifact:shot_list
+  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+- ref: artifact:cinematography_bible
+  hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
+- ref: artifact:screenplay
+  hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
+- ref: artifact:scenes
+  hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
+- ref: canon:intent.race_against_battery
+  hash: sha256:0f143f4624a8c8cebe71b8b7c11549ffdc6b37263c85d07695afa1cba4a5a0a0
+- ref: canon:intent.open_hopeful_ending
+  hash: sha256:d00fb87fa639a0f256795fd7d6646100e1b6515fb07a70d641db163777d047fc
+- ref: canon:intent.earned_last_signal
+  hash: sha256:9bfa4a6653ffe02fa47dc7e8c03e506b5cc69fdbf0d60fc7c8833b279f12d802
+- ref: canon:characters.ren.identity
+  hash: sha256:ece7a44a3e5d391d5fa0931cbfca8d088b4845069ce11c8987d6943db0cf299f
+- ref: canon:characters.ren.silhouette
+  hash: sha256:c0fa4bdf2d56ea008626b1a88ecc228bf8a3933472e76e02cb553c05274edcce
+- ref: canon:characters.ren.proportions
+  hash: sha256:02821b5246c17397347d94f2c9048e1a2a065b353cfde019c0cff0bb4b5229ca
+- ref: canon:characters.ren.face
+  hash: sha256:d63dc6a6bbfd4e2727ffacbab7f2bee8865a5c2ee0adce14c658f8b82489657d
+- ref: canon:characters.ren.expressions
+  hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+- ref: canon:characters.ren.wardrobe.jacket
+  hash: sha256:ed689e3256da875967607b2fd1622201fdac8b4113f5e57f73d68e8c77810eef
+- ref: canon:characters.ren.wardrobe.outfit
+  hash: sha256:ac1eeaf0825bc764899e2ddd2a6c519a08b58a042d35956b6c7347052e63a5e4
+- ref: canon:characters.ren.movement
+  hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+- ref: canon:characters.ren.representation
+  hash: sha256:237e8bf8c747568c8ef1084848c202746c7a8052b893c641e80c79abde90f150
+- ref: canon:continuity.sc04.environment
+  hash: sha256:5323ce403ba99e4b5a298ebb3c5354762658c01534fdb844fee921e3afa71465
+- ref: canon:continuity.props.phone_ren
+  hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+- ref: canon:camera.movement.push_in
+  hash: sha256:b2116094133cd8c9d9331d429d13d6259b58acde02cf25587f7163b9cdc4f092
+- ref: canon:camera.framing.jacket_off_sky
+  hash: sha256:a1b44051ca76f0e7d7a0eb179647edf7e77901f22cefde1c098253a122b0963d
+- ref: canon:camera.inserts.heart
+  hash: sha256:d2f73b83562c499ca0081215788d62b3927bc8db8264111957313dd5e0200ba5
+- ref: canon:camera.geography.sc04_sc06
+  hash: sha256:f3523dd5f594b8501d1b6232af934e15492d4a4751b1327aac4a2dae17dbf115
+- ref: canon:continuity.battery
+  hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+- ref: canon:continuity.props.passenger_door
+  hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+- ref: canon:continuity.props.glovebox_and_crank
+  hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+- ref: canon:continuity.props.cable
+  hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+- ref: canon:look.style.sky
+  hash: sha256:b8be91e245be13f6f11c3c45c1f81e09fc14f47d7e6c889e442db9db6a6d4222
+- ref: canon:look.style.phone_ui
+  hash: sha256:5b1bcd7579ec10d43bbfefbd045d981b00248cbbc4ca45550862e8c0df97c0e6
+- ref: canon:look.color.accent_battery_red
+  hash: sha256:d2fd886fad9c10a7ce4385766a0a0d2489cb6f63e55ec6fa35efb1a2b53ccf59
+- ref: canon:look.color.ui_heart
+  hash: sha256:5fce85852f924f0490bb263b32735b4bf7ead7c222b30f5ff44214a05dbb4cd4
+- ref: canon:look.color.accent_power_amber
+  hash: sha256:53c0e9be6879c2a2d465a16e10aaaac1a03d9bddc301888ab8f2ce62505f8bef
+- ref: canon:look.color.ui
+  hash: sha256:49235e9a19e9b700bba3d04920fa7fde0c5d289497156fc41c09afd59b27d540
+- ref: canon:look.color.sky.dusk
+  hash: sha256:66684732cc0d45ef02f50580ca41ca19f01ed21c5240703849f2044841db228d
+- ref: canon:look.color.street
+  hash: sha256:652d1553733dc781d82ed598810e57d8fb8cc03a71f8d2b49ce32b08e9e45187
+- ref: canon:look.color.shop
+  hash: sha256:19582f003960e2024bea81f3fcf362461b87300331f83b13bf5d9b5c52f0f028
+- ref: canon:look.color.scene.sc04
+  hash: sha256:450007ba1dae2b8cb00dc8b1dc22a56a23a75d7448a7740c1ec5b6154c5b9ab8
+- ref: canon:look.exposure.scene_keys
+  hash: sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4
+- ref: canon:look.lighting.sc04
+  hash: sha256:210c71d6f0cc9dfe8409897ffd19631f2ba137090a00d4989150cabbe9f56d50
+- ref: canon:look.lighting.power_indicators
+  hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+- ref: canon:world.rules.weather
+  hash: sha256:c70bcf2a9d9cd7fe8b52cd5f776e34560f22966cd4302637ccc527c22c54de66
+- ref: canon:world.rules.time_and_sun
+  hash: sha256:c4c98157eca0e16d776700681100256bb25eb79bb16e3807bfa0f4aa6ae47899
+- ref: canon:world.rules.power
+  hash: sha256:c55ced58e01c09a2eb6cd4897caac2571d2eaae59bbffe362b6fea76d7986c4d
+- ref: canon:world.rules.nobody_else
+  hash: sha256:bd037db7dbe914e4de28689d0158ccfa9abecd229a2aadf8d569138988cf93f3
+- ref: canon:world.rules.one_port
+  hash: sha256:0b69045958e1916ad7910a6e9e88a3f99f6e90eac2963d760ffe7e889ae47df8
+- ref: canon:world.locations.street
+  hash: sha256:e09ba271cd970fdd3c33f388e6992e0c63d5c98b2ff8e42b94428d4d4628b3db
+- ref: canon:world.locations.ren_car
+  hash: sha256:e2ea8c58a8e1521ad7bcbe895601ed58797871db836afc4de4e6ebfb6b0d4e26
+- ref: canon:world.locations.corner_shop
+  hash: sha256:921371c19d6f67f5749477530d1e5851498ad8785fd1c76166ce3c80f2b6cba6
+- ref: canon:world.sets.street
+  hash: sha256:f512f2320f0fdb1de518a7e82ed173a6a4f51a31f62540e2f3e4d2c4149180f1
+- ref: canon:world.sets.ren_car
+  hash: sha256:238ade8c11d56ccb22e595cd9e42829e593e23808c6d83fbff3d5e00f541cb99
+- ref: canon:world.sets.corner_shop
+  hash: sha256:ec237fef5176be584b10788bc38d48cf14cd937c1e42b64cb332319ef4e59f26
+- ref: canon:world.props.phone_ren
+  hash: sha256:307dcf5af82826c64a95436d6dc4dbe3d6491992f4e8374e97abede7d6ac07bf
+- ref: canon:world.props.crank_charger
+  hash: sha256:6831cc87e82e108ae32e6d7bc1757f27563d8d23a1f7278b97e810b439bb259d
+- ref: canon:world.props.charging_cable
+  hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
+- ref: canon:story.arc.ren
+  hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
+stamped_content_hash: sha256:fe2659522b8af5d6e2e2b01e5471ac6bfbc742cd5a74011cc6368883c83bbacb

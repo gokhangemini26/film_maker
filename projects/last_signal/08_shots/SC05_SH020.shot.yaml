@@ -1,0 +1,236 @@
+shot_id: SC05_SH020
+scene_id: SC05
+sequence_id: SQ02
+status: PROPOSED
+duration_s: 1.3333
+serves:
+- intent.open_hopeful_ending
+- intent.soft_but_cinematic
+creative_intent:
+  narrative_purpose: Hana, sketching with big headphones on, notices the light, slides the headphones
+    down around her neck and picks up the phone.
+  emotional_purpose: Warmth and a little surprise; the missed call explained without a word.
+  visual_purpose: 'Her left profile at the desk under the west window: lamp-lit, the dusk sky in the window
+    at screen left, the new phone light on her right.'
+  audience_effect: The viewer understands why she did not answer and sees her reach for his message at
+    once.
+camera:
+  lens_mm: 50
+  height_m: 1.14
+  movement: static
+  start_position:
+  - -2.2
+  - -0.85
+  - 1.14
+  end_position: null
+  look_at: hana
+  dof:
+    enabled: false
+composition:
+  framing: medium
+  aspect_ratio: 1.778
+  subject_position: right_third_facing_left
+  notes: 'Main angle for the locked layout: her left profile from the south, 50 mm at her eye level (camera.geography.sc05).
+    The south wall is wild (lens about 2.2 m from her, beyond the 1.5 m wall) to reach a medium. Window
+    (west) at screen left, in frame, at most one wire span; horizon (sill) low; lamp near the lens side.
+    Three layers: lamp and desk edge / Hana / window and sky.'
+characters:
+- id: hana
+  position:
+  - 0.0
+  - -0.85
+  - 0.0
+  facing: west (screen left)
+  action: glances to the light on her right, slides the headphones down with both hands, picks up the
+    phone with her right hand
+environment:
+  location: hana's room, desk by the window
+  weather: clear
+  time_of_day: evening (dusk)
+lighting:
+  ref: look.lighting.sc05
+  key:
+    source: desk lamp, her left
+    temperature_k: 2700
+    quality: soft
+  fill: dusk sky through the west window, in front of her (10000 K)
+  second_key: phone screen from her right, then below, from the wake
+  contrast: 2.5:1
+color:
+  dominant: look.color.scene.sc05
+  room: look.color.hana_room
+  sky: look.color.sky.dusk
+animation:
+  timing:
+    fps: 24
+    frames: 32
+    index: 0-based; f0 is the first frame, t = f / 24
+  characters:
+    hana:
+      locomotion:
+        type: none
+        note: seated at the desk; she does not stand
+      keys:
+      - f: 0
+        t: 0.0
+        pose: 'absorbed: head tilted down over the sketchbook, headphones on, right hand finishing a small
+          pencil stroke (f0-2); slow breath'
+      - f: 3
+        t: 0.12
+        pose: eyes flick to the lit phone on her right (f3-5); the pencil stops at f4
+      - f: 5
+        t: 0.21
+        pose: head turns about 25 deg toward the phone after the eyes (ease-out, f5-10); brows lift a
+          touch at f6 (noticing)
+      - f: 6
+        t: 0.25
+        pose: right hand lays the pencil down on the sketchbook (f6-8)
+      - f: 8
+        t: 0.33
+        pose: both hands rise to the ear cups (f8-12)
+      - f: 12
+        t: 0.5
+        pose: slides the headphones down in one smooth two-handed move (ease-in-out, f12-19)
+      - f: 19
+        t: 0.79
+        pose: headphones resting around her neck on the collar, cups turned slightly out; hands leave
+          the cups
+      - f: 19
+        t: 0.79
+        pose: right hand reaches the short way to the phone (about 0.2 m, f19-23); left hand lowers to
+          the desk edge
+      - f: 23
+        t: 0.96
+        pose: grips the phone
+      - f: 24
+        t: 1.0
+        pose: lifts it and brings it low toward her chest (f24-29), eyes following it
+      - f: 28
+        t: 1.17
+        pose: left hand joins the phone (f28-30)
+      - f: 30
+        t: 1.25
+        pose: held low near her chest in both hands, eyes on the screen (matches SH030 f0)
+      face: absorbed -> noticing (brows lift a touch) -> reading begins; no gasp, no grin, no blush, no
+        graphic symbols
+      secondary:
+      - 'bob is a rigid mesh: the cups slide off over it without deforming it'
+      - top's collar takes the band (skinning only)
+      - shoulders drop a little as the headphones come off (f19-22)
+      eyeline: the page f0-2, the lit phone from f3 (eyes before head), the screen in her hands from f25
+  props:
+    hana_headphones: 'rigid prop: attached to the head f0-12, animated along an arc from head to neck
+      f12-19, constraint switched to the neck position at f19 (world.props.hana_headphones: two positions)'
+    phone_hana: lit (from SH010); picked up with the right hand f23-29, held low in both hands from f30
+    pencil: laid down on the sketchbook f6-8, still after
+  camera:
+    easing: none
+    notes: locked off (nothing moves after the send)
+  risks_m3:
+  - 'headphone cups passing over the bob: a rigid-on-rigid slide may intersect for 1-3 frames; check at
+    G6 and offset the arc outward if needed (no hair simulation)'
+render: {}
+assets:
+- world.sets.hana_room
+- world.props.hana_headphones
+- world.props.phone_hana
+- world.props.sketchbook
+- world.props.desk_lamp
+rationale:
+  camera: '50 mm at her eye level (1.14 m), her profile toward screen left, matching Ren''s bookend by
+    direction (camera.geography.sc05, desk layout kept by the human). Rejected: a three-quarter front
+    over the desk (needs the alternative layout, not taken).'
+  composition: She faces the window and the sky he sits under, with space ahead of her face at screen
+    left (tender lead room). The headphones are big in silhouette against the lamp-lit wall.
+  lighting: Lamp on her visible side; cool window fill ahead of her; the phone's warm light arrives from
+    the far side as a new light (look.lighting.sc05). Profile exemption from the 45 deg phone-lit rule
+    (camera.phone_lit.framing).
+  movement: 'Static: after the send nothing moves (camera.movement.push_in after_send).'
+  color: Her room palette (look.color.hana_room), the shared dusk sky in the window (look.color.sky.dusk).
+  blocking: Headphones on at the start, around her neck by the end (continuity.hana.headphones); right
+    hand picks up the phone.
+  animation: 'Four actions fit in 32 frames only as overlapping, economical moves in the canon''s order:
+    eyes, head, hands (characters.hana.movement). Each begins before the last ends, so the shot reads
+    as one calm gesture rather than a checklist. The two-handed slide is smooth and unhurried in its own
+    8 frames, curious rather than startled (characters.hana.wardrobe.headphones), and the reach is short
+    because the phone lies by her pencil hand. Her stillness before the notice is the settled room the
+    film needs after his street. Rejected: a one-handed pull (reads as annoyance), picking up the phone
+    before the headphones come off (breaks the staging order) and a hurried grab (reads as expecting him).'
+style_break: null
+continuity_refs:
+- continuity.sc05.environment
+- continuity.hana.headphones
+derived_from:
+- ref: artifact:shot_list
+  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+- ref: artifact:cinematography_bible
+  hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
+- ref: artifact:screenplay
+  hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
+- ref: artifact:scenes
+  hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
+- ref: canon:intent.open_hopeful_ending
+  hash: sha256:d00fb87fa639a0f256795fd7d6646100e1b6515fb07a70d641db163777d047fc
+- ref: canon:intent.soft_but_cinematic
+  hash: sha256:35eb1dec38d475cfd9f63f627450051df79b9102dd7ce598913762dc050e8e7a
+- ref: canon:characters.hana.identity
+  hash: sha256:f218dca9d3a0943cd03a6d0df81802f742cc145a2d752b14ce6c482c39af484a
+- ref: canon:characters.hana.silhouette
+  hash: sha256:16a151395f98daaa5574c133be1d26b76a1f5b07df1e4562ca5a3713a20d765d
+- ref: canon:characters.hana.proportions
+  hash: sha256:5bf2b9f2388ac5a930033d34439357f0c7f9099f682e2532f78c1cb620ee9511
+- ref: canon:characters.hana.face
+  hash: sha256:ea70683cdb299a74f0bf5427ada34d522f47dbfbde8b28d5de357a4d80db7850
+- ref: canon:characters.hana.expressions
+  hash: sha256:489e56798bb001a8026e56f8f482436ed4c3a4df186ecf755e94450b6756335c
+- ref: canon:characters.hana.wardrobe.outfit
+  hash: sha256:fb3c726721e76893771602010b34c74035bcef7e29f4d0d7634b3a3a834f5585
+- ref: canon:characters.hana.wardrobe.headphones
+  hash: sha256:a21efa3803324880c7de7089d73130e8f84ddcb2b6b09183ba0cb9bcc542d77d
+- ref: canon:characters.hana.movement
+  hash: sha256:55f3b5718c3183edc21042ed66555c8298293d01934ca2a38b64078d6e5d1120
+- ref: canon:characters.hana.representation
+  hash: sha256:649b213874a3dcaa68d4203033f4699add00c836c2ce98edab44183d32bee8d7
+- ref: canon:continuity.sc05.environment
+  hash: sha256:3cb1474beaa88cf977f61c38a00617dfa396b48588dae7b7eef0e8b75e572f4e
+- ref: canon:continuity.hana.headphones
+  hash: sha256:00dc5293c2843c67e26e1b1a163b027eb1d134338a1ac0927ef2f552bd4dd106
+- ref: canon:camera.geography.sc05
+  hash: sha256:4a2b9a9f368b1deafcd37875023198c61e71d29bffe70c0d79d670061e3c886d
+- ref: canon:look.style.sky
+  hash: sha256:b8be91e245be13f6f11c3c45c1f81e09fc14f47d7e6c889e442db9db6a6d4222
+- ref: canon:look.style.phone_ui
+  hash: sha256:5b1bcd7579ec10d43bbfefbd045d981b00248cbbc4ca45550862e8c0df97c0e6
+- ref: canon:look.color.ui
+  hash: sha256:49235e9a19e9b700bba3d04920fa7fde0c5d289497156fc41c09afd59b27d540
+- ref: canon:look.color.sky.dusk
+  hash: sha256:66684732cc0d45ef02f50580ca41ca19f01ed21c5240703849f2044841db228d
+- ref: canon:look.color.hana_room
+  hash: sha256:7ad7fb1ad1a9eeb2ed4f705d9ecf361a32622ad95d2b7663adcd9848ed580460
+- ref: canon:look.color.scene.sc05
+  hash: sha256:b1a78d48918a7c2680e15164744414cfef15418b774a59273336aeca4406cea9
+- ref: canon:look.exposure.scene_keys
+  hash: sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4
+- ref: canon:look.lighting.sc05
+  hash: sha256:526913497d45cd223a58e43efcb4f91852e4c7c03be2ef23c9534879420c5176
+- ref: canon:world.rules.weather
+  hash: sha256:c70bcf2a9d9cd7fe8b52cd5f776e34560f22966cd4302637ccc527c22c54de66
+- ref: canon:world.rules.time_and_sun
+  hash: sha256:c4c98157eca0e16d776700681100256bb25eb79bb16e3807bfa0f4aa6ae47899
+- ref: canon:world.locations.hana_room
+  hash: sha256:17e13065e635469a52bccc8be174a1bbec98443a8a5f2bc0ae52e6311a2d8e2e
+- ref: canon:world.locations.hana_room.sketches
+  hash: sha256:506360c1d2fb47c587d52b28d8a6ed0c40bfbfa51d085468c2b65cd603ceb908
+- ref: canon:world.sets.hana_room
+  hash: sha256:e19f0783497b907cbcdc58e82b81c8905c0c3456cc964bf467302f3e053c3114
+- ref: canon:world.props.phone_hana
+  hash: sha256:99a3dc7748e00e5aaa6c4a2b46aaae4c8758d83ec2f119e67d050928da98a4eb
+- ref: canon:world.props.hana_headphones
+  hash: sha256:af520fd0df7cd5a3797f8f646dd1d4e9e524d97e98d4fddc4bdf4415ab6401c8
+- ref: canon:world.props.sketchbook
+  hash: sha256:e79b33b0f4bce7ea091363f9b7b0b86e8dfcfe48c5e3324bb91acf6d571936eb
+- ref: canon:world.props.desk_lamp
+  hash: sha256:c562dba5e5bd2c9125e2d894f6f7f2d4410c78c39c018e94f27abfe195b79250
+- ref: canon:story.arc.hana
+  hash: sha256:b4a1dc03fb920de195729535214fdeba08ddd285547f90709e4cba5445956240
+stamped_content_hash: sha256:9702f4d8ad33291ac4878eca7a7c2ba5f75e44c4641ecd40b120fd8765796bc6

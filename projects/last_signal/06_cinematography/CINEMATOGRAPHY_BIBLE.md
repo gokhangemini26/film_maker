@@ -145,7 +145,7 @@ fm:
   - ref: canon:camera.height.high
     hash: sha256:53f5fce143be9fd863b0247a153073c5f18a50cdf76a83646d46466f48873170
   - ref: canon:camera.height.low
-    hash: sha256:22c3fa43f7449b3e96cb9d5104b5be4ae1f2071fc083c3174dce26c06b076d7b
+    hash: sha256:ef557119cd2774d9ad4f84d6c46caee413b496ad38b9c331d426be6db7c1373d
   - ref: canon:camera.movement.default_static
     hash: sha256:de93bb243c5383e70c5b81faa00405441f3db9fa11c011ba4ce1a39f67ebae2d
   - ref: canon:camera.movement.pan_follow
@@ -173,7 +173,7 @@ fm:
   - ref: canon:camera.inserts.heart
     hash: sha256:d2f73b83562c499ca0081215788d62b3927bc8db8264111957313dd5e0200ba5
   - ref: canon:camera.phone_lit.framing
-    hash: sha256:b4e81da9895729217c7c81fb1308be133f8f12ca9d3fb3f2bd4b1d22b1e4bdcf
+    hash: sha256:877709f4bd871a9acf176d8154784483642306f0dac3bf181f07c8690a44b31a
   - ref: canon:camera.geography.screen_direction
     hash: sha256:850187e1f26b061ff9854e8e5dec0d086659b21a96f76cce3f33276759bd6a2e
   - ref: canon:camera.geography.sc01
@@ -185,13 +185,13 @@ fm:
   - ref: canon:camera.geography.sc04_sc06
     hash: sha256:f3523dd5f594b8501d1b6232af934e15492d4a4751b1327aac4a2dae17dbf115
   - ref: canon:camera.geography.sc05
-    hash: sha256:1b6acfe2fd9a3d976fb655a4de38332775931049fa241a368e7a43912209e51d
+    hash: sha256:4a2b9a9f368b1deafcd37875023198c61e71d29bffe70c0d79d670061e3c886d
   - ref: canon:camera.gags.no_repeat
     hash: sha256:e268a6d91364cc5e7dd5818f91e0bddcdd747334c64e72808b3021f423b03971
   - ref: canon:camera.rhythm.scene_budget
     hash: sha256:3a0f9e8b633e6af955192a0d459cd316fdbb721ce25b920263219195e0cd943f
   - ref: canon:camera.rhythm.pace
-    hash: sha256:d3a106995ea88be9cb7651b437586ea845734d8dbbafaa3a498a45eb5084647c
+    hash: sha256:159ba88fec689f71013a9b320634dd92231e1355c17de392979a90a0479b8b30
   - ref: canon:camera.rhythm.transitions
     hash: sha256:0ff059c432a2227bfbe4eebceef37bc953cd834328d87d7ae75970a866ddcb15
   - ref: canon:continuity.sc01.environment
@@ -207,7 +207,7 @@ fm:
   - ref: canon:continuity.sc06.environment
     hash: sha256:dfa94a545863f3bcb3a7d9ab53e2ba6f41d04f8f54626d1703cd164d60d42e1a
   - ref: canon:continuity.battery
-    hash: sha256:b6040375f00753782e48818bfe52f9abf40fde7eaf1bc8d08b4d2f7ac3701912
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
   - ref: canon:continuity.props.passenger_door
     hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
   - ref: canon:continuity.props.glovebox_and_crank
@@ -228,7 +228,7 @@ fm:
   summary: Camera language for Last Signal - 16:9/24 fps, four primes split at the turn, heights that
     mean judgement/decision, a static camera with two pushes, west-is-screen-left geography, phone-insert
     legibility rules, the jacket-off-sky commitment, and a 1440-frame rhythm plan.
-  stamped_content_hash: sha256:4c89bb6e06e4ee8fcca60f6aedaa93d906b6bccd5e42281a7e83224764b19109
+  stamped_content_hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
   stamp_note: upstream reviews/character bible re-stamped for human wording decisions; no camera change
 title: Cinematography Bible
 ---
@@ -318,7 +318,7 @@ justified by the before/after comparison it carries (section 10).
 |---|---|---|---|
 | **Eye level** (default) | lens within 0.1 m of the subject's eye | "we are with him, not judging" | All comic reactions (deadpan); tender close-ups; Hana |
 | **High** | lens ≥ 0.5 m above his eye, tilt down ≥ 10° | "the world beats him" | Only SC01 slump onto the wheel (mild) and SC03 blackout master (strongest). Never after the turn |
-| **Low, mild** | 0.15-0.3 m below his eye, tilt up ≤ 8° | a quick comic decision | His resets: sitting up to text (SC01), bursting out of the car (SC02) |
+| **Low, mild** | 0.15-0.3 m below his eye, tilt up ≤ 8° | a quick comic decision | His resets: sitting up to text (SC01), bursting out of the car (SC02); and the SC03 wary check up at the ceiling panels |
 | **Low, strong** | lens 0.45-0.6 m above the pavement, tilt up ≈ 12° | "he makes up his mind" | Once: SC04, as he sits back with the crank held in both hands |
 
 Reference eye heights (FACT, `characters.*.proportions`): Ren in the car seat
@@ -488,6 +488,12 @@ SC06 until the screen is off.
   on the screen even if the constant colour ramp flips his face from lit to
   shadow in one frame (G4 finding 5 is the look-director's to solve; this keeps
   the beat safe either way).
+- **Exemptions (DECISION, set at STORYBOARD):** the SC04/SC06 westward bookend
+  (a figure-in-space frame, not a face read: the glow reads on the phone and
+  along the front edge of his profile) and Hana's SC05 profile with the locked
+  desk layout (the lamp keys her visible side; the phone reads as an under-light
+  along the jaw and on her hands; camera up to 75° from the phone's light). Both
+  are profile angles the human-approved geography requires.
 - *Rejected:* phone-lit faces from the dark side for mood (rim-only faces lose
   the expressions the tender section needs).
 
@@ -597,11 +603,17 @@ not taken.
 | Link to Ren | Profile to screen left, like his bookend in SC06: both face the same western sky | Face-on, mirroring his SC04 face shots |
 | Main risk | His photo on the waking phone is partly hidden; hold her face-lit reading | Needs a world change request (`world.sets.hana_room`, `world.locations.hana_room`) |
 
-Two shots either way: a medium (the phone wakes, eyes then head, headphones
-slide down) and a medium close-up (she reads, the phone lights her from below,
-the small smile, held). His photo on her phone ≥ 5 % of frame height (a
-recognition cue, not a reading cue). *Rejected:* one 4 s shot (the smile too
-small on a proxy face, CHARACTER_BIBLE staging risk).
+**Three shots with the locked layout (DECISION, set at STORYBOARD):** an 85 mm
+top-down insert of her phone waking face up on the desk with his photo (the cut
+on light from his tick), a medium (headphones slide down, she picks the phone
+up) and a medium close-up (she reads, the phone lights her from below, the small
+smile, held to the cut). His photo on her phone ≥ 5 % of frame height (a
+recognition cue, not a reading cue). *Computed:* with the phone lying face up on
+the far side of the desk, a 40 mm photo seen from her eye level at about 12° from
+1.9 m on 50 mm is about 1 % of frame height, so only the insert meets the
+minimum. *Cost:* the smile holds 2.17 s instead of 2.5 s (open human question at
+G5). *Rejected:* one 4 s shot (the smile too small on a proxy face,
+CHARACTER_BIBLE staging risk); the earlier two-shot plan (his photo unreadable).
 
 **DECISION (follows the human's decision to keep the locked layout):** the
 profile toward screen left matches the SC06 bookend by direction and colour,
@@ -619,7 +631,7 @@ camera tells the same joke bigger and later:
 | Scale | Close, inside, 24/50 mm | The room: high wide master, 35 mm |
 | Hope shown | Insert: bolt beside 4 % | Over his shoulder, phone large in the foreground (no insert) |
 | Anticipation | none: relief comes at once | 24 mm low angle past him up at the ceiling panels: he checks, **nothing happens** |
-| Loss shown | Insert: bolt gone, 3 %, the 3-frame dip | The master, unchanged: every light off in one frame, only his small lit face left |
+| Loss shown | Insert: bolt gone, 3 %, the 3-frame dip | The master, unchanged: every light off in one frame, only the small pool of phone light around his kneeling figure left (he faces the back wall, away from the master; his lit face is the reverse) |
 | Order | insert → reaction → insert → reaction | reaction (exhale) → room → insert (2 %) → reaction |
 | Reaction | Close, frontal, forehead slowly to the wheel (≈ 1.7 s) | Reverse on his phone-lit face, door rectangle behind, the longest comic hold (≥ 2 s) |
 
@@ -657,7 +669,7 @@ Moves 22 frames from the crank to Hana's smile and the final image (G2 finding
 | SC02 | 3 | 13-20 frames each | none: breathless |
 | SC03 | 7 | 1.4 s | the longest comic hold, ≥ 2 s, on the blackout reverse |
 | SC04 | 9 | 2.0 s | turn and crank shots 2.5-3.5 s |
-| SC05 | 2 | about 2.0 + 2.5 s | the smile held to the cut |
+| SC05 | 3 | about 1.0 + 1.3 + 2.2 s | the smile held to the cut |
 | SC06 | 1 | 3.4 s | final image held, then an 18-frame fade out |
 
 The comedy accelerates into the dash, stops dead at the blackout (the first time
@@ -667,6 +679,10 @@ insert. *Rejected:* an even pace (the turn would have no rhythm of its own); fas
 cutting at the crank (urgency, not effort).
 
 ### 12.3 Coverage sketch (RECOMMENDATION for STORYBOARD, proves the budget)
+The final shot-by-shot timings are in `07_storyboard/SHOT_LIST.md`; they keep
+every scene total below and move frames inside SC01, SC03 and SC04 to meet the
+legibility holds of section 8 (for example the invitation's reading hold). SC05
+became three shots (section 10).
 - **SC01 (528 f):** frontal mirror check and tuft 2.0 · pin screen insert 1.5 ·
   call screen insert 1.2 · side MCU breath and tap 1.4 · call button pulses and
   greys 2.0 · letdown, sits up (mild low) 1.6 · text insert "Are you free
@@ -685,7 +701,8 @@ cutting at the crank (urgency, not effort).
   with it in both hands 2.6 · medium to MCU: plugs in, unfolds, cranks, glow
   steadies, push 2 3.4 · heart insert 2.4 · battery insert 1 % → 2 % 1.0 · send
   insert 2.4 · MCU: lets go, the click, breath out 1.08 (total 18.08 s).
-- **SC05 (108 f):** medium 2.0 · MCU reading, smile 2.5.
+- **SC05 (108 f):** insert, her phone wakes with his photo 1.0 · medium 1.33 ·
+  MCU reading, smile 2.17.
 - **SC06 (82 f):** the bookend: screen fades (24 f), leans back, looks up, hold,
   fade out.
 
@@ -702,7 +719,7 @@ cutaways.
 | Entry | What it fixes |
 |---|---|
 | `continuity.sc01..sc06.environment` | time of day, weather, location, screen direction per scene (checked by `fm check continuity`); SC05 is `dusk`, and shots write "evening (dusk)" so both the canon and SCENES.yaml checks pass |
-| `continuity.battery` | 5 → 4 (red) → 3 → 2 → 1 (blinking, stutter) → 2 → off, and where the bolt shows |
+| `continuity.battery` | 5 → 4 (red) → 3 → 2 → 1 (blinking, stutter) → 2 → off, and where the bolt shows (including beside 1-2 % while the crank turns) |
 | `continuity.props.passenger_door` | closed in SC01; flung open by his exit in SC02; open through SC06 |
 | `continuity.props.glovebox_and_crank` | lid and crank state in SC01, SC04, SC06; pip on only while turning |
 | `continuity.props.cable` | one cable, always in the phone: adapter → looped in hand → shop socket → crank |

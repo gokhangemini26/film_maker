@@ -6,11 +6,11 @@
 project: last_signal
 sandbox: false
 current_phase: STORYBOARD
-status: in_progress
-ledger: 21 records, head 7f85a4a1ad53
+status: awaiting_approval
+ledger: 22 records, head e3392fbb31ee
 ```
 
-**Next:** Produce STORYBOARD deliverables (07_storyboard/STORYBOARD.md, 07_storyboard/SHOT_LIST.md, qa/reviews/G5_REVIEW.md), then `fm submit` for G5
+**Next:** Human review: `fm approve G5`, or `fm revise G5 --notes ...` / `fm reject G5 --notes ...`
 
 ## Gates
 
@@ -20,7 +20,7 @@ ledger: 21 records, head 7f85a4a1ad53
 | G2 | Story and screenplay | approved | human:gokhan_guler | 5 |
 | G3 | World and characters | approved | human:gokhan_guler | 4 |
 | G4 | Visual direction (style lock) | approved | human:gokhan_guler | 4 |
-| G5 | Storyboard and shots | pending | - | - |
+| G5 | Storyboard and shots | awaiting_approval | - | - |
 | G6 | First Blender preview | pending | - | - |
 | G7 | Animation preview | pending | - | - |
 | G8 | Final render | pending | - | - |
@@ -37,24 +37,66 @@ LOCKED: 119, PROPOSED: 42
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
 | character_bible | WORLD_CHARACTERS | APPROVED | 71e9d285acb3 |
-| cinematography_bible | CINEMATOGRAPHY | PROPOSED | 4c89bb6e06e4 |
+| cinematography_bible | CINEMATOGRAPHY | PROPOSED | 0ece10f8b6c2 |
 | color_bible | LOOK | APPROVED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
 | g3_review | WORLD_CHARACTERS | APPROVED | d26db206b8cf |
 | g4_review | LOOK | APPROVED | a2c83484c758 |
+| g5_review | STORYBOARD | PROPOSED | 51c65bce1415 |
 | lighting_bible | LOOK | APPROVED | 95224320170d |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
+| shot_list | STORYBOARD | PROPOSED | a6a2b5dffb75 |
 | story_bible | STORY | APPROVED | 1604e946f2ee |
 | story_structure | STORY | APPROVED | d8a12c83b7c3 |
+| storyboard | STORYBOARD | PROPOSED | 3463a5cadda1 |
 | visual_bible | LOOK | APPROVED | 4cb45f98d39b |
 | world_bible | WORLD_CHARACTERS | APPROVED | c5a7ce8fda07 |
 
 ## Shots
 
-None yet.
+| Shot | Duration | Status | Stage |
+|---|---|---|---|
+| SC01_SH010 | 1.6667s | PROPOSED | spec |
+| SC01_SH020 | 1.5833s | PROPOSED | spec |
+| SC01_SH030 | 1.1667s | PROPOSED | spec |
+| SC01_SH040 | 1.25s | PROPOSED | spec |
+| SC01_SH050 | 1.8333s | PROPOSED | spec |
+| SC01_SH060 | 1.4167s | PROPOSED | spec |
+| SC01_SH070 | 2.4167s | PROPOSED | spec |
+| SC01_SH080 | 1.25s | PROPOSED | spec |
+| SC01_SH090 | 1s | PROPOSED | spec |
+| SC01_SH100 | 2s | PROPOSED | spec |
+| SC01_SH110 | 1.3333s | PROPOSED | spec |
+| SC01_SH120 | 0.8333s | PROPOSED | spec |
+| SC01_SH130 | 1.4167s | PROPOSED | spec |
+| SC01_SH140 | 1.3333s | PROPOSED | spec |
+| SC01_SH150 | 1.5s | PROPOSED | spec |
+| SC02_SH010 | 0.75s | PROPOSED | spec |
+| SC02_SH020 | 0.5833s | PROPOSED | spec |
+| SC02_SH030 | 0.6667s | PROPOSED | spec |
+| SC03_SH010 | 2.1667s | PROPOSED | spec |
+| SC03_SH020 | 1.5s | PROPOSED | spec |
+| SC03_SH030 | 1.0833s | PROPOSED | spec |
+| SC03_SH040 | 0.9167s | PROPOSED | spec |
+| SC03_SH050 | 1.25s | PROPOSED | spec |
+| SC03_SH060 | 1.0833s | PROPOSED | spec |
+| SC03_SH070 | 2s | PROPOSED | spec |
+| SC04_SH010 | 1.9167s | PROPOSED | spec |
+| SC04_SH020 | 1.3333s | PROPOSED | spec |
+| SC04_SH030 | 1.5s | PROPOSED | spec |
+| SC04_SH040 | 2.5s | PROPOSED | spec |
+| SC04_SH050 | 3.3333s | PROPOSED | spec |
+| SC04_SH060 | 2.8333s | PROPOSED | spec |
+| SC04_SH070 | 1.0833s | PROPOSED | spec |
+| SC04_SH080 | 2.4167s | PROPOSED | spec |
+| SC04_SH090 | 1.1667s | PROPOSED | spec |
+| SC05_SH010 | 1s | PROPOSED | spec |
+| SC05_SH020 | 1.3333s | PROPOSED | spec |
+| SC05_SH030 | 2.1667s | PROPOSED | spec |
+| SC06_SH010 | 3.4167s | PROPOSED | spec |
 
 ## Attention
 

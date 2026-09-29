@@ -1,0 +1,282 @@
+shot_id: SC04_SH040
+scene_id: SC04
+sequence_id: SQ02
+status: PROPOSED
+duration_s: 2.5
+serves:
+- intent.earned_last_signal
+- intent.comic_then_tender
+creative_intent:
+  narrative_purpose: He turns onto one knee, leans in through the open door, opens the glovebox and takes
+    out the crank charger; he sits back on the kerb holding it in both hands, carefully.
+  emotional_purpose: 'Resolve, without a joke: the same object, now held with care.'
+  visual_purpose: 'The strongest low angle of the film, from the pavement looking north: his figure against
+    the car''s flank, the crank ending in both hands at the centre of frame.'
+  audience_effect: The viewer feels that he has decided and that this is the film's turn.
+camera:
+  lens_mm: 50
+  height_m: 0.5
+  movement: static
+  start_position:
+  - -1.75
+  - -0.8
+  - 0.5
+  end_position: null
+  look_at: ren
+  dof:
+    enabled: false
+composition:
+  framing: medium
+  aspect_ratio: 1.778
+  subject_position: centre_right
+  notes: 'Lens 0.5 m, tilt up 12 deg (camera.height.low the_turn). He never stands: kneeling and leaning
+    in keeps his jacket below the car roof line, so the ray from the lens through the jacket top hits
+    the car (about 1.16-1.28 m < 1.45 m roof; camera.framing.jacket_off_sky). The crank at 10 % of frame
+    width or more when held.'
+characters:
+- id: ren
+  position:
+  - -0.1
+  - -1.0
+  - 0.12
+  facing: north-west into the car, then south with the crank
+  action: onto one knee, leans into the open door, glovebox lid down, lifts the crank out with both hands,
+    sits back down on the kerb holding it in his lap
+environment:
+  location: street, kerb beside ren's car
+  weather: clear
+  time_of_day: dusk
+lighting:
+  ref: look.lighting.sc04
+  ambient:
+    source: dusk sky
+    temperature_k: 10000
+  rim:
+    source: afterglow from the west (his right, screen left)
+    temperature_k: 3000
+  key:
+    source: phone screen, below-front
+    quality: soft
+  background_practicals:
+  - street lamp by the shop (lights only the shop front)
+  - house windows
+  fill: sky only
+  key_state: flicker
+color:
+  dominant: look.color.scene.sc04
+  sky: look.color.sky.dusk
+  accent: look.color.phone_glow
+animation:
+  timing:
+    fps: 24
+    frames: 60
+    index: 0-based; f0 is the first frame, t = f / 24
+  characters:
+    ren:
+      locomotion:
+        type: kneel_lunge_and_return
+        speed_mps: about 1.1 on the lunge step (0.45 m in 10 f)
+        path: 'street coords: from the kerb seat (x -0.1, y -1.0) onto the right knee, left foot steps
+          west to about y -0.55 into a low lunge; torso leans in through the doorway (shoulders to about
+          x 0.2, y -0.2); back to the same seat (x -0.1, y -1.0)'
+      keys:
+      - f: 0
+        t: 0.0
+        pose: hands off his knees (from SH030), weight shifting west, eyes on the glovebox; phone in the
+          left hand
+      - f: 6
+        t: 0.25
+        pose: pivots onto the right knee, left foot steps forward (west) into a low lunge (ease-in-out,
+          f6-16)
+      - f: 16
+        t: 0.67
+        pose: 'leans in through the doorway: left forearm braces on the passenger seat edge with the phone
+          still in the hand; right arm extends to the glovebox (ease-out, f16-24)'
+      - f: 24
+        t: 1.0
+        pose: right hand thumbs the latch and lowers the lid by hand (controlled ease-in-out, f24-30);
+          no drop, no clunk
+      - f: 30
+        t: 1.25
+        pose: hand into the glovebox, closes on the crank
+      - f: 33
+        t: 1.38
+        pose: 'lifts it out: the wrist dips 1 cm under its weight, then rises (f33-36)'
+      - f: 36
+        t: 1.5
+        pose: backs out of the doorway, crank drawn toward his chest (f36-44)
+      - f: 42
+        t: 1.75
+        pose: 'left hand leaves the seat and joins beneath the crank: phone flat in the left palm, screen
+          up, against the crank''s underside'
+      - f: 44
+        t: 1.83
+        pose: 'reverses the lunge: left foot back, pivots and lowers onto the kerb at the same spot, back
+          to the car (ease-in, f44-52)'
+      - f: 52
+        t: 2.17
+        pose: seat lands softly; 2-frame settle of the weight (f52-54)
+      - f: 54
+        t: 2.25
+        pose: holds the crank in both hands in his lap, looks down at it; slow breath in (f54-59)
+      face: focused calm (brows level, eyes on the glovebox, then on the crank); no comic expression
+      secondary:
+      - jacket fronts swing forward on the lean-in and settle on the sit (skinning only)
+      - cable from the phone hangs in a short posed loop from the left hand
+      eyeline: the glovebox f0-36, the crank in his hands f37-59
+  props:
+    glovebox_lid: lowered by hand f24-30 (ease-in-out), left down
+    crank_charger: lifted from the glovebox f30-36, parented to the right hand, then to both hands from
+      f42; arm folded, pip off
+    phone_ren: in the left hand throughout (continuity.props.phone_ren); 1 % flicker continues, dips at
+      f9-10, f31-33 and f47-48
+  camera:
+    easing: none
+    notes: locked off at the strongest low angle
+  risks_m3:
+  - 'ASSUMPTION: the glovebox face sits about y +0.5 (just forward of the door opening); the reach from
+    the lunge is about 0.7 m, at the limit of the proxy''s arm; verify at G6'
+  - the phone-under-crank two-hand hold needs a second attach point on hand_l; posed per frame if needed
+  - 'tempo: this is the busiest tender shot; the action is continuous and overlapped to fit 60 frames.
+    If the G6 preview reads rushed, about 12 more frames would make it truly slow (duration is the cinematographer''s)'
+render: {}
+assets:
+- world.sets.street
+- world.sets.ren_car
+- world.props.phone_ren
+- world.props.crank_charger
+rationale:
+  camera: '50 mm from 0.5 m above the pavement, tilt up 12 deg: the film''s strongest low angle, ''he
+    makes up his mind'', spent once (camera.height.low the_turn). Rejected: 35 mm (reserved for the bookend)
+    and a high angle (never after the turn).'
+  composition: 'The car''s flank fills everything behind him, so the jacket never meets the dusk sky (G4
+    Q4 option a). The crank ends at frame centre in both hands. Rejected: a road-side low angle (sky behind
+    the jacket at 1.01:1).'
+  lighting: The open door's dark interior behind him as he leans in; the afterglow rim on his back and
+    hands; the phone, now in his lap, underlights the crank when he sits back.
+  movement: 'Static: the strongest angle needs no move; the pushes are for the choice and the effort.'
+  color: Dusk palette; the crank's neutral body gets the only warm rim.
+  blocking: 'Onto one knee rather than standing (keeps the jacket below the roof line and keeps the action
+    close to the ground). Both hands on the crank: the contrast with SC01''s one-handed shove (story.crank_plant).'
+  animation: 'The same object, now held with care: in SC01 the lid fell and the brick was shoved away
+    with one hand; here he lowers the lid by hand, lifts the crank so its weight shows, and cradles it
+    in both hands (story.crank_plant). He never stands: a kneel and a lunge keep the jacket below the
+    roof line (camera.framing.jacket_off_sky) and keep the effort close to the ground. Every move overlaps
+    the next with ease-in-out and no overshoot, so it reads deliberate even though it is efficient, and
+    the last 6 frames are a still hold with the crank in both hands for the low angle''s decision beat.
+    Rejected: standing up and walking to the door (breaks the jacket rule and costs time) and a knee-walk
+    shuffle (reads as scrambling, the comic register).'
+style_break: null
+continuity_refs:
+- continuity.sc04.environment
+- continuity.props.passenger_door
+- continuity.props.glovebox_and_crank
+- continuity.props.phone_ren
+derived_from:
+- ref: artifact:shot_list
+  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+- ref: artifact:cinematography_bible
+  hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
+- ref: artifact:screenplay
+  hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
+- ref: artifact:scenes
+  hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
+- ref: canon:intent.earned_last_signal
+  hash: sha256:9bfa4a6653ffe02fa47dc7e8c03e506b5cc69fdbf0d60fc7c8833b279f12d802
+- ref: canon:intent.comic_then_tender
+  hash: sha256:470a5a95955efc7d581f5cf9fbf010cf479f60ad92ace91013d7e6523e8de8b7
+- ref: canon:characters.ren.identity
+  hash: sha256:ece7a44a3e5d391d5fa0931cbfca8d088b4845069ce11c8987d6943db0cf299f
+- ref: canon:characters.ren.silhouette
+  hash: sha256:c0fa4bdf2d56ea008626b1a88ecc228bf8a3933472e76e02cb553c05274edcce
+- ref: canon:characters.ren.proportions
+  hash: sha256:02821b5246c17397347d94f2c9048e1a2a065b353cfde019c0cff0bb4b5229ca
+- ref: canon:characters.ren.face
+  hash: sha256:d63dc6a6bbfd4e2727ffacbab7f2bee8865a5c2ee0adce14c658f8b82489657d
+- ref: canon:characters.ren.expressions
+  hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+- ref: canon:characters.ren.wardrobe.jacket
+  hash: sha256:ed689e3256da875967607b2fd1622201fdac8b4113f5e57f73d68e8c77810eef
+- ref: canon:characters.ren.wardrobe.outfit
+  hash: sha256:ac1eeaf0825bc764899e2ddd2a6c519a08b58a042d35956b6c7347052e63a5e4
+- ref: canon:characters.ren.movement
+  hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+- ref: canon:characters.ren.representation
+  hash: sha256:237e8bf8c747568c8ef1084848c202746c7a8052b893c641e80c79abde90f150
+- ref: canon:continuity.sc04.environment
+  hash: sha256:5323ce403ba99e4b5a298ebb3c5354762658c01534fdb844fee921e3afa71465
+- ref: canon:continuity.props.passenger_door
+  hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+- ref: canon:continuity.props.glovebox_and_crank
+  hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+- ref: canon:continuity.props.phone_ren
+  hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+- ref: canon:camera.movement.push_in
+  hash: sha256:b2116094133cd8c9d9331d429d13d6259b58acde02cf25587f7163b9cdc4f092
+- ref: canon:camera.framing.jacket_off_sky
+  hash: sha256:a1b44051ca76f0e7d7a0eb179647edf7e77901f22cefde1c098253a122b0963d
+- ref: canon:camera.inserts.heart
+  hash: sha256:d2f73b83562c499ca0081215788d62b3927bc8db8264111957313dd5e0200ba5
+- ref: canon:camera.geography.sc04_sc06
+  hash: sha256:f3523dd5f594b8501d1b6232af934e15492d4a4751b1327aac4a2dae17dbf115
+- ref: canon:continuity.battery
+  hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+- ref: canon:continuity.props.cable
+  hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+- ref: canon:look.style.sky
+  hash: sha256:b8be91e245be13f6f11c3c45c1f81e09fc14f47d7e6c889e442db9db6a6d4222
+- ref: canon:look.style.phone_ui
+  hash: sha256:5b1bcd7579ec10d43bbfefbd045d981b00248cbbc4ca45550862e8c0df97c0e6
+- ref: canon:look.color.accent_battery_red
+  hash: sha256:d2fd886fad9c10a7ce4385766a0a0d2489cb6f63e55ec6fa35efb1a2b53ccf59
+- ref: canon:look.color.ui_heart
+  hash: sha256:5fce85852f924f0490bb263b32735b4bf7ead7c222b30f5ff44214a05dbb4cd4
+- ref: canon:look.color.accent_power_amber
+  hash: sha256:53c0e9be6879c2a2d465a16e10aaaac1a03d9bddc301888ab8f2ce62505f8bef
+- ref: canon:look.color.ui
+  hash: sha256:49235e9a19e9b700bba3d04920fa7fde0c5d289497156fc41c09afd59b27d540
+- ref: canon:look.color.sky.dusk
+  hash: sha256:66684732cc0d45ef02f50580ca41ca19f01ed21c5240703849f2044841db228d
+- ref: canon:look.color.street
+  hash: sha256:652d1553733dc781d82ed598810e57d8fb8cc03a71f8d2b49ce32b08e9e45187
+- ref: canon:look.color.shop
+  hash: sha256:19582f003960e2024bea81f3fcf362461b87300331f83b13bf5d9b5c52f0f028
+- ref: canon:look.color.scene.sc04
+  hash: sha256:450007ba1dae2b8cb00dc8b1dc22a56a23a75d7448a7740c1ec5b6154c5b9ab8
+- ref: canon:look.exposure.scene_keys
+  hash: sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4
+- ref: canon:look.lighting.sc04
+  hash: sha256:210c71d6f0cc9dfe8409897ffd19631f2ba137090a00d4989150cabbe9f56d50
+- ref: canon:look.lighting.power_indicators
+  hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+- ref: canon:world.rules.weather
+  hash: sha256:c70bcf2a9d9cd7fe8b52cd5f776e34560f22966cd4302637ccc527c22c54de66
+- ref: canon:world.rules.time_and_sun
+  hash: sha256:c4c98157eca0e16d776700681100256bb25eb79bb16e3807bfa0f4aa6ae47899
+- ref: canon:world.rules.power
+  hash: sha256:c55ced58e01c09a2eb6cd4897caac2571d2eaae59bbffe362b6fea76d7986c4d
+- ref: canon:world.rules.nobody_else
+  hash: sha256:bd037db7dbe914e4de28689d0158ccfa9abecd229a2aadf8d569138988cf93f3
+- ref: canon:world.rules.one_port
+  hash: sha256:0b69045958e1916ad7910a6e9e88a3f99f6e90eac2963d760ffe7e889ae47df8
+- ref: canon:world.locations.street
+  hash: sha256:e09ba271cd970fdd3c33f388e6992e0c63d5c98b2ff8e42b94428d4d4628b3db
+- ref: canon:world.locations.ren_car
+  hash: sha256:e2ea8c58a8e1521ad7bcbe895601ed58797871db836afc4de4e6ebfb6b0d4e26
+- ref: canon:world.locations.corner_shop
+  hash: sha256:921371c19d6f67f5749477530d1e5851498ad8785fd1c76166ce3c80f2b6cba6
+- ref: canon:world.sets.street
+  hash: sha256:f512f2320f0fdb1de518a7e82ed173a6a4f51a31f62540e2f3e4d2c4149180f1
+- ref: canon:world.sets.ren_car
+  hash: sha256:238ade8c11d56ccb22e595cd9e42829e593e23808c6d83fbff3d5e00f541cb99
+- ref: canon:world.sets.corner_shop
+  hash: sha256:ec237fef5176be584b10788bc38d48cf14cd937c1e42b64cb332319ef4e59f26
+- ref: canon:world.props.phone_ren
+  hash: sha256:307dcf5af82826c64a95436d6dc4dbe3d6491992f4e8374e97abede7d6ac07bf
+- ref: canon:world.props.crank_charger
+  hash: sha256:6831cc87e82e108ae32e6d7bc1757f27563d8d23a1f7278b97e810b439bb259d
+- ref: canon:world.props.charging_cable
+  hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
+- ref: canon:story.arc.ren
+  hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
+stamped_content_hash: sha256:0330b1777c70f985dc8231e30b9d3816f5ede42e38fe021a70e867614e01207a

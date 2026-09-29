@@ -4,7 +4,7 @@ title: Last Signal
 sandbox: false
 created_at: '2026-09-28T20:41:45Z'
 phase: STORYBOARD
-phase_status: in_progress
+phase_status: awaiting_approval
 gates:
   G1:
     status: approved
@@ -52,7 +52,7 @@ gates:
       artifact:visual_bible: sha256:4cb45f98d39bc0aba8096d37abb48e51feaa34e435b64897cb0b7253833303ea
     ledger_seq: 21
   G5:
-    status: pending
+    status: awaiting_approval
     decided_by: null
     decided_at: null
     notes: null
@@ -696,5 +696,5 @@ artifacts:
 shots: {}
 authorizations: []
 changes: {}
-ledger_seq: 21
-ledger_head: sha256:7f85a4a1ad53c0a7a8b4658933dbe610cd0f656d6c2cf4c8037c991a684b2172
+ledger_seq: 22
+ledger_head: sha256:e3392fbb31ee2b7fa0d664bed0d0455d4765deaaa1cb2a47bf743c93f371eba2

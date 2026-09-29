@@ -1,0 +1,238 @@
+shot_id: SC03_SH010
+scene_id: SC03
+sequence_id: SQ01
+status: PROPOSED
+duration_s: 2.1667
+serves:
+- intent.comic_then_tender
+- intent.race_against_battery
+- intent.anime_feel
+creative_intent:
+  narrative_purpose: He bursts into the bright shop, scans the walls, spots a low socket behind a display
+    stand at the very back, hurries down the aisle and drops to his knees.
+  emotional_purpose: Comic urgency in a cheerful, orderly room.
+  visual_purpose: 'The high wide from above the door down the west aisle: shelves, fridges, four ceiling
+    panels, and a small figure crossing the whole room.'
+  audience_effect: The viewer learns the room, its lights and his distance from the door, which the blackout
+    will use.
+camera:
+  lens_mm: 35
+  height_m: 2.3
+  movement: static
+  start_position:
+  - 1.2
+  - 0.3
+  - 2.3
+  end_position: null
+  look_at: socket_corner
+  dof:
+    enabled: false
+composition:
+  framing: wide
+  aspect_ratio: 1.778
+  subject_position: centre_then_far_right
+  notes: 'Shop-local coords (x west, y depth south, z up). Master: on-axis high wide above the door, tilt
+    down about 11 deg (camera.geography.sc03). The kneeling figure at about 7.6 m is about 25-28 % of
+    frame height. Three layers: counter and near gondola ends / aisle and figure / fridges and back wall.
+    Pastel packets, no readable labels.'
+characters:
+- id: ren
+  position:
+  - 2.2
+  - 8.0
+  - 0.0
+  facing: south (away from camera)
+  action: enters under the camera, scans, hurries down the west aisle, drops to his knees by the display
+    stand
+environment:
+  location: corner shop (interior)
+  weather: clear
+  time_of_day: golden hour
+lighting:
+  ref: look.lighting.sc03
+  state: lit
+  key:
+    source: four ceiling panels
+    temperature_k: 5000
+    quality: soft top
+  rim: fridges on the back wall (6500 K)
+  background: warm door-glass rectangle
+  contrast: '2:1'
+color:
+  dominant: look.color.scene.sc03
+  shop: look.color.shop
+animation:
+  timing:
+    fps: 24
+    frames: 52
+    index: 0-based; f0 is the first frame, t = f / 24
+  characters:
+    ren:
+      locomotion:
+        type: quick_run_then_kneel
+        speed_mps: about 4.0 entering, 3.2 while scanning, 4.0 down the aisle, braking from f36; average
+          about 3.7
+        path: 'shop-local coords: enters under the camera head-first at about (1.3, 1.4) (the frame bottom
+          at head height), runs down the west aisle to kneel at (2.2, 8.0); about 6.7 m in 44 f'
+      keys:
+      - f: 0
+        t: 0.0
+        pose: head and shoulders enter at the frame bottom, running (step on f0), phone and cable loop
+          in the left hand
+      - f: 2
+        t: 0.08
+        pose: head snaps left to scan the wall; body keeps running (eases to about 3.2 m/s)
+      - f: 6
+        t: 0.25
+        pose: head snaps right
+      - f: 10
+        t: 0.42
+        pose: head locks down the aisle on the socket corner (spots it); 2-frame forward-lean anticipation
+          f10-11
+      - f: 12
+        t: 0.5
+        pose: accelerates down the west aisle, a step every 6 frames
+      - f: 36
+        t: 1.5
+        pose: braking steps, shorter strides (f36-43)
+      - f: 44
+        t: 1.83
+        pose: drops to both knees in one quick move (f44-48), phone arm tucks to the chest
+      - f: 48
+        t: 2.0
+        pose: knees down beside the stand, facing the back wall; small forward settle f49-51, eyes to
+          the stand
+      face: not readable (from above and behind)
+      secondary:
+      - jacket hem swings, flares on the drop and settles by f51
+      - cable loop swings with the stride and falls slack on the kneel
+      eyeline: left wall, right wall, then the socket corner from f10
+  camera:
+    easing: none
+    notes: 'locked off: the same frame is reused for the blackout (SH050)'
+  risks_m3:
+  - '6.7 m in 1.83 s is a quick run (about 3.7 m/s), not a walk: the entry keeps the pace of the SC02
+    dash. A walking hurry (about 2.5 m/s) would need about 2.7 s; flagged, not changed'
+render: {}
+assets:
+- world.sets.corner_shop
+- world.props.phone_ren
+- world.props.charging_cable
+- world.props.shop_socket
+rationale:
+  camera: '35 mm high wide (lens 2.3 m, tilt 11 deg): the strongest high angle in the film is set up here
+    and paid off unchanged at the blackout (camera.height.high SC03_aisle_wide_strong). Rejected: an eye-level
+    entry (the room would not dominate him).'
+  composition: 'Symmetric aisle frame with the ordered shelves pressing in (look.style.composition comic).
+    He travels from the frame bottom to the far right corner, so the room''s depth is the distance he
+    spent. Rejected: a lateral entry (loses the aisle''s depth).'
+  lighting: 'Soft, near-shadowless panels, fridges glowing on the back wall: comic order (look.lighting.sc03
+    lit state).'
+  movement: 'Static: he crosses the room; the camera stays put so the same frame can be reused. Rejected:
+    a follow-pan (the blackout frame would no longer match).'
+  color: 'Cool, bright shop palette (look.color.shop) after the gold street: we are inside.'
+  blocking: He ends kneeling at the west end of the back cross-aisle, facing the back wall, beside the
+    stand; the socket is behind the stand (world.sets.corner_shop).
+  animation: 'Comic urgency in an orderly room: he scans with head snaps while still moving, which keeps
+    his burst-and-hold rhythm readable at 25 % of frame height without stopping, then commits to the aisle
+    and drops to his knees in one move (characters.ren.movement). The run keeps the SC02 pace so the shop
+    feels like the same dash arriving. The final kneel matches the pose SH050 will freeze, so the two
+    master frames differ only in the light. Rejected: stopping for a full scan pose (costs about 10 frames
+    the shot does not have) and a knee slide (a stunt, and a humiliation risk).'
+style_break: null
+continuity_refs:
+- continuity.sc03.environment
+- continuity.props.cable
+- continuity.props.phone_ren
+derived_from:
+- ref: artifact:shot_list
+  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+- ref: artifact:cinematography_bible
+  hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
+- ref: artifact:screenplay
+  hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
+- ref: artifact:scenes
+  hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
+- ref: canon:intent.comic_then_tender
+  hash: sha256:470a5a95955efc7d581f5cf9fbf010cf479f60ad92ace91013d7e6523e8de8b7
+- ref: canon:intent.race_against_battery
+  hash: sha256:0f143f4624a8c8cebe71b8b7c11549ffdc6b37263c85d07695afa1cba4a5a0a0
+- ref: canon:intent.anime_feel
+  hash: sha256:3206d035843005dca7956fdf1cd27273af35423e8f5eee72077d947ab905171c
+- ref: canon:characters.ren.identity
+  hash: sha256:ece7a44a3e5d391d5fa0931cbfca8d088b4845069ce11c8987d6943db0cf299f
+- ref: canon:characters.ren.silhouette
+  hash: sha256:c0fa4bdf2d56ea008626b1a88ecc228bf8a3933472e76e02cb553c05274edcce
+- ref: canon:characters.ren.proportions
+  hash: sha256:02821b5246c17397347d94f2c9048e1a2a065b353cfde019c0cff0bb4b5229ca
+- ref: canon:characters.ren.face
+  hash: sha256:d63dc6a6bbfd4e2727ffacbab7f2bee8865a5c2ee0adce14c658f8b82489657d
+- ref: canon:characters.ren.expressions
+  hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+- ref: canon:characters.ren.wardrobe.jacket
+  hash: sha256:ed689e3256da875967607b2fd1622201fdac8b4113f5e57f73d68e8c77810eef
+- ref: canon:characters.ren.wardrobe.outfit
+  hash: sha256:ac1eeaf0825bc764899e2ddd2a6c519a08b58a042d35956b6c7347052e63a5e4
+- ref: canon:characters.ren.movement
+  hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+- ref: canon:characters.ren.representation
+  hash: sha256:237e8bf8c747568c8ef1084848c202746c7a8052b893c641e80c79abde90f150
+- ref: canon:continuity.sc03.environment
+  hash: sha256:b0ed70e30f6f382523b6eb5fdfa6f3e185960b8b22826ecb82e46a52074a9492
+- ref: canon:continuity.props.cable
+  hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+- ref: canon:continuity.props.phone_ren
+  hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+- ref: canon:camera.geography.sc03
+  hash: sha256:e426b8886e816baa16c233f2dc982b793c5ac89e41553bc6e07299c3eb332a41
+- ref: canon:camera.gags.no_repeat
+  hash: sha256:e268a6d91364cc5e7dd5818f91e0bddcdd747334c64e72808b3021f423b03971
+- ref: canon:continuity.battery
+  hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+- ref: canon:look.style.sky
+  hash: sha256:b8be91e245be13f6f11c3c45c1f81e09fc14f47d7e6c889e442db9db6a6d4222
+- ref: canon:look.style.phone_ui
+  hash: sha256:5b1bcd7579ec10d43bbfefbd045d981b00248cbbc4ca45550862e8c0df97c0e6
+- ref: canon:look.color.accent_battery_red
+  hash: sha256:d2fd886fad9c10a7ce4385766a0a0d2489cb6f63e55ec6fa35efb1a2b53ccf59
+- ref: canon:look.color.accent_power_amber
+  hash: sha256:53c0e9be6879c2a2d465a16e10aaaac1a03d9bddc301888ab8f2ce62505f8bef
+- ref: canon:look.color.ui
+  hash: sha256:49235e9a19e9b700bba3d04920fa7fde0c5d289497156fc41c09afd59b27d540
+- ref: canon:look.color.sky.golden_hour
+  hash: sha256:e527e1de7eb8844a48c35480e09d7faef05648cc8fa2d64925cd5e61f7174f97
+- ref: canon:look.color.shop
+  hash: sha256:19582f003960e2024bea81f3fcf362461b87300331f83b13bf5d9b5c52f0f028
+- ref: canon:look.color.scene.sc03
+  hash: sha256:9f359d0eb70e79db00a61ef1c5275f3afce278d1df44b2d87261b347af7db7aa
+- ref: canon:look.exposure.scene_keys
+  hash: sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4
+- ref: canon:look.lighting.sc03
+  hash: sha256:32462060af0a84d74d1aa75c41df1ac8a20f33d0262c8463342eb0a2f58d3ec0
+- ref: canon:look.lighting.power_indicators
+  hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+- ref: canon:world.rules.weather
+  hash: sha256:c70bcf2a9d9cd7fe8b52cd5f776e34560f22966cd4302637ccc527c22c54de66
+- ref: canon:world.rules.time_and_sun
+  hash: sha256:c4c98157eca0e16d776700681100256bb25eb79bb16e3807bfa0f4aa6ae47899
+- ref: canon:world.rules.power
+  hash: sha256:c55ced58e01c09a2eb6cd4897caac2571d2eaae59bbffe362b6fea76d7986c4d
+- ref: canon:world.rules.nobody_else
+  hash: sha256:bd037db7dbe914e4de28689d0158ccfa9abecd229a2aadf8d569138988cf93f3
+- ref: canon:world.rules.one_port
+  hash: sha256:0b69045958e1916ad7910a6e9e88a3f99f6e90eac2963d760ffe7e889ae47df8
+- ref: canon:world.locations.corner_shop
+  hash: sha256:921371c19d6f67f5749477530d1e5851498ad8785fd1c76166ce3c80f2b6cba6
+- ref: canon:world.sets.corner_shop
+  hash: sha256:ec237fef5176be584b10788bc38d48cf14cd937c1e42b64cb332319ef4e59f26
+- ref: canon:world.props.phone_ren
+  hash: sha256:307dcf5af82826c64a95436d6dc4dbe3d6491992f4e8374e97abede7d6ac07bf
+- ref: canon:world.props.charging_cable
+  hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
+- ref: canon:world.props.shop_socket
+  hash: sha256:f4dbaade29a56d1efd2cf089287cbab5cdef6078c1e8293ace9afcb51bb10d90
+- ref: canon:story.arc.ren
+  hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
+- ref: canon:world.props.crank_charger
+  hash: sha256:6831cc87e82e108ae32e6d7bc1757f27563d8d23a1f7278b97e810b439bb259d
+stamped_content_hash: sha256:973dab1732fa017ec1689768b6d6768d2b3ef90afb8267a4d20293b388cb70d2
