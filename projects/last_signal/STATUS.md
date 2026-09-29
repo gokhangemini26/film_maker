@@ -6,11 +6,11 @@
 project: last_signal
 sandbox: false
 current_phase: PREVIEW
-status: awaiting_approval
-ledger: 29 records, head 75df76f1dd07
+status: in_progress
+ledger: 30 records, head 94b5daea918d
 ```
 
-**Next:** Human review: `fm approve G6`, or `fm revise G6 --notes ...` / `fm reject G6 --notes ...`
+**Next:** Gate approved: `fm advance`
 
 ## Gates
 
@@ -21,7 +21,7 @@ ledger: 29 records, head 75df76f1dd07
 | G3 | World and characters | approved | human:gokhan_guler | 4 |
 | G4 | Visual direction (style lock) | approved | human:gokhan_guler | 4 |
 | G5 | Storyboard and shots | approved | human:gokhan_guler | 42 |
-| G6 | First Blender preview | awaiting_approval | - | - |
+| G6 | First Blender preview | approved | human:gokhan_guler | - |
 | G7 | Animation preview | pending | - | - |
 | G8 | Final render | pending | - | - |
 

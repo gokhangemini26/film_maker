@@ -4,7 +4,7 @@ title: Last Signal
 sandbox: false
 created_at: '2026-09-28T20:41:45Z'
 phase: PREVIEW
-phase_status: awaiting_approval
+phase_status: in_progress
 gates:
   G1:
     status: approved
@@ -116,12 +116,12 @@ gates:
     review_acknowledged: false
     amendments: 0
   G6:
-    status: awaiting_approval
-    decided_by: null
-    decided_at: null
-    notes: null
+    status: approved
+    decided_by: human:gokhan_guler
+    decided_at: '2026-09-29T20:42:48Z'
+    notes: Blockout accepted as first preview; polish in M4/M6
     approved_hashes: {}
-    ledger_seq: null
+    ledger_seq: 30
     review_verdict: null
     review_acknowledged: false
     amendments: 0
@@ -1015,5 +1015,5 @@ shots:
 authorizations: []
 changes:
   CHANGE-001: APPROVED
-ledger_seq: 29
-ledger_head: sha256:75df76f1dd07162099f9c6d0566693be8aa1be5fb4429d88dfb277965ef5d94d
+ledger_seq: 30
+ledger_head: sha256:94b5daea918d04ce31df32774d18c37b1ba61113d8c63a7443015c9b5317cb17
