@@ -7,7 +7,7 @@ project: last_signal
 sandbox: false
 current_phase: STORYBOARD
 status: in_progress
-ledger: 19 records, head 8810573e9d59
+ledger: 21 records, head 7f85a4a1ad53
 ```
 
 **Next:** Produce STORYBOARD deliverables (07_storyboard/STORYBOARD.md, 07_storyboard/SHOT_LIST.md, qa/reviews/G5_REVIEW.md), then `fm submit` for G5
@@ -18,8 +18,8 @@ ledger: 19 records, head 8810573e9d59
 |---|---|---|---|---|
 | G1 | Creative direction | approved | human:gokhan_guler | 4 |
 | G2 | Story and screenplay | approved | human:gokhan_guler | 5 |
-| G3 | World and characters | approved (DRIFTED) | human:gokhan_guler | 4 |
-| G4 | Visual direction (style lock) | approved (DRIFTED) | human:gokhan_guler | 4 |
+| G3 | World and characters | approved | human:gokhan_guler | 4 |
+| G4 | Visual direction (style lock) | approved | human:gokhan_guler | 4 |
 | G5 | Storyboard and shots | pending | - | - |
 | G6 | First Blender preview | pending | - | - |
 | G7 | Animation preview | pending | - | - |
@@ -58,8 +58,4 @@ None yet.
 
 ## Attention
 
-- G3: artifact:art_direction_bible was modified after approval (3f6417db6caa -> b55a2438747b)
-- G3: artifact:character_bible was modified after approval (44a136f55dc3 -> 71e9d285acb3)
-- G3: artifact:g3_review was modified after approval (be33e9db03f1 -> d26db206b8cf)
-- G3: artifact:world_bible was modified after approval (6fca966b474a -> c5a7ce8fda07)
-- G4: artifact:g4_review was modified after approval (cc0491da18b7 -> a2c83484c758)
+Nothing outstanding.
