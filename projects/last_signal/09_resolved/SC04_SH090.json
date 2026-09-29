@@ -77,7 +77,7 @@
       "enabled": false
     },
     "fov_h_deg": 39.5978,
-    "height_m": 0.95,
+    "height_m": 0.92,
     "lens_mm": 50.0,
     "look_at": "ren",
     "movement": "static",
@@ -85,9 +85,9 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      -1.52,
-      -1.05,
-      0.95
+      -1.33,
+      -1.71,
+      0.92
     ]
   },
   "characters": [
@@ -270,7 +270,7 @@
           }
         }
       },
-      "facing": "south, eyes on the phone",
+      "facing": "south (seen three-quarter from the lens, face toward screen left), eyes on the phone",
       "id": "ren",
       "position": [
         -0.1,
@@ -500,7 +500,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "The SH050 end position, locked (no push after the send). Crank at the frame bottom so the pip's 6-frame fade is seen. Lead room screen left. Cut on light to SC05_SH010 (camera.rhythm.transitions).",
+    "notes": "The SH050 end position exactly, (-1.33, -1.71, 0.92), locked (no push after the send); aimed at the crown-to-pip midpoint (about z 0.79 m) so the crank sits at the frame bottom and the pip's 6-frame fade is seen. Three-quarter, lead room screen left. Cut on light to SC05_SH010 (camera.rhythm.transitions).",
     "subject_position": "right_third_facing_left"
   },
   "environment": {

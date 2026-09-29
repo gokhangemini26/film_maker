@@ -3,7 +3,7 @@ fm:
   id: shot_list
   kind: shot_list
   phase: STORYBOARD
-  status: APPROVED
+  status: PROPOSED
   owner_role: cinematographer
   derived_from:
   - ref: artifact:cinematography_bible
@@ -71,7 +71,7 @@ fm:
   - intent.earned_last_signal
   summary: 38 shots, 1440 frames (60.00 s at 24 fps); per-scene totals equal the human-accepted camera
     budget (SC01 528, SC02 48, SC03 240, SC04 434, SC05 108, SC06 82).
-  stamped_content_hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  stamped_content_hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
   stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
     and shots); no content revision needed.
 title: Shot List
@@ -97,24 +97,37 @@ SCREENPLAY: SC01 "Are you free tonight?", SC04 "Are you free tonight? Dinner at
 wording as UNKNOWN (open since G2/G3). A different option changes the holds in
 SC01_SH070 and SC04_SH060 only.
 
+**Preview pass 1 revision (PROPOSED, re-approval needed at G5).** The first
+Blender preview showed camera positions that could not give the promised frames.
+Changed shots and why: SC04_SH030 lens moved 40 deg east around him on the
+pavement so the glovebox is inside the 50 mm frame; SC04_SH050 and SC04_SH090
+lens moved 30 deg east so he reads three-quarter facing screen left instead of
+frontal (SH090 height now equals the SH050 end, 0.92 m); every text insert
+(SC01_SH030/070/080/120/140, SC03_SH060, SC04_SH020/060/070/080) now sits
+0.30 m from the screen on his eyeline (frame 71 mm), and the two screen inserts
+(SC01_SH020/050) sit 0.67 m from the screen above his left shoulder (frame
+0.16 m, head out of the sight line). Each insert states its assumed screen
+centre as a DEPENDENCY for the animation hold. Durations, lenses, scales and
+serves are unchanged.
+
 ### SC01 INT. REN'S CAR - GOLDEN HOUR (budget 22.00 s / 528 f)
 
 | shot | scene | dur | scale | lens | height | movement | subject | serves | transition |
 |---|---|---|---|---|---|---|---|---|---|
 | SC01_SH010 | SC01 | 1.67 s (40 f) | MCU | 50 | eye level 1.2 m | static | Mirror check, tuft | race_against_battery, soft_but_cinematic, anime_feel | FADE IN / cut |
-| SC01_SH020 | SC01 | 1.58 s (38 f) | INS | 85 | insert 1.3 m | static | Map, fork-and-knife pin | race_against_battery, open_hopeful_ending | cut |
-| SC01_SH030 | SC01 | 1.17 s (28 f) | INS | 85 | insert 1.3 m | static | Swipe to her photo, 5 % | race_against_battery | cut |
+| SC01_SH020 | SC01 | 1.58 s (38 f) | INS | 85 | insert 1.32 m | static | Map, fork-and-knife pin | race_against_battery, open_hopeful_ending | cut |
+| SC01_SH030 | SC01 | 1.17 s (28 f) | INS | 85 | insert 1.14 m | static | Swipe to her photo, 5 % | race_against_battery | cut |
 | SC01_SH040 | SC01 | 1.25 s (30 f) | MCU | 24 | eye level 1.12 m | static | Practised breath, taps call | race_against_battery, comic_then_tender | cut |
-| SC01_SH050 | SC01 | 1.83 s (44 f) | INS | 85 | insert 1.3 m | static | Call button pulses x3, greys | race_against_battery, comic_then_tender | cut |
+| SC01_SH050 | SC01 | 1.83 s (44 f) | INS | 85 | insert 1.32 m | static | Call button pulses x3, greys | race_against_battery, comic_then_tender | cut |
 | SC01_SH060 | SC01 | 1.42 s (34 f) | MS | 24 | mild low 1.0 m | static | Letdown, sits up to text | comic_then_tender, race_against_battery | cut |
-| SC01_SH070 | SC01 | 2.42 s (58 f) | INS | 85 | insert 1.25 m | static | Types 'Are you free tonight?' | race_against_battery, open_hopeful_ending | cut |
-| SC01_SH080 | SC01 | 1.25 s (30 f) | INS | 85 | insert 1.25 m | static | 5 % -> red 4 % | race_against_battery, comic_then_tender | cut |
+| SC01_SH070 | SC01 | 2.42 s (58 f) | INS | 85 | insert 1.14 m | static | Types 'Are you free tonight?' | race_against_battery, open_hopeful_ending | cut |
+| SC01_SH080 | SC01 | 1.25 s (30 f) | INS | 85 | insert 1.14 m | static | 5 % -> red 4 % | race_against_battery, comic_then_tender | cut |
 | SC01_SH090 | SC01 | 1.00 s (24 f) | MCU | 50 | eye level 1.2 m | static | Freeze, stuck exhale | comic_then_tender, race_against_battery | cut |
 | SC01_SH100 | SC01 | 2.00 s (48 f) | MS | 24 | eye level 1.2 m | static | Key, glovebox, crank clunks onto lap | earned_last_signal, comic_then_tender, race_against_battery | cut |
 | SC01_SH110 | SC01 | 1.33 s (32 f) | INS | 85 | insert 1.0 m | static | Crank in lap, shoved back, cable out | earned_last_signal, comic_then_tender | cut |
-| SC01_SH120 | SC01 | 0.83 s (20 f) | INS | 85 | insert 1.25 m | static | Bolt appears beside 4 % | race_against_battery, comic_then_tender | cut |
+| SC01_SH120 | SC01 | 0.83 s (20 f) | INS | 85 | insert 1.14 m | static | Bolt appears beside 4 % | race_against_battery, comic_then_tender | cut |
 | SC01_SH130 | SC01 | 1.42 s (34 f) | MS | 24 | eye level 1.2 m | static | Relief; engine dies, dash dark | comic_then_tender, race_against_battery | cut on the stall frame |
-| SC01_SH140 | SC01 | 1.33 s (32 f) | INS | 85 | insert 1.25 m | static | Bolt gone, 4 -> 3 % | race_against_battery, comic_then_tender | cut |
+| SC01_SH140 | SC01 | 1.33 s (32 f) | INS | 85 | insert 1.14 m | static | Bolt gone, 4 -> 3 % | race_against_battery, comic_then_tender | cut |
 | SC01_SH150 | SC01 | 1.50 s (36 f) | MS | 50 | mild high 1.72 m | static | Forehead to the wheel | comic_then_tender, race_against_battery | cut |
 
 **SC01 total: 15 shots, 528 frames = 22.00 s** (average 1.47 s per shot).
@@ -138,7 +151,7 @@ SC01_SH070 and SC04_SH060 only.
 | SC03_SH030 | SC03 | 1.08 s (26 f) | MCU | 24 | mild low 0.85 m | static | Wary look up at the panels: nothing | comic_then_tender | cut |
 | SC03_SH040 | SC03 | 0.92 s (22 f) | MCU | 35 | eye level 1.05 m | static | Long exhale | comic_then_tender | cut |
 | SC03_SH050 | SC03 | 1.25 s (30 f) | WS | 35 | strong high 2.3 m | static | Master: blackout | comic_then_tender, race_against_battery, anime_feel | cut |
-| SC03_SH060 | SC03 | 1.08 s (26 f) | INS | 85 | insert 1.1 m | static | 2 %, bolt gone | race_against_battery | cut |
+| SC03_SH060 | SC03 | 1.08 s (26 f) | INS | 85 | insert 0.97 m | static | 2 %, bolt gone | race_against_battery | cut |
 | SC03_SH070 | SC03 | 2.00 s (48 f) | MCU | 35 | eye level 1.05 m | static | Reverse: phone-lit face, door far behind (held) | comic_then_tender, race_against_battery, soft_but_cinematic | hard cut, black to dusk |
 
 **SC03 total: 7 shots, 240 frames = 10.00 s** (average 1.43 s per shot).
@@ -148,14 +161,14 @@ SC01_SH070 and SC04_SH060 only.
 | shot | scene | dur | scale | lens | height | movement | subject | serves | transition |
 |---|---|---|---|---|---|---|---|---|---|
 | SC04_SH010 | SC04 | 1.92 s (46 f) | MWS | 35 | eye level 0.95 m | static | Bookend: hunched at 1 % | comic_then_tender, soft_but_cinematic, open_hopeful_ending, anime_feel | cut |
-| SC04_SH020 | SC04 | 1.33 s (32 f) | INS | 85 | insert 0.62 m | static | 1 % blinking; tries to type, stutter | race_against_battery, earned_last_signal | cut |
+| SC04_SH020 | SC04 | 1.33 s (32 f) | INS | 85 | insert 0.79 m | static | 1 % blinking; tries to type, stutter | race_against_battery, earned_last_signal | cut |
 | SC04_SH030 | SC04 | 1.50 s (36 f) | MCU | 50 | eye level 0.95 m | push-in | Looks to the open door, glovebox (push 1) | earned_last_signal, comic_then_tender | cut |
 | SC04_SH040 | SC04 | 2.50 s (60 f) | MS | 50 | strong low 0.5 m | static | Takes the crank, sits back holding it (strong low) | earned_last_signal, comic_then_tender | cut |
 | SC04_SH050 | SC04 | 3.33 s (80 f) | MS | 50 | eye level 0.92 m | push-in | Plugs in, cranks, glow steadies (push 2) | earned_last_signal, comic_then_tender, soft_but_cinematic | cut |
-| SC04_SH060 | SC04 | 2.83 s (68 f) | INS | 85 | insert 0.62 m | static | Finishes invitation; heart typed, deleted | race_against_battery, open_hopeful_ending, earned_last_signal | cut |
-| SC04_SH070 | SC04 | 1.08 s (26 f) | INS | 85 | insert 0.62 m | static | 1 % -> 2 %, bolt on | earned_last_signal, race_against_battery | cut |
-| SC04_SH080 | SC04 | 2.42 s (58 f) | INS | 85 | insert 0.62 m | static | Send, progress, tick | earned_last_signal, race_against_battery, open_hopeful_ending | cut |
-| SC04_SH090 | SC04 | 1.17 s (28 f) | MCU | 50 | eye level 0.95 m | static | Lets go, click, breath out | earned_last_signal, comic_then_tender, open_hopeful_ending | cut on light |
+| SC04_SH060 | SC04 | 2.83 s (68 f) | INS | 85 | insert 0.79 m | static | Finishes invitation; heart typed, deleted | race_against_battery, open_hopeful_ending, earned_last_signal | cut |
+| SC04_SH070 | SC04 | 1.08 s (26 f) | INS | 85 | insert 0.79 m | static | 1 % -> 2 %, bolt on | earned_last_signal, race_against_battery | cut |
+| SC04_SH080 | SC04 | 2.42 s (58 f) | INS | 85 | insert 0.79 m | static | Send, progress, tick | earned_last_signal, race_against_battery, open_hopeful_ending | cut |
+| SC04_SH090 | SC04 | 1.17 s (28 f) | MCU | 50 | eye level 0.92 m | static | Lets go, click, breath out | earned_last_signal, comic_then_tender, open_hopeful_ending | cut on light |
 
 **SC04 total: 9 shots, 434 frames = 18.08 s** (average 2.01 s per shot).
 

@@ -1,0 +1,250 @@
+id: CHANGE-004
+status: PROPOSED
+target: world.sets.hana_room
+reason: 'G6 preview: world.sets.hana_room has sizes but no origin, axes or positions; shots and builder
+  assume a centred layout the canon never states, and the builder pins the sketches over the window glass.
+  Adds the frame, window/desk/chair centres, desk layout and sketch zones.'
+set:
+  value:
+    footprint_m:
+    - 3.0
+    - 3.6
+    ceiling_m: 2.4
+    window:
+      width_m: 1.2
+      height_m: 1.1
+      sill_height_m: 0.9
+      wall: west
+      curtains: open
+      centre_x_m: 0.0
+    desk:
+      size_m:
+      - 1.1
+      - 0.55
+      height_m: 0.72
+      against: window_wall
+      centre_m:
+      - 0.0
+      - -0.275
+    chair: simple_desk_chair
+    desk_lamp:
+      position: desk_left
+      switched_on: true
+    phone_position: desk_right_of_sketchbook_face_up
+    wall_sketches: 4-6_pinned_above_desk
+    detail_zone: window_wall_and_desk
+    rest_of_room: low_detail_in_shadow
+    frame:
+      origin: window_wall_inner_face_centre_at_floor
+      plus_x: north
+      plus_y: west
+      z: up
+      interior_x_m:
+      - -1.5
+      - 1.5
+      interior_y_m:
+      - -3.6
+      - 0.0
+    chair_centre_m:
+    - 0.0
+    - -0.85
+    desk_layout_m:
+      desk_lamp_base:
+      - -0.45
+      - -0.2
+      pencil_cup:
+      - -0.3
+      - -0.12
+      sketchbook_centre:
+      - -0.05
+      - -0.25
+      phone_hana_centre:
+      - 0.25
+      - -0.3
+    wall_sketch_zones:
+      x_m:
+      - - -1.15
+        - -0.7
+      - - 0.7
+        - 1.15
+      z_m:
+      - 1.1
+      - 1.95
+      'on': window_wall_either_side_of_window
+  rationale: |
+    SC05 is four seconds, framed at her desk; building the window wall and desk and letting
+    the rest fall into shadow gives a complete, cosy frame at minimum cost. Phone face-up to
+    her right, on the far side from the lamp, so its light is a separate, new light on her
+    face when it wakes. Rejected: a fully dressed room (unseen detail).
+
+    G6 layout numbers. Makes numeric the room frame the SC05 shots already use (x north, y
+        west, origin on the window wall) and the centred layout the preview builds: window and
+        desk centred, chair and Hana at y -0.85, lamp at her left (south), phone to her right
+        (north) on the far side from the lamp. The desk spans the window, so the pinned sketches
+        go on the window wall either side of the window (as the ART_DIRECTION_BIBLE says), never
+        over the glass: the sky must stay clear in her frames. Rejected: sketches above the window
+        (the head band is only 0.4 m and would crowd the ceiling).
+base_version: 1
+base_hash: sha256:e19f0783497b907cbcdc58e82b81c8905c0c3456cc964bf467302f3e053c3114
+proposed_by: agent:claude-code
+proposed_at: '2026-09-29T21:39:25Z'
+impact:
+  CANON:
+  - canon:camera.dof.default_deep
+  - canon:camera.format
+  - canon:camera.geography.sc05
+  - canon:camera.height.eye_level
+  - canon:characters.hana.face
+  - canon:characters.hana.movement
+  - canon:characters.hana.proportions
+  - canon:characters.hana.representation
+  - canon:characters.hana.silhouette
+  - canon:characters.hana.wardrobe.headphones
+  - canon:characters.hana.wardrobe.outfit
+  - canon:continuity.hana.headphones
+  - canon:look.color.hana_room
+  - canon:look.color.scene.sc05
+  - canon:look.exposure.scene_keys
+  - canon:look.exposure.value_structure
+  - canon:look.lighting.eevee_feasibility
+  - canon:look.lighting.sc05
+  - canon:look.style.background_shading
+  - canon:look.style.character_shading
+  - canon:look.style.outlines
+  - canon:look.style.realism
+  - canon:look.style.render_constraints
+  - canon:look.style.texture_and_grain
+  - canon:world.props.desk_lamp
+  ARTIFACT:
+  - artifact:art_direction_bible
+  - artifact:character_bible
+  - artifact:cinematography_bible
+  - artifact:color_bible
+  - artifact:g3_review
+  - artifact:g4_review
+  - artifact:g5_review
+  - artifact:lighting_bible
+  - artifact:preview_review
+  - artifact:shot_list
+  - artifact:storyboard
+  - artifact:visual_bible
+  SHOT:
+  - shot:SC01_SH010
+  - shot:SC01_SH020
+  - shot:SC01_SH030
+  - shot:SC01_SH040
+  - shot:SC01_SH050
+  - shot:SC01_SH060
+  - shot:SC01_SH070
+  - shot:SC01_SH080
+  - shot:SC01_SH090
+  - shot:SC01_SH100
+  - shot:SC01_SH110
+  - shot:SC01_SH120
+  - shot:SC01_SH130
+  - shot:SC01_SH140
+  - shot:SC01_SH150
+  - shot:SC02_SH010
+  - shot:SC02_SH020
+  - shot:SC02_SH030
+  - shot:SC03_SH010
+  - shot:SC03_SH020
+  - shot:SC03_SH030
+  - shot:SC03_SH040
+  - shot:SC03_SH050
+  - shot:SC03_SH060
+  - shot:SC03_SH070
+  - shot:SC04_SH010
+  - shot:SC04_SH020
+  - shot:SC04_SH030
+  - shot:SC04_SH040
+  - shot:SC04_SH050
+  - shot:SC04_SH060
+  - shot:SC04_SH070
+  - shot:SC04_SH080
+  - shot:SC04_SH090
+  - shot:SC05_SH010
+  - shot:SC05_SH020
+  - shot:SC05_SH030
+  - shot:SC06_SH010
+  RESOLVED:
+  - resolved:SC01_SH010
+  - resolved:SC01_SH020
+  - resolved:SC01_SH030
+  - resolved:SC01_SH040
+  - resolved:SC01_SH050
+  - resolved:SC01_SH060
+  - resolved:SC01_SH070
+  - resolved:SC01_SH080
+  - resolved:SC01_SH090
+  - resolved:SC01_SH100
+  - resolved:SC01_SH110
+  - resolved:SC01_SH120
+  - resolved:SC01_SH130
+  - resolved:SC01_SH140
+  - resolved:SC01_SH150
+  - resolved:SC02_SH010
+  - resolved:SC02_SH020
+  - resolved:SC02_SH030
+  - resolved:SC03_SH010
+  - resolved:SC03_SH020
+  - resolved:SC03_SH030
+  - resolved:SC03_SH040
+  - resolved:SC03_SH050
+  - resolved:SC03_SH060
+  - resolved:SC03_SH070
+  - resolved:SC04_SH010
+  - resolved:SC04_SH020
+  - resolved:SC04_SH030
+  - resolved:SC04_SH040
+  - resolved:SC04_SH050
+  - resolved:SC04_SH060
+  - resolved:SC04_SH070
+  - resolved:SC04_SH080
+  - resolved:SC04_SH090
+  - resolved:SC05_SH010
+  - resolved:SC05_SH020
+  - resolved:SC05_SH030
+  - resolved:SC06_SH010
+  - resolved:film
+  RENDER:
+  - render:preview_SC01_SH010
+  - render:preview_SC01_SH020
+  - render:preview_SC01_SH030
+  - render:preview_SC01_SH040
+  - render:preview_SC01_SH050
+  - render:preview_SC01_SH060
+  - render:preview_SC01_SH070
+  - render:preview_SC01_SH080
+  - render:preview_SC01_SH090
+  - render:preview_SC01_SH100
+  - render:preview_SC01_SH110
+  - render:preview_SC01_SH120
+  - render:preview_SC01_SH130
+  - render:preview_SC01_SH140
+  - render:preview_SC01_SH150
+  - render:preview_SC02_SH010
+  - render:preview_SC02_SH020
+  - render:preview_SC02_SH030
+  - render:preview_SC03_SH010
+  - render:preview_SC03_SH020
+  - render:preview_SC03_SH030
+  - render:preview_SC03_SH040
+  - render:preview_SC03_SH050
+  - render:preview_SC03_SH060
+  - render:preview_SC03_SH070
+  - render:preview_SC04_SH010
+  - render:preview_SC04_SH020
+  - render:preview_SC04_SH030
+  - render:preview_SC04_SH040
+  - render:preview_SC04_SH050
+  - render:preview_SC04_SH060
+  - render:preview_SC04_SH070
+  - render:preview_SC04_SH080
+  - render:preview_SC04_SH090
+  - render:preview_SC05_SH010
+  - render:preview_SC05_SH020
+  - render:preview_SC05_SH030
+  - render:preview_SC06_SH010
+  QA:
+  - qa:stills

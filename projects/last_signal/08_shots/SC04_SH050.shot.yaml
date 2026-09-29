@@ -1,7 +1,7 @@
 shot_id: SC04_SH050
 scene_id: SC04
 sequence_id: SQ02
-status: APPROVED
+status: PROPOSED
 duration_s: 3.3333
 serves:
 - intent.earned_last_signal
@@ -19,12 +19,12 @@ camera:
   height_m: 0.92
   movement: dolly_in
   start_position:
-  - -1.8
-  - -1.05
+  - -1.572
+  - -1.85
   - 0.92
   end_position:
-  - -1.52
-  - -1.05
+  - -1.33
+  - -1.71
   - 0.92
   look_at: ren
   dof:
@@ -33,17 +33,23 @@ composition:
   framing: medium
   aspect_ratio: 1.778
   subject_position: right_third_facing_left
-  notes: 'Push-in 2 of 2 from the first crank turn (about frame 30) to the end: 0.28 m over 50 frames
-    (0.134 m/s, under the 0.15 m/s cap). Ends as a medium close-up. Pip at 1 % of frame height or more;
-    crank at 10 % of frame width or more; cable''s visible length short and posed over the knee. Car flank
-    behind the jacket.'
+  notes: 'Lens on the pavement 30 deg east of his facing (south), so he reads three-quarter facing screen
+    left, with face, crank and phone all turned toward the lens; aim at the midpoint between his crown
+    and the pip (about z 0.79 m), a slight tilt down. Push-in 2 of 2 from the first crank turn (about
+    frame 30) to the end: 0.28 m straight toward him over 50 frames (0.134 m/s, under the 0.15 m/s cap).
+    Ends as a medium close-up. Pip at 1 % of frame height or more; crank at 10 % of frame width or more,
+    with its top and pip seen above his near (left) knee (DEPENDENCY for the animation clamp); cable''s
+    visible length short and posed over the knee. Car flank behind the jacket (the ray through the jacket
+    top hits the car at y about -0.83). The emptied glovebox sits dark far left of frame (it must not
+    glow). Phone-lit rule: 30 deg, inside the 45 deg limit (camera.phone_lit.framing).'
 characters:
 - id: ren
   position:
   - -0.1
   - -1.0
   - 0.12
-  facing: south, eyes between the crank and the phone
+  facing: south (seen three-quarter from the lens, face toward screen left), eyes between the crank and
+    the phone
   action: plugs the cable into the crank's port, unfolds the arm, cranks slowly with his right hand; phone
     in his left
 environment:
@@ -156,7 +162,13 @@ assets:
 - world.props.charging_cable
 rationale:
   camera: '50 mm at eye level, the tender lens at his distance. Rejected: an 85 mm close-up of the crank
-    alone (the effort must be seen on him, not only on the object).'
+    alone (the effort must be seen on him, not only on the object). Position corrected after the first
+    preview (PREVIEW_REVIEW #3): the approved lens sat due south of him while he faces south, so he rendered
+    full frontal and centred, against right_third_facing_left. Keeping his facing (locked in camera.geography.sc04_sc06
+    and matched by the SC04 inserts) and moving the lens 30 deg east along the pavement gives the three-quarter
+    with the same distances and push. Rejected: turning him west-south-west instead (breaks the locked
+    geography and his position in the inserts) and composing him centred and frontal (the tender section
+    is off-centre, look.style.composition).'
   composition: 'Crank and phone in one frame with his face: the cause (hand), the effect (pip, glow) and
     the person. Lead room screen left. Rejected: a crank insert here (would cut the continuity of effort
     into pieces).'
@@ -186,7 +198,7 @@ continuity_refs:
 - continuity.battery
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -293,6 +305,14 @@ derived_from:
   hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:87f164a94d136754182c0b4d1fb80514e2be63d9b9b148db7b9f297b1a0b20df
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.sent
+  hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+stamped_content_hash: sha256:276eebdb32f7817597391d4a97a5b8376ff2a6f93fb37a09a639300896c12c48
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

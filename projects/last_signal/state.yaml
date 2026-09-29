@@ -1015,5 +1015,8 @@ shots:
 authorizations: []
 changes:
   CHANGE-001: APPROVED
-ledger_seq: 30
-ledger_head: sha256:94b5daea918d04ce31df32774d18c37b1ba61113d8c63a7443015c9b5317cb17
+  CHANGE-002: PROPOSED
+  CHANGE-003: PROPOSED
+  CHANGE-004: PROPOSED
+ledger_seq: 33
+ledger_head: sha256:2fdb4375acfe9a0959b5b91a33a021780c7555ff486ec4550bd674b6ff939f52

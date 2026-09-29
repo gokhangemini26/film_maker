@@ -7,7 +7,7 @@ project: last_signal
 sandbox: false
 current_phase: PREVIEW
 status: in_progress
-ledger: 30 records, head 94b5daea918d
+ledger: 33 records, head 2fdb4375acfe
 ```
 
 **Next:** Gate approved: `fm advance`
@@ -20,14 +20,14 @@ ledger: 30 records, head 94b5daea918d
 | G2 | Story and screenplay | approved | human:gokhan_guler | 5 |
 | G3 | World and characters | approved | human:gokhan_guler | 4 |
 | G4 | Visual direction (style lock) | approved | human:gokhan_guler | 4 |
-| G5 | Storyboard and shots | approved | human:gokhan_guler | 42 |
+| G5 | Storyboard and shots | approved (DRIFTED) | human:gokhan_guler | 42 |
 | G6 | First Blender preview | approved | human:gokhan_guler | - |
 | G7 | Animation preview | pending | - | - |
 | G8 | Final render | pending | - | - |
 
 ## Canon
 
-LOCKED: 161
+LOCKED: 161, PROPOSED: 9
 
 ## Artifacts
 
@@ -44,15 +44,15 @@ LOCKED: 161
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
 | g3_review | WORLD_CHARACTERS | APPROVED | d26db206b8cf |
 | g4_review | LOOK | APPROVED | a2c83484c758 |
-| g5_review | STORYBOARD | APPROVED | 51c65bce1415 |
+| g5_review | STORYBOARD | APPROVED (stale) | 51c65bce1415 |
 | lighting_bible | LOOK | APPROVED | 95224320170d |
-| preview_review | PREVIEW | PROPOSED | b8aa461ed622 |
+| preview_review | PREVIEW | PROPOSED (stale) | 59ee7a61839b |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
-| shot_list | STORYBOARD | APPROVED | a6a2b5dffb75 |
+| shot_list | STORYBOARD | APPROVED | 92b3bcc6a1e2 |
 | story_bible | STORY | APPROVED | 1604e946f2ee |
 | story_structure | STORY | APPROVED | d8a12c83b7c3 |
-| storyboard | STORYBOARD | APPROVED | 3463a5cadda1 |
+| storyboard | STORYBOARD | APPROVED | cf0648aa7179 |
 | visual_bible | LOOK | APPROVED | 4cb45f98d39b |
 | world_bible | WORLD_CHARACTERS | APPROVED | c5a7ce8fda07 |
 
@@ -61,19 +61,19 @@ LOCKED: 161
 | Shot | Duration | Status | Stage |
 |---|---|---|---|
 | SC01_SH010 | 1.6667s | APPROVED | spec |
-| SC01_SH020 | 1.5833s | APPROVED | spec |
-| SC01_SH030 | 1.1667s | APPROVED | spec |
+| SC01_SH020 | 1.5833s | PROPOSED | spec |
+| SC01_SH030 | 1.1667s | PROPOSED | spec |
 | SC01_SH040 | 1.25s | APPROVED | spec |
-| SC01_SH050 | 1.8333s | APPROVED | spec |
+| SC01_SH050 | 1.8333s | PROPOSED | spec |
 | SC01_SH060 | 1.4167s | APPROVED | spec |
-| SC01_SH070 | 2.4167s | APPROVED | spec |
-| SC01_SH080 | 1.25s | APPROVED | spec |
+| SC01_SH070 | 2.4167s | PROPOSED | spec |
+| SC01_SH080 | 1.25s | PROPOSED | spec |
 | SC01_SH090 | 1s | APPROVED | spec |
 | SC01_SH100 | 2s | APPROVED | spec |
 | SC01_SH110 | 1.3333s | APPROVED | spec |
-| SC01_SH120 | 0.8333s | APPROVED | spec |
+| SC01_SH120 | 0.8333s | PROPOSED | spec |
 | SC01_SH130 | 1.4167s | APPROVED | spec |
-| SC01_SH140 | 1.3333s | APPROVED | spec |
+| SC01_SH140 | 1.3333s | PROPOSED | spec |
 | SC01_SH150 | 1.5s | APPROVED | spec |
 | SC02_SH010 | 0.75s | APPROVED | spec |
 | SC02_SH020 | 0.5833s | APPROVED | spec |
@@ -83,17 +83,17 @@ LOCKED: 161
 | SC03_SH030 | 1.0833s | APPROVED | spec |
 | SC03_SH040 | 0.9167s | APPROVED | spec |
 | SC03_SH050 | 1.25s | APPROVED | spec |
-| SC03_SH060 | 1.0833s | APPROVED | spec |
+| SC03_SH060 | 1.0833s | PROPOSED | spec |
 | SC03_SH070 | 2s | APPROVED | spec |
 | SC04_SH010 | 1.9167s | APPROVED | spec |
-| SC04_SH020 | 1.3333s | APPROVED | spec |
-| SC04_SH030 | 1.5s | APPROVED | spec |
+| SC04_SH020 | 1.3333s | PROPOSED | spec |
+| SC04_SH030 | 1.5s | PROPOSED | spec |
 | SC04_SH040 | 2.5s | APPROVED | spec |
-| SC04_SH050 | 3.3333s | APPROVED | spec |
-| SC04_SH060 | 2.8333s | APPROVED | spec |
-| SC04_SH070 | 1.0833s | APPROVED | spec |
-| SC04_SH080 | 2.4167s | APPROVED | spec |
-| SC04_SH090 | 1.1667s | APPROVED | spec |
+| SC04_SH050 | 3.3333s | PROPOSED | spec |
+| SC04_SH060 | 2.8333s | PROPOSED | spec |
+| SC04_SH070 | 1.0833s | PROPOSED | spec |
+| SC04_SH080 | 2.4167s | PROPOSED | spec |
+| SC04_SH090 | 1.1667s | PROPOSED | spec |
 | SC05_SH010 | 1s | APPROVED | spec |
 | SC05_SH020 | 1.3333s | APPROVED | spec |
 | SC05_SH030 | 2.1667s | APPROVED | spec |
@@ -101,4 +101,42 @@ LOCKED: 161
 
 ## Attention
 
-Nothing outstanding.
+- G5: artifact:g5_review is stale: artifact:storyboard changed
+- G5: artifact:shot_list was modified after approval (a6a2b5dffb75 -> 92b3bcc6a1e2)
+- G5: artifact:storyboard was modified after approval (3463a5cadda1 -> cf0648aa7179)
+- G5: shot:SC01_SH020 was modified after approval (55abea9f1ede -> bbd1102adc4f)
+- G5: shot:SC01_SH030 was modified after approval (7bd158cdcd69 -> 0038b02f3221)
+- G5: shot:SC01_SH050 was modified after approval (cb7a17707d96 -> fca38b6d0bc9)
+- G5: shot:SC01_SH070 was modified after approval (4bb80127d578 -> 2c36bdb57ecd)
+- G5: shot:SC01_SH080 was modified after approval (578f482dfcd1 -> f556a039402a)
+- G5: shot:SC01_SH120 was modified after approval (d98e26a8cdd5 -> 43bdadfe67d6)
+- G5: shot:SC01_SH140 was modified after approval (e75d1fdff853 -> 2b8ef5785295)
+- G5: shot:SC03_SH060 was modified after approval (aa03e411a9fb -> a1768862865e)
+- G5: shot:SC04_SH020 was modified after approval (2df742e7dee1 -> 93b51b2f50c7)
+- G5: shot:SC04_SH030 was modified after approval (9d56ea0c465a -> a861857823fd)
+- G5: shot:SC04_SH050 was modified after approval (87f164a94d13 -> 276eebdb32f7)
+- G5: shot:SC04_SH060 was modified after approval (fe2659522b8a -> 541fcf93e70b)
+- G5: shot:SC04_SH070 was modified after approval (f0af46aad1a8 -> 2012bb3da3b5)
+- G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> d209481a74bd)
+- G5: shot:SC04_SH090 was modified after approval (451cd791871b -> b7888d4f125f)
+- stale: artifact:g5_review
+- stale: artifact:preview_review
+- stale: qa:stills
+- stale: render:preview_SC01_SH020
+- stale: render:preview_SC01_SH030
+- stale: render:preview_SC01_SH050
+- stale: render:preview_SC01_SH070
+- stale: render:preview_SC01_SH080
+- stale: render:preview_SC01_SH120
+- stale: render:preview_SC01_SH140
+- stale: render:preview_SC03_SH060
+- stale: render:preview_SC04_SH020
+- stale: render:preview_SC04_SH030
+- stale: render:preview_SC04_SH050
+- stale: render:preview_SC04_SH060
+- stale: render:preview_SC04_SH070
+- stale: render:preview_SC04_SH080
+- stale: render:preview_SC04_SH090
+- change awaiting decision: CHANGE-002
+- change awaiting decision: CHANGE-003
+- change awaiting decision: CHANGE-004

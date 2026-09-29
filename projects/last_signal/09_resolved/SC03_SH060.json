@@ -41,7 +41,7 @@
       "focus_target": "phone_ren_screen_plane"
     },
     "fov_h_deg": 23.9132,
-    "height_m": 1.1,
+    "height_m": 0.97,
     "lens_mm": 85.0,
     "look_at": "phone_ren",
     "movement": "static",
@@ -50,8 +50,8 @@
     "sensor_width_mm": 36.0,
     "start_position": [
       2.2,
-      7.75,
-      1.1
+      8.12,
+      0.97
     ]
   },
   "characters": [
@@ -521,7 +521,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "insert",
-    "notes": "Text-size status-bar insert (as SC01_SH080). The change to 2 % happened on the blackout frame; this insert holds the result 26 frames (minimum 24). No dip and no change inside the shot: in the shop the damage is already done (camera.gags.no_repeat: insert after the loss).",
+    "notes": "Text-size status-bar insert (as SC01_SH080: frame about 71 mm tall, 85 mm at 0.30 m). The change to 2 % happened on the blackout frame; this insert holds the result 26 frames (minimum 24). No dip and no change inside the shot: in the shop the damage is already done (camera.gags.no_repeat: insert after the loss). Framing reference (DEPENDENCY for the animation hold and the builder): kneeling, eyes at 1.05 m; screen centre at about (2.2, 8.29, 0.72), 0.40 m in front of and below his eyes. Lens 0.30 m from it on his eyeline (his head behind the lens), camera's up = the phone's top edge; shift parallel to the screen for the status bar, never tilt.",
     "subject_position": "upper_right"
   },
   "environment": {

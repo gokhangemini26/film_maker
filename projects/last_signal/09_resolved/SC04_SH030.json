@@ -78,8 +78,8 @@
       "enabled": false
     },
     "end_position": [
-      -1.48,
-      -1.2,
+      -1.149,
+      -1.881,
       0.95
     ],
     "fov_h_deg": 39.5978,
@@ -91,8 +91,8 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      -1.65,
-      -1.25,
+      -1.287,
+      -1.996,
       0.95
     ]
   },
@@ -276,7 +276,7 @@
           }
         }
       },
-      "facing": "south, then turning his head screen left (west-north-west) to the door",
+      "facing": "south (three-quarter toward the lens), then turning his head screen left (west-north-west) to the glovebox through the open door",
       "id": "ren",
       "position": [
         -0.1,
@@ -506,7 +506,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "Face shot from the pavement side (camera.geography.sc04_sc06). Push-in 1 of 2: 0.18 m from frame 4 to the end (32 frames, 1.33 s, 0.135 m/s, under the 0.15 m/s cap), starting as his eyes land on the glovebox. Car flank behind his jacket (jacket-ray hits the car). Lead room screen left.",
+    "notes": "Face shot from the pavement side (camera.geography.sc04_sc06): lens on the pavement 1.55 m from him, 40 deg east of his facing (south), at his seated eye level. His head on the right third. Screen left of him and deeper in frame: the open door's panel entering from the frame-left edge to about 13 deg left of centre, and through the opening beside its hinge the closed glovebox about 10 deg left of centre (about 11 % of frame height and width), clear of his head and shoulder by about 0.4 m at his distance. At f0 his face reads three-quarter toward the lens; his head turn to the glovebox turns him away from us and hands the eye along his look into depth. Push-in 1 of 2: 0.18 m straight toward him from frame 4 to the end (32 frames, 0.135 m/s, under the 0.15 m/s cap), starting as his eyes land. Car flank behind his jacket (the ray through the jacket top hits the car at y about -0.75). Phone-lit rule: lens 40 deg from his facing, inside the 45 deg limit (camera.phone_lit.framing).",
     "subject_position": "right_third_facing_left"
   },
   "environment": {

@@ -1,0 +1,280 @@
+id: CHANGE-003
+status: PROPOSED
+target: world.sets.corner_shop
+reason: 'G6 preview: corner shop canon gives the socket only height/depth and the ceiling panels only
+  a count; no lateral positions for socket, stand or fridges (fridge 3 and the stand overlap in the build)
+  and the builder uses a corner origin instead of the stated door-centre origin. Adds numeric frame, socket
+  x, stand and fridge positions, and panel layout.'
+set:
+  value:
+    footprint_m:
+    - 4.5
+    - 9.0
+    ceiling_m: 2.7
+    counter:
+      size_m:
+      - 1.8
+      - 0.6
+      - 1.0
+      position: front_left
+    back_room_doorway:
+      size_m:
+      - 0.8
+      - 2.0
+      behind_counter: true
+      strip_curtain: true
+    aisles:
+      count: 2
+      gondola_height_m: 1.5
+      gondola_length_m: 5.0
+      aisle_width_m: 0.9
+    fridges:
+      count: 3
+      size_m:
+      - 0.7
+      - 0.7
+      - 2.0
+      wall: back
+      centres_x_m:
+      - -0.6
+      - 0.1
+      - 0.8
+      front_face_y_m: 8.3
+    socket:
+      wall: back
+      corner: right
+      height_m: 0.3
+      depth_from_door_m: 8.9
+      x_m: 1.95
+    display_stand:
+      size_m:
+      - 0.6
+      - 0.4
+      - 1.3
+      gap_to_wall_m: 0.25
+      tiered: true
+      centre_m:
+      - 1.7
+      - 8.55
+    ceiling_panels: 4
+    awning:
+      depth_m: 1.0
+      height_m: 2.3
+      striped: true
+    fascia_sign:
+      size_m:
+      - 3.0
+      - 0.5
+      content: basket_pictogram
+      lit_before_blackout: true
+    frame:
+      origin: door_threshold_centre
+      origin_in_street_m:
+      - -1.8
+      - 12.0
+      plus_x: right_as_seen_entering_west
+      plus_y: depth_into_shop_south
+      interior_x_m:
+      - -2.25
+      - 2.25
+      interior_y_m:
+      - 0.0
+      - 9.0
+    ceiling_panel_layout:
+      size_m:
+      - 0.6
+      - 1.2
+      long_axis: depth
+      x_m: 0.0
+      y_m:
+      - 1.125
+      - 3.375
+      - 5.625
+      - 7.875
+      face_z_m: 2.69
+      mount: flush
+  rationale: |
+    Putting the socket at the very back, low and behind a stand, makes him cross the whole shop
+    and kneel for it (the public, effortful dash that makes this failure cost more than the
+    car), and it puts him in the deepest part of the room when the lights go, with the door as
+    a small far rectangle behind him. The fridges on the back wall are right in front of him,
+    so their hum and glow dying is the event he sees. Rejected: a socket by the door (no
+    effort, and daylight from the door would light him).
+
+    G6 layout numbers. The statement's origin (door threshold centre, +x to the right on
+        entering = west) is made numeric, because the SC03 shots are authored in it (the west
+        aisle axis near x 1.2-1.5, the socket corner at the west end of the back wall).
+        Socket 0.30 m in from the west wall; the display stand stands just east of it, leaving a
+        0.25 m slot at the wall, so from the aisle the socket is hidden but his arm can reach in
+        behind the stand's west end while he kneels. The three fridges are packed centre-left
+        (x -0.95 to 1.15) so they do not collide with the stand (a 0.7 m-deep fridge in the right
+        corner would occupy the stand's floor); they sit forward-left of him, still the glow he
+        sees die. Four 0.6 x 1.2 flush panels in one row down the centre, evenly spaced, matching
+        what the preview already lights; the last one (y 7.875) is almost over his head, so the
+        SC03 low-angle "wary check" finds a panel in frame and the blackout happens above him.
+        Rejected: fridges filling the whole back wall (collides with the stand and the socket).
+base_version: 1
+base_hash: sha256:ec237fef5176be584b10788bc38d48cf14cd937c1e42b64cb332319ef4e59f26
+proposed_by: agent:claude-code
+proposed_at: '2026-09-29T21:39:24Z'
+impact:
+  CANON:
+  - canon:camera.dof.default_deep
+  - canon:camera.format
+  - canon:camera.framing.space_and_size
+  - canon:camera.gags.no_repeat
+  - canon:camera.geography.sc02
+  - canon:camera.geography.sc03
+  - canon:camera.height.eye_level
+  - canon:camera.lens_set
+  - canon:camera.phone_lit.framing
+  - canon:characters.hana.representation
+  - canon:characters.ren.proportions
+  - canon:characters.ren.representation
+  - canon:continuity.sc03.environment
+  - canon:look.color.scene.sc03
+  - canon:look.color.shop
+  - canon:look.exposure.scene_keys
+  - canon:look.exposure.value_structure
+  - canon:look.lighting.eevee_feasibility
+  - canon:look.lighting.sc03
+  - canon:look.style.background_shading
+  - canon:look.style.character_shading
+  - canon:look.style.outlines
+  - canon:look.style.realism
+  - canon:look.style.render_constraints
+  - canon:look.style.texture_and_grain
+  - canon:world.props.shop_socket
+  ARTIFACT:
+  - artifact:art_direction_bible
+  - artifact:character_bible
+  - artifact:cinematography_bible
+  - artifact:color_bible
+  - artifact:g3_review
+  - artifact:g4_review
+  - artifact:g5_review
+  - artifact:lighting_bible
+  - artifact:preview_review
+  - artifact:shot_list
+  - artifact:storyboard
+  - artifact:visual_bible
+  SHOT:
+  - shot:SC01_SH010
+  - shot:SC01_SH020
+  - shot:SC01_SH030
+  - shot:SC01_SH040
+  - shot:SC01_SH050
+  - shot:SC01_SH060
+  - shot:SC01_SH070
+  - shot:SC01_SH080
+  - shot:SC01_SH090
+  - shot:SC01_SH100
+  - shot:SC01_SH110
+  - shot:SC01_SH120
+  - shot:SC01_SH130
+  - shot:SC01_SH140
+  - shot:SC01_SH150
+  - shot:SC02_SH010
+  - shot:SC02_SH020
+  - shot:SC02_SH030
+  - shot:SC03_SH010
+  - shot:SC03_SH020
+  - shot:SC03_SH030
+  - shot:SC03_SH040
+  - shot:SC03_SH050
+  - shot:SC03_SH060
+  - shot:SC03_SH070
+  - shot:SC04_SH010
+  - shot:SC04_SH020
+  - shot:SC04_SH030
+  - shot:SC04_SH040
+  - shot:SC04_SH050
+  - shot:SC04_SH060
+  - shot:SC04_SH070
+  - shot:SC04_SH080
+  - shot:SC04_SH090
+  - shot:SC05_SH010
+  - shot:SC05_SH020
+  - shot:SC05_SH030
+  - shot:SC06_SH010
+  RESOLVED:
+  - resolved:SC01_SH010
+  - resolved:SC01_SH020
+  - resolved:SC01_SH030
+  - resolved:SC01_SH040
+  - resolved:SC01_SH050
+  - resolved:SC01_SH060
+  - resolved:SC01_SH070
+  - resolved:SC01_SH080
+  - resolved:SC01_SH090
+  - resolved:SC01_SH100
+  - resolved:SC01_SH110
+  - resolved:SC01_SH120
+  - resolved:SC01_SH130
+  - resolved:SC01_SH140
+  - resolved:SC01_SH150
+  - resolved:SC02_SH010
+  - resolved:SC02_SH020
+  - resolved:SC02_SH030
+  - resolved:SC03_SH010
+  - resolved:SC03_SH020
+  - resolved:SC03_SH030
+  - resolved:SC03_SH040
+  - resolved:SC03_SH050
+  - resolved:SC03_SH060
+  - resolved:SC03_SH070
+  - resolved:SC04_SH010
+  - resolved:SC04_SH020
+  - resolved:SC04_SH030
+  - resolved:SC04_SH040
+  - resolved:SC04_SH050
+  - resolved:SC04_SH060
+  - resolved:SC04_SH070
+  - resolved:SC04_SH080
+  - resolved:SC04_SH090
+  - resolved:SC05_SH010
+  - resolved:SC05_SH020
+  - resolved:SC05_SH030
+  - resolved:SC06_SH010
+  - resolved:film
+  RENDER:
+  - render:preview_SC01_SH010
+  - render:preview_SC01_SH020
+  - render:preview_SC01_SH030
+  - render:preview_SC01_SH040
+  - render:preview_SC01_SH050
+  - render:preview_SC01_SH060
+  - render:preview_SC01_SH070
+  - render:preview_SC01_SH080
+  - render:preview_SC01_SH090
+  - render:preview_SC01_SH100
+  - render:preview_SC01_SH110
+  - render:preview_SC01_SH120
+  - render:preview_SC01_SH130
+  - render:preview_SC01_SH140
+  - render:preview_SC01_SH150
+  - render:preview_SC02_SH010
+  - render:preview_SC02_SH020
+  - render:preview_SC02_SH030
+  - render:preview_SC03_SH010
+  - render:preview_SC03_SH020
+  - render:preview_SC03_SH030
+  - render:preview_SC03_SH040
+  - render:preview_SC03_SH050
+  - render:preview_SC03_SH060
+  - render:preview_SC03_SH070
+  - render:preview_SC04_SH010
+  - render:preview_SC04_SH020
+  - render:preview_SC04_SH030
+  - render:preview_SC04_SH040
+  - render:preview_SC04_SH050
+  - render:preview_SC04_SH060
+  - render:preview_SC04_SH070
+  - render:preview_SC04_SH080
+  - render:preview_SC04_SH090
+  - render:preview_SC05_SH010
+  - render:preview_SC05_SH020
+  - render:preview_SC05_SH030
+  - render:preview_SC06_SH010
+  QA:
+  - qa:stills

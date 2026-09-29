@@ -1,7 +1,7 @@
 shot_id: SC01_SH030
 scene_id: SC01
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 1.1667
 serves:
 - intent.race_against_battery
@@ -13,12 +13,12 @@ creative_intent:
   audience_effect: The viewer meets Hana through his phone and starts watching the number.
 camera:
   lens_mm: 85
-  height_m: 1.3
+  height_m: 1.14
   movement: static
   start_position:
   - 1.29
-  - -0.42
-  - 1.18
+  - -0.34
+  - 1.14
   end_position: null
   look_at: phone_ren
   dof:
@@ -29,9 +29,13 @@ composition:
   framing: insert
   aspect_ratio: 1.778
   subject_position: upper_half_of_screen
-  notes: 'Text-size insert (frame about 71 mm tall at the screen, 85 mm at about 0.30 m) on the upper
-    half: status bar (5 %, charcoal) top right, her photo below it filling most of the frame. Call button
-    below frame here; it has its own insert (SH050).'
+  notes: 'Text-size insert (frame about 71 mm tall at the screen, 85 mm at 0.30 m) on the upper half:
+    status bar (5 %, charcoal) top right, her photo below it filling most of the frame. Call button below
+    frame here; it has its own insert (SH050). Framing reference (DEPENDENCY for the animation hold and
+    the builder): screen centre at about (1.29, -0.09, 0.97), 0.40 m from his eyes. Lens 0.30 m from it
+    on his eyeline, between his face and the phone (his head is behind the lens), camera''s up = the phone''s
+    top edge. For the part of the screen named here, shift the lens parallel to the screen; never tilt
+    it.'
 characters:
 - id: ren
   position:
@@ -89,7 +93,11 @@ assets:
 rationale:
   camera: '85 mm text-size framing so the 5 % reads at 3 % of frame height (a 2.2 mm digit in a 71 mm
     frame, camera.inserts.legibility). Rejected: the full-screen framing, where the digits fall to about
-    1.4 % and the meter''s first number would not read.'
+    1.4 % and the meter''s first number would not read. Lens position corrected after the first preview:
+    the approved spec put the lens about 0.38 m from the screen and inside his head, which gives a frame
+    about 91-93 mm tall, so a 2.2 mm digit falls to about 2.4 % (under the 3 % minimum). At 0.30 m on
+    his eyeline the frame is 71 mm as promised. Rejected: keeping the old position and asking the builder
+    to push the lens (the frame size would still be undefined in the spec).'
   composition: 'Photo and number share one frame, so ''her'' and ''time'' are introduced together; the
     photo is far above the 15 % minimum. Rejected: separate photo and battery inserts (costs a cut in
     a 22 s scene).'
@@ -111,7 +119,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -206,6 +214,18 @@ derived_from:
   hash: sha256:a72ecd61a4028d019ce62c8e22e9fcf0d6251af698ffdd745d89661d5fd95844
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:7bd158cdcd69c649298850f29387c330b0510d80f1b818080e61a48368ca6bb6
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.map
+  hash: sha256:97c1dc4a7271d601b828d06a16c4808e095d0d8f0dba5594cdd5aaeb29d366f2
+- ref: canon:look.style.phone_screen.call
+  hash: sha256:7a304076b8353277e405c901e134c1e7212fb836b00d3b156f5381fadbde76b3
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+- ref: canon:look.color.ui_portraits
+  hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
+stamped_content_hash: sha256:0038b02f322130aca28b9a50f2e525944fcb1b8f11bd99ace0ef3e18737dc14e
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

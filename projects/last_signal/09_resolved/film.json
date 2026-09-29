@@ -3684,6 +3684,176 @@
         0.231373
       ]
     },
+    "look.color.ui_portraits": [
+      {
+        "hex": "#A79FC6",
+        "linear": [
+          0.386429,
+          0.346704,
+          0.564712
+        ],
+        "role": "portrait_ground",
+        "srgb": [
+          0.654902,
+          0.623529,
+          0.776471
+        ]
+      },
+      {
+        "hex": "#F1D3BE",
+        "linear": [
+          0.879622,
+          0.651406,
+          0.514918
+        ],
+        "role": "hana_skin",
+        "srgb": [
+          0.945098,
+          0.827451,
+          0.745098
+        ]
+      },
+      {
+        "hex": "#2F2629",
+        "linear": [
+          0.028426,
+          0.019382,
+          0.022174
+        ],
+        "role": "hana_hair",
+        "srgb": [
+          0.184314,
+          0.14902,
+          0.160784
+        ]
+      },
+      {
+        "hex": "#4A3A33",
+        "linear": [
+          0.068478,
+          0.042311,
+          0.033105
+        ],
+        "role": "hana_eyes",
+        "srgb": [
+          0.290196,
+          0.227451,
+          0.2
+        ]
+      },
+      {
+        "hex": "#2A2224",
+        "linear": [
+          0.023153,
+          0.015996,
+          0.017642
+        ],
+        "role": "hana_brows",
+        "srgb": [
+          0.164706,
+          0.133333,
+          0.141176
+        ]
+      },
+      {
+        "hex": "#AFC8B6",
+        "linear": [
+          0.42869,
+          0.57758,
+          0.467784
+        ],
+        "role": "hana_top",
+        "srgb": [
+          0.686275,
+          0.784314,
+          0.713725
+        ]
+      },
+      {
+        "hex": "#EAC7AB",
+        "linear": [
+          0.822786,
+          0.571125,
+          0.40724
+        ],
+        "role": "ren_skin",
+        "srgb": [
+          0.917647,
+          0.780392,
+          0.670588
+        ]
+      },
+      {
+        "hex": "#4A3A31",
+        "linear": [
+          0.068478,
+          0.042311,
+          0.030713
+        ],
+        "role": "ren_hair",
+        "srgb": [
+          0.290196,
+          0.227451,
+          0.192157
+        ]
+      },
+      {
+        "hex": "#5B4637",
+        "linear": [
+          0.104616,
+          0.061246,
+          0.038204
+        ],
+        "role": "ren_eyes",
+        "srgb": [
+          0.356863,
+          0.27451,
+          0.215686
+        ]
+      },
+      {
+        "hex": "#3E3029",
+        "linear": [
+          0.048172,
+          0.029557,
+          0.022174
+        ],
+        "role": "ren_brows",
+        "srgb": [
+          0.243137,
+          0.188235,
+          0.160784
+        ]
+      },
+      {
+        "hex": "#7C9CC4",
+        "linear": [
+          0.201556,
+          0.332452,
+          0.552011
+        ],
+        "role": "ren_jacket",
+        "srgb": [
+          0.486275,
+          0.611765,
+          0.768627
+        ]
+      },
+      {
+        "hex": "#EAE2D3",
+        "linear": [
+          0.822786,
+          0.760525,
+          0.651406
+        ],
+        "role": "ren_tshirt",
+        "srgb": [
+          0.917647,
+          0.886275,
+          0.827451
+        ]
+      }
+    ],
     "look.exposure.scene_keys": {
       "SC01": 0.62,
       "SC02": 0.7,
@@ -4109,6 +4279,1191 @@
         "character_min": 0.1,
         "hero_prop": 0.1
       }
+    },
+    "look.style.phone_screen.call": {
+      "call_button": {
+        "centre": [
+          0.5,
+          0.8
+        ],
+        "colour": {
+          "hex": "#5DB37E",
+          "linear": [
+            0.109462,
+            0.450786,
+            0.208637
+          ],
+          "srgb": [
+            0.364706,
+            0.701961,
+            0.494118
+          ]
+        },
+        "colour_source": "look.color.accent_call_green",
+        "diameter_frac_screen_w": 0.3,
+        "glyph": "handset_bar_with_end_lobes",
+        "glyph_direction": "lower_left_to_upper_right",
+        "glyph_hex": {
+          "hex": "#FDFCFA",
+          "linear": [
+            0.982251,
+            0.973445,
+            0.955973
+          ],
+          "srgb": [
+            0.992157,
+            0.988235,
+            0.980392
+          ]
+        },
+        "glyph_len_frac_diameter": 0.55,
+        "glyph_thickness_frac_diameter": 0.14
+      },
+      "checks": [
+        "photo >= 15 % of frame height in the SC01_SH050 screen insert (37.2 mm / 160 mm = 23 %)",
+        "SC01_SH030 text insert (71 mm from the top) holds status bar and photo, call button below frame",
+        "no portrait pixels outside the ring"
+      ],
+      "forbidden": [
+        "name",
+        "number",
+        "timer",
+        "other_buttons",
+        "text"
+      ],
+      "photo": {
+        "centre": [
+          0.5,
+          0.3
+        ],
+        "clip_to_circle": true,
+        "diameter_frac_screen_w": 0.6,
+        "diameter_mm_ren": 37.2,
+        "portrait": "look.color.ui_portraits",
+        "ring_role": "photo_frame_ring",
+        "ring_width_mm": 1.2,
+        "subject": "hana"
+      },
+      "ring_pulse": {
+        "frames": 11,
+        "halo_fades": true,
+        "halo_scale_pct": [
+          100,
+          150
+        ],
+        "scale_pct": [
+          100,
+          112,
+          100
+        ]
+      },
+      "unanswered": {
+        "button_hex": {
+          "hex": "#A3A8B0",
+          "linear": [
+            0.366253,
+            0.391572,
+            0.434154
+          ],
+          "srgb": [
+            0.639216,
+            0.658824,
+            0.690196
+          ]
+        },
+        "glyph_hex": {
+          "hex": "#FDFCFA",
+          "linear": [
+            0.982251,
+            0.973445,
+            0.955973
+          ],
+          "srgb": [
+            0.992157,
+            0.988235,
+            0.980392
+          ]
+        },
+        "switch": "one_frame"
+      }
+    },
+    "look.style.phone_screen.compose": {
+      "checks": [
+        "cap height >= 3.5 % of frame in a text insert up to 80 mm tall (2.8 mm / 71 mm = 3.9 %)",
+        "line 1 (Are you free tonight?) fits one line: about 42 mm at 4.0 mm humanist sans, field text width 47 mm",
+        "only glyphs on the keyboard are the emoji face and the backspace arrow",
+        "the heart and the status bar can be framed apart (field top at y 0.405, status bar bottom at 0.075)"
+      ],
+      "compose_field": {
+        "bottom_y": 0.545,
+        "corner_radius_mm": 4.0,
+        "cursor": "steady_ink_bar_1.3x_cap",
+        "height_frac_screen_h": "0.020_plus_0.040_per_line",
+        "role": "compose_field",
+        "x": [
+          0.03,
+          0.86
+        ],
+        "y_by_lines": {
+          "1": [
+            0.485,
+            0.545
+          ],
+          "2": [
+            0.445,
+            0.545
+          ],
+          "3": [
+            0.405,
+            0.545
+          ]
+        }
+      },
+      "heart": {
+        "colour_source": "look.color.ui_heart",
+        "h_frac_cap": 1.1,
+        "hex": "#E5483B",
+        "linear": [
+          0.783538,
+          0.064803,
+          0.043735
+        ],
+        "position": "after_line_3_one_space",
+        "srgb": [
+          0.898039,
+          0.282353,
+          0.231373
+        ]
+      },
+      "keyboard": {
+        "base": {
+          "role": "keyboard_base",
+          "x": [
+            0.0,
+            1.0
+          ],
+          "y": [
+            0.56,
+            1.0
+          ]
+        },
+        "key_mm_ren": {
+          "h": 10.7,
+          "w": 5.4
+        },
+        "key_pitch_frac_screen_w": 0.1,
+        "key_pressed_role": "keyboard_key_pressed",
+        "key_role": "keyboard_key",
+        "legends": "none",
+        "press_frames": [
+          1,
+          2
+        ],
+        "row_centre_y": [
+          0.61,
+          0.708,
+          0.806,
+          0.904
+        ],
+        "rows": [
+          {
+            "keys": 10
+          },
+          {
+            "keys": 9
+          },
+          {
+            "keys": 7,
+            "then": {
+              "backspace": {
+                "glyph": "backspace_arrow",
+                "glyph_role": "ink_text_and_glyphs",
+                "x": [
+                  0.855,
+                  0.99
+                ]
+              }
+            }
+          },
+          {
+            "blank_key": {
+              "x": [
+                0.855,
+                0.99
+              ]
+            },
+            "emoji_key": {
+              "glyph": "emoji_face_outline_two_dots_smile",
+              "glyph_role": "icon_neutral",
+              "x": [
+                0.01,
+                0.145
+              ]
+            },
+            "space_bar": {
+              "x": [
+                0.26,
+                0.74
+              ]
+            }
+          }
+        ],
+        "shift_key": false
+      },
+      "send_button": {
+        "centre": [
+          0.925,
+          0.515
+        ],
+        "diameter_frac_screen_w": 0.105,
+        "fill_role": "icon_neutral",
+        "glyph": "up_arrow",
+        "glyph_hex": {
+          "hex": "#FDFCFA",
+          "linear": [
+            0.982251,
+            0.973445,
+            0.955973
+          ],
+          "srgb": [
+            0.992157,
+            0.988235,
+            0.980392
+          ]
+        },
+        "pressed_role": "ink_text_and_glyphs"
+      },
+      "text": {
+        "align": "left",
+        "cap_h_frac_screen_h": 0.021,
+        "cap_h_mm_ren": 2.8,
+        "font_size_mm_ren": 4.0,
+        "ink_role": "ink_text_and_glyphs",
+        "inset_x_mm": 2.2,
+        "line_breaks_fixed": [
+          "Are you free tonight?",
+          "Dinner at 8?",
+          "My treat."
+        ],
+        "line_pitch_frac_screen_h": 0.04,
+        "lines_by_beat": {
+          "SC01_SH070": 1,
+          "SC04_SH050": 2,
+          "SC04_SH060": 3
+        }
+      },
+      "thread_area": {
+        "contents": "empty",
+        "fill_role": "screen_background",
+        "y": [
+          0.075,
+          0.485
+        ]
+      }
+    },
+    "look.style.phone_screen.geometry": {
+      "phone_hana": {
+        "body_m": {
+          "h": 0.15,
+          "t": 0.009,
+          "w": 0.072
+        },
+        "body_source": "world.props.phone_hana",
+        "case_hex": {
+          "hex": "#E9DFCF",
+          "linear": [
+            0.814847,
+            0.73791,
+            0.62396
+          ],
+          "srgb": [
+            0.913725,
+            0.87451,
+            0.811765
+          ]
+        },
+        "case_source": "look.color.props.phone_case_hana",
+        "glass_hex": {
+          "hex": "#1F2029",
+          "linear": [
+            0.013702,
+            0.014444,
+            0.022174
+          ],
+          "srgb": [
+            0.121569,
+            0.12549,
+            0.160784
+          ]
+        },
+        "glass_m": {
+          "h": 0.144,
+          "w": 0.069
+        },
+        "screen_centre_offset_m": [
+          0.0,
+          0.0
+        ],
+        "screen_corner_radius_m": 0.005,
+        "screen_m": {
+          "h": 0.137,
+          "w": 0.063
+        }
+      },
+      "phone_ren": {
+        "body_m": {
+          "h": 0.147,
+          "t": 0.0085,
+          "w": 0.071
+        },
+        "body_source": "world.props.phone_ren",
+        "case_hex": {
+          "hex": "#5E6B7A",
+          "linear": [
+            0.111932,
+            0.147027,
+            0.194618
+          ],
+          "srgb": [
+            0.368627,
+            0.419608,
+            0.478431
+          ]
+        },
+        "case_source": "look.color.props.phone_case_ren",
+        "glass_hex": {
+          "hex": "#1F2029",
+          "linear": [
+            0.013702,
+            0.014444,
+            0.022174
+          ],
+          "srgb": [
+            0.121569,
+            0.12549,
+            0.160784
+          ]
+        },
+        "glass_m": {
+          "h": 0.141,
+          "w": 0.068
+        },
+        "screen_centre_offset_m": [
+          0.0,
+          0.0
+        ],
+        "screen_corner_radius_m": 0.005,
+        "screen_m": {
+          "h": 0.134,
+          "w": 0.062
+        }
+      },
+      "preview_proxies_allowed": {
+        "digits": "segment_glyphs",
+        "final_requires": "font_of_look.style.phone_ui",
+        "text_lines": "ink_bar_per_line_length_set_width_height_cap"
+      },
+      "screen_aspect_h_over_w": 2.16,
+      "screen_states": {
+        "call": "look.style.phone_screen.call",
+        "compose": "look.style.phone_screen.compose",
+        "hana_received": "look.style.phone_screen.hana",
+        "hana_wake": "look.style.phone_screen.hana",
+        "map": "look.style.phone_screen.map",
+        "screen_off": "flat_screen_off_hex_no_emission",
+        "sent": "look.style.phone_screen.sent"
+      },
+      "status_bar_on": {
+        "phone_hana": "never",
+        "phone_ren": "every_screen_on_state"
+      },
+      "ui_coords": {
+        "orientation": "upright_for_owner",
+        "origin": "screen_top_left",
+        "x": "fraction_of_screen_width_left_to_right",
+        "y": "fraction_of_screen_height_top_to_bottom"
+      }
+    },
+    "look.style.phone_screen.hana": {
+      "checks": [
+        "photo about 25 % of frame height in the SC05_SH010 insert (37.8 mm / 160 mm = 23.6 %; minimum 5 %)",
+        "no battery, no status bar, no text other than the invitation"
+      ],
+      "off": {
+        "emission": 0,
+        "hex": "#1F2029",
+        "linear": [
+          0.013702,
+          0.014444,
+          0.022174
+        ],
+        "srgb": [
+          0.121569,
+          0.12549,
+          0.160784
+        ]
+      },
+      "received": {
+        "bubble": {
+          "align": "left",
+          "corner_radius_mm": 3.7,
+          "role": "sent_bubble",
+          "tail": false,
+          "x": [
+            0.05,
+            0.81
+          ],
+          "y": [
+            0.265,
+            0.405
+          ]
+        },
+        "keyboard": false,
+        "text": "as_compose_fixed_line_breaks",
+        "tick": false
+      },
+      "status_bar": false,
+      "wake": {
+        "background_role": "screen_background",
+        "forbidden": [
+          "name",
+          "text",
+          "buttons",
+          "status_bar"
+        ],
+        "photo": {
+          "centre": [
+            0.5,
+            0.3
+          ],
+          "clip_to_circle": true,
+          "diameter_frac_screen_w": 0.6,
+          "diameter_mm_hana": 37.8,
+          "portrait": "look.color.ui_portraits",
+          "ring_role": "photo_frame_ring",
+          "ring_width_mm": 1.2,
+          "subject": "ren"
+        }
+      }
+    },
+    "look.style.phone_screen.map": {
+      "checks": [
+        "pin >= 6 % of frame height near frame centre in a 0.16 m screen insert (15.7 mm = 9.8 %)",
+        "the glyph reads as fork and knife (two white strokes, one with tines), not a bar",
+        "pin hex"
+      ],
+      "labels": "none",
+      "land_role": "map_land",
+      "other_markers": "none",
+      "park": {
+        "role": "map_park",
+        "x": [
+          0.0,
+          0.19
+        ],
+        "y": [
+          0.7,
+          0.83
+        ]
+      },
+      "pin": {
+        "glyph": "fork_three_tines_left_knife_right",
+        "glyph_h_frac_head": 0.6,
+        "glyph_role": "map_pin_glyph",
+        "head_centre": [
+          0.5,
+          0.475
+        ],
+        "head_diameter_frac_screen_w": 0.16,
+        "role": "map_pin",
+        "tip": [
+          0.5,
+          0.555
+        ],
+        "total_h_mm_ren": 15.7
+      },
+      "region_y": [
+        0.075,
+        1.0
+      ],
+      "road_role": "map_road",
+      "road_width_frac_screen_w": 0.085,
+      "roads": {
+        "diagonal": [
+          [
+            0.0,
+            0.4
+          ],
+          [
+            1.0,
+            0.7
+          ]
+        ],
+        "horizontal_y": [
+          0.24,
+          0.66,
+          0.87
+        ],
+        "vertical_x": [
+          0.24,
+          0.73
+        ]
+      },
+      "water": {
+        "role": "map_water",
+        "x": [
+          0.78,
+          1.0
+        ],
+        "y": [
+          0.075,
+          0.2
+        ]
+      }
+    },
+    "look.style.phone_screen.sent": {
+      "bubble": {
+        "align": "right",
+        "corner_radius_mm": 3.7,
+        "role": "sent_bubble",
+        "tail": false,
+        "text": "as_compose_fixed_line_breaks",
+        "text_role": "ink_text_and_glyphs",
+        "x": [
+          0.19,
+          0.95
+        ],
+        "y": [
+          0.265,
+          0.405
+        ]
+      },
+      "checks": [
+        "tick >= 5 % of frame height in a 71 mm text insert (6.0 mm = 8.5 %) and >= 3.6 mm on the model",
+        "tick about 11 mm above the send button centre (the thumb's last position)",
+        "bubble text contrast 9.9:1 (ink on",
+        "one amber tick only, no second tick, no label"
+      ],
+      "compose_field_after_send": {
+        "lines": 0,
+        "send_button": "as_compose",
+        "y": [
+          0.485,
+          0.545
+        ]
+      },
+      "keyboard": "as_compose",
+      "progress_line": {
+        "after_fill": "stays_full",
+        "centre_y": 0.435,
+        "colour_source": "look.color.accent_power_amber",
+        "ends": "round",
+        "fill": "left_to_right",
+        "hex": "#F5B940",
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ],
+        "thickness_frac_screen_h": 0.008,
+        "x": [
+          0.19,
+          0.8
+        ]
+      },
+      "tick": {
+        "centre": [
+          0.885,
+          0.435
+        ],
+        "clear_of": [
+          "bubble",
+          "progress_line"
+        ],
+        "colour_source": "look.color.accent_power_amber",
+        "h_frac_screen_h": 0.045,
+        "h_mm_ren": 6.0,
+        "hex": "#F5B940",
+        "linear": [
+          0.913099,
+          0.48515,
+          0.051269
+        ],
+        "polyline_in_glyph_box_x_right_y_down": [
+          [
+            0.0,
+            0.55
+          ],
+          [
+            0.38,
+            1.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ],
+        "srgb": [
+          0.960784,
+          0.72549,
+          0.25098
+        ],
+        "stroke_mm_ren": 1.3,
+        "w_mm_ren": 6.6
+      }
+    },
+    "look.style.phone_screen.states_by_shot": {
+      "SC01_SH010": {
+        "bolt": false,
+        "colour": "charcoal",
+        "pct": 5,
+        "ui": "map"
+      },
+      "SC01_SH020": {
+        "bolt": false,
+        "colour": "charcoal",
+        "pct": 5,
+        "ui": "map"
+      },
+      "SC01_SH030": {
+        "bolt": false,
+        "colour": "charcoal",
+        "pct": 5,
+        "ui": "map_to_call_f1_7"
+      },
+      "SC01_SH040": {
+        "bolt": false,
+        "colour": "charcoal",
+        "pct": 5,
+        "ui": "call"
+      },
+      "SC01_SH050": {
+        "bolt": false,
+        "colour": "charcoal",
+        "pct": 5,
+        "ui": "call_ringing_then_unanswered_f33"
+      },
+      "SC01_SH060": {
+        "bolt": false,
+        "colour": "charcoal",
+        "pct": 5,
+        "ui": "call_unanswered"
+      },
+      "SC01_SH070": {
+        "bolt": false,
+        "colour": "charcoal",
+        "pct": 5,
+        "ui": "compose_typing_line_1_f0_15"
+      },
+      "SC01_SH080": {
+        "bolt": false,
+        "colour": {
+          "f0": "charcoal",
+          "f4": "red"
+        },
+        "pct": {
+          "f0": 5,
+          "f4": 4
+        },
+        "ui": "compose_1_line"
+      },
+      "SC01_SH090": {
+        "bolt": false,
+        "colour": "red",
+        "pct": 4,
+        "ui": "compose_1_line"
+      },
+      "SC01_SH100": {
+        "bolt": false,
+        "colour": "red",
+        "pct": 4,
+        "ui": "compose_1_line"
+      },
+      "SC01_SH110": {
+        "bolt": false,
+        "colour": "red",
+        "pct": 4,
+        "ui": "compose_1_line"
+      },
+      "SC01_SH120": {
+        "bolt": {
+          "f0": false,
+          "f2": true
+        },
+        "colour": "red",
+        "pct": 4,
+        "ui": "compose_1_line"
+      },
+      "SC01_SH130": {
+        "bolt": {
+          "f0": true,
+          "f32": false
+        },
+        "brightness": {
+          "f32": 0.7
+        },
+        "colour": "red",
+        "pct": 4,
+        "ui": "compose_1_line"
+      },
+      "SC01_SH140": {
+        "bolt": false,
+        "brightness": {
+          "f0": 0.7,
+          "f1": 1.0
+        },
+        "colour": "red",
+        "pct": {
+          "f0": 4,
+          "f2": 3
+        },
+        "ui": "compose_1_line"
+      },
+      "SC01_SH150": {
+        "bolt": false,
+        "colour": "red",
+        "pct": 3,
+        "ui": "compose_1_line"
+      },
+      "SC02_SH010": {
+        "bolt": false,
+        "colour": "red",
+        "pct": 3,
+        "ui": "compose_1_line"
+      },
+      "SC02_SH020": {
+        "bolt": false,
+        "colour": "red",
+        "pct": 3,
+        "ui": "compose_1_line"
+      },
+      "SC02_SH030": {
+        "bolt": false,
+        "colour": "red",
+        "pct": 3,
+        "ui": "compose_1_line"
+      },
+      "SC03_SH010": {
+        "bolt": false,
+        "colour": "red",
+        "pct": 3,
+        "ui": "compose_1_line"
+      },
+      "SC03_SH020": {
+        "bolt": {
+          "f0": false,
+          "f14": true
+        },
+        "colour": "red",
+        "pct": 3,
+        "ui": "compose_1_line"
+      },
+      "SC03_SH030": {
+        "bolt": true,
+        "colour": "red",
+        "pct": 3,
+        "ui": "compose_1_line"
+      },
+      "SC03_SH040": {
+        "bolt": true,
+        "colour": "red",
+        "pct": 3,
+        "ui": "compose_1_line"
+      },
+      "SC03_SH050": {
+        "bolt": {
+          "f0": true,
+          "f8": false
+        },
+        "brightness": {
+          "f11": 1.0,
+          "f8": 0.7
+        },
+        "colour": "red",
+        "pct": {
+          "f0": 3,
+          "f8": 2
+        },
+        "ui": "compose_1_line"
+      },
+      "SC03_SH060": {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "pct": 2,
+        "ui": "compose_1_line"
+      },
+      "SC03_SH070": {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "pct": 2,
+        "ui": "compose_1_line"
+      },
+      "SC04_SH010": {
+        "bolt": false,
+        "brightness": "flicker",
+        "colour": "red",
+        "icon_blink": true,
+        "pct": 1,
+        "ui": "compose_1_line"
+      },
+      "SC04_SH020": {
+        "bolt": false,
+        "brightness": {
+          "f14": 0.7,
+          "f17": 1.0,
+          "f20": 0.7,
+          "f22": 1.0
+        },
+        "colour": "red",
+        "icon_blink": {
+          "hidden": [
+            12,
+            23
+          ],
+          "visible": [
+            0,
+            11
+          ],
+          "visible_2": [
+            24,
+            31
+          ]
+        },
+        "pct": 1,
+        "ui": "compose_1_line"
+      },
+      "SC04_SH030": {
+        "bolt": false,
+        "brightness": "flicker",
+        "colour": "red",
+        "icon_blink": true,
+        "pct": 1,
+        "ui": "compose_1_line"
+      },
+      "SC04_SH040": {
+        "bolt": false,
+        "brightness": "flicker",
+        "colour": "red",
+        "icon_blink": true,
+        "pct": 1,
+        "ui": "compose_1_line"
+      },
+      "SC04_SH050": {
+        "bolt": {
+          "f0": false,
+          "f30": true
+        },
+        "brightness": {
+          "f0": "flicker",
+          "f30": "steady"
+        },
+        "colour": "red",
+        "icon_blink": true,
+        "pct": 1,
+        "ui": {
+          "f0": "compose_1_line",
+          "f56": "compose_typing_line_2"
+        }
+      },
+      "SC04_SH060": {
+        "bolt": true,
+        "brightness": "steady",
+        "colour": "red",
+        "icon_blink": true,
+        "pct": 1,
+        "ui": "compose_3_lines_heart_f21_54"
+      },
+      "SC04_SH070": {
+        "bolt": true,
+        "brightness": "steady",
+        "colour": "red",
+        "icon_blink": {
+          "f0": "visible",
+          "f2": false
+        },
+        "pct": {
+          "f0": 1,
+          "f2": 2
+        },
+        "ui": "compose_3_lines"
+      },
+      "SC04_SH080": {
+        "bolt": true,
+        "brightness": "steady",
+        "colour": "red",
+        "pct": 2,
+        "ui": "compose_to_sent"
+      },
+      "SC04_SH090": {
+        "bolt": {
+          "f0": true,
+          "f7": false
+        },
+        "brightness": "steady",
+        "colour": "red",
+        "pct": 2,
+        "ui": "sent"
+      },
+      "SC05_SH010": {
+        "brightness": {
+          "f0": 0.0,
+          "f2": "ramp_to_1.0_by_f4_ease_out"
+        },
+        "phone": "hana",
+        "photo_scale_pct": {
+          "f2": 96,
+          "f5": 100
+        },
+        "ui": {
+          "f0": "off",
+          "f2": "wake"
+        }
+      },
+      "SC05_SH020": {
+        "phone": "hana",
+        "ui": "wake"
+      },
+      "SC05_SH030": {
+        "phone": "hana",
+        "ui": "received"
+      },
+      "SC06_SH010": {
+        "after_f24": "screen_off",
+        "bolt": false,
+        "brightness": {
+          "easing": "ease_out",
+          "f0": 1.0,
+          "f24": 0.0
+        },
+        "colour": "red",
+        "pct": 2,
+        "ui": "sent"
+      },
+      "colour_hex": {
+        "charcoal": {
+          "hex": "#2B303B",
+          "linear": [
+            0.024158,
+            0.029557,
+            0.043735
+          ],
+          "srgb": [
+            0.168627,
+            0.188235,
+            0.231373
+          ]
+        },
+        "red": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        }
+      },
+      "flicker": "look.style.phone_ui.screen_behaviour.flicker_at_1pct",
+      "fps": 24,
+      "frame_index": "0_based",
+      "never": [
+        "zero_percent",
+        "bolt_while_not_charging",
+        "digit_hidden"
+      ]
+    },
+    "look.style.phone_screen.status_bar": {
+      "band": {
+        "fill_role": "screen_background",
+        "opaque": true,
+        "y": [
+          0.0,
+          0.075
+        ]
+      },
+      "battery_icon": {
+        "body_h_frac_screen_h": 0.03,
+        "body_x": [
+          0.785,
+          0.935
+        ],
+        "corner_radius_frac_body_h": 0.2,
+        "fill_anchor": "left",
+        "fill_by_percent": {
+          "1": 0.06,
+          "2": 0.12,
+          "3": 0.18,
+          "4": 0.24,
+          "5": 0.3
+        },
+        "fill_inset_mm": 1.2,
+        "fill_width_frac_inner": "0.06_x_percent",
+        "nub_h_frac_body_h": 0.4,
+        "nub_x": [
+          0.935,
+          0.95
+        ],
+        "outline_stroke_mm": 0.6
+      },
+      "blink_at_1pct": {
+        "duty": 0.5,
+        "hz": 1.0,
+        "parts": [
+          "battery_outline",
+          "battery_fill",
+          "battery_nub"
+        ],
+        "phase": "each_shot_starts_visible",
+        "steady_parts": [
+          "digit",
+          "percent_sign",
+          "bolt"
+        ]
+      },
+      "bolt": {
+        "colour_role": "look.color.accent_power_amber",
+        "h_frac_screen_h": 0.036,
+        "h_mm_ren": 4.8,
+        "polygon_in_glyph_box_x_right_y_down": [
+          [
+            0.62,
+            0.0
+          ],
+          [
+            0.1,
+            0.58
+          ],
+          [
+            0.46,
+            0.58
+          ],
+          [
+            0.36,
+            1.0
+          ],
+          [
+            0.9,
+            0.4
+          ],
+          [
+            0.54,
+            0.4
+          ]
+        ],
+        "shape": "single_zigzag_polygon",
+        "slot_reserved_when_off": true,
+        "slot_x": [
+          0.593,
+          0.638
+        ]
+      },
+      "centre_y": 0.04,
+      "checks": [
+        "digit >= 3 % of frame height in a 0.16 m screen insert (4.8 mm / 160 mm = 3.0 %)",
+        "bolt >= 4.4 mm on the model (SC03_SH020 dependency) and >= 3 % of frame in inserts",
+        "nothing else in the band (no clock, carrier, signal, wifi, text)",
+        "digit x position identical with and without the bolt"
+      ],
+      "colour_by_percent": {
+        "1": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        },
+        "2": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        },
+        "3": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        },
+        "4": {
+          "hex": "#E5483B",
+          "linear": [
+            0.783538,
+            0.064803,
+            0.043735
+          ],
+          "srgb": [
+            0.898039,
+            0.282353,
+            0.231373
+          ]
+        },
+        "5": {
+          "hex": "#2B303B",
+          "linear": [
+            0.024158,
+            0.029557,
+            0.043735
+          ],
+          "srgb": [
+            0.168627,
+            0.188235,
+            0.231373
+          ]
+        }
+      },
+      "digit": {
+        "count": 1,
+        "h_frac_screen_h": 0.036,
+        "h_mm_ren": 4.8,
+        "stroke_frac_h": 0.16,
+        "w_frac_h": 0.55,
+        "x": [
+          0.657,
+          0.7
+        ]
+      },
+      "order_right_to_left": [
+        "battery_icon",
+        "percent_sign",
+        "digit",
+        "bolt_slot"
+      ],
+      "percent_sign_x": [
+        0.71,
+        0.765
+      ],
+      "zero_percent_shown": "never"
     },
     "look.style.phone_ui": {
       "battery": {

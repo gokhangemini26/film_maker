@@ -1,7 +1,7 @@
 shot_id: SC04_SH080
 scene_id: SC04
 sequence_id: SQ02
-status: APPROVED
+status: PROPOSED
 duration_s: 2.4167
 serves:
 - intent.earned_last_signal
@@ -16,12 +16,12 @@ creative_intent:
   audience_effect: The viewer knows the invitation got through because he turned the crank.
 camera:
   lens_mm: 85
-  height_m: 0.62
+  height_m: 0.79
   movement: static
   start_position:
-  - -0.35
+  - -0.23
   - -1.0
-  - 0.62
+  - 0.79
   end_position: null
   look_at: phone_ren
   dof:
@@ -32,11 +32,16 @@ composition:
   framing: insert
   aspect_ratio: 1.778
   subject_position: lower_right_then_centre
-  notes: 'Text insert (frame about 71 mm tall). Thumb over the send arrow at frame 0, press at frame 6;
-    bubble rises; progress line fills frames 8-32 (1 s); tick at frame 34 at the bubble''s lower right,
-    in the eye path where the thumb lifted; thumb clear of frame by then; 24 frames held after the tick.
-    DEPENDENCY: tick glyph at least 3.6 mm tall on the phone model; tick contrast is look canon (G4 finding
-    4).'
+  notes: 'Text insert (frame about 71 mm tall, 85 mm at 0.30 m). Thumb over the send arrow at frame 0,
+    press at frame 6; bubble rises; progress line fills frames 8-32 (1 s); tick at frame 34 at the bubble''s
+    lower right, in the eye path where the thumb lifted; thumb clear of frame by then; 24 frames held
+    after the tick. DEPENDENCY: tick glyph at least 3.6 mm tall on the phone model; tick contrast is look
+    canon (G4 finding 4). Framing reference (DEPENDENCY for the animation hold and the builder): seated
+    on the kerb, eyes at about (-0.20, -1.0, 0.94); screen centre at about (-0.30, -1.0, 0.50), low between
+    his knees, 0.45 m from his eyes. Lens 0.30 m from it on his eyeline, looking down past his chin (his
+    head and chest are behind the lens), camera''s up = the phone''s top edge (south, away from him),
+    so the keys and his thumb come in at the frame bottom. For the part of the screen named here, shift
+    the lens parallel to the screen; never tilt it.'
 characters:
 - id: ren
   position:
@@ -95,7 +100,12 @@ assets:
 - ui.sent_tick
 rationale:
   camera: '85 mm, one locked text insert for the whole send (camera.inserts.legibility; bible section
-    8). Rejected: a push on the send (softens the text and the tick; camera.movement.push_in rationale).'
+    8). Rejected: a push on the send (softens the text and the tick; camera.movement.push_in rationale).
+    Lens position corrected after the first preview: the approved spec put the lens 0.13 m from the screen
+    on the far (south) side of the phone, 35 deg off his eyeline, which gives a 31 mm frame (less than
+    half the promised 71 mm) and a screen seen from the non-owner side, upside down for him (camera.inserts.language:
+    owner''s side, never upside down). At 0.30 m on his eyeline the frame is 71 mm and upright. Rejected:
+    50 mm from the old spot (the lens would still be on the wrong side of the screen).'
   composition: 'The tick lands where the eye already is, at the thumb''s last position, and the thumb
     is gone before it appears: size, placement and hold are the camera''s share of G4 finding 4. The invitation
     stays fully in frame in its bubble.'
@@ -117,7 +127,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -224,6 +234,14 @@ derived_from:
   hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:0a2e4b08045ca5f92ea22bdb01602bbab0a067c8293be360f69858c8ce53c7d8
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.sent
+  hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+stamped_content_hash: sha256:d209481a74bd1a1b7126623271d8923aead68ad6e3bfe74b075ee6a373dfa921
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

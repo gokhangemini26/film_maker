@@ -95,7 +95,7 @@
       "focus_target": "phone_ren_screen_plane"
     },
     "fov_h_deg": 23.9132,
-    "height_m": 0.62,
+    "height_m": 0.79,
     "lens_mm": 85.0,
     "look_at": "phone_ren",
     "movement": "static",
@@ -103,9 +103,9 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      -0.35,
+      -0.23,
       -1.0,
-      0.62
+      0.79
     ]
   },
   "characters": [
@@ -575,7 +575,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "insert",
-    "notes": "Text insert of the compose field only (camera.inserts.heart): status bar and red battery out of frame; emoji-face key at the lower edge; the emoji panel never framed. Timing: typing 14 f, pause 6, press 2, heart looked at 12, hover 20, delete 2, plain text 12. After the last word 54 frames (minimum 0.5 s + 5 x 0.3 s = 48 frames).",
+    "notes": "Text insert of the compose field only (frame about 71 mm tall, 85 mm at 0.30 m; camera.inserts.heart): status bar and red battery out of frame; emoji-face key at the lower edge; the emoji panel never framed. Timing: typing 14 f, pause 6, press 2, heart looked at 12, hover 20, delete 2, plain text 12. After the last word 54 frames (minimum 0.5 s + 5 x 0.3 s = 48 frames). Framing reference (DEPENDENCY for the animation hold and the builder): seated on the kerb, eyes at about (-0.20, -1.0, 0.94); screen centre at about (-0.30, -1.0, 0.50), low between his knees, 0.45 m from his eyes. Lens 0.30 m from it on his eyeline, looking down past his chin (his head and chest are behind the lens), camera's up = the phone's top edge (south, away from him), so the keys and his thumb come in at the frame bottom. For the part of the screen named here, shift the lens parallel to the screen; never tilt it.",
     "subject_position": "upper_half_of_frame"
   },
   "environment": {

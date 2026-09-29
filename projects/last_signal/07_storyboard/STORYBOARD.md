@@ -3,11 +3,11 @@ fm:
   id: storyboard
   kind: storyboard
   phase: STORYBOARD
-  status: APPROVED
+  status: PROPOSED
   owner_role: cinematographer
   derived_from:
   - ref: artifact:shot_list
-    hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+    hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
   - ref: artifact:screenplay
     hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
   - ref: artifact:cinematography_bible
@@ -25,7 +25,7 @@ fm:
   - intent.earned_last_signal
   summary: Text storyboard for all 38 shots of Last Signal - frame layers, eye path, movement, sound cue
     and transition per shot, in film order.
-  stamped_content_hash: sha256:3463a5cadda1a2c398d82d35200711681b27eac38e147b5d593d024aa8c1dbce
+  stamped_content_hash: sha256:cf0648aa717949827441cf7b2c037b512da536eb8a33e34fbfbcac6bd70c7b66
   stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
     and shots); no content revision needed.
 title: Storyboard
@@ -57,16 +57,16 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: quiet street, a bird, the car ticking in the heat.
 - Out: FADE IN at the head; cut.
 
-**SC01_SH020 · 38 f · insert · 85 mm · screen**
+**SC01_SH020 · 38 f · insert · 85 mm · screen (0.67 m, above his left shoulder)**
 - Frame: the whole phone screen square to us: pale unlabelled blocks and roads,
   one blue pin with a white fork and knife at frame centre; his thumb parked at
-  the screen's edge; lap soft behind.
+  the screen's edge; lap soft behind. His head is out of the sight line.
 - Eye: the pin, straight away; it holds 38 f (minimum 36).
 - Moves: nothing but a small settle of the thumb.
 - Sound: a soft UI tap.
 - Out: cut.
 
-**SC01_SH030 · 28 f · insert · 85 mm · upper half of the screen**
+**SC01_SH030 · 28 f · insert · 85 mm · upper half of the screen (0.30 m, his eyeline)**
 - Frame: status bar top right with 5 % (charcoal); below it, her circular photo
   sliding in from the right and settling; no name anywhere.
 - Eye: the photo, then the 5 %.
@@ -83,7 +83,7 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: the in-breath; a tap.
 - Out: cut.
 
-**SC01_SH050 · 44 f · insert · 85 mm · full screen**
+**SC01_SH050 · 44 f · insert · 85 mm · full screen (the SH020 setup)**
 - Frame: her photo above centre, the green round call button with the handset
   glyph below; status bar small at the top.
 - Eye: the green button, then her photo.
@@ -100,7 +100,7 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: a small sigh, then the seat creaks as he sits up.
 - Out: cut.
 
-**SC01_SH070 · 58 f · insert · 85 mm · text size**
+**SC01_SH070 · 58 f · insert · 85 mm · text size (0.30 m, his eyeline)**
 - Frame: the compose field in the upper half; the top row of blank keys at the
   lower edge; his two thumbs below the text; no status bar.
 - Eye: the words as they appear: "Are you free tonight?"
@@ -108,7 +108,7 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: soft key taps (no letters on the keys).
 - Out: cut.
 
-**SC01_SH080 · 30 f · insert · 85 mm · status bar**
+**SC01_SH080 · 30 f · insert · 85 mm · status bar (0.30 m, his eyeline)**
 - Frame: battery icon and number in the upper right third; pale UI around them.
 - Eye: the number.
 - Moves: at frame 4 the charcoal 5 % becomes a red 4 %; held 26 f.
@@ -247,7 +247,7 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: CLUNK; the fridges' hum dies with it; silence.
 - Out: cut.
 
-**SC03_SH060 · 26 f · insert · 85 mm · status bar**
+**SC03_SH060 · 26 f · insert · 85 mm · status bar (0.30 m, his eyeline)**
 - Frame: status bar floating on black: red 2 %, no bolt.
 - Eye: the number.
 - Moves: nothing.
@@ -280,7 +280,7 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: the quiet street at dusk; nothing else.
 - Out: cut.
 
-**SC04_SH020 · 32 f · insert · 85 mm · upper half of the screen**
+**SC04_SH020 · 32 f · insert · 85 mm · upper half of the screen (0.30 m, his eyeline, looking down past his chin)**
 - Frame: the red battery icon blinking beside 1 % at top right; the thread area
   below.
 - Eye: the 1 %, then his thumb.
@@ -289,10 +289,13 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: two tiny electrical ticks with the dips.
 - Out: cut.
 
-**SC04_SH030 · 36 f · MCU · 50 mm from the pavement · eye level · push-in 1**
-- Frame: Ren at right third; screen left the open door as a frame within the
-  frame and, through it, the dark glovebox; the car flank behind him.
-- Eye: his eyes lifting, then along his look to the glovebox.
+**SC04_SH030 · 36 f · MCU · 50 mm from the pavement, south-east of him · eye level · push-in 1**
+- Frame: Ren at right third, his face three-quarter to us; screen left and
+  deeper, the open door's panel entering from the frame edge and, through the
+  opening beside its hinge, the dark closed glovebox left of centre; the car
+  flank behind him.
+- Eye: his eyes lifting, then his head turning away from us, then along his
+  look into depth to the glovebox.
 - Moves: he lifts his eyes and turns his head to the door; from frame 4 the camera
   eases 0.18 m toward him.
 - Sound: a breath held.
@@ -308,9 +311,10 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: the glovebox lid; cloth; then quiet.
 - Out: cut.
 
-**SC04_SH050 · 80 f · MS to MCU · 50 mm · eye level · push-in 2**
-- Frame: Ren at right third, crank in his right hand, phone in his left, the
-  cable loop over his knee; the car behind him.
+**SC04_SH050 · 80 f · MS to MCU · 50 mm, 30 deg east of his facing · eye level · push-in 2**
+- Frame: Ren at right third, three-quarter facing screen left, crank in his
+  right hand, phone in his left, the cable loop over his knee; the car behind
+  him; the emptied glovebox dark at the far left.
 - Eye: the plug, the arm unfolding, then the amber pip, then his face as the
   flicker stops.
 - Moves: plugs in, unfolds the arm, cranks slow and steady; from the first turn
@@ -319,7 +323,7 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: the crank's ratchet, click by click, and his breathing. Nothing else.
 - Out: cut.
 
-**SC04_SH060 · 68 f · insert · 85 mm · compose field only**
+**SC04_SH060 · 68 f · insert · 85 mm · compose field only (the SH020 setup)**
 - Frame: the compose field in the upper half; the emoji-face key at the lower
   edge; no status bar, no emoji panel.
 - Eye: the words as they arrive, "Dinner at 8? My treat.", reading the whole
@@ -330,14 +334,14 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: soft taps; the ratchet continues off screen, slower during the hover.
 - Out: cut.
 
-**SC04_SH070 · 26 f · insert · 85 mm · status bar**
+**SC04_SH070 · 26 f · insert · 85 mm · status bar (the SH020 setup)**
 - Frame: the amber bolt beside the red number.
 - Eye: the number.
 - Moves: at frame 2, 1 % becomes 2 %; held 24 f.
 - Sound: the ratchet; a soft chime.
 - Out: cut.
 
-**SC04_SH080 · 58 f · insert · 85 mm · text size**
+**SC04_SH080 · 58 f · insert · 85 mm · text size (the SH020 setup)**
 - Frame: the invitation bubble and the send arrow at lower right; his thumb over
   the arrow.
 - Eye: the thumb, the bubble rising, the amber line filling, then the tick where
@@ -348,8 +352,8 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Out: cut.
 
 **SC04_SH090 · 28 f · MCU · 50 mm (the SH050 end frame, locked) · eye level**
-- Frame: Ren at right third, face lit steady by the phone; the crank at the
-  bottom of frame.
+- Frame: Ren at right third, three-quarter facing screen left, face lit steady
+  by the phone; the crank at the bottom of frame.
 - Eye: his hand opening, the pip fading, his face.
 - Moves: he lets go; the handle clicks to a stop; the pip dies within 6 f; he
   breathes out.

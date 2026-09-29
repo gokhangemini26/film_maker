@@ -52,7 +52,7 @@
       "focus_target": "phone_ren_screen_plane"
     },
     "fov_h_deg": 23.9132,
-    "height_m": 1.25,
+    "height_m": 1.14,
     "lens_mm": 85.0,
     "look_at": "phone_ren",
     "movement": "static",
@@ -61,8 +61,8 @@
     "sensor_width_mm": 36.0,
     "start_position": [
       1.29,
-      -0.4,
-      1.2
+      -0.34,
+      1.14
     ]
   },
   "characters": [
@@ -532,7 +532,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "insert",
-    "notes": "Text-size insert on the status bar: battery icon and number in the upper right third, digits at 3 % or more of frame height. Change at frame 4, then 26 frames held (minimum 24).",
+    "notes": "Text-size insert on the status bar (frame about 71 mm tall, 85 mm at 0.30 m): battery icon and number in the upper right third, digits at 3 % or more of frame height. Change at frame 4, then 26 frames held (minimum 24). Framing reference (DEPENDENCY for the animation hold and the builder): screen centre at about (1.29, -0.09, 0.97), 0.40 m from his eyes. Lens 0.30 m from it on his eyeline, between his face and the phone (his head is behind the lens), camera's up = the phone's top edge. For the part of the screen named here, shift the lens parallel to the screen; never tilt it.",
     "subject_position": "upper_right"
   },
   "environment": {

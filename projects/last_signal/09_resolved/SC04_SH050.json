@@ -108,8 +108,8 @@
       "enabled": false
     },
     "end_position": [
-      -1.52,
-      -1.05,
+      -1.33,
+      -1.71,
       0.92
     ],
     "fov_h_deg": 39.5978,
@@ -121,8 +121,8 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      -1.8,
-      -1.05,
+      -1.572,
+      -1.85,
       0.92
     ]
   },
@@ -306,7 +306,7 @@
           }
         }
       },
-      "facing": "south, eyes between the crank and the phone",
+      "facing": "south (seen three-quarter from the lens, face toward screen left), eyes between the crank and the phone",
       "id": "ren",
       "position": [
         -0.1,
@@ -536,7 +536,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium",
-    "notes": "Push-in 2 of 2 from the first crank turn (about frame 30) to the end: 0.28 m over 50 frames (0.134 m/s, under the 0.15 m/s cap). Ends as a medium close-up. Pip at 1 % of frame height or more; crank at 10 % of frame width or more; cable's visible length short and posed over the knee. Car flank behind the jacket.",
+    "notes": "Lens on the pavement 30 deg east of his facing (south), so he reads three-quarter facing screen left, with face, crank and phone all turned toward the lens; aim at the midpoint between his crown and the pip (about z 0.79 m), a slight tilt down. Push-in 2 of 2 from the first crank turn (about frame 30) to the end: 0.28 m straight toward him over 50 frames (0.134 m/s, under the 0.15 m/s cap). Ends as a medium close-up. Pip at 1 % of frame height or more; crank at 10 % of frame width or more, with its top and pip seen above his near (left) knee (DEPENDENCY for the animation clamp); cable's visible length short and posed over the knee. Car flank behind the jacket (the ray through the jacket top hits the car at y about -0.83). The emptied glovebox sits dark far left of frame (it must not glow). Phone-lit rule: 30 deg, inside the 45 deg limit (camera.phone_lit.framing).",
     "subject_position": "right_third_facing_left"
   },
   "environment": {

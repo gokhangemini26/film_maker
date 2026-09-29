@@ -1,7 +1,7 @@
 shot_id: SC01_SH020
 scene_id: SC01
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 1.5833
 serves:
 - intent.race_against_battery
@@ -15,12 +15,12 @@ creative_intent:
     later reads instantly.
 camera:
   lens_mm: 85
-  height_m: 1.3
+  height_m: 1.32
   movement: static
   start_position:
-  - 1.29
-  - -0.62
-  - 1.3
+  - 1.02
+  - -0.59
+  - 1.32
   end_position: null
   look_at: phone_ren
   dof:
@@ -31,9 +31,13 @@ composition:
   framing: insert
   aspect_ratio: 1.778
   subject_position: centre
-  notes: 'Screen insert: frame height about 0.16 m at the screen (85 mm at about 0.67 m), owner''s side,
-    square within 15 deg. Pin near centre. Status bar in frame but not the beat. Lap and trousers soft
-    behind (f/5.6).'
+  notes: 'Screen insert: frame height about 0.16 m at the screen (85 mm at 0.67 m), owner''s side, square
+    within 15 deg. Framing reference (DEPENDENCY for the animation hold and the builder): screen centre
+    at about (1.29, -0.09, 0.97), 0.40 m from his eyes and 35 deg below them. Lens 0.67 m from it above
+    his left (passenger-side) shoulder, 24 deg off his own eyeline, so the sight line clears his head
+    by about 0.19 m; the phone is turned square to the lens (within 15 deg) and the camera''s up is the
+    phone''s top edge. Pin near centre. Status bar in frame but not the beat. Lap and trousers soft behind
+    (f/5.6).'
 characters:
 - id: ren
   position:
@@ -87,8 +91,13 @@ assets:
 - world.props.phone_ren
 - ui.map_pin_screen
 rationale:
-  camera: '85 mm, the insert lens (camera.inserts.language): flat, frontal, readable. Rejected: an over-shoulder
-    map (screen at an angle, pin too small; camera.inserts.language).'
+  camera: '85 mm, the insert lens (camera.inserts.language): flat, frontal, readable. The lens sits above
+    his left shoulder, 0.67 m from the screen, so the whole screen fills about 0.16 m of frame height
+    and his head stays out of the sight line: the approved spec put the lens on his eyeline behind his
+    head, and the head became the dark shape at the frame top (PREVIEW_REVIEW #9). The screen is still
+    square to the lens, so this is an insert, not an over-shoulder shot. Rejected: an over-shoulder map
+    (screen at an angle, pin too small; camera.inserts.language), and a lens on his eyeline in front of
+    his face (only 0.40 m of room, which makes a text-size frame and loses the map).'
   composition: 'Pin at centre so the eye lands on it at once; nothing else on the map carries a shape.
     Held 38 frames, above the 36-frame minimum (camera.inserts.legibility; G2 finding 10). Rejected: a
     text-size insert on the pin alone, which loses the ''map'' read that makes it a place.'
@@ -109,7 +118,7 @@ continuity_refs:
 - continuity.battery
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -206,6 +215,18 @@ derived_from:
   hash: sha256:a72ecd61a4028d019ce62c8e22e9fcf0d6251af698ffdd745d89661d5fd95844
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:55abea9f1ede7d0cd64ba11a3bbc95b4e9bb4474f250db41c1eb540d5f32e04c
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.map
+  hash: sha256:97c1dc4a7271d601b828d06a16c4808e095d0d8f0dba5594cdd5aaeb29d366f2
+- ref: canon:look.style.phone_screen.call
+  hash: sha256:7a304076b8353277e405c901e134c1e7212fb836b00d3b156f5381fadbde76b3
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+- ref: canon:look.color.ui_portraits
+  hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
+stamped_content_hash: sha256:bbd1102adc4f100789f8c28b9bb8101f38b511e9778153cfc1784e865be72dba
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

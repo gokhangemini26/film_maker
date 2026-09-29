@@ -1,6 +1,6 @@
 {
-  "content_hash": "sha256:9a1c4713b56643cc8676c3e30aac769aeb334bd86e28db21a6ec7173432cd93e",
-  "created_at": "2026-09-29T19:14:14Z",
+  "content_hash": "sha256:5c4e581ed8d50d1a58ad77f7a427e825cb96ce45314102f6b65cb14a444f5ce0",
+  "created_at": "2026-09-29T21:49:11Z",
   "derived_from": [
     {
       "hash": "sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b",
@@ -299,6 +299,10 @@
       "ref": "canon:look.color.ui_heart"
     },
     {
+      "hash": "sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c",
+      "ref": "canon:look.color.ui_portraits"
+    },
+    {
       "hash": "sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4",
       "ref": "canon:look.exposure.scene_keys"
     },
@@ -373,6 +377,38 @@
     {
       "hash": "sha256:1938cd4f7e09325917a633d05787a290dadcf239aae91673b5dbfe5b5f7aba8d",
       "ref": "canon:look.style.outlines"
+    },
+    {
+      "hash": "sha256:7a304076b8353277e405c901e134c1e7212fb836b00d3b156f5381fadbde76b3",
+      "ref": "canon:look.style.phone_screen.call"
+    },
+    {
+      "hash": "sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f",
+      "ref": "canon:look.style.phone_screen.compose"
+    },
+    {
+      "hash": "sha256:b9e1bd6f67a57e55ac2662e54bff132aa3db67d52759787d835174945d727d01",
+      "ref": "canon:look.style.phone_screen.geometry"
+    },
+    {
+      "hash": "sha256:ddf81af17b9ec8bbc317c7f32d337de2b7975330b03e1e92e0de83eb95107cca",
+      "ref": "canon:look.style.phone_screen.hana"
+    },
+    {
+      "hash": "sha256:97c1dc4a7271d601b828d06a16c4808e095d0d8f0dba5594cdd5aaeb29d366f2",
+      "ref": "canon:look.style.phone_screen.map"
+    },
+    {
+      "hash": "sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71",
+      "ref": "canon:look.style.phone_screen.sent"
+    },
+    {
+      "hash": "sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c",
+      "ref": "canon:look.style.phone_screen.states_by_shot"
+    },
+    {
+      "hash": "sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373",
+      "ref": "canon:look.style.phone_screen.status_bar"
     },
     {
       "hash": "sha256:5b1bcd7579ec10d43bbfefbd045d981b00248cbbc4ca45550862e8c0df97c0e6",
@@ -503,11 +539,11 @@
       "ref": "shot:SC01_SH010"
     },
     {
-      "hash": "sha256:55abea9f1ede7d0cd64ba11a3bbc95b4e9bb4474f250db41c1eb540d5f32e04c",
+      "hash": "sha256:bbd1102adc4f100789f8c28b9bb8101f38b511e9778153cfc1784e865be72dba",
       "ref": "shot:SC01_SH020"
     },
     {
-      "hash": "sha256:7bd158cdcd69c649298850f29387c330b0510d80f1b818080e61a48368ca6bb6",
+      "hash": "sha256:0038b02f322130aca28b9a50f2e525944fcb1b8f11bd99ace0ef3e18737dc14e",
       "ref": "shot:SC01_SH030"
     },
     {
@@ -515,7 +551,7 @@
       "ref": "shot:SC01_SH040"
     },
     {
-      "hash": "sha256:cb7a17707d9695ceb095f49782b8bf0ce710df5f957ec4044ee32a8d0bd7150d",
+      "hash": "sha256:fca38b6d0bc93b9032279ffc4738716436e7bff7f094ebd0df13e96039391714",
       "ref": "shot:SC01_SH050"
     },
     {
@@ -523,11 +559,11 @@
       "ref": "shot:SC01_SH060"
     },
     {
-      "hash": "sha256:4bb80127d57857fe3086f35caa5ff0f97ff7fbb066d34890282d7f459828fc34",
+      "hash": "sha256:2c36bdb57ecd05095c6a802c91dcaf4cdedb2574a3eba2facb1cea18c39841a2",
       "ref": "shot:SC01_SH070"
     },
     {
-      "hash": "sha256:578f482dfcd13a7d30d5db07b4cecb22f8c16aefc6736395f2fcf44a0e032f74",
+      "hash": "sha256:f556a039402a3c27b6b5e28a3b97a59bd0a04dd692c6a6e1e640298a82baa252",
       "ref": "shot:SC01_SH080"
     },
     {
@@ -543,7 +579,7 @@
       "ref": "shot:SC01_SH110"
     },
     {
-      "hash": "sha256:d98e26a8cdd5b6c50d855c6b6f5229b3a108bf9fa80662b3dc8ed00935b4f49b",
+      "hash": "sha256:43bdadfe67d6c9a339c51982ac8b8befd41203c077f92087d2c4c2f963cf9e39",
       "ref": "shot:SC01_SH120"
     },
     {
@@ -551,7 +587,7 @@
       "ref": "shot:SC01_SH130"
     },
     {
-      "hash": "sha256:e75d1fdff853cda8159f339e1c888da5e8da585a863cf3500c206ce21acc4b94",
+      "hash": "sha256:2b8ef5785295dbbbc30d6ff11ba35ab542863d28bd456b0ad18d90b3e07daf7c",
       "ref": "shot:SC01_SH140"
     },
     {
@@ -591,7 +627,7 @@
       "ref": "shot:SC03_SH050"
     },
     {
-      "hash": "sha256:aa03e411a9fb58e2dfcc8260230930a3261f9ee11962dbf224136aa6295db5c5",
+      "hash": "sha256:a1768862865e1079ba5f5b8fe8917c3bc2db729ed564d92ebeb05ebfa3b47ab6",
       "ref": "shot:SC03_SH060"
     },
     {
@@ -603,11 +639,11 @@
       "ref": "shot:SC04_SH010"
     },
     {
-      "hash": "sha256:2df742e7dee1238ccdde043a1864421cbc2a204ec7bc01059e93a847f4df9a25",
+      "hash": "sha256:93b51b2f50c7cc540253aa3f83c229d95787360ab64f767d8f2edb6d81f55a32",
       "ref": "shot:SC04_SH020"
     },
     {
-      "hash": "sha256:9d56ea0c465a84b4e0cdaac644a073bc3581b98456789f2c68566c25852792d5",
+      "hash": "sha256:a861857823fd5dd8a33453e64602ad6db28a581c441553a2d66cff72d475a89e",
       "ref": "shot:SC04_SH030"
     },
     {
@@ -615,23 +651,23 @@
       "ref": "shot:SC04_SH040"
     },
     {
-      "hash": "sha256:87f164a94d136754182c0b4d1fb80514e2be63d9b9b148db7b9f297b1a0b20df",
+      "hash": "sha256:276eebdb32f7817597391d4a97a5b8376ff2a6f93fb37a09a639300896c12c48",
       "ref": "shot:SC04_SH050"
     },
     {
-      "hash": "sha256:fe2659522b8af5d6e2e2b01e5471ac6bfbc742cd5a74011cc6368883c83bbacb",
+      "hash": "sha256:541fcf93e70b29270b0e6024268fe6ff25bebf9394f5dca29c53c8f573f2c2b9",
       "ref": "shot:SC04_SH060"
     },
     {
-      "hash": "sha256:f0af46aad1a8312db2294db4ad115e071582a83929be7f793b5ea466dae1a5bb",
+      "hash": "sha256:2012bb3da3b583e80f2b2056694fb835feb81fcf69ad82c407432a338486c936",
       "ref": "shot:SC04_SH070"
     },
     {
-      "hash": "sha256:0a2e4b08045ca5f92ea22bdb01602bbab0a067c8293be360f69858c8ce53c7d8",
+      "hash": "sha256:d209481a74bd1a1b7126623271d8923aead68ad6e3bfe74b075ee6a373dfa921",
       "ref": "shot:SC04_SH080"
     },
     {
-      "hash": "sha256:451cd791871bfcdf966acb7dc8c464dc8ce0620f7b2e97fe6068165dfd360bce",
+      "hash": "sha256:b7888d4f125f9cbbce72ed678b3afda050d6530f255306ccb455829ada12088f",
       "ref": "shot:SC04_SH090"
     },
     {

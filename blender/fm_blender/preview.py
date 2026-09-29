@@ -100,8 +100,10 @@ def parse_facing(text, pos, cam, street, scene=""):
     return v.normalized()
 
 
-def pose_for(scene, shot_id, cid):
-    n = int(shot_id.split("SH")[1])
+import re as _re
+
+
+def _scene_rule_pose(scene, n, cid):
     if cid == "hana":
         return "sit_chair"
     if scene == "SC01":
@@ -113,6 +115,90 @@ def pose_for(scene, shot_id, cid):
     if scene == "SC06":
         return "sit_kerb"
     return "stand"
+
+
+def pose_from_text(text, scene):
+    """Keyword mapper over one free-text key pose. Returns a figure pose name or None when the text says nothing."""
+    t = (text or "").lower()
+    if _re.search(r"kneel|onto (the |his )?(right |left |one )?knee|lunge|crouch", t):
+        return "kneel"  # no separate crouch pose in characters.py: kneel is the closest
+    if "kerb" in t and _re.search(r"sit|seat|lower|onto|back to", t):
+        return "sit_kerb"
+    if _re.search(r"chair|desk", t):
+        return "sit_chair"
+    if _re.search(r"\bsit|seated|behind the wheel|on the (top of the )?wheel|hands on the .*wheel|hunched|forearms loose|\blap\b|thighs", t):
+        return {"SC01": "sit_car", "SC05": "sit_chair"}.get(scene, "sit_kerb" if scene in ("SC04", "SC06") else "sit_car")
+    if _re.search(r"running|upright, pivoting|standing|\bstands\b|foot contact|foot lands|foot on the pavement|unfolding out", t):
+        return "stand"
+    return None
+
+
+def pose_for(scene, shot_id, cid, shot=None):
+    n = int(shot_id.split("SH")[1])
+    fallback = _scene_rule_pose(scene, n, cid)
+    if not shot:
+        return fallback
+    ch = ((shot.get("animation") or {}).get("characters") or {}).get(cid) or {}
+    keys = ch.get("keys") or []
+    if not keys:
+        return fallback
+    mid = ((shot.get("frames") or {}).get("count") or 0) // 2
+    active = max([i for i, k in enumerate(keys) if k.get("f", 0) <= mid] or [0])
+    # the mid-shot still shows the pose active at the middle frame: search from it back to the first key
+    for k in reversed(keys[:active + 1]):
+        p = pose_from_text(k.get("pose"), scene)
+        if p:
+            return p
+    return fallback
+
+
+_CANON_LS = []
+
+
+def kelvin_lin(k):
+    """Colour for a spec'd temperature: the look canon's light source at that kelvin when one exists (art-directed),
+    else a blackbody fit (Tanner Helland, sRGB decoded) softened halfway to white."""
+    best = min((e for e in _CANON_LS if e.get("kelvin")), key=lambda e: abs(e["kelvin"] - k), default=None)
+    if best is not None and abs(best["kelvin"] - k) <= 0.04 * k:
+        return tuple(best["linear"])
+    t = max(1000.0, min(40000.0, float(k))) / 100.0
+    r = 255.0 if t <= 66 else 329.698727446 * ((t - 60) ** -0.1332047592)
+    g = 99.4708025861 * math.log(t) - 161.1195681661 if t <= 66 else 288.1221695283 * ((t - 60) ** -0.0755148492)
+    b = 255.0 if t >= 66 else (0.0 if t <= 19 else 138.5177312231 * math.log(t - 10) - 305.0447927307)
+    c = [max(0.0, min(255.0, v)) / 255.0 for v in (r, g, b)]
+    lin = [((x + 0.055) / 1.055) ** 2.4 if x > 0.04045 else x / 12.92 for x in c]
+    return tuple(0.5 * v + 0.5 for v in lin)
+
+
+def _prop_texts(shot, key):
+    pr = (shot.get("animation") or {}).get("props") or {}
+    return [str(v) for k, v in pr.items() if key in k]
+
+
+def car_state(shots, sid, default_door_deg):
+    """Walk the shots in film order up to `sid` and carry the car panel states from their animation.props text
+    (passenger_door, glovebox_lid). Returns (door_open_deg, glovebox_open)."""
+    door_deg, glove = 0.0, False
+    for k, shot in shots.items():
+        for t in _prop_texts(shot, "passenger_door"):
+            tl = t.lower()
+            m = _re.search(r"(\d+)\s*deg", tl.split("settles back to")[-1]) if "open" in tl else None
+            if "open" in tl and "not open" not in tl:
+                door_deg = float(m.group(1)) if m else default_door_deg
+            if _re.search(r"\b(shut|closes|closed|slams)\b", tl) and "open" not in tl:
+                door_deg = 0.0
+        for t in _prop_texts(shot, "car"):
+            if _re.search(r"closed glovebox|glovebox (is )?closed|glovebox shut", t.lower()):
+                glove = False
+        for t in _prop_texts(shot, "glovebox_lid"):
+            tl = t.lower()
+            if _re.search(r"drops|lowered|open|down", tl):
+                glove = True
+            elif _re.search(r"closed|shut|closes", tl):
+                glove = False
+        if k == sid:
+            break
+    return door_deg, glove
 
 
 def clear_shot_objects():
@@ -161,7 +247,8 @@ def unit_offset(scene):
     return Vector((0, 0, 0))
 
 
-def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
+def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots=None):
+    all_shots = all_shots or {shot["shot_id"]: shot}
     scene = shot["scene_id"]
     sid = shot["shot_id"]
     n = int(sid.split("SH")[1])
@@ -189,26 +276,29 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
     cam.location = cpos
     bpy.context.scene.camera = cam
 
-    # car door
-    door = bpy.data.objects.get(door_name) if door_name else None
+    # car panels: passenger door and glovebox lid carried shot to shot from animation.props text
+    car = door_name if isinstance(door_name, dict) else {"door": door_name}
+    door = bpy.data.objects.get(car.get("door")) if car.get("door") else None
+    door_deg, glove_open = car_state(all_shots, sid, door["fm_open_angle_deg"] if door is not None else 60.0)
     if door is not None:
-        hinge = Vector(door["fm_hinge_xy"]) if False else None
         dl = door.dimensions.y
         base = Vector(door.get("fm_closed_loc", door.location))
         door["fm_closed_loc"] = list(base)
-        opened = scene in ("SC02", "SC04", "SC06")
-        ang = math.radians(door["fm_open_angle_deg"]) if opened else 0.0
+        ang = math.radians(door_deg)
         hy = base.y + dl / 2
-        door.location = Vector((base.x + (0 if not opened else 0), hy, base.z)) + Vector((0, 0, 0))
         rel = Vector((0, -dl / 2, 0))
         rel.rotate(__import__("mathutils").Euler((0, 0, -ang)))
         door.location = Vector((base.x, hy, base.z)) + rel
         door.rotation_euler = (0, 0, -ang)
+    lid = bpy.data.objects.get(car.get("glovebox_lid")) if car.get("glovebox_lid") else None
+    if lid is not None:
+        lid.location = Vector(lid["fm_open_loc"] if glove_open else lid["fm_closed_loc"])
+        lid.rotation_euler = (math.radians(-90) if glove_open else 0.0, 0, 0)
 
     figs = {}
     for ch in shot["characters"]:
         pos = Vector(ch.get("position") or (0, 0, 0)) + off
-        pose = pose_for(scene, sid, ch["id"])
+        pose = pose_for(scene, sid, ch["id"], shot)
         facing = parse_facing(ch.get("facing", "camera"), pos, cpos, street, scene)
         if pose.startswith("sit") or pose == "kneel":
             pos.z = off.z
@@ -368,6 +458,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
                 bpy.data.objects[w].hide_render = cond
     # lights
     ls = canon.get("look.color.light_sources") or []
+    _CANON_LS[:] = [e for e in ls if isinstance(e, dict) and "linear" in e]
     def ls_col(src, default):
         for e in ls:
             if e.get("source") == src:
@@ -375,13 +466,50 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         return U.lin(default)
     dusk = scene in DUSK
     col = rig
+    lt = shot.get("lighting") or {}
+    key, fill, rim, amb = lt.get("key"), lt.get("fill"), lt.get("rim"), lt.get("ambient")
+    key_src = (key.get("source", "") if isinstance(key, dict) else str(key or "")).lower()
+    key_k = key.get("temperature_k") if isinstance(key, dict) else None
+    rim_k = rim.get("temperature_k") if isinstance(rim, dict) else None
+    fill_t = (fill if isinstance(fill, str) else str((fill or {}).get("source", ""))).lower()
+    phone_key = "phone" in key_src
+    flick = 0.8 if "flicker" in str(lt.get("key_state", "")).lower() else 1.0
+    m_el = _re.search(r"(\d+(?:\.\d+)?)\s*deg up", key_src)
+
+    def sun(tag, kelvin, elev_deg, energy, default_src):
+        color = kelvin_lin(kelvin) if kelvin else ls_col(default_src, "#FFD9A0")
+        e = math.radians(elev_deg)
+        v = Vector((0, math.cos(e), math.sin(e)))  # sun sits west (+y), shining toward -y
+        add_light("SUN", tag + "." + sid, (0, 0, 10), energy, color, col, rot=(-v).to_track_quat("-Z", "Y").to_euler())
+
+    def cam_side_fill(color, energy, size=2.0):
+        # soft bounce/sky fill from the lens side, aimed at the subject
+        ref = figs["ren"][0]["head"] if "ren" in figs else tgt
+        o = add_light("AREA", "fill." + sid, cpos + Vector((0, 0, 0.3)), energy, color, col, size=size)
+        aim(o, ref)
+
+    def phone_light(energy, kelvin=None):
+        if "ren" in figs:
+            i_ = figs["ren"][0]
+            add_light("POINT", "phone." + sid, i_["phone"] + i_["facing"] * 0.06 + Vector((0, 0, 0.04)), energy * flick,
+                      kelvin_lin(kelvin) if kelvin else ls_col("phone_glow", "#FFF1DE"), col, size=0.08)
+
     if street:
-        elev = math.radians(2.0 if dusk else 6.0)
-        s = Vector((0, math.cos(elev), math.sin(elev)))
-        add_light("SUN", "sun." + sid, (0, 0, 10), 2.5 if dusk else 4.0,
-                  ls_col("afterglow_rim_dusk" if dusk else "sun_golden_hour", "#FFD9A0"), col,
-                  rot=(-s).to_track_quat("-Z", "Y").to_euler())
-        bg.inputs[1].default_value = 0.8
+        if phone_key or dusk:
+            # dusk: afterglow rim from the west (rim block, 3000 K); the phone is the key when the spec says so
+            sun("rim", rim_k, 2.0, 2.5 if dusk else 4.0, "afterglow_rim_dusk")
+            bg.inputs[1].default_value = 0.8
+            if phone_key and scene != "SC06":
+                phone_light(15)
+        elif isinstance(key, dict) and "sun" in key_src:
+            sun("sun", key_k, float(m_el.group(1)) if m_el else 6.0, 4.0, "sun_golden_hour")
+            bg.inputs[1].default_value = 0.8
+            if "bounce" in fill_t or "sky" in fill_t:
+                cam_side_fill(kelvin_lin(3800) if "warm" in fill_t else ls_col("sky_fill_golden_hour", "#C8D3EA"), 60 if "warm" in fill_t else 90)
+        else:
+            # inserts (key = phone screen emission): keep the scene's ambient sun as low fill, phone is its own light
+            sun("sun", None if dusk else 3200, 6.0, 2.5 if dusk else 4.0, "afterglow_rim_dusk" if dusk else "sun_golden_hour")
+            bg.inputs[1].default_value = 0.8
     elif scene == "SC03":
         lit = n < 50
         bg.inputs[1].default_value = 0.0
@@ -389,16 +517,22 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
             if o.get("fm_shop_light"):
                 o.hide_render = not lit
         if lit:
+            pc = kelvin_lin(key_k or 5000)
             for i in range(4):
-                add_light("POINT", f"panel{i}.{sid}", S.SHOP_ORIGIN + Vector((2.25, 9.0 * (i + 0.5) / 4, 2.4)), 260, (1.0, 0.95, 0.85), col, size=0.4)
+                add_light("POINT", f"panel{i}.{sid}", S.SHOP_ORIGIN + Vector((2.25, 9.0 * (i + 0.5) / 4, 2.4)), 260, pc, col, size=0.4)
+            if "fridge" in fill_t or "fridge" in str(rim).lower():
+                add_light("AREA", "fridges." + sid, S.SHOP_ORIGIN + Vector((2.25, 8.6, 1.0)), 60, kelvin_lin(6500), col, size=2.0,
+                          rot=(math.radians(90), 0, math.pi))
         else:
             i = figs["ren"][0]
-            add_light("POINT", "phone." + sid, i["hands"] + i["facing"] * 0.15, 15, ls_col("phone_glow", "#FFF1DE"), col, size=0.1)
+            add_light("POINT", "phone." + sid, i["hands"] + i["facing"] * 0.15, 15 * flick, ls_col("phone_glow", "#FFF1DE"), col, size=0.1)
     else:
         bg.inputs[1].default_value = 0.25
-        add_light("AREA", "window." + sid, S.ROOM_ORIGIN + Vector((0, -0.3, 1.45)), 250, ls_col("sky_fill_dusk", "#9CA2D0"), col, size=1.0,
+        lamp_on = "lamp" in key_src or "lamp" in str(fill).lower() or "lamp" in str(lt.get("background_practicals", ""))
+        add_light("AREA", "window." + sid, S.ROOM_ORIGIN + Vector((0, -0.3, 1.45)), 250, kelvin_lin(10000), col, size=1.0,
                   rot=(math.radians(-90), 0, 0))
-        add_light("POINT", "lamp." + sid, S.ROOM_ORIGIN + Vector((-0.35, -0.28, 1.1)), 60, ls_col("desk_lamp", "#FFD6A0"), col, size=0.08)
+        if lamp_on or "hana" in figs:
+            add_light("POINT", "lamp." + sid, S.ROOM_ORIGIN + Vector((-0.35, -0.28, 1.1)), 60, kelvin_lin(key_k if lamp_on and key_k else 2700), col, size=0.08)
         add_light("POINT", "phone." + sid, S.ROOM_ORIGIN + Vector((0.25, -0.3, 0.85)), 8, ls_col("phone_glow", "#FFF1DE"), col, size=0.05)
 
     dark_k = 0.04 if (scene == "SC03" and n >= 50) else 1.0
@@ -437,7 +571,7 @@ def main(argv):
     if "world.sets.street" in canon:
         S.build_street(units["street"], canon)
         if "world.sets.ren_car" in canon:
-            door = S.build_car(units["street"], canon)["door"]
+            door = S.build_car(units["street"], canon)
     else:
         S.build_generic(units["street"], canon)   # any film without street canon still gets a stage
     if "world.sets.corner_shop" in canon:
@@ -452,7 +586,7 @@ def main(argv):
         world_sky(shot["scene_id"] in DUSK, canon)
         bg = bpy.context.scene.world.node_tree.nodes["Background"]
         try:
-            done.append(render_shot(film, shot, canon, units, rig, door, out_dir, bg))
+            done.append(render_shot(film, shot, canon, units, rig, door, out_dir, bg, shots))
             print("FM_OK", sid, flush=True)
         except Exception as e:  # noqa: BLE001
             import traceback

@@ -1,7 +1,7 @@
 shot_id: SC04_SH030
 scene_id: SC04
 sequence_id: SQ02
-status: APPROVED
+status: PROPOSED
 duration_s: 1.5
 serves:
 - intent.earned_last_signal
@@ -9,20 +9,22 @@ serves:
 creative_intent:
   narrative_purpose: 'He looks up at the car: the passenger door stands open; beyond it, the glovebox.'
   emotional_purpose: 'The turn begins: a hesitation that becomes a decision.'
-  visual_purpose: Medium close-up from the pavement, his face turned to screen left, the open door framing
-    the glovebox at frame left; the camera eases toward him as his eyes settle on it.
+  visual_purpose: 'Medium close-up from the pavement south-east of him: his face three-quarter to the
+    lens as he lifts his eyes, then his head turning screen left, away from us and into the depth of the
+    frame; the open door at frame left and, through the opening beside its hinge, the glovebox left of
+    centre; the camera eases toward him as his eyes settle on it.'
   audience_effect: The viewer remembers the crank before he moves, and leans in with the camera.
 camera:
   lens_mm: 50
   height_m: 0.95
   movement: dolly_in
   start_position:
-  - -1.65
-  - -1.25
+  - -1.287
+  - -1.996
   - 0.95
   end_position:
-  - -1.48
-  - -1.2
+  - -1.149
+  - -1.881
   - 0.95
   look_at: ren
   dof:
@@ -31,16 +33,24 @@ composition:
   framing: medium_close
   aspect_ratio: 1.778
   subject_position: right_third_facing_left
-  notes: 'Face shot from the pavement side (camera.geography.sc04_sc06). Push-in 1 of 2: 0.18 m from frame
-    4 to the end (32 frames, 1.33 s, 0.135 m/s, under the 0.15 m/s cap), starting as his eyes land on
-    the glovebox. Car flank behind his jacket (jacket-ray hits the car). Lead room screen left.'
+  notes: 'Face shot from the pavement side (camera.geography.sc04_sc06): lens on the pavement 1.55 m from
+    him, 40 deg east of his facing (south), at his seated eye level. His head on the right third. Screen
+    left of him and deeper in frame: the open door''s panel entering from the frame-left edge to about
+    13 deg left of centre, and through the opening beside its hinge the closed glovebox about 10 deg left
+    of centre (about 11 % of frame height and width), clear of his head and shoulder by about 0.4 m at
+    his distance. At f0 his face reads three-quarter toward the lens; his head turn to the glovebox turns
+    him away from us and hands the eye along his look into depth. Push-in 1 of 2: 0.18 m straight toward
+    him from frame 4 to the end (32 frames, 0.135 m/s, under the 0.15 m/s cap), starting as his eyes land.
+    Car flank behind his jacket (the ray through the jacket top hits the car at y about -0.75). Phone-lit
+    rule: lens 40 deg from his facing, inside the 45 deg limit (camera.phone_lit.framing).'
 characters:
 - id: ren
   position:
   - -0.1
   - -1.0
   - 0.12
-  facing: south, then turning his head screen left (west-north-west) to the door
+  facing: south (three-quarter toward the lens), then turning his head screen left (west-north-west) to
+    the glovebox through the open door
   action: lifts his eyes from the phone, turns his head to the open door, finds the glovebox, holds
 environment:
   location: street, kerb beside ren's car
@@ -122,10 +132,19 @@ assets:
 - world.props.phone_ren
 rationale:
   camera: '50 mm at his seated eye level (0.95 m): the tender section''s lens at his distance (camera.lens.roles).
-    Not low: this is the hesitation, not the decision (camera.height.low rationale).'
-  composition: 'His eyeline carries us screen left to the door and the glovebox (the line for SC04, camera.geography.sc04_sc06);
-    the door is a frame within the frame. Rejected: a point-of-view shot of the glovebox (the viewer would
-    stop watching his face).'
+    Not low: this is the hesitation, not the decision (camera.height.low rationale). Position corrected
+    after the first preview (PREVIEW_REVIEW #6): from the approved lens position due south of him the
+    glovebox sat about 33 deg off the lens axis, outside the 39.6 deg horizontal field of a 50 mm, so
+    no builder could show it. Moving the lens 40 deg east around him on the pavement lines the glovebox
+    up about 16 deg left of his head, inside the frame, with the same distance, height and push. Rejected:
+    35 mm to hold both (reserved for the bookend, camera.lens.roles); a separate glovebox eyeline insert
+    (an extra cut inside a 1.5 s beat); and keeping the old angle with the glovebox off frame (the viewer
+    would not see what he remembers, the shot''s audience effect).'
+  composition: 'His eyeline carries us screen left and into depth to the door and the glovebox (the line
+    for SC04, camera.geography.sc04_sc06); the door is a frame within the frame. The cost of seeing the
+    glovebox: once his head has turned we read him in lost profile, so the hesitation has to read in the
+    first frames and in his stillness, breath and the forearms lifting, not in a late look at his eyes.
+    Rejected: a point-of-view shot of the glovebox (the viewer would stop watching him).'
   lighting: Afterglow rim on the screen-left edge of his face grows as he turns toward the west; the phone
     flicker still on his chin.
   movement: 'Push-in 1 of 2 (camera.movement.push_in): 0.18 m in 1.33 s (0.135 m/s), starting after his
@@ -147,7 +166,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -252,6 +271,14 @@ derived_from:
   hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:9d56ea0c465a84b4e0cdaac644a073bc3581b98456789f2c68566c25852792d5
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.sent
+  hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+stamped_content_hash: sha256:a861857823fd5dd8a33453e64602ad6db28a581c441553a2d66cff72d475a89e
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

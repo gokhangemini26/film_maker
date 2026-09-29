@@ -1,7 +1,7 @@
 shot_id: SC04_SH090
 scene_id: SC04
 sequence_id: SQ02
-status: APPROVED
+status: PROPOSED
 duration_s: 1.1667
 serves:
 - intent.earned_last_signal
@@ -16,12 +16,12 @@ creative_intent:
     light.
 camera:
   lens_mm: 50
-  height_m: 0.95
+  height_m: 0.92
   movement: static
   start_position:
-  - -1.52
-  - -1.05
-  - 0.95
+  - -1.33
+  - -1.71
+  - 0.92
   end_position: null
   look_at: ren
   dof:
@@ -30,15 +30,16 @@ composition:
   framing: medium_close
   aspect_ratio: 1.778
   subject_position: right_third_facing_left
-  notes: The SH050 end position, locked (no push after the send). Crank at the frame bottom so the pip's
-    6-frame fade is seen. Lead room screen left. Cut on light to SC05_SH010 (camera.rhythm.transitions).
+  notes: The SH050 end position exactly, (-1.33, -1.71, 0.92), locked (no push after the send); aimed
+    at the crown-to-pip midpoint (about z 0.79 m) so the crank sits at the frame bottom and the pip's
+    6-frame fade is seen. Three-quarter, lead room screen left. Cut on light to SC05_SH010 (camera.rhythm.transitions).
 characters:
 - id: ren
   position:
   - -0.1
   - -1.0
   - 0.12
-  facing: south, eyes on the phone
+  facing: south (seen three-quarter from the lens, face toward screen left), eyes on the phone
   action: lets go of the handle (click), breathes out, shoulders drop
 environment:
   location: street, kerb beside ren's car
@@ -122,7 +123,8 @@ assets:
 rationale:
   camera: '50 mm, the SH050 end frame, now locked: after the send the camera never moves again (camera.movement.push_in
     after_send). Rejected: another push on his relief (the film would keep leaning in when the story lets
-    go).'
+    go). Position moved with SH050 (the approved one was due south of him, frontal); the height is now
+    the SH050 end height, 0.92 m, instead of 0.95 m, so the cut is the same frame, not a 3 cm jump.'
   composition: Same size as the end of the crank shot, so the only change is his hand opening and the
     pip dying.
   lighting: Steady phone key; the pip's gentle decay reads as his effort's afterglow (look.lighting.power_indicators).
@@ -143,7 +145,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -250,6 +252,14 @@ derived_from:
   hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:451cd791871bfcdf966acb7dc8c464dc8ce0620f7b2e97fe6068165dfd360bce
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.sent
+  hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+stamped_content_hash: sha256:b7888d4f125f9cbbce72ed678b3afda050d6530f255306ccb455829ada12088f
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

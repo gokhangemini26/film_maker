@@ -2138,3 +2138,690 @@ entries:
   source: agent:look-director
   version: 1
   notes: ASSUMPTION that EEVEE in Blender 5.2 behaves like 4.x for these features; verify at M3.
+- id: look.style.phone_screen.geometry
+  statement: |
+    Physical screens of both phones and the coordinate system every phone layout uses.
+    Ren's phone (body 0.071 x 0.147 x 0.0085 m, world.props.phone_ren): screen 0.062 x
+    0.134 m, centred on the face, corner radius 0.005 m, set in a front glass border
+    0.068 x 0.141 m in #1F2029 (the screen_off colour). The case (#5E6B7A) shows as a lip
+    around the glass (1.5 mm at the sides, 3 mm top and bottom) and on the edges and back. Hana's phone (body 0.072 x 0.150 x 0.009 m,
+    world.props.phone_hana): screen 0.063 x 0.137 m, glass 0.069 x 0.144 m, case #E9DFCF.
+    The screen is a flat emissive plane flush with the glass. Layouts are given as screen
+    fractions: x runs from 0 at the left edge to 1 at the right edge of the screen width, y from 0 at
+    the top edge to 1 at the bottom edge of the screen height, upright for the owner.
+    Millimetres quoted in the layout entries are for Ren's screen. Every screen-on state
+    of Ren's phone shows the status bar; the framing, not the UI, decides whether it is in
+    frame. Hana's phone never shows a status bar. Previews may use proxies: each text line
+    as one ink bar (length = the line's set width, height = cap height) and segment-style
+    digits; the final UI uses the font of look.style.phone_ui.
+  value:
+    phone_ren:
+      body_m: {w: 0.071, h: 0.147, t: 0.0085}
+      body_source: world.props.phone_ren
+      screen_m: {w: 0.062, h: 0.134}
+      screen_corner_radius_m: 0.005
+      screen_centre_offset_m: [0.0, 0.0]
+      glass_m: {w: 0.068, h: 0.141}
+      glass_hex: '#1F2029'
+      case_hex: '#5E6B7A'
+      case_source: look.color.props.phone_case_ren
+    phone_hana:
+      body_m: {w: 0.072, h: 0.150, t: 0.009}
+      body_source: world.props.phone_hana
+      screen_m: {w: 0.063, h: 0.137}
+      screen_corner_radius_m: 0.005
+      screen_centre_offset_m: [0.0, 0.0]
+      glass_m: {w: 0.069, h: 0.144}
+      glass_hex: '#1F2029'
+      case_hex: '#E9DFCF'
+      case_source: look.color.props.phone_case_hana
+    screen_aspect_h_over_w: 2.16
+    ui_coords:
+      origin: screen_top_left
+      x: fraction_of_screen_width_left_to_right
+      y: fraction_of_screen_height_top_to_bottom
+      orientation: upright_for_owner
+    status_bar_on: {phone_ren: every_screen_on_state, phone_hana: never}
+    screen_states:
+      map: look.style.phone_screen.map
+      call: look.style.phone_screen.call
+      compose: look.style.phone_screen.compose
+      sent: look.style.phone_screen.sent
+      hana_wake: look.style.phone_screen.hana
+      hana_received: look.style.phone_screen.hana
+      screen_off: flat_screen_off_hex_no_emission
+    preview_proxies_allowed:
+      text_lines: ink_bar_per_line_length_set_width_height_cap
+      digits: segment_glyphs
+      final_requires: font_of_look.style.phone_ui
+  rationale: |
+    The builder's 0.062 x 0.134 m screen is kept: it is a modern 19.5:9 slab and leaves a
+    bezel wide enough to read as a phone in a toon line. What was missing is a place for
+    the case colours that look.color.props already locked (the builder used two dark
+    greys, so the two phones could be confused in inserts, against world.props.phone_hana
+    "distinct from phone_ren"), a separate size for Hana's phone (the builder reused Ren's),
+    and one coordinate system so every later layout rule is a number QA can measure on
+    the screen rectangle in a frame. The status-bar rule removes a builder inconsistency:
+    it drew no status bar in compose and sent states, so the battery could not be framed
+    there even when a shot needed it. Rejected: a real phone's 2 mm bezel (the screen
+    edge disappears into the outline at insert scale) and one screen size for both phones
+    (contradicts the locked prop sizes).
+  serves:
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - world.props.phone_ren
+  - world.props.phone_hana
+  - look.style.phone_ui
+  - look.color.props
+  - look.color.ui
+  - look.style.outlines
+  applies_to: []
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+- id: look.style.phone_screen.status_bar
+  statement: |
+    Status bar on Ren's phone: an opaque band in screen_background across the top, y 0 to
+    0.075 (10 mm). Everything is vertically centred on y 0.040 and right-aligned, in this
+    order from the right: battery icon, percent sign, one digit, bolt slot. Battery icon:
+    body x 0.785-0.935 (9.3 mm), 0.030 of screen height tall (4.0 mm), outline stroke
+    0.6 mm, corner radius 20 % of its height, cap nub x 0.935-0.950 at 40 % of body
+    height. The fill sits 1.2 mm inside the outer edge, anchored left, width = inner width
+    x 0.06 x percent (5 % = 30 %, 4 % = 24 %, 3 % = 18 %, 2 % = 12 %, 1 % = 6 %). Percent
+    sign x 0.710-0.765; digit x 0.657-0.700; digit height 0.036 of screen height (4.8 mm),
+    width 55 % of its height, stroke 16 % of its height. Bolt slot x 0.593-0.638: a single
+    amber zig-zag bolt as tall as the digit (4.8 mm); the slot is always reserved, so the
+    digit never moves when the bolt comes or goes. Colour: icon, fill, nub, digit and %
+    sign all in one colour, charcoal #2B303B at 5 %, battery red #E5483B at 4 % and below.
+    At 1 % the whole icon (outline, fill and nub) blinks at 1 Hz, 50 % duty, each shot
+    starting in the visible phase; the digit and % stay steady.
+  value:
+    band: {y: [0.0, 0.075], fill_role: screen_background, opaque: true}
+    centre_y: 0.040
+    order_right_to_left: [battery_icon, percent_sign, digit, bolt_slot]
+    battery_icon:
+      body_x: [0.785, 0.935]
+      body_h_frac_screen_h: 0.030
+      outline_stroke_mm: 0.6
+      corner_radius_frac_body_h: 0.2
+      nub_x: [0.935, 0.950]
+      nub_h_frac_body_h: 0.4
+      fill_inset_mm: 1.2
+      fill_anchor: left
+      fill_width_frac_inner: 0.06_x_percent
+      fill_by_percent: {'5': 0.30, '4': 0.24, '3': 0.18, '2': 0.12, '1': 0.06}
+    percent_sign_x: [0.710, 0.765]
+    digit:
+      x: [0.657, 0.700]
+      h_frac_screen_h: 0.036
+      h_mm_ren: 4.8
+      w_frac_h: 0.55
+      stroke_frac_h: 0.16
+      count: 1
+    bolt:
+      slot_x: [0.593, 0.638]
+      h_frac_screen_h: 0.036
+      h_mm_ren: 4.8
+      colour_role: look.color.accent_power_amber
+      shape: single_zigzag_polygon
+      polygon_in_glyph_box_x_right_y_down: [[0.62, 0.0], [0.10, 0.58], [0.46, 0.58], [0.36, 1.0], [0.90, 0.40], [0.54, 0.40]]
+      slot_reserved_when_off: true
+    colour_by_percent:
+      '5': '#2B303B'
+      '4': '#E5483B'
+      '3': '#E5483B'
+      '2': '#E5483B'
+      '1': '#E5483B'
+    blink_at_1pct:
+      parts: [battery_outline, battery_fill, battery_nub]
+      steady_parts: [digit, percent_sign, bolt]
+      hz: 1.0
+      duty: 0.5
+      phase: each_shot_starts_visible
+    zero_percent_shown: never
+    checks:
+    - digit >= 3 % of frame height in a 0.16 m screen insert (4.8 mm / 160 mm = 3.0 %)
+    - bolt >= 4.4 mm on the model (SC03_SH020 dependency) and >= 3 % of frame in inserts
+    - nothing else in the band (no clock, carrier, signal, wifi, text)
+    - digit x position identical with and without the bolt
+  rationale: |
+    The builder drew 12.5 mm digits and a 22 mm battery, five times a real status bar;
+    the band took a fifth of the screen and crowded the map and the call photo. 4.8 mm is
+    the smallest digit that still meets the 3 % legibility minimum
+    (camera.inserts.legibility) in the widest insert the film uses (0.16 m screen insert),
+    so any insert may carry the battery beat without a special framing, and a 4.8 mm bolt
+    meets the 4.4 mm the SC03 over-the-shoulder shot needs. That is about twice a real
+    phone, which suits the graphic stylisation and still reads as a phone. The
+    exaggerated fill (6 % of the bar per percent) makes each drop visible as a shape, not
+    only as a number (intent.race_against_battery). The reserved bolt slot stops the digit
+    jumping when charging starts or stops, so the bolt is the only event in those
+    inserts. "Bolt beside the number" (continuity.battery) and "left of the icon"
+    (look.style.phone_ui) both hold. Rejected: the builder's two parallel bars for the
+    bolt, which read as "//" rather than a bolt; and a realistic 2.3 mm digit, which fails
+    the 3 % minimum in a screen insert.
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - look.style.phone_screen.geometry
+  - look.style.phone_ui
+  - look.color.ui
+  - look.color.accent_battery_red
+  - look.color.accent_power_amber
+  - camera.inserts.legibility
+  - continuity.battery
+  applies_to: [SC01, SC02, SC03, SC04, SC06]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+- id: look.style.phone_screen.map
+  statement: |
+    Map state (SC01): below the status bar the whole screen (y 0.075-1.0) is an
+    unlabelled map on map_land #E8EAE3. Roads in map_road #FBFAF7, 0.085 of screen width
+    wide (5.3 mm): two verticals at x 0.24 and 0.73, three horizontals at y 0.24, 0.66 and
+    0.87, and one diagonal from (0.0, 0.40) to (1.0, 0.70). One park block (map_park)
+    at x 0.00-0.19, y 0.70-0.83; one water area (map_water) at x 0.78-1.0,
+    y 0.075-0.20. One pin, nothing else: head circle centred at (0.50, 0.475), diameter
+    0.16 of screen width (9.9 mm), tapering to a point at (0.50, 0.555) on the diagonal
+    road, in map_pin #4A6FA5; a white (map_pin_glyph) fork-and-knife glyph centred in the
+    head, 60 % of its diameter tall: a three-tine fork on the left, a knife on the right.
+  value:
+    region_y: [0.075, 1.0]
+    land_role: map_land
+    road_role: map_road
+    road_width_frac_screen_w: 0.085
+    roads:
+      vertical_x: [0.24, 0.73]
+      horizontal_y: [0.24, 0.66, 0.87]
+      diagonal: [[0.0, 0.40], [1.0, 0.70]]
+    park: {role: map_park, x: [0.00, 0.19], y: [0.70, 0.83]}
+    water: {role: map_water, x: [0.78, 1.0], y: [0.075, 0.20]}
+    pin:
+      role: map_pin
+      head_centre: [0.50, 0.475]
+      head_diameter_frac_screen_w: 0.16
+      tip: [0.50, 0.555]
+      total_h_mm_ren: 15.7
+      glyph_role: map_pin_glyph
+      glyph: fork_three_tines_left_knife_right
+      glyph_h_frac_head: 0.6
+    labels: none
+    other_markers: none
+    checks:
+    - pin >= 6 % of frame height near frame centre in a 0.16 m screen insert (15.7 mm = 9.8 %)
+    - the glyph reads as fork and knife (two white strokes, one with tines), not a bar
+    - pin hex #4A6FA5 (no red, look.color.rule.only_red)
+  rationale: |
+    The pin at the screen's centre lets the camera's "pin near frame centre" rule
+    (camera.inserts.legibility) hold without reframing, and placing its tip on the
+    diagonal gives the restaurant a street to sit on. Park and water use the two map
+    roles look.color.ui already locked but the builder never drew; one of each makes it a
+    map at a glance without adding information. The builder's pin blue (#4A7FD0) and
+    block colour (#E7E1D5) were not canon (its colour keys did not match the canon role
+    names), and its glyph was a single white bar that does not say "dinner". Rejected:
+    street names or a restaurant label (tone.wordless) and a red pin (only_red).
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - look.style.phone_screen.geometry
+  - look.style.phone_ui
+  - look.color.ui
+  - look.color.rule.only_red
+  - camera.inserts.legibility
+  applies_to: [SC01]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+- id: look.style.phone_screen.call
+  statement: |
+    Call state (SC01): status bar, then her circular photo centred at (0.50, 0.30),
+    diameter 0.60 of screen width (37.2 mm), inside a photo_frame_ring #E3DED6 ring 1.2 mm
+    wide. The portrait is clipped to the circle: nothing of it crosses the ring. Below it
+    the call button: a disc centred at (0.50, 0.80), diameter 0.30 of screen width
+    (18.6 mm), in call green #5DB37E, with a handset glyph in #FDFCFA (a bar with a lobe at
+    each end, 55 % of the disc diameter long, 14 % thick, running from lower left to upper
+    right). Ringing: the button scales 100-112-100 % over 11 frames with a green halo ring
+    growing 100-150 % and fading out. Unanswered: the disc turns #A3A8B0 in one frame, the
+    glyph stays #FDFCFA. No name, no timer, no other buttons.
+  value:
+    photo:
+      centre: [0.50, 0.30]
+      diameter_frac_screen_w: 0.60
+      diameter_mm_ren: 37.2
+      ring_role: photo_frame_ring
+      ring_width_mm: 1.2
+      clip_to_circle: true
+      portrait: look.color.ui_portraits
+      subject: hana
+    call_button:
+      centre: [0.50, 0.80]
+      diameter_frac_screen_w: 0.30
+      colour: '#5DB37E'
+      colour_source: look.color.accent_call_green
+      glyph: handset_bar_with_end_lobes
+      glyph_hex: '#FDFCFA'
+      glyph_len_frac_diameter: 0.55
+      glyph_thickness_frac_diameter: 0.14
+      glyph_direction: lower_left_to_upper_right
+    ring_pulse: {frames: 11, scale_pct: [100, 112, 100], halo_scale_pct: [100, 150], halo_fades: true}
+    unanswered: {button_hex: '#A3A8B0', switch: one_frame, glyph_hex: '#FDFCFA'}
+    forbidden: [name, number, timer, other_buttons, text]
+    checks:
+    - photo >= 15 % of frame height in the SC01_SH050 screen insert (37.2 mm / 160 mm = 23 %)
+    - SC01_SH030 text insert (71 mm from the top) holds status bar and photo, call button below frame
+    - no portrait pixels outside the ring
+  rationale: |
+    The builder's proportions are kept where they already met the camera's numbers (photo
+    about 25 % of a screen insert, button centre-low). Two things change. The builder's
+    portrait put a skin-coloured shoulder disc outside the photo circle, so the photo read
+    as a snowman rather than a person; clipping to the ring makes it a contact photo. And
+    the builder's green was #5DBB7E instead of the locked #5DB37E, and its glyph was a
+    plain white bar. A slightly smaller button (0.30 of width, not 0.40) keeps the photo
+    the dominant shape, because the story beat is "her", not "a call"
+    (intent.race_against_battery: the call fails, the invitation must be written).
+    Rejected: a name under the photo (tone.wordless) and red decline buttons (only_red).
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  depends_on:
+  - look.style.phone_screen.geometry
+  - look.style.phone_screen.status_bar
+  - look.style.phone_ui
+  - look.color.ui
+  - look.color.accent_call_green
+  - look.color.ui_portraits
+  - camera.inserts.legibility
+  applies_to: [SC01]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+- id: look.style.phone_screen.compose
+  statement: |
+    Compose state (SC01_SH070 to the send in SC04_SH080): status bar; the thread area
+    above is empty screen_background; the compose field sits directly on the keyboard. Text:
+    ink #2B303B, cap height 0.021 of screen height (2.8 mm), font size 4.0 mm, line pitch
+    0.040 (5.4 mm), left-aligned, with fixed line breaks: "Are you free tonight?" /
+    "Dinner at 8?" / "My treat." The heart (battery red, 1.1 x cap height) follows
+    "My treat." after one space. Compose field in compose_field #FDFCFA, x 0.03-0.86,
+    bottom edge fixed at y 0.545, growing upward: height 0.020 + 0.040 per line
+    (1 line y 0.485-0.545, 2 lines 0.445, 3 lines 0.405), corner radius 4 mm. Cursor: a
+    steady ink bar. Send button: disc centred at (0.925, 0.515), 6.5 mm, icon_neutral
+    #6B7280 with an up-arrow in #FDFCFA; pressed it turns ink #2B303B. Keyboard: base
+    keyboard_base across x 0-1, y 0.56-1.0; blank keys in keyboard_key, pitch 0.10 of
+    width, key 5.4 x 10.7 mm, rows centred at y 0.610, 0.708, 0.806 and 0.904. Row 1:
+    10 keys. Row 2: 9 keys. Row 3: 7 keys, then backspace (x 0.855-0.99) with an ink
+    backspace arrow. Row 4: emoji key (x 0.01-0.145) with an emoji face in icon_neutral
+    (circle outline, two dots, smile), a blank space bar (x 0.26-0.74) and a blank key
+    (x 0.855-0.99). A pressed key turns keyboard_key_pressed for 1-2 frames. No legends,
+    no shift key, no other glyphs.
+  value:
+    thread_area: {y: [0.075, 0.485], contents: empty, fill_role: screen_background}
+    text:
+      ink_role: ink_text_and_glyphs
+      cap_h_frac_screen_h: 0.021
+      cap_h_mm_ren: 2.8
+      font_size_mm_ren: 4.0
+      line_pitch_frac_screen_h: 0.040
+      align: left
+      inset_x_mm: 2.2
+      line_breaks_fixed: ['Are you free tonight?', 'Dinner at 8?', 'My treat.']
+      lines_by_beat: {SC01_SH070: 1, SC04_SH050: 2, SC04_SH060: 3}
+    heart:
+      hex: '#E5483B'
+      colour_source: look.color.ui_heart
+      h_frac_cap: 1.1
+      position: after_line_3_one_space
+    compose_field:
+      role: compose_field
+      x: [0.03, 0.86]
+      bottom_y: 0.545
+      height_frac_screen_h: 0.020_plus_0.040_per_line
+      y_by_lines: {'1': [0.485, 0.545], '2': [0.445, 0.545], '3': [0.405, 0.545]}
+      corner_radius_mm: 4.0
+      cursor: steady_ink_bar_1.3x_cap
+    send_button:
+      centre: [0.925, 0.515]
+      diameter_frac_screen_w: 0.105
+      fill_role: icon_neutral
+      pressed_role: ink_text_and_glyphs
+      glyph: up_arrow
+      glyph_hex: '#FDFCFA'
+    keyboard:
+      base: {role: keyboard_base, x: [0.0, 1.0], y: [0.56, 1.0]}
+      key_role: keyboard_key
+      key_pressed_role: keyboard_key_pressed
+      key_pitch_frac_screen_w: 0.10
+      key_mm_ren: {w: 5.4, h: 10.7}
+      row_centre_y: [0.610, 0.708, 0.806, 0.904]
+      rows:
+      - {keys: 10}
+      - {keys: 9}
+      - {keys: 7, then: {backspace: {x: [0.855, 0.99], glyph: backspace_arrow, glyph_role: ink_text_and_glyphs}}}
+      - {emoji_key: {x: [0.01, 0.145], glyph: emoji_face_outline_two_dots_smile, glyph_role: icon_neutral}, space_bar: {x: [0.26, 0.74]}, blank_key: {x: [0.855, 0.99]}}
+      legends: none
+      shift_key: false
+      press_frames: [1, 2]
+    checks:
+    - cap height >= 3.5 % of frame in a text insert up to 80 mm tall (2.8 mm / 71 mm = 3.9 %)
+    - 'line 1 (Are you free tonight?) fits one line: about 42 mm at 4.0 mm humanist sans, field text width 47 mm'
+    - only glyphs on the keyboard are the emoji face and the backspace arrow
+    - the heart and the status bar can be framed apart (field top at y 0.405, status bar bottom at 0.075)
+  rationale: |
+    The builder put the compose field at the top of the screen with an empty gap above
+    the keyboard, drew the emoji key as a plain grey disc in the field's corner, gave no
+    backspace or send arrow, never drew the heart, and used 6-key rows that read as a
+    grid rather than a keyboard. Setting the field directly on the keyboard is how every
+    messaging app looks, so the audience reads "typing a message" with no words. It also
+    puts the whole invitation, the heart and the emoji key within about 67 mm of screen
+    height, which is what the SC04_SH060 heart insert needs (field plus emoji key at the
+    lower edge, status bar out of frame, camera.inserts.heart). Fixed line breaks make
+    the invitation identical in every shot and on both phones. 2.8 mm cap height clears
+    the 2.5 mm dependency in CINEMATOGRAPHY_BIBLE with margin and still fits the longest
+    line on one line. Rejected: automatic wrapping (the line breaks would shift between
+    the builder and the final font) and a realistic 10/9/7 keyboard with a shift key
+    (shift is a forbidden glyph).
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  - intent.open_hopeful_ending
+  depends_on:
+  - look.style.phone_screen.geometry
+  - look.style.phone_screen.status_bar
+  - look.style.phone_ui
+  - look.color.ui
+  - look.color.ui_heart
+  - story.message
+  - camera.inserts.legibility
+  - camera.inserts.heart
+  applies_to: [SC01, SC02, SC03, SC04]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+  notes: |
+    DEPENDENCY for the cinematographer: SC01_SH070's note asks for "compose field in the
+    upper half, top row of keys at the lower edge" in a 71 mm frame. With the field on the
+    keyboard, both hold in a frame about 40-48 mm tall at the screen (from about y 0.33 to
+    0.66); at 71 mm the field sits just below frame centre. Either is inside
+    camera.inserts.language (text insert up to cap/0.035 = 80 mm).
+- id: look.style.phone_screen.sent
+  statement: |
+    Sent state (SC04_SH080 to the end of the film on Ren's phone): the compose field is
+    back to one empty line (y 0.485-0.545) with the send button; the keyboard stays. The
+    invitation, with the same fixed line breaks and text size, sits in a pale blue
+    sent_bubble #D3E0F2 aligned right: x 0.19-0.95, y 0.265-0.405, corner radius 3.7 mm,
+    no tail. Under it runs the amber progress line: centre y 0.435, 1.1 mm thick
+    with round ends, from x 0.19 to 0.80, filling left to right, and it stays full. The
+    tick sits where the line ends, below the bubble's lower right: an amber check mark
+    centred at (0.885, 0.435), 6.0 mm tall (0.045 of screen height), 6.6 mm wide, stroke
+    1.3 mm, short arm lower left, long arm rising right. It never touches the line or the
+    bubble.
+  value:
+    compose_field_after_send: {lines: 0, y: [0.485, 0.545], send_button: as_compose}
+    keyboard: as_compose
+    bubble:
+      role: sent_bubble
+      align: right
+      x: [0.19, 0.95]
+      y: [0.265, 0.405]
+      corner_radius_mm: 3.7
+      tail: false
+      text: as_compose_fixed_line_breaks
+      text_role: ink_text_and_glyphs
+    progress_line:
+      colour_source: look.color.accent_power_amber
+      hex: '#F5B940'
+      centre_y: 0.435
+      thickness_frac_screen_h: 0.008
+      x: [0.19, 0.80]
+      ends: round
+      fill: left_to_right
+      after_fill: stays_full
+    tick:
+      colour_source: look.color.accent_power_amber
+      hex: '#F5B940'
+      centre: [0.885, 0.435]
+      h_frac_screen_h: 0.045
+      h_mm_ren: 6.0
+      w_mm_ren: 6.6
+      stroke_mm_ren: 1.3
+      polyline_in_glyph_box_x_right_y_down: [[0.0, 0.55], [0.38, 1.0], [1.0, 0.0]]
+      clear_of: [bubble, progress_line]
+    checks:
+    - tick >= 5 % of frame height in a 71 mm text insert (6.0 mm = 8.5 %) and >= 3.6 mm on the model
+    - tick about 11 mm above the send button centre (the thumb's last position)
+    - bubble text contrast 9.9:1 (ink on #D3E0F2) >= 7:1 (look.style.phone_ui)
+    - one amber tick only, no second tick, no label
+  rationale: |
+    In the builder the tick crossed both the progress line and the bubble corner and read
+    as an arrow; its bubble sat over a line that ran past the bubble on both sides. Ending
+    the line where the tick appears turns the two into one image: power runs along the
+    line and lands as the tick, the colour of the crank's pip (intent.earned_last_signal).
+    Placing the tick just above the send button puts it where the eye already is
+    (camera.inserts send rule). The tick is amber on the off-white screen at only 1.58:1
+    luminance contrast (G4 finding 4 measured 1.3:1 on the bubble, so moving it off the
+    bubble helps a little); size (8.5 % of the insert frame), a 1.3 mm stroke and the only
+    saturated warm hue in the frame carry it. Rejected: an ink outline around the tick
+    (a second colour on the power sign) and a green tick (splits the power colour,
+    look.color.accent_power_amber).
+  serves:
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  - intent.open_hopeful_ending
+  depends_on:
+  - look.style.phone_screen.compose
+  - look.style.phone_ui
+  - look.color.ui
+  - look.color.accent_power_amber
+  - camera.inserts.legibility
+  applies_to: [SC04, SC06]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+- id: look.style.phone_screen.hana
+  statement: |
+    Hana's phone (SC05), same UI system with no status bar. Off: the whole screen is
+    screen_off #1F2029 with no emission. Wake: screen_background, with Ren's circular
+    photo centred at (0.50, 0.30), diameter 0.60 of screen width (37.8 mm), in the same
+    ring and clipped portrait as the call screen; no name, no text, no buttons. Received
+    (after she picks it up): the invitation, with the same fixed line breaks, text size
+    and pale blue bubble as on his phone, aligned left at x 0.05-0.81, y 0.265-0.405; no
+    keyboard, no tick.
+  value:
+    status_bar: false
+    'off': {hex: '#1F2029', emission: 0}
+    wake:
+      background_role: screen_background
+      photo:
+        centre: [0.50, 0.30]
+        diameter_frac_screen_w: 0.60
+        diameter_mm_hana: 37.8
+        ring_role: photo_frame_ring
+        ring_width_mm: 1.2
+        clip_to_circle: true
+        portrait: look.color.ui_portraits
+        subject: ren
+      forbidden: [name, text, buttons, status_bar]
+    received:
+      bubble: {role: sent_bubble, align: left, x: [0.05, 0.81], y: [0.265, 0.405], corner_radius_mm: 3.7, tail: false}
+      text: as_compose_fixed_line_breaks
+      keyboard: false
+      tick: false
+    checks:
+    - photo about 25 % of frame height in the SC05_SH010 insert (37.8 mm / 160 mm = 23.6 %; minimum 5 %)
+    - no battery, no status bar, no text other than the invitation
+  rationale: |
+    look.style.phone_ui says Hana's phone uses the same system; reusing the call photo's
+    position and size makes SC05's wake rhyme with SC01's unanswered call (her photo on
+    his phone, his on hers). Continuity says her battery is never on screen
+    (continuity.battery SC05 none_on_screen), so no status bar. The received bubble stays
+    in his pale blue so the message reads as his (look.color.ui rationale) and needs no
+    new colour. Rejected: a grey "received" bubble (the usual convention, but a new
+    colour for a screen that is never readable) and a lock-screen clock (text,
+    tone.wordless).
+  serves:
+  - intent.open_hopeful_ending
+  - intent.comic_then_tender
+  depends_on:
+  - look.style.phone_screen.geometry
+  - look.style.phone_screen.call
+  - look.style.phone_screen.compose
+  - look.style.phone_ui
+  - look.color.ui
+  - look.color.ui_portraits
+  - continuity.battery
+  - world.props.phone_hana
+  applies_to: [SC05]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+- id: look.style.phone_screen.states_by_shot
+  statement: |
+    The phone screen state, battery and screen brightness for every shot and frame (f is
+    0-based at 24 fps), implementing continuity.battery and the approved shots' ui blocks.
+    SC01: 5 % charcoal, no bolt, until SC01_SH080 f4, then 4 % red. The bolt appears at
+    SH120 f2 and vanishes at SH130 f32 (car stalls; screen dip 70 % on SH130 f32-33 and
+    SH140 f0). 3 % red from SH140 f2 to the end of SC02, with no bolt. SC03: 3 % red; bolt
+    from SH020 f14; blackout at SH050 f8 (3 % becomes 2 %, bolt off, dip f8-10); 2 % red,
+    no bolt, steady, to the end of the scene. Off screen 2 % becomes 1 %. SC04: 1 % red, icon blinking,
+    digit steady, screen flickering, until the first crank turn at SH050 f30 (bolt on,
+    screen steady). 1 % becomes 2 % at SH070 f2 (blink stops); the bolt stays on until
+    the crank stops at SH090 f7. SC06: 2 % red, no bolt, the screen fades to off over
+    f0-24 (ease-out). The number never shows 0 %.
+  value:
+    fps: 24
+    frame_index: 0_based
+    SC01_SH010: {ui: map, pct: 5, colour: charcoal, bolt: false}
+    SC01_SH020: {ui: map, pct: 5, colour: charcoal, bolt: false}
+    SC01_SH030: {ui: map_to_call_f1_7, pct: 5, colour: charcoal, bolt: false}
+    SC01_SH040: {ui: call, pct: 5, colour: charcoal, bolt: false}
+    SC01_SH050: {ui: call_ringing_then_unanswered_f33, pct: 5, colour: charcoal, bolt: false}
+    SC01_SH060: {ui: call_unanswered, pct: 5, colour: charcoal, bolt: false}
+    SC01_SH070: {ui: compose_typing_line_1_f0_15, pct: 5, colour: charcoal, bolt: false}
+    SC01_SH080: {ui: compose_1_line, pct: {f0: 5, f4: 4}, colour: {f0: charcoal, f4: red}, bolt: false}
+    SC01_SH090: {ui: compose_1_line, pct: 4, colour: red, bolt: false}
+    SC01_SH100: {ui: compose_1_line, pct: 4, colour: red, bolt: false}
+    SC01_SH110: {ui: compose_1_line, pct: 4, colour: red, bolt: false}
+    SC01_SH120: {ui: compose_1_line, pct: 4, colour: red, bolt: {f0: false, f2: true}}
+    SC01_SH130: {ui: compose_1_line, pct: 4, colour: red, bolt: {f0: true, f32: false}, brightness: {f32: 0.7}}
+    SC01_SH140: {ui: compose_1_line, pct: {f0: 4, f2: 3}, colour: red, bolt: false, brightness: {f0: 0.7, f1: 1.0}}
+    SC01_SH150: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
+    SC02_SH010: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
+    SC02_SH020: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
+    SC02_SH030: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
+    SC03_SH010: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
+    SC03_SH020: {ui: compose_1_line, pct: 3, colour: red, bolt: {f0: false, f14: true}}
+    SC03_SH030: {ui: compose_1_line, pct: 3, colour: red, bolt: true}
+    SC03_SH040: {ui: compose_1_line, pct: 3, colour: red, bolt: true}
+    SC03_SH050: {ui: compose_1_line, pct: {f0: 3, f8: 2}, colour: red, bolt: {f0: true, f8: false}, brightness: {f8: 0.7, f11: 1.0}}
+    SC03_SH060: {ui: compose_1_line, pct: 2, colour: red, bolt: false, brightness: 1.0}
+    SC03_SH070: {ui: compose_1_line, pct: 2, colour: red, bolt: false, brightness: 1.0}
+    SC04_SH010: {ui: compose_1_line, pct: 1, colour: red, icon_blink: true, bolt: false, brightness: flicker}
+    SC04_SH020: {ui: compose_1_line, pct: 1, colour: red, icon_blink: {visible: [0, 11], hidden: [12, 23], visible_2: [24, 31]}, bolt: false, brightness: {f14: 0.7, f17: 1.0, f20: 0.7, f22: 1.0}}
+    SC04_SH030: {ui: compose_1_line, pct: 1, colour: red, icon_blink: true, bolt: false, brightness: flicker}
+    SC04_SH040: {ui: compose_1_line, pct: 1, colour: red, icon_blink: true, bolt: false, brightness: flicker}
+    SC04_SH050: {ui: {f0: compose_1_line, f56: compose_typing_line_2}, pct: 1, colour: red, icon_blink: true, bolt: {f0: false, f30: true}, brightness: {f0: flicker, f30: steady}}
+    SC04_SH060: {ui: compose_3_lines_heart_f21_54, pct: 1, colour: red, icon_blink: true, bolt: true, brightness: steady}
+    SC04_SH070: {ui: compose_3_lines, pct: {f0: 1, f2: 2}, colour: red, icon_blink: {f0: visible, f2: off}, bolt: true, brightness: steady}
+    SC04_SH080: {ui: compose_to_sent, pct: 2, colour: red, bolt: true, brightness: steady}
+    SC04_SH090: {ui: sent, pct: 2, colour: red, bolt: {f0: true, f7: false}, brightness: steady}
+    SC05_SH010: {phone: hana, ui: {f0: 'off', f2: wake}, brightness: {f0: 0.0, f2: ramp_to_1.0_by_f4_ease_out}, photo_scale_pct: {f2: 96, f5: 100}}
+    SC05_SH020: {phone: hana, ui: wake}
+    SC05_SH030: {phone: hana, ui: received}
+    SC06_SH010: {ui: sent, pct: 2, colour: red, bolt: false, brightness: {f0: 1.0, f24: 0.0, easing: ease_out}, after_f24: screen_off}
+    colour_hex: {charcoal: '#2B303B', red: '#E5483B'}
+    flicker: look.style.phone_ui.screen_behaviour.flicker_at_1pct
+    never: [zero_percent, bolt_while_not_charging, digit_hidden]
+  rationale: |
+    The builder keyed battery state on shot-number thresholds, which drifted from the
+    locked continuity and the approved shots in 24 of the 35 rows for Ren's phone (checked
+    frame by frame against builder screen_state): a bolt from SC01_SH070
+    to SH110 (the car is not charging him yet), 3 % from SH120 (should be 4 % with the
+    bolt arriving), a bolt in SC02 (the cable is in his hand), 2 % through all of SC03
+    (the scene is at 3 % with the bolt until the blackout), the digit hidden at 1 %
+    (continuity and look.style.phone_ui blink the icon only, so the number stays
+    readable), no bolt while cranking in SC04_SH050-SH060, and a bolt after the crank
+    stops. A per-shot, per-frame table taken from the approved shots removes the guessing
+    and gives QA one row to check per preview. The meter is the film's clock
+    (intent.race_against_battery), and the bolt appearing only while a source is live
+    carries the one-port rhyme (intent.earned_last_signal). Rejected: keeping the
+    builder's thresholds (they cannot express mid-shot changes such as SC01_SH080 f4).
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  depends_on:
+  - continuity.battery
+  - continuity.props.phone_ren
+  - look.style.phone_ui
+  - look.style.phone_screen.status_bar
+  - look.lighting.power_indicators
+  - story.escalation
+  - story.message
+  applies_to: [SC01, SC02, SC03, SC04, SC05, SC06]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+  notes: |
+    Screen-state choices not written in any shot, tagged ASSUMPTION: the medium shots
+    SC01_SH010 (map), SC01_SH040/SH060 (call) and SC02/SC03 (compose, one line) show the
+    state of the nearest insert; the draft stays in the compose field from SC01_SH070 to
+    the send. Screens in mediums are not readable, so these only keep the build
+    consistent.
+- id: look.color.ui_portraits
+  statement: |
+    Colours of the two contact photos (her on his call screen, him on her wake screen).
+    Both sit on the same dusk-lavender ground. Face, hair, eyes and brows use each
+    character's locked face colours; the shoulders use their locked tops (Hana's sage
+    knit; Ren's blue jacket open over the oat T-shirt). Features: two eye dots and two
+    brow lines, no mouth, no text.
+  value:
+  - role: portrait_ground
+    hex: '#A79FC6'
+  - role: hana_skin
+    hex: '#F1D3BE'
+  - role: hana_hair
+    hex: '#2F2629'
+  - role: hana_eyes
+    hex: '#4A3A33'
+  - role: hana_brows
+    hex: '#2A2224'
+  - role: hana_top
+    hex: '#AFC8B6'
+  - role: ren_skin
+    hex: '#EAC7AB'
+  - role: ren_hair
+    hex: '#4A3A31'
+  - role: ren_eyes
+    hex: '#5B4637'
+  - role: ren_brows
+    hex: '#3E3029'
+  - role: ren_jacket
+    hex: '#7C9CC4'
+  - role: ren_tshirt
+    hex: '#EAE2D3'
+  rationale: |
+    The builder used one generic face (skin #E9B99A, hair #4A3A34) for both photos, so
+    the two contact photos were identical and neither looked like the character. Reusing
+    the locked character colours makes each photo a likeness at 23 % of frame height,
+    where the hair silhouette carries recognition: dark hair on the mid-value lavender is
+    5.9:1 (Hana) and 4.3:1 (Ren), light faces 1.8:1 and 1.6:1. The ground is
+    look.color.secondary, the tender section's family, so each sees the other in the
+    colour the film ends in, and the two photos rhyme across SC01 and SC05. Weak point,
+    stated: Ren's jacket on the ground is only 1.14:1, so his oat T-shirt (1.94:1) must
+    show at the neck. Rejected: a pale ground (skin nearly vanishes, 1.04:1 for Hana on
+    #D9D1E3) and a warm ground (too close to the phone glow and power amber).
+  serves:
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  depends_on:
+  - characters.hana.face
+  - characters.ren.face
+  - characters.hana.wardrobe.outfit
+  - characters.ren.wardrobe.jacket
+  - characters.ren.wardrobe.outfit
+  - look.color.secondary
+  - look.color.rule.only_red
+  applies_to: [SC01, SC05]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director

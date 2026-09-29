@@ -1,7 +1,7 @@
 shot_id: SC04_SH060
 scene_id: SC04
 sequence_id: SQ02
-status: APPROVED
+status: PROPOSED
 duration_s: 2.8333
 serves:
 - intent.race_against_battery
@@ -18,12 +18,12 @@ creative_intent:
     he means to say at dinner.
 camera:
   lens_mm: 85
-  height_m: 0.62
+  height_m: 0.79
   movement: static
   start_position:
-  - -0.35
+  - -0.23
   - -1.0
-  - 0.62
+  - 0.79
   end_position: null
   look_at: phone_ren
   dof:
@@ -34,10 +34,15 @@ composition:
   framing: insert
   aspect_ratio: 1.778
   subject_position: upper_half_of_frame
-  notes: 'Text insert of the compose field only (camera.inserts.heart): status bar and red battery out
-    of frame; emoji-face key at the lower edge; the emoji panel never framed. Timing: typing 14 f, pause
-    6, press 2, heart looked at 12, hover 20, delete 2, plain text 12. After the last word 54 frames (minimum
-    0.5 s + 5 x 0.3 s = 48 frames).'
+  notes: 'Text insert of the compose field only (frame about 71 mm tall, 85 mm at 0.30 m; camera.inserts.heart):
+    status bar and red battery out of frame; emoji-face key at the lower edge; the emoji panel never framed.
+    Timing: typing 14 f, pause 6, press 2, heart looked at 12, hover 20, delete 2, plain text 12. After
+    the last word 54 frames (minimum 0.5 s + 5 x 0.3 s = 48 frames). Framing reference (DEPENDENCY for
+    the animation hold and the builder): seated on the kerb, eyes at about (-0.20, -1.0, 0.94); screen
+    centre at about (-0.30, -1.0, 0.50), low between his knees, 0.45 m from his eyes. Lens 0.30 m from
+    it on his eyeline, looking down past his chin (his head and chest are behind the lens), camera''s
+    up = the phone''s top edge (south, away from him), so the keys and his thumb come in at the frame
+    bottom. For the part of the screen named here, shift the lens parallel to the screen; never tilt it.'
 characters:
 - id: ren
   position:
@@ -125,7 +130,12 @@ assets:
 rationale:
   camera: '85 mm text insert, the closest frame of the film (camera.framing.shot_size_arc closest_frames).
     Rejected: a cutaway to his face during the hover (the hesitation reads more exactly in the thumb,
-    and the face shot would split the heart''s holds).'
+    and the face shot would split the heart''s holds). Lens position corrected after the first preview:
+    the approved spec put the lens 0.13 m from the screen on the far (south) side of the phone, 35 deg
+    off his eyeline, which gives a 31 mm frame (less than half the promised 71 mm) and a screen seen from
+    the non-owner side, upside down for him (camera.inserts.language: owner''s side, never upside down).
+    At 0.30 m on his eyeline the frame is 71 mm and upright. Rejected: 50 mm from the old spot (the lens
+    would still be on the wrong side of the screen).'
   composition: Compose field only, so the battery-red number and the heart-red never share a frame (camera.inserts.heart,
     G4 finding 2); the heart lands at the end of the line where the eye already is.
   lighting: 'Steady screen: the crank is working (no flicker from here on).'
@@ -147,7 +157,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -254,6 +264,14 @@ derived_from:
   hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:fe2659522b8af5d6e2e2b01e5471ac6bfbc742cd5a74011cc6368883c83bbacb
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.sent
+  hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+stamped_content_hash: sha256:541fcf93e70b29270b0e6024268fe6ff25bebf9394f5dca29c53c8f573f2c2b9
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

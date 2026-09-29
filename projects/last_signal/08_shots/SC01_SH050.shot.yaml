@@ -1,7 +1,7 @@
 shot_id: SC01_SH050
 scene_id: SC01
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 1.8333
 serves:
 - intent.race_against_battery
@@ -14,12 +14,12 @@ creative_intent:
   audience_effect: The viewer understands she did not pick up, so he will have to type.
 camera:
   lens_mm: 85
-  height_m: 1.3
+  height_m: 1.32
   movement: static
   start_position:
-  - 1.29
-  - -0.62
-  - 1.3
+  - 1.02
+  - -0.59
+  - 1.32
   end_position: null
   look_at: phone_ren
   dof:
@@ -30,9 +30,13 @@ composition:
   framing: insert
   aspect_ratio: 1.778
   subject_position: centre
-  notes: Screen insert (about 0.16 m of frame height). Her photo at about 25 % of frame height (minimum
-    15 %, camera.inserts.legibility), the call button below it at centre-low. About 11 frames per pulse,
-    grey held about 11 frames.
+  notes: 'Screen insert (about 0.16 m of frame height; 85 mm at 0.67 m). Framing reference (DEPENDENCY
+    for the animation hold and the builder): screen centre at about (1.29, -0.09, 0.97), 0.40 m from his
+    eyes and 35 deg below them. Lens 0.67 m from it above his left (passenger-side) shoulder, 24 deg off
+    his own eyeline, so the sight line clears his head by about 0.19 m; the phone is turned square to
+    the lens (within 15 deg) and the camera''s up is the phone''s top edge. The same setup as SH020. Her
+    photo at about 25 % of frame height (minimum 15 %, camera.inserts.legibility), the call button below
+    it at centre-low. About 11 frames per pulse, grey held about 11 frames.'
 characters:
 - id: ren
   position:
@@ -93,8 +97,9 @@ assets:
 - ui.call_screen
 rationale:
   camera: '85 mm screen insert: the photo and the button are both the beat, so the whole screen is framed
-    (camera.inserts.language). Rejected: his face during the ring (the ring is in the icon; tone.wordless
-    keeps the phone as the voice).'
+    (camera.inserts.language). The SH020 setup, above his left shoulder at 0.67 m, so his head is out
+    of the sight line (the approved position looked through his head; PREVIEW_REVIEW #9). Rejected: his
+    face during the ring (the ring is in the icon; tone.wordless keeps the phone as the voice).'
   composition: 'Photo over button, centred, the same framing axis as SH020 so the phone reads as one object.
     Rejected: tighter on the button (her photo, the reason for the call, would leave frame).'
   lighting: Screen-lit.
@@ -113,7 +118,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -210,6 +215,18 @@ derived_from:
   hash: sha256:a72ecd61a4028d019ce62c8e22e9fcf0d6251af698ffdd745d89661d5fd95844
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:cb7a17707d9695ceb095f49782b8bf0ce710df5f957ec4044ee32a8d0bd7150d
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.map
+  hash: sha256:97c1dc4a7271d601b828d06a16c4808e095d0d8f0dba5594cdd5aaeb29d366f2
+- ref: canon:look.style.phone_screen.call
+  hash: sha256:7a304076b8353277e405c901e134c1e7212fb836b00d3b156f5381fadbde76b3
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+- ref: canon:look.color.ui_portraits
+  hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
+stamped_content_hash: sha256:fca38b6d0bc93b9032279ffc4738716436e7bff7f094ebd0df13e96039391714
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

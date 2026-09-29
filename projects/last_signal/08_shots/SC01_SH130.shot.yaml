@@ -142,7 +142,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -239,6 +239,18 @@ derived_from:
   hash: sha256:a72ecd61a4028d019ce62c8e22e9fcf0d6251af698ffdd745d89661d5fd95844
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.map
+  hash: sha256:97c1dc4a7271d601b828d06a16c4808e095d0d8f0dba5594cdd5aaeb29d366f2
+- ref: canon:look.style.phone_screen.call
+  hash: sha256:7a304076b8353277e405c901e134c1e7212fb836b00d3b156f5381fadbde76b3
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+- ref: canon:look.color.ui_portraits
+  hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
 stamped_content_hash: sha256:8cc649e0e5b4be56b4c014462a5204889ccdcc3fee7989d30ce5bfa2cfc5b080
-stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
-  and shots); no content revision needed.
+stamp_note: Shot list changed only in other shots' rows (preview pass 1 camera fixes to SC01/SC03/SC04
+  inserts and SC04_SH030/050/090); this shot's camera was checked against the preview and needs no revision.

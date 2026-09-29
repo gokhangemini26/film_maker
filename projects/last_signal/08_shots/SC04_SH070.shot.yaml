@@ -1,7 +1,7 @@
 shot_id: SC04_SH070
 scene_id: SC04
 sequence_id: SQ02
-status: APPROVED
+status: PROPOSED
 duration_s: 1.0833
 serves:
 - intent.earned_last_signal
@@ -14,12 +14,12 @@ creative_intent:
   audience_effect: The viewer sees that his cranking works.
 camera:
   lens_mm: 85
-  height_m: 0.62
+  height_m: 0.79
   movement: static
   start_position:
-  - -0.35
+  - -0.23
   - -1.0
-  - 0.62
+  - 0.79
   end_position: null
   look_at: phone_ren
   dof:
@@ -30,9 +30,15 @@ composition:
   framing: insert
   aspect_ratio: 1.778
   subject_position: upper_right
-  notes: Battery insert after the heart is gone (camera.inserts.heart). Change at frame 2, held 24 frames
-    (minimum). Bolt at 3 % or more, on the whole shot (continuity.battery SC04_bolt_on while_cranking).
-    26 frames (1.08 s), above the tender section's 1.0 s minimum.
+  notes: 'Battery insert after the heart is gone (camera.inserts.heart), text size: frame about 71 mm
+    tall, 85 mm at 0.30 m. Change at frame 2, held 24 frames (minimum). Bolt at 3 % or more, on the whole
+    shot (continuity.battery SC04_bolt_on while_cranking). 26 frames (1.08 s), above the tender section''s
+    1.0 s minimum. Framing reference (DEPENDENCY for the animation hold and the builder): seated on the
+    kerb, eyes at about (-0.20, -1.0, 0.94); screen centre at about (-0.30, -1.0, 0.50), low between his
+    knees, 0.45 m from his eyes. Lens 0.30 m from it on his eyeline, looking down past his chin (his head
+    and chest are behind the lens), camera''s up = the phone''s top edge (south, away from him), so the
+    keys and his thumb come in at the frame bottom. For the part of the screen named here, shift the lens
+    parallel to the screen; never tilt it.'
 characters:
 - id: ren
   position:
@@ -86,7 +92,12 @@ assets:
 - ui.status_bar
 rationale:
   camera: '85 mm status-bar framing, identical to every battery insert in the film: the only time the
-    number goes up, it is read in the same frame it always fell in.'
+    number goes up, it is read in the same frame it always fell in. Lens position corrected after the
+    first preview: the approved spec put the lens 0.13 m from the screen on the far (south) side of the
+    phone, 35 deg off his eyeline, which gives a 31 mm frame (less than half the promised 71 mm) and a
+    screen seen from the non-owner side, upside down for him (camera.inserts.language: owner''s side,
+    never upside down). At 0.30 m on his eyeline the frame is 71 mm and upright. Rejected: 50 mm from
+    the old spot (the lens would still be on the wrong side of the screen).'
   composition: Bolt and number together; the change is the only event.
   lighting: Steady screen.
   movement: Static.
@@ -103,7 +114,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -208,6 +219,14 @@ derived_from:
   hash: sha256:bdbd610994d3f7c82db3ccc61e5d1625c3bde027716e8180880a673db21ed605
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
-stamped_content_hash: sha256:f0af46aad1a8312db2294db4ad115e071582a83929be7f793b5ea466dae1a5bb
+- ref: canon:look.style.phone_screen.status_bar
+  hash: sha256:340b2034b9bdd73822b3ab09f052ed7d8c6d6e96ce6e51032d43be48dd819373
+- ref: canon:look.style.phone_screen.compose
+  hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
+- ref: canon:look.style.phone_screen.sent
+  hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
+- ref: canon:look.style.phone_screen.states_by_shot
+  hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+stamped_content_hash: sha256:2012bb3da3b583e80f2b2056694fb835feb81fcf69ad82c407432a338486c936
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.
