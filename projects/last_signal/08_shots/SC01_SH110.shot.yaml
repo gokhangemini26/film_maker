@@ -1,7 +1,7 @@
 shot_id: SC01_SH110
 scene_id: SC01
 sequence_id: SQ01
-status: PROPOSED
+status: APPROVED
 duration_s: 1.3333
 serves:
 - intent.earned_last_signal

@@ -3,7 +3,7 @@ fm:
   id: shot_list
   kind: shot_list
   phase: STORYBOARD
-  status: PROPOSED
+  status: APPROVED
   owner_role: cinematographer
   derived_from:
   - ref: artifact:cinematography_bible

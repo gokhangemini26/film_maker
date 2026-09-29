@@ -10,8 +10,7 @@ entries:
     weather: clear
     location: ren's car
     screen_direction: west_screen_left_ren_faces_screen_left
-  rationale: Restates locked world canon for the shot checker; the screen direction is
-    camera.geography.screen_direction.
+  rationale: Restates locked world canon for the shot checker; the screen direction is camera.geography.screen_direction.
   serves:
   - intent.race_against_battery
   - intent.soft_but_cinematic
@@ -22,7 +21,7 @@ entries:
   applies_to:
   - SC01
   tag: FACT
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: continuity.sc02.environment
@@ -34,7 +33,7 @@ entries:
     weather: clear
     location: street
     screen_direction: west_screen_left_runs_right_to_left
-    street_lamps: off
+    street_lamps: false
     shop_sign: lit
   rationale: Restates locked world canon (time_and_sun, power) for the shot checker.
   serves:
@@ -48,7 +47,7 @@ entries:
   applies_to:
   - SC02
   tag: FACT
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: continuity.sc03.environment
@@ -74,7 +73,7 @@ entries:
   applies_to:
   - SC03
   tag: FACT
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: continuity.sc04.environment
@@ -87,7 +86,7 @@ entries:
     weather: clear
     location: kerb beside ren's car
     screen_direction: west_screen_left_ren_looks_screen_left
-    street_lamps: on
+    street_lamps: true
     house_windows: lit
     shop: dark
   rationale: Restates locked world canon (time_and_sun, power) for the shot checker.
@@ -102,7 +101,7 @@ entries:
   applies_to:
   - SC04
   tag: FACT
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: continuity.sc05.environment
@@ -115,10 +114,10 @@ entries:
     weather: clear
     location: hana's room
     screen_direction: window_west_screen_left
-    desk_lamp: on
+    desk_lamp: true
     sky: same_dusk_asset_as_sc04_sc06
-  rationale: Restates locked world canon; the "evening (dusk)" wording follows the
-    world.rules.time_and_sun notes so both the canon and SCENES.yaml checks pass.
+  rationale: Restates locked world canon; the "evening (dusk)" wording follows the world.rules.time_and_sun
+    notes so both the canon and SCENES.yaml checks pass.
   serves:
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
@@ -130,7 +129,7 @@ entries:
   applies_to:
   - SC05
   tag: FACT
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: continuity.sc06.environment
@@ -142,7 +141,7 @@ entries:
     weather: clear
     location: kerb beside ren's car
     screen_direction: west_screen_left_ren_looks_up_screen_left
-    street_lamps: on
+    street_lamps: true
     house_windows: lit
     shop: dark
   rationale: Restates locked world canon for the shot checker.
@@ -156,7 +155,7 @@ entries:
   applies_to:
   - SC06
   tag: FACT
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: continuity.battery
@@ -169,18 +168,27 @@ entries:
     2 % after the crank; screen fades to off in SC06. The number never changes off screen
     except 2 % to 1 % between SC03 and SC04.
   value:
-    SC01: [5, 4, 3]
+    SC01:
+    - 5
+    - 4
+    - 3
     SC01_red_from: 4
     SC01_bolt_on: 4
     SC02: 3
-    SC03: [3, 2]
+    SC03:
+    - 3
+    - 2
     SC03_bolt_on: 3
-    SC04: [1, 2]
+    SC04:
+    - 1
+    - 2
     SC04_blink_at: 1
     SC04_stutter_before_crank: true
     SC04_bolt_on: while_cranking
     SC05: none_on_screen
-    SC06: [2, 0]
+    SC06:
+    - 2
+    - 0
     SC06_end_state: screen_off
     off_screen_change: SC03_to_SC04_2_to_1
   rationale: |
@@ -201,11 +209,11 @@ entries:
   - SC04
   - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
-  notes: The stutter is the existing look.style.phone_ui flicker at 1 % (dips to 70 % for 2-3
-    frames) timed to his typing attempt; no new UI behaviour is needed.
+  notes: The stutter is the existing look.style.phone_ui flicker at 1 % (dips to 70 % for 2-3 frames)
+    timed to his typing attempt; no new UI behaviour is needed.
 - id: continuity.props.passenger_door
   statement: |
     The kerb-side passenger door is closed through SC01. In SC02 he scrambles across the
@@ -239,7 +247,7 @@ entries:
   - SC04
   - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
   notes: |
@@ -255,12 +263,23 @@ entries:
     the send he lets go: the arm stops, the pip dies within 6 frames; the crank rests in his
     lap for SC06, arm out, pip off. Glovebox lid left down in SC04 and SC06.
   value:
-    SC01: {glovebox: closed_open_closed, crank: lap_then_back_in_glovebox_folded}
-    SC04: {glovebox: opened_left_down, crank: both_hands_then_right_hand_cranking, arm: unfolded, pip: on_while_turning}
-    SC04_end: {crank: in_lap, arm: stopped, pip: off_within_6_frames}
-    SC06: {glovebox: lid_down, crank: in_lap_arm_out_pip_off}
-  rationale: Keeps the plant and payoff (story.crank_plant) consistent across the two spaces
-    and the pip behaviour (look.lighting.power_indicators) consistent across cuts.
+    SC01:
+      glovebox: closed_open_closed
+      crank: lap_then_back_in_glovebox_folded
+    SC04:
+      glovebox: opened_left_down
+      crank: both_hands_then_right_hand_cranking
+      arm: unfolded
+      pip: on_while_turning
+    SC04_end:
+      crank: in_lap
+      arm: stopped
+      pip: off_within_6_frames
+    SC06:
+      glovebox: lid_down
+      crank: in_lap_arm_out_pip_off
+  rationale: Keeps the plant and payoff (story.crank_plant) consistent across the two spaces and the pip
+    behaviour (look.lighting.power_indicators) consistent across cuts.
   serves:
   - intent.earned_last_signal
   - intent.comic_then_tender
@@ -274,7 +293,7 @@ entries:
   - SC04
   - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: continuity.props.cable
@@ -286,16 +305,18 @@ entries:
     loop over his knee. SC06: still connecting phone and crank. In wides most of its length
     stays out of frame or behind his hands; it is posed per shot, never simulated.
   value:
-    ends: [phone_ren, source]
+    ends:
+    - phone_ren
+    - source
     SC01: car_usb_adapter
     SC02: looped_in_left_hand
     SC03: shop_socket_stays_plugged_after_blackout
     SC04: crank_charger_port_loop_over_knee
     SC06: crank_charger_port
     framing: short_visible_length_posed_per_shot
-  rationale: Implements world.rules.one_port's single-cable rhyme and the character bible's
-    recommendation (loop in the phone hand); keeping most of its length out of wides is the
-    art direction's cable flag (no cable simulation in the MVP).
+  rationale: Implements world.rules.one_port's single-cable rhyme and the character bible's recommendation
+    (loop in the phone hand); keeping most of its length out of wides is the art direction's cable flag
+    (no cable simulation in the MVP).
   serves:
   - intent.earned_last_signal
   - intent.race_against_battery
@@ -309,11 +330,11 @@ entries:
   - SC04
   - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
-  notes: How he gets the source end out of the shop socket before walking back happens off
-    screen in the ten-minute gap.
+  notes: How he gets the source end out of the shop socket before walking back happens off screen in the
+    ten-minute gap.
 - id: continuity.props.phone_ren
   statement: |
     Ren's phone is in his left hand in every Ren scene (both hands while typing in SC01).
@@ -323,13 +344,19 @@ entries:
     his chest under his flat hand, screen facing out.
   value:
     hand: left
-    SC01: {grip: two_hands_typing, dip: at_car_death}
-    SC03: {dip: at_blackout, glow_on_face: from_blackout}
-    SC04: {state: flicker_until_first_crank_then_steady}
-    SC06: {state: fade_24f_then_off, rest: chest_under_flat_hand_screen_out}
-  rationale: Keeps the glow motif's states (look.style.motifs) in order across cuts; the
-    screen facing out in SC06 lets the fade be seen on the screen itself
-    (camera.phone_lit.framing).
+    SC01:
+      grip: two_hands_typing
+      dip: at_car_death
+    SC03:
+      dip: at_blackout
+      glow_on_face: from_blackout
+    SC04:
+      state: flicker_until_first_crank_then_steady
+    SC06:
+      state: fade_24f_then_off
+      rest: chest_under_flat_hand_screen_out
+  rationale: Keeps the glow motif's states (look.style.motifs) in order across cuts; the screen facing
+    out in SC06 lets the fade be seen on the screen itself (camera.phone_lit.framing).
   serves:
   - intent.race_against_battery
   - intent.open_hopeful_ending
@@ -344,7 +371,7 @@ entries:
   - SC04
   - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: continuity.hana.headphones
@@ -357,8 +384,8 @@ entries:
     SC05_after_wake: around_neck
     phone_start: face_up_right_of_sketchbook
     phone_pickup_hand: right
-  rationale: Tracks the only state change in her scene (characters.hana.wardrobe.headphones,
-    world.sets.hana_room) so the two SC05 shots cut together.
+  rationale: Tracks the only state change in her scene (characters.hana.wardrobe.headphones, world.sets.hana_room)
+    so the two SC05 shots cut together.
   serves:
   - intent.open_hopeful_ending
   depends_on:
@@ -368,6 +395,6 @@ entries:
   applies_to:
   - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1

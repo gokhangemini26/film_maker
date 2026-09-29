@@ -3,7 +3,7 @@ fm:
   id: cinematography_bible
   kind: cinematography_bible
   phase: CINEMATOGRAPHY
-  status: PROPOSED
+  status: APPROVED
   owner_role: cinematographer
   derived_from:
   - ref: artifact:creative_direction

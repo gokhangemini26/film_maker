@@ -1,7 +1,7 @@
 shot_id: SC01_SH030
 scene_id: SC01
 sequence_id: SQ01
-status: PROPOSED
+status: APPROVED
 duration_s: 1.1667
 serves:
 - intent.race_against_battery

@@ -3,7 +3,7 @@ fm:
   id: g5_review
   kind: gate_review
   phase: STORYBOARD
-  status: PROPOSED
+  status: APPROVED
   owner_role: qa-supervisor
   derived_from:
   - ref: artifact:cinematography_bible

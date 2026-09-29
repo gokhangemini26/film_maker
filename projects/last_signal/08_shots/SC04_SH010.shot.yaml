@@ -1,7 +1,7 @@
 shot_id: SC04_SH010
 scene_id: SC04
 sequence_id: SQ02
-status: PROPOSED
+status: APPROVED
 duration_s: 1.9167
 serves:
 - intent.comic_then_tender

@@ -4,7 +4,7 @@ title: Last Signal
 sandbox: false
 created_at: '2026-09-28T20:41:45Z'
 phase: STORYBOARD
-phase_status: awaiting_approval
+phase_status: in_progress
 gates:
   G1:
     status: approved
@@ -52,12 +52,54 @@ gates:
       artifact:visual_bible: sha256:4cb45f98d39bc0aba8096d37abb48e51feaa34e435b64897cb0b7253833303ea
     ledger_seq: 21
   G5:
-    status: awaiting_approval
-    decided_by: null
-    decided_at: null
+    status: approved
+    decided_by: human:gokhan_guler
+    decided_at: '2026-09-29T12:29:32Z'
     notes: null
-    approved_hashes: {}
-    ledger_seq: null
+    approved_hashes:
+      artifact:cinematography_bible: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
+      artifact:g5_review: sha256:51c65bce141564455ad4ffa003c9039a53edfa85ec4995abf2e92ac3567a6d8d
+      artifact:shot_list: sha256:a6a2b5dffb75392824f9c18eeef152c7b2ad749a06f6fae80e9732863ef12649
+      artifact:storyboard: sha256:3463a5cadda1a2c398d82d35200711681b27eac38e147b5d593d024aa8c1dbce
+      shot:SC01_SH010: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
+      shot:SC01_SH020: sha256:55abea9f1ede7d0cd64ba11a3bbc95b4e9bb4474f250db41c1eb540d5f32e04c
+      shot:SC01_SH030: sha256:7bd158cdcd69c649298850f29387c330b0510d80f1b818080e61a48368ca6bb6
+      shot:SC01_SH040: sha256:6d7c21340e8fa08d14e537476be053e78dfb439ec00561158dc21a691a0e885d
+      shot:SC01_SH050: sha256:cb7a17707d9695ceb095f49782b8bf0ce710df5f957ec4044ee32a8d0bd7150d
+      shot:SC01_SH060: sha256:a137c047da23405b913fc34b40d27682f1b503d685cd844ddf1fd6d74738257d
+      shot:SC01_SH070: sha256:4bb80127d57857fe3086f35caa5ff0f97ff7fbb066d34890282d7f459828fc34
+      shot:SC01_SH080: sha256:578f482dfcd13a7d30d5db07b4cecb22f8c16aefc6736395f2fcf44a0e032f74
+      shot:SC01_SH090: sha256:ced7b32486ed4d040bd12165f24216e6db8e82ddc82562637f02aa43db797d6b
+      shot:SC01_SH100: sha256:7fc62ddf5d0deaa1587c815f733988268664f01c621b1569e321a73cdb7d980d
+      shot:SC01_SH110: sha256:b76e5460354748a8b00dd6191f88adaed0e1238a17bd1d169363aa39eccb4165
+      shot:SC01_SH120: sha256:d98e26a8cdd5b6c50d855c6b6f5229b3a108bf9fa80662b3dc8ed00935b4f49b
+      shot:SC01_SH130: sha256:8cc649e0e5b4be56b4c014462a5204889ccdcc3fee7989d30ce5bfa2cfc5b080
+      shot:SC01_SH140: sha256:e75d1fdff853cda8159f339e1c888da5e8da585a863cf3500c206ce21acc4b94
+      shot:SC01_SH150: sha256:af1a53ec2a14aca104b184d76237a0fdb68bd1a907f85164c6f1c8db6a9ce518
+      shot:SC02_SH010: sha256:6ba72c22a2d96738518f4fb7085ea789a58e8a6059c2bf9d84c9c61628a3f0ae
+      shot:SC02_SH020: sha256:783ca6dc0c914156c5b4dd7b6e25ae9f2c4fb2afce34a03973fd60b4f77b2de9
+      shot:SC02_SH030: sha256:6882916b0d762100ecafed0ac04fa926a7a8aa92c5124aa714187c867d543195
+      shot:SC03_SH010: sha256:973dab1732fa017ec1689768b6d6768d2b3ef90afb8267a4d20293b388cb70d2
+      shot:SC03_SH020: sha256:0f9f605d61b9255f8ce80f096217c88d03e4330dbfc6f21eed57111bff9ab313
+      shot:SC03_SH030: sha256:4e8d8794bce81a3e44a3b60b5e5e677f726f94660ecd5da0c72213b34faf6495
+      shot:SC03_SH040: sha256:06e3006cc3af99ffa8af55a7be7bfc4d615e8042e34874b49932869a2881ce48
+      shot:SC03_SH050: sha256:c3373f2053320994f6637889fd0ecf12f1d06f3b328b95c9b74755e594276a50
+      shot:SC03_SH060: sha256:aa03e411a9fb58e2dfcc8260230930a3261f9ee11962dbf224136aa6295db5c5
+      shot:SC03_SH070: sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0
+      shot:SC04_SH010: sha256:86660ae172a141b63b4cfe45f1699051822606d3152f9a0e01774d5c74cff776
+      shot:SC04_SH020: sha256:2df742e7dee1238ccdde043a1864421cbc2a204ec7bc01059e93a847f4df9a25
+      shot:SC04_SH030: sha256:9d56ea0c465a84b4e0cdaac644a073bc3581b98456789f2c68566c25852792d5
+      shot:SC04_SH040: sha256:0330b1777c70f985dc8231e30b9d3816f5ede42e38fe021a70e867614e01207a
+      shot:SC04_SH050: sha256:87f164a94d136754182c0b4d1fb80514e2be63d9b9b148db7b9f297b1a0b20df
+      shot:SC04_SH060: sha256:fe2659522b8af5d6e2e2b01e5471ac6bfbc742cd5a74011cc6368883c83bbacb
+      shot:SC04_SH070: sha256:f0af46aad1a8312db2294db4ad115e071582a83929be7f793b5ea466dae1a5bb
+      shot:SC04_SH080: sha256:0a2e4b08045ca5f92ea22bdb01602bbab0a067c8293be360f69858c8ce53c7d8
+      shot:SC04_SH090: sha256:451cd791871bfcdf966acb7dc8c464dc8ce0620f7b2e97fe6068165dfd360bce
+      shot:SC05_SH010: sha256:ca697fb6681d099dddf3be0b8126b615fb84abfee75495b95672debdc91a0413
+      shot:SC05_SH020: sha256:9702f4d8ad33291ac4878eca7a7c2ba5f75e44c4641ecd40b120fd8765796bc6
+      shot:SC05_SH030: sha256:fe59950a5823efe8c8ad34c1a74192a78ea62fa7a90efb08872e242264b7d7b3
+      shot:SC06_SH010: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd
+    ledger_seq: 23
   G6:
     status: pending
     decided_by: null
@@ -675,6 +717,216 @@ canon:
     hash: sha256:544d2906507dbfac6969ea7ce0b48e5a8978571267e475fc5f86fcfc2ab71698
     version: 1
     ledger_seq: 21
+  camera.dof.default_deep:
+    status: LOCKED
+    hash: sha256:08cec70a4245e068312c29d8576faefd36c82babefd3c55a1dcfa4311cad7f65
+    version: 1
+    ledger_seq: 23
+  camera.dof.inserts:
+    status: LOCKED
+    hash: sha256:57fc4f865aec3e158e258e0d7cd292e61e8fb2ef0547f938e1d31d4a24586d40
+    version: 1
+    ledger_seq: 23
+  camera.format:
+    status: LOCKED
+    hash: sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea
+    version: 1
+    ledger_seq: 23
+  camera.framing.jacket_off_sky:
+    status: LOCKED
+    hash: sha256:a1b44051ca76f0e7d7a0eb179647edf7e77901f22cefde1c098253a122b0963d
+    version: 1
+    ledger_seq: 23
+  camera.framing.shot_size_arc:
+    status: LOCKED
+    hash: sha256:060c1aaa7a1a79dc84891334d4b63aa91f0170ce0dc77f9b735032fa369a68c6
+    version: 1
+    ledger_seq: 23
+  camera.framing.sky_and_wires:
+    status: LOCKED
+    hash: sha256:e639989368e846c2cf520287a5c21e28c083beabdc5dc6927f761f634aec918f
+    version: 1
+    ledger_seq: 23
+  camera.framing.space_and_size:
+    status: LOCKED
+    hash: sha256:bf454b26a29e34ecf70c76d729546ad45bae1855238b90b6043bbc8ceba6ca9e
+    version: 1
+    ledger_seq: 23
+  camera.gags.no_repeat:
+    status: LOCKED
+    hash: sha256:e268a6d91364cc5e7dd5818f91e0bddcdd747334c64e72808b3021f423b03971
+    version: 1
+    ledger_seq: 23
+  camera.geography.sc01:
+    status: LOCKED
+    hash: sha256:94f775f6b00cbf59b6c0d7bac2358bed443eee5cbfa483a212d4c42dffb6d032
+    version: 1
+    ledger_seq: 23
+  camera.geography.sc02:
+    status: LOCKED
+    hash: sha256:23366df4656fdb81deffd2d208407fccf11181183a4003a349b2ab8ec4aca1ec
+    version: 1
+    ledger_seq: 23
+  camera.geography.sc03:
+    status: LOCKED
+    hash: sha256:e426b8886e816baa16c233f2dc982b793c5ac89e41553bc6e07299c3eb332a41
+    version: 1
+    ledger_seq: 23
+  camera.geography.sc04_sc06:
+    status: LOCKED
+    hash: sha256:f3523dd5f594b8501d1b6232af934e15492d4a4751b1327aac4a2dae17dbf115
+    version: 1
+    ledger_seq: 23
+  camera.geography.sc05:
+    status: LOCKED
+    hash: sha256:4a2b9a9f368b1deafcd37875023198c61e71d29bffe70c0d79d670061e3c886d
+    version: 1
+    ledger_seq: 23
+  camera.geography.screen_direction:
+    status: LOCKED
+    hash: sha256:850187e1f26b061ff9854e8e5dec0d086659b21a96f76cce3f33276759bd6a2e
+    version: 1
+    ledger_seq: 23
+  camera.height.eye_level:
+    status: LOCKED
+    hash: sha256:e2d432bb886ba9b6e07bed858c4df59379bc335b0c157e74840e19f714c3938b
+    version: 1
+    ledger_seq: 23
+  camera.height.high:
+    status: LOCKED
+    hash: sha256:53f5fce143be9fd863b0247a153073c5f18a50cdf76a83646d46466f48873170
+    version: 1
+    ledger_seq: 23
+  camera.height.low:
+    status: LOCKED
+    hash: sha256:ef557119cd2774d9ad4f84d6c46caee413b496ad38b9c331d426be6db7c1373d
+    version: 1
+    ledger_seq: 23
+  camera.inserts.heart:
+    status: LOCKED
+    hash: sha256:d2f73b83562c499ca0081215788d62b3927bc8db8264111957313dd5e0200ba5
+    version: 1
+    ledger_seq: 23
+  camera.inserts.language:
+    status: LOCKED
+    hash: sha256:f30fe75edefaf293cd73ac8f8c72ad1a1eb43942f15705a6eb1164e7c60df4a1
+    version: 1
+    ledger_seq: 23
+  camera.inserts.legibility:
+    status: LOCKED
+    hash: sha256:4b85f4c49c8376dc8b5c5af4e27046ea1d57741f53addd5a5c3a24f766ad6859
+    version: 1
+    ledger_seq: 23
+  camera.lens.roles:
+    status: LOCKED
+    hash: sha256:96b9e326f047dfb3174ff35e6a3e04c514792ef137650b1b2e5a1b62eb9a049b
+    version: 1
+    ledger_seq: 23
+  camera.lens_set:
+    status: LOCKED
+    hash: sha256:9fb9751fd7e1a1c7e78db64c2c1d002963715a175d0b36784b12ca0fd51697ac
+    version: 1
+    ledger_seq: 23
+  camera.movement.default_static:
+    status: LOCKED
+    hash: sha256:de93bb243c5383e70c5b81faa00405441f3db9fa11c011ba4ce1a39f67ebae2d
+    version: 1
+    ledger_seq: 23
+  camera.movement.forbidden:
+    status: LOCKED
+    hash: sha256:1335357ece19b9f9ff15524b14b71ab5579cb1903a747a138901ccdfaa201534
+    version: 1
+    ledger_seq: 23
+  camera.movement.pan_follow:
+    status: LOCKED
+    hash: sha256:b24f594d48763abd5154ace3fb82687976619f0423449441d9df30ab4f09c4a1
+    version: 1
+    ledger_seq: 23
+  camera.movement.push_in:
+    status: LOCKED
+    hash: sha256:b2116094133cd8c9d9331d429d13d6259b58acde02cf25587f7163b9cdc4f092
+    version: 1
+    ledger_seq: 23
+  camera.phone_lit.framing:
+    status: LOCKED
+    hash: sha256:877709f4bd871a9acf176d8154784483642306f0dac3bf181f07c8690a44b31a
+    version: 1
+    ledger_seq: 23
+  camera.rhythm.pace:
+    status: LOCKED
+    hash: sha256:159ba88fec689f71013a9b320634dd92231e1355c17de392979a90a0479b8b30
+    version: 1
+    ledger_seq: 23
+  camera.rhythm.scene_budget:
+    status: LOCKED
+    hash: sha256:3a0f9e8b633e6af955192a0d459cd316fdbb721ce25b920263219195e0cd943f
+    version: 1
+    ledger_seq: 23
+  camera.rhythm.transitions:
+    status: LOCKED
+    hash: sha256:0ff059c432a2227bfbe4eebceef37bc953cd834328d87d7ae75970a866ddcb15
+    version: 1
+    ledger_seq: 23
+  continuity.battery:
+    status: LOCKED
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+    version: 1
+    ledger_seq: 23
+  continuity.hana.headphones:
+    status: LOCKED
+    hash: sha256:00dc5293c2843c67e26e1b1a163b027eb1d134338a1ac0927ef2f552bd4dd106
+    version: 1
+    ledger_seq: 23
+  continuity.props.cable:
+    status: LOCKED
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+    version: 1
+    ledger_seq: 23
+  continuity.props.glovebox_and_crank:
+    status: LOCKED
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+    version: 1
+    ledger_seq: 23
+  continuity.props.passenger_door:
+    status: LOCKED
+    hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+    version: 1
+    ledger_seq: 23
+  continuity.props.phone_ren:
+    status: LOCKED
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+    version: 1
+    ledger_seq: 23
+  continuity.sc01.environment:
+    status: LOCKED
+    hash: sha256:f9c2539706ed77bc0049f9b94c094dceb0c61f1534926afea28f01b0c07bf28c
+    version: 1
+    ledger_seq: 23
+  continuity.sc02.environment:
+    status: LOCKED
+    hash: sha256:22daa7c2637dc3524c8a1350f066adf9c45f6dffa4bf78aac09a790ea90c160d
+    version: 1
+    ledger_seq: 23
+  continuity.sc03.environment:
+    status: LOCKED
+    hash: sha256:b0ed70e30f6f382523b6eb5fdfa6f3e185960b8b22826ecb82e46a52074a9492
+    version: 1
+    ledger_seq: 23
+  continuity.sc04.environment:
+    status: LOCKED
+    hash: sha256:5323ce403ba99e4b5a298ebb3c5354762658c01534fdb844fee921e3afa71465
+    version: 1
+    ledger_seq: 23
+  continuity.sc05.environment:
+    status: LOCKED
+    hash: sha256:3cb1474beaa88cf977f61c38a00617dfa396b48588dae7b7eef0e8b75e572f4e
+    version: 1
+    ledger_seq: 23
+  continuity.sc06.environment:
+    status: LOCKED
+    hash: sha256:dfa94a545863f3bcb3a7d9ab53e2ba6f41d04f8f54626d1703cd164d60d42e1a
+    version: 1
+    ledger_seq: 23
 artifacts:
   artifact:brief: APPROVED
   artifact:brief_analysis: APPROVED
@@ -693,8 +945,50 @@ artifacts:
   artifact:g4_review: APPROVED
   artifact:lighting_bible: APPROVED
   artifact:visual_bible: APPROVED
-shots: {}
+  artifact:cinematography_bible: APPROVED
+  artifact:g5_review: APPROVED
+  artifact:shot_list: APPROVED
+  artifact:storyboard: APPROVED
+shots:
+  SC01_SH010: spec
+  SC01_SH020: spec
+  SC01_SH030: spec
+  SC01_SH040: spec
+  SC01_SH050: spec
+  SC01_SH060: spec
+  SC01_SH070: spec
+  SC01_SH080: spec
+  SC01_SH090: spec
+  SC01_SH100: spec
+  SC01_SH110: spec
+  SC01_SH120: spec
+  SC01_SH130: spec
+  SC01_SH140: spec
+  SC01_SH150: spec
+  SC02_SH010: spec
+  SC02_SH020: spec
+  SC02_SH030: spec
+  SC03_SH010: spec
+  SC03_SH020: spec
+  SC03_SH030: spec
+  SC03_SH040: spec
+  SC03_SH050: spec
+  SC03_SH060: spec
+  SC03_SH070: spec
+  SC04_SH010: spec
+  SC04_SH020: spec
+  SC04_SH030: spec
+  SC04_SH040: spec
+  SC04_SH050: spec
+  SC04_SH060: spec
+  SC04_SH070: spec
+  SC04_SH080: spec
+  SC04_SH090: spec
+  SC05_SH010: spec
+  SC05_SH020: spec
+  SC05_SH030: spec
+  SC06_SH010: spec
 authorizations: []
 changes: {}
-ledger_seq: 22
-ledger_head: sha256:e3392fbb31ee2b7fa0d664bed0d0455d4765deaaa1cb2a47bf743c93f371eba2
+ledger_seq: 23
+ledger_head: sha256:d37cd86fa523343a87d699857593e48602857ded6929dfe13e66920c148bc8fb

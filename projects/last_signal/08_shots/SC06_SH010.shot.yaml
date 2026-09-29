@@ -1,7 +1,7 @@
 shot_id: SC06_SH010
 scene_id: SC06
 sequence_id: SQ02
-status: PROPOSED
+status: APPROVED
 duration_s: 3.4167
 serves:
 - intent.open_hopeful_ending

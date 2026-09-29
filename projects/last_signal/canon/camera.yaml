@@ -9,7 +9,9 @@ entries:
   value:
     aspect_ratio: 1.7778
     aspect_label: '16:9'
-    resolution_px: [1920, 1080]
+    resolution_px:
+    - 1920
+    - 1080
     fps: 24
     sensor_width_mm: 36.0
     sensor_height_mm: 20.25
@@ -38,7 +40,7 @@ entries:
   - look.style.phone_ui
   - look.style.render_constraints
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
   notes: |
@@ -49,7 +51,11 @@ entries:
   statement: |
     Four primes: 24, 35, 50 and 85 mm (on the 36 mm sensor). No zooms, no focal length
     change inside a shot. Any other focal length needs a declared style_break.
-  value: [24, 35, 50, 85]
+  value:
+  - 24
+  - 35
+  - 50
+  - 85
   rationale: |
     Four primes cover every space in the film: 24 mm is the only lens that fits a medium
     inside a 1.48 m wide car, 35 mm holds the street and the 9 m shop, 50 mm is the
@@ -65,7 +71,7 @@ entries:
   - world.sets.corner_shop
   - world.sets.street
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.lens.roles
@@ -80,22 +86,60 @@ entries:
   value:
     '24':
       effect: wide, deep, slight edge stretch, lines converge hard
-      used_for: [car_interior_mediums, comic_geometric_wides, shop_low_angle_to_ceiling]
-      never_for: [tender_faces, phone_inserts]
+      used_for:
+      - car_interior_mediums
+      - comic_geometric_wides
+      - shop_low_angle_to_ceiling
+      never_for:
+      - tender_faces
+      - phone_inserts
     '35':
       effect: wide-normal, keeps the room around him
-      used_for: [street, shop_wides_and_mediums, sc04_sc06_bookend]
-      never_for: [phone_inserts, tender_close_ups]
+      used_for:
+      - street
+      - shop_wides_and_mediums
+      - sc04_sc06_bookend
+      never_for:
+      - phone_inserts
+      - tender_close_ups
     '50':
       effect: normal, no distortion, sits at his distance
-      used_for: [tender_mediums, tender_close_ups, hana, final_image, car_frontal_through_windscreen]
-      never_for: [comic_wides]
+      used_for:
+      - tender_mediums
+      - tender_close_ups
+      - hana
+      - final_image
+      - car_frontal_through_windscreen
+      never_for:
+      - comic_wides
     '85':
       effect: compression, flat graphic planes, background falls away
-      used_for: [phone_inserts, crank_inserts, tender_close_ups]
-      never_for: [comic_wides, establishing]
-    comic_section: {scenes: [SC01, SC02, SC03], lenses: [24, 35, 85], exception: 50 for the SC01 frontal through the windscreen}
-    tender_section: {scenes: [SC04, SC05, SC06], lenses: [50, 85], exception: 35 for the kerb bookend only}
+      used_for:
+      - phone_inserts
+      - crank_inserts
+      - tender_close_ups
+      never_for:
+      - comic_wides
+      - establishing
+    comic_section:
+      scenes:
+      - SC01
+      - SC02
+      - SC03
+      lenses:
+      - 24
+      - 35
+      - 85
+      exception: 50 for the SC01 frontal through the windscreen
+    tender_section:
+      scenes:
+      - SC04
+      - SC05
+      - SC06
+      lenses:
+      - 50
+      - 85
+      exception: 35 for the kerb bookend only
   rationale: |
     Wide lenses in the comedy make the ordered world (street lines, shelves, the dashboard)
     press in on him and let a held pose play against busy geometry, which is where
@@ -114,7 +158,7 @@ entries:
   - tone.anti_goals
   - look.style.composition
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.height.eye_level
@@ -148,7 +192,7 @@ entries:
   - characters.hana.proportions
   - tone.register
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.height.high
@@ -160,8 +204,13 @@ entries:
   value:
     min_above_eye_m: 0.5
     min_tilt_down_deg: 10
-    allowed_at: [SC01_slump_mild, SC03_aisle_wide_strong]
-    forbidden_in: [SC04, SC05, SC06]
+    allowed_at:
+    - SC01_slump_mild
+    - SC03_aisle_wide_strong
+    forbidden_in:
+    - SC04
+    - SC05
+    - SC06
   rationale: |
     The creative direction asks for high or wide angles when the world beats him. Spending
     the high angle only twice, and saving the stronger one for the bigger failure, makes the
@@ -176,7 +225,7 @@ entries:
   - tone.comedy_source
   - look.style.composition
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.height.low
@@ -191,11 +240,18 @@ entries:
     camera.framing.jacket_off_sky).
   value:
     comic_resets:
-      below_eye_m: [0.15, 0.3]
+      below_eye_m:
+      - 0.15
+      - 0.3
       max_tilt_up_deg: 8
-      beats: [SC01_sits_up_to_text, SC02_exit, SC03_wary_check_ceiling_panels]
+      beats:
+      - SC01_sits_up_to_text
+      - SC02_exit
+      - SC03_wary_check_ceiling_panels
     the_turn:
-      lens_z_m: [0.45, 0.6]
+      lens_z_m:
+      - 0.45
+      - 0.6
       tilt_up_deg: 12
       beat: SC04_sits_back_with_crank_in_both_hands
       camera_side: pavement_looking_north_car_behind_him
@@ -218,7 +274,7 @@ entries:
   - world.sets.street
   - story.arc.ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.movement.default_static
@@ -228,7 +284,9 @@ entries:
     each names its motivation in the shot's rationale.movement.
   value:
     default: static
-    allowed_moves: [pan_follow, push_in]
+    allowed_moves:
+    - pan_follow
+    - push_in
     motivation_required: true
   rationale: |
     Held frames with bursts of action inside them are the timing grammar of Japanese TV
@@ -243,7 +301,7 @@ entries:
   depends_on:
   - characters.ren.expressions
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.movement.pan_follow
@@ -257,7 +315,10 @@ entries:
     pivot: fixed_position
     starts: after_action_begins
     ends: with_action
-    scenes: [SC01, SC02, SC03]
+    scenes:
+    - SC01
+    - SC02
+    - SC03
   rationale: |
     A follow-pan across a painted background is a classic animation layout move and keeps
     the camera reactive, one step behind him, which is funny in a chase that fails.
@@ -270,7 +331,7 @@ entries:
   depends_on:
   - characters.ren.movement
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.movement.push_in
@@ -283,7 +344,9 @@ entries:
     max_speed_m_s: 0.15
     max_count_film: 2
     scene: SC04
-    beats: [choice_of_crank, glow_steadies_while_cranking]
+    beats:
+    - choice_of_crank
+    - glow_steadies_while_cranking
     motivation: emotional_shift
     after_send: no_camera_movement
   rationale: |
@@ -304,7 +367,7 @@ entries:
   applies_to:
   - SC04
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.movement.forbidden
@@ -313,7 +376,16 @@ entries:
     pans, orbits, crane or tilt moves up to the sky, drone-style flyovers, and any move in a
     phone insert.
   value:
-    forbidden: [handheld, camera_shake, zoom, whip_pan, orbit, crane_to_sky, tilt_up_to_sky, flyover, move_in_insert]
+    forbidden:
+    - handheld
+    - camera_shake
+    - zoom
+    - whip_pan
+    - orbit
+    - crane_to_sky
+    - tilt_up_to_sky
+    - flyover
+    - move_in_insert
   rationale: |
     Each of these either adds energy the comedy does not need (shake, whip pans read as
     manic slapstick, tone.anti_goals), makes the sky the subject (G3 finding 9), or
@@ -327,7 +399,7 @@ entries:
   - tone.anti_goals
   - look.style.originality_guards
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.framing.shot_size_arc
@@ -339,15 +411,68 @@ entries:
     releases to a medium-wide for the final image. Shot scale vocabulary: wide, medium_wide,
     medium, medium_close, close, insert. No extreme wides.
   value:
-    vocabulary: [wide, medium_wide, medium, medium_close, close, insert]
+    vocabulary:
+    - wide
+    - medium_wide
+    - medium
+    - medium_close
+    - close
+    - insert
     extreme_wide: false
     arc:
-    - {t_s: [0, 22], scene: SC01, sizes: [medium, medium_close, close, insert], note: cramped car, the only wide is none}
-    - {t_s: [22, 24], scene: SC02, sizes: [medium_wide, wide], note: first open exterior}
-    - {t_s: [24, 34], scene: SC03, sizes: [wide, medium_close, insert], note: widest frame at the blackout}
-    - {t_s: [34, 52], scene: SC04, sizes: [medium_wide, medium, medium_close, close, insert], note: closes in to the heart and send}
-    - {t_s: [52, 57], scene: SC05, sizes: [medium, medium_close]}
-    - {t_s: [57, 60], scene: SC06, sizes: [medium_wide], note: release}
+    - t_s:
+      - 0
+      - 22
+      scene: SC01
+      sizes:
+      - medium
+      - medium_close
+      - close
+      - insert
+      note: cramped car
+      the only wide is none: null
+    - t_s:
+      - 22
+      - 24
+      scene: SC02
+      sizes:
+      - medium_wide
+      - wide
+      note: first open exterior
+    - t_s:
+      - 24
+      - 34
+      scene: SC03
+      sizes:
+      - wide
+      - medium_close
+      - insert
+      note: widest frame at the blackout
+    - t_s:
+      - 34
+      - 52
+      scene: SC04
+      sizes:
+      - medium_wide
+      - medium
+      - medium_close
+      - close
+      - insert
+      note: closes in to the heart and send
+    - t_s:
+      - 52
+      - 57
+      scene: SC05
+      sizes:
+      - medium
+      - medium_close
+    - t_s:
+      - 57
+      - 60
+      scene: SC06
+      sizes:
+      - medium_wide
+      note: release
     widest_frame: SC03_blackout
     closest_frames: SC04_heart_and_send_inserts
   rationale: |
@@ -367,7 +492,7 @@ entries:
   - tone.comedy_source
   - look.style.composition
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.framing.space_and_size
@@ -385,7 +510,7 @@ entries:
     tender_lead_room: look_direction_screen_left
     tender_negative_space: screen_left
     ren_min_frame_height: 0.15
-    story_prop_min_frame_width: 0.10
+    story_prop_min_frame_width: 0.1
     car_headliner_in_frame_upright: false
   rationale: |
     Short-siding a failure traps him against the frame edge, a visual "nowhere to go" the
@@ -406,7 +531,7 @@ entries:
   - characters.ren.silhouette
   - characters.ren.proportions
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.framing.jacket_off_sky
@@ -420,9 +545,18 @@ entries:
     looking north so the car fills everything behind him. Check per shot: the ray from the
     lens through the top of the jacket must hit geometry, not sky.
   value:
-    scenes: [SC04, SC05, SC06]
+    scenes:
+    - SC04
+    - SC05
+    - SC06
     forbidden_background_behind_jacket: dusk_sky_positions_above_0.35
-    allowed_background: [car_body, open_passenger_door, garden_walls, houses, pavement, dusk_sky_positions_0_to_0.35]
+    allowed_background:
+    - car_body
+    - open_passenger_door
+    - garden_walls
+    - houses
+    - pavement
+    - dusk_sky_positions_0_to_0.35
     default_lens_min_z_m_kerb: 0.85
     low_angle_side: pavement_looking_north
     per_shot_check: ray_through_jacket_top_hits_geometry
@@ -446,7 +580,7 @@ entries:
   - SC04
   - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.framing.sky_and_wires
@@ -463,7 +597,9 @@ entries:
     max_sky_fraction: 0.67
     sky_needs_subject: true
     kerb_sky_setup: sc04_sc06_bookend_westward
-    matched_pair: [SC05_window, SC04_SC06_bookend]
+    matched_pair:
+    - SC05_window
+    - SC04_SC06_bookend
     sky_cross_cut: false
     wires_max_spans: 3
     wires_cross_face_phone_crank: false
@@ -488,7 +624,7 @@ entries:
   - world.locations.street
   - world.locations.hana_room
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.dof.default_deep
@@ -499,10 +635,14 @@ entries:
     events and cuts instead.
   value:
     default_dof: false
-    exceptions: [phone_inserts, crank_inserts]
+    exceptions:
+    - phone_inserts
+    - crank_inserts
     focus_pulls: 0
     depth_method: three_layers_value_and_aerial_tint
-    eye_moved_by: [light_events, cuts]
+    eye_moved_by:
+    - light_events
+    - cuts
   rationale: |
     In cel animation the background is painted soft and the characters are drawn sharp;
     optical blur on top of that makes the outlines smear and turns lamps and windows into
@@ -518,7 +658,7 @@ entries:
   - look.style.composition
   - look.style.outlines
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.dof.inserts
@@ -529,7 +669,9 @@ entries:
     seat, the desk) softens. No emissive other than the phone or pip may sit in the
     defocused area; if one would, frame it out or switch DOF off.
   value:
-    f_stop_range: [5.6, 8.0]
+    f_stop_range:
+    - 5.6
+    - 8.0
     focus_target: screen_plane_or_pip
     max_angle_to_screen_normal_deg: 15
     defocused_emissives_allowed: false
@@ -546,11 +688,11 @@ entries:
   - look.style.phone_ui
   - look.style.glow
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
-  notes: ASSUMPTION that Blender 5.2 EEVEE camera DOF behaves as in 4.x (physical f-stop on the
-    camera sensor). Verify at M3.
+  notes: ASSUMPTION that Blender 5.2 EEVEE camera DOF behaves as in 4.x (physical f-stop on the camera
+    sensor). Verify at M3.
 - id: camera.inserts.language
   statement: |
     The phone has its own shot grammar. Inserts are 85 mm (50 mm when hands and both
@@ -585,7 +727,7 @@ entries:
   - tone.wordless
   - world.props.phone_ren
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.inserts.legibility
@@ -637,7 +779,7 @@ entries:
   - story.setup_cues
   - story.escalation
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
   notes: |
@@ -658,7 +800,10 @@ entries:
     status_bar_in_frame: false
     emoji_panel_in_frame: false
     heart_source: single_press_emoji_face_key
-    holds_frames: {heart_visible: 12, hover: 20, plain_after_delete: 12}
+    holds_frames:
+      heart_visible: 12
+      hover: 20
+      plain_after_delete: 12
     battery_change_after: separate_insert
   rationale: |
     The heart was locked as battery red (look.color.ui_heart), so two reds would sit on the
@@ -676,7 +821,7 @@ entries:
   applies_to:
   - SC04
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.phone_lit.framing
@@ -695,14 +840,20 @@ entries:
     phone reads as an under-light along her jaw and on her hands, camera up to 75 degrees
     from the phone's light).
   value:
-    exempt_setups: [SC04_SC06_bookend, SC05_profile_locked_layout]
+    exempt_setups:
+    - SC04_SC06_bookend
+    - SC05_profile_locked_layout
     sc05_profile_max_deg: 75
     camera_within_deg_of_screen_direction: 45
     source_in_frame_first_shot_of_setup: true
     brightest_near_face: phone
-    other_practicals_min_distance_from_face_frame_width: 0.20
+    other_practicals_min_distance_from_face_frame_width: 0.2
     sc06_fade_screen_in_frame: true
-    applies: [SC03_blackout, SC04, SC05_after_wake, SC06_before_fade]
+    applies:
+    - SC03_blackout
+    - SC04
+    - SC05_after_wake
+    - SC06_before_fade
   rationale: |
     Keeping the lit side of the face toward the lens is what makes a single small source
     read on a two-tone cel face; showing the source once per setup ties the glow to the
@@ -722,7 +873,7 @@ entries:
   - look.lighting.sc04
   - look.lighting.sc06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.geography.screen_direction
@@ -763,7 +914,7 @@ entries:
   - world.rules.time_and_sun
   - world.locations.hana_room
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.geography.sc01
@@ -779,8 +930,12 @@ entries:
     line: car_long_axis_through_driver_eyeline
     lateral_side: passenger_kerb_side
     ren_faces: screen_left
-    axis_setups: [frontal_through_windscreen, over_shoulder_forward]
-    wild_pieces_allowed: [passenger_door, passenger_window_glass]
+    axis_setups:
+    - frontal_through_windscreen
+    - over_shoulder_forward
+    wild_pieces_allowed:
+    - passenger_door
+    - passenger_window_glass
     wild_method: camera_clip_start_or_object_camera_visibility_off
   rationale: |
     The cabin is 1.48 m wide, so a 24 mm medium from the passenger seat is at most about
@@ -800,11 +955,11 @@ entries:
   applies_to:
   - SC01
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
-  notes: ASSUMPTION that Blender 5.2 EEVEE supports per-object camera visibility; camera clip
-    start is the fallback and works in any version.
+  notes: ASSUMPTION that Blender 5.2 EEVEE supports per-object camera visibility; camera clip start is
+    the fallback and works in any version.
 - id: camera.geography.sc02
   statement: |
     SC02 street, 2 s. He leaves by the kerb-side passenger door (see
@@ -820,12 +975,23 @@ entries:
     run_direction: right_to_left
     cuts: 3
     cut_plan:
-    - {content: passenger_door_exit, frames: [17, 20]}
-    - {content: mid_run_from_behind_axis_into_sun, frames: [13, 15]}
-    - {content: shop_door_duck_in_axis_from_west, frames: [14, 17]}
+    - content: passenger_door_exit
+      frames:
+      - 17
+      - 20
+    - content: mid_run_from_behind_axis_into_sun
+      frames:
+      - 13
+      - 15
+    - content: shop_door_duck_in_axis_from_west
+      frames:
+      - 14
+      - 17
     total_frames: 48
     distance_m: 12
-    real_time_needed_s: [3, 4]
+    real_time_needed_s:
+    - 3
+    - 4
   rationale: |
     Getting out of a car, sprinting 12 m and ducking through a door takes 3-4 s in real
     time; 2 s works only as elliptical cutting (G3 finding 6), which also gives the dash a
@@ -844,7 +1010,7 @@ entries:
   applies_to:
   - SC02
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.geography.sc03
@@ -859,8 +1025,18 @@ entries:
   value:
     line: west_aisle_axis_door_to_socket
     ren_faces: screen_left_in_laterals
-    master: {lens_mm: 35, lens_z_m: 2.3, tilt_down_deg: 11, position: above_door_on_aisle_axis, reused_for: [entry, blackout]}
-    reverse: {from: back_wall, looking: north_to_door, wild_piece: back_wall_or_fridge}
+    master:
+      lens_mm: 35
+      lens_z_m: 2.3
+      tilt_down_deg: 11
+      position: above_door_on_aisle_axis
+      reused_for:
+      - entry
+      - blackout
+    reverse:
+      from: back_wall
+      looking: north_to_door
+      wild_piece: back_wall_or_fridge
     ren_frame_height_in_master: about_0.28
   rationale: |
     Using the same high wide for the entry and the blackout makes the lights going out the
@@ -880,7 +1056,7 @@ entries:
   applies_to:
   - SC03
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.geography.sc04_sc06
@@ -894,12 +1070,26 @@ entries:
     the film in SC06 with him leaning back: same frame, changed posture. It is the only
     kerb setup that shows the dusk sky.
   value:
-    ren_position_xy_m: [-0.1, -1.0]
+    ren_position_xy_m:
+    - -0.1
+    - -1.0
     ren_faces: south
     line: ren_eyeline_to_glovebox_through_open_door
     face_shot_side: pavement_south
-    screen_left: [glovebox, crank, afterglow, open_door]
-    bookend: {lens_mm: 35, lens_z_m: 0.95, position: east_of_ren_on_pavement, heading: west, tilt_up_deg: 5, used_in: [SC04_first_shot, SC06_final_image]}
+    screen_left:
+    - glovebox
+    - crank
+    - afterglow
+    - open_door
+    bookend:
+      lens_mm: 35
+      lens_z_m: 0.95
+      position: east_of_ren_on_pavement
+      heading: west
+      tilt_up_deg: 5
+      used_in:
+      - SC04_first_shot
+      - SC06_final_image
     sky_shown_only_in: bookend
   rationale: |
     Repeating one frame at the start of the tender section and at the end lets the audience
@@ -924,11 +1114,10 @@ entries:
   - SC04
   - SC06
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
-  notes: The kerb spot is the ART_DIRECTION_BIBLE and CHARACTER_BIBLE recommendation, adopted
-    here.
+  notes: The kerb spot is the ART_DIRECTION_BIBLE and CHARACTER_BIBLE recommendation, adopted here.
 - id: camera.geography.sc05
   statement: |
     SC05 Hana's room. Her window (west) is screen left and in frame in every shot of her
@@ -956,7 +1145,10 @@ entries:
         window: behind_her_head
         phone: near_window_side_foreground
     shots: 3
-    shot_plan: [insert_her_phone_wakes_his_photo, medium_headphones_down_picks_up_phone, medium_close_reads_small_smile]
+    shot_plan:
+    - insert_her_phone_wakes_his_photo
+    - medium_headphones_down_picks_up_phone
+    - medium_close_reads_small_smile
     phone_photo_min_height_frame: 0.05
     photo_shown_in: insert_85mm_top_down
     window_in_frame: all_shots_except_the_phone_insert
@@ -985,7 +1177,7 @@ entries:
   applies_to:
   - SC05
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
   notes: |
@@ -1003,8 +1195,20 @@ entries:
     the insert (2 %) comes after the room has gone dark, and the reaction is held on the
     reverse, the longest comic hold of the film.
   value:
-    car: {scale: close_inside, hope_shown_in: insert, loss_shown_in: insert, reaction: close_held, timing: immediate}
-    shop: {scale: wide_room, hope_shown_in: over_shoulder_phone_foreground, anticipation: low_angle_to_ceiling_panels_nothing_happens, loss_shown_in: high_wide_master, insert_after_loss: true, reaction: reverse_held_longest_comic_hold, timing: delayed}
+    car:
+      scale: close_inside
+      hope_shown_in: insert
+      loss_shown_in: insert
+      reaction: close_held
+      timing: immediate
+    shop:
+      scale: wide_room
+      hope_shown_in: over_shoulder_phone_foreground
+      anticipation: low_angle_to_ceiling_panels_nothing_happens
+      loss_shown_in: high_wide_master
+      insert_after_loss: true
+      reaction: reverse_held_longest_comic_hold
+      timing: delayed
   rationale: |
     G2 finding 2 and G3 finding 7 found the shop gag repeating the car's beat for beat. The
     audience now expects the pattern, so the shop plays on the expectation: the camera looks
@@ -1023,11 +1227,11 @@ entries:
   - SC01
   - SC03
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
-  notes: The "wary relief" reaction (G3 finding 7) is the animation-director's to time; the shot
-    order above gives it room.
+  notes: The "wary relief" reaction (G3 finding 7) is the animation-director's to time; the shot order
+    above gives it room.
 - id: camera.rhythm.scene_budget
   statement: |
     Frame budget per scene at 24 fps, film total 1440 frames (60 s). SC01 528, SC02 48,
@@ -1068,11 +1272,10 @@ entries:
   - story.ending
   - tone.ending_restraint
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
-  notes: Open human question in the handoff (keep SCENES.yaml timings exactly, or accept this
-    redistribution).
+  notes: Open human question in the handoff (keep SCENES.yaml timings exactly, or accept this redistribution).
 - id: camera.rhythm.pace
   statement: |
     Cutting pace. SC01 about 14 shots, average about 1.6 s, reactions held at least 1 s after
@@ -1082,12 +1285,33 @@ entries:
     2.2 s (the smile held longest). SC06 one shot. After the turn no shot is shorter than
     1.0 s except the battery insert.
   value:
-    SC01: {shots_about: 14, asl_s: 1.6, min_hold_after_gag_s: 1.0}
-    SC02: {shots: 3, frames_each: [13, 20]}
-    SC03: {shots_about: 7, asl_s: 1.4, final_hold_min_s: 2.0}
-    SC04: {shots_about: 9, asl_s: 2.0, turn_and_crank_shot_s: [2.5, 3.5]}
-    SC05: {shots: 3, durations_s: [1.0, 1.33, 2.17]}
-    SC06: {shots: 1}
+    SC01:
+      shots_about: 14
+      asl_s: 1.6
+      min_hold_after_gag_s: 1.0
+    SC02:
+      shots: 3
+      frames_each:
+      - 13
+      - 20
+    SC03:
+      shots_about: 7
+      asl_s: 1.4
+      final_hold_min_s: 2.0
+    SC04:
+      shots_about: 9
+      asl_s: 2.0
+      turn_and_crank_shot_s:
+      - 2.5
+      - 3.5
+    SC05:
+      shots: 3
+      durations_s:
+      - 1.0
+      - 1.33
+      - 2.17
+    SC06:
+      shots: 1
     tender_min_shot_s: 1.0
     tender_min_exception: battery_insert
     curve: accelerate_to_sc02_then_hold_at_blackout_then_slow_to_one_shot
@@ -1109,7 +1333,7 @@ entries:
   - tone.comedy_source
   - characters.ren.expressions
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1
 - id: camera.rhythm.transitions
@@ -1123,11 +1347,18 @@ entries:
   value:
     default: cut
     fade_in: head
-    fade_out: {at: tail, frames: 18, after: final_image_hold}
+    fade_out:
+      at: tail
+      frames: 18
+      after: final_image_hold
     sc03_to_sc04: hard_cut_black_to_dusk
     sc04_to_sc05: cut_on_light
     sc05_to_sc06: cut_on_direction
-    forbidden: [dissolve, wipe, sky_cutaway, wire_cutaway]
+    forbidden:
+    - dissolve
+    - wipe
+    - sky_cutaway
+    - wire_cutaway
   rationale: |
     The near-black end of SC03 already works as a fade, so a hard cut to the dusk sky reads
     as time passing without a device. Cutting on light and on direction joins Ren and Hana
@@ -1144,6 +1375,6 @@ entries:
   - look.style.originality_guards
   - world.rules.time_and_sun
   tag: DECISION
-  status: PROPOSED
+  status: LOCKED
   source: agent:cinematographer
   version: 1

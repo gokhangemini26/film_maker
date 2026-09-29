@@ -3,7 +3,7 @@ fm:
   id: storyboard
   kind: storyboard
   phase: STORYBOARD
-  status: PROPOSED
+  status: APPROVED
   owner_role: cinematographer
   derived_from:
   - ref: artifact:shot_list
