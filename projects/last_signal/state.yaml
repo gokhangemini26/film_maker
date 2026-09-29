@@ -3,8 +3,8 @@ project: last_signal
 title: Last Signal
 sandbox: false
 created_at: '2026-09-28T20:41:45Z'
-phase: SCREENPLAY
-phase_status: in_progress
+phase: WORLD_CHARACTERS
+phase_status: awaiting_approval
 gates:
   G1:
     status: approved
@@ -30,7 +30,7 @@ gates:
       artifact:story_structure: sha256:d8a12c83b7c349e115615b4a1d07b7f27082e08ec5109da940295a188ee99f3c
     ledger_seq: 11
   G3:
-    status: pending
+    status: awaiting_approval
     decided_by: null
     decided_at: null
     notes: null
@@ -205,5 +205,5 @@ artifacts:
 shots: {}
 authorizations: []
 changes: {}
-ledger_seq: 11
-ledger_head: sha256:3345e501208bb5cb76fea02b2c467f1763b8c1eca406bacf4e6de3b8430b366a
+ledger_seq: 13
+ledger_head: sha256:b675ab2fd9391e187e696fde41a439e9e50c52277fa72cf99e753e2c1a5a8fb2

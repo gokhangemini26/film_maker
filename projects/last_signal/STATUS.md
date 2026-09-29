@@ -5,12 +5,12 @@
 ```yaml
 project: last_signal
 sandbox: false
-current_phase: SCREENPLAY
-status: in_progress
-ledger: 11 records, head 3345e501208b
+current_phase: WORLD_CHARACTERS
+status: awaiting_approval
+ledger: 13 records, head b675ab2fd939
 ```
 
-**Next:** Gate approved: `fm advance`
+**Next:** Human review: `fm approve G3`, or `fm revise G3 --notes ...` / `fm reject G3 --notes ...`
 
 ## Gates
 
@@ -18,7 +18,7 @@ ledger: 11 records, head 3345e501208b
 |---|---|---|---|---|
 | G1 | Creative direction | approved | human:gokhan_guler | 4 |
 | G2 | Story and screenplay | approved | human:gokhan_guler | 5 |
-| G3 | World and characters | pending | - | - |
+| G3 | World and characters | awaiting_approval | - | - |
 | G4 | Visual direction (style lock) | pending | - | - |
 | G5 | Storyboard and shots | pending | - | - |
 | G6 | First Blender preview | pending | - | - |
@@ -27,21 +27,25 @@ ledger: 11 records, head 3345e501208b
 
 ## Canon
 
-LOCKED: 24
+LOCKED: 24, PROPOSED: 45
 
 ## Artifacts
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
+| art_direction_bible | WORLD_CHARACTERS | PROPOSED | 3f6417db6caa |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
+| character_bible | WORLD_CHARACTERS | PROPOSED | 44a136f55dc3 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
+| g3_review | WORLD_CHARACTERS | PROPOSED | be33e9db03f1 |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
 | story_bible | STORY | APPROVED | 1604e946f2ee |
 | story_structure | STORY | APPROVED | d8a12c83b7c3 |
+| world_bible | WORLD_CHARACTERS | PROPOSED | 6fca966b474a |
 
 ## Shots
 

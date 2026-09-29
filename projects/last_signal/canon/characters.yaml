@@ -1,2 +1,827 @@
 domain: characters
-entries: []
+entries:
+# ================================================================ REN
+- id: characters.ren.identity
+  statement: |
+    Ren, 20, university student, the protagonist. He has finally found the nerve to invite
+    his friend Hana to dinner, where he means to tell her he loves her. Want: get the
+    invitation to her before his phone dies. Need: to stop reaching for shortcuts and put
+    his own effort in. Defining behaviour: the earnest reset. After every setback he
+    freezes, sags, then straightens up and tries again. His name is for production only and
+    never appears on screen.
+  value:
+    name_production_only: Ren
+    on_screen_name: false
+    pronoun: he
+    age: 20
+    role: protagonist
+    occupation: university_student
+    want: send_the_dinner_invitation_before_the_battery_dies
+    need: value_his_own_effort_over_shortcuts
+    defining_behaviour: earnest_reset_after_each_setback
+    personal_items: [phone_ren, charging_cable, crank_charger, car_key]
+    wristwatch: false
+    bag: false
+  rationale: |
+    The earnest reset is the one behaviour that makes tone.comedy_source work ("he tries
+    again anyway"). It is a body action a proxy can play in silhouette: freeze, sag,
+    straighten. It is also the shape the turn breaks. At the kerb he does not reset
+    upward, he settles, and that change is story.arc.ren. No wristwatch and no bag: a watch
+    would be a second meter (story.escalation allows one) and a bag would raise "is there a
+    power bank in there?" (world.rules.power removes every other source). Rejected: a
+    clumsy or scatterbrained Ren. The comedy would then be his fault, which
+    tone.comedy_source excludes and which would make us laugh at him.
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  - intent.earned_last_signal
+  depends_on:
+  - story.cast
+  - story.arc.ren
+  - tone.comedy_source
+  - tone.wordless
+  applies_to: [ren]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: |
+    Age 20 implements the user's "about 20" (USER_REQUIREMENT via story.cast). The name is an
+    ASSUMPTION from story.cast that the human may replace at no cost.
+- id: characters.ren.silhouette
+  statement: |
+    Tall, lanky and slightly long in the limbs, with one stubborn tuft of hair standing up
+    at the crown. He wears a hip-length light jacket, always open, over a plain T-shirt, so
+    the jacket fronts make two vertical panels either side of a pale centre strip. Before
+    the turn his neck juts forward and his shoulders curl over the phone: a forward-leaning
+    "?" shape. After the turn his spine straightens and settles, and in the final image it
+    leans back: a relaxed diagonal.
+  value:
+    read_at_a_glance:
+    - crown_tuft
+    - tall_narrow_lanky
+    - open_hip_length_jacket_with_pale_centre_strip
+    posture_before_turn: forward_lean_neck_jut_shoulders_curled_over_phone
+    posture_after_turn: upright_settled_then_leaning_back
+    distinct_from_hana: angular_vertical_vs_her_rounded_compact
+    min_readable_height_in_frame: 0.15
+  rationale: |
+    In wide anime frames and backlit shots (the sun-filled windscreen in SC01, the long
+    raking street light in SC02, the dark shop in SC03) his face is small or in shadow, so
+    three shapes have to carry him. The tuft reads on the head outline even against the
+    sun. The open jacket's centre strip reads as "him" in a dark room lit only by the
+    phone. The forward "?" posture makes the rush visible without a face. The tuft is also
+    already in the script (SC01 "presses down one stubborn tuft"), so the crush cue and the
+    silhouette are the same object. min_readable_height_in_frame (0.15 of frame height) is
+    a guide for the cinematographer: below that, only posture reads. Rejected: a hood or a
+    cap as his signature shape, which hides the tuft and the mirror beat and adds a
+    silhouette that reads as "hiding" rather than "hopeful".
+  serves:
+  - intent.anime_feel
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  depends_on:
+  - story.setup_cues
+  - story.arc.ren
+  applies_to: [ren]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+- id: characters.ren.proportions
+  statement: |
+    Height 1.72 m (crown, excluding the tuft; the tuft adds about 0.04 m). Slim, lanky
+    build, about 6.5 heads tall: slightly stylised toward anime proportions, never
+    super-deformed. Head, eyes and hands are about 10 % larger than realistic so faces and
+    hand acting read in wide frames and in phone inserts.
+  value:
+    height_m: 1.72
+    tuft_extra_m: 0.04
+    build: slim_lanky
+    head_count: 6.5
+    head_height_m: 0.265
+    shoulder_width_m: 0.42
+    hip_width_m: 0.32
+    leg_length_m: 0.84
+    arm_span_m: 1.74
+    hand_length_m: 0.205
+    hand_scale_vs_realistic: 1.1
+    eye_height_standing_m: 1.59
+    seated_on_car_seat:
+      seat_height_m: 0.45
+      seat_back_recline_deg: 20
+      crown_z_m: 1.32
+      crown_with_tuft_z_m: 1.36
+      eye_z_m: 1.20
+    seated_on_kerb:
+      seat_surface_z_m: 0.12
+      back_rest_to_heels_m: 0.6
+      knee_top_z_m: 0.62
+      crown_z_m: 1.06
+    kneeling_eye_z_m: 1.05
+  rationale: |
+    The world is built for an adult of about 1.7 m (seat 0.45, counter 1.0, gondolas 1.5,
+    garden walls 1.0), and 1.72 m fits it without re-scaling any set. At that height the
+    small car (roof 1.45) sits below his shoulders when he stands beside it, so the car
+    reads as small and his, and his eye (1.59 m; 1.71 m standing on the pavement) clears
+    the 1.5 m shop gondolas, so he can scan the walls for a socket (SC03). He is taller and
+    narrower than Hana so the two read as two different people at thumbnail size, even
+    though they never share a frame. 6.5 heads with 10 % larger heads, eyes and hands is the
+    anime register the direction asks for (expressive faces and hands, simple bodies) while
+    staying a believable 20-year-old: super-deformed proportions would push the comedy
+    toward manic slapstick (tone.anti_goals). Rejected: realistic 7.5-head proportions
+    (faces too small to act in the wides at MVP fidelity) and a short, round Ren (reads
+    younger than 20 and as a comic type rather than someone we root for).
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - story.cast
+  - world.sets.ren_car
+  - world.sets.street
+  - world.sets.corner_shop
+  - tone.anti_goals
+  applies_to: [ren]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: |
+    DEPENDENCY for the M3 build and the cinematographer: seated in the car with the seat
+    back upright, his crown plus tuft reaches about 1.41 m against a roof of 1.45 m
+    (interior headliner not specified in world canon). A driver's seat reclined about 20
+    degrees brings it to about 1.36 m. seated_on_kerb assumes the world's RECOMMENDATION:
+    he sits on the pavement edge facing the pavement, back leaning on the car's rear side
+    panel. All seated figures are estimates to be checked in the first proxy test (G6).
+- id: characters.ren.face
+  statement: |
+    Face and hair shape language: a slightly long oval face with a soft jaw, straight
+    level brows that can knit and lift (his worry lives in the brows), medium almond eyes,
+    a small, simple nose, and a mouth drawn as a line that can flatten, press or open a
+    little. Short dark-brown hair, soft and a little messy, fringe down to the brows, with
+    the stubborn crown tuft. Only what the film shows is designed: brows, eyes, mouth line,
+    hair outline. No freckles, scars, glasses or piercings.
+  value:
+    face_shape: long_soft_oval
+    brows: straight_level_expressive
+    eyes: medium_almond
+    nose: small_simple
+    mouth: line_that_flattens_presses_opens_slightly
+    hair_style: short_soft_messy_fringe_to_brows_crown_tuft
+    colors:
+      skin: '#EAC7AB'
+      hair: '#4A3A31'
+      eyes: '#5B4637'
+      brows: '#3E3029'
+    extras: none
+  rationale: |
+    His face is seen three ways: backlit in the car, lit from below by the phone in the
+    dark shop, and softly lit by the phone at the crank. Straight brows are the strongest
+    readable feature under a single low light, so his worry and his calm both go there,
+    not into small mouth shapes the proxy cannot hold. A fringe down to the brows frames
+    the eyes without hiding them. The longer face separates him from Hana's round one. No
+    accessories keeps the face clean for the phone's glow, the film's light motif. Rejected:
+    glasses (screen reflections would fight the phone glow and complicate every close-up)
+    and a fringe over the eyes (hides the one feature that carries the arc).
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  - intent.comic_then_tender
+  depends_on:
+  - characters.ren.silhouette
+  - story.setup_cues
+  applies_to: [ren]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: |
+    Hex values are proposals for coordination; the look-director may request changes to
+    fit the palette (via change request once approved). Not tied to any nationality, in
+    keeping with world.setting (no country markers).
+- id: characters.ren.expressions
+  statement: |
+    Two expression sets split at the turn. Comic set (SC01-SC03): the rehearsed breath
+    (cheeks fill, eyes shut, then open), the letdown (inner brows up, mouth flat), the
+    freeze (eyes wide, pupils small, whole body held), relief (eyes close, long exhale, head
+    back), the stunned stillness in the dark shop (face lit from below, brows lifted, no
+    movement). Tender set (SC04, SC06): focused calm (brows level, eyes on the phone), the
+    hesitation at the heart (lips pressed, a slow blink), the release after the send (eyes
+    close, breath out), the final look up (eyelids low, mouth soft, the faintest ease at the
+    corners). Every comic reaction is a held pose, not a rubbery take. No sweat drops,
+    anger marks, super-deformed faces or other graphic comic symbols.
+  value:
+    comic_set:
+    - rehearsed_breath
+    - letdown
+    - freeze
+    - relief
+    - stunned_stillness
+    tender_set:
+    - focused_calm
+    - hesitation_at_heart
+    - release_after_send
+    - final_look_up
+    comic_style: held_pose_reactions
+    graphic_symbols: false
+    super_deformed: false
+    mouth_open_max: slight
+    lip_sync: false
+    face_hidden_beats:
+    - forehead_on_wheel_SC01
+  rationale: |
+    The comic reactions are timed on held frames (CREATIVE_DIRECTION: frozen stare,
+    slumped shoulder, pause before he tries again), so each is a pose with a clear read
+    rather than a flurry of shapes, which also suits the proxy face. Splitting the sets at
+    the turn makes the change of key visible on his face as well as in the pace
+    (tone.the_turn): after the crank begins he never uses a comic expression again. The
+    final look up stays short of a smile: his effort is done and the answer is not his to
+    see (tone.ending_restraint). Graphic symbols and super-deformed takes are excluded:
+    they are the loud end of anime comedy, they read as manic, and they would break the
+    "framed and lit like cinema" half of intent.soft_but_cinematic. Rejected: a big
+    triumphant grin at the tick (turns a small earned triumph into a victory lap).
+  serves:
+  - intent.comic_then_tender
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  depends_on:
+  - tone.the_turn
+  - tone.comedy_source
+  - tone.anti_goals
+  - tone.ending_restraint
+  - story.setup_cues
+  applies_to: [ren]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+- id: characters.ren.wardrobe.jacket
+  statement: |
+    A light, unlined cotton overshirt jacket in soft cornflower blue, cut to the hip, with
+    a small point collar, plain buttons and two flat patch chest pockets. Always worn open.
+    Sleeves pushed up to just below the elbow. Gently faded at the cuffs and elbows. No
+    print, text, logo, badge or label anywhere. Worn in every Ren scene, unchanged.
+  value:
+    color: '#7C9CC4'
+    garment: overshirt_jacket
+    material: light_unlined_cotton_twill
+    length: hip
+    collar: small_point
+    closure: plain_buttons_worn_open
+    pockets: two_flat_patch_chest_pockets
+    sleeves: pushed_up_below_elbow
+    wear: soft_fade_at_cuffs_and_elbows
+    markings: none
+    worn_open: true
+    changes_between_scenes: none
+  applies_to: [ren, SC01, SC02, SC03, SC04, SC06]
+  rationale: |
+    The jacket is the biggest colour block on him and the main carrier of his silhouette,
+    so its colour works hardest. A cool, medium-value blue separates him from the warm
+    golden hour (the sun-filled windscreen, the raking street light) and from the peach and
+    lavender of dusk, and it holds its hue under the phone's glow. It is pastel enough for
+    the palette and never competes with the battery's red, which the direction keeps as one
+    of the few saturated accents. An overshirt is plausible on a mild early-summer evening
+    (world.rules.season: light clothes, no coats). Worn open, it gives him the centre strip
+    that reads in the dark shop, and it swings when he runs (SC02) without any cloth
+    simulation. Sleeves pushed up keep his hands and wrists clear for typing, the cable and
+    the crank. The soft fade says it is his favourite and much worn, like the looked-after
+    car: kind wear, never grit. Rejected: a zipped hoodie (a hood breaks the tuft
+    silhouette and reads as hiding), a red or pink jacket (fights the battery red), and a
+    printed T-shirt as his only layer (readable graphics, and no silhouette shape).
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - characters.ren.silhouette
+  - world.rules.season
+  - world.rules.no_readable_text
+  - tone.wordless
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: |
+    Kept as its own canon entry so that a colour change is a single edit whose downstream
+    effect shows in `fm impact canon:characters.ren.wardrobe.jacket`. The hex is proposed
+    for coordination with the look-director (LOOK phase), who may request a change.
+- id: characters.ren.wardrobe.outfit
+  statement: |
+    Under and with the jacket: a plain crew-neck T-shirt in warm oat, relaxed slim
+    trousers in slate blue-grey, and plain low-top canvas shoes, off-white with a pale gum
+    sole. No belt showing, no watch, no jewellery, no bag, no print, text, logo or stripes.
+    The same in every Ren scene. The phone lives in his hand; the car key stays in the
+    ignition.
+  value:
+    tshirt: {color: '#EAE2D3', neck: crew, fit: relaxed, print: none}
+    trousers: {color: '#4F5A6E', fit: relaxed_slim, length: full_to_ankle}
+    shoes: {color: '#ECE7DE', sole_color: '#CDBFA8', type: low_top_canvas, laces: plain}
+    accessories: none
+    markings: none
+    changes_between_scenes: none
+    knees_after_shop_kneel: unmarked
+  applies_to: [ren, SC01, SC02, SC03, SC04, SC06]
+  rationale: |
+    The oat T-shirt is the pale centre strip that makes the open jacket read. It is warm
+    off-white, not white, so it catches the phone's light without becoming a brighter shape
+    than the phone near his face (ART_DIRECTION_BIBLE principle 2). Darker slate trousers
+    put his value mass on the upper body, where the acting is, and make his legs read as
+    one clean shape when he runs and when he sits knees-up on the kerb. Pale shoes mark his
+    feet in the SC02 sprint and at the kerb. No accessories: a watch is a second meter, a
+    bag suggests a power bank, and jewellery is detail the proxy cannot hold. His knees stay
+    clean after kneeling in the shop: a dirt mark would be a small humiliation gag and a
+    continuity item for no story gain (tone.comedy_source excludes humiliation). Rejected:
+    shorts (read younger than 20, and too much bare leg to model) and a graphic tee
+    (readable text risk, tone.wordless).
+  serves:
+  - intent.soft_but_cinematic
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - characters.ren.wardrobe.jacket
+  - world.rules.no_readable_text
+  - world.rules.season
+  - story.escalation
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+- id: characters.ren.movement
+  statement: |
+    Before the turn (SC01-SC03): quick, jerky bursts between held poses. The phone is held
+    close to his face with both hands, elbows tucked, neck forward. Each setback runs
+    freeze, sag, reset (straighten and try again). He runs with the phone held out in
+    front of him like a compass, arms not swinging. He drops to his knees in one quick move.
+    The turn (SC04): he stops resetting. He sits on the kerb, knees up, arms loose over
+    them. The reach for the crank is slow and deliberate. He holds it in both hands, then
+    cranks with a steady, even rhythm, breathing in time with the handle, shoulders
+    rising and falling slightly. His typing thumb is unhurried. After the send (SC04 end,
+    SC06): shoulders drop, spine loosens, he leans back against the car and tips his head
+    up. The dark phone rests on his chest under one flat hand.
+  value:
+    before_turn:
+      tempo: quick_bursts_between_holds
+      phone_grip: two_hands_close_to_face
+      spine: forward_neck_jut
+      setback_pattern: [freeze, sag, reset]
+      run: phone_held_out_in_front_arms_not_swinging
+      kneel: one_quick_drop
+    turn:
+      tempo: slow_deliberate
+      sit: kerb_knees_up_arms_loose
+      crank_grip: two_hands_then_crank_hand_plus_phone_hand
+      crank_rhythm: steady_even_about_1_turn_per_s
+      breath: in_time_with_crank
+      reset: false
+    after_send:
+      spine: loose_leaning_back_against_car
+      head: tipped_up_to_sky
+      phone: dark_on_chest_under_flat_hand
+    handedness: right
+    crank_hand: right
+    phone_hand_at_crank: left
+  applies_to: [ren, SC01, SC02, SC03, SC04, SC06]
+  rationale: |
+    story.arc.ren plays his change entirely through posture, staging and silhouette, so the
+    movement is the arc. The comedy runs on held poses and the freeze-sag-reset rhythm
+    (tone.comedy_source: bad timing plus persistence). At the turn the reset disappears:
+    instead of bouncing back up he settles, which says he has stopped looking for a
+    shortcut. The steady crank tempo with breath in time makes the effort audible and
+    visible (tone.the_turn: only the ratchet and his breath), which is what makes the send
+    feel earned. Holding the phone out while running shows at a glance what he is running
+    for. Right-handed, cranking with the right hand and holding the phone in the left,
+    because the crank arm needs the stronger hand and his left thumb can still type slowly.
+    The screenwriter's fallback (crank, pause, type, crank) stays available to the
+    animation-director. Rejected: frantic running with swinging arms and flailing (manic
+    slapstick, tone.anti_goals) and a fast, strained crank (reads as desperation, not
+    tenderness).
+  serves:
+  - intent.comic_then_tender
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  depends_on:
+  - story.arc.ren
+  - story.ending
+  - tone.the_turn
+  - tone.comedy_source
+  - world.props.crank_charger
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: |
+    Crank tempo (about 1 turn per second) is a RECOMMENDATION for the animation-director
+    and sound; it is not a story fact.
+- id: characters.ren.representation
+  statement: |
+    MVP: a stylised proxy. A simple humanoid built from smooth primitives, with a separate
+    open jacket shell, a head with a drawn toon face (brows, eyes, mouth line as swappable
+    shapes or textures) and a crown-tuft mesh. Standard humanoid skeleton. The description
+    is provider-agnostic: any later provider (MPFB, VRM, a generated mesh, mocap-driven)
+    must reproduce the same height, head count, silhouette features, wardrobe and colours
+    from the characters.ren.* canon.
+  value:
+    provider: proxy
+    height_m: 1.72
+    head_count: 6.5
+    build: slim_lanky
+    silhouette_features:
+    - crown_tuft_0.04m
+    - open_hip_length_jacket_separate_shell
+    - pale_centre_strip_tshirt
+    - dark_trousers_pale_shoes
+    face:
+      method: drawn_toon_face
+      controls: [brows_knit, brows_lift, eyes_open, eyes_closed, eyes_wide_small_pupils,
+        mouth_line, mouth_flat, mouth_pressed, mouth_slightly_open, cheeks_fill]
+      lip_sync: false
+    hands: five_finger_simplified_1.1x
+    rig: humanoid_standard_bone_names
+    attach_points:
+      hand_r: [crank_charger_handle, car_key]
+      hand_l: [phone_ren]
+      chest: phone_ren_resting
+    shading: toon_cel_per_look_canon
+    wardrobe_source: characters.ren.wardrobe.*
+    colors_source: characters.ren.face.colors
+    future_providers_allowed: [mpfb, vrm, generated, mocap]
+    likeness: original_no_real_person_no_existing_character
+  rationale: |
+    The direction makes stylised proxies a style choice: detail goes into faces and hero
+    props, not bodies. So the proxy spends its complexity on the face controls the
+    expression sets need and on the jacket shell that carries the silhouette, and nothing
+    on anatomy. Naming the silhouette features, face controls and attach points (rather
+    than a mesh file) means a later provider can be swapped in by one change request
+    without touching shots: the shots depend on these canon ids, not on a model.
+    Rejected: an off-the-shelf base character now (licence UNKNOWN, and a detailed body
+    would fight the cel look and the budget).
+  serves:
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  depends_on:
+  - characters.ren.proportions
+  - characters.ren.silhouette
+  - characters.ren.expressions
+  - characters.ren.wardrobe.jacket
+  - characters.ren.wardrobe.outfit
+  applies_to: [ren]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+
+# ================================================================ HANA
+- id: characters.hana.identity
+  statement: |
+    Hana, 20, Ren's university friend. She is the person he is trying to reach and has no
+    arc of her own: her one moment is noticing. She missed his call innocently, absorbed in
+    sketching with big headphones on. She does not know how he feels. Defining behaviour:
+    absorbed making, head down over paper, pencil moving, lost in it. Her name is for
+    production only and never appears on screen.
+  value:
+    name_production_only: Hana
+    on_screen_name: false
+    pronoun: she
+    age: 20
+    role: the_person_he_is_trying_to_reach
+    occupation: university_student
+    knows_his_feelings: false
+    defining_behaviour: absorbed_in_drawing
+    personal_items: [phone_hana, hana_headphones, sketchbook, pencils]
+    wristwatch: false
+  rationale: |
+    story.arc.hana gives her one moment, so her identity has to be legible in the first
+    frame of SC05: absorbed, making something by hand, headphones on. That one image
+    answers "is she ignoring him?" with "no, she was lost in a drawing", which keeps the
+    ending hopeful. Making things by hand also rhymes quietly with his cranking: two people
+    busy with their hands under the same sky. Rejected: showing her waiting by the phone or
+    looking at a photo of him, which would tell the audience she already loves him and close
+    the ending (tone.ending_restraint).
+  serves:
+  - intent.open_hopeful_ending
+  depends_on:
+  - story.cast
+  - story.arc.hana
+  - world.locations.hana_room.sketches
+  applies_to: [hana]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: |
+    Age 20 implements the user's "about 20" (via story.cast). The name is an ASSUMPTION from
+    story.cast. That she studies something involving drawing is an ASSUMPTION, never shown.
+- id: characters.hana.silhouette
+  statement: |
+    Compact and rounded. A jaw-length rounded bob with a short, straight fringe makes a
+    smooth, helmet-like head shape. The big pale over-ear headphones sit on top of it,
+    turning the head into an unmistakable "headphones" outline. A loose, soft top with
+    dropped shoulders gives a rounded, pear-like upper body, head tilted down over the desk.
+    When the headphones slide down, the outline changes to "head free, ring at the neck".
+  value:
+    read_at_a_glance:
+    - rounded_bob_with_headphones_on_top
+    - loose_soft_dropped_shoulders
+    - head_tilted_down_over_desk
+    silhouette_states:
+    - headphones_on_head
+    - headphones_around_neck
+    distinct_from_ren: rounded_compact_vs_his_angular_vertical
+    backlit_by: window_sky
+  rationale: |
+    She is framed against the west window (world.sets.hana_room), so she is partly
+    backlit by the dusk sky. Her outline must say "headphones on, can't hear" before we see
+    her face. The smooth bob gives the headphones a clean shape to sit on, and the change
+    of outline when she slides them down is the whole story beat, readable even in
+    silhouette. Rounded where Ren is angular, compact where he is tall: two people read as
+    two people across a cut. Rejected: long hair (it would tangle with the headphones round
+    her neck, a hair-collision problem the proxy cannot solve, and blur the headphone
+    outline) and a hood or high collar (no room for the headphones round her neck).
+  serves:
+  - intent.open_hopeful_ending
+  - intent.anime_feel
+  - intent.soft_but_cinematic
+  depends_on:
+  - story.arc.hana
+  - world.props.hana_headphones
+  - world.sets.hana_room
+  applies_to: [hana]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+- id: characters.hana.proportions
+  statement: |
+    Height 1.60 m. Slight, soft build, about 6.3 heads tall, with the same stylisation as
+    Ren (head, eyes and hands about 10 % larger than realistic). Seen only seated at her
+    desk.
+  value:
+    height_m: 1.6
+    build: slight_soft
+    head_count: 6.3
+    head_height_m: 0.254
+    shoulder_width_m: 0.36
+    hip_width_m: 0.33
+    hand_length_m: 0.185
+    hand_scale_vs_realistic: 1.1
+    seated_at_desk:
+      chair_seat_height_m: 0.44
+      desk_height_m: 0.72
+      eye_z_m: 1.14
+      crown_z_m: 1.27
+      crown_with_headphones_z_m: 1.30
+      window_sill_z_m: 0.9
+      head_inside_window_band: true
+  rationale: |
+    1.60 m makes her clearly smaller than Ren (1.72 m) and fits the room built for an adult
+    of about 1.7 m (desk 0.72, sill 0.9). Seated on a 0.44 m chair, her eyes are at about
+    1.14 m and her head sits fully inside the window band (0.9 to 2.0 m), so the dusk sky,
+    the same sky as his, is right behind her head in the main angle. That is the visual
+    link world.rules.time_and_sun asks for. The same stylisation as Ren keeps them from one
+    world. Rejected: making her much shorter or childlike (both characters are adults of
+    about 20, tone.anti_goals).
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  - intent.anime_feel
+  depends_on:
+  - story.cast
+  - world.sets.hana_room
+  - world.rules.time_and_sun
+  - tone.anti_goals
+  applies_to: [hana]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: Chair seat height 0.44 m is an ASSUMPTION; world canon gives only "simple desk chair".
+- id: characters.hana.face
+  statement: |
+    Face and hair shape language: a round, soft face with a small chin, gently arched
+    brows, large rounded eyes with visible lower lids (her smile lives in the eyes as much
+    as the mouth), a tiny nose and a small mouth. Near-black warm-brown hair in a
+    jaw-length rounded bob, the short straight fringe cut above the brows so the eyes are
+    never covered. No make-up detail, no blush, no accessories.
+  value:
+    face_shape: round_soft_small_chin
+    brows: gently_arched
+    eyes: large_rounded_visible_lower_lids
+    nose: tiny
+    mouth: small
+    hair_style: jaw_length_rounded_bob_short_straight_fringe_above_brows
+    colors:
+      skin: '#F1D3BE'
+      hair: '#2F2629'
+      eyes: '#4A3A33'
+      brows: '#2A2224'
+    blush: false
+    extras: none
+  rationale: |
+    The film's only answer is her small smile (tone.ending_restraint), so her face is
+    designed around it: big eyes with visible lower lids let the smile read as the lids
+    lifting, which a toon face carries more reliably than subtle mouth shapes, and a fringe
+    above the brows keeps the eyes clear with the headphones on. No blush: blushing would
+    tell the audience she has feelings for him and close the open ending (she does not know
+    how he feels). It also keeps pink off her face, away from the battery's red. The round
+    face contrasts with Ren's longer one. Rejected: a side-swept fringe over one eye (hides
+    half the smile) and a blush at the read (a declaration).
+  serves:
+  - intent.open_hopeful_ending
+  - intent.anime_feel
+  depends_on:
+  - tone.ending_restraint
+  - story.arc.hana
+  - characters.hana.silhouette
+  applies_to: [hana]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: Hex values are proposals for coordination with the look-director.
+- id: characters.hana.expressions
+  statement: |
+    Four states in four seconds. Absorbed (eyes down on the page, brows relaxed, mouth
+    softly closed). Noticing (eyes flick to the lit phone, brows lift a touch). Reading
+    (eyes down to the screen, face lit by the phone from below and the side). The small
+    smile (lower lids lift, mouth corners rise with lips closed, head dips slightly). No
+    open-mouthed grin, no gasp, no blush, no hand to the mouth.
+  value:
+    sequence: [absorbed, noticing, reading, small_smile]
+    small_smile:
+      mouth: corners_up_lips_closed
+      eyes: lower_lids_lift
+      head: slight_dip
+      blush: false
+      teeth: false
+    excluded: [grin, gasp, blush, hand_to_mouth, squeal]
+    lip_sync: false
+    graphic_symbols: false
+  rationale: |
+    tone.ending_restraint makes her smile "private pleasure rather than a declaration".
+    Closed lips, lifted lids and a small head dip are that: pleased and a little shy, which
+    reads as "yes to dinner" without "I love you too". Every excluded reaction would answer
+    more than the invitation asked. Four clear states, one per second, match the 4 s of
+    SC05 and give the cinematographer a readable progression for a single close-up.
+    Rejected: a beaming smile (closes the ending) and a neutral read with no smile (the
+    user's words require that she smiles).
+  serves:
+  - intent.open_hopeful_ending
+  depends_on:
+  - tone.ending_restraint
+  - story.arc.hana
+  applies_to: [hana, SC05]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+- id: characters.hana.wardrobe.outfit
+  statement: |
+    At home in the evening: a loose, soft crew-neck knit top in pale sage, long sleeves
+    pushed up to the forearm, dropped shoulders. Soft lounge trousers in dusty lilac-grey,
+    mostly hidden under the desk. Barefoot or plain socks, never in frame. No print, text,
+    logo, jewellery or watch.
+  value:
+    top: {color: '#AFC8B6', garment: loose_crew_neck_knit, sleeves: long_pushed_to_forearm,
+      shoulders: dropped, print: none}
+    trousers: {color: '#9A93A6', garment: soft_lounge_trousers, visible: mostly_hidden}
+    feet: out_of_frame
+    accessories: none
+    markings: none
+  applies_to: [hana, SC05]
+  rationale: |
+    The crew neck leaves a clean collar line for the headphones to rest on when she slides
+    them down; a hood or high collar would collide with them. The loose knit and dropped
+    shoulders make her rounded silhouette and say she is comfortable at home, not dressed
+    to go out: she has no idea an invitation is coming. Pale sage is cool enough to
+    separate her from the warm lamp light and from the peach-lavender sky in the window
+    behind her, and it is a different hue from Ren's blue, so the cut to her reads as a new
+    person and a new place. Sleeves pushed up clear her hands for the pencil and the phone.
+    Rejected: going-out clothes (would suggest she expects him), pink or red (the battery's
+    colour, and pink would read as romantic signalling).
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - characters.hana.silhouette
+  - world.rules.season
+  - world.rules.no_readable_text
+  - world.sets.hana_room
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: Hex values are proposals for coordination with the look-director.
+- id: characters.hana.wardrobe.headphones
+  statement: |
+    How she wears the world's headphones (world.props.hana_headphones): band over the crown
+    of the bob, cups fully over the ears, the bob tucked neatly inside the cups. Colour:
+    warm cream shell with pale grey cushions. She slides them down with both hands in one
+    smooth move, and they rest around her neck on the collar of her top, cups turned
+    slightly outward.
+  value:
+    shell_color: '#EFE8DC'
+    cushion_color: '#CFC7BE'
+    position_on: band_over_crown_cups_over_ears_hair_tucked_in_cups
+    position_down: resting_on_collar_around_neck_cups_turned_out
+    transition: two_hands_one_smooth_slide
+    logo: none
+    markings: none
+  applies_to: [hana, SC05]
+  rationale: |
+    The headphones are the whole explanation of the missed call (story.arc.hana), so they
+    must be the most readable shape on her. Warm cream is light-valued, so it stands out
+    against her near-black hair in every lighting state, including when she is backlit by
+    the window. Cups fully over the ears make "she could not hear" literal. Using two hands
+    in one slide suits the rigid two-position prop the world specified, and the move is
+    gentle, not a startled yank: she is not worried, just curious. Rejected: dark
+    headphones (they vanish against her hair, the one place they have to read) and a
+    one-handed flick (reads as annoyance).
+  serves:
+  - intent.open_hopeful_ending
+  depends_on:
+  - world.props.hana_headphones
+  - story.arc.hana
+  - characters.hana.silhouette
+  - characters.hana.wardrobe.outfit
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+  notes: |
+    Size, rigidity and wirelessness are the world-designer's (world.props.hana_headphones);
+    fit and colour are proposed here, as that entry's notes asked. Colour may be adjusted by
+    the look-director.
+- id: characters.hana.movement
+  statement: |
+    Still and economical. Before the phone lights: head tilted down, only the pencil hand
+    moves in small strokes, with a slow breath cycle. When it lights, her eyes move first,
+    then her head. Then the two-handed slide of the headphones. She picks up the phone with
+    one hand and holds it low near her chest to read. The smile comes with a small settle
+    of the shoulders. No big gestures; she does not stand up.
+  value:
+    idle: head_down_pencil_small_strokes_slow_breath
+    notice_order: [eyes, head, hands]
+    headphones: two_hand_slide_down
+    phone: one_hand_pick_up_held_low_near_chest
+    on_smile: shoulders_settle_slightly
+    stands: false
+    handedness: right
+    pencil_hand: right
+  applies_to: [hana, SC05]
+  rationale: |
+    After his street, her room is the "first frame that feels complete", and stillness is
+    what makes it feel settled. Moving eyes before head before hands is a clear anime
+    staging order that makes four actions readable in 4 s (the screenwriter flagged SC05 as
+    tight). Holding the phone low keeps her face clear for the smile close-up and lets the
+    phone light her from below as a new light. Rejected: jumping up or clutching the phone to
+    her chest (a declaration, and too big for 4 s).
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  depends_on:
+  - story.arc.hana
+  - tone.ending_restraint
+  - world.sets.hana_room
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
+- id: characters.hana.representation
+  statement: |
+    MVP: a stylised proxy on the same humanoid skeleton and toon-face system as Ren, with a
+    rounded bob mesh, a loose-top shell and attach points for the rigid headphones (head and
+    neck positions), pencil and phone. Only the upper body and hands need detail; below the
+    desk is simple. Provider-agnostic: any later provider must reproduce the same height,
+    head count, silhouette states, wardrobe and colours from the characters.hana.* canon.
+  value:
+    provider: proxy
+    height_m: 1.6
+    head_count: 6.3
+    build: slight_soft
+    silhouette_features:
+    - rounded_jaw_length_bob_short_fringe
+    - pale_headphones_two_states
+    - loose_dropped_shoulder_top
+    face:
+      method: drawn_toon_face
+      controls: [eyes_open, eyes_down, eyes_lower_lids_lift, brows_lift, blink, mouth_closed_soft,
+        mouth_corners_up]
+      lip_sync: false
+    hands: five_finger_simplified_1.1x
+    rig: humanoid_standard_bone_names
+    attach_points:
+      head_top: hana_headphones_on
+      neck: hana_headphones_down
+      hand_r: [pencil, phone_hana]
+    detail_zone: upper_body_hands_face
+    shading: toon_cel_per_look_canon
+    wardrobe_source: characters.hana.wardrobe.*
+    colors_source: characters.hana.face.colors
+    future_providers_allowed: [mpfb, vrm, generated, mocap]
+    likeness: original_no_real_person_no_existing_character
+  rationale: |
+    She appears in one 4 s scene, seated, so the proxy spends its detail where the camera
+    will be: face controls for the smile, hands and the headphone attach points. The shared
+    skeleton and face system with Ren keeps both characters in one style and halves the rig
+    work. Describing features and controls rather than a mesh keeps the entry valid for any
+    later provider. Rejected: a full-body hero build (unseen legs) and a separate face
+    system from Ren's (two styles in one film).
+  serves:
+  - intent.anime_feel
+  - intent.open_hopeful_ending
+  depends_on:
+  - characters.hana.proportions
+  - characters.hana.silhouette
+  - characters.hana.expressions
+  - characters.hana.wardrobe.outfit
+  - characters.hana.wardrobe.headphones
+  - characters.ren.representation
+  applies_to: [hana]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:character-designer
