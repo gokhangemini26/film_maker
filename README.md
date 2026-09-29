@@ -82,7 +82,7 @@ film_maker/
 |---|---|---|
 | M1 | Core: state, canon, ledger, dependency graph, impact, validation, CLI | ✅ done |
 | M2 | Creative pipeline: 9 agents, 16 skills, 13 `/film-*` commands, gate reviews, intent + continuity checks | ✅ done - demo film Last Signal approved through G5 (see [M2 acceptance](docs/M2_ACCEPTANCE.md)) |
-| M3 | Blender build: resolver, idempotent scene builders, proxy characters | |
+| M3 | Blender build: resolver, idempotent scene builders, proxy characters | in progress: resolver + preview stills for all 38 shots work (see docs/previews) |
 | M4 | Preview + 3-layer QA loop | |
 | M5 | Revision: feedback → impact → scoped regeneration | |
 | M6 | Animation + animatic/post | |
