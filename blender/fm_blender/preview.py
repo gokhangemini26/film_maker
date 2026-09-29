@@ -249,6 +249,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         mark(ph), mark(sc)
     # cull static objects the camera sits inside (car body, seat backs, walls)
     culled = []
+    bpy.context.view_layer.update()
     for o in bpy.data.objects:
         if o.get("fm_shot") or o.type != "MESH" or o.name.startswith(("fm.",)):
             continue
@@ -272,7 +273,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         for cid, (info, tmp) in figs.items():
             for o in tmp.objects:
                 n_ = o.name.split("_", 1)[1] if "_" in o.name else o.name
-                if n_.startswith(("head", "hair", "eye", "tuft", "neck", "thigh", "shin")):
+                if n_.startswith(("head", "hair", "eye", "tuft", "neck", "thigh", "shin", "torso")):
                     o.hide_render = True
     if culled:
         print("FM_CULLED", sid, culled, flush=True)

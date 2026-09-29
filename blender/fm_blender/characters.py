@@ -93,6 +93,10 @@ def figure(col, cid, canon, props, pos, facing, pose, hold=False):
     elif pose == "sit_chair":
         handL, handR = chest + f * 0.35 - r * 0.15 - Vector((0, 0, 0.35)), chest + f * 0.35 + r * 0.15 - Vector((0, 0, 0.35))
     phone = chest + f * 0.24 + Vector((0, 0, -0.16))
+    if pose == "sit_car":
+        phone = hipc + f * 0.22 + Vector((0, 0, 0.5))
+    elif pose == "sit_kerb":
+        phone = hipc + f * 0.18 + Vector((0, 0, 0.32))
     if hold and pose in ("sit_car", "sit_kerb", "stand", "sit_chair"):
         handL, handR = phone - r * 0.05, phone + r * 0.05
     limb = 0.055 if H > 1.6 else 0.05
