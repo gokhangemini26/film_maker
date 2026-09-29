@@ -97,7 +97,7 @@ def figure(col, cid, canon, props, pos, facing, pose, hold=False):
         phone = hipc + f * 0.22 + Vector((0, 0, 0.5))
     elif pose == "sit_kerb":
         phone = hipc + f * 0.18 + Vector((0, 0, 0.32))
-    if hold and pose in ("sit_car", "sit_kerb", "stand", "sit_chair"):
+    if hold and pose in ("sit_car", "sit_kerb", "stand", "sit_chair", "kneel"):
         handL, handR = phone - r * 0.05, phone + r * 0.05
     limb = 0.055 if H > 1.6 else 0.05
     U.between(f"{cid}_torso", hipc, chest, limb * 2.6, col, cloth)
@@ -119,4 +119,4 @@ def figure(col, cid, canon, props, pos, facing, pose, hold=False):
     tuft = P.get("tuft_extra_m")
     if tuft:
         U.sphere(f"{cid}_tuft", 0.03, head + Vector((0, 0, hh * 0.62 + tuft)), col, hair)
-    return {"head": head, "chest": chest, "hands": (handL + handR) / 2, "phone": phone, "facing": f}
+    return {"head": head, "chest": chest, "hands": (handL + handR) / 2, "phone": phone, "facing": f, "hip": hipc}

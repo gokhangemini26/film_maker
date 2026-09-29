@@ -13,6 +13,7 @@ from mathutils import Vector
 from . import util as U
 from . import sets as S
 from .characters import figure
+from . import phone as PH
 
 STREET_SCENES = {"SC01", "SC02", "SC04", "SC06"}
 DUSK = {"SC04", "SC05", "SC06"}
@@ -106,7 +107,7 @@ def pose_for(scene, shot_id, cid):
     if scene == "SC01":
         return "sit_car"
     if scene == "SC03":
-        return "kneel" if n >= 50 else "stand"
+        return "kneel" if n >= 20 else "stand"
     if scene == "SC04":
         return "kneel" if n == 40 else "sit_kerb"
     if scene == "SC06":
@@ -214,7 +215,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         props = (ch.get("canon") or {}).get("proportions") or {"height_m": 1.7}
         tmp = bpy.data.collections.new("fm.tmp." + ch["id"])
         rig.children.link(tmp) if False else bpy.context.scene.collection.children.link(tmp)
-        info = figure(tmp, ch["id"], canon, props, pos, facing, pose, hold=(ch["id"] == "ren" and scene not in ("SC02",) and pose != "kneel"))
+        info = figure(tmp, ch["id"], canon, props, pos, facing, pose, hold=True)
         for o in tmp.objects:
             mark(o)
         figs[ch["id"]] = (info, tmp)
@@ -222,7 +223,9 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
     def target(name):
         if name in figs:
             return figs[name][0]["head"] - Vector((0, 0, 0.1))
-        if name in ("phone_ren", "crank_charger") and "ren" in figs:
+        if name == "crank_charger" and "ren" in figs:
+            return figs["ren"][0]["hip"] + figs["ren"][0]["facing"] * 0.16 + Vector((0, 0, 0.14))
+        if name == "phone_ren" and "ren" in figs:
             return figs["ren"][0]["phone"]
         return {
             "passenger_door": Vector((0.2, 0.0, 0.7)),
@@ -234,40 +237,80 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg):
         }.get(name, Vector((cpos.x, cpos.y + 3, cpos.z)))
 
     tgt = target(cam_c.get("look_at", ""))
-    if (shot.get("composition") or {}).get("framing") == "insert" and cam_c.get("look_at", "") in ("phone_ren", "crank_charger") and (tgt - cpos).length < 0.75:
-        cam.location = tgt - (tgt - cpos).normalized() * 0.75  # blockout adjustment: keep the prop out of the near plane
+    if (shot.get("composition") or {}).get("framing") == "insert" and cam_c.get("look_at", "") in ("phone_ren", "crank_charger") and (tgt - cpos).length < 0.3:
+        cam.location = tgt - (tgt - cpos).normalized() * 0.3  # blockout adjustment: keep the prop out of the near plane
         cpos = cam.location.copy()
-    if "ren" in figs and ((scene == "SC01" and n == 110) or (scene == "SC04" and n >= 50)):
-        amb = canon.get("look.color.accent_power_amber") or {}
-        ac = amb.get("hex") and amb or {"hex": "#F5B940", "linear": U.lin("#F5B940")}
-        cr = U.box("crank." + sid, (0.16, 0.09, 0.09), figs["ren"][0]["phone"] + Vector((0.0, 0.0, -0.13)) + figs["ren"][0]["facing"] * 0.05,
-                   figs["ren"][1], U.toon(ac))
-        mark(cr)
     aim(cam, tgt)
     if cam_c.get("dof", {}).get("enabled"):
         cam_data.dof.focus_distance = max((target(cam_c.get("look_at", "")) - cpos).length, 0.1)
 
-    if "ren" in figs and scene != "SC02":
+    if "ren" in figs:
         i = figs["ren"][0]
-        ph = U.box("phone_ren." + sid, (0.071, 0.147, 0.0085), i["phone"], figs["ren"][1],
-                   U.toon({"hex": "#33333D", "linear": U.lin("#33333D")}))
-        ph.rotation_euler = (0, 0, math.atan2(i["facing"].y, i["facing"].x) + math.pi / 2)
-        sc = U.box("phone_ren_screen." + sid, (0.06, 0.13, 0.002), ph.location, figs["ren"][1],
-                   U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=0.9))
-        sc.rotation_euler = ph.rotation_euler
-        sc.location = ph.location + Vector((0, 0, 0.005))
-        rot = ph.rotation_euler
-        for k, (dx, dy, w_, h_, hx) in enumerate(((0.0, 0.058, 0.056, 0.012, "#3A3F55"), (-0.018, 0.0, 0.018, 0.008, "#F5B940"))):
-            ui = U.box(f"phone_ui{k}." + sid, (w_ * (1 if k == 0 else 1), h_, 0.0015), (0, 0, 0), figs["ren"][1],
-                       U.flat({"hex": hx, "linear": U.lin(hx)}, strength=0.9))
-            ui.rotation_euler = rot
-            off_ = Vector((dy if k == 0 else 0.06, dx if k == 0 else 0.02, 0)) if False else Vector((0, 0, 0))
-            ui.location = sc.location + Vector((0, 0, 0.002))
-            mark(ui)
-            ui.rotation_euler = rot
-            loc_local = Vector((-0.02 if k else 0.0, 0.055 if k == 0 else 0.055, 0))
-            ui.location = sc.location + rot.to_matrix() @ Vector((0.0 if k == 0 else 0.018, 0.05 if k == 0 else 0.05, 0.002))
-        mark(ph), mark(sc)
+        is_insert = (shot.get("composition") or {}).get("framing") == "insert" and cam_c.get("look_at", "") == "phone_ren"
+        zup = Vector((0, 0, 1))
+        toward = (cpos - i["phone"]) if is_insert else (i["head"] - i["phone"])
+        nz = toward.normalized() if toward.length > 1e-6 else zup
+        yv = zup - nz * zup.dot(nz)
+        yv = yv.normalized() if yv.length > 1e-4 else Vector((1, 0, 0))
+        xv = yv.cross(nz)
+        ui_assets = [a for a in shot.get("assets", []) if a.startswith("ui.")]
+        ph = PH.build_phone(figs["ren"][1], sid, i["phone"], xv, yv, nz, ui_assets,
+                            PH.screen_state(scene, n, ui_assets), PH.colors_for(shot, canon), screen_on=(scene != "SC06" or n < 90))
+        for o in figs["ren"][1].objects:
+            mark(o)
+        if is_insert:  # frame the part of the screen the shot is about (composition notes), staying square to the screen
+            ua = set(ui_assets)
+            if ua == {"ui.status_bar"}:
+                du, dv = 0.012, 0.056
+            elif "ui.compose_field" in ua:
+                du, dv = 0.0, 0.03
+            elif "ui.call_screen" in ua and n < 50:
+                du, dv = 0.0, 0.028
+            elif "ui.thread_sent_bubble" in ua:
+                du, dv = 0.005, 0.02
+            else:
+                du, dv = 0.0, 0.0
+            sh_ = xv.normalized() * du + yv.normalized() * dv
+            cam.location = cam.location + sh_
+            cpos = cam.location.copy()
+            aim(cam, i["phone"] + sh_)
+            if cam_c.get("dof", {}).get("enabled"):
+                cam_data.dof.focus_distance = max(((i["phone"] + sh_) - cpos).length, 0.1)
+    # crank charger: built for every shot that lists it (world.props.crank_charger); the pip is the only amber
+    if "ren" in figs and "world.props.crank_charger" in shot.get("assets", []):
+        i = figs["ren"][0]
+        f_ = i["facing"]
+        lap = i["hip"] + f_ * 0.16 + Vector((0, 0, 0.14))
+        cranking = scene == "SC04" and n >= 90 or scene == "SC06"
+        if scene == "SC04" and n == 50:
+            lap = i["hands"] + f_ * 0.05 - Vector((0, 0, 0.1))
+        yaw = math.atan2(f_.y, f_.x)
+        cr = U.box("crank_body." + sid, (0.16, 0.09, 0.09), lap, figs["ren"][1], U.toon({"hex": "#D6C592", "linear": U.lin("#D6C592")}), rot=(0, 0, yaw))
+        h_ = U.box("crank_handle." + sid, (0.03, 0.03, 0.09), lap + Vector((0, 0, 0.1)) - f_ * 0.04, figs["ren"][1], U.toon({"hex": "#B8A878", "linear": U.lin("#B8A878")}), rot=(0, 0, yaw))
+        amb = canon.get("look.color.accent_power_amber") or {}
+        ph_hex = amb.get("hex", "#F5B940") if cranking else "#6B6B5F"
+        pip = U.box("crank_pip." + sid, (0.02, 0.02, 0.012), lap + f_ * 0.0 + Vector((0, 0, 0.051)), figs["ren"][1], U.flat({"hex": ph_hex, "linear": U.lin(ph_hex)}), rot=(0, 0, yaw))
+        for o in (cr, h_, pip):
+            mark(o)
+    # Hana's phone (SC05): held when she is in the shot, else lying on the desk, square to the lens for inserts
+    if "world.props.phone_hana" in shot.get("assets", []):
+        st_ = PH.screen_state(scene, n, [])
+        cols_ = PH.colors_for(shot, canon)
+        zup = Vector((0, 0, 1))
+        if "hana" in figs:
+            hi = figs["hana"][0]
+            pos_, toward = hi["phone"], hi["head"] - hi["phone"]
+        else:
+            pos_ = S.ROOM_ORIGIN + Vector((0.25, -0.3, 0.75))
+            toward = cpos - pos_
+            pos_ = pos_ + toward.normalized() * 0.06
+        nz = toward.normalized()
+        yv = zup - nz * zup.dot(nz)
+        yv = yv.normalized() if yv.length > 1e-4 else Vector((1, 0, 0))
+        hp = PH.build_phone(figs["hana"][1] if "hana" in figs else rig, sid + "h", pos_, yv.cross(nz), yv, nz, ["ui.photo_only"], st_, cols_, body_hex="#3D3A4A")
+        mark(hp)
+        for o in hp.children:
+            mark(o)
     # cull static objects the camera sits inside (car body, seat backs, walls)
     culled = []
     bpy.context.view_layer.update()
