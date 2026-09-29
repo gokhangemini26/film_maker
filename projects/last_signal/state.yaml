@@ -4,7 +4,7 @@ title: Last Signal
 sandbox: false
 created_at: '2026-09-28T20:41:45Z'
 phase: PREVIEW
-phase_status: in_progress
+phase_status: awaiting_approval
 gates:
   G1:
     status: approved
@@ -116,7 +116,7 @@ gates:
     review_acknowledged: false
     amendments: 0
   G6:
-    status: pending
+    status: awaiting_approval
     decided_by: null
     decided_at: null
     notes: null
@@ -1015,5 +1015,5 @@ shots:
 authorizations: []
 changes:
   CHANGE-001: APPROVED
-ledger_seq: 28
-ledger_head: sha256:f6678ffdaabd882014bc38c354dcc27d10dc60ec9f3f20b14eddc9af54ee191f
+ledger_seq: 29
+ledger_head: sha256:75df76f1dd07162099f9c6d0566693be8aa1be5fb4429d88dfb277965ef5d94d
