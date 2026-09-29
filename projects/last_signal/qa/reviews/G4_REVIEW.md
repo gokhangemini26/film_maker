@@ -172,7 +172,8 @@ fm:
     (no look content depends on the door route); Q2 / finding 9 (Hana's room) resolved by human decision
     - keep the locked layout. All other findings unchanged.
   stamped_content_hash: sha256:a2c83484c758fb2bd7eefe88eae9c4f4880389e4f874eee69c8de357a1374987
-  stamp_note: character bible wording changed only for human decisions (door, desk); no G4 finding affected
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 verdict: WARN
 reviewed_gate: G4
 title: G4 review — Visual direction (style lock)

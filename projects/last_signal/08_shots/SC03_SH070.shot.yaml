@@ -217,3 +217,5 @@ derived_from:
 - ref: canon:world.props.crank_charger
   hash: sha256:6831cc87e82e108ae32e6d7bc1757f27563d8d23a1f7278b97e810b439bb259d
 stamped_content_hash: sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0
+stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+  and shots); no content revision needed.

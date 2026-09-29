@@ -17,10 +17,10 @@ ledger: 25 records, head 2c2e9d287eff
 | Gate | Name | Status | Decided by | Items approved |
 |---|---|---|---|---|
 | G1 | Creative direction | approved | human:gokhan_guler | 4 |
-| G2 | Story and screenplay | approved (DRIFTED) | human:gokhan_guler | 5 |
-| G3 | World and characters | approved (DRIFTED) | human:gokhan_guler | 4 |
-| G4 | Visual direction (style lock) | approved (DRIFTED) | human:gokhan_guler | 4 |
-| G5 | Storyboard and shots | approved (DRIFTED) | human:gokhan_guler | 42 |
+| G2 | Story and screenplay | approved | human:gokhan_guler | 5 |
+| G3 | World and characters | approved | human:gokhan_guler | 4 |
+| G4 | Visual direction (style lock) | approved | human:gokhan_guler | 4 |
+| G5 | Storyboard and shots | approved | human:gokhan_guler | 42 |
 | G6 | First Blender preview | pending | - | - |
 | G7 | Animation preview | pending | - | - |
 | G8 | Final render | pending | - | - |
@@ -33,219 +33,71 @@ LOCKED: 161
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
-| art_direction_bible | WORLD_CHARACTERS | APPROVED (stale) | b55a2438747b |
+| art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
-| character_bible | WORLD_CHARACTERS | APPROVED (stale) | 71e9d285acb3 |
-| cinematography_bible | CINEMATOGRAPHY | APPROVED (stale) | 0ece10f8b6c2 |
-| color_bible | LOOK | APPROVED (stale) | 1613e889e602 |
+| character_bible | WORLD_CHARACTERS | APPROVED | 71e9d285acb3 |
+| cinematography_bible | CINEMATOGRAPHY | APPROVED | 0ece10f8b6c2 |
+| color_bible | LOOK | APPROVED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
-| g2_review | SCREENPLAY | APPROVED (stale) | 0913c3ea1c36 |
-| g3_review | WORLD_CHARACTERS | APPROVED (stale) | d26db206b8cf |
-| g4_review | LOOK | APPROVED (stale) | a2c83484c758 |
-| g5_review | STORYBOARD | APPROVED (stale) | 51c65bce1415 |
-| lighting_bible | LOOK | APPROVED (stale) | 95224320170d |
-| scenes | SCREENPLAY | APPROVED (stale) | 137da02c736e |
-| screenplay | SCREENPLAY | APPROVED (stale) | 56d22d2e73f9 |
-| shot_list | STORYBOARD | APPROVED (stale) | a6a2b5dffb75 |
-| story_bible | STORY | APPROVED (stale) | 1604e946f2ee |
-| story_structure | STORY | APPROVED (stale) | d8a12c83b7c3 |
-| storyboard | STORYBOARD | APPROVED (stale) | 3463a5cadda1 |
-| visual_bible | LOOK | APPROVED (stale) | 4cb45f98d39b |
-| world_bible | WORLD_CHARACTERS | APPROVED (stale) | c5a7ce8fda07 |
+| g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
+| g3_review | WORLD_CHARACTERS | APPROVED | d26db206b8cf |
+| g4_review | LOOK | APPROVED | a2c83484c758 |
+| g5_review | STORYBOARD | APPROVED | 51c65bce1415 |
+| lighting_bible | LOOK | APPROVED | 95224320170d |
+| scenes | SCREENPLAY | APPROVED | 137da02c736e |
+| screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
+| shot_list | STORYBOARD | APPROVED | a6a2b5dffb75 |
+| story_bible | STORY | APPROVED | 1604e946f2ee |
+| story_structure | STORY | APPROVED | d8a12c83b7c3 |
+| storyboard | STORYBOARD | APPROVED | 3463a5cadda1 |
+| visual_bible | LOOK | APPROVED | 4cb45f98d39b |
+| world_bible | WORLD_CHARACTERS | APPROVED | c5a7ce8fda07 |
 
 ## Shots
 
 | Shot | Duration | Status | Stage |
 |---|---|---|---|
-| SC01_SH010 | 1.6667s | APPROVED (stale) | spec |
-| SC01_SH020 | 1.5833s | APPROVED (stale) | spec |
-| SC01_SH030 | 1.1667s | APPROVED (stale) | spec |
-| SC01_SH040 | 1.25s | APPROVED (stale) | spec |
-| SC01_SH050 | 1.8333s | APPROVED (stale) | spec |
-| SC01_SH060 | 1.4167s | APPROVED (stale) | spec |
-| SC01_SH070 | 2.4167s | APPROVED (stale) | spec |
-| SC01_SH080 | 1.25s | APPROVED (stale) | spec |
-| SC01_SH090 | 1s | APPROVED (stale) | spec |
-| SC01_SH100 | 2s | APPROVED (stale) | spec |
-| SC01_SH110 | 1.3333s | APPROVED (stale) | spec |
-| SC01_SH120 | 0.8333s | APPROVED (stale) | spec |
-| SC01_SH130 | 1.4167s | APPROVED (stale) | spec |
-| SC01_SH140 | 1.3333s | APPROVED (stale) | spec |
-| SC01_SH150 | 1.5s | APPROVED (stale) | spec |
-| SC02_SH010 | 0.75s | APPROVED (stale) | spec |
-| SC02_SH020 | 0.5833s | APPROVED (stale) | spec |
-| SC02_SH030 | 0.6667s | APPROVED (stale) | spec |
-| SC03_SH010 | 2.1667s | APPROVED (stale) | spec |
-| SC03_SH020 | 1.5s | APPROVED (stale) | spec |
-| SC03_SH030 | 1.0833s | APPROVED (stale) | spec |
-| SC03_SH040 | 0.9167s | APPROVED (stale) | spec |
-| SC03_SH050 | 1.25s | APPROVED (stale) | spec |
-| SC03_SH060 | 1.0833s | APPROVED (stale) | spec |
-| SC03_SH070 | 2s | APPROVED (stale) | spec |
-| SC04_SH010 | 1.9167s | APPROVED (stale) | spec |
-| SC04_SH020 | 1.3333s | APPROVED (stale) | spec |
-| SC04_SH030 | 1.5s | APPROVED (stale) | spec |
-| SC04_SH040 | 2.5s | APPROVED (stale) | spec |
-| SC04_SH050 | 3.3333s | APPROVED (stale) | spec |
-| SC04_SH060 | 2.8333s | APPROVED (stale) | spec |
-| SC04_SH070 | 1.0833s | APPROVED (stale) | spec |
-| SC04_SH080 | 2.4167s | APPROVED (stale) | spec |
-| SC04_SH090 | 1.1667s | APPROVED (stale) | spec |
-| SC05_SH010 | 1s | APPROVED (stale) | spec |
-| SC05_SH020 | 1.3333s | APPROVED (stale) | spec |
-| SC05_SH030 | 2.1667s | APPROVED (stale) | spec |
-| SC06_SH010 | 3.4167s | APPROVED (stale) | spec |
+| SC01_SH010 | 1.6667s | APPROVED | spec |
+| SC01_SH020 | 1.5833s | APPROVED | spec |
+| SC01_SH030 | 1.1667s | APPROVED | spec |
+| SC01_SH040 | 1.25s | APPROVED | spec |
+| SC01_SH050 | 1.8333s | APPROVED | spec |
+| SC01_SH060 | 1.4167s | APPROVED | spec |
+| SC01_SH070 | 2.4167s | APPROVED | spec |
+| SC01_SH080 | 1.25s | APPROVED | spec |
+| SC01_SH090 | 1s | APPROVED | spec |
+| SC01_SH100 | 2s | APPROVED | spec |
+| SC01_SH110 | 1.3333s | APPROVED | spec |
+| SC01_SH120 | 0.8333s | APPROVED | spec |
+| SC01_SH130 | 1.4167s | APPROVED | spec |
+| SC01_SH140 | 1.3333s | APPROVED | spec |
+| SC01_SH150 | 1.5s | APPROVED | spec |
+| SC02_SH010 | 0.75s | APPROVED | spec |
+| SC02_SH020 | 0.5833s | APPROVED | spec |
+| SC02_SH030 | 0.6667s | APPROVED | spec |
+| SC03_SH010 | 2.1667s | APPROVED | spec |
+| SC03_SH020 | 1.5s | APPROVED | spec |
+| SC03_SH030 | 1.0833s | APPROVED | spec |
+| SC03_SH040 | 0.9167s | APPROVED | spec |
+| SC03_SH050 | 1.25s | APPROVED | spec |
+| SC03_SH060 | 1.0833s | APPROVED | spec |
+| SC03_SH070 | 2s | APPROVED | spec |
+| SC04_SH010 | 1.9167s | APPROVED | spec |
+| SC04_SH020 | 1.3333s | APPROVED | spec |
+| SC04_SH030 | 1.5s | APPROVED | spec |
+| SC04_SH040 | 2.5s | APPROVED | spec |
+| SC04_SH050 | 3.3333s | APPROVED | spec |
+| SC04_SH060 | 2.8333s | APPROVED | spec |
+| SC04_SH070 | 1.0833s | APPROVED | spec |
+| SC04_SH080 | 2.4167s | APPROVED | spec |
+| SC04_SH090 | 1.1667s | APPROVED | spec |
+| SC05_SH010 | 1s | APPROVED | spec |
+| SC05_SH020 | 1.3333s | APPROVED | spec |
+| SC05_SH030 | 2.1667s | APPROVED | spec |
+| SC06_SH010 | 3.4167s | APPROVED | spec |
 
 ## Attention
 
-- G2: artifact:g2_review is stale: canon:story.message changed
-- G2: artifact:scenes is stale: upstream artifact:screenplay is stale
-- G2: artifact:screenplay is stale: canon:story.message changed
-- G2: artifact:story_bible is stale: canon:story.message changed
-- G2: artifact:story_structure is stale: upstream artifact:story_bible is stale
-- G3: artifact:art_direction_bible is stale: upstream artifact:g2_review is stale
-- G3: artifact:character_bible is stale: upstream artifact:g2_review is stale
-- G3: artifact:g3_review is stale: canon:story.message changed
-- G3: artifact:world_bible is stale: canon:story.message changed
-- G4: artifact:color_bible is stale: upstream artifact:g2_review is stale
-- G4: artifact:g4_review is stale: upstream artifact:g2_review is stale
-- G4: artifact:lighting_bible is stale: upstream artifact:g2_review is stale
-- G4: artifact:visual_bible is stale: upstream artifact:g2_review is stale
-- G5: artifact:cinematography_bible is stale: canon:story.message changed
-- G5: artifact:g5_review is stale: canon:story.message changed
-- G5: artifact:shot_list is stale: canon:story.message changed
-- G5: artifact:storyboard is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH010 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH020 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH030 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH040 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH050 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH060 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH070 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH080 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH090 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH100 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH110 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH120 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH130 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH140 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC01_SH150 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC02_SH010 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC02_SH020 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC02_SH030 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC03_SH010 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC03_SH020 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC03_SH030 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC03_SH040 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC03_SH050 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC03_SH060 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC03_SH070 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH010 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH020 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH030 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH040 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH050 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH060 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH070 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH080 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC04_SH090 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC05_SH010 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC05_SH020 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC05_SH030 is stale: upstream artifact:cinematography_bible is stale
-- G5: shot:SC06_SH010 is stale: upstream artifact:cinematography_bible is stale
-- stale: artifact:art_direction_bible
-- stale: artifact:character_bible
-- stale: artifact:cinematography_bible
-- stale: artifact:color_bible
-- stale: artifact:g2_review
-- stale: artifact:g3_review
-- stale: artifact:g4_review
-- stale: artifact:g5_review
-- stale: artifact:lighting_bible
-- stale: artifact:scenes
-- stale: artifact:screenplay
-- stale: artifact:shot_list
-- stale: artifact:story_bible
-- stale: artifact:story_structure
-- stale: artifact:storyboard
-- stale: artifact:visual_bible
-- stale: artifact:world_bible
-- stale: resolved:SC01_SH010
-- stale: resolved:SC01_SH020
-- stale: resolved:SC01_SH030
-- stale: resolved:SC01_SH040
-- stale: resolved:SC01_SH050
-- stale: resolved:SC01_SH060
-- stale: resolved:SC01_SH070
-- stale: resolved:SC01_SH080
-- stale: resolved:SC01_SH090
-- stale: resolved:SC01_SH100
-- stale: resolved:SC01_SH110
-- stale: resolved:SC01_SH120
-- stale: resolved:SC01_SH130
-- stale: resolved:SC01_SH140
-- stale: resolved:SC01_SH150
-- stale: resolved:SC02_SH010
-- stale: resolved:SC02_SH020
-- stale: resolved:SC02_SH030
-- stale: resolved:SC03_SH010
-- stale: resolved:SC03_SH020
-- stale: resolved:SC03_SH030
-- stale: resolved:SC03_SH040
-- stale: resolved:SC03_SH050
-- stale: resolved:SC03_SH060
-- stale: resolved:SC03_SH070
-- stale: resolved:SC04_SH010
-- stale: resolved:SC04_SH020
-- stale: resolved:SC04_SH030
-- stale: resolved:SC04_SH040
-- stale: resolved:SC04_SH050
-- stale: resolved:SC04_SH060
-- stale: resolved:SC04_SH070
-- stale: resolved:SC04_SH080
-- stale: resolved:SC04_SH090
-- stale: resolved:SC05_SH010
-- stale: resolved:SC05_SH020
-- stale: resolved:SC05_SH030
-- stale: resolved:SC06_SH010
-- stale: resolved:film
-- stale: shot:SC01_SH010
-- stale: shot:SC01_SH020
-- stale: shot:SC01_SH030
-- stale: shot:SC01_SH040
-- stale: shot:SC01_SH050
-- stale: shot:SC01_SH060
-- stale: shot:SC01_SH070
-- stale: shot:SC01_SH080
-- stale: shot:SC01_SH090
-- stale: shot:SC01_SH100
-- stale: shot:SC01_SH110
-- stale: shot:SC01_SH120
-- stale: shot:SC01_SH130
-- stale: shot:SC01_SH140
-- stale: shot:SC01_SH150
-- stale: shot:SC02_SH010
-- stale: shot:SC02_SH020
-- stale: shot:SC02_SH030
-- stale: shot:SC03_SH010
-- stale: shot:SC03_SH020
-- stale: shot:SC03_SH030
-- stale: shot:SC03_SH040
-- stale: shot:SC03_SH050
-- stale: shot:SC03_SH060
-- stale: shot:SC03_SH070
-- stale: shot:SC04_SH010
-- stale: shot:SC04_SH020
-- stale: shot:SC04_SH030
-- stale: shot:SC04_SH040
-- stale: shot:SC04_SH050
-- stale: shot:SC04_SH060
-- stale: shot:SC04_SH070
-- stale: shot:SC04_SH080
-- stale: shot:SC04_SH090
-- stale: shot:SC05_SH010
-- stale: shot:SC05_SH020
-- stale: shot:SC05_SH030
-- stale: shot:SC06_SH010
+Nothing outstanding.

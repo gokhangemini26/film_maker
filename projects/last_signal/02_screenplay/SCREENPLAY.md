@@ -37,7 +37,7 @@ fm:
   - ref: canon:story.escalation
     hash: sha256:8f6ad8618119799ff3b76b9f8adb710ed3e379445ac9b0aad0c1634793f79067
   - ref: canon:story.message
-    hash: sha256:5225cd2112b4a2e40f5bc368d6c925345067c99b528df66e9af18f1cef4305e6
+    hash: sha256:1af4da69fe957aae4808a1834171aeef9813455dde4e69d8fd7103ff068e368e
   - ref: canon:story.locations
     hash: sha256:77eef6b526928eb349658b62bac2e39606b5de9fba946abeabed7db61efd4cba
   - ref: canon:story.ending
@@ -52,6 +52,8 @@ fm:
   summary: Wordless 60 s screenplay for Last Signal in six scenes (car, street, shop, kerb, her room,
     kerb); the typed invitation is the only readable text, with three wording options for G2.
   stamped_content_hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Screenplay
 ---
 [[Wordless film. No dialogue anywhere. The phone shows only icons, numbers and colour. The typed English invitation is the only readable text. No on-screen title card or credits appear in these scenes; that question (G1 review item 1) is still open and is not the screenplay's to decide.]]

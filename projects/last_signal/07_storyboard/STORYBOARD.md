@@ -26,6 +26,8 @@ fm:
   summary: Text storyboard for all 38 shots of Last Signal - frame layers, eye path, movement, sound cue
     and transition per shot, in film order.
   stamped_content_hash: sha256:3463a5cadda1a2c398d82d35200711681b27eac38e147b5d593d024aa8c1dbce
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Storyboard
 ---
 # Storyboard: Last Signal

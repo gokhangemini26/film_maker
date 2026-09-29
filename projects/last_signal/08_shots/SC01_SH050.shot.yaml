@@ -211,3 +211,5 @@ derived_from:
 - ref: canon:story.arc.ren
   hash: sha256:df0ad68cc2484fa1482960f99791ad9769c312347df703ae51042da2d471b9d8
 stamped_content_hash: sha256:cb7a17707d9695ceb095f49782b8bf0ce710df5f957ec4044ee32a8d0bd7150d
+stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+  and shots); no content revision needed.

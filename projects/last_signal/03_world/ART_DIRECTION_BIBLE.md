@@ -70,7 +70,8 @@ fm:
   summary: Art direction bible for Last Signal — buildable sets in metres for the street, car, shop and
     Hana's room, visual hierarchy per space, material families, the hero-prop table and the M3 build list.
   stamped_content_hash: sha256:b55a2438747bcd566ab5452b1c55534e8808728c2840c4ced1c1339201f6c001
-  stamp_note: door route decided by human; minimal wording fix
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Art Direction Bible
 ---
 # Art Direction Bible — Last Signal

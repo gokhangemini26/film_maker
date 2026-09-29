@@ -61,7 +61,7 @@ fm:
   - ref: canon:story.escalation
     hash: sha256:8f6ad8618119799ff3b76b9f8adb710ed3e379445ac9b0aad0c1634793f79067
   - ref: canon:story.message
-    hash: sha256:5225cd2112b4a2e40f5bc368d6c925345067c99b528df66e9af18f1cef4305e6
+    hash: sha256:1af4da69fe957aae4808a1834171aeef9813455dde4e69d8fd7103ff068e368e
   - ref: canon:story.locations
     hash: sha256:77eef6b526928eb349658b62bac2e39606b5de9fba946abeabed7db61efd4cba
   - ref: canon:story.ending
@@ -70,6 +70,8 @@ fm:
     locked canon. Open points are pacing of the last 10 s, the repeated gag rhythm, one door-continuity
     gap, why he can't just send, and three human choices.
   stamped_content_hash: sha256:0913c3ea1c368eb0b69d78afbe541f6d909745e730239cb9d598c420b20b5565
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 verdict: WARN
 reviewed_gate: G2
 title: G2 review — Story and screenplay

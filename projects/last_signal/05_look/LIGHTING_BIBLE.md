@@ -111,8 +111,8 @@ fm:
     passes to the sky's afterglow at the end. Motivation maps, per-scene plans, light events, the arc,
     and EEVEE feasibility.
   stamped_content_hash: sha256:95224320170d0ddbd153032d19139e397472ec4d9c95e12212ea9a97a78ca2f3
-  stamp_note: only G3 review/world bibles changed (door-route wording, human decision); document does
-    not state the door route
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Lighting Bible
 ---
 # Lighting Bible: Last Signal

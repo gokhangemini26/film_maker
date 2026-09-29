@@ -105,9 +105,8 @@ fm:
     and Hana (1.60 m, rounded bob, pale headphones, sage knit), with silhouettes, proportions checked
     against the sets, wardrobe per scene, movement, expressions and provider-agnostic proxy representation.
   stamped_content_hash: sha256:71e9d285acb36dc68c5f5a59a3678b05dccd38d1f34595550de52325379cfbec
-  stamp_note: 'G3 findings 23/24: human decided SC02 exit door (kerb-side passenger door, left open) and
-    kept Hana''s locked desk layout (left profile, window ahead of her face); minimal bible wording only,
-    no canon change'
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Character Bible
 ---
 # Character Bible: Last Signal

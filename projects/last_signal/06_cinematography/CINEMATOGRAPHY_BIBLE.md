@@ -61,7 +61,7 @@ fm:
   - ref: canon:story.setup_cues
     hash: sha256:3c1e09bf27191aa14554f013c0f14778e5d9cb35ce687c17a94e500bacfd9e21
   - ref: canon:story.message
-    hash: sha256:5225cd2112b4a2e40f5bc368d6c925345067c99b528df66e9af18f1cef4305e6
+    hash: sha256:1af4da69fe957aae4808a1834171aeef9813455dde4e69d8fd7103ff068e368e
   - ref: canon:story.crank_plant
     hash: sha256:89f02ddf8ea05d7ac2249eea269396b53f51f1dc26d4bd2bc19680689a381c6a
   - ref: canon:story.ending
@@ -229,7 +229,8 @@ fm:
     mean judgement/decision, a static camera with two pushes, west-is-screen-left geography, phone-insert
     legibility rules, the jacket-off-sky commitment, and a 1440-frame rhythm plan.
   stamped_content_hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
-  stamp_note: upstream reviews/character bible re-stamped for human wording decisions; no camera change
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Cinematography Bible
 ---
 # Cinematography Bible: Last Signal

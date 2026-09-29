@@ -18,6 +18,8 @@ fm:
   summary: Nine-beat, 60 s structure for Last Signal — two comic failures (car, shop), one clean turn
     at 34 s, a 26 s tender third.
   stamped_content_hash: sha256:d8a12c83b7c349e115615b4a1d07b7f27082e08ec5109da940295a188ee99f3c
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Story Structure
 ---
 # Story Structure — Last Signal

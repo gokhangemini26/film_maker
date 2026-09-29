@@ -113,7 +113,7 @@ fm:
   - ref: canon:tone.ending_restraint
     hash: sha256:96e2bcf71a89d916ed0ce17fe4ccdc55c000fef096ccaf31653c15b648f4f0ad
   - ref: canon:story.message
-    hash: sha256:5225cd2112b4a2e40f5bc368d6c925345067c99b528df66e9af18f1cef4305e6
+    hash: sha256:1af4da69fe957aae4808a1834171aeef9813455dde4e69d8fd7103ff068e368e
   - ref: canon:camera.format
     hash: sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea
   - ref: canon:camera.lens_set
@@ -199,6 +199,8 @@ fm:
   - ref: canon:continuity.hana.headphones
     hash: sha256:00dc5293c2843c67e26e1b1a163b027eb1d134338a1ac0927ef2f552bd4dd106
   stamped_content_hash: sha256:51c65bce141564455ad4ffa003c9039a53edfa85ec4995abf2e92ac3567a6d8d
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 verdict: WARN
 reviewed_gate: G5
 title: G5 review — Storyboard and shots

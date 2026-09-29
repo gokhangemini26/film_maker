@@ -63,7 +63,7 @@ fm:
   - ref: canon:story.escalation
     hash: sha256:8f6ad8618119799ff3b76b9f8adb710ed3e379445ac9b0aad0c1634793f79067
   - ref: canon:story.message
-    hash: sha256:5225cd2112b4a2e40f5bc368d6c925345067c99b528df66e9af18f1cef4305e6
+    hash: sha256:1af4da69fe957aae4808a1834171aeef9813455dde4e69d8fd7103ff068e368e
   - ref: canon:story.locations
     hash: sha256:77eef6b526928eb349658b62bac2e39606b5de9fba946abeabed7db61efd4cba
   - ref: canon:story.ending
@@ -165,7 +165,8 @@ fm:
     car headroom, scale claims, the SC02 timing wording, the repeated relief pose, and the human questions
     not yet answered.
   stamped_content_hash: sha256:d26db206b8cf3d05c12fee52b938b3ddcfbffb50fc3dd4b5976c757e85f75c05
-  stamp_note: character bible wording updated for human decisions (door, desk); review already annotated
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 verdict: WARN
 reviewed_gate: G3
 title: G3 review — World and characters

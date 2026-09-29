@@ -119,8 +119,8 @@ fm:
     dusk sky, a wordless phone UI palette, per-scene character colour models and separation checks, and
     the exposure philosophy.
   stamped_content_hash: sha256:1613e889e602facdc233fd101e164d12b9266915e59c8c6c73c458b9970481b9
-  stamp_note: only G3 review/world bibles changed (door-route wording, human decision); document does
-    not state the door route
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Colour Bible
 ---
 # Colour Bible: Last Signal

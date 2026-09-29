@@ -18,6 +18,8 @@ fm:
   - intent.soft_but_cinematic
   summary: Six-scene index of the Last Signal screenplay, 60 s total; beats 1-9 mapped to SC01-SC06.
   stamped_content_hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 scenes:
 - scene_id: SC01
   heading: INT. REN'S CAR - GOLDEN HOUR

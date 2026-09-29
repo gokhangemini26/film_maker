@@ -53,7 +53,7 @@ fm:
   - ref: canon:story.escalation
     hash: sha256:8f6ad8618119799ff3b76b9f8adb710ed3e379445ac9b0aad0c1634793f79067
   - ref: canon:story.message
-    hash: sha256:5225cd2112b4a2e40f5bc368d6c925345067c99b528df66e9af18f1cef4305e6
+    hash: sha256:1af4da69fe957aae4808a1834171aeef9813455dde4e69d8fd7103ff068e368e
   - ref: canon:story.locations
     hash: sha256:77eef6b526928eb349658b62bac2e39606b5de9fba946abeabed7db61efd4cba
   - ref: canon:story.ending
@@ -68,6 +68,8 @@ fm:
   summary: Story bible for Last Signal — Ren's unanswered call, car and shop failures on one street, the
     crank he had shoved aside, the invitation sent, Hana's smile, his dark screen.
   stamped_content_hash: sha256:1604e946f2eeda770e916acb21b0dcf1777fb847dc583f6ba72fb9659452742e
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Story Bible
 ---
 # Story Bible — Last Signal

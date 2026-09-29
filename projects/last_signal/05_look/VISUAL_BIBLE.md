@@ -95,8 +95,8 @@ fm:
     softly painted pastel backgrounds, three motifs (phone glow, power amber, one sky), a wordless phone
     UI, originality guards against the Shinkai-adjacency risk, and 23 frame-checkable style-lock rules.
   stamped_content_hash: sha256:4cb45f98d39bc0aba8096d37abb48e51feaa34e435b64897cb0b7253833303ea
-  stamp_note: only G3 review/world bibles changed (door-route wording, human decision); document does
-    not state the door route
+  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
+    and shots); no content revision needed.
 title: Visual Bible
 ---
 # Visual Bible: Last Signal
