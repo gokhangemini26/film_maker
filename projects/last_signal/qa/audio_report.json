@@ -1,0 +1,361 @@
+{
+ "human_supply": [
+  {
+   "licence": "UNKNOWN",
+   "need": "Ren's breaths, recorded by phone, 48 kHz mono, about 16 short takes: rehearsed breath in (SC01_SH040 breath_in, 6 f); stuck exhale (SC01_SH090 stuck_exhale, 7 f); long relieved exhale (SC01_SH130 relieved_breath, 17 f); small out-breath (SC01_SH150 out_breath, 10 f); running breath (SC02_SH020 step_l_1); long exhale (SC03_SH040 long_exhale, 15 f); small breath in (SC04_SH030 breath_in, 9 f); breath in at the knob (SC04_SH050 arm_out_stop); a crank-locked cycle (in 8-12 f / out 12 f, one per handle_top, SC04_SH050-SH080); the long release (SC04_SH090 release_breath, 15 f); long easy in/out (SC06_SH010 look_up_arrives, 12 f + 14 f)",
+   "note": "no voice, no words: breath only (tone.wordless)",
+   "shots": [
+    "SC01_SH040",
+    "SC01_SH090",
+    "SC01_SH130",
+    "SC01_SH150",
+    "SC02_SH020",
+    "SC03_SH040",
+    "SC04_SH030",
+    "SC04_SH050",
+    "SC04_SH060",
+    "SC04_SH070",
+    "SC04_SH080",
+    "SC04_SH090",
+    "SC06_SH010"
+   ],
+   "sound": "body.breath_placeholder",
+   "source": "recorded",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "Ren's small sigh as the held breath goes out (SC01_SH060 held_breath_out, about 10 f); 3 takes",
+   "note": null,
+   "shots": [
+    "SC01_SH060"
+   ],
+   "sound": "body.sigh_placeholder",
+   "source": "recorded",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "Hana: a breath through the nose that might be a laugh (SC05_SH030 smile_onset +6 f, about 9 f); 3 takes, no voice",
+   "note": null,
+   "shots": [
+    "SC05_SH030"
+   ],
+   "sound": "body.nose_laugh_placeholder",
+   "source": "recorded",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.footsteps_pavement: running footsteps on dry pavement, trainers, 9 single steps (SC02_SH010 foot_pavement_r/l, run_contact_1/2; SC02_SH020 step_r_1, step_l_1, step_r_2; SC02_SH030 step_l_1, step_r_plant)",
+   "note": "stand-in in the mix: fx.soft_bump PLACEHOLDER",
+   "shots": [
+    "SC02_SH010",
+    "SC02_SH020",
+    "SC02_SH030"
+   ],
+   "sound": "fx.soft_bump",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.footsteps_shop: running steps on a shop floor (vinyl/tile), 6 run + 2 braking steps (SC03_SH010 entry_step +0/6/12/18/24/30, brake_steps +0/4)",
+   "note": "stand-in: fx.soft_bump PLACEHOLDER",
+   "shots": [
+    "SC03_SH010"
+   ],
+   "sound": "fx.soft_bump",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.knees_and_body: both knees down on a shop floor (SC03_SH010 knees_land); one knee on pavement (SC04_SH040 knee_down); sitting down softly on a kerb (SC04_SH040 seat_land)",
+   "note": "stand-in: fx.soft_bump PLACEHOLDER",
+   "shots": [
+    "SC03_SH010",
+    "SC04_SH040"
+   ],
+   "sound": "fx.soft_bump",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.shop_door_push: a glass shop door pushed open by hand (SC02_SH030 door_push)",
+   "note": "stand-in: fx.soft_bump PLACEHOLDER",
+   "shots": [
+    "SC02_SH030"
+   ],
+   "sound": "fx.soft_bump",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.pencil: a pencil laid down on a sketchbook page (SC05_SH020 pencil_down)",
+   "note": "stand-in: fx.soft_bump PLACEHOLDER",
+   "shots": [
+    "SC05_SH020"
+   ],
+   "sound": "fx.soft_bump",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.cloth: a phone laid on a jacket chest under a flat hand (SC06_SH010 phone_on_chest)",
+   "note": "stand-in: fx.soft_bump PLACEHOLDER",
+   "shots": [
+    "SC06_SH010"
+   ],
+   "sound": "fx.soft_bump",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.seat_creak: a car seat (fabric, springs) creaking as he sits up (SC01_SH060 reset_burst)",
+   "note": "stand-in: fx.plastic_scuff PLACEHOLDER",
+   "shots": [
+    "SC01_SH060"
+   ],
+   "sound": "fx.plastic_scuff",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.cloth: jacket/trouser cloth as he backs out of the car with the crank (SC04_SH040 crank_lift)",
+   "note": "stand-in: fx.plastic_scuff PLACEHOLDER",
+   "shots": [
+    "SC04_SH040"
+   ],
+   "sound": "fx.plastic_scuff",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "foley.pencil: a short pencil stroke on paper (SC05_SH020 f0-2); foley.headphones_slide: over-ear headphones slid down past hair to the neck (SC05_SH020 headphones_slide, 7 f); foley.phone_handling: a phone lifted off a wooden desk (SC05_SH020 phone_grip)",
+   "note": "stand-in: fx.plastic_scuff PLACEHOLDER",
+   "shots": [
+    "SC05_SH020"
+   ],
+   "sound": "fx.plastic_scuff",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "one or two soft birdsong phrases outside a closed car, dusk (SC01_SH010, around f10; SC01_SH150, around f28): board 'a bird'. Not in the mix yet: no synth stand-in (a fake bird would be worse than none)",
+   "note": null,
+   "shots": [
+    "SC01_SH010",
+    "SC01_SH150"
+   ],
+   "sound": "street.bird",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "a distant traffic wash for the dusk street (SC04, SC06) and a better distant car pass for SC03_SH070 (replaces amb.distant_car_pass). Optional",
+   "note": null,
+   "shots": [
+    "SC03_SH070",
+    "SC04_SH010",
+    "SC06_SH010"
+   ],
+   "sound": "street.distant_traffic",
+   "source": "library",
+   "status": "NEEDED"
+  },
+  {
+   "licence": "UNKNOWN",
+   "need": "Hana's headphone music: 3-5 s of a track she would listen to, leaking faintly from closed headphones; the pipeline lowpasses and levels it (SC05_SH010 f0-23, drops away at SC05_SH020 headphones_slide f12-19). Not in the mix: agents do not generate music; without it SC05 is room tone only",
+   "note": "must be the human's own composition or a track with a written licence; no lyrics (tone.wordless)",
+   "shots": [
+    "SC05_SH010",
+    "SC05_SH020"
+   ],
+   "sound": "music.headphone_leak",
+   "source": "licensed",
+   "status": "NEEDED"
+  }
+ ],
+ "human_supply_open": 15,
+ "levels": {
+  "integrated_lufs": -16.4,
+  "lufs_approx": -16.39,
+  "lufs_source": "ffmpeg-ebur128",
+  "rms_dbfs": -18.35,
+  "sample_peak_dbfs": -1.74,
+  "targets": {
+   "integrated_lufs": -16.0,
+   "lufs_tolerance": 1.0,
+   "true_peak_dbtp": -1.0
+  },
+  "true_peak_dbtp": -1.7
+ },
+ "licences": [],
+ "mode": "preview",
+ "placeholders": [
+  {
+   "cues": [
+    "c_SC01_SH040_breath_in",
+    "c_SC01_SH090_exhale",
+    "c_SC01_SH130_relief",
+    "c_SC01_SH150_out_breath",
+    "c_SC02_SH020_run_breath",
+    "c_SC03_SH040_exhale",
+    "c_SC04_SH030_breath_in",
+    "c_SC04_SH050_breath_in0",
+    "c_SC04_SH050_breath_in1",
+    "c_SC04_SH050_breath_knob",
+    "c_SC04_SH050_breath_out",
+    "c_SC04_SH050_breath_out0",
+    "c_SC04_SH060_breath_in",
+    "c_SC04_SH060_breath_out",
+    "c_SC04_SH070_breath_in",
+    "c_SC04_SH070_breath_out",
+    "c_SC04_SH080_breath_in0",
+    "c_SC04_SH080_breath_in1",
+    "c_SC04_SH080_breath_out",
+    "c_SC04_SH090_release",
+    "c_SC06_SH010_breath_in",
+    "c_SC06_SH010_breath_out"
+   ],
+   "sound": "body.breath_placeholder"
+  },
+  {
+   "cues": [
+    "c_SC05_SH030_nose_laugh"
+   ],
+   "sound": "body.nose_laugh_placeholder"
+  },
+  {
+   "cues": [
+    "c_SC01_SH060_sigh"
+   ],
+   "sound": "body.sigh_placeholder"
+  },
+  {
+   "cues": [
+    "c_SC01_SH060_seat_creak",
+    "c_SC04_SH040_cloth",
+    "c_SC05_SH020_headphones",
+    "c_SC05_SH020_pencil_stroke",
+    "c_SC05_SH020_phone_grip"
+   ],
+   "sound": "fx.plastic_scuff"
+  },
+  {
+   "cues": [
+    "c_SC02_SH010_foot_pavement_l",
+    "c_SC02_SH010_foot_pavement_r",
+    "c_SC02_SH010_run_contact_1",
+    "c_SC02_SH010_run_contact_2",
+    "c_SC02_SH020_step_l_1",
+    "c_SC02_SH020_step_r_1",
+    "c_SC02_SH020_step_r_2",
+    "c_SC02_SH030_door_push",
+    "c_SC02_SH030_step_l_1",
+    "c_SC02_SH030_step_r_plant",
+    "c_SC03_SH010_knees",
+    "c_SC03_SH010_step_brake_steps_00",
+    "c_SC03_SH010_step_brake_steps_04",
+    "c_SC03_SH010_step_entry_step_00",
+    "c_SC03_SH010_step_entry_step_06",
+    "c_SC03_SH010_step_entry_step_12",
+    "c_SC03_SH010_step_entry_step_18",
+    "c_SC03_SH010_step_entry_step_24",
+    "c_SC03_SH010_step_entry_step_30",
+    "c_SC04_SH040_knee",
+    "c_SC04_SH040_seat",
+    "c_SC05_SH020_pencil_down",
+    "c_SC06_SH010_phone_chest"
+   ],
+   "sound": "fx.soft_bump"
+  }
+ ],
+ "rows": [
+  {
+   "findings": [
+    [
+     "WARN",
+     "AUDIO_PLACEHOLDER 12_post/AUDIO_CUES.yaml: body.breath_placeholder is a PLACEHOLDER used by 22 cue(s) (c_SC01_SH040_breath_in, c_SC01_SH090_exhale, c_SC01_SH130_relief, c_SC01_SH150_out_breath, c_SC02_SH020_run_breath, c_SC03_SH040_exhale ...): the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "AUDIO_PLACEHOLDER 12_post/AUDIO_CUES.yaml: body.nose_laugh_placeholder is a PLACEHOLDER used by 1 cue(s) (c_SC05_SH030_nose_laugh): the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "AUDIO_PLACEHOLDER 12_post/AUDIO_CUES.yaml: body.sigh_placeholder is a PLACEHOLDER used by 1 cue(s) (c_SC01_SH060_sigh): the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "AUDIO_PLACEHOLDER 12_post/AUDIO_CUES.yaml: fx.plastic_scuff is a PLACEHOLDER used by 5 cue(s) (c_SC01_SH060_seat_creak, c_SC04_SH040_cloth, c_SC05_SH020_headphones, c_SC05_SH020_pencil_stroke, c_SC05_SH020_phone_grip): the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "AUDIO_PLACEHOLDER 12_post/AUDIO_CUES.yaml: fx.soft_bump is a PLACEHOLDER used by 23 cue(s) (c_SC02_SH010_foot_pavement_l, c_SC02_SH010_foot_pavement_r, c_SC02_SH010_run_contact_1, c_SC02_SH010_run_contact_2, c_SC02_SH020_step_l_1, c_SC02_SH020_step_r_1 ...): the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "PLACEHOLDER body.breath_placeholder is in the mix (22 cue(s)): stands in until the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "PLACEHOLDER body.nose_laugh_placeholder is in the mix (1 cue(s)): stands in until the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "PLACEHOLDER body.sigh_placeholder is in the mix (1 cue(s)): stands in until the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "PLACEHOLDER fx.plastic_scuff is in the mix (5 cue(s)): stands in until the human supplies the real sound"
+    ],
+    [
+     "WARN",
+     "PLACEHOLDER fx.soft_bump is in the mix (23 cue(s)): stands in until the human supplies the real sound"
+    ]
+   ],
+   "shot": "FILM"
+  }
+ ],
+ "schema": "fm.qa_audio/1",
+ "silence": [
+  {
+   "floor_db": -50.0,
+   "from_f": 460.0,
+   "id": "sil_SC01_SH140",
+   "rms_dbfs": -60.54,
+   "to_f": 492.0
+  },
+  {
+   "floor_db": -50.0,
+   "from_f": 728.0,
+   "id": "sil_SC03_SH050_after_clunk",
+   "rms_dbfs": -120.0,
+   "to_f": 742.0
+  },
+  {
+   "floor_db": -50.0,
+   "from_f": 742.0,
+   "id": "sil_SC03_SH060",
+   "rms_dbfs": -120.0,
+   "to_f": 768.0
+  }
+ ],
+ "summary": {
+  "fail": 0,
+  "info": 0,
+  "shots": 0,
+  "warn": 1
+ },
+ "sync_points": 66
+}

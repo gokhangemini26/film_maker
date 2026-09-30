@@ -566,6 +566,47 @@ def blender_preview(c: Ctx, shots, width, draft, jobs):
         sys.exit(1)
 
 
+@blender_group.command("frames")
+@click.option("--scope", help="shot:ID[,ID] | scene:SCxx | shots:A..B (default: whole film).")
+@click.option("--frames", "frames_spec", help="Shot-local frames, e.g. 12,f24,30-34,last.")
+@click.option("--every-key", is_flag=True, help="The anim file's preview_frames.")
+@click.option("--preview-frame", is_flag=True, help="The shot's designated preview_frame.")
+@click.option("--draft", is_flag=True, help="Use the bpy module (not the pinned Blender): never evidence.")
+@click.option("--width", default=480, show_default=True)
+@click.option("--jobs", default=1, show_default=True, help="Parallel Blender processes.")
+@click.pass_obj
+def blender_frames(c: Ctx, scope, frames_spec, every_key, preview_frame, draft, width, jobs):
+    """Render chosen animation frames to 10_blender/frames/<SHOT>/ plus a contact strip (working images, not recorded)."""
+    from .blenderrun import frames as run
+
+    r = run(c.project(), c.repo, scope=scope, frames=frames_spec, every_key=every_key, preview_frame=preview_frame,
+            draft=draft, width=width, jobs=jobs)
+    click.echo(f"rendered frames for {len(r['rendered'])} shot(s) with {r['backend']}; failed: {', '.join(r['failed']) or 'none'}")
+    for sid, p in r["strips"].items():
+        click.echo(f"  {sid}: {p}")
+    if r["failed"]:
+        sys.exit(1)
+
+
+@blender_group.command("playblast")
+@click.option("--scope", help="shot:ID[,ID] | scene:SCxx | shots:A..B (default: whole film).")
+@click.option("--draft", is_flag=True, help="Use the bpy module (not the pinned Blender): never evidence.")
+@click.option("--width", default=640, show_default=True)
+@click.option("--jobs", default=1, show_default=True, help="Parallel Blender processes.")
+@click.option("--resume", is_flag=True, help="Keep frames already on disk.")
+@click.pass_obj
+def blender_playblast(c: Ctx, scope, draft, width, jobs, resume):
+    """Render every frame of the shots in scope, stamp shot id + frame, encode <SHOT>.mp4 (and film.mp4 for the whole film)."""
+    from .blenderrun import playblast as run
+
+    r = run(c.project(), c.repo, scope=scope, draft=draft, width=width, jobs=jobs, resume=resume)
+    click.echo(f"playblast of {len(r['rendered'])} shot(s) with {r['backend']}; failed: {', '.join(r['failed']) or 'none'}")
+    if r["film"]:
+        click.echo(f"  film: {r['film']}")
+    if r["failed"]:
+        sys.exit(1)
+
+
 @blender_group.command("build")
 @click.option("--draft", is_flag=True, help="Use the bpy module (not the pinned Blender): never G6 evidence.")
 @click.option("--json", "as_json", is_flag=True, help="Print the full built/unchanged/removed report as JSON.")

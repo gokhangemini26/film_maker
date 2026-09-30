@@ -18,6 +18,13 @@ projects/*/11_render/**/*.mp4
 projects/*/12_post/**/*.mp4
 projects/*/12_post/**/*.wav
 projects/*/13_delivery/**/*.mp4
+# M6 post/playblast media (animatic, playblast, master mezzanine, bumper, stems)
+projects/*/10_blender/**/*.mp4
+projects/*/12_post/**/*.mov
+projects/*/12_post/**/*.mkv
+projects/*/13_delivery/**/*.mov
+projects/*/13_delivery/**/*.mkv
+projects/*/13_delivery/**/*.wav
 library/assets/**/*.blend1
 
 # Local-only
@@ -32,3 +39,7 @@ projects/*/.fm/logs/
 Thumbs.db
 .vscode/
 .idea/
+
+# animation working frames and playblasts (never committed)
+projects/*/10_blender/frames/
+projects/*/10_blender/playblast/

@@ -45,3 +45,24 @@ def test_draft_preview_renders_and_records_derived_nodes(sandbox):
     assert (sandbox.dir / "10_blender" / "previews" / f"{sid}.png").exists()
     rec = sandbox.load().derived[f"render:preview_{sid}"]
     assert "draft" in (rec.notes or "")
+
+
+def test_scope_shots_and_frame_command(sandbox, monkeypatch, tmp_path):
+    _ready(sandbox)
+    ids = blenderrun._shot_ids(sandbox, None)
+    assert blenderrun.scope_shots(sandbox, None) == ids
+    assert blenderrun.scope_shots(sandbox, f"shot:{ids[0]}") == [ids[0]]
+    assert blenderrun.scope_shots(sandbox, ids[0]) == [ids[0]]
+    scene = ids[0].split("_")[0]
+    assert all(s.startswith(scene + "_") for s in blenderrun.scope_shots(sandbox, f"scene:{scene}"))
+    with pytest.raises(FMError):
+        blenderrun.scope_shots(sandbox, "wat:1")
+    monkeypatch.setenv("FM_BLENDER", str(tmp_path / "blender"))
+    (tmp_path / "blender").write_text("")
+    monkeypatch.setattr(blenderrun, "_pinned_version", lambda exe: "blender-test", raising=False)
+    try:
+        cmd, _ = blenderrun._frame_cmd(sandbox.repo, draft=False, resolved=tmp_path, out=tmp_path, sid="S", width=64, spec="1,2",
+                                       stamp=True, samples=None, fast=False, resume=False)
+    except FMError:  # version pin check not satisfiable without a real Blender
+        return
+    assert "--python" in cmd and cmd[-9:][2] == "S" and "stamp" in cmd

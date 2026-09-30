@@ -1,2 +1,328 @@
 domain: audio
-entries: []
+entries:
+- id: audio.principles
+  statement: |
+    Strictly wordless sound. No voice of any kind: no speech, no TTS, no voicemail greeting, no spoken
+    answer; non-verbal breaths, sighs and a nose-laugh only. Dynamic range is soft but cinematic: quiet
+    beds, sparse sounds with real transients, one real silence. Before the turn (SC01-SC03) the sound is
+    comically dense and busy (starter, coughs, clunks, hums, chimes); from the moment he takes up the crank
+    (SC04_SH040) the film hears only the ratchet, his breath and the quiet street.
+  value:
+    speech: false
+    tts: false
+    nonverbal_body_sounds: allowed
+    density_before_turn: busy
+    density_after_turn: ratchet_breath_street_only
+    turn_point: SC04_SH040
+    world_never_digitally_silent_except: SC03_SH050 f16 to SC03_SH060 end
+  rationale: |
+    Choice: carry tone.wordless into sound exactly, and make the tonal turn audible as a drop in density.
+    Mechanism: comedy of bad timing needs sounds that land on the frame (the cough, the clunk) and pile
+    up, so the mishaps read as the world talking back; after the turn, removing everything except the
+    ratchet and breath makes the audience listen to his effort, which is what makes the send feel earned.
+    Rejected: a uniform medium density across the film, which flattens the turn so the crank sequence
+    sounds like one more mishap.
+  serves:
+  - intent.comic_then_tender
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  depends_on:
+  - tone.wordless
+  - tone.the_turn
+  - tone.comedy_source
+  tag: DECISION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+- id: audio.score
+  statement: |
+    No underscore. The film has no non-diegetic music; the ratchet and his breath are the score. Human
+    decision D1. Hana's headphone leak in SC05 is diegetic and is a separate human-supplied asset, not
+    score; no agent composes or generates it.
+  value:
+    underscore: none
+    decision: D1
+    diegetic_music: SC05 headphone leak, human-supplied only (never generated)
+  rationale: |
+    Choice: no score. Mechanism: the crank's 1 Hz click is already a pulse the audience can feel; a
+    music cue would compete with it and tell the audience what to feel, when the intent is that they hear
+    his effort and feel it themselves. Rejected: a light comic cue before the turn (it pushes toward the
+    manic register tone.anti_goals exclude) and a tender cue at the send (saccharine, and it would bury
+    the last click).
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - tone.the_turn
+  - tone.anti_goals
+  tag: RECOMMENDATION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+  notes: The human decides D1. If a score is chosen it must be a human-supplied or licensed asset.
+- id: audio.palette
+  statement: |
+    Six sound families and their ids. Every id is a synth recipe (`fm audio list`) or a human-supplied
+    asset; placeholders are marked.
+  value:
+    ui: [ui.tap, ui.key_tap, ui.swipe, ui.ring_tone, ui.lowbatt_blip, ui.charge_chime, ui.elec_tick,
+      ui.send_soft, ui.delivered_tick]
+    car: [car.heat_ticks, car.starter, car.cough, car.idle_rough, car.engine_die, car.glovebox_lid,
+      car.door_open]
+    shop: [shop.door_chime, hum.fridge, hum.shop_light, fx.plastic_clunk]
+    crank: [crank.click]
+    fx: [fx.plastic_scuff, fx.soft_bump]
+    body: [body.breath_placeholder, body.sigh_placeholder, body.nose_laugh_placeholder]
+    room: [amb.car_interior, amb.street_dusk, amb.shop_room, amb.hana_room, amb.distant_car_pass, amb.silence]
+    human_supplied_pending: [body.breath (recorded), body.sigh (recorded), body.nose_laugh (recorded),
+      foley.footsteps_pavement, foley.footsteps_shop, foley.knees_and_body, foley.cloth, foley.seat_creak,
+      foley.pencil, foley.headphones_slide, foley.phone_handling, street.bird, street.distant_traffic,
+      music.headphone_leak]
+    excluded: [hum.phone_buzz (D4), ui.message_chime (D4), music.headphone_leak_placeholder (generated music),
+      car.door_close (the door is never closed on screen)]
+  rationale: |
+    Choice: soft, rounded UI sounds (sine bodies, no harsh beeps), mechanical car and crank sounds with
+    real transients, and low room tones per location. Mechanism: the phone's voice is gentle so the
+    battery countdown reads as worry rather than alarm, while the car and shop are the comic antagonists
+    and get the heaviest, best-timed sounds. Rejected: stock phone alert tones (brand-like, and too
+    shrill for the pastel register) and a generated music placeholder for the headphone leak (agents do
+    not generate music).
+  serves:
+  - intent.soft_but_cinematic
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - tone.wordless
+  - tone.anti_goals
+  tag: DECISION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+- id: audio.motifs
+  statement: |
+    Three sound rhymes. (1) The unanswered call: three ring pulses (SC01_SH050 ring_1/2/3) and then
+    nothing (ring_silence f33). (2) The hum dying: the car's idle sighs, shudders and stops
+    (SC01_SH130 engine_sigh/shudder/stall), and the shop's fridge and panel hum die on the clunk
+    (SC03_SH050 clunk); both times the world's power goes and a quieter room is left. (3) The ratchet
+    as the film's pulse: one click per handle top, 24 frames apart (1 Hz), from SC04_SH050 to the last
+    click at SC04_SH090 ratchet_stop. The tick/chime pair: the charging chime (SC01_SH120, SC03_SH020)
+    means hope that the world then takes away; the delivered tick (SC04_SH080 tick_on) is the one
+    phone sound that is never taken back, and no chime answers the crank's 1 % to 2 % (SC04_SH070).
+  value:
+    unanswered_call: {shot: SC01_SH050, events: [ring_1, ring_2, ring_3], then: ring_silence}
+    hum_dies:
+    - {shot: SC01_SH130, events: [engine_sigh, shudder, stall], recipe: car.engine_die}
+    - {shot: SC03_SH050, events: [clunk, fridge_hum_stop], recipes: [hum.fridge, hum.shop_light]}
+    ratchet_pulse: {first: SC04_SH050 handle_top f56, period_f: 24, last: SC04_SH090 ratchet_stop f7}
+    chime_then_loss: [SC01_SH120 charging_chime, SC03_SH020 bolt_on]
+    tick_kept: SC04_SH080 tick_on
+  rationale: |
+    Choice: repeat three sound shapes so the audience learns them and then feels their variation.
+    Mechanism: the chime twice promises charge and twice the world cuts it (stall, blackout); so when the
+    crank finally charges, the absence of a chime keeps the gain modest and his, and the small delivered
+    tick lands as the answer. The ratchet's steady 1 Hz is felt in the body like a heartbeat, which makes
+    the effort continuous across the inserts. Rejected: a chime at SC04_SH070 (it would make the crank
+    one more gadget success instead of his effort) and a speeding ratchet toward the send (manic).
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  depends_on:
+  - audio.ratchet
+  - tone.the_turn
+  tag: DECISION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+- id: audio.silence_map
+  statement: |
+    Spans that must be silent or at the room-tone floor (RMS below -50 dBFS in the rendered mix):
+    SC01_SH140 whole shot (the car after the stall: cabin room tone at floor level only, no UI sound on
+    the 4 % to 3 % change); SC03_SH050 from the blackout (f8) with only the clunk's own decay allowed,
+    measured from f16 to the end of the shot; SC03_SH060 whole shot. SC03_SH050 f16 to SC03_SH060 end is
+    the film's one true digital silence. SC04_SH010 is not a silence span but a street-only span: the
+    dusk bed and nothing else.
+  value:
+    spans:
+    - {shot: SC01_SH140, from_f: 0, to_f: 32, floor: room_tone, rms_max_dbfs: -50}
+    - {shot: SC03_SH050, from_f: 16, to_f: 30, floor: digital_silence, rms_max_dbfs: -50, note: canon span starts f8; f8-15 is the clunk's decay}
+    - {shot: SC03_SH060, from_f: 0, to_f: 26, floor: digital_silence, rms_max_dbfs: -50}
+    street_only:
+    - {shot: SC04_SH010, allowed: [amb.street_dusk]}
+  rationale: |
+    Choice: two silences of different kinds. Mechanism: after the stall the cabin tone drops to a floor
+    at the cut, so the audience hears the absence of the engine and counts 3 % in the quiet with him;
+    after the blackout, true silence makes the room-sized failure the biggest laugh with a sting, because
+    every sound in the shop (hum, lights) stops at once and nothing replaces it until the distant car in
+    SC03_SH070. SC04_SH010 street-only opens the tender half. Rejected: room tone under the SC03
+    blackout (softens the joke) and total digital silence in SC01_SH140 (two identical silences would
+    blunt the second).
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  depends_on:
+  - tone.comedy_source
+  - continuity.battery
+  tag: DECISION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+- id: audio.ratchet
+  statement: |
+    The ratchet is phase-locked to the crank gait: one crank.click at every derived `handle_top` event of
+    the crank_turn gait (SC04_SH050 f56; SC04_SH060 f0, f24, f48; SC04_SH070 f4; SC04_SH080 f2, f26, f50),
+    placed with `at: {event: handle_top, each: true}`, never hand-typed frames. The last click is the
+    anim event `ratchet_stop` (SC04_SH090 f7), where the handle coasts to a stop between tops. His breath
+    is locked to the same cycle (in on the way up, out from each top).
+  value:
+    source_event: handle_top
+    derived_from_gait: animation.vocab.gait crank_turn (first_top_f SC04_SH050 f56, 24 f per revolution)
+    period_f: 24
+    clicks_abs_frames: [1046, 1070, 1094, 1118, 1142, 1166, 1190, 1214]
+    stop_event: {shot: SC04_SH090, event: ratchet_stop, f: 7, abs: 1229}
+    recipe: crank.click
+  rationale: |
+    Choice: derive the clicks from the animation's handle tops. Mechanism: the ratchet is only
+    believable as his effort if every click matches the handle we see; deriving it means a retimed shot
+    moves its clicks with it, so sync is structural and the pulse carries across the four inserts
+    without drift. Rejected: a continuous crank.ratchet run with a hand-set rate (drifts from the picture
+    on any retime) and the storyboard's slower clicks during the hover (the gait keeps 24 f; see
+    audio.conflicts).
+  serves:
+  - intent.earned_last_signal
+  depends_on:
+  - animation.vocab.gait
+  - animation.vocab.event_kind
+  - tone.the_turn
+  tag: DECISION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+- id: audio.perspective
+  statement: |
+    Listening position per scene. SC01 car interior: closed cabin, low 88 Hz-ish cabin tone, the
+    outside world muffled; UI sounds close and intimate. SC02 street (running): open, dry, footsteps
+    forward. SC03 shop: fridge hum and panel buzz present in every shot until the blackout, then true
+    silence, then a near-silent dead room with a distant car outside. SC04 kerb: open quiet street at
+    dusk, the crank close and centred (the loudest thing in the scene is a 90 ms click). SC05 Hana's
+    room: near silence, a lamp-lit room tone, the headphone leak only if supplied. SC06 kerb: the same
+    street as SC04, fading out with the picture.
+  value:
+    SC01: {bed: amb.car_interior, ui: close, outside: muffled}
+    SC02: {bed: amb.street_dusk, focus: footsteps}
+    SC03: {bed: amb.shop_room until SC03_SH050 f8, then silence, SC03_SH070: amb.hana_room preset as dead-room tone + amb.distant_car_pass}
+    SC04: {bed: amb.street_dusk, focus: crank.click, breath}
+    SC05: {bed: amb.hana_room}
+    SC06: {bed: amb.street_dusk, tail: fades with the picture from fade_out_start}
+  rationale: |
+    Choice: one clear room per scene with a hard bed change on the scene cut. Mechanism: the rooms tell
+    the audience where the battery race has moved without words, and the cabin's closed sound makes the
+    later open street feel like air after a trap. Rejected: a single neutral ambience for the whole film
+    (loses the geography) and heavy reverb perspective shifts (fights the soft register).
+  serves:
+  - intent.soft_but_cinematic
+  - intent.race_against_battery
+  depends_on:
+  - tone.the_turn
+  tag: DECISION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+- id: audio.mix
+  statement: |
+    Master delivery: -16 LUFS integrated (tolerance +-1 LU), true peak at or below -1 dBTP, 48 kHz,
+    24-bit, stereo, 1440 frames x 2000 samples. No limiter or normaliser hides problems: the level is set
+    with an explicit master gain. No dialogue, so no dialogue-based levelling. The loudness target is
+    human decision D3.
+  value:
+    integrated_lufs: -16.0
+    lufs_tolerance: 1.0
+    true_peak_dbtp: -1.0
+    sample_rate: 48000
+    bit_depth: 24
+    channels: 2
+    silence_floor_db: -50.0
+    decision: D3
+  rationale: |
+    Choice: -16 LUFS / -1 dBTP. Mechanism: it is the common web and festival-screener default, loud
+    enough on laptops and phones, with enough headroom that the clunk and the ratchet keep real
+    transients instead of being squashed. Rejected: -23 LUFS broadcast (too quiet for the likely web
+    delivery) and -14 LUFS streaming (would force limiting of the transients the comedy relies on).
+  serves:
+  - intent.soft_but_cinematic
+  tag: DECISION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+  notes: The target is the human's decision D3; this is the proposed value.
+- id: audio.sources
+  statement: |
+    Every sound id has a source. Synth: deterministic recipes in the `fm audio` registry, rendered by
+    `fm audio synth`/`fm audio mix` (project code, no third-party audio). Recorded (human): breaths,
+    sighs, the nose-laugh. Library (human downloads, licence per file in library/audio/<id>/asset.yaml):
+    footsteps, knees and body contacts, cloth, seat creak, pencil, headphones slide, phone handling, bird,
+    distant traffic. Licensed or own (human): Hana's headphone track. Stand-ins in the mix are marked
+    PLACEHOLDER and listed in AUDIO_CUES `human_supply`. No licence is assumed: every supplied file is
+    UNKNOWN until its licence is written in its manifest; UNKNOWN blocks final export.
+  value:
+    synth: registry recipes (`fm audio list`)
+    recorded: [body.breath, body.sigh, body.nose_laugh]
+    library: [foley.footsteps_pavement, foley.footsteps_shop, foley.knees_and_body, foley.cloth, foley.seat_creak,
+      foley.pencil, foley.headphones_slide, foley.phone_handling, street.bird, street.distant_traffic]
+    licensed_or_own: [music.headphone_leak]
+    speech_assets: none
+    licence_default: UNKNOWN
+  rationale: |
+    Choice: synthesise what synthesis does credibly (UI, hums, mechanisms, room tone) and ask the human
+    for what it cannot (bodies, feet, cloth, birds, music). Mechanism: synth recipes are deterministic
+    and carry no licence risk; body sounds made by a noise generator read as fake and would break the
+    tenderness the breaths must carry. Rejected: synthesising every sound (the breath placeholders are
+    audibly noise) and using unverified downloaded files (licence risk blocks export).
+  serves:
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  depends_on:
+  - tone.wordless
+  tag: DECISION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+- id: audio.conflicts
+  statement: |
+    Working assumption on the documented conflicts (decision D4 and three more found in this pass): the
+    shot files win over STORYBOARD prose. SC05_SH010: no desk buzz (shot says the phone does not vibrate;
+    the light reaches her). SC04_SH070: no chime, only the ratchet click at f4 (shot says no UI sound).
+    Glovebox lid: closed at SC04_SH040 f0 (continuity closed_open_closed; SC04_SH010 finds the crank in
+    the closed glovebox), so SC04_SH040 has a soft latch at lid_latch f24 and no drop; SC01_SH110 has the
+    off-screen lid snap at lid_close f17. SC04_SH060: the ratchet keeps 24 f during the hover (the gait),
+    not slower. SC04_SH080: the ratchet does not stop under the tick; it clicks at f2/f26/f50 and stops
+    at SC04_SH090 f7. SC01_SH150: the forehead contact is a very soft bump (storyboard "soft bump", anim
+    "no thud"). SC01_SH020: a soft tap on the cut f0 (storyboard) though the anim has no tap.
+  value:
+    rule: shot_file_over_storyboard
+    D4:
+    - {shot: SC05_SH010, storyboard: soft buzz on the desk, shot_file: no vibration or shift, working: no buzz}
+    - {shot: SC04_SH070, storyboard: a soft chime, shot_file: no UI sound, working: ratchet only}
+    - {shot: SC04_SH040, storyboard_or_prose: lid lowered (read as open), shot_file_and_continuity: closed at f0, working: closed at f0, soft latch f24}
+    extra:
+    - {shot: SC04_SH060, storyboard: ratchet slower during the hover, shot_file: tops f0/f24/f48, working: 24 f}
+    - {shot: SC04_SH080, storyboard: ratchet stops under the tick, shot_file: clicks f2/f26/f50, stop SC04_SH090 f7, working: shot file}
+    - {shot: SC01_SH150, storyboard: soft bump, anim: no thud, working: very soft bump at forehead_contact}
+    - {shot: SC01_SH020, storyboard: soft UI tap, anim: no tap event, working: tap at f0 on the cut}
+  rationale: |
+    Choice: follow the shot files, which were approved at G5 and carry the frame-exact sync. Mechanism:
+    each ruling keeps a canon rule intact: no buzz keeps "the light is what reaches her"; no chime at
+    1 % to 2 % keeps the gain his rather than the phone's (audio.motifs); the closed lid keeps
+    continuity.props.glovebox_and_crank; the steady ratchet keeps the phase lock. Rejected: resolving
+    toward the storyboard prose, which contradicts approved shots and locked continuity.
+  serves:
+  - intent.earned_last_signal
+  - intent.open_hopeful_ending
+  depends_on:
+  - continuity.props.glovebox_and_crank
+  - audio.ratchet
+  tag: ASSUMPTION
+  status: PROPOSED
+  source: agent:sound-designer
+  version: 1
+  notes: The human rules D4 (and the extra conflicts) at G7. Nothing here is decided by the sound-designer.

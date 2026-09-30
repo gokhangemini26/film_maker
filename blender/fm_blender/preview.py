@@ -293,7 +293,7 @@ def unit_offset(scene):
     return Vector((0, 0, 0))
 
 
-def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots=None):
+def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots=None, animate=None):
     all_shots = all_shots or {shot["shot_id"]: shot}
     scene = shot["scene_id"]
     sid = shot["shot_id"]
@@ -636,6 +636,9 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
         near = sorted(((o.matrix_world.translation - cpos).length, o.name) for o in bpy.data.objects
                       if o.type in ("MESH", "LIGHT") and not o.hide_render)[:6]
         print("FM_NEAR", sid, [(round(d, 2), nme) for d, nme in near], flush=True)
+    if animate is not None:  # animate.render_frames re-poses this assembled shot and renders its frames itself
+        return animate(dict(film=film, shot=shot, canon=canon, units=units, rig=rig, car=car, bg=bg, cam=cam, cam_data=cam_data,
+                            cpos=cpos, tgt=tgt, off=off, figs=figs, out_dir=out_dir, culled=culled))
     path = os.path.join(out_dir, sid + ".png")
     bpy.context.scene.render.filepath = path
     bpy.ops.render.render(write_still=True)
@@ -644,16 +647,13 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
     return path
 
 
-def main(argv):
-    resolved_dir, out_dir = argv[0], argv[1]
-    only = set(argv[2].split(",")) if len(argv) > 2 and argv[2] not in ("", "all") else None
-    width = int(argv[3]) if len(argv) > 3 else 960
-    os.makedirs(out_dir, exist_ok=True)
+def init_scene(resolved_dir, width):
+    """Empty scene with the render settings, the sky and every set built once: (film, shots, canon, units, rig, door)."""
     bpy.ops.wm.read_factory_settings(use_empty=True)
     film, shots = load(resolved_dir)
     canon = film["canon"]
     setup_render(film, width)
-    bg = world_sky(False, canon)
+    world_sky(False, canon)
     units = {}
     for name in ("street", "shop", "room"):
         c = U.get_collection("fm." + name)
@@ -670,6 +670,15 @@ def main(argv):
     if "world.sets.hana_room" in canon:
         S.build_room(units["room"], canon)
     rig = U.get_collection("fm.rig")
+    return film, shots, canon, units, rig, door
+
+
+def main(argv):
+    resolved_dir, out_dir = argv[0], argv[1]
+    only = set(argv[2].split(",")) if len(argv) > 2 and argv[2] not in ("", "all") else None
+    width = int(argv[3]) if len(argv) > 3 else 960
+    os.makedirs(out_dir, exist_ok=True)
+    film, shots, canon, units, rig, door = init_scene(resolved_dir, width)
     done = []
     for sid, shot in shots.items():
         if only and sid not in only:

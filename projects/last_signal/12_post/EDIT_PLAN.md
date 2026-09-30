@@ -1,0 +1,179 @@
+---
+fm:
+  id: edit_plan
+  kind: edit_plan
+  phase: ANIMATION_PREVIEW
+  status: PROPOSED
+  owner_role: post-supervisor
+  derived_from:
+  - ref: artifact:shot_list
+    hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
+  - ref: artifact:scenes
+    hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
+  - ref: artifact:audio_cues
+    hash: sha256:e42adf4b20f95307f45974bea266e0e56dfcdeaeaa93291a1eea0850fc6fa2f0
+  - ref: canon:camera.rhythm.transitions
+    hash: sha256:0ff059c432a2227bfbe4eebceef37bc953cd834328d87d7ae75970a866ddcb15
+  - ref: canon:camera.rhythm.scene_budget
+    hash: sha256:3a0f9e8b633e6af955192a0d459cd316fdbb721ce25b920263219195e0cd943f
+  - ref: canon:camera.rhythm.pace
+    hash: sha256:159ba88fec689f71013a9b320634dd92231e1355c17de392979a90a0479b8b30
+  - ref: canon:camera.format
+    hash: sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea
+  - ref: shot:SC01_SH010
+    hash: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
+  - ref: shot:SC03_SH070
+    hash: sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0
+  - ref: shot:SC04_SH090
+    hash: sha256:ba37458305d5c99080be0a44998f4f3680a91d45b3f9a2c2106e97e19ae494d8
+  - ref: shot:SC05_SH010
+    hash: sha256:ca697fb6681d099dddf3be0b8126b615fb84abfee75495b95672debdc91a0413
+  - ref: shot:SC05_SH030
+    hash: sha256:fe59950a5823efe8c8ad34c1a74192a78ea62fa7a90efb08872e242264b7d7b3
+  - ref: shot:SC06_SH010
+    hash: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd
+  serves:
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  summary: Readable cut list generated from the resolved frame table; hard cuts, FADE IN (length D7, UNKNOWN)
+    and 18-frame FADE OUT from canon; scene-time and sound-cut notes.
+  stamped_content_hash: sha256:13518fd65d557bc33568ebc2503a3b7f4f75b57b3f15483782354a8817d10159
+title: Edit Plan
+---
+# Edit Plan: Last Signal
+
+The edit is generated from the shot table, not authored. This document is the readable
+companion to `12_post/EDIT.edl` (CMX3600, 24 fps non-drop) and `12_post/edit.ffconcat`,
+both written by `fm post edl` from `09_resolved/film.json`.
+
+## 1. Rules applied
+
+- FACT: `camera.rhythm.transitions` (LOCKED) value: `default: cut`, `fade_in: head`,
+  `fade_out: {at: tail, frames: 18, after: final_image_hold}`, `sc03_to_sc04: hard_cut_black_to_dusk`,
+  `sc04_to_sc05: cut_on_light`, `sc05_to_sc06: cut_on_direction`, forbidden: dissolve, wipe,
+  sky_cutaway, wire_cutaway.
+- DECISION: shots are butted in scene-then-shot order with hard cuts. There are no transitions other
+  than the head fade-in and the tail fade-out. Any dissolve, wipe or extra fade would need a change
+  request against `camera.rhythm.transitions`, not an edit step.
+- FACT: `camera.format` (LOCKED) gives 24 fps and 1920x1080. The film is 1440 frames = 00:01:00:00 by
+  the frame table (`total_frames: 1440`). The EDL also has 1440 frames, ending at 00:01:00:00.
+- UNKNOWN (D7): FADE IN length. Canon says only "head" and gives no number (`SC01_SH010` notes:
+  "length set by post"). `fm post edl` used its default of 12 frames and labelled it in the EDL header as
+  "source: default (M6_SCOPE D7 recommendation)". RECOMMENDATION: 12 frames (0.5 s). Rejected: 24 frames
+  (eats more than half of the 40-frame opening shot, and the hand that is already moving at f0 would be
+  lost in the fade); 0/6 frames (a snap open, which is harsher than the "soft" register asks for). The EDL
+  must be regenerated if the human rules a different value.
+
+## 2. Cut list (record frames from `09_resolved/film.json`)
+
+Source in is 00:00:00:00 for every event (each shot is its own clip, starting at its frame 0).
+Record out is exclusive, as in the EDL.
+
+| # | Shot | Record frames | Frames | Rec in | Rec out | Transition in |
+|---|---|---|---|---|---|---|
+| 001 | SC01_SH010 | 0-39 | 40 | 00:00:00:00 | 00:00:01:16 | FADE IN (12 f, D7) |
+| 002 | SC01_SH020 | 40-77 | 38 | 00:00:01:16 | 00:00:03:06 | cut |
+| 003 | SC01_SH030 | 78-105 | 28 | 00:00:03:06 | 00:00:04:10 | cut |
+| 004 | SC01_SH040 | 106-135 | 30 | 00:00:04:10 | 00:00:05:16 | cut |
+| 005 | SC01_SH050 | 136-179 | 44 | 00:00:05:16 | 00:00:07:12 | cut |
+| 006 | SC01_SH060 | 180-213 | 34 | 00:00:07:12 | 00:00:08:22 | cut |
+| 007 | SC01_SH070 | 214-271 | 58 | 00:00:08:22 | 00:00:11:08 | cut |
+| 008 | SC01_SH080 | 272-301 | 30 | 00:00:11:08 | 00:00:12:14 | cut |
+| 009 | SC01_SH090 | 302-325 | 24 | 00:00:12:14 | 00:00:13:14 | cut |
+| 010 | SC01_SH100 | 326-373 | 48 | 00:00:13:14 | 00:00:15:14 | cut |
+| 011 | SC01_SH110 | 374-405 | 32 | 00:00:15:14 | 00:00:16:22 | cut |
+| 012 | SC01_SH120 | 406-425 | 20 | 00:00:16:22 | 00:00:17:18 | cut |
+| 013 | SC01_SH130 | 426-459 | 34 | 00:00:17:18 | 00:00:19:04 | cut |
+| 014 | SC01_SH140 | 460-491 | 32 | 00:00:19:04 | 00:00:20:12 | cut |
+| 015 | SC01_SH150 | 492-527 | 36 | 00:00:20:12 | 00:00:22:00 | cut |
+| 016 | SC02_SH010 | 528-545 | 18 | 00:00:22:00 | 00:00:22:18 | cut |
+| 017 | SC02_SH020 | 546-559 | 14 | 00:00:22:18 | 00:00:23:08 | cut |
+| 018 | SC02_SH030 | 560-575 | 16 | 00:00:23:08 | 00:00:24:00 | cut |
+| 019 | SC03_SH010 | 576-627 | 52 | 00:00:24:00 | 00:00:26:04 | cut |
+| 020 | SC03_SH020 | 628-663 | 36 | 00:00:26:04 | 00:00:27:16 | cut |
+| 021 | SC03_SH030 | 664-689 | 26 | 00:00:27:16 | 00:00:28:18 | cut |
+| 022 | SC03_SH040 | 690-711 | 22 | 00:00:28:18 | 00:00:29:16 | cut |
+| 023 | SC03_SH050 | 712-741 | 30 | 00:00:29:16 | 00:00:30:22 | cut |
+| 024 | SC03_SH060 | 742-767 | 26 | 00:00:30:22 | 00:00:32:00 | cut |
+| 025 | SC03_SH070 | 768-815 | 48 | 00:00:32:00 | 00:00:34:00 | cut |
+| 026 | SC04_SH010 | 816-861 | 46 | 00:00:34:00 | 00:00:35:22 | hard cut, black to dusk (`sc03_to_sc04`) |
+| 027 | SC04_SH020 | 862-893 | 32 | 00:00:35:22 | 00:00:37:06 | cut |
+| 028 | SC04_SH030 | 894-929 | 36 | 00:00:37:06 | 00:00:38:18 | cut |
+| 029 | SC04_SH040 | 930-989 | 60 | 00:00:38:18 | 00:00:41:06 | cut |
+| 030 | SC04_SH050 | 990-1069 | 80 | 00:00:41:06 | 00:00:44:14 | cut |
+| 031 | SC04_SH060 | 1070-1137 | 68 | 00:00:44:14 | 00:00:47:10 | cut |
+| 032 | SC04_SH070 | 1138-1163 | 26 | 00:00:47:10 | 00:00:48:12 | cut |
+| 033 | SC04_SH080 | 1164-1221 | 58 | 00:00:48:12 | 00:00:50:22 | cut |
+| 034 | SC04_SH090 | 1222-1249 | 28 | 00:00:50:22 | 00:00:52:02 | cut |
+| 035 | SC05_SH010 | 1250-1273 | 24 | 00:00:52:02 | 00:00:53:02 | cut on light (`sc04_to_sc05`) |
+| 036 | SC05_SH020 | 1274-1305 | 32 | 00:00:53:02 | 00:00:54:10 | cut |
+| 037 | SC05_SH030 | 1306-1357 | 52 | 00:00:54:10 | 00:00:56:14 | cut |
+| 038 | SC06_SH010 | 1358-1439 | 82 | 00:00:56:14 | 00:01:00:00 | cut on direction (`sc05_to_sc06`); FADE OUT 18 f at 1422-1439 |
+
+- FACT: 38 events, 1440 frames. The EDL written by `fm post edl` has the same record timecodes
+  (e.g. event 034 00:00:50:22-00:00:52:02, event 038 00:00:56:14-00:01:00:00).
+- FACT: shortest shot SC02_SH020 at 14 frames. This is inside the `camera.format` exception "SC02 elliptical
+  cuts, 14-19 frames". Every other shot is at least 20 frames, above `shortest_shot_frames: 12`.
+- FACT: from SC04_SH010 on, no shot is shorter than 24 frames (SC05_SH010 = 24, SC04_SH070 = 26), which
+  meets `camera.rhythm.pace` `tender_min_shot_s: 1.0`.
+- DEPENDENCY: 16 of the 38 shots are PROPOSED (modified after G5 approval; G5 is DRIFTED). The cut follows
+  the frame table as it stands. If the human re-approves G5 with different durations, `fm resolve` then
+  `fm post edl` regenerate everything here.
+
+## 3. Head and tail
+
+- **Head.** FADE IN from black over record frames 0-11 (if D7 = 12). FACT: the `SC01_SH010` camera notes
+  start the acting at f0 "so the hand is already in motion as the FADE IN clears". With 12 frames the
+  mirror move (f6-9) happens under the fade. RECOMMENDATION: acceptable, because the gag lands after the
+  fade clears.
+- **Tail, carried-forward hold check.** FACT (from the `SC06_SH010` animation): the look-up ends at f56.
+  From there the pose is held, with one breath (in f56-68, out f68-81). The fade out runs over f64-81 =
+  record 1422-1439 = EDL 00:00:59:06, 18 frames. That leaves **8 frames of clear held pose (f56-63, record
+  1414-1421) before the fade starts**, and 26 held frames in all under the breath. This confirms the
+  carry-forward finding "~8-frame hold before the SC06 fade" and matches `fade_out.after:
+  final_image_hold`. RECOMMENDATION: keep this. If the hold feels short at G7, the fix is animation timing
+  inside SC06_SH010 (animation-director), not a longer fade.
+
+## 4. Scene running time vs SCENES.yaml
+
+| Scene | Frames (frame table) | Budget (`camera.rhythm.scene_budget`, LOCKED) | SCENES.yaml `est_duration_s` x 24 | Delta vs SCENES.yaml |
+|---|---|---|---|---|
+| SC01 | 528 (0-527) | 528 | 22 s = 528 | 0 |
+| SC02 | 48 (528-575) | 48 | 2 s = 48 | 0 |
+| SC03 | 240 (576-815) | 240 | 10 s = 240 | 0 |
+| SC04 | 434 (816-1249) | 434 | 19 s = 456 | **-22 f (-4.8 %)** |
+| SC05 | 108 (1250-1357) | 108 | 4 s = 96 | **+12 f (+12.5 %)** |
+| SC06 | 82 (1358-1439) | 82 | 3 s = 72 | **+10 f (+13.9 %)** |
+| Film | 1440 | 1440 | 60 s = 1440 | 0 |
+
+- FACT: the cut matches the LOCKED scene budget exactly, and the film total matches SCENES.yaml exactly.
+- FACT: SC04, SC05 and SC06 differ from the approved `02_screenplay/SCENES.yaml` estimates. Each is inside
+  the 15 % tolerance the budget's rationale cites, and the budget entry notes it as an open human question
+  ("keep SCENES.yaml timings exactly, or accept this redistribution").
+- RECOMMENDATION, **flagged to the cinematographer and the screenwriter**: nothing to change in the cut.
+  Either the screenwriter updates `SCENES.yaml` `est_duration_s` (SC04 18.08, SC05 4.5, SC06 3.42), which
+  drifts G2 and needs re-approval, or the human confirms the budget as the authority and SCENES.yaml stays
+  an estimate. Post does not edit either file.
+
+## 5. Sound-cut relationships
+
+Frames below are record frames. Cues come from `12_post/AUDIO_CUES.yaml` (PROPOSED, a SCAFFOLD: many cues
+still sit at placeholder frame 0). These are edit-side requirements for the sound-designer, not mix
+decisions.
+
+| Cut | Picture | Sound relationship (RECOMMENDATION unless tagged) |
+|---|---|---|
+| Head, f0 | FADE IN | The car interior bed and `car.heat_ticks` start at f0. Fade the sound in over the same length as the picture (D7) so no sound comes before the image. ASSUMPTION: the mix will not pre-lap sound under black. |
+| SC01 -> SC02, 527/528 | cut | `car.door_close` at SC02_SH010 f0 (528). The car bed ends at scene f460 (the SC01_SH140 silence). The door-opening line "SC01_SH150/SC02_SH010 (board, implied)" is not placed yet (scaffold note). A door sound that straddles the cut is fine. |
+| SC02 -> SC03, 575/576 | cut | **Flag:** `shop.door_chime` appears twice, at SC02_SH030 f15 (575, the last frame) and SC03_SH010 f0 (576). That is one door, so it should be one chime across the cut. Sound-designer to remove one. |
+| SC03 end -> SC04, 815/816 | hard cut, black to dusk | FACT: after the clunk at SC03_SH050 f8 (720) the shop is silent (SC03_SH060 silence, `sil_SC03_SH050_f8`). Only `amb.distant_car_pass` sits under SC03_SH070. The street dusk bed starts on the cut at 816, a hard sound cut to match the hard picture cut. The bed's `xfade_f: 4` should run inside SC04, not pre-lap into the black. |
+| Ratchet across SC04_SH050-SH090 | four hard cuts | FACT (scope and cue sheet): clicks are phase-locked every 24 frames across the cuts, from `handle_top` events. Expected record frames: 1046, 1070, 1094, 1118, 1142, 1166, 1190, 1214, then the stop at 1229 (SH090 f7). The cuts must not reset the ratchet rhythm. Post verifies this in the mix at G7. |
+| SC04 -> SC05, 1249/1250 | cut on light | Send at SC04_SH080 (`send_press`), the delivered tick at f34 (1198), his release breath at SC04_SH090 f8 (1230). FACT: SC05_SH010 holds 2 dark frames before her screen wakes. RECOMMENDATION: the street bed hard-cuts out at 1250 and her room tone or headphone leak starts at 1250, with no sound on the waking screen (D4 desk buzz conflict: follow the shot file). |
+| SC05 -> SC06, 1357/1358 | cut on direction | The room tone ends with her held smile. The street dusk bed returns at 1358, a hard cut. The same bed as SC04 gives the bookend by ear too. |
+| Tail, 1422-1439 | FADE OUT 18 f | The out-breath (SC06_SH010 f68-81, record 1426-1439) is the last sound. Fade the audio out over the same 18 frames so picture and sound reach black and silence together at 1439. |
+
+## 6. Outputs
+
+- `12_post/EDIT.edl`, `12_post/edit.ffconcat` (`fm post edl`, recorded as `edit:edl`).
+- `12_post/animatic.mp4`: see POST_PLAN section 7 for what this first animatic is and is not.

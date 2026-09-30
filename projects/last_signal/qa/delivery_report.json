@@ -1,0 +1,60 @@
+{
+ "summary": {
+  "shots": 1,
+  "fail": 1,
+  "warn": 1,
+  "files": 1
+ },
+ "rows": [
+  {
+   "file": "animatic.mp4",
+   "findings": [
+    [
+     "FAIL",
+     "resolution 1280x720, render canon says 1920x1080"
+    ],
+    [
+     "FAIL",
+     "no audio stream"
+    ],
+    [
+     "WARN",
+     "first frame is not black although a fade-in is specified"
+    ],
+    [
+     "WARN",
+     "last frame is not black although a fade-out is specified"
+    ]
+   ],
+   "probe": {
+    "duration_s": 60.0,
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "tool": "ffprobe",
+    "video": {
+     "codec": "h264",
+     "width": 1280,
+     "height": 720,
+     "fps": 24.0,
+     "fps_rational": "24/1",
+     "pix_fmt": "yuv420p",
+     "frames": 1440,
+     "duration_s": 60.0
+    }
+   },
+   "head_luma": [
+    179.0,
+    179.0,
+    179.0,
+    "...",
+    179.0
+   ],
+   "tail_luma": [
+    168.2,
+    "...",
+    168.2,
+    168.2,
+    168.2
+   ]
+  }
+ ]
+}

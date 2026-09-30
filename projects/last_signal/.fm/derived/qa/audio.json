@@ -1,0 +1,18 @@
+{
+  "content_hash": "sha256:d2ccf6656bc95ee4ef1d5052bbde4ce11a1c03e459b995a69fa636d77c8fa79c",
+  "created_at": "2026-09-30T15:16:03Z",
+  "derived_from": [
+    {
+      "hash": "sha256:7f07330d475a8b6780c50497700fb1e30d0f55509d7f3b3cf92a5a37948d9952",
+      "ref": "artifact:audio_cues"
+    },
+    {
+      "hash": "sha256:41d043791af1797176d49ea4844143605a8aa386e05e45e74622a7ebf3c9f95c",
+      "ref": "audio:mix"
+    }
+  ],
+  "notes": null,
+  "path": "qa/audio_report.json",
+  "producer": "fm.qa.audio",
+  "ref": "qa:audio"
+}

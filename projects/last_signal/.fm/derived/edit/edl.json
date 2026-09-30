@@ -1,0 +1,18 @@
+{
+  "content_hash": "sha256:e8b5c6cb0a8824eb17621ac55b8dfde254d7285698f348563cda48046b061845",
+  "created_at": "2026-09-30T15:04:04Z",
+  "derived_from": [
+    {
+      "hash": "sha256:5c4e581ed8d50d1a58ad77f7a427e825cb96ce45314102f6b65cb14a444f5ce0",
+      "ref": "resolved:film"
+    },
+    {
+      "hash": "sha256:0ff059c432a2227bfbe4eebceef37bc953cd834328d87d7ae75970a866ddcb15",
+      "ref": "canon:camera.rhythm.transitions"
+    }
+  ],
+  "notes": "fm post edl: 38 events, 1440 frames, fade in 12 (D7 default, UNKNOWN until ruled) / out 18 (canon)",
+  "path": "12_post/EDIT.edl",
+  "producer": "agent:claude-code",
+  "ref": "edit:edl"
+}

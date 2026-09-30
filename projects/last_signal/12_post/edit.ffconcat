@@ -1,0 +1,117 @@
+ffconcat version 1.0
+# last_signal: 1440 frames @ 24 fps; one still per shot for the animatic
+# SC01_SH010 frames 0-39
+file '../10_blender/previews/SC01_SH010.png'
+duration 1.666666667
+# SC01_SH020 frames 40-77
+file '../10_blender/previews/SC01_SH020.png'
+duration 1.583333333
+# SC01_SH030 frames 78-105
+file '../10_blender/previews/SC01_SH030.png'
+duration 1.166666667
+# SC01_SH040 frames 106-135
+file '../10_blender/previews/SC01_SH040.png'
+duration 1.250000000
+# SC01_SH050 frames 136-179
+file '../10_blender/previews/SC01_SH050.png'
+duration 1.833333333
+# SC01_SH060 frames 180-213
+file '../10_blender/previews/SC01_SH060.png'
+duration 1.416666667
+# SC01_SH070 frames 214-271
+file '../10_blender/previews/SC01_SH070.png'
+duration 2.416666667
+# SC01_SH080 frames 272-301
+file '../10_blender/previews/SC01_SH080.png'
+duration 1.250000000
+# SC01_SH090 frames 302-325
+file '../10_blender/previews/SC01_SH090.png'
+duration 1.000000000
+# SC01_SH100 frames 326-373
+file '../10_blender/previews/SC01_SH100.png'
+duration 2.000000000
+# SC01_SH110 frames 374-405
+file '../10_blender/previews/SC01_SH110.png'
+duration 1.333333333
+# SC01_SH120 frames 406-425
+file '../10_blender/previews/SC01_SH120.png'
+duration 0.833333333
+# SC01_SH130 frames 426-459
+file '../10_blender/previews/SC01_SH130.png'
+duration 1.416666667
+# SC01_SH140 frames 460-491
+file '../10_blender/previews/SC01_SH140.png'
+duration 1.333333333
+# SC01_SH150 frames 492-527
+file '../10_blender/previews/SC01_SH150.png'
+duration 1.500000000
+# SC02_SH010 frames 528-545
+file '../10_blender/previews/SC02_SH010.png'
+duration 0.750000000
+# SC02_SH020 frames 546-559
+file '../10_blender/previews/SC02_SH020.png'
+duration 0.583333333
+# SC02_SH030 frames 560-575
+file '../10_blender/previews/SC02_SH030.png'
+duration 0.666666667
+# SC03_SH010 frames 576-627
+file '../10_blender/previews/SC03_SH010.png'
+duration 2.166666667
+# SC03_SH020 frames 628-663
+file '../10_blender/previews/SC03_SH020.png'
+duration 1.500000000
+# SC03_SH030 frames 664-689
+file '../10_blender/previews/SC03_SH030.png'
+duration 1.083333333
+# SC03_SH040 frames 690-711
+file '../10_blender/previews/SC03_SH040.png'
+duration 0.916666667
+# SC03_SH050 frames 712-741
+file '../10_blender/previews/SC03_SH050.png'
+duration 1.250000000
+# SC03_SH060 frames 742-767
+file '../10_blender/previews/SC03_SH060.png'
+duration 1.083333333
+# SC03_SH070 frames 768-815
+file '../10_blender/previews/SC03_SH070.png'
+duration 2.000000000
+# SC04_SH010 frames 816-861
+file '../10_blender/previews/SC04_SH010.png'
+duration 1.916666667
+# SC04_SH020 frames 862-893
+file '../10_blender/previews/SC04_SH020.png'
+duration 1.333333333
+# SC04_SH030 frames 894-929
+file '../10_blender/previews/SC04_SH030.png'
+duration 1.500000000
+# SC04_SH040 frames 930-989
+file '../10_blender/previews/SC04_SH040.png'
+duration 2.500000000
+# SC04_SH050 frames 990-1069
+file '../10_blender/previews/SC04_SH050.png'
+duration 3.333333333
+# SC04_SH060 frames 1070-1137
+file '../10_blender/previews/SC04_SH060.png'
+duration 2.833333333
+# SC04_SH070 frames 1138-1163
+file '../10_blender/previews/SC04_SH070.png'
+duration 1.083333333
+# SC04_SH080 frames 1164-1221
+file '../10_blender/previews/SC04_SH080.png'
+duration 2.416666667
+# SC04_SH090 frames 1222-1249
+file '../10_blender/previews/SC04_SH090.png'
+duration 1.166666667
+# SC05_SH010 frames 1250-1273
+file '../10_blender/previews/SC05_SH010.png'
+duration 1.000000000
+# SC05_SH020 frames 1274-1305
+file '../10_blender/previews/SC05_SH020.png'
+duration 1.333333333
+# SC05_SH030 frames 1306-1357
+file '../10_blender/previews/SC05_SH030.png'
+duration 2.166666667
+# SC06_SH010 frames 1358-1439
+file '../10_blender/previews/SC06_SH010.png'
+duration 3.416666667
+file '../10_blender/previews/SC06_SH010.png'

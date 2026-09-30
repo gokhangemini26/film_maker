@@ -1,0 +1,1885 @@
+fm:
+  id: audio_cues
+  kind: audio_cues
+  phase: ANIMATION_PREVIEW
+  status: PROPOSED
+  owner_role: sound-designer
+  derived_from:
+  - ref: artifact:anim_sc01_sh010
+    hash: sha256:dc53fad91acabf7542a83ac6809873bf093bd979dd9027e87b81eb3f17064c6e
+  - ref: artifact:anim_sc01_sh020
+    hash: sha256:c8c08db05380edb1cf96a13ac75368d60bd5ab9d9d32afd6877181fbbd18f573
+  - ref: artifact:anim_sc01_sh030
+    hash: sha256:df664b64ea7b894cdfc4abfd01282c3d9d17b388b914591b0d0146dab50dcf3d
+  - ref: artifact:anim_sc01_sh040
+    hash: sha256:8f24457ddf950ca6d063d7453a1e15562055768990271b2463dbdcda3f2e2d2f
+  - ref: artifact:anim_sc01_sh050
+    hash: sha256:b2e2eabf5660e3f95a3cf147cdcdc4f6f7855acb9ab063c9f6875201796dd87e
+  - ref: artifact:anim_sc01_sh060
+    hash: sha256:906704ad57e46c40068a106dd5bf49c72eaeac5902ca08835f3e72ec76ad2367
+  - ref: artifact:anim_sc01_sh070
+    hash: sha256:7a6c34a017e983315f8a9598f6a551049f753838c83fd95c0f9dbae8b3a1c9c9
+  - ref: artifact:anim_sc01_sh080
+    hash: sha256:ac0d74c6a149648f0194919f58052ca8f05bf13dc5d5cccc919871b3ab3634c7
+  - ref: artifact:anim_sc01_sh090
+    hash: sha256:442d53bf79bd98907f9ffd7373774945bb311b78252de0cc830840e73c096318
+  - ref: artifact:anim_sc01_sh100
+    hash: sha256:b8a19e961e0c344260993d858c09abe58c165377e0304df7c945a8ea33eb1fa7
+  - ref: artifact:anim_sc01_sh110
+    hash: sha256:8a13c40492464b11f6c1752c064028bfdde952a43d97f0069ae65732e3556a28
+  - ref: artifact:anim_sc01_sh120
+    hash: sha256:34790879054d61ab5edd43d66392d6c4711128065a34c141aec110bfa5e91b0b
+  - ref: artifact:anim_sc01_sh130
+    hash: sha256:a1e5c0faab7ad72eafd188d732e5a442d3b8a80374cb972db286a3ccd8a0568c
+  - ref: artifact:anim_sc01_sh150
+    hash: sha256:0e3351e4930ad05ade6c1858c02c9df7a5de3af373ea15bf4e31a14a8c332362
+  - ref: artifact:anim_sc02_sh010
+    hash: sha256:9e55c3dd23b1d2e8838959bf95f75eb46dd00f20b5855a10971fd1bd4ae187e8
+  - ref: artifact:anim_sc02_sh030
+    hash: sha256:d73b879cbbbc4507a7868f2592a7a1c1f75c0be22e6986d34a6a115895e4538c
+  - ref: artifact:anim_sc03_sh010
+    hash: sha256:f22f024f294890b02354faae10175d9930e40c40ced5792670c3e66651a063dc
+  - ref: artifact:anim_sc03_sh020
+    hash: sha256:a057b4f9a1a229a41d358e40e419965869ecb34f448e3e9b80b283a567d39827
+  - ref: artifact:anim_sc03_sh030
+    hash: sha256:b5dccbcb13833c289faed490fa7097b89fc3752b7b3bc3a2ba605a599e6e9608
+  - ref: artifact:anim_sc03_sh040
+    hash: sha256:c4aae1e8e8144b7d9d9f5f85c351e2afad1692ef798803d359d3032ea8129c64
+  - ref: artifact:anim_sc03_sh050
+    hash: sha256:2889673e4116d0283ac8ab0ee7d78c2091702a7783f03c9cd74f1a931b8aa9ca
+  - ref: artifact:anim_sc03_sh070
+    hash: sha256:d7a54617f5ea012a7707445f09cdf7cba664d41b6ddd5f7999463728e5af449a
+  - ref: artifact:anim_sc04_sh010
+    hash: sha256:26a2f4c58345a620dab507fd7f1827646143bfc616067bf50bc35dd44172b83c
+  - ref: artifact:anim_sc04_sh020
+    hash: sha256:8176275c26f606e68e229d3c1c9ce3905e77cc8a9b4f17e65b32ab4a6201b828
+  - ref: artifact:anim_sc04_sh030
+    hash: sha256:cb8e83d5c5641be707dd5fb88fbf6ff0a0019af185e2593677e608ee2c8c2bea
+  - ref: artifact:anim_sc04_sh040
+    hash: sha256:6f8c6c78d164fcfc8e7c0e4d564fff6878f5daadf71ee6a3113c8151c4665d64
+  - ref: artifact:anim_sc04_sh050
+    hash: sha256:ae12a78a1c1156f9cbf530bf809be8c650a740fc702b52817fe03041440940cb
+  - ref: artifact:anim_sc04_sh060
+    hash: sha256:d486db3a8bfcfd9b71a7df5b7639b199d48e5156ee53cc575879d943ae0feca6
+  - ref: artifact:anim_sc04_sh070
+    hash: sha256:d99a29baf21db2e2aff25629e8f3e0c9479fd73fc7f80309199f9222abd07089
+  - ref: artifact:anim_sc04_sh080
+    hash: sha256:83f2deba8eba36d18fdc4e33d4573d1b2485323bc547d57c419621cc29f0f478
+  - ref: artifact:anim_sc04_sh090
+    hash: sha256:6a0aa664530aa1c404ab43e55f0274d0eb8996c6886ecb9842509de3ac6163f6
+  - ref: artifact:anim_sc05_sh010
+    hash: sha256:effb20845160e6824a1b5fd19a9890f2053bd3e595c568e873c4bd1755901fef
+  - ref: artifact:anim_sc05_sh020
+    hash: sha256:c9f225d98b141c23718ab92e707c7b11aa6b9842b4caacf18f128b9da4f47256
+  - ref: artifact:anim_sc05_sh030
+    hash: sha256:332df4b498518cf267698eb726587db0304d410e690569207945fda135dd8ec4
+  - ref: artifact:anim_sc06_sh010
+    hash: sha256:a6fe35274df4027bfad4b35b0a6d75245d07816bca75bbdad06aadc1545e6b78
+  - ref: shot:SC01_SH010
+    hash: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
+  - ref: shot:SC01_SH020
+    hash: sha256:7941cdc7602dd3ba6196687b287f11f1bd476f897f6363e990b8bbf6c6bfde7e
+  - ref: shot:SC01_SH030
+    hash: sha256:8699e51bfb186dba0264c42419a8a2cdae365aab80f76e052777657e96023cc8
+  - ref: shot:SC01_SH040
+    hash: sha256:6d7c21340e8fa08d14e537476be053e78dfb439ec00561158dc21a691a0e885d
+  - ref: shot:SC01_SH050
+    hash: sha256:fd8ca343ac306f9e9fffb06fd2bbf4f2edcf56d2aa685ee01f014c284a3b7d81
+  - ref: shot:SC01_SH060
+    hash: sha256:a137c047da23405b913fc34b40d27682f1b503d685cd844ddf1fd6d74738257d
+  - ref: shot:SC01_SH070
+    hash: sha256:16b4ec9d94ad86fcb4258dff110a619a6834609ba83cb3bb4f7f36815422b929
+  - ref: shot:SC01_SH080
+    hash: sha256:71b49b1bd1391b1ed8a3b1604a47a2ae4d93645ea5fe5e4000150cd02f826bec
+  - ref: shot:SC01_SH090
+    hash: sha256:ced7b32486ed4d040bd12165f24216e6db8e82ddc82562637f02aa43db797d6b
+  - ref: shot:SC01_SH100
+    hash: sha256:7fc62ddf5d0deaa1587c815f733988268664f01c621b1569e321a73cdb7d980d
+  - ref: shot:SC01_SH110
+    hash: sha256:b76e5460354748a8b00dd6191f88adaed0e1238a17bd1d169363aa39eccb4165
+  - ref: shot:SC01_SH120
+    hash: sha256:2d764a28641d19b14065ed0026354cd5f889a21a43c0f4bf238f96dbceb42b0f
+  - ref: shot:SC01_SH130
+    hash: sha256:8cc649e0e5b4be56b4c014462a5204889ccdcc3fee7989d30ce5bfa2cfc5b080
+  - ref: shot:SC01_SH150
+    hash: sha256:af1a53ec2a14aca104b184d76237a0fdb68bd1a907f85164c6f1c8db6a9ce518
+  - ref: shot:SC02_SH010
+    hash: sha256:6ba72c22a2d96738518f4fb7085ea789a58e8a6059c2bf9d84c9c61628a3f0ae
+  - ref: shot:SC02_SH030
+    hash: sha256:6882916b0d762100ecafed0ac04fa926a7a8aa92c5124aa714187c867d543195
+  - ref: shot:SC03_SH010
+    hash: sha256:973dab1732fa017ec1689768b6d6768d2b3ef90afb8267a4d20293b388cb70d2
+  - ref: shot:SC03_SH020
+    hash: sha256:0f9f605d61b9255f8ce80f096217c88d03e4330dbfc6f21eed57111bff9ab313
+  - ref: shot:SC03_SH030
+    hash: sha256:4e8d8794bce81a3e44a3b60b5e5e677f726f94660ecd5da0c72213b34faf6495
+  - ref: shot:SC03_SH040
+    hash: sha256:06e3006cc3af99ffa8af55a7be7bfc4d615e8042e34874b49932869a2881ce48
+  - ref: shot:SC03_SH050
+    hash: sha256:c3373f2053320994f6637889fd0ecf12f1d06f3b328b95c9b74755e594276a50
+  - ref: shot:SC03_SH070
+    hash: sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0
+  - ref: shot:SC04_SH010
+    hash: sha256:86660ae172a141b63b4cfe45f1699051822606d3152f9a0e01774d5c74cff776
+  - ref: shot:SC04_SH020
+    hash: sha256:eae1eff6c7167cd05a6372377d7d2b75e71b0dab8683b2f265f450300c1f608a
+  - ref: shot:SC04_SH030
+    hash: sha256:9aea3b8fc7724109811d12cab015db797fd303bea7f4fb542dad3b75ed708b75
+  - ref: shot:SC04_SH040
+    hash: sha256:0330b1777c70f985dc8231e30b9d3816f5ede42e38fe021a70e867614e01207a
+  - ref: shot:SC04_SH050
+    hash: sha256:ac63b166dbc778b4b8bcf2712e1fb00f0ab9e003b97dfc6c5873185082001a1d
+  - ref: shot:SC04_SH060
+    hash: sha256:53725e73fca8f4ceb492885de7d27ee94ef5c956aae3754b2743d8684e3306b4
+  - ref: shot:SC04_SH070
+    hash: sha256:67f88a2f736aaea3af5d3606e06326f4a4a1cad97295d127bb5c14e64ff76f31
+  - ref: shot:SC04_SH080
+    hash: sha256:6274d95c0386ecc5c031d1a41f2c64c19d0e7dc53c3bf6fa2b2ec979357d9b59
+  - ref: shot:SC04_SH090
+    hash: sha256:ba37458305d5c99080be0a44998f4f3680a91d45b3f9a2c2106e97e19ae494d8
+  - ref: shot:SC05_SH010
+    hash: sha256:ca697fb6681d099dddf3be0b8126b615fb84abfee75495b95672debdc91a0413
+  - ref: shot:SC05_SH020
+    hash: sha256:9702f4d8ad33291ac4878eca7a7c2ba5f75e44c4641ecd40b120fd8765796bc6
+  - ref: shot:SC05_SH030
+    hash: sha256:fe59950a5823efe8c8ad34c1a74192a78ea62fa7a90efb08872e242264b7d7b3
+  - ref: shot:SC06_SH010
+    hash: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd
+  - ref: artifact:anim_sc01_sh140
+    hash: sha256:3b0f3771e3dad5cf3fdd72d8757fccd22bd92284cc9d8e716239652445a8d7de
+  - ref: artifact:anim_sc02_sh020
+    hash: sha256:96cc8711216f1701deea921ddedd7acdaf1242ca436517cd11b987ea2e0a832b
+  - ref: artifact:anim_sc03_sh060
+    hash: sha256:6cef18e0a40a17158245894470d70ef45850a28994dca4e8da787704ba18d6bd
+  - ref: shot:SC01_SH140
+    hash: sha256:209db68556feab291fba285ddf380490e5dc1bd6f4e72fbab9f119708345bd51
+  - ref: shot:SC02_SH020
+    hash: sha256:783ca6dc0c914156c5b4dd7b6e25ae9f2c4fb2afce34a03973fd60b4f77b2de9
+  - ref: shot:SC03_SH060
+    hash: sha256:56cfa23e8fda67aa597eefd0b9daa42e7e2639635a9494700e05404c0c52cc27
+  - ref: canon:audio.principles
+    hash: sha256:2ed0685e13a4ee7ef1d37d1ab31f5403fb357a506b856c86dbef5bf932da5661
+  - ref: canon:audio.score
+    hash: sha256:ba175fbaf4350e9bb3d9a208454900db2cf9789779cf443cb2bc74e54541bb4c
+  - ref: canon:audio.palette
+    hash: sha256:d295ae4564d6179c10237ad9582b5267c1f22f8674b6d28e592cb8e0cb717e1e
+  - ref: canon:audio.motifs
+    hash: sha256:b57836b997a1df4f976c3ed5cb9c18534b3f7799db3f5bf129a2c9c690946dd0
+  - ref: canon:audio.silence_map
+    hash: sha256:e8d96274f7adfd3cfb6ea1b7901ef0bac2f67763b695528fa98a3f01395ee042
+  - ref: canon:audio.ratchet
+    hash: sha256:9cb25aef670f215e3375d4cc6ee5487fde85d40728d408d97739ac5eeaf50bdb
+  - ref: canon:audio.perspective
+    hash: sha256:25a13b6b5e3db8e0af9ac55be3c9a107dffa81af124274e3d44abadd16260826
+  - ref: canon:audio.mix
+    hash: sha256:6928de0e3e54edc5d62ed70cec1108d335e08443b7d45148af2206cd5b5c0c60
+  - ref: canon:audio.sources
+    hash: sha256:f6591a7d497aff372318d2b159c24a3cbd26dfe4a97369e1926919a47d80043d
+  - ref: canon:audio.conflicts
+    hash: sha256:6ed601c6debe4079741c5088600614a0437e50428fc5b79880ed65368bcec11b
+  - ref: canon:tone.wordless
+    hash: sha256:4b51cfae6e27a0a98fa06c7d64961ef46dfde5ae60ac2bc6680280a3d56f4975
+  - ref: canon:tone.the_turn
+    hash: sha256:653b9a834c3b4f01813d471792c37227f6b7476e3a4d314cc4792b6e51f5b361
+  - ref: artifact:audio_bible
+    hash: sha256:72ce8431716184fb4bdcd47fe177b96c6936bf4e500db725c483dcc7193830c7
+  - ref: artifact:storyboard
+    hash: sha256:cf0648aa717949827441cf7b2c037b512da536eb8a33e34fbfbcac6bd70c7b66
+  summary: 'Complete cue sheet: every cue on an animation event id (handle_top derived for the ratchet),
+    beds per scene, the silence map, mix targets and the human_supply asks.'
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  - intent.earned_last_signal
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  stamped_content_hash: sha256:7f07330d475a8b6780c50497700fb1e30d0f55509d7f3b3cf92a5a37948d9952
+mix:
+  integrated_lufs: -16.0
+  lufs_tolerance: 1.0
+  true_peak_dbtp: -1.0
+  silence_floor_db: -50.0
+  sample_rate: 48000
+  bit_depth: 24
+  channels: 2
+  master_gain_db: 21.3
+cues:
+- id: c_SC01_SH010_heat_ticks
+  shot: SC01_SH010
+  recipe: car.heat_ticks
+  at:
+    frame: 0
+  gain_db: -30
+  duration_f: 40
+  fade_in_f: 4
+  fade_out_f: 4
+  note: 'board: the car ticking in the heat; ambience, no sync point (bird: human_supply street.bird)'
+  serves:
+  - intent.soft_but_cinematic
+- id: c_SC01_SH020_tap
+  shot: SC01_SH020
+  recipe: ui.tap
+  at:
+    frame: 0
+  gain_db: -28
+  note: 'ASSUMPTION: the tap that opened the map, on the cut; the anim has no tap event (see conflicts)'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH030_swipe
+  shot: SC01_SH030
+  recipe: ui.swipe
+  at:
+    event: swipe_start
+  gain_db: -28
+  duration_f: 5
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH040_breath_in
+  shot: SC01_SH040
+  recipe: body.breath_placeholder
+  at:
+    event: breath_in
+  gain_db: -24
+  layer: body
+  duration_f: 6
+  params:
+    kind: in
+  note: the rehearsed breath in (f2-7); held from f8 into SH060, so nothing breathes until then
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+- id: c_SC01_SH040_call_tap
+  shot: SC01_SH040
+  recipe: ui.tap
+  at:
+    event: call_tap
+  gain_db: -24
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH050_ring1
+  shot: SC01_SH050
+  recipe: ui.ring_tone
+  at:
+    event: ring_1
+  gain_db: -22
+  duration_f: 11
+  fade_out_f: 1
+  note: 'audio.motifs unanswered call: one pulse per ring event'
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+- id: c_SC01_SH050_ring2
+  shot: SC01_SH050
+  recipe: ui.ring_tone
+  at:
+    event: ring_2
+  gain_db: -22
+  duration_f: 11
+  fade_out_f: 1
+  note: 'audio.motifs unanswered call: one pulse per ring event'
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+- id: c_SC01_SH050_ring3
+  shot: SC01_SH050
+  recipe: ui.ring_tone
+  at:
+    event: ring_3
+  gain_db: -22
+  duration_f: 11
+  fade_out_f: 1
+  note: 'audio.motifs unanswered call: one pulse per ring event'
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+- id: c_SC01_SH050_ring_silence
+  shot: SC01_SH050
+  recipe: amb.silence
+  at:
+    event: ring_silence
+  gain_db: 0
+  duration_f: 11
+  note: 'deliberate: no fourth ring, no voice (tone.wordless); only the cabin bed continues'
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+- id: c_SC01_SH060_sigh
+  shot: SC01_SH060
+  recipe: body.sigh_placeholder
+  at:
+    event: held_breath_out
+  gain_db: -24
+  layer: body
+  duration_f: 10
+  fade_out_f: 3
+  note: the breath held since SH040 goes out as a small sigh
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH060_seat_creak
+  shot: SC01_SH060
+  recipe: fx.plastic_scuff
+  at:
+    event: reset_burst
+  gain_db: -34
+  layer: foley
+  duration_f: 7
+  params:
+    speed: 5
+  placeholder: true
+  note: PLACEHOLDER seat creak as he sits up (human_supply foley.seat_creak)
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH070_key00
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key01
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 1
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key02
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 2
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key03
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 3
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key04
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 4
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key05
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 5
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key06
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 6
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key07
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 7
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key08
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 8
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key09
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 9
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key10
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 10
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key11
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 11
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key12
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 12
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key13
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 13
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key14
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: typing_start
+    offset_f: 14
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH070_key15
+  shot: SC01_SH070
+  recipe: ui.key_tap
+  at:
+    event: last_key
+  gain_db: -32
+  note: 'one soft key tap per press frame f0-15 (anim: one press per frame); no letters'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH080_lowbatt
+  shot: SC01_SH080
+  recipe: ui.lowbatt_blip
+  at:
+    event: battery_4_red
+  gain_db: -24
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH090_exhale
+  shot: SC01_SH090
+  recipe: body.breath_placeholder
+  at:
+    event: stuck_exhale
+  gain_db: -26
+  layer: body
+  duration_f: 7
+  params:
+    kind: out
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH100_starter
+  shot: SC01_SH100
+  recipe: car.starter
+  at:
+    event: key_turn
+  gain_db: -21
+  duration_f: 11
+  fade_out_f: 2
+  note: starter whine from the key turn until the catch; the coughs sit on top of it
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH100_cough1
+  shot: SC01_SH100
+  recipe: car.cough
+  at:
+    event: cough_1
+  gain_db: -20
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH100_cough2
+  shot: SC01_SH100
+  recipe: car.cough
+  at:
+    event: cough_2
+  gain_db: -21
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH100_idle
+  shot: SC01_SH100
+  recipe: car.idle_rough
+  at:
+    event: engine_catch
+  gain_db: -20
+  duration_f: 110
+  fade_in_f: 1
+  fade_out_f: 2
+  tail_ok: true
+  note: 'one continuous idle from the catch (SC01_SH100 f14) to 2 f into the engine sigh (SC01_SH130 f24):
+    110 f across SH110 and SH120. If SH100-SH130 are retimed, re-derive duration_f.'
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+- id: c_SC01_SH100_lid_drop
+  shot: SC01_SH100
+  recipe: car.glovebox_lid
+  at:
+    event: lid_stop
+  gain_db: -18
+  params:
+    mode: drop
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH100_crank_clunk
+  shot: SC01_SH100
+  recipe: fx.plastic_clunk
+  at:
+    event: crank_clunk
+  gain_db: -18
+  note: 'the heavy plastic CLUNK in his lap: the crank''s first sound (story.crank_plant)'
+  serves:
+  - intent.comic_then_tender
+  - intent.earned_last_signal
+- id: c_SC01_SH110_grip
+  shot: SC01_SH110
+  recipe: fx.plastic_scuff
+  at:
+    event: crank_grip
+  gain_db: -30
+  duration_f: 4
+  params:
+    speed: 20
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH110_turn_scuff
+  shot: SC01_SH110
+  recipe: fx.plastic_scuff
+  at:
+    event: crank_roll
+  gain_db: -30
+  duration_f: 5
+  params:
+    speed: 12
+  note: the wrist roll against his trousers
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH110_stowed
+  shot: SC01_SH110
+  recipe: fx.plastic_clunk
+  at:
+    event: crank_stowed
+  gain_db: -28
+  duration_f: 8
+  fade_out_f: 3
+  pan: -0.6
+  note: 'off frame left: the brick lands in the glovebox, smaller than the lap clunk'
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH110_lid_snap
+  shot: SC01_SH110
+  recipe: car.glovebox_lid
+  at:
+    event: lid_close
+    offset_f: 1
+  gain_db: -20
+  params:
+    mode: latch
+  pan: -0.6
+  note: 'board: the lid snaps shut off screen; anim lid_close f17-18 (ASSUMPTION in the anim file)'
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH110_cable_pull
+  shot: SC01_SH110
+  recipe: fx.plastic_scuff
+  at:
+    event: cable_pull
+  gain_db: -30
+  duration_f: 8
+  params:
+    speed: 16
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH120_charge_chime
+  shot: SC01_SH120
+  recipe: ui.charge_chime
+  at:
+    event: charging_chime
+  gain_db: -22
+  tail_ok: true
+  note: 'audio.motifs: the first chime of hope (taken back by the stall)'
+  serves:
+  - intent.race_against_battery
+- id: c_SC01_SH130_relief
+  shot: SC01_SH130
+  recipe: body.breath_placeholder
+  at:
+    event: relieved_breath
+  gain_db: -22
+  layer: body
+  duration_f: 17
+  params:
+    kind: out
+  fade_out_f: 3
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH130_engine_die
+  shot: SC01_SH130
+  recipe: car.engine_die
+  at:
+    event: engine_sigh
+  gain_db: -20
+  duration_f: 12
+  params:
+    shudder_at: 0.16666667
+    stop_at: 0.41666667
+  hits:
+  - 26
+  - 32
+  note: 'audio.motifs hum dies (1): sigh f22, shudder f26, stop f32, exact silence after the stop'
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+- id: c_SC01_SH140_silence
+  shot: SC01_SH140
+  recipe: amb.silence
+  at:
+    event: car_silence
+  gain_db: 0
+  duration_f: 32
+  allowed_in_silence: true
+  note: silence in the car; no UI sound on 4 % to 3 % (audio.silence_map)
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+- id: c_SC01_SH150_forehead
+  shot: SC01_SH150
+  recipe: fx.soft_bump
+  at:
+    event: forehead_contact
+  gain_db: -40
+  duration_f: 5
+  note: very soft contact on the rim, no horn, no thud (see conflicts)
+  serves:
+  - intent.comic_then_tender
+- id: c_SC01_SH150_out_breath
+  shot: SC01_SH150
+  recipe: body.breath_placeholder
+  at:
+    event: out_breath
+  gain_db: -24
+  layer: body
+  duration_f: 10
+  params:
+    kind: out
+  fade_out_f: 3
+  serves:
+  - intent.comic_then_tender
+- id: c_SC02_SH010_door_open
+  shot: SC02_SH010
+  recipe: car.door_open
+  at:
+    event: door_swing
+  gain_db: -20
+  hits:
+  - 4
+  note: the door already swinging on the cut; the recipe's hinge stop at +4.8 f is the check-strap overshoot
+    (door_check_strap f4)
+  serves:
+  - intent.comic_then_tender
+- id: c_SC02_SH010_foot_pavement_r
+  shot: SC02_SH010
+  recipe: fx.soft_bump
+  at:
+    event: foot_pavement_r
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH010_foot_pavement_l
+  shot: SC02_SH010
+  recipe: fx.soft_bump
+  at:
+    event: foot_pavement_l
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH010_run_contact_1
+  shot: SC02_SH010
+  recipe: fx.soft_bump
+  at:
+    event: run_contact_1
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH010_run_contact_2
+  shot: SC02_SH010
+  recipe: fx.soft_bump
+  at:
+    event: run_contact_2
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH020_step_r_1
+  shot: SC02_SH020
+  recipe: fx.soft_bump
+  at:
+    event: step_r_1
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH020_step_l_1
+  shot: SC02_SH020
+  recipe: fx.soft_bump
+  at:
+    event: step_l_1
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH020_step_r_2
+  shot: SC02_SH020
+  recipe: fx.soft_bump
+  at:
+    event: step_r_2
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH020_run_breath
+  shot: SC02_SH020
+  recipe: body.breath_placeholder
+  at:
+    event: step_l_1
+  gain_db: -28
+  layer: body
+  duration_f: 5
+  params:
+    kind: out
+  note: 'board: fast footsteps, breath'
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH030_step_l_1
+  shot: SC02_SH030
+  recipe: fx.soft_bump
+  at:
+    event: step_l_1
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH030_step_r_plant
+  shot: SC02_SH030
+  recipe: fx.soft_bump
+  at:
+    event: step_r_plant
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER footstep (human_supply foley.footsteps_pavement)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH030_door_push
+  shot: SC02_SH030
+  recipe: fx.soft_bump
+  at:
+    event: door_push
+  gain_db: -30
+  layer: foley
+  duration_f: 5
+  placeholder: true
+  note: PLACEHOLDER shop door push (human_supply foley.shop_door_push)
+  serves:
+  - intent.race_against_battery
+- id: c_SC02_SH030_door_chime
+  shot: SC02_SH030
+  recipe: shop.door_chime
+  at:
+    event: chime
+  gain_db: -20
+  tail_ok: true
+  note: on the cut point; the tail rings on under SC03_SH010 (the board's 'chime tail')
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+- id: c_SC03_hum_fridge
+  shot: SC03_SH010
+  recipe: hum.fridge
+  at:
+    frame: 0
+  gain_db: -27
+  duration_f: 147
+  tail_ok: true
+  params:
+    die_at: 6.0
+    die_dur: 0.125
+  note: 'the fridges hum continuously from SC03_SH010 f0 and die on SC03_SH050 f8 (clunk / fridge_hum_stop):
+    die_at 6.0 s = 144 f. One cue so the 50 Hz does not jump at the cuts; re-derive die_at if SC03 is
+    retimed.'
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+- id: c_SC03_hum_panels
+  shot: SC03_SH010
+  recipe: hum.shop_light
+  at:
+    frame: 0
+  gain_db: -34
+  duration_f: 147
+  tail_ok: true
+  params:
+    die_at: 6.0
+    die_dur: 0.08
+  note: the ceiling panels' buzz, dies with the lights on the clunk
+  serves:
+  - intent.comic_then_tender
+- id: c_SC03_SH010_step_entry_step_00
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: entry_step
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  note: PLACEHOLDER footstep on the shop floor (human_supply foley.footsteps_shop); run every 6 f from
+    entry_step, braking f36/f40
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH010_step_entry_step_06
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: entry_step
+    offset_f: 6
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  note: PLACEHOLDER footstep on the shop floor (human_supply foley.footsteps_shop); run every 6 f from
+    entry_step, braking f36/f40
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH010_step_entry_step_12
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: entry_step
+    offset_f: 12
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  note: PLACEHOLDER footstep on the shop floor (human_supply foley.footsteps_shop); run every 6 f from
+    entry_step, braking f36/f40
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH010_step_entry_step_18
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: entry_step
+    offset_f: 18
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  note: PLACEHOLDER footstep on the shop floor (human_supply foley.footsteps_shop); run every 6 f from
+    entry_step, braking f36/f40
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH010_step_entry_step_24
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: entry_step
+    offset_f: 24
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  note: PLACEHOLDER footstep on the shop floor (human_supply foley.footsteps_shop); run every 6 f from
+    entry_step, braking f36/f40
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH010_step_entry_step_30
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: entry_step
+    offset_f: 30
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  note: PLACEHOLDER footstep on the shop floor (human_supply foley.footsteps_shop); run every 6 f from
+    entry_step, braking f36/f40
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH010_step_brake_steps_00
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: brake_steps
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  note: PLACEHOLDER footstep on the shop floor (human_supply foley.footsteps_shop); run every 6 f from
+    entry_step, braking f36/f40
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH010_step_brake_steps_04
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: brake_steps
+    offset_f: 4
+  gain_db: -30
+  layer: foley
+  duration_f: 4
+  placeholder: true
+  note: PLACEHOLDER footstep on the shop floor (human_supply foley.footsteps_shop); run every 6 f from
+    entry_step, braking f36/f40
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH010_knees
+  shot: SC03_SH010
+  recipe: fx.soft_bump
+  at:
+    event: knees_land
+  gain_db: -26
+  layer: foley
+  duration_f: 5
+  placeholder: true
+  tail_ok: true
+  note: PLACEHOLDER both knees down (human_supply foley.knees_and_body)
+  serves:
+  - intent.comic_then_tender
+- id: c_SC03_SH020_fumble
+  shot: SC03_SH020
+  recipe: fx.plastic_scuff
+  at:
+    event: plug_fumble
+  gain_db: -28
+  duration_f: 4
+  params:
+    speed: 18
+  note: 'board: a scrape'
+  serves:
+  - intent.comic_then_tender
+- id: c_SC03_SH020_plug_click
+  shot: SC03_SH020
+  recipe: car.glovebox_lid
+  at:
+    event: plug_in
+  gain_db: -30
+  params:
+    mode: latch
+  duration_f: 4
+  note: 'board: a click; a small latch tick as the plug seats'
+  serves:
+  - intent.comic_then_tender
+- id: c_SC03_SH020_charge_chime
+  shot: SC03_SH020
+  recipe: ui.charge_chime
+  at:
+    event: bolt_on
+  gain_db: -22
+  note: 'audio.motifs: the second chime of hope (taken back by the blackout)'
+  serves:
+  - intent.race_against_battery
+- id: c_SC03_SH040_exhale
+  shot: SC03_SH040
+  recipe: body.breath_placeholder
+  at:
+    event: long_exhale
+  gain_db: -24
+  layer: body
+  duration_f: 15
+  params:
+    kind: out
+  fade_out_f: 3
+  serves:
+  - intent.comic_then_tender
+- id: c_SC03_SH050_clunk
+  shot: SC03_SH050
+  recipe: fx.plastic_clunk
+  at:
+    event: clunk
+  gain_db: -16
+  duration_f: 8
+  fade_out_f: 3
+  note: 'the breaker CLUNK: the loudest sound of the comedy; hum and lights die on this frame; decay ends
+    f16, silence after'
+  serves:
+  - intent.comic_then_tender
+- id: c_SC03_SH070_car_pass
+  shot: SC03_SH070
+  recipe: amb.distant_car_pass
+  at:
+    frame: 0
+  gain_db: -30
+  duration_f: 48
+  note: 'a distant car passing outside; the world goes on (library take may replace: human_supply street.distant_traffic)'
+  serves:
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+- id: c_SC04_SH020_tick1
+  shot: SC04_SH020
+  recipe: ui.elec_tick
+  at:
+    event: stutter_tick_1
+  gain_db: -26
+  serves:
+  - intent.race_against_battery
+- id: c_SC04_SH020_tick2
+  shot: SC04_SH020
+  recipe: ui.elec_tick
+  at:
+    event: stutter_tick_2
+  gain_db: -26
+  serves:
+  - intent.race_against_battery
+- id: c_SC04_SH030_breath_in
+  shot: SC04_SH030
+  recipe: body.breath_placeholder
+  at:
+    event: breath_in
+  gain_db: -28
+  layer: body
+  duration_f: 9
+  params:
+    kind: in
+  note: 'a small breath in, then held (board: a breath held)'
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH040_knee
+  shot: SC04_SH040
+  recipe: fx.soft_bump
+  at:
+    event: knee_down
+  gain_db: -30
+  layer: foley
+  duration_f: 5
+  placeholder: true
+  note: PLACEHOLDER right knee to the pavement (human_supply foley.knees_and_body)
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH040_latch
+  shot: SC04_SH040
+  recipe: car.glovebox_lid
+  at:
+    event: lid_latch
+  gain_db: -28
+  params:
+    mode: latch
+  note: 'soft latch; the lid is lowered by hand, never dropped (no drop sound; D4 working assumption:
+    closed at f0)'
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH040_cloth
+  shot: SC04_SH040
+  recipe: fx.plastic_scuff
+  at:
+    event: crank_lift
+  gain_db: -36
+  layer: foley
+  duration_f: 10
+  params:
+    speed: 6
+  placeholder: true
+  note: PLACEHOLDER cloth as he backs out with the crank (human_supply foley.cloth)
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH040_seat
+  shot: SC04_SH040
+  recipe: fx.soft_bump
+  at:
+    event: seat_land
+  gain_db: -30
+  layer: foley
+  duration_f: 5
+  placeholder: true
+  note: PLACEHOLDER seat lands softly on the kerb (human_supply foley.knees_and_body)
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH050_plug
+  shot: SC04_SH050
+  recipe: car.glovebox_lid
+  at:
+    event: plug_in
+  gain_db: -32
+  params:
+    mode: latch
+  duration_f: 4
+  note: small plug seat click
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH050_arm_stop
+  shot: SC04_SH050
+  recipe: car.glovebox_lid
+  at:
+    event: arm_out_stop
+  gain_db: -32
+  params:
+    mode: latch
+  duration_f: 4
+  note: the arm reaches its stop, no bounce; kept softer than the ratchet so the motif starts at f56
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH050_breath_knob
+  shot: SC04_SH050
+  recipe: body.breath_placeholder
+  at:
+    event: arm_out_stop
+  gain_db: -30
+  layer: body
+  duration_f: 8
+  params:
+    kind: in
+  note: breath in f22-29 as he takes the knob
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH050_breath_out0
+  shot: SC04_SH050
+  recipe: body.breath_placeholder
+  at:
+    event: first_turn
+  gain_db: -32
+  layer: body
+  duration_f: 13
+  params:
+    kind: out
+  note: 'crank-locked breath: out on the down half-turn from the first turn'
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH050_breath_in0
+  shot: SC04_SH050
+  recipe: body.breath_placeholder
+  at:
+    event: first_turn
+    offset_f: 13
+  gain_db: -32
+  layer: body
+  duration_f: 11
+  params:
+    kind: in
+  note: in on the up half-turn to the first top
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH050_ratchet
+  shot: SC04_SH050
+  recipe: crank.click
+  at:
+    event: handle_top
+    each: true
+  gain_db: -19
+  layer: sfx
+  note: 'audio.ratchet: one click per derived handle_top (crank_turn gait), never hand-typed'
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH050_breath_out
+  shot: SC04_SH050
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    each: true
+  gain_db: -32
+  layer: body
+  duration_f: 12
+  params:
+    kind: out
+  fade_out_f: 2
+  tail_ok: false
+  note: crank-locked breath out from each handle top
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH060_ratchet
+  shot: SC04_SH060
+  recipe: crank.click
+  at:
+    event: handle_top
+    each: true
+  gain_db: -19
+  layer: sfx
+  note: 'audio.ratchet: one click per derived handle_top (crank_turn gait), never hand-typed'
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH060_breath_out
+  shot: SC04_SH060
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    each: true
+  gain_db: -32
+  layer: body
+  duration_f: 12
+  params:
+    kind: out
+  fade_out_f: 2
+  tail_ok: false
+  note: crank-locked breath out from each handle top
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH070_ratchet
+  shot: SC04_SH070
+  recipe: crank.click
+  at:
+    event: handle_top
+    each: true
+  gain_db: -19
+  layer: sfx
+  note: 'audio.ratchet: one click per derived handle_top (crank_turn gait), never hand-typed'
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH070_breath_out
+  shot: SC04_SH070
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    each: true
+  gain_db: -32
+  layer: body
+  duration_f: 12
+  params:
+    kind: out
+  fade_out_f: 2
+  tail_ok: false
+  note: crank-locked breath out from each handle top
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH080_ratchet
+  shot: SC04_SH080
+  recipe: crank.click
+  at:
+    event: handle_top
+    each: true
+  gain_db: -19
+  layer: sfx
+  note: 'audio.ratchet: one click per derived handle_top (crank_turn gait), never hand-typed'
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH080_breath_out
+  shot: SC04_SH080
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    each: true
+  gain_db: -32
+  layer: body
+  duration_f: 12
+  params:
+    kind: out
+  fade_out_f: 2
+  tail_ok: true
+  note: crank-locked breath out from each handle top; the last one runs 4 f into SH090
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH050_breath_in1
+  shot: SC04_SH050
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    offset_f: 12
+  gain_db: -32
+  layer: body
+  duration_f: 12
+  params:
+    kind: in
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH060_breath_in
+  shot: SC04_SH060
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    each: true
+    offset_f: 12
+  gain_db: -32
+  layer: body
+  duration_f: 8
+  params:
+    kind: in
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH070_breath_in
+  shot: SC04_SH070
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    offset_f: 12
+  gain_db: -32
+  layer: body
+  duration_f: 8
+  params:
+    kind: in
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH080_breath_in0
+  shot: SC04_SH080
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    nth: 0
+    offset_f: 12
+  gain_db: -32
+  layer: body
+  duration_f: 8
+  params:
+    kind: in
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH080_breath_in1
+  shot: SC04_SH080
+  recipe: body.breath_placeholder
+  at:
+    event: handle_top
+    nth: 1
+    offset_f: 12
+  gain_db: -32
+  layer: body
+  duration_f: 8
+  params:
+    kind: in
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH060_tap_period
+  shot: SC04_SH060
+  recipe: ui.tap
+  at:
+    event: word_treat
+  gain_db: -34
+  note: the tap on '.' (the words arrive by glides, which are silent)
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH060_tap_heart
+  shot: SC04_SH060
+  recipe: ui.tap
+  at:
+    event: emoji_press
+  gain_db: -34
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH060_tap_backspace
+  shot: SC04_SH060
+  recipe: ui.tap
+  at:
+    event: backspace_press
+  gain_db: -34
+  serves:
+  - intent.earned_last_signal
+  - intent.open_hopeful_ending
+- id: c_SC04_SH080_send
+  shot: SC04_SH080
+  recipe: ui.send_soft
+  at:
+    event: send_press
+  gain_db: -26
+  note: soft send, no whoosh
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH080_delivered
+  shot: SC04_SH080
+  recipe: ui.delivered_tick
+  at:
+    event: tick_on
+  gain_db: -24
+  note: 'audio.motifs: the one phone sound that is never taken back; the ratchet carries on (see conflicts)'
+  serves:
+  - intent.earned_last_signal
+  - intent.open_hopeful_ending
+- id: c_SC04_SH090_last_click
+  shot: SC04_SH090
+  recipe: crank.click
+  at:
+    event: ratchet_stop
+  gain_db: -18
+  note: 'the last click: the handle coasts to a stop between tops (anim event, the gait has no top here)'
+  serves:
+  - intent.earned_last_signal
+- id: c_SC04_SH090_release
+  shot: SC04_SH090
+  recipe: body.breath_placeholder
+  at:
+    event: release_breath
+  gain_db: -24
+  layer: body
+  duration_f: 15
+  params:
+    kind: out
+  fade_out_f: 4
+  note: one long out-breath f8-22
+  serves:
+  - intent.earned_last_signal
+- id: c_SC05_SH020_pencil_stroke
+  shot: SC05_SH020
+  recipe: fx.plastic_scuff
+  at:
+    frame: 0
+  gain_db: -38
+  layer: foley
+  duration_f: 3
+  params:
+    speed: 30
+  placeholder: true
+  note: PLACEHOLDER pencil finishing a stroke f0-2 (human_supply foley.pencil); no event at f0 (the stroke
+    is on the cut)
+  serves:
+  - intent.open_hopeful_ending
+- id: c_SC05_SH020_pencil_down
+  shot: SC05_SH020
+  recipe: fx.soft_bump
+  at:
+    event: pencil_down
+  gain_db: -36
+  layer: foley
+  duration_f: 3
+  placeholder: true
+  note: PLACEHOLDER pencil laid on the page (human_supply foley.pencil)
+  serves:
+  - intent.open_hopeful_ending
+- id: c_SC05_SH020_headphones
+  shot: SC05_SH020
+  recipe: fx.plastic_scuff
+  at:
+    event: headphones_slide
+  gain_db: -34
+  layer: foley
+  duration_f: 7
+  params:
+    speed: 8
+  placeholder: true
+  note: PLACEHOLDER headphones slide down f12-19 (human_supply foley.headphones_slide); her music, if
+    supplied, drops away here
+  serves:
+  - intent.open_hopeful_ending
+- id: c_SC05_SH020_phone_grip
+  shot: SC05_SH020
+  recipe: fx.plastic_scuff
+  at:
+    event: phone_grip
+  gain_db: -36
+  layer: foley
+  duration_f: 4
+  params:
+    speed: 20
+  placeholder: true
+  note: PLACEHOLDER phone lifted off the desk (human_supply foley.phone_handling)
+  serves:
+  - intent.open_hopeful_ending
+- id: c_SC05_SH030_nose_laugh
+  shot: SC05_SH030
+  recipe: body.nose_laugh_placeholder
+  at:
+    event: smile_onset
+    offset_f: 6
+  gain_db: -28
+  layer: body
+  duration_f: 9
+  note: a breath through the nose that might be a laugh, as the smile lands (f20)
+  serves:
+  - intent.open_hopeful_ending
+- id: c_SC06_SH010_phone_chest
+  shot: SC06_SH010
+  recipe: fx.soft_bump
+  at:
+    event: phone_on_chest
+  gain_db: -34
+  layer: foley
+  duration_f: 5
+  placeholder: true
+  note: PLACEHOLDER phone laid on his chest under his hand (human_supply foley.cloth)
+  serves:
+  - intent.open_hopeful_ending
+- id: c_SC06_SH010_breath_in
+  shot: SC06_SH010
+  recipe: body.breath_placeholder
+  at:
+    event: look_up_arrives
+  gain_db: -30
+  layer: body
+  duration_f: 12
+  params:
+    kind: in
+  serves:
+  - intent.open_hopeful_ending
+- id: c_SC06_SH010_breath_out
+  shot: SC06_SH010
+  recipe: body.breath_placeholder
+  at:
+    event: look_up_arrives
+    offset_f: 12
+  gain_db: -26
+  layer: body
+  duration_f: 14
+  params:
+    kind: out
+  fade_out_f: 4
+  note: 'board: a long, easy breath out, inside the picture fade'
+  serves:
+  - intent.open_hopeful_ending
+- id: c_SC06_SH010_street_tail
+  shot: SC06_SH010
+  recipe: amb.street_dusk
+  at:
+    event: fade_out_start
+    offset_f: -4
+  gain_db: -23
+  layer: amb
+  duration_f: 22
+  fade_in_f: 4
+  fade_out_f: 18
+  note: the street bed's tail, fading out with the picture f64-81
+  serves:
+  - intent.open_hopeful_ending
+beds:
+- id: bed_SC01_car_interior
+  scene: SC01
+  from_f: 0
+  to_f: 460
+  recipe: amb.car_interior
+  gain_db: -21
+  xfade_f: 6
+  note: closed cabin, SC01_SH010 to the end of SC01_SH130 (audio.perspective)
+  rationale: audio.perspective
+- id: bed_SC01_SH140_floor
+  shot: SC01_SH140
+  recipe: amb.car_interior
+  gain_db: -64
+  xfade_f: 1
+  allowed_in_silence: true
+  note: the cabin at room-tone floor after the stall (audio.silence_map)
+  rationale: audio.perspective
+- id: bed_SC01_SH150_car_interior
+  shot: SC01_SH150
+  recipe: amb.car_interior
+  gain_db: -21
+  xfade_f: 2
+  note: 'the cabin comes back at the cut (bird outside: human_supply street.bird)'
+  rationale: audio.perspective
+- id: bed_SC02_street
+  scene: SC02
+  recipe: amb.street_dusk
+  gain_db: -21
+  xfade_f: 2
+  note: open street, the run
+  rationale: audio.perspective
+- id: bed_SC03_shop
+  scene: SC03
+  from_f: 0
+  to_f: 144
+  recipe: amb.shop_room
+  gain_db: -28
+  xfade_f: 1
+  note: shop room tone until the blackout (SC03_SH050 f8 = scene f144), then nothing
+  rationale: audio.perspective
+- id: bed_SC03_SH070_dead_room
+  shot: SC03_SH070
+  recipe: amb.hana_room
+  gain_db: -33
+  xfade_f: 6
+  note: near-silent dead-room tone (the registry's quiet-room preset) after the power is gone
+  rationale: audio.perspective
+- id: bed_SC04_street
+  scene: SC04
+  recipe: amb.street_dusk
+  gain_db: -21
+  xfade_f: 4
+  note: the quiet street at dusk; SC04_SH010 hears nothing else (audio.silence_map street_only)
+  rationale: audio.perspective
+- id: bed_SC05_hana_room
+  scene: SC05
+  recipe: amb.hana_room
+  gain_db: -25
+  xfade_f: 2
+  note: Hana's room, near silence; the headphone leak is human_supply (not generated)
+  rationale: audio.perspective
+- id: bed_SC06_street
+  shot: SC06_SH010
+  from_f: 0
+  to_f: 64
+  recipe: amb.street_dusk
+  gain_db: -21
+  xfade_f: 4
+  note: the street; hands over to the tail cue at fade_out_start
+  rationale: audio.perspective
+silence:
+- id: sil_SC01_SH140
+  shot: SC01_SH140
+  canon: audio.silence_map
+  note: 'the car after the stall: cabin floor only, no UI sound on 4 % to 3 %'
+- id: sil_SC03_SH050_after_clunk
+  shot: SC03_SH050
+  from_f: 16
+  canon: audio.silence_map
+  note: canon span from the blackout f8; measured from f16 after the clunk's 8 f decay
+- id: sil_SC03_SH060
+  shot: SC03_SH060
+  canon: audio.silence_map
+  note: 2 %, no bolt, in true silence
+human_supply:
+- sound: body.breath_placeholder
+  need: 'Ren''s breaths, recorded by phone, 48 kHz mono, about 16 short takes: rehearsed breath in (SC01_SH040
+    breath_in, 6 f); stuck exhale (SC01_SH090 stuck_exhale, 7 f); long relieved exhale (SC01_SH130 relieved_breath,
+    17 f); small out-breath (SC01_SH150 out_breath, 10 f); running breath (SC02_SH020 step_l_1); long
+    exhale (SC03_SH040 long_exhale, 15 f); small breath in (SC04_SH030 breath_in, 9 f); breath in at the
+    knob (SC04_SH050 arm_out_stop); a crank-locked cycle (in 8-12 f / out 12 f, one per handle_top, SC04_SH050-SH080);
+    the long release (SC04_SH090 release_breath, 15 f); long easy in/out (SC06_SH010 look_up_arrives,
+    12 f + 14 f)'
+  shots:
+  - SC01_SH040
+  - SC01_SH090
+  - SC01_SH130
+  - SC01_SH150
+  - SC02_SH020
+  - SC03_SH040
+  - SC04_SH030
+  - SC04_SH050
+  - SC04_SH060
+  - SC04_SH070
+  - SC04_SH080
+  - SC04_SH090
+  - SC06_SH010
+  source: recorded
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'no voice, no words: breath only (tone.wordless)'
+- sound: body.sigh_placeholder
+  need: Ren's small sigh as the held breath goes out (SC01_SH060 held_breath_out, about 10 f); 3 takes
+  shots:
+  - SC01_SH060
+  source: recorded
+  licence: UNKNOWN
+  status: NEEDED
+- sound: body.nose_laugh_placeholder
+  need: 'Hana: a breath through the nose that might be a laugh (SC05_SH030 smile_onset +6 f, about 9 f);
+    3 takes, no voice'
+  shots:
+  - SC05_SH030
+  source: recorded
+  licence: UNKNOWN
+  status: NEEDED
+- sound: fx.soft_bump
+  need: 'foley.footsteps_pavement: running footsteps on dry pavement, trainers, 9 single steps (SC02_SH010
+    foot_pavement_r/l, run_contact_1/2; SC02_SH020 step_r_1, step_l_1, step_r_2; SC02_SH030 step_l_1,
+    step_r_plant)'
+  shots:
+  - SC02_SH010
+  - SC02_SH020
+  - SC02_SH030
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in in the mix: fx.soft_bump PLACEHOLDER'
+- sound: fx.soft_bump
+  need: 'foley.footsteps_shop: running steps on a shop floor (vinyl/tile), 6 run + 2 braking steps (SC03_SH010
+    entry_step +0/6/12/18/24/30, brake_steps +0/4)'
+  shots:
+  - SC03_SH010
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+- sound: fx.soft_bump
+  need: 'foley.knees_and_body: both knees down on a shop floor (SC03_SH010 knees_land); one knee on pavement
+    (SC04_SH040 knee_down); sitting down softly on a kerb (SC04_SH040 seat_land)'
+  shots:
+  - SC03_SH010
+  - SC04_SH040
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+- sound: fx.soft_bump
+  need: 'foley.shop_door_push: a glass shop door pushed open by hand (SC02_SH030 door_push)'
+  shots:
+  - SC02_SH030
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+- sound: fx.soft_bump
+  need: 'foley.pencil: a pencil laid down on a sketchbook page (SC05_SH020 pencil_down)'
+  shots:
+  - SC05_SH020
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+- sound: fx.soft_bump
+  need: 'foley.cloth: a phone laid on a jacket chest under a flat hand (SC06_SH010 phone_on_chest)'
+  shots:
+  - SC06_SH010
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+- sound: fx.plastic_scuff
+  need: 'foley.seat_creak: a car seat (fabric, springs) creaking as he sits up (SC01_SH060 reset_burst)'
+  shots:
+  - SC01_SH060
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in: fx.plastic_scuff PLACEHOLDER'
+- sound: fx.plastic_scuff
+  need: 'foley.cloth: jacket/trouser cloth as he backs out of the car with the crank (SC04_SH040 crank_lift)'
+  shots:
+  - SC04_SH040
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in: fx.plastic_scuff PLACEHOLDER'
+- sound: fx.plastic_scuff
+  need: 'foley.pencil: a short pencil stroke on paper (SC05_SH020 f0-2); foley.headphones_slide: over-ear
+    headphones slid down past hair to the neck (SC05_SH020 headphones_slide, 7 f); foley.phone_handling:
+    a phone lifted off a wooden desk (SC05_SH020 phone_grip)'
+  shots:
+  - SC05_SH020
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+  note: 'stand-in: fx.plastic_scuff PLACEHOLDER'
+- sound: street.bird
+  need: 'one or two soft birdsong phrases outside a closed car, dusk (SC01_SH010, around f10; SC01_SH150,
+    around f28): board ''a bird''. Not in the mix yet: no synth stand-in (a fake bird would be worse than
+    none)'
+  shots:
+  - SC01_SH010
+  - SC01_SH150
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+- sound: street.distant_traffic
+  need: a distant traffic wash for the dusk street (SC04, SC06) and a better distant car pass for SC03_SH070
+    (replaces amb.distant_car_pass). Optional
+  shots:
+  - SC03_SH070
+  - SC04_SH010
+  - SC06_SH010
+  source: library
+  licence: UNKNOWN
+  status: NEEDED
+- sound: music.headphone_leak
+  need: 'Hana''s headphone music: 3-5 s of a track she would listen to, leaking faintly from closed headphones;
+    the pipeline lowpasses and levels it (SC05_SH010 f0-23, drops away at SC05_SH020 headphones_slide
+    f12-19). Not in the mix: agents do not generate music; without it SC05 is room tone only'
+  shots:
+  - SC05_SH010
+  - SC05_SH020
+  source: licensed
+  licence: UNKNOWN
+  status: NEEDED
+  note: must be the human's own composition or a track with a written licence; no lyrics (tone.wordless)
+conflicts:
+- shots:
+  - SC05_SH010
+  storyboard: 'under her headphones: faint music leaking; a soft buzz on the desk'
+  shot_file: 'phone_hana: face up, no vibration or shift (the light is what reaches her)'
+  assumption: 'ASSUMPTION (D4): no buzz; hum.phone_buzz not used'
+- shots:
+  - SC04_SH070
+  storyboard: the ratchet; a soft chime
+  shot_file: 'sound_sync: ratchet click on f4; no UI sound'
+  assumption: 'ASSUMPTION (D4): ratchet only, no chime'
+- shots:
+  - SC04_SH040
+  - SC04_SH010
+  storyboard: lid down (M6 prose read 'lowered' as open); SC04_SH010 crank in the closed glovebox
+  shot_file: anim glovebox_lid closed at f0, open_down at f24 (continuity closed_open_closed)
+  assumption: 'ASSUMPTION (D4): closed at f0; soft latch at lid_latch f24, no drop'
+- shots:
+  - SC04_SH060
+  storyboard: the ratchet continues off screen, slower during the hover
+  shot_file: ratchet clicks at the handle tops f0, f24, f48
+  assumption: 'ASSUMPTION: 24 f, phase-locked'
+- shots:
+  - SC04_SH080
+  - SC04_SH090
+  storyboard: the ratchet stops under the tick (SH080 f34)
+  shot_file: clicks at f2, f26, f50; last click SC04_SH090 f7
+  assumption: 'ASSUMPTION: follow the shot files'
+- shots:
+  - SC01_SH150
+  storyboard: a soft bump
+  shot_file: 'anim forehead_contact: no horn, no thud'
+  assumption: 'ASSUMPTION: a very soft bump at -40 dB relative'
+- shots:
+  - SC01_SH020
+  storyboard: a soft UI tap
+  shot_file: 'anim: no tap (only a thumb settle f0-3)'
+  assumption: 'ASSUMPTION: the tap is on the cut f0 (at: frame 0; an event `map_tap` from the animation-director
+    would make it structural)'
+scaffold_notes:
+- 'Edited by the sound-designer from the fm audio scaffold (55 cues -> complete sheet). All scaffold frame-0
+  placeholders were replaced by event ids; the scaffold''s car.door_close (SC02_SH010) was dropped: the
+  door is never closed on screen (continuity: the open door in SC04).'
+- 'Two cues carry hand-derived lengths across shots (c_SC01_SH100_idle 110 f; the SC03 hums die_at 6.0
+  s): re-derive them if SC01_SH100-SH130 or SC03_SH010-SH050 are retimed.'
