@@ -470,3 +470,454 @@ entries:
   status: PROPOSED
   source: agent:animation-director
   version: 1
+- id: animation.vocab.v2
+  statement: 'Vocabulary v2: the v1 names plus the additions and redefinitions in animation.vocab.v2.*,
+    adopted together as one version bump (vocab_version 2).'
+  value:
+    vocab_version: 2
+    parts:
+    - animation.vocab.v2.pose.ren
+    - animation.vocab.v2.pose.hana
+    - animation.vocab.v2.face.ren
+    - animation.vocab.v2.lids
+    - animation.vocab.v2.prop.charging_cable
+    - animation.vocab.v2.prop_state.hidden
+    - animation.vocab.v2.prop.shop_door
+    replaces_on_ratification:
+    - animation.vocab.pose.ren
+    - animation.vocab.pose.hana
+    - animation.vocab.face
+    - animation.vocab.prop_states
+    unchanged_from_v1:
+    - animation.vocab.look_target
+    - animation.vocab.breath
+    - animation.vocab.gait
+    - animation.vocab.ease
+    - animation.vocab.ui_event
+    - animation.vocab.event_kind
+    no_renames: true
+    implementation:
+      fm_core:
+      - animvocab.py VOCAB_VERSION 2 with the POSES, FACES and PROPS of the parts, and a LIDS enum
+      - schemas/animation.py CharacterTracks.lids (list of {f, ref, ease, dur_f, note, rationale})
+      - animcheck.py lints lids (enum, order, range, a dur_f that does not run past the next lids key);
+        hold scope `all` blocks lids keys, `face` does not
+      - qa_motion.py honours a per-prop chained_fields list (charging_cable chains loc only)
+      blender:
+      - poses.py kneel_reach_stand, kneel_head_back and the five redefinitions, each with its acceptance
+        checks in tests/test_poses.py
+      - FACE_SHAPES wary and determined; the lids value multiplies the face's eye openness
+      - charging_cable as a posed curve (phone end fixed to phone_ren, source end at loc), hide_render when
+        hidden
+      - shop_door swing_back as a closer decay that carries on after the cut
+      - shop pose context points stand_back_edge and socket (the only new geometry in v2)
+    migration: 'After ratification and the implementation above, the animation-director moves all 38 anim
+      files to vocab_version 2 in one pass, using the per-shot lists in each part. Files that use no v2
+      name only change their vocab_version.'
+  rationale: 'The v1 gaps were patched with the nearest legal name plus a prose note, which is exactly
+    the free text builders must not read. v2 closes the gaps that change what the audience sees: the plug-in
+    reach, the relief head tilt, the wary and determined faces, blinks that keep the gaze, the one cable,
+    and the shop door''s swing back. It also tightens five presets whose v1 text left the builder guessing.
+    One version bump for all of it means every anim file migrates once. v1 names are kept, so no v1 key
+    becomes illegal. Rejected: separate bumps per gap (seven migrations of 38 files), and editing the v1
+    entries in place (the v1 files would then be checked against text they were not written for).'
+  serves:
+  - intent.comic_then_tender
+  - intent.anime_feel
+  - intent.race_against_battery
+  depends_on:
+  - animation.vocab.pose.ren
+  - animation.vocab.pose.hana
+  - animation.vocab.face
+  - animation.vocab.prop_states
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.v2.pose.ren
+  statement: 'Ren v2 poses: two new kneel presets for the shop, and tighter definitions of kerb_crank_hold,
+    lunge_reach, car_forehead_wheel and scramble_out, each with checks a builder test can assert.'
+  value:
+    vocab_version: 2
+    add:
+      kneel_reach_stand:
+        desc: 'kneel_upright''s knees, pelvis and left hand (phone at the chest), with the torso turned
+          about 25 deg to his right and leaning about 12 deg toward the display stand. The right arm reaches
+          behind the stand''s back edge to the elbow, with the hand at the socket (about 0.30 m high, hidden
+          from the lens). The right shoulder dips 4 cm, and the head tilts about 10 deg toward the stand
+          to look past its edge.'
+        checks:
+          right_hand_to_socket_m_max: 0.02
+          right_elbow: behind the stand_back_edge plane
+          left_hand_and_phone_vs_kneel_upright_m_max: 0.03
+          crown_not_above_kneel_upright: true
+          head_yaw_to_socket_deg_max: 30
+        needs_context: [shop.stand_back_edge, shop.socket]
+        used_in: [SC03_SH020]
+      kneel_head_back:
+        desc: 'kneel_upright with the head tipped back about 8 deg (neck extends, chest opens about 2 deg).
+          Hands and phone stay put. The shoulder drop comes from the breath track, not from the preset.'
+        checks:
+          head_pitch_vs_kneel_upright_deg: -8
+          left_hand_and_phone_vs_kneel_upright_m_max: 0.01
+          shoulders_vs_kneel_upright_m_max: 0.005
+        needs_context: []
+        used_in: [SC03_SH040, SC03_SH050]
+    redefine:
+      kerb_crank_hold:
+        desc: 'Clamped cranking base, with pelvis and feet as kerb_hunch. The crank body lies across between
+          the knee tops at the kerb crank point, with knees up and pressed in. The spine leans 22 deg forward
+          with the forearms clear of the knees. The right hand is on the knob at 12 o''clock, the same pose
+          as gait crank_turn at handle angle 0. The head is pitched toward the crank. The left hand follows
+          crank_charger.loc. With hands_both it is under the crank body with the phone flat in the palm.
+          With lap (clamped) it holds the phone about 0.76 m high over the near knee beside the port (canon
+          crank_grip two_hands_then_crank_hand_plus_phone_hand).'
+        why: 'v1 says "crank held in both hands in the lap". That fits SC04_SH040 f44-59 but not the clamped
+          cranking in SC04_SH050-SH090 and SC06 f0, where the left hand holds the phone. The notes called
+          this a vocabulary gap five times. Driving the left hand from the crank''s loc closes the gap with
+          no new name.'
+        checks:
+          right_hand_to_knob_m_max: 0.005
+          equals_crank_turn_at_angle_0: true
+          crank_center_to_kerb_crank_point_m_max: 0.01
+          phone_above_crank_top_when_loc_lap: true
+        needs_context: []
+      lunge_reach:
+        desc: 'lunge_low''s legs (right knee down, left foot forward). The torso leans about 52 deg in through
+          the passenger doorway, with the crown at least 5 cm under the 1.45 m roof line. The left forearm
+          rests on the seat edge with the phone screen up. The right hand is on the glovebox latch, reaching
+          no more than 93 % of arm length, with no locked elbow. The head turns at most 40 deg to the latch
+          with the eyes on it. Weight is over the front (left) foot.'
+        why: 'v1 does not bound the crown against the roof or the reach against the arm, and SC04_SH040
+          keeps the jacket under the roof line (camera.framing.jacket_off_sky).'
+        checks:
+          right_hand_to_latch_m_max: 0.01
+          crown_z_max_m: 1.40
+          left_forearm_mid_to_seat_edge_m_max: 0.03
+          reach_fraction_max: 0.93
+          head_yaw_deg_max: 40
+        needs_context: []
+      car_forehead_wheel:
+        desc: 'The forehead (not the nose, not the horn pad) rests on the top of the wheel rim. The spine
+          curls forward from the seat and the head is pitched at least 45 deg. The shoulders drop 4 cm. The
+          hands slide from the top grip down the rim to about +/-78 deg, and the left hand keeps the phone
+          against the rim. The face is turned down into the wheel and hidden from the lens (characters.ren.expressions
+          face_hidden_beats). The contact is soft: no bounce in the preset.'
+        why: 'v1 names the contact but gives no tolerance, and does not say the face is hidden or where
+          the phone hand goes. The shot needs all three.'
+        checks:
+          forehead_to_rim_top_m_max: 0.01
+          head_pitch_deg_min: 45
+          crown_z_max_m: 1.40
+          hands_on_rim_m_max: 0.01
+        needs_context: []
+      scramble_out:
+        desc: 'Ducked in the passenger doorway with the crown at 1.40 m or lower (the roof line is 1.45 m).
+          The spine pitches about 52 deg forward and the head leads out with the eyes ahead, not down. The
+          left (phone) hand is thrust out ahead at chest height holding the phone (continuity.props.phone_ren
+          hand left). The right hand pushes off the sill. The right foot plants on the pavement and the
+          left foot is still on the car floor. This is frame 0 of gait scramble.'
+        why: 'The v1 builder puts the left hand on the sill, which drops the phone the prose has thrust
+          out ahead (SC02_SH010) and breaks the left-hand phone rule. The fix only swaps the existing hand
+          targets.'
+        checks:
+          crown_z_max_m: 1.40
+          left_hand_ahead_of_chest_m_min: 0.35
+          phone_hand: L
+          right_hand_to_sill_m_max: 0.02
+        needs_context: []
+    migration:
+      SC03_SH020: 'pose: f0 kneel_upright hold; f1 kneel_reach_stand ease_out blend_f 5 (arm behind the
+        stand by f6); f16 kneel_upright ease_in_out blend_f 10; f26 kneel_upright hold'
+      SC03_SH040: 'pose: f0 kneel_upright hold; f4 kneel_head_back ease_out blend_f 10; f14 kneel_head_back
+        hold'
+      SC03_SH050: 'pose: f0 kneel_head_back hold'
+      redefinitions: no anim key changes; SC04_SH040-SH090, SC06_SH010, SC04_SH040 (lunge_reach), SC01_SH150
+        and SC02_SH010 re-render with the new geometry
+  rationale: 'The two kneel presets are the only body shapes in the shop that the audience reads as action.
+    One is the fumble behind the stand that turns hope into a plug-in. The other is the relief head tilt
+    that the blackout then punishes. Holding them on kneel_upright flattens both beats into one pose. The
+    redefinitions only tighten contacts and hand targets the set already has, so they need no new geometry,
+    and each gets a numeric check so the builder test catches drift. Rejected: new names for the clamped
+    crank grip and the phone-out scramble. Those are the same bodies with the hands placed correctly, and
+    a near-duplicate name would break the one-configuration-per-name rule.'
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.anime_feel
+  depends_on:
+  - animation.vocab.pose.ren
+  - characters.ren.movement
+  - characters.ren.expressions
+  - continuity.props.phone_ren
+  - continuity.props.glovebox_and_crank
+  - camera.framing.jacket_off_sky
+  applies_to:
+  - ren
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.v2.pose.hana
+  statement: 'desk_notice redefined: the head turns, the eyes lead, and the pencil state comes from the
+    pencil track, not from the preset.'
+  value:
+    vocab_version: 2
+    redefine:
+      desk_notice:
+        desc: 'Seated as desk_sketch, with the head turned 25 deg toward the phone on the desk (yaw only).
+          The spine lifts from 26 to 14 deg and the torso twists no more than 6 deg. The right (pencil) hand
+          stays on the page where the stroke ended. Whether the pencil is held or laid comes from the pencil
+          track. The left hand stays at the sketchbook edge. The eyes come from the look track and lead
+          the head (characters.hana.movement notice_order).'
+        why: 'v1 bakes "pencil laid down" into the pose, which fights the pencil track (SC05_SH020 lays
+          it f6-8, after the blend starts at f5). The v1 builder also parks the right hand off the page.'
+        checks:
+          head_yaw_to_phone_deg: 25
+          torso_twist_deg_max: 6
+          right_hand_to_sketchbook_page_m_max: 0.03
+        needs_context: []
+    migration:
+      SC05_SH020: no anim key change; re-render
+  rationale: 'Hana''s four seconds only read if the order is eyes, head, hands. A pose that lays the pencil
+    moves the hands too early. Keeping hand state on the prop track keeps the order exact. Uses only desk
+    points the set already has.'
+  serves:
+  - intent.open_hopeful_ending
+  depends_on:
+  - animation.vocab.pose.hana
+  - characters.hana.movement
+  applies_to:
+  - hana
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.v2.face.ren
+  statement: 'Two new comic-set faces for Ren, wary and determined, both illegal from SC04_SH030 like the
+    rest of the comic set.'
+  value:
+    vocab_version: 2
+    add_to_comic_set:
+      wary:
+        desc: brows level and very slightly lowered, eyes a touch narrowed, mouth pressed closed, no smile;
+          a held pose
+        shape_hint: {brow_dy: -0.01, brow_tilt: 0.0, eye: 0.85, mouth_w: 0.85, mouth_h: 0.7, smile: -0.05}
+        used_in: [SC03_SH020, SC03_SH030]
+      determined:
+        desc: brows level and knit (inner ends slightly down), eyes fully open and forward, mouth pressed
+          small; the face of the reset in freeze-sag-reset
+        shape_hint: {brow_dy: 0.0, brow_tilt: -0.15, eye: 1.0, mouth_w: 0.8, mouth_h: 0.7, smile: 0.0}
+        used_in: [SC01_SH060, SC02_SH010]
+    comic_illegal_from_shot: SC04_SH030
+    migration:
+      SC01_SH060: face f18 neutral -> determined
+      SC02_SH010: face f0 neutral -> determined
+      SC03_SH020: face f0 neutral -> wary
+      SC03_SH030: face f0 neutral -> wary (f2 freeze unchanged)
+  rationale: 'The storyboard asks for these faces by name: "wary" in SC03_SH020 and SC03_SH030 (G3 finding
+    7, "wary relief"), and "resolve" in SC01_SH060, which is the same face as the SC02 run. neutral is
+    the wrong read for both. Wary with a neutral face loses the half of the gag where he expects the catch.
+    Resolve with a neutral face loses the reset that makes the setbacks funny (characters.ren.movement setback_pattern
+    freeze, sag, reset). Both are held poses without graphic symbols, so they fit comic_style held_pose_reactions.
+    They join the comic set, so the turn rule still bans them from SC04_SH030. DEPENDENCY: characters.ren.expressions
+    is LOCKED and lists the comic set. Adding members needs a change request from the character-designer,
+    or a human ruling that animation faces may refine a listed expression.'
+  serves:
+  - intent.comic_then_tender
+  depends_on:
+  - animation.vocab.face
+  - characters.ren.expressions
+  - characters.ren.movement
+  - tone.the_turn
+  applies_to:
+  - ren
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.v2.lids
+  statement: 'A per-character lids track (open, low, closed, with ease and duration) for blinks and heavy
+    lids that keep the gaze. It is separate from the look target.'
+  value:
+    vocab_version: 2
+    track: lids
+    key_fields: [f, ref, ease, dur_f, note, rationale]
+    refs:
+      open: upper lids at the face's own openness (factor 1.0)
+      low: heavy lids (factor 0.55), tired or tender
+      closed: lids shut (factor 0.0)
+    semantics:
+      multiplies_face_eye_openness: true
+      gaze_kept_through_lids: true
+      look_closed_still_legal: for long closures where the gaze does not matter (v1 behaviour); a lids key
+        may not fall inside a look `closed` span
+      hold_scope_all_blocks_lids: true
+      hold_scope_face_blocks_lids: false
+    blink_timing_f: {close: 2-4, shut: 1-2, open: 3-6, total_min: 6}
+    migration:
+      SC03_SH070: 'look: drop f28 closed and f34 phone; lids: f0 open hold, f28 closed ease_in dur_f 4,
+        f34 open ease_out dur_f 6 (close 4, shut 2, open 6 = the 12-frame blink)'
+      SC04_SH010: 'look: drop f30 closed and f36 phone; lids: f0 open hold, f30 closed ease_in dur_f 2,
+        f33 open ease_out dur_f 3'
+      SC04_SH030: 'look: drop f22 closed and f28 glovebox (the glovebox look from f4 carries); lids: f0
+        open hold, f22 closed ease_in dur_f 2, f25 open ease_out dur_f 3'
+      SC05_SH030: 'look: drop f36 closed and f42 phone; lids: f0 open hold, f36 closed ease_in dur_f 2,
+        f39 open ease_out dur_f 3 (returns to small_smile''s lifted lids)'
+  rationale: 'Blinks are the acting in the held shots: the slow blink in SC03_SH070 is the hinge from funny
+    to sad, then there is the tired blink in SC04_SH010, the hesitation blink in SC04_SH030 (characters.ren.expressions
+    hesitation_at_heart "a slow blink"), and Hana''s soft blink. In v1 a blink is a look change to `closed`
+    and back. The builder renders that as a binary eye switch with no ease, so the 12-frame slow blink becomes
+    a 6-frame cut. It also drops the gaze, so the eyes can re-aim when they open. A lids track multiplies
+    the face''s openness, so a blink on small_smile keeps her lifted lower lids. Rejected: a blink face
+    ref (it would replace the expression for the blink''s length) and a blink event with a fixed curve
+    (the four blinks have three different tempos).'
+  serves:
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  - intent.anime_feel
+  depends_on:
+  - animation.vocab.look_target
+  - characters.ren.expressions
+  - characters.hana.expressions
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.v2.prop.charging_cable
+  statement: 'The one charging cable as a persistent prop. The phone end is always on Ren''s phone. The
+    source end has a location enum with legal transitions, and a posed/hidden visibility state.'
+  value:
+    vocab_version: 2
+    prop: charging_cable
+    desc: Ren's cable (continuity.props.cable); a posed curve per shot, never simulated
+    fields:
+      loc: [glovebox, hand_r, car_usb_adapter, hand_l_loop, shop_socket, loose, crank_port]
+      state: [posed, hidden]
+    transitions:
+      loc:
+        glovebox: [hand_r]
+        hand_r: [car_usb_adapter, shop_socket, crank_port, hand_l_loop, glovebox, loose]
+        car_usb_adapter: [hand_l_loop, hand_r]
+        hand_l_loop: [hand_r, loose]
+        shop_socket: [loose, hand_l_loop, hand_r]
+        loose: [hand_r, hand_l_loop]
+        crank_port: [loose, hand_r]
+      state:
+        posed: [hidden]
+        hidden: [posed]
+    phone_end: phone_ren
+    persistent: true
+    chained_fields: [loc]
+    before_first_key: {loc: glovebox, state: hidden}
+    chain_by_shot:
+      SC01_SH100: 'f0 glovebox hidden; f23 posed (lid down, it shows with the napkins)'
+      SC01_SH110: 'f0 glovebox posed; f18 hand_r (event cable_in_hand)'
+      SC01_SH120: 'f0 hand_r; f2 car_usb_adapter (event bolt_on)'
+      SC01_SH130-SH150: car_usb_adapter (no keys)
+      SC02_SH010: 'f0 hand_l_loop, rationale: the cut hides the pull from the adapter (continuity SC02 pulls
+        it out as he goes)'
+      SC02_SH020-SH030: hand_l_loop (no keys)
+      SC03_SH010: 'f0 hand_l_loop; f44 hand_r (he takes the plug as he drops to the kneel)'
+      SC03_SH020: 'f0 hand_r; f12 shop_socket (event plug_in)'
+      SC03_SH030-SH070: shop_socket (no keys; stays plugged after the blackout)
+      SC04_SH010: 'f0 loose hidden, rationale: unplugged off screen in the ten-minute gap (continuity.props.cable
+        notes)'
+      SC04_SH020-SH040: loose hidden (no keys)
+      SC04_SH050: 'f0 hand_r posed, rationale: the cut hides the pick-up; f10 crank_port (event plug_in)'
+      SC04_SH060-SH090: crank_port (no keys)
+      SC06_SH010: crank_port posed
+  rationale: 'continuity.props.cable (LOCKED) fixes one cable in every Ren scene, with a different source
+    each scene. In v1 it lives only in notes on 9 anim files, so nothing checks that SC03 stays plugged
+    after the blackout or that SC04 plugs into the crank port. Typing the source end makes the one-port
+    rhyme (world.rules.one_port) checkable across cuts, the same way the glovebox lid is. Only loc chains:
+    the posed/hidden state is framing, so it may change at any cut. ASSUMPTION: during SC04_SH010-SH040
+    the loose end lies out of view by his left foot and is picked up across the cut into SC04_SH050. The
+    prose never says where it is. Rejected: a cable simulation (M3+ risk, and the canon says posed per
+    shot).'
+  serves:
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  depends_on:
+  - continuity.props.cable
+  - continuity.props.phone_ren
+  - world.rules.one_port
+  - world.props.charging_cable
+  - animation.vocab.prop_states
+  - animation.vocab.v2.prop_state.hidden
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.v2.prop_state.hidden
+  statement: '`hidden` is a visibility state: the prop is in the world at its chained location but is
+    not drawn in this shot. In v2 only charging_cable.state carries it.'
+  value:
+    vocab_version: 2
+    value_name: hidden
+    granted_to: [charging_cable.state]
+    semantics:
+      location_fields_keep_chaining: true
+      visibility_chains_across_cuts: false
+      builder: hide_render on the prop for the frames it is hidden
+      qa: a hidden prop is not an occlusion or missing-prop finding
+    extension: other props get `hidden` only by a new vocabulary proposal
+  rationale: 'Leaving a prop out of a shot''s tracks is ambiguous: forgotten or deliberately unseen? It
+    also drops the location chain. An explicit hidden key says "deliberately unseen" and keeps the chain.
+    This is the same idea as ceiling_panels `steady`, a no-op QA can assert. The canon asks for exactly
+    this for the cable ("in wides most of its length stays out of frame"). Rejected: a generic visibility
+    field on every prop (a schema change for one user), and deleting the object per shot (loses the chain).'
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - continuity.props.cable
+  - animation.vocab.prop_states
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.v2.prop.shop_door
+  statement: 'The shop door gets a swing_back state (the closer pulls it back and the motion carries on
+    past the cut) and an optional swing_deg for a pinned partial angle.'
+  value:
+    vocab_version: 2
+    prop: shop_door
+    fields:
+      state: [closed, open_70, swing_back]
+      swing_deg: deg
+    transitions:
+      state:
+        closed: [open_70]
+        open_70: [swing_back, closed]
+        swing_back: [closed, open_70]
+    swing_back: 'from the current angle toward closed on the door closer (builder constant: about 70 ->
+      0 deg over about 36 frames, ease_in_out). The value at the shot''s last frame is whatever the decay
+      has reached, never a slam.'
+    persistent: false
+    migration:
+      SC02_SH030: 'props.shop_door: add f14 state swing_back ease ease_in (no dur_f: the closer constant
+        runs past the cut)'
+  rationale: 'SC02_SH030 ends on the empty, swinging door, and the chime on the cut is the scene''s full
+    stop. The prose starts the swing back at f14 and has it "continue after the cut". v1 has only closed
+    and open_70, so a closed key at f14 would have to finish by f15: a slam, the loud gag the tone rules
+    out (tone.comedy_source). The door was held open instead, which kills the swing. A state that names
+    the motion, not its end, fixes that. Rejected: a two-frame swing_deg key (still reads as stopping on
+    the cut).'
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  depends_on:
+  - animation.vocab.prop_states
+  - tone.comedy_source
+  applies_to:
+  - SC02_SH030
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1

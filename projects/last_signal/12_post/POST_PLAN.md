@@ -7,9 +7,9 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:edit_plan
-    hash: sha256:13518fd65d557bc33568ebc2503a3b7f4f75b57b3f15483782354a8817d10159
+    hash: sha256:963f35db15fd5bf2709367598a8b68b32e47151919a3f13a71ca1663e79b91ee
   - ref: artifact:audio_cues
-    hash: sha256:e42adf4b20f95307f45974bea266e0e56dfcdeaeaa93291a1eea0850fc6fa2f0
+    hash: sha256:7429405e767d311ddc2be98036e0d1da623777dee787584b4e10771d0e523e68
   - ref: artifact:creative_direction
     hash: sha256:2a9437a4219a84067e09241c02b4df8f14e921dda206ac46d9b8d93faaeb44a3
   - ref: canon:look.style.texture_and_grain
@@ -28,6 +28,8 @@ fm:
     hash: sha256:4b51cfae6e27a0a98fa06c7d64961ef46dfde5ae60ac2bc6680280a3d56f4975
   - ref: canon:world.rules.no_readable_text
     hash: sha256:a21cccd660b3af6cffb29094f0fab852e3e2fe1bd316dd2e7dcb094615bad1ae
+  - ref: canon:audio.mix
+    hash: sha256:6928de0e3e54edc5d62ed70cec1108d335e08443b7d45148af2206cd5b5c0c60
   serves:
   - intent.soft_but_cinematic
   - intent.anime_feel
@@ -35,7 +37,7 @@ fm:
   summary: Locked finish steps with parameters read from canon (glare, grain, optional vignette, fades),
     titles ruling, final render settings proposal, delivery spec, licence status; human decisions D2/D3/D5/D6/D7/D9
     left UNKNOWN.
-  stamped_content_hash: sha256:4201e30723deb9f65a5d4fbcf48c5f64f2701524c32870a7e88af6d7fdb6263d
+  stamped_content_hash: sha256:a758974886f6d08533803e75e2bb646073ae38b1d6ae1c85795a79caa56591e8
 title: Post Plan
 ---
 # Post Plan: Last Signal
@@ -143,6 +145,11 @@ FACT: `config/render_profiles.yaml` `final` today reads: `engine: BLENDER_EEVEE`
 - DEPENDENCY: post does not edit `config/render_profiles.yaml`. After D6, the owner (blender-td or the
   main session, via the normal process) writes the profile or a project override
   `projects/last_signal/config/render.yaml`.
+- FACT (wave 6 re-check): `config/render_profiles.yaml` `final` still reads `motion_blur: true`. It is
+  repository-wide config (shared by every film), outside post's lane. It is also not read by any `fm` code
+  today (no consumer in `core/`), so nothing has been rendered with it yet. The motion-blur row needs no
+  creative ruling, because locked canon already decides it. The other D6 rows (output, samples, chunking)
+  do.
 - ASSUMPTION: 1440 frames at 5-12 s each is about 2-5 hours of unattended rendering (M6 scope estimate,
   not measured on the real sets).
 - Post never runs `fm authorize` or `fm blender final`.
@@ -162,10 +169,10 @@ FACT: `config/render_profiles.yaml` `final` today reads: `engine: BLENDER_EEVEE`
 - **Loudness, D3: UNKNOWN.** RECOMMENDATION: **-16 LUFS integrated, -1 dBTP true peak**, 2-pass loudnorm.
   This is the web/mobile norm, and the quiet ending keeps its dynamics. Rejected: -14 LUFS (louder, and
   platforms turn it down anyway, at the cost of the tender half's range); -23 LUFS / EBU R128 (right for
-  broadcast, far too quiet on phones and laptops). FACT: there is no `audio.mix` canon (`canon/audio.yaml`
-  has no entries). `AUDIO_CUES.yaml` `mix` states -16.0 / -1.0, and `fm post assemble` falls back to a
-  code default of -16 / -1. After D3, the sound-designer should propose `audio.mix` so the master reads
-  canon.
+  broadcast, far too quiet on phones and laptops). FACT: `audio.mix` now exists as **PROPOSED** canon
+  (sound-designer: `integrated_lufs: -16.0`, `lufs_tolerance: 1.0`, `true_peak_dbtp: -1.0`, 48 kHz, 24-bit,
+  stereo, `decision: D3`). It is not LOCKED, so D3 is still open. FACT: the wave-6 mix measures
+  -16.39 LUFS (ffmpeg ebur128), true peak -1.7 dBTP (`fm qa audio`), inside the proposed target.
 - `fm qa delivery` checks (all must PASS at POST): 1920x1080; exactly 24/1 fps; 1440 frames (+-0); duration
   60.000 s; audio 48 kHz stereo; integrated loudness within +-1 LU of target; true peak <= -1 dBTP; black
   only inside the fades; checksums match the manifest.
@@ -179,54 +186,63 @@ FACT: `config/render_profiles.yaml` `final` today reads: `engine: BLENDER_EEVEE`
 
 | Item | Where used | Source | Licence | Blocks export |
 |---|---|---|---|---|
-| breath (placeholder) | SC01_SH040/090/130/150, SC03_SH040, SC04_SH030/050/090, SC06_SH010 | to be recorded by the human | UNKNOWN | **yes** |
+| breath (placeholder) | SC01_SH040/090/130/150, SC02_SH020, SC03_SH040, SC04_SH030/050-090, SC06_SH010 | to be recorded by the human | UNKNOWN | **yes** |
 | sigh (placeholder) | SC01_SH060 | to be recorded | UNKNOWN | **yes** |
 | nose laugh (placeholder) | SC05_SH030 | to be recorded | UNKNOWN | **yes** |
-| headphone leak music (placeholder) | SC05_SH010, SC05_SH020 | licensed track to be supplied | UNKNOWN | **yes** |
+| foley: footsteps, door push, knees, cloth (`fx.soft_bump` placeholder, 6 asks) | SC02_SH010-030, SC03_SH010, SC04_SH040, SC05_SH020, SC06_SH010 | library files, human picks | UNKNOWN | **yes** |
+| foley: seat creak, headphones, pencil, phone grip (`fx.plastic_scuff` placeholder, 3 asks) | SC01_SH060, SC04_SH040, SC05_SH020 | library files, human picks | UNKNOWN | **yes** |
+| street bird | SC01_SH010, SC01_SH150 | library file | UNKNOWN | **yes** |
+| distant traffic | SC03_SH070, SC04_SH010, SC06_SH010 | library file | UNKNOWN | **yes** |
+| headphone leak music | SC05_SH010, SC05_SH020 | licensed track to be supplied (agents never generate music) | UNKNOWN | **yes** |
 | phone UI font | typed invitation, numbers (`look.style.phone_ui` `font: open_licence_humanist_sans`) | not yet chosen (Noto Sans / Inter suggested) | UNKNOWN (canon notes: "Font licence UNKNOWN until verified") | **yes** |
 | procedural sound recipes (`fm audio synth`) | all other cues | generated in-house | ASSUMPTION: own work, no third-party licence. To be confirmed by the sound-designer's registry | no, if confirmed |
 | 3D assets, sky | all shots | built procedurally, no `library/assets` in use (the directory is empty) | FACT: nothing third-party found | no |
 
+- FACT: `fm qa audio` (wave 6) lists 15 human-supply items with status NEEDED and licence UNKNOWN; the table
+  above groups them.
 - RECOMMENDATION: `fm post export` is not run for release until every UNKNOWN above is resolved. An
   animatic with placeholders is fine for G7 review.
 
-## 7. First animatic (this run)
+## 7. Animatic (wave 6 run)
 
 FACT, `fm post animatic` output: "`12_post/animatic.mp4`: 60.000 s, 1440 frames @ 24.0 fps, 1280x720, audio:
-silent, 0 shots from frames, 38 from stills". ffprobe confirms: h264, 1280x720, yuv420p, 24/1, 1440 frames,
-60.000000 s.
+yes, 20 shots from frames, 18 from stills". ffprobe: video h264 1280x720, 24/1, 1440 frames, 60.000000 s;
+audio aac 48000 Hz, 2 channels, 60.000000 s.
 
 What it is and is not:
-- It is **a stills animatic**: each shot's single preview still (`10_blender/previews/*.png`) is held for
-  the shot's duration. There is no playblast (`10_blender/playblast/` does not exist), so it shows timing
-  and order, not motion.
-- FACT: all 38 preview renders are **stale** (`fm status`: `render:preview_*` stale, 16 shots changed after
-  G5 approval). The picture may not match the current shot files.
-- It is **silent**: `12_post/audio/mix_48k_stereo.wav` did not exist when it was built.
-- It has **no fades**. The stills animatic does not apply the head/tail fades.
-- So it is **not** the G7 review artifact. The ANIMATION_PREVIEW contract needs
-  `10_blender/playblast/film.mp4` and the mix. Rebuild with `fm post animatic` once both exist.
+- **Picture is mixed.** 20 shots come from rendered frames: the 15 SC01 playblasts in
+  `10_blender/playblast/` and 5 shots in `10_blender/frames/` (SC02_SH010, SC03_SH010, SC04_SH050,
+  SC04_SH080, SC05_SH020). The other 18 shots are single preview stills held for their duration, so they
+  show timing and order but not motion.
+- **Sound is the wave-6 mix** (`12_post/audio/mix_48k_stereo.wav`), with the placeholders listed in
+  section 6 and one door chime across SC02/SC03 (EDIT_PLAN section 5).
+- **No fades.** The animatic does not apply the head and tail fades.
+- So it is a **partial** G7 review artifact. A full G7 animatic needs motion for the remaining 18 shots
+  (animation-director / blender-td). Rebuild with `fm post animatic` once they exist.
 
-FACT, `fm qa delivery 12_post/animatic.mp4` (report `qa/delivery_report.json`):
+FACT, `fm qa delivery 12_post/animatic.mp4` (report `qa/delivery_report.json`), quoted summary line:
+"1 delivery file(s): 1 FAIL, 2 WARN finding(s) (1 row(s) failing)". The command exits non-zero on FAIL.
 - FAIL: resolution 1280x720, render canon says 1920x1080. **Expected**: the animatic is a preview-size
   review file (`--size` default 1280x720), not a delivery file.
-- FAIL: no audio stream. Expected, because no mix existed yet.
-- WARN: first frame not black although a fade-in is specified; WARN: last frame not black although a
-  fade-out is specified. Expected for a stills animatic without fades.
-- Passing: 24/1 fps, 1440 frames, 60.0 s.
-- Note on the tool: the summary line reads "1 FAIL, 1 WARN" while the report lists 2 FAIL and 2 WARN
-  findings. The summary counts files, not findings (it also labels the file count "shots").
+- WARN: first frame is not black although a fade-in is specified; WARN: last frame is not black although
+  a fade-out is specified. Expected for an animatic without fades.
+- Passing: 24/1 fps, 1440 frames, 60.0 s, 48 kHz stereo audio of the right length, integrated loudness
+  -16.5 LUFS (within +-1 LU of -16), true peak -1.8 dBTP.
+- Tool fix (wave 6): the summary used to count files with a FAIL or WARN, not findings. It now counts
+  findings, and keeps the per-file counts as `files_failing` / `files_warning` (`core/fm/post.py`
+  `delivery_summary`). `fm qa audio` had the same bug and got the same fix.
 
 ## 8. Risks
 
-1. The stale previews and the missing playblast/mix block G7. Owners: blender-td (`fm blender preview`
-   / playblast), sound-designer (`fm audio mix`).
-2. The final profile contradicts locked canon (`motion_blur: true`). If nobody corrects it before
-   `fm authorize final-render`, the whole render is wrong. D6 closes this.
+1. 18 of 38 shots still have no motion in the animatic (section 7). Owners: animation-director,
+   blender-td. The mix exists (wave 6).
+2. The final profile still contradicts locked canon (`motion_blur: true`, re-checked in wave 6). If nobody
+   corrects it before `fm authorize final-render`, the whole render is wrong. The fix is one line in
+   `config/render_profiles.yaml`, made by its owner; D6 closes the rest.
 3. The grain amplitude mapping has not been measured (2.2). If it is wrong, the grain is too strong or
    too weak on every frame. Verify on one shot first.
 4. Compositor glare is untested (2.1). It must pass A0 before the final render.
-5. D7 and D3 currently come from code defaults, not canon. A later change to the default would silently
+5. D7 comes from a code default, and D3 from PROPOSED (not LOCKED) canon `audio.mix`. A later change to the default would silently
    change the film. Put the rulings in canon.
 6. UNKNOWN licences (section 6) block release, and the font one also blocks the final render of the
    insert shots.

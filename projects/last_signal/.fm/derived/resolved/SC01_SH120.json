@@ -1,6 +1,6 @@
 {
   "content_hash": "sha256:46465d567f5d4449868a5a890467db745a78c17fe6663509717dac36aa295a2c",
-  "created_at": "2026-09-30T14:32:28Z",
+  "created_at": "2026-09-30T16:15:15Z",
   "derived_from": [
     {
       "hash": "sha256:34790879054d61ab5edd43d66392d6c4711128065a34c141aec110bfa5e91b0b",
@@ -25,6 +25,18 @@
     {
       "hash": "sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26",
       "ref": "canon:animation.vocab.prop_states"
+    },
+    {
+      "hash": "sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660",
+      "ref": "canon:animation.vocab.v2.face.ren"
+    },
+    {
+      "hash": "sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706",
+      "ref": "canon:animation.vocab.v2.pose.ren"
+    },
+    {
+      "hash": "sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc",
+      "ref": "canon:animation.vocab.v2.prop.charging_cable"
     },
     {
       "hash": "sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea",

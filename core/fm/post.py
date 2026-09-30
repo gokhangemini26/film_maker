@@ -649,6 +649,20 @@ def _edge_luma(path: Path, start: float, dur: float, w: int = 160) -> list[float
     return [float(x) for x in fr.mean(axis=1)]
 
 
+def delivery_summary(rows: list[dict], n_files: int) -> dict:
+    """Summary of a delivery report. `fail`/`warn` count FINDINGS (every FAIL/WARN line), not files; the
+    per-file counts are kept separately as `files_failing`/`files_warning`. `files` is the number of delivery
+    files probed; `rows` also includes the MANIFEST row (or the "no delivery files" row)."""
+    def findings(sev: str) -> int:
+        return sum(1 for r in rows for x in r["findings"] if x[0] == sev)
+
+    def failing(sev: str) -> int:
+        return sum(any(x[0] == sev for x in r["findings"]) for r in rows)
+
+    return {"files": n_files, "rows": len(rows), "fail": findings("FAIL"), "warn": findings("WARN"),
+            "files_failing": failing("FAIL"), "files_warning": failing("WARN")}
+
+
 def qa_delivery(project: Project, out: str | Path | None = None, *, files: list[str | Path] | None = None,
                 expect_frames: int | None = None, resolution: tuple[int, int] | None = None,
                 report_dir: str | Path | None = None, target_lufs: float | None = None,
@@ -746,8 +760,7 @@ def qa_delivery(project: Project, out: str | Path | None = None, *, files: list[
                     bad.append(e["path"])
             rows.append({"file": "MANIFEST.json", "findings": (
                 [["FAIL", "checksum mismatch or missing file: " + ", ".join(bad)]] if bad else [])})
-    summary = {"shots": len(rows), "fail": sum(any(x[0] == "FAIL" for x in r["findings"]) for r in rows),
-               "warn": sum(any(x[0] == "WARN" for x in r["findings"]) for r in rows), "files": len(cands)}
+    summary = delivery_summary(rows, len(cands))
     report = {"summary": summary, "rows": rows}
     rd = Path(report_dir) if report_dir else project.dir / "qa"
     rd.mkdir(parents=True, exist_ok=True)

@@ -1,9 +1,9 @@
 {
   "content_hash": "sha256:611f3497a403c58fda3bebc2fd38fb0e720f71e536bd60ef6d98ca0c98ab7dbf",
-  "created_at": "2026-09-30T14:32:39Z",
+  "created_at": "2026-09-30T16:15:29Z",
   "derived_from": [
     {
-      "hash": "sha256:d486db3a8bfcfd9b71a7df5b7639b199d48e5156ee53cc575879d943ae0feca6",
+      "hash": "sha256:c0a17687a9506c676fe1302fd68d3c5fd232e0ebc2274269b2ef53e69161fe6d",
       "ref": "artifact:anim_sc04_sh060"
     },
     {
@@ -41,6 +41,18 @@
     {
       "hash": "sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334",
       "ref": "canon:animation.vocab.ui_event"
+    },
+    {
+      "hash": "sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660",
+      "ref": "canon:animation.vocab.v2.face.ren"
+    },
+    {
+      "hash": "sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706",
+      "ref": "canon:animation.vocab.v2.pose.ren"
+    },
+    {
+      "hash": "sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc",
+      "ref": "canon:animation.vocab.v2.prop.charging_cable"
     },
     {
       "hash": "sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea",

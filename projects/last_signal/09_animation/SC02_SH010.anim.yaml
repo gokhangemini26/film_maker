@@ -31,12 +31,14 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.face.ren
+    hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
   serves:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Structured tracks for the scramble out: mid-action start, door overshoot to 63 then 60 deg,
     unfold into the compass run and out frame left in 18 frames.'
-  stamped_content_hash: sha256:9e55c3dd23b1d2e8838959bf95f75eb46dd00f20b5855a10971fd1bd4ae187e8
+  stamped_content_hash: sha256:93f1450b51d99571f3a9d7595f53b53ef72af0234501f114667ff0ea12eca9c9
 shot_id: SC02_SH010
 frames: 18
 vocab_version: 1
@@ -97,8 +99,9 @@ characters:
     face:
     - f: 0
       ref: neutral
-      note: not readable at this size; head forward, eyes ahead. No determined/urgent face exists in the
-        comic set, neutral is the closest legal ref
+      note: 'not readable at this size; head forward, eyes ahead. In v1 no determined/urgent face exists
+        in the comic set, neutral is the closest legal ref. V2 PENDING (animation.vocab.v2.face.ren):
+        ref determined'
     look:
     - f: 0
       target: road_ahead

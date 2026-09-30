@@ -11,7 +11,7 @@ profiles:
     engine: BLENDER_EEVEE
     resolution_scale: 1.0
     samples: 64
-    motion_blur: true
+    motion_blur: false
     output: exr
     # Final renders need a human authorization recorded in the ledger
     # (`fm authorize final-render`) before any backend may start them.

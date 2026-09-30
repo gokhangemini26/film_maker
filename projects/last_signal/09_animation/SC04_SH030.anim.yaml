@@ -43,12 +43,14 @@ fm:
     hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.lids
+    hash: sha256:cef88be8e44828b4e3ef9da072436c22ebe8c4798b74dac8d4eac9b689d9430a
   serves:
   - intent.earned_last_signal
   - intent.comic_then_tender
   summary: Eyes lead a slow head turn from the phone to the glovebox (commit f4, eyes land f10, head arrives
     f16), a held look, a blink, the decision.
-  stamped_content_hash: sha256:cb8e83d5c5641be707dd5fb88fbf6ff0a0019af185e2593677e608ee2c8c2bea
+  stamped_content_hash: sha256:a42c1e24b9da249ae85f462ae0b57377457760b90cf707ba970235e5d6393ed5
 shot_id: SC04_SH030
 frames: 36
 vocab_version: 1
@@ -90,7 +92,9 @@ characters:
       rationale: the push-in starts on this frame; the audience follows his look into depth
     - f: 22
       target: closed
-      note: one slow blink f22-27
+      note: 'one slow blink f22-27 (hesitation_at_heart). v1 stand-in (look closed is a binary switch);
+        V2 PENDING (animation.vocab.v2.lids): drop this key and the f28 glovebox key (the f4 glovebox
+        look carries); lids f0 open hold, f22 closed ease_in dur_f 2, f25 open ease_out dur_f 3'
     - f: 28
       target: glovebox
       note: eyes reopen on the glovebox, held to the cut

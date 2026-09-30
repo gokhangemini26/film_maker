@@ -39,6 +39,8 @@ fm:
     hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.lids
+    hash: sha256:cef88be8e44828b4e3ef9da072436c22ebe8c4798b74dac8d4eac9b689d9430a
   serves:
   - intent.comic_then_tender
   - intent.soft_but_cinematic
@@ -46,7 +48,7 @@ fm:
   - intent.anime_feel
   summary: 'The quiet bookend: one hunched pose, one slow breath cycle, one tired blink, an irregular
     1 % flicker.'
-  stamped_content_hash: sha256:26a2f4c58345a620dab507fd7f1827646143bfc616067bf50bc35dd44172b83c
+  stamped_content_hash: sha256:dca3d3dd78b3082b050460f2b4f1b86bd914aa94fb78715c493414b24d5ab320
 shot_id: SC04_SH010
 frames: 46
 vocab_version: 1
@@ -77,7 +79,9 @@ characters:
       note: down on the phone throughout
     - f: 30
       target: closed
-      note: one slow, tired blink f30-35
+      note: 'one slow, tired blink f30-35. v1 stand-in (look closed is a binary switch); V2 PENDING (animation.vocab.v2.lids):
+        drop this key and the f36 phone key; lids f0 open hold, f30 closed ease_in dur_f 2, f33 open ease_out
+        dur_f 3'
     - f: 36
       target: phone
       note: eyes reopen on the phone

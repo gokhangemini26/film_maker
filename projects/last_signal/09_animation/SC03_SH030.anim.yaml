@@ -27,11 +27,13 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.face.ren
+    hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
   serves:
   - intent.comic_then_tender
   summary: 'Structured tracks for the wary look up: eyes flick to the panels at f1, head follows, a 14-frame
     dead hold f5-18, slow return to the phone, shoulders start to drop on f23 into SH040.'
-  stamped_content_hash: sha256:b5dccbcb13833c289faed490fa7097b89fc3752b7b3bc3a2ba605a599e6e9608
+  stamped_content_hash: sha256:dca6bff2e21641fd674c5e240b52f8300723a4394d79d3314d7e22478bb63eae
 shot_id: SC03_SH030
 frames: 26
 vocab_version: 1
@@ -49,7 +51,8 @@ characters:
     face:
     - f: 0
       ref: neutral
-      note: f0-1 the wary face carried from SH020 (brows level, mouth pressed)
+      note: 'f0-1 the wary face carried from SH020 (brows level, mouth pressed); neutral is the v1 stand-in;
+        V2 PENDING (animation.vocab.v2.face.ren): ref wary'
     - f: 2
       ref: freeze
       note: 'brows lift and slightly knit, eyes wide, small pupils, mouth pressed; no graphic symbols.

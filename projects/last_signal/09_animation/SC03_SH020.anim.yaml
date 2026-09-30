@@ -33,12 +33,18 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.pose.ren
+    hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+  - ref: canon:animation.vocab.v2.face.ren
+    hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+  - ref: canon:animation.vocab.v2.prop.charging_cable
+    hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
   serves:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Structured tracks for the plug-in: reach behind the stand, a short fumble, plug in at f12,
     bolt at f14, eyes to the phone at f15; phone locked still f10-35 so the bolt reads; no relief.'
-  stamped_content_hash: sha256:a057b4f9a1a229a41d358e40e419965869ecb34f448e3e9b80b283a567d39827
+  stamped_content_hash: sha256:2555bce8650e03ef9f1fd8904ca96abba29cfb551ff4ed05f3a5e9f7c1ee11cd
 shot_id: SC03_SH020
 frames: 36
 vocab_version: 1
@@ -57,13 +63,16 @@ characters:
         of the stand; f6 arm behind the stand to the elbow, shoulder dips, head tilts to look past it;
         f8-11 short fumble (two small forearm adjustments, hand hidden); f12-13 plug goes in, shoulder
         pushes forward 1 cm; f16-26 arm withdraws slowly (ease-in-out). Held on kneel_upright with the
-        beats named as events; see gaps (kneel_reach_socket)'
+        beats named as events in v1. V2 PENDING (animation.vocab.v2.pose.ren): f0 kneel_upright hold;
+        f1 kneel_reach_stand ease_out blend_f 5; f16 kneel_upright ease_in_out blend_f 10; f26 kneel_upright
+        hold (the left hand and phone are identical in both presets, so the f10-35 phone hold stands)'
       rationale: the body stays kneeling and the phone arm still; the busy part is the hidden right hand
     face:
     - f: 0
       ref: neutral
-      note: 'wary: brows level, mouth pressed; no relief expression in this shot. No "wary" ref exists;
-        neutral (level brows, closed mouth) is the closest legal ref and keeps relief out'
+      note: 'wary: brows level, mouth pressed; no relief expression in this shot. neutral (level brows,
+        closed mouth) is the v1 stand-in and keeps relief out; V2 PENDING (animation.vocab.v2.face.ren):
+        ref wary'
     look:
     - f: 0
       target: socket
@@ -81,9 +90,10 @@ props:
   phone_ren:
   - f: 0
     attach: hand_l
-    note: left hand near the chest; cable from the phone over his knee to behind the stand, a short posed
+    note: 'left hand near the chest; cable from the phone over his knee to behind the stand, a short posed
       length, hooked to the right hand while plugging (continuity.props.cable; no cable prop in vocabulary
-      v1)
+      v1). V2 PENDING (animation.vocab.v2.prop.charging_cable): props.charging_cable f0 loc hand_r state
+      posed; f12 loc shop_socket (event plug_in)'
 holds:
 - f0: 10
   f1: 35

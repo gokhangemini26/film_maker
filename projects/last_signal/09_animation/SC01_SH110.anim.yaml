@@ -19,6 +19,8 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.prop.charging_cable
+    hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
   - ref: canon:continuity.props.glovebox_and_crank
     hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
   - ref: canon:continuity.props.cable
@@ -30,7 +32,7 @@ fm:
   - intent.comic_then_tender
   summary: 'Crank insert: one hand grips, lifts, rolls the brick once, shoves it back to the glovebox;
     returns with the cable end and pulls it toward the adapter.'
-  stamped_content_hash: sha256:8a13c40492464b11f6c1752c064028bfdde952a43d97f0069ae65732e3556a28
+  stamped_content_hash: sha256:a9d04987fd43634776aeb7489a430e3fa2662ca8a54e0cc89c804c844ef7f965
 shot_id: SC01_SH110
 frames: 32
 vocab_version: 1
@@ -169,5 +171,7 @@ preview_frames:
 notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
-- 'VOCAB GAP: no charging_cable prop (a posed curve with a hook at the hand, dragged along the hand path;
-  keep the visible length short - M3 risk from the shot).'
+- 'No charging_cable prop in v1 (a posed curve with a hook at the hand, dragged along the hand path; keep
+  the visible length short - M3 risk from the shot). V2 PENDING (animation.vocab.v2.prop.charging_cable):
+  props.charging_cable f0 loc glovebox state posed; f18 loc hand_r (event cable_in_hand); it stays hand_r
+  to the cut and is plugged into car_usb_adapter at SC01_SH120 f2.'

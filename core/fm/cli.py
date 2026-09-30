@@ -923,7 +923,8 @@ def qa_delivery_cmd(c: Ctx, out, report_dir, files):
         for sev, msg in row["findings"]:
             click.echo(f"{sev:4} {row['file']}: {msg}")
     s = r["summary"]
-    click.echo(f"{s['files']} delivery file(s): {s['fail']} FAIL, {s['warn']} WARN -> {r['report_file']}")
+    click.echo(f"{s['files']} delivery file(s): {s['fail']} FAIL, {s['warn']} WARN finding(s) "
+               f"({s['files_failing']} row(s) failing) -> {r['report_file']}")
     if s["fail"]:
         sys.exit(1)
 

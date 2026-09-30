@@ -11,7 +11,7 @@ fm:
   - ref: artifact:scenes
     hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
   - ref: artifact:audio_cues
-    hash: sha256:e42adf4b20f95307f45974bea266e0e56dfcdeaeaa93291a1eea0850fc6fa2f0
+    hash: sha256:7429405e767d311ddc2be98036e0d1da623777dee787584b4e10771d0e523e68
   - ref: canon:camera.rhythm.transitions
     hash: sha256:0ff059c432a2227bfbe4eebceef37bc953cd834328d87d7ae75970a866ddcb15
   - ref: canon:camera.rhythm.scene_budget
@@ -38,7 +38,7 @@ fm:
   - intent.soft_but_cinematic
   summary: Readable cut list generated from the resolved frame table; hard cuts, FADE IN (length D7, UNKNOWN)
     and 18-frame FADE OUT from canon; scene-time and sound-cut notes.
-  stamped_content_hash: sha256:13518fd65d557bc33568ebc2503a3b7f4f75b57b3f15483782354a8817d10159
+  stamped_content_hash: sha256:963f35db15fd5bf2709367598a8b68b32e47151919a3f13a71ca1663e79b91ee
 title: Edit Plan
 ---
 # Edit Plan: Last Signal
@@ -158,20 +158,20 @@ Record out is exclusive, as in the EDL.
 
 ## 5. Sound-cut relationships
 
-Frames below are record frames. Cues come from `12_post/AUDIO_CUES.yaml` (PROPOSED, a SCAFFOLD: many cues
-still sit at placeholder frame 0). These are edit-side requirements for the sound-designer, not mix
-decisions.
+Frames below are record frames. FACT: placements are read from `12_post/audio/mix_report.json`, written by
+the wave-6 `fm audio mix` (136 placements, 1440 frames) from `12_post/AUDIO_CUES.yaml` (PROPOSED). These are
+edit-side requirements for the sound-designer, not mix decisions.
 
 | Cut | Picture | Sound relationship (RECOMMENDATION unless tagged) |
 |---|---|---|
-| Head, f0 | FADE IN | The car interior bed and `car.heat_ticks` start at f0. Fade the sound in over the same length as the picture (D7) so no sound comes before the image. ASSUMPTION: the mix will not pre-lap sound under black. |
-| SC01 -> SC02, 527/528 | cut | `car.door_close` at SC02_SH010 f0 (528). The car bed ends at scene f460 (the SC01_SH140 silence). The door-opening line "SC01_SH150/SC02_SH010 (board, implied)" is not placed yet (scaffold note). A door sound that straddles the cut is fine. |
-| SC02 -> SC03, 575/576 | cut | **Flag:** `shop.door_chime` appears twice, at SC02_SH030 f15 (575, the last frame) and SC03_SH010 f0 (576). That is one door, so it should be one chime across the cut. Sound-designer to remove one. |
-| SC03 end -> SC04, 815/816 | hard cut, black to dusk | FACT: after the clunk at SC03_SH050 f8 (720) the shop is silent (SC03_SH060 silence, `sil_SC03_SH050_f8`). Only `amb.distant_car_pass` sits under SC03_SH070. The street dusk bed starts on the cut at 816, a hard sound cut to match the hard picture cut. The bed's `xfade_f: 4` should run inside SC04, not pre-lap into the black. |
-| Ratchet across SC04_SH050-SH090 | four hard cuts | FACT (scope and cue sheet): clicks are phase-locked every 24 frames across the cuts, from `handle_top` events. Expected record frames: 1046, 1070, 1094, 1118, 1142, 1166, 1190, 1214, then the stop at 1229 (SH090 f7). The cuts must not reset the ratchet rhythm. Post verifies this in the mix at G7. |
+| Head, f0 | FADE IN | FACT: `bed_SC01_car_interior` starts at f0 with no fade in the mix report; `c_SC01_SH010_heat_ticks` starts at f0 with a 4-frame fade in. RECOMMENDATION: fade the sound in over the same length as the picture (D7) at assembly, so no sound arrives before the image. |
+| SC01 -> SC02, 527/528 | cut | FACT: `car.door_open` (`c_SC02_SH010_door_open`) at 528, with the door already swinging on the cut. The car bed hands over to `bed_SC02_street` at 528. The SC01_SH140 silence (460-491) sits before this cut. A door sound that straddles the cut is fine. |
+| SC02 -> SC03, 575/576 | cut | FACT, **resolved (wave 6)**: the mix has exactly one `shop.door_chime` (`c_SC02_SH030_door_chime`, 575-603.8). It strikes on SC02_SH030 f15, the cut point, and its second note and decay ring on under SC03_SH010 as the board's "chime tail". There is no chime at SC03_SH010 f0. The cue's `rationale` records the keep-one ruling. The fridge and panel hums and the shop bed start on the cut at 576. |
+| SC03 end -> SC04, 815/816 | hard cut, black to dusk | FACT: after the clunk at SC03_SH050 f8 (720-728) the shop is silent (`sil_SC03_SH050_after_clunk` 728-742, `sil_SC03_SH060` 742-768). SC03_SH070 (768-815) carries `amb.distant_car_pass` over `bed_SC03_SH070_dead_room`. `bed_SC04_street` starts on the cut at 816, a hard sound cut to match the hard picture cut. RECOMMENDATION: its `xfade_f: 4` should run inside SC04 and not pre-lap into the black. Post checks this by ear at G7. |
+| Ratchet across SC04_SH050-SH090 | four hard cuts | FACT (mix report): `crank.click` placements at 1046, 1070, 1094, 1118, 1142, 1166, 1190, 1214, then the stop at 1229 (SH090 f7). That is every 24 frames across the cuts, so the cuts do not reset the ratchet rhythm. |
 | SC04 -> SC05, 1249/1250 | cut on light | Send at SC04_SH080 (`send_press`), the delivered tick at f34 (1198), his release breath at SC04_SH090 f8 (1230). FACT: SC05_SH010 holds 2 dark frames before her screen wakes. RECOMMENDATION: the street bed hard-cuts out at 1250 and her room tone or headphone leak starts at 1250, with no sound on the waking screen (D4 desk buzz conflict: follow the shot file). |
 | SC05 -> SC06, 1357/1358 | cut on direction | The room tone ends with her held smile. The street dusk bed returns at 1358, a hard cut. The same bed as SC04 gives the bookend by ear too. |
-| Tail, 1422-1439 | FADE OUT 18 f | The out-breath (SC06_SH010 f68-81, record 1426-1439) is the last sound. Fade the audio out over the same 18 frames so picture and sound reach black and silence together at 1439. |
+| Tail, 1422-1439 | FADE OUT 18 f | FACT (mix report): `bed_SC06_street` ends at 1422. `c_SC06_SH010_street_tail` runs 1418-1440 with an 18-frame fade out. The out-breath `c_SC06_SH010_breath_out` (1426-1440, a placeholder) is the last sound. RECOMMENDATION: fade the audio out over the same 18 frames so picture and sound reach black and silence together at 1439. |
 
 ## 6. Outputs
 

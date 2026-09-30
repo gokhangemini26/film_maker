@@ -115,6 +115,10 @@ def test_qa_audio_passes_a_coherent_sheet_and_writes_the_report(film):
     assert code == 0 and "0 FAIL" in r.output and "qa/audio_report.json" in r.output
     rep = report(film)
     assert rep["summary"]["fail"] == 0 and rep["sync_points"] >= 1 and rep["mode"] == "preview"
+    # summary counts findings, not rows (a FILM row with several WARN lines counts each one)
+    lines = [f for row in rep["rows"] for f in row["findings"]]
+    assert rep["summary"]["warn"] == sum(1 for f in lines if f[0] == "WARN")
+    assert rep["summary"]["rows_warn"] == sum(any(f[0] == "WARN" for f in row["findings"]) for row in rep["rows"])
     assert rep["silence"][0]["id"] == "hush" and rep["silence"][0]["rms_dbfs"] <= -50
     lv = rep["levels"]
     assert lv["targets"]["true_peak_dbtp"] == -1.0 and lv["targets"]["integrated_lufs"] == -16.0

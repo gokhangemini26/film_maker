@@ -33,13 +33,15 @@ fm:
     hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.pose.ren
+    hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
   serves:
   - intent.comic_then_tender
   - intent.race_against_battery
   - intent.anime_feel
   summary: 'Structured tracks for the blackout: 8 lit frames of a relaxed man, the room off in one frame
     on the clunk at f8, 22 frames of dark; he does not move; the phone glow dips and comes back.'
-  stamped_content_hash: sha256:2889673e4116d0283ac8ab0ee7d78c2091702a7783f03c9cd74f1a931b8aa9ca
+  stamped_content_hash: sha256:073ab9c81b6d5b299b25613fc427efab62f54dea879165cb5eca0ed26d249ed7
 shot_id: SC03_SH050
 frames: 30
 vocab_version: 1
@@ -53,8 +55,9 @@ characters:
     - f: 0
       ref: kneel_upright
       ease: hold
-      note: the relief pose from SH040 (kneeling, head slightly back), facing away from the lens; no motion
-        at all f0-29, no flinch at the blackout
+      note: 'the relief pose from SH040 (kneeling, head slightly back), facing away from the lens; no
+        motion at all f0-29, no flinch at the blackout. V2 PENDING (animation.vocab.v2.pose.ren): ref
+        kneel_head_back hold (continues the end of SH040)'
       rationale: stillness gives the joke to the world, the biggest and most room-sized failure (tone.comedy_source)
     face:
     - f: 0

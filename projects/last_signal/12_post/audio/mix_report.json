@@ -2,7 +2,7 @@
   "bit_depth": 24,
   "channels": 2,
   "cues_file": "12_post/AUDIO_CUES.yaml",
-  "cues_hash": "sha256:7f07330d475a8b6780c50497700fb1e30d0f55509d7f3b3cf92a5a37948d9952",
+  "cues_hash": "sha256:7429405e767d311ddc2be98036e0d1da623777dee787584b4e10771d0e523e68",
   "lufs_delta_to_target_db": 0.4,
   "master_gain_db": 21.3,
   "measure": {

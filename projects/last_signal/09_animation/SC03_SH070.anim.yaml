@@ -27,13 +27,15 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.lids
+    hash: sha256:cef88be8e44828b4e3ef9da072436c22ebe8c4798b74dac8d4eac9b689d9430a
   serves:
   - intent.comic_then_tender
   - intent.race_against_battery
   - intent.soft_but_cinematic
   summary: 'Structured tracks for the stunned stillness: a true 28-frame hold, one slow 12-frame blink
     f28-39, held to the cut.'
-  stamped_content_hash: sha256:d7a54617f5ea012a7707445f09cdf7cba664d41b6ddd5f7999463728e5af449a
+  stamped_content_hash: sha256:2498852c7944c85ed4871c2ed206bbe7133c3a28068470b64bdf67124c572b70
 shot_id: SC03_SH070
 frames: 48
 vocab_version: 1
@@ -61,8 +63,9 @@ characters:
     - f: 28
       target: closed
       note: 'one slow blink: lids close ease-in f28-31, closed f32-33. Head and eyeline must not move:
-        this key is a lid change only (no blink / lid track with ease and duration in vocabulary v1; see
-        gaps)'
+        this key is a lid change only. v1 stand-in (look closed is a binary switch); V2 PENDING (animation.vocab.v2.lids):
+        look keeps phone throughout; lids f0 open hold, f28 closed ease_in dur_f 4, f34 open ease_out
+        dur_f 6'
     - f: 34
       target: phone
       note: lids open slowly (ease-out, f34-39) to the same stunned eyes on the phone

@@ -33,12 +33,14 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.lids
+    hash: sha256:cef88be8e44828b4e3ef9da072436c22ebe8c4798b74dac8d4eac9b689d9430a
   serves:
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
   summary: She reads; the small smile arrives as one wave (lids f14, corners f16, head dip f18, shoulders
     f20), lands f22 and is held 30 frames with one blink and one breath.
-  stamped_content_hash: sha256:332df4b498518cf267698eb726587db0304d410e690569207945fda135dd8ec4
+  stamped_content_hash: sha256:9422ee5d99b1a5073ffd66d94ae4d3aa3fdf81244f485d7d643373a2a7102bf5
 shot_id: SC05_SH030
 frames: 52
 vocab_version: 1
@@ -72,7 +74,10 @@ characters:
       note: down on the phone to the cut; the three reading steps are eye offsets on the same target
     - f: 36
       target: closed
-      note: one soft blink f36-41; lids return to their lifted smile shape
+      note: 'one soft blink f36-41; lids return to their lifted smile shape. v1 stand-in (look closed
+        is a binary switch); V2 PENDING (animation.vocab.v2.lids): drop this key and the f42 phone key;
+        lids f0 open hold, f36 closed ease_in dur_f 2, f39 open ease_out dur_f 3 (lids multiply small_smile''s
+        openness)'
     - f: 42
       target: phone
     breath:

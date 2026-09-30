@@ -168,4 +168,16 @@ def test_assemble_refuses_missing_frames_and_qa_flags_wrong_length(sandbox, tmp_
     rep = post.qa_delivery(sandbox, files=[r["file"]], expect_frames=TOTAL + 12, resolution=(128, 72),
                            report_dir=tmp_path / "qa")
     msgs = " ".join(f[1] for row in rep["rows"] for f in row["findings"] if f[0] == "FAIL")
-    assert "frames" in msgs and "no audio" in msgs and rep["summary"]["fail"] == 1
+    n_fail = sum(1 for row in rep["rows"] for f in row["findings"] if f[0] == "FAIL")
+    assert "frames" in msgs and "no audio" in msgs and n_fail >= 2
+    # the summary counts findings, not files: one file with several FAIL lines reports all of them
+    assert rep["summary"]["fail"] == n_fail and rep["summary"]["files_failing"] == 1 and rep["summary"]["files"] == 1
+
+
+def test_delivery_summary_counts_findings_not_files():
+    rows = [{"file": "a.mov", "findings": [["FAIL", "x"], ["FAIL", "y"], ["WARN", "z"], ["WARN", "w"]]},
+            {"file": "b.mp4", "findings": [["WARN", "v"]]},
+            {"file": "MANIFEST.json", "findings": []}]
+    s = post.delivery_summary(rows, 2)
+    assert s == {"files": 2, "rows": 3, "fail": 2, "warn": 3, "files_failing": 1, "files_warning": 2}
+    assert post.delivery_summary([], 0)["fail"] == 0

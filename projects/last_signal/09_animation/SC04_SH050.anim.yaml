@@ -43,13 +43,17 @@ fm:
     hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.pose.ren
+    hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+  - ref: canon:animation.vocab.v2.prop.charging_cable
+    hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
   serves:
   - intent.earned_last_signal
   - intent.comic_then_tender
   - intent.soft_but_cinematic
   summary: Plug, unfold (2-frame hinge stiffness), first turn at f30 with the push-in and the light steadying,
     first ratchet top at f56, one-thumb glide typing.
-  stamped_content_hash: sha256:ae12a78a1c1156f9cbf530bf809be8c650a740fc702b52817fe03041440940cb
+  stamped_content_hash: sha256:ce2d9b0b092e78ae2216a8d3932bb35df4efa98f4f2f6eef0d5f6afaff4f032e
 shot_id: SC04_SH050
 frames: 80
 vocab_version: 1
@@ -74,10 +78,12 @@ characters:
       blend_f: 3
       note: 'clamped-high cranking base: crank lying across between the tops of his knees (top face ~z
         0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left hand ~z 0.76 over
-        the near knee beside the port end. Closest preset is kerb_crank_hold (crank in the lap in both
-        hands); the clamp is a vocabulary gap. f12-14 clamp into the knees, right thumb lifts the folded
-        knob; f15-16 hinge stiffness hold; f17-21 arm swings out (ease-out), clean stop, no bounce; f22
-        right hand grips the knob, left hand lifts the phone to ~z 0.76 over the near knee (f22-29)'
+        the near knee beside the port end. kerb_crank_hold in v1 reads "crank in the lap in both hands";
+        V2 PENDING (animation.vocab.v2.pose.ren) redefines it so the left hand follows crank_charger loc
+        (hands_both f0-11 under the crank, lap from f12 holding the phone), no key change. f12-14 clamp
+        into the knees, right thumb lifts the folded knob; f15-16 hinge stiffness hold; f17-21 arm swings
+        out (ease-out), clean stop, no bounce; f22 right hand grips the knob, left hand lifts the phone
+        to ~z 0.76 over the near knee (f22-29)'
       rationale: clamping frees the left hand for the phone and keeps the pip readable
     - f: 30
       ref: kerb_crank_hold
@@ -275,4 +281,6 @@ notes:
 - Ratchet clicks come only from the derived handle_top events (f56 here; phase continues into SC04_SH060
   f0).
 - 'Cable: short posed loop over the left knee, 2 mm sway per turn, keyed by the builder (no cable prop
-  in the vocabulary).'
+  in vocabulary v1). V2 PENDING (animation.vocab.v2.prop.charging_cable): props.charging_cable f0 loc
+  hand_r state posed, rationale "the cut hides the pick-up of the loose end"; f10 loc crank_port (event
+  plug_in).'

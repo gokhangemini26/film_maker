@@ -1,6 +1,6 @@
 {
   "content_hash": "sha256:817ebf105534e2d6eda99db85923671cb5ed6881d05cd491a1c65fc0711fbc73",
-  "created_at": "2026-09-30T15:02:23Z",
+  "created_at": "2026-09-30T16:14:14Z",
   "derived_from": [
     {
       "hash": "sha256:dc53fad91acabf7542a83ac6809873bf093bd979dd9027e87b81eb3f17064c6e",
@@ -23,7 +23,7 @@
       "ref": "artifact:anim_sc01_sh050"
     },
     {
-      "hash": "sha256:906704ad57e46c40068a106dd5bf49c72eaeac5902ca08835f3e72ec76ad2367",
+      "hash": "sha256:04525b6e1913eb7b93312d21bf883a14406ff3642ee8172f07889e02daf20c8e",
       "ref": "artifact:anim_sc01_sh060"
     },
     {
@@ -43,7 +43,7 @@
       "ref": "artifact:anim_sc01_sh100"
     },
     {
-      "hash": "sha256:8a13c40492464b11f6c1752c064028bfdde952a43d97f0069ae65732e3556a28",
+      "hash": "sha256:a9d04987fd43634776aeb7489a430e3fa2662ca8a54e0cc89c804c844ef7f965",
       "ref": "artifact:anim_sc01_sh110"
     },
     {
@@ -63,7 +63,7 @@
       "ref": "artifact:anim_sc01_sh150"
     },
     {
-      "hash": "sha256:9e55c3dd23b1d2e8838959bf95f75eb46dd00f20b5855a10971fd1bd4ae187e8",
+      "hash": "sha256:93f1450b51d99571f3a9d7595f53b53ef72af0234501f114667ff0ea12eca9c9",
       "ref": "artifact:anim_sc02_sh010"
     },
     {
@@ -71,7 +71,7 @@
       "ref": "artifact:anim_sc02_sh020"
     },
     {
-      "hash": "sha256:d73b879cbbbc4507a7868f2592a7a1c1f75c0be22e6986d34a6a115895e4538c",
+      "hash": "sha256:c6d54d3ec79b3b2bcc0d98ddd19d234bc89688ca3de1566f4ea2f3a1693afed3",
       "ref": "artifact:anim_sc02_sh030"
     },
     {
@@ -79,19 +79,19 @@
       "ref": "artifact:anim_sc03_sh010"
     },
     {
-      "hash": "sha256:a057b4f9a1a229a41d358e40e419965869ecb34f448e3e9b80b283a567d39827",
+      "hash": "sha256:2555bce8650e03ef9f1fd8904ca96abba29cfb551ff4ed05f3a5e9f7c1ee11cd",
       "ref": "artifact:anim_sc03_sh020"
     },
     {
-      "hash": "sha256:b5dccbcb13833c289faed490fa7097b89fc3752b7b3bc3a2ba605a599e6e9608",
+      "hash": "sha256:dca6bff2e21641fd674c5e240b52f8300723a4394d79d3314d7e22478bb63eae",
       "ref": "artifact:anim_sc03_sh030"
     },
     {
-      "hash": "sha256:c4aae1e8e8144b7d9d9f5f85c351e2afad1692ef798803d359d3032ea8129c64",
+      "hash": "sha256:ab0d09d0bd4e8f63577394aaab8e2c73453a09fc727f11c7947318e2f738dc88",
       "ref": "artifact:anim_sc03_sh040"
     },
     {
-      "hash": "sha256:2889673e4116d0283ac8ab0ee7d78c2091702a7783f03c9cd74f1a931b8aa9ca",
+      "hash": "sha256:073ab9c81b6d5b299b25613fc427efab62f54dea879165cb5eca0ed26d249ed7",
       "ref": "artifact:anim_sc03_sh050"
     },
     {
@@ -99,11 +99,11 @@
       "ref": "artifact:anim_sc03_sh060"
     },
     {
-      "hash": "sha256:d7a54617f5ea012a7707445f09cdf7cba664d41b6ddd5f7999463728e5af449a",
+      "hash": "sha256:2498852c7944c85ed4871c2ed206bbe7133c3a28068470b64bdf67124c572b70",
       "ref": "artifact:anim_sc03_sh070"
     },
     {
-      "hash": "sha256:26a2f4c58345a620dab507fd7f1827646143bfc616067bf50bc35dd44172b83c",
+      "hash": "sha256:dca3d3dd78b3082b050460f2b4f1b86bd914aa94fb78715c493414b24d5ab320",
       "ref": "artifact:anim_sc04_sh010"
     },
     {
@@ -111,7 +111,7 @@
       "ref": "artifact:anim_sc04_sh020"
     },
     {
-      "hash": "sha256:cb8e83d5c5641be707dd5fb88fbf6ff0a0019af185e2593677e608ee2c8c2bea",
+      "hash": "sha256:a42c1e24b9da249ae85f462ae0b57377457760b90cf707ba970235e5d6393ed5",
       "ref": "artifact:anim_sc04_sh030"
     },
     {
@@ -119,19 +119,19 @@
       "ref": "artifact:anim_sc04_sh040"
     },
     {
-      "hash": "sha256:ae12a78a1c1156f9cbf530bf809be8c650a740fc702b52817fe03041440940cb",
+      "hash": "sha256:ce2d9b0b092e78ae2216a8d3932bb35df4efa98f4f2f6eef0d5f6afaff4f032e",
       "ref": "artifact:anim_sc04_sh050"
     },
     {
-      "hash": "sha256:d486db3a8bfcfd9b71a7df5b7639b199d48e5156ee53cc575879d943ae0feca6",
+      "hash": "sha256:c0a17687a9506c676fe1302fd68d3c5fd232e0ebc2274269b2ef53e69161fe6d",
       "ref": "artifact:anim_sc04_sh060"
     },
     {
-      "hash": "sha256:d99a29baf21db2e2aff25629e8f3e0c9479fd73fc7f80309199f9222abd07089",
+      "hash": "sha256:0d7fb1fb4d41594d2f01085a899116f5a29bb0337a74816ca18d8263165ef8b6",
       "ref": "artifact:anim_sc04_sh070"
     },
     {
-      "hash": "sha256:83f2deba8eba36d18fdc4e33d4573d1b2485323bc547d57c419621cc29f0f478",
+      "hash": "sha256:13046caeebcc21653c624f79d2db6c95f8f686bca7bbbdee6abd9d966e9227f2",
       "ref": "artifact:anim_sc04_sh080"
     },
     {
@@ -147,7 +147,7 @@
       "ref": "artifact:anim_sc05_sh020"
     },
     {
-      "hash": "sha256:332df4b498518cf267698eb726587db0304d410e690569207945fda135dd8ec4",
+      "hash": "sha256:9422ee5d99b1a5073ffd66d94ae4d3aa3fdf81244f485d7d643373a2a7102bf5",
       "ref": "artifact:anim_sc05_sh030"
     },
     {

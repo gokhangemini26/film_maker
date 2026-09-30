@@ -193,7 +193,7 @@ fm:
   - intent.earned_last_signal
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
-  stamped_content_hash: sha256:7f07330d475a8b6780c50497700fb1e30d0f55509d7f3b3cf92a5a37948d9952
+  stamped_content_hash: sha256:7429405e767d311ddc2be98036e0d1da623777dee787584b4e10771d0e523e68
 mix:
   integrated_lufs: -16.0
   lufs_tolerance: 1.0
@@ -865,6 +865,12 @@ cues:
   gain_db: -20
   tail_ok: true
   note: on the cut point; the tail rings on under SC03_SH010 (the board's 'chime tail')
+  rationale: 'DECISION (dedupe, wave 6): one door, one chime. This single cue on SC02_SH030 f15 (record
+    575, the cut point the shot sound_sync and the anim ''chime'' event name) is the only shop.door_chime;
+    no second chime sits at SC03_SH010 f0 (576). The two-note bell''s second strike (+0.16 s, about record
+    579) and its decay (tail_ok) ring on under SC03_SH010 and are the storyboard''s ''chime tail'', so
+    the tail needs no cue of its own. Rejected: a tail_only chime cue at SC03_SH010 f0, which re-strikes
+    the bell one frame after the first and reads as two doors.'
   serves:
   - intent.comic_then_tender
   - intent.race_against_battery

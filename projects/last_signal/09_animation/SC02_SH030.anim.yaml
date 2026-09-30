@@ -31,12 +31,14 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.prop.shop_door
+    hash: sha256:82deb646cd2e61ac96fe3400eee41cdc464d2b5aad85d32306ec344fa49c7410
   serves:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Structured tracks for the arrival: run toward the lens, bank to his left under the awning,
     through the shop door by f13; the chime on the cut frame f15.'
-  stamped_content_hash: sha256:d73b879cbbbc4507a7868f2592a7a1c1f75c0be22e6986d34a6a115895e4538c
+  stamped_content_hash: sha256:c6d54d3ec79b3b2bcc0d98ddd19d234bc89688ca3de1566f4ea2f3a1693afed3
 shot_id: SC02_SH030
 frames: 16
 vocab_version: 1
@@ -95,7 +97,8 @@ props:
     dur_f: 4
     note: 'his right hand pushes it; swings in to about 70 deg over f10-13. The prose swing-back "from
       f14 (continues after the cut)" is not expressible: a closed key at f14 would have to finish by f15
-      (a slam). Held at open_70 to the cut instead; see gaps'
+      (a slam). Held at open_70 to the cut in v1. V2 PENDING (animation.vocab.v2.prop.shop_door): add
+      f14 state swing_back ease ease_in, no dur_f (the closer runs past the cut)'
   passenger_door:
   - f: 0
     state: open_60

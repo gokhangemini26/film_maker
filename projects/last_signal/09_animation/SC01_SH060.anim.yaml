@@ -25,6 +25,8 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.face.ren
+    hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
   - ref: canon:continuity.props.phone_ren
     hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
   - ref: canon:continuity.props.passenger_door
@@ -34,7 +36,7 @@ fm:
   - intent.race_against_battery
   summary: 'First freeze-sag-reset: held breath out, sag with weight, 9-frame held sag, dip, sit-up burst
     with a small overshoot, resolve held.'
-  stamped_content_hash: sha256:906704ad57e46c40068a106dd5bf49c72eaeac5902ca08835f3e72ec76ad2367
+  stamped_content_hash: sha256:04525b6e1913eb7b93312d21bf883a14406ff3642ee8172f07889e02daf20c8e
 shot_id: SC01_SH060
 frames: 34
 vocab_version: 1
@@ -89,8 +91,8 @@ characters:
       note: inner brows up, mouth flat, f9-17
     - f: 18
       ref: neutral
-      note: 'brows level and knit, mouth pressed: resolve. VOCAB GAP - no "resolve" face in the comic
-        set; neutral is the closest legal ref'
+      note: 'brows level and knit, mouth pressed: resolve. neutral is the v1 stand-in; V2 PENDING (animation.vocab.v2.face.ren):
+        ref determined'
     look:
     - f: 0
       target: phone

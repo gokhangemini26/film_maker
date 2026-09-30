@@ -39,13 +39,15 @@ fm:
     hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.pose.ren
+    hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
   serves:
   - intent.earned_last_signal
   - intent.race_against_battery
   - intent.open_hopeful_ending
   summary: 'Send: thumb rests, presses f6, leaves; bubble rises f7-10, amber line fills f8-32, empty beat
     f33, tick whole at f34, held 24 f; ratchet at f2/26/50.'
-  stamped_content_hash: sha256:83f2deba8eba36d18fdc4e33d4573d1b2485323bc547d57c419621cc29f0f478
+  stamped_content_hash: sha256:13046caeebcc21653c624f79d2db6c95f8f686bca7bbbdee6abd9d966e9227f2
 shot_id: SC04_SH080
 frames: 58
 vocab_version: 1
@@ -61,8 +63,9 @@ characters:
       ease: hold
       note: 'off frame (insert): clamped-high cranking base: crank lying across between the tops of his
         knees (top face ~z 0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left
-        hand ~z 0.76 over the near knee beside the port end. Closest preset is kerb_crank_hold (crank
-        in the lap in both hands); the clamp is a vocabulary gap; right hand keeps cranking'
+        hand ~z 0.76 over the near knee beside the port end. kerb_crank_hold in v1 reads "crank in the
+        lap in both hands"; V2 PENDING (animation.vocab.v2.pose.ren) redefines it as exactly this clamped
+        base (left hand driven by crank_charger loc lap), no key change; right hand keeps cranking'
     move:
       gait: crank_turn
       first_top_f: 2

@@ -1,9 +1,11 @@
 {
  "summary": {
-  "shots": 1,
+  "files": 1,
+  "rows": 1,
   "fail": 1,
-  "warn": 1,
-  "files": 1
+  "warn": 2,
+  "files_failing": 1,
+  "files_warning": 1
  },
  "rows": [
   {
@@ -12,10 +14,6 @@
     [
      "FAIL",
      "resolution 1280x720, render canon says 1920x1080"
-    ],
-    [
-     "FAIL",
-     "no audio stream"
     ],
     [
      "WARN",
@@ -39,14 +37,24 @@
      "pix_fmt": "yuv420p",
      "frames": 1440,
      "duration_s": 60.0
+    },
+    "audio": {
+     "codec": "aac",
+     "sample_rate": 48000,
+     "channels": 2,
+     "duration_s": 60.0
     }
    },
+   "loudness": {
+    "integrated_lufs": -16.5,
+    "true_peak_dbtp": -1.8
+   },
    "head_luma": [
-    179.0,
-    179.0,
-    179.0,
+    161.7,
+    161.7,
+    165.3,
     "...",
-    179.0
+    167.7
    ],
    "tail_luma": [
     168.2,

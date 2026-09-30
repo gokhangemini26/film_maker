@@ -29,11 +29,13 @@ fm:
     hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:animation.vocab.v2.pose.ren
+    hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
   serves:
   - intent.comic_then_tender
   summary: 'Structured tracks for the relief: long ease-out exhale f0-14, head tips back, eyes close f6-8,
     relief held f14-21 into the blackout shot.'
-  stamped_content_hash: sha256:c4aae1e8e8144b7d9d9f5f85c351e2afad1692ef798803d359d3032ea8129c64
+  stamped_content_hash: sha256:ab0d09d0bd4e8f63577394aaab8e2c73453a09fc727f11c7947318e2f738dc88
 shot_id: SC03_SH040
 frames: 22
 vocab_version: 1
@@ -48,7 +50,9 @@ characters:
       ease: hold
       note: 'kneeling, shoulders already dropping (match on action from SH030 f23-25). The head tips back
         about 8 deg f4-14: no kneel preset with the head back exists in vocabulary v1; carried by the
-        relief face and the out_long breath; see gaps'
+        relief face and the out_long breath. V2 PENDING (animation.vocab.v2.pose.ren): f0 kneel_upright
+        hold; f4 kneel_head_back ease_out blend_f 10; f14 kneel_head_back hold (the blend ends on the
+        f14-21 hold)'
     face:
     - f: 0
       ref: relief

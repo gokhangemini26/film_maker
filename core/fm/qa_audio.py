@@ -191,9 +191,11 @@ def _human(cues) -> list[dict]:
 def _write(project: Project, loaded, rows: dict, extra: dict, human: list[dict], final: bool) -> dict:
     order = ["FILM"] + sorted(k for k in rows if k != "FILM")
     out_rows = [{"shot": k, "findings": rows[k]} for k in order if k in rows]
-    def count(sev): return sum(any(f[0] == sev for f in r["findings"]) for r in out_rows)
+    # fail/warn/info count FINDINGS (every line), not rows; rows_* keep the per-row (shot or FILM) counts
+    def count(sev): return sum(1 for r in out_rows for f in r["findings"] if f[0] == sev)
+    def rows_with(sev): return sum(any(f[0] == sev for f in r["findings"]) for r in out_rows)
     summary = {"shots": sum(1 for r in out_rows if r["shot"] != "FILM"), "fail": count("FAIL"), "warn": count("WARN"),
-               "info": count("INFO")}
+               "info": count("INFO"), "rows_fail": rows_with("FAIL"), "rows_warn": rows_with("WARN")}
     human_open = [h for h in human if h.get("status") == "NEEDED"]
     report = {"schema": "fm.qa_audio/1", "mode": "final" if final else "preview", "summary": summary, "rows": out_rows,
               **extra, "human_supply": human, "human_supply_open": len(human_open)}
