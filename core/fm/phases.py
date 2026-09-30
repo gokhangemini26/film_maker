@@ -56,8 +56,10 @@ GATES: dict[str, Gate] = {
              ("camera", "continuity"), covers_shots=True),
         Gate("G6", "First Blender preview", "PREVIEW", ("ASSET_PREP", "BLENDER_BUILD", "PREVIEW"),
              ()),
-        Gate("G7", "Animation preview", "ANIMATION_PREVIEW", ("ANIMATION", "ANIMATION_PREVIEW"),
-             ("animation", "audio")),
+        # M6: G7 approves the animation AND the audio and post plan (animatic with sound).
+        # Approving it does not authorize the final render (`fm authorize final-render`).
+        Gate("G7", "Animation, audio and post plan", "ANIMATION_PREVIEW",
+             ("ANIMATION", "ANIMATION_PREVIEW"), ("animation", "audio")),
         Gate("G8", "Final render", "FINAL_RENDER", ("FINAL_RENDER",), ()),
     )
 }
@@ -68,11 +70,23 @@ GATE_FOR_PHASE = {g.closes_phase: g for g in GATES.values()}
 class PhaseContract:
     """Deliverables required before a phase can be submitted for review."""
 
-    required: tuple[str, ...] = ()   # project-relative paths
+    required: tuple[str, ...] = ()   # project-relative paths of managed artifacts (need an `fm:` block)
     min_shots: int = 0
     notes: str = ""
     extra: dict = field(default_factory=dict)
+    # M6 additions (all default empty, so earlier phases behave exactly as before):
+    files: tuple[str, ...] = ()        # unmanaged deliverables (media, EDL, manifests): must exist
+    per_shot: tuple[str, ...] = ()     # path templates with {shot}: one per shot spec must exist
+    qa_reports: tuple[str, ...] = ()   # JSON reports that must exist with summary.fail == 0
+    authorizations: tuple[str, ...] = ()  # human authorizations that must be in the ledger
 
+
+# Files the M6 tools write (names are part of the contract; see docs/WORKFLOW.md).
+ANIM_FILE = "09_animation/{shot}.anim.yaml"
+MOTION_REPORT = "qa/motion_report.json"
+AUDIO_REPORT = "qa/audio_report.json"
+FINAL_FRAMES_REPORT = "qa/final_frames_report.json"
+DELIVERY_REPORT = "qa/delivery_report.json"
 
 CONTRACTS: dict[str, PhaseContract] = {
     "BRIEF": PhaseContract(("00_brief/brief.yaml",)),
@@ -91,6 +105,31 @@ CONTRACTS: dict[str, PhaseContract] = {
         ("07_storyboard/STORYBOARD.md", "07_storyboard/SHOT_LIST.md", REVIEW_FOR_GATE["G5"]),
         min_shots=1),
     # Production phases get their contracts as their tooling lands (M3+).
+    # ---- M6 (docs/M6_SCOPE.md 5.5). The anim/audio/motion tools land in later tasks; the
+    # contracts name the files they will write so `fm submit` / `fm advance` can already enforce them.
+    "ANIMATION": PhaseContract(
+        ("09_animation/ANIMATION_BIBLE.md",),
+        per_shot=(ANIM_FILE,),
+        qa_reports=(MOTION_REPORT,),
+        notes="an anim file for every shot and `fm qa motion` with no FAIL, before ANIMATION_PREVIEW"),
+    "ANIMATION_PREVIEW": PhaseContract(
+        ("12_post/AUDIO_BIBLE.md", "12_post/AUDIO_CUES.yaml", "12_post/EDIT_PLAN.md",
+         "12_post/POST_PLAN.md", REVIEW_FOR_GATE["G7"]),
+        files=("10_blender/playblast/film.mp4", "12_post/audio/mix_48k_stereo.wav",
+               "12_post/animatic.mp4", "12_post/EDIT.edl"),
+        per_shot=(ANIM_FILE,),
+        qa_reports=(MOTION_REPORT, AUDIO_REPORT),
+        notes="G7: silent playblast, 48 kHz stereo mix, animatic with sound and EDL; motion and audio QA without FAIL"),
+    "FINAL_RENDER": PhaseContract(
+        (REVIEW_FOR_GATE["G8"],),
+        files=("11_render/final/MANIFEST.json",),
+        qa_reports=(FINAL_FRAMES_REPORT,),
+        authorizations=("final-render",),
+        notes="G8: human-authorized render of every frame with the pinned Blender, frame QA without FAIL"),
+    "POST": PhaseContract(
+        files=("13_delivery/MANIFEST.json",),
+        qa_reports=(DELIVERY_REPORT,),
+        notes="no gate (G9 Delivery is deferred): master assembled, `fm qa delivery` without FAIL"),
 }
 
 PROJECT_DIRS = (

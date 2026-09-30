@@ -54,6 +54,8 @@ class Layer(str, Enum):
     RESOLVED = "RESOLVED"
     BLEND = "BLEND"
     RENDER = "RENDER"
+    AUDIO = "AUDIO"
+    EDIT = "EDIT"
     QA = "QA"
 
 
@@ -67,11 +69,15 @@ REF_KINDS = {
     "resolved": Layer.RESOLVED,
     "blend": Layer.BLEND,
     "render": Layer.RENDER,
+    "audio": Layer.AUDIO,
+    "edit": Layer.EDIT,
     "qa": Layer.QA,
 }
-DERIVED_KINDS = ("resolved", "blend", "render", "qa")
+# Kinds `fm record` / record_derived may write (M6 added audio: stems, mixes; edit: EDL, animatic, master).
+DERIVED_KINDS = ("resolved", "blend", "render", "audio", "edit", "qa")
 
-REF_RE = re.compile(r"^(canon|artifact|shot|resolved|blend|render|qa):[A-Za-z0-9_.\-]+$")
+REF_RE = re.compile(
+    r"^(canon|artifact|shot|resolved|blend|render|audio|edit|qa):[A-Za-z0-9_.\-]+$")
 CANON_ID_RE = re.compile(r"^[a-z][a-z0-9_]*(\.[a-z0-9][a-z0-9_\-]*)+$")
 SLUG_RE = re.compile(r"^[a-z][a-z0-9_]{1,63}$")
 SHOT_ID_RE = re.compile(r"^SC\d{2,3}_SH\d{3,4}$")

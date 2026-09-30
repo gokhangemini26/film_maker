@@ -12,7 +12,7 @@ Machine contracts are in `schemas/json/*.schema.json` (regenerate with
 assumption into a fact; change the tag only with evidence.
 
 **Refs** (graph nodes): `canon:<id>`, `artifact:<id>`, `shot:<id>`,
-`resolved:<id>`, `blend:<id>`, `render:<id>`, `qa:<id>`.
+`resolved:<id>`, `blend:<id>`, `render:<id>`, `audio:<id>` (stems, mixes), `edit:<id>` (EDL, animatic, master), `qa:<id>`.
 `canon:intent.*` nodes form the INTENT layer.
 
 ## Canon entry — `canon/<domain>.yaml`
@@ -109,6 +109,39 @@ style_break: null                # {reason: ...} when a shot breaks the style lo
 continuity_refs: [continuity.sc01.weather]
 derived_from: [{ref: artifact:shot_list}]
 ```
+
+## Shot animation — `09_animation/SC01_SH090.anim.yaml` (kind `shot_animation`, M6)
+
+Typed tracks a builder reads; the prose `animation` block in the shot file stays the human brief.
+Artifact id is `anim_<shot id lowercase>`; owner `animation-director`; JSON Schema `schemas/json/anim.schema.json`.
+
+```yaml
+fm: {id: anim_sc01_sh090, kind: shot_animation, phase: ANIMATION, status: PROPOSED, ...}
+shot_id: SC01_SH090
+frames: 24                 # must equal the resolver's frame count
+vocab_version: 1           # core/fm/animvocab.py = canon animation.vocab.*
+rationale: ...
+characters:
+  ren:
+    pose:   [{f: 0, ref: car_phone_up, ease: hold, blend_f: 0, note: ..., rationale: ...}]
+    move:   {gait: none}   # run_phone_out | scramble need `path`; crank_turn needs first_top_f
+    face:   [{f: 0, ref: freeze}]
+    look:   [{f: 0, target: phone}]
+    breath: [{f: 0, ref: hold, dur_f: 16}]
+props:      {phone_ren: [{f: 0, attach: hand_l}]}      # per-prop typed fields (animvocab.PROPS)
+ui_timeline: []            # typed overlay events on canon look.style.phone_screen.states_by_shot
+camera: {move: none}       # or dolly_in with start_f/end_f/dist_m/ease ranges
+holds:  [{f0: 0, f1: 15, scope: all, min_f: 16}]
+events: [{f: 16, id: stuck_exhale, kind: visual}]
+preview_frames: [0, 16, 23]
+```
+
+Frames are shot-local. `note` and `rationale` are free text for humans and are never parsed or
+copied into resolved files. `fm validate` runs the `ANIM_*` rules (vocabulary, ranges, ordering,
+blends, prop transitions, holds, camera, events); the resolver refuses a file with any ANIM error.
+Resolved shots (`fm.resolved_shot/2`) carry `motion` (tracks plus absolute frames, derived
+`handle_top` events) and `ui_timeline` (per-frame phone screen state); both are `null` when the shot
+has no anim file / no canon row. Bare files with only `fm` and `shot_id` are stubs and are ignored.
 
 ## Ledger — `.fm/ledger.jsonl`
 

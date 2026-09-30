@@ -24,11 +24,13 @@ the matching command's procedure.
 | character-designer | CHARACTER_BIBLE, character canon |
 | look-director | VISUAL/COLOR/LIGHTING bibles, look canon (style lock) |
 | cinematographer | CINEMATOGRAPHY_BIBLE, STORYBOARD, SHOT_LIST, shots, camera + continuity canon |
-| animation-director | shots' `animation` blocks |
-| blender-td | resolved shots, Blender previews, per-shot builder/spec problem report |
-| qa-supervisor | gate reviews (advisory) |
+| animation-director | shots' `animation` blocks; M6: `09_animation/*.anim.yaml`, animation vocabulary canon |
+| blender-td | resolved shots, Blender previews, per-shot builder/spec problem report; M6: frames, playblast, final render |
+| sound-designer | audio canon, AUDIO_BIBLE, AUDIO_CUES, synthesis recipes, asks list for the human |
+| post-supervisor | EDIT_PLAN, POST_PLAN, EDL, animatic, delivery checks |
+| qa-supervisor | gate reviews G1-G8 (advisory) |
 
-Blender previews are available (`/film-blender`, `fm blender preview`, blender-td). Animation, final render and post-production are not available yet (M6+); say so if asked.
+Blender previews are available (`/film-blender`, `fm blender preview`, blender-td). M6 in progress: `/film-animate`, `/film-playblast`, `/film-audio`, `/film-post`, `/film-final` and `/film-export` are defined but the builders and tools land incrementally (see `docs/M6_SCOPE.md`); if `fm` reports an unknown subcommand, say which M6 step provides it and never claim its output exists. A final render needs the human's own authorization first.
 
 ## Hard rules
 

@@ -1,0 +1,1317 @@
+{
+  "$defs": {
+    "ArtifactMeta": {
+      "additionalProperties": false,
+      "description": "The `fm:` block at the top of every managed document.\n\nEverything outside this block is the artifact's content and is hashed.",
+      "properties": {
+        "derived_from": {
+          "items": {
+            "$ref": "#/$defs/DepRef"
+          },
+          "title": "Derived From",
+          "type": "array"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "description": "e.g. story_bible, screenplay, color_bible",
+          "title": "Kind",
+          "type": "string"
+        },
+        "owner_role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Owner Role"
+        },
+        "phase": {
+          "title": "Phase",
+          "type": "string"
+        },
+        "serves": {
+          "description": "intent.* ids",
+          "items": {
+            "type": "string"
+          },
+          "title": "Serves",
+          "type": "array"
+        },
+        "stamp_note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stamp Note"
+        },
+        "stamped_content_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stamped Content Hash"
+        },
+        "status": {
+          "$ref": "#/$defs/Status",
+          "default": "PROPOSED"
+        },
+        "summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Summary"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "phase"
+      ],
+      "title": "ArtifactMeta",
+      "type": "object"
+    },
+    "BreathKey": {
+      "additionalProperties": false,
+      "properties": {
+        "dur_f": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dur F"
+        },
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
+        },
+        "ref": {
+          "enum": [
+            "in_slow",
+            "out_slow",
+            "out_long",
+            "hold",
+            "crank_locked"
+          ],
+          "title": "Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "f",
+        "ref"
+      ],
+      "title": "BreathKey",
+      "type": "object"
+    },
+    "CameraTrack": {
+      "additionalProperties": false,
+      "properties": {
+        "dist_m": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dist M"
+        },
+        "ease_in_f": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ease In F"
+        },
+        "ease_out_f": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ease Out F"
+        },
+        "end_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End F"
+        },
+        "move": {
+          "default": "none",
+          "enum": [
+            "none",
+            "dolly_in"
+          ],
+          "title": "Move",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "peak_speed_mps": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Peak Speed Mps"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "start_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start F"
+        }
+      },
+      "title": "CameraTrack",
+      "type": "object"
+    },
+    "CharacterTracks": {
+      "additionalProperties": false,
+      "properties": {
+        "breath": {
+          "items": {
+            "$ref": "#/$defs/BreathKey"
+          },
+          "title": "Breath",
+          "type": "array"
+        },
+        "face": {
+          "items": {
+            "$ref": "#/$defs/FaceKey"
+          },
+          "title": "Face",
+          "type": "array"
+        },
+        "look": {
+          "items": {
+            "$ref": "#/$defs/LookKey"
+          },
+          "title": "Look",
+          "type": "array"
+        },
+        "move": {
+          "$ref": "#/$defs/MoveTrack"
+        },
+        "pose": {
+          "items": {
+            "$ref": "#/$defs/PoseKey"
+          },
+          "title": "Pose",
+          "type": "array"
+        }
+      },
+      "title": "CharacterTracks",
+      "type": "object"
+    },
+    "DepRef": {
+      "additionalProperties": false,
+      "description": "An upstream dependency. `hash` is the upstream content hash at the\ntime this node was produced; None means a structural edge only.",
+      "properties": {
+        "hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hash"
+        },
+        "ref": {
+          "title": "Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ref"
+      ],
+      "title": "DepRef",
+      "type": "object"
+    },
+    "EventKey": {
+      "additionalProperties": false,
+      "properties": {
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "id": {
+          "description": "unique per shot; audio and QA refer to it",
+          "pattern": "^[a-z][a-z0-9_]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "default": "sound",
+          "enum": [
+            "sound",
+            "light",
+            "state",
+            "visual"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
+        }
+      },
+      "required": [
+        "f",
+        "id"
+      ],
+      "title": "EventKey",
+      "type": "object"
+    },
+    "FaceKey": {
+      "additionalProperties": false,
+      "properties": {
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
+        },
+        "ref": {
+          "title": "Ref",
+          "type": "string",
+          "x-vocab": "face.<character>"
+        }
+      },
+      "required": [
+        "f",
+        "ref"
+      ],
+      "title": "FaceKey",
+      "type": "object"
+    },
+    "Hold": {
+      "additionalProperties": false,
+      "properties": {
+        "character": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Character"
+        },
+        "f0": {
+          "minimum": 0,
+          "title": "F0",
+          "type": "integer"
+        },
+        "f1": {
+          "minimum": 0,
+          "title": "F1",
+          "type": "integer"
+        },
+        "min_f": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "minimum frames the hold must last (legibility rule)",
+          "title": "Min F"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "scope": {
+          "enum": [
+            "body",
+            "face",
+            "phone",
+            "all"
+          ],
+          "title": "Scope",
+          "type": "string"
+        }
+      },
+      "required": [
+        "f0",
+        "f1",
+        "scope"
+      ],
+      "title": "Hold",
+      "type": "object"
+    },
+    "LookKey": {
+      "additionalProperties": false,
+      "properties": {
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
+        },
+        "target": {
+          "enum": [
+            "mirror",
+            "phone",
+            "dash",
+            "glovebox",
+            "lap",
+            "crank",
+            "road_ahead",
+            "shop_door",
+            "wall_left",
+            "wall_right",
+            "socket",
+            "ceiling",
+            "sky",
+            "sketchbook",
+            "off_frame",
+            "camera",
+            "closed"
+          ],
+          "title": "Target",
+          "type": "string"
+        }
+      },
+      "required": [
+        "f",
+        "target"
+      ],
+      "title": "LookKey",
+      "type": "object"
+    },
+    "MoveTrack": {
+      "additionalProperties": false,
+      "properties": {
+        "first_top_f": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "crank_turn: a frame at which the handle is at 12 o'clock; tops repeat every 24 frames (may be negative when the cycle was already running before the shot)",
+          "title": "First Top F"
+        },
+        "gait": {
+          "default": "none",
+          "enum": [
+            "none",
+            "run_phone_out",
+            "scramble",
+            "crank_turn"
+          ],
+          "title": "Gait",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "path": {
+          "description": "waypoints in set coords; required for locomotion gaits",
+          "items": {
+            "$ref": "#/$defs/PathPoint"
+          },
+          "title": "Path",
+          "type": "array"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "speed_mps": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "peak speed, for QA",
+          "title": "Speed Mps"
+        },
+        "start_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "crank_turn: frame the first turn begins (default: already turning)",
+          "title": "Start F"
+        },
+        "stop_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "crank_turn: frame the handle stops (optional)",
+          "title": "Stop F"
+        }
+      },
+      "title": "MoveTrack",
+      "type": "object"
+    },
+    "PathPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "f": {
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        }
+      },
+      "required": [
+        "f",
+        "x",
+        "y"
+      ],
+      "title": "PathPoint",
+      "type": "object"
+    },
+    "PoseKey": {
+      "additionalProperties": false,
+      "properties": {
+        "blend_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "frames the blend INTO this pose takes, starting at f (0/None = switch at f); must end by the next key",
+          "title": "Blend F"
+        },
+        "ease": {
+          "default": "ease_in_out",
+          "enum": [
+            "hold",
+            "step",
+            "linear",
+            "ease_in",
+            "ease_out",
+            "ease_in_out",
+            "overshoot_small",
+            "gravity"
+          ],
+          "title": "Ease",
+          "type": "string"
+        },
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
+        },
+        "ref": {
+          "description": "pose preset name",
+          "title": "Ref",
+          "type": "string",
+          "x-vocab": "pose.<character>"
+        }
+      },
+      "required": [
+        "f",
+        "ref"
+      ],
+      "title": "PoseKey",
+      "type": "object"
+    },
+    "PropKey": {
+      "additionalProperties": false,
+      "description": "One key of a prop track. Which value fields are legal depends on the prop (animvocab.PROPS).",
+      "properties": {
+        "arm": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Arm"
+        },
+        "attach": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Attach"
+        },
+        "bounce_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bounce F"
+        },
+        "dur_f": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "frames the change takes, starting at f",
+          "title": "Dur F"
+        },
+        "ease": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "enum": [
+            "hold",
+            "step",
+            "linear",
+            "ease_in",
+            "ease_out",
+            "ease_in_out",
+            "overshoot_small",
+            "gravity"
+          ],
+          "title": "Ease"
+        },
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "loc": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Loc"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "pip": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pip"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "State"
+        },
+        "swing_deg": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Swing Deg"
+        },
+        "tilt_deg": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tilt Deg"
+        }
+      },
+      "required": [
+        "f"
+      ],
+      "title": "PropKey",
+      "type": "object"
+    },
+    "Status": {
+      "description": "Lifecycle of every decision, artifact and shot.\n\nPROPOSED    an agent (or the user) suggested it; nothing may rely on it as final\nAPPROVED    a human accepted it (recorded in the ledger)\nLOCKED      approved and frozen; only an approved change request can alter it\nSUPERSEDED  replaced by a newer version through a change request\nREJECTED    a human declined it",
+      "enum": [
+        "PROPOSED",
+        "APPROVED",
+        "LOCKED",
+        "SUPERSEDED",
+        "REJECTED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "UiEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "chars": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chars"
+        },
+        "dur_f": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dur F"
+        },
+        "event": {
+          "enum": [
+            "dip",
+            "key_press",
+            "text",
+            "pulse",
+            "slide",
+            "heart",
+            "progress",
+            "tick",
+            "photo_scale"
+          ],
+          "title": "Event",
+          "type": "string"
+        },
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "from_pct": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "From Pct"
+        },
+        "key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "enum": [
+            "any",
+            "emoji",
+            "backspace",
+            "send"
+          ],
+          "title": "Key"
+        },
+        "line": {
+          "anyOf": [
+            {
+              "maximum": 3,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Line"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "phone": {
+          "default": "ren",
+          "enum": [
+            "ren",
+            "hana"
+          ],
+          "title": "Phone",
+          "type": "string"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
+        },
+        "to": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "enum": [
+            "map",
+            "call",
+            "compose",
+            "sent",
+            "off",
+            "wake",
+            "received"
+          ],
+          "title": "To"
+        },
+        "to_pct": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "To Pct"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "dip: brightness (default 0.7)",
+          "title": "Value"
+        }
+      },
+      "required": [
+        "f",
+        "event"
+      ],
+      "title": "UiEvent",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "`09_animation/<SHOT>.anim.yaml`.",
+  "properties": {
+    "camera": {
+      "$ref": "#/$defs/CameraTrack"
+    },
+    "characters": {
+      "additionalProperties": {
+        "$ref": "#/$defs/CharacterTracks"
+      },
+      "title": "Characters",
+      "type": "object"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/$defs/EventKey"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "fm": {
+      "$ref": "#/$defs/ArtifactMeta"
+    },
+    "frames": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "must equal the resolver's frame count for the shot",
+      "title": "Frames"
+    },
+    "holds": {
+      "items": {
+        "$ref": "#/$defs/Hold"
+      },
+      "title": "Holds",
+      "type": "array"
+    },
+    "notes": {
+      "description": "free text for humans; never parsed",
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "preview_frames": {
+      "description": "default: every pose key plus the last frame",
+      "items": {
+        "type": "integer"
+      },
+      "title": "Preview Frames",
+      "type": "array"
+    },
+    "props": {
+      "additionalProperties": {
+        "items": {
+          "$ref": "#/$defs/PropKey"
+        },
+        "type": "array"
+      },
+      "title": "Props",
+      "type": "object"
+    },
+    "rationale": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "why this motion serves the shot (CLAUDE.md rule 4)",
+      "title": "Rationale"
+    },
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "ui_timeline": {
+      "items": {
+        "$ref": "#/$defs/UiEvent"
+      },
+      "title": "Ui Timeline",
+      "type": "array"
+    },
+    "vocab_version": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "animation.vocab version this was written against",
+      "title": "Vocab Version"
+    }
+  },
+  "required": [
+    "fm",
+    "shot_id"
+  ],
+  "title": "AnimationTracks",
+  "type": "object"
+}

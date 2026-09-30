@@ -1,2 +1,472 @@
 domain: animation
-entries: []
+entries:
+- id: animation.vocab.pose.ren
+  statement: 'Ren''s pose presets: the only body configurations an anim file may name for Ren.'
+  value:
+    vocab_version: 1
+    presets:
+      car_upright: Seated upright behind the wheel, hands on the top of the wheel, eyes ahead.
+      car_reach_up: Seated, right arm raised to the mirror or the crown tuft, left hand low with the phone.
+      car_phone_up: Seated, phone raised to chest or face height in both hands, elbows tucked, neck forward.
+      car_sag: Seated, shoulders dropped and head forward, phone fallen to the lap (the letdown).
+      car_lean_glovebox: Torso tipped across the cabin, right arm out to the glovebox latch (reach about
+        0.75 m).
+      car_recline: Sunk back into the seat, head on the headrest, arms slack (relief, eyes closed).
+      car_forehead_wheel: Head lowered until the forehead rests on the top of the wheel rim, shoulders
+        sagged.
+      run_phone_out: Upright running stance, phone arm straight out ahead, right forearm tucked, arms
+        not swinging.
+      scramble_out: Ducked and unfolding out of the passenger doorway below the 1.45 m roof line.
+      kneel_upright: Kneeling on both knees, torso upright, phone tucked at the chest (shop aisle).
+      kerb_hunch: Seated on the kerb, back to the car, knees up, forearms loose over the knees, neck forward.
+      kerb_crank_hold: Seated on the kerb as kerb_hunch with the crank held in both hands in the lap (cranking
+        base).
+      kerb_lean_back: Seated on the kerb, spine reclined against the car's rear quarter, knees open, head
+        tipping up.
+      lunge_low: Right knee down, left foot forward, low lunge toward the passenger doorway.
+      lunge_reach: Lunge leaning in through the doorway, left forearm on the seat edge, right arm to the
+        glovebox.
+  rationale: 'Derived from the 224 free-text keys in the shot animation blocks. Each preset is one body
+    configuration a builder can pose from joints; hands on props, breath, blink and the tuft are carried
+    by other tracks so the list stays short. Rejected: a preset per prose key (about 90 near-duplicates)
+    and keeping prose that a regex reads (it cannot tell ''lowered'' from ''opened'').'
+  serves:
+  - intent.comic_then_tender
+  - intent.anime_feel
+  depends_on:
+  - characters.ren.movement
+  - characters.ren.representation
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.pose.hana
+  statement: Hana's pose presets.
+  value:
+    vocab_version: 1
+    presets:
+      desk_sketch: Seated at the desk, head tilted down over the sketchbook, right hand drawing, headphones
+        on.
+      desk_notice: Seated, head turned about 25 deg toward the lit phone, pencil laid down.
+      desk_headphones_off: Both hands at the ear cups, sliding the headphones down to the neck.
+      desk_phone_low: Seated, phone low near the chest in both hands, headphones on the neck, eyes on
+        the screen.
+  rationale: 'Hana has one desk and four beats (absorbed, noticing, headphones off, reading); four presets
+    cover them and the blends between. Rejected: a rig for a character who never stands.'
+  serves:
+  - intent.open_hopeful_ending
+  depends_on:
+  - characters.hana.movement
+  - characters.hana.representation
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.face
+  statement: 'Face refs: Ren''s comic and tender sets, plus neutral; Hana''s four states.'
+  value:
+    vocab_version: 1
+    ren:
+      comic:
+      - rehearsed_breath
+      - letdown
+      - freeze
+      - relief
+      - stunned_stillness
+      tender:
+      - focused_calm
+      - hesitation_at_heart
+      - release_after_send
+      - final_look_up
+      neutral:
+      - neutral
+    hana:
+      sequence:
+      - absorbed
+      - noticing
+      - reading
+      - small_smile
+    comic_illegal_from_shot: SC04_SH030
+  rationale: Taken from characters.*.expressions, not invented. The comic set is illegal from SC04_SH030
+    on so the change of key (tone.the_turn) is checkable on his face.
+  serves:
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  depends_on:
+  - characters.ren.expressions
+  - characters.hana.expressions
+  - tone.the_turn
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.look_target
+  statement: Eyeline targets the builder resolves to objects in the set.
+  value:
+    vocab_version: 1
+    targets:
+      mirror: the rear-view mirror
+      phone: the character's own phone
+      dash: the dashboard
+      glovebox: the glovebox
+      lap: the lap
+      crank: the crank charger
+      road_ahead: ahead through the windscreen or along the street
+      shop_door: the shop door
+      wall_left: the left wall of the aisle
+      wall_right: the right wall of the aisle
+      socket: the wall socket / stand corner
+      ceiling: the ceiling panels
+      sky: up and west toward the afterglow
+      sketchbook: the sketchbook page
+      off_frame: off frame (implied, nothing to aim at)
+      camera: the lens (Ren never looks here in Last Signal)
+      closed: eyes closed
+  rationale: Eyelines carry most of the acting in this film. A closed list lets the builder aim the head
+    and eyes and lets QA check that a target exists in the shot's location.
+  serves:
+  - intent.comic_then_tender
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.breath
+  statement: Breath refs for the breath track.
+  value:
+    vocab_version: 1
+    breaths:
+      in_slow: slow breath in, shoulders rise about 1 cm
+      out_slow: slow breath out, shoulders fall about 1 cm
+      out_long: one long out-breath, shoulders drop 2-3 cm
+      hold: 'breath held: nothing moves'
+      crank_locked: in on the up half-turn of the crank, out on the down half-turn
+  rationale: Breath is the main motion of the held shots, and the ratchet is locked to it after the turn.
+  serves:
+  - intent.comic_then_tender
+  depends_on:
+  - tone.the_turn
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.gait
+  statement: Gaits and their cycle constants.
+  value:
+    vocab_version: 1
+    gaits:
+      none:
+        locomotion: false
+        desc: no travel; the pose track carries the body
+      run_phone_out:
+        locomotion: true
+        desc: run with the phone arm rigid (arms not swinging), a step every 6 frames
+      scramble:
+        locomotion: true
+        desc: crouched exit from the car into the first strides
+      crank_turn:
+        locomotion: false
+        desc: 24-frame handle cycle; handle_top events every 24 frames
+    crank_cycle_f: 24
+  rationale: Only five shots travel. crank_turn is one 24-frame handle cycle so the ratchet phase (handle_top
+    events) has a single source.
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - characters.ren.movement
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.ease
+  statement: Ease names for pose blends and prop tracks.
+  value:
+    vocab_version: 1
+    eases:
+      hold: 'no interpolation: the value stays until the next key'
+      step: switch in one frame at the key (cel switch)
+      linear: constant rate between keys
+      ease_in: starts slow, ends fast (falls with weight)
+      ease_out: starts fast, ends slow (quick burst that settles)
+      ease_in_out: slow at both ends (the default for deliberate moves)
+      overshoot_small: ease-out with one small overshoot before it settles (crown-tuft spring)
+      gravity: accelerating fall with a short bounce at the stop (crank drop, lid drop)
+  rationale: The shot prose uses eight timing words; naming them stops each builder guessing its own curve.
+  serves:
+  - intent.anime_feel
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.prop_states
+  statement: Prop state enums and their legal transitions.
+  value:
+    vocab_version: 1
+    props:
+      passenger_door:
+        desc: Ren's passenger door (continuity.props.passenger_door).
+        fields:
+          state:
+          - closed
+          - open_60
+          swing_deg: deg
+        transitions:
+          state:
+            closed:
+            - open_60
+            open_60:
+            - closed
+        persistent: true
+      glovebox_lid:
+        desc: 'Glovebox lid: drops by gravity or is lowered by hand.'
+        fields:
+          state:
+          - closed
+          - open_down
+          bounce_f: frames
+        transitions:
+          state:
+            closed:
+            - open_down
+            open_down:
+            - closed
+        persistent: true
+      crank_charger:
+        desc: 'The crank charger: where it is, whether the arm is out, pip brightness.'
+        fields:
+          loc:
+          - glovebox
+          - falling
+          - thighs
+          - lap
+          - hand_r
+          - hands_both
+          - knees
+          arm:
+          - folded
+          - unfolded
+          pip: unit
+        transitions:
+          loc:
+            glovebox:
+            - falling
+            - hand_r
+            falling:
+            - thighs
+            thighs:
+            - glovebox
+            - hand_r
+            - hands_both
+            - lap
+            hand_r:
+            - hands_both
+            - glovebox
+            - lap
+            hands_both:
+            - lap
+            - knees
+            - hand_r
+            lap:
+            - knees
+            - hands_both
+            - hand_r
+            knees:
+            - lap
+            - hands_both
+            - hand_r
+          arm:
+            folded:
+            - unfolded
+            unfolded:
+            - folded
+        persistent: true
+      phone_ren:
+        desc: 'Ren''s phone: which hand or surface holds it (the screen comes from ui_timeline).'
+        fields:
+          attach:
+          - hand_l
+          - hand_r
+          - hands_both
+          - lap
+          - knee
+          - chest
+          - car_strip
+        transitions: {}
+        persistent: true
+      phone_hana:
+        desc: 'Hana''s phone: on the desk or in her hands.'
+        fields:
+          attach:
+          - desk
+          - hand_r
+          - hands_both
+        transitions: {}
+        persistent: true
+      rear_view_mirror:
+        desc: Rear-view mirror tilt, keyed to the hand contact.
+        fields:
+          tilt_deg: deg
+        transitions: {}
+        persistent: true
+      hana_headphones:
+        desc: 'Hana''s headphones (world.props.hana_headphones: two positions and an arc between them).'
+        fields:
+          state:
+          - head
+          - neck
+        transitions:
+          state:
+            head:
+            - neck
+            neck:
+            - head
+        persistent: true
+      pencil:
+        desc: Hana's pencil.
+        fields:
+          state:
+          - held
+          - laid
+        transitions:
+          state:
+            held:
+            - laid
+            laid:
+            - held
+        persistent: true
+      car_body:
+        desc: Car body motion presets (amplitude and decay are constants in poses.py).
+        fields:
+          state:
+          - still
+          - idle_tremble
+          - cough
+          - sigh_sink
+          - stall_shudder
+          - sway_1cm
+        transitions: {}
+        persistent: false
+      dash_lights_and_adapter_ring:
+        desc: Dash lights and the adapter ring LED.
+        fields:
+          state:
+          - 'on'
+          - 'off'
+        transitions:
+          state:
+            'on':
+            - 'off'
+            'off':
+            - 'on'
+        persistent: true
+      shop_door:
+        desc: Shop door (swing continues after the cut).
+        fields:
+          state:
+          - closed
+          - open_70
+        transitions:
+          state:
+            closed:
+            - open_70
+            open_70:
+            - closed
+        persistent: false
+      shop_lights:
+        desc: Shop ceiling panels, fridges and fascia sign (the blackout is one frame).
+        fields:
+          state:
+          - 'on'
+          - 'off'
+        transitions:
+          state:
+            'on':
+            - 'off'
+            'off':
+            - 'on'
+        persistent: true
+      ceiling_panels:
+        desc: 'Ceiling panels: `steady` is a deliberate no-op QA can assert (the gag is the absence).'
+        fields:
+          state:
+          - steady
+        transitions: {}
+        persistent: false
+  rationale: 'Props are where prose was ambiguous: SC04_SH040 ''lowered by hand ... left down'' was read
+    as open, and the crank is ''in the closed glovebox'' in SC04_SH010. An enum (closed | open_down) settles
+    it and makes cross-shot continuity checkable.'
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - continuity.props.passenger_door
+  - continuity.props.glovebox_and_crank
+  - continuity.props.phone_ren
+  - continuity.hana.headphones
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.ui_event
+  statement: Phone-screen events an anim file may add on top of the states_by_shot table.
+  value:
+    vocab_version: 1
+    events:
+      dip: brightness dip to `value` (default 0.7) for `dur_f` frames (flicker, charge lost)
+      key_press: a key darkens for `dur_f` frames; `key` is any, emoji, backspace or send
+      text: reveal `chars` characters of `line` over `dur_f` frames (typing)
+      pulse: the call button pulses over `dur_f` frames
+      slide: the screen changes to `to` over `dur_f` frames (1 = in one frame)
+      heart: the heart glyph is visible for `dur_f` frames
+      progress: the amber send line fills over `dur_f` frames (linear)
+      tick: the amber delivered tick appears whole at `f` and stays
+      photo_scale: the caller photo scales `from_pct` -> `to_pct` over `dur_f` frames (ease-out)
+    screens:
+    - map
+    - call
+    - compose
+    - sent
+    - 'off'
+    - wake
+    - received
+    keys:
+    - any
+    - emoji
+    - backspace
+    - send
+  rationale: The canon table fixes the base state per shot; flicker dips, key presses, typing and the
+    send line need frame-exact events the table does not carry.
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - look.style.phone_screen.states_by_shot
+  - look.style.phone_ui
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1
+- id: animation.vocab.event_kind
+  statement: Kinds of named sync events, plus the camera moves and hold scopes an anim file may use.
+  value:
+    vocab_version: 1
+    kinds:
+      sound: an audible sync point (the sound-designer cues it by id)
+      light: a lighting change (blackout, indicator on/off)
+      state: a prop or screen state change worth naming
+      visual: a visual beat with no sound (a blink, a contact)
+    camera_moves:
+      none: locked off
+      dolly_in: straight push toward the subject (camera.movement.push_in)
+    hold_scopes:
+      body: no pose change inside the span
+      face: no face change inside the span
+      phone: phone and thumb stay put (insert legibility holds)
+      all: nothing moves
+  rationale: Named events are the sync points audio, QA and editors read by id; the kind says which are
+    audible.
+  serves:
+  - intent.race_against_battery
+  depends_on:
+  - camera.movement.push_in
+  tag: DECISION
+  status: PROPOSED
+  source: agent:animation-director
+  version: 1

@@ -214,6 +214,11 @@ def validate(project: Project) -> Report:  # noqa: C901 - a checklist by design
             if not loaded.exists(d.ref):
                 add("ERROR", "DANGLING_REF", where, f"derived_from unknown '{d.ref}'")
 
+    # ---- structured shot animation (M6): ANIM_* rules
+    from .animcheck import check_animation
+    for lvl, code, where, msg in check_animation(project, loaded):
+        add(lvl, code, where, msg)
+
     # ---- intent + continuity (advisory here; continuity FAILs block G5 submission)
     for cid in unserved_decisions(loaded):
         add("WARN", "UNSERVED_DECISION", project.rel(loaded.canon[cid].path),

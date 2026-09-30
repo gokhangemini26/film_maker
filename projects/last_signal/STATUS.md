@@ -22,17 +22,18 @@ ledger: 33 records, head 2fdb4375acfe
 | G4 | Visual direction (style lock) | approved | human:gokhan_guler | 4 |
 | G5 | Storyboard and shots | approved (DRIFTED) | human:gokhan_guler | 42 |
 | G6 | First Blender preview | approved | human:gokhan_guler | - |
-| G7 | Animation preview | pending | - | - |
+| G7 | Animation, audio and post plan | pending | - | - |
 | G8 | Final render | pending | - | - |
 
 ## Canon
 
-LOCKED: 161, PROPOSED: 9
+LOCKED: 161, PROPOSED: 19
 
 ## Artifacts
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
+| anim_sc01_sh090 | ANIMATION | PROPOSED | 442d53bf79bd |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
@@ -127,6 +128,7 @@ LOCKED: 161, PROPOSED: 9
 - stale: render:preview_SC01_SH050
 - stale: render:preview_SC01_SH070
 - stale: render:preview_SC01_SH080
+- stale: render:preview_SC01_SH090
 - stale: render:preview_SC01_SH120
 - stale: render:preview_SC01_SH140
 - stale: render:preview_SC03_SH060
@@ -152,7 +154,6 @@ LOCKED: 161, PROPOSED: 9
 - stale: resolved:SC04_SH070
 - stale: resolved:SC04_SH080
 - stale: resolved:SC04_SH090
-- stale: resolved:film
 - change awaiting decision: CHANGE-002
 - change awaiting decision: CHANGE-003
 - change awaiting decision: CHANGE-004

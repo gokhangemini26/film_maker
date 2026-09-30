@@ -30,7 +30,7 @@ def test_resolve_writes_deterministic_files_and_records_derived_nodes(sandbox):
     assert (sandbox.dir / "09_resolved" / "film.json").exists()
     assert len(files) == len([x for x in r["resolved"] if x != "film"])
     data = json.loads(files[0].read_text())
-    assert data["schema"] == "fm.resolved_shot/1"
+    assert data["schema"] == "fm.resolved_shot/2"
     assert data["frames"]["count"] >= 1 and data["frames"]["start"] == 0
     loaded = sandbox.load()
     assert f"resolved:{data['shot_id']}" in loaded.derived

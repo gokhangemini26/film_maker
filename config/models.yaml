@@ -12,7 +12,7 @@ models:
     provider: anthropic
     model: opus
 
-# Which role-class each subagent uses (agents arrive in M2).
+# Which role-class each subagent uses.
 roles:
   creative-director: creative
   story-architect: creative
@@ -22,6 +22,7 @@ roles:
   look-director: creative
   cinematographer: creative
   animation-director: creative
+  sound-designer: creative
   post-supervisor: creative
   blender-td: technical
   qa-supervisor: vision

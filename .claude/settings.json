@@ -17,7 +17,15 @@
       "Bash(fm change show:*)",
       "Bash(fm canon annotate:*)",
       "Bash(fm feedback:*)",
-      "Bash(fm qa review-status:*)"
+      "Bash(fm qa review-status:*)",
+      "Bash(fm audio:*)",
+      "Bash(fm post:*)",
+      "Bash(fm qa motion:*)",
+      "Bash(fm qa audio:*)",
+      "Bash(fm qa delivery:*)",
+      "Bash(fm check anim:*)",
+      "Bash(fm blender frames:*)",
+      "Bash(fm blender playblast:*)"
     ],
     "deny": [
       "Bash(fm approve:*)",

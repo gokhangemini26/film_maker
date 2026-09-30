@@ -107,6 +107,7 @@ def test_typed_confirmation_on_production(production, monkeypatch):
 def test_final_render_requires_authorization(sandbox):
     testing.drive(sandbox, "ANIMATION_PREVIEW")
     with testing.as_actor(testing.AGENT):
+        testing.produce(sandbox, "ANIMATION_PREVIEW")     # M6 contract: bibles, mix, animatic, review
         ops.submit(sandbox)
     with testing.as_actor("human:director"):
         ops.decide_gate(sandbox, "G7", "approved", sandbox_confirm=True)

@@ -17,7 +17,7 @@ ASSET_PREP → BLENDER_BUILD → PREVIEW ─G6→ ANIMATION → ANIMATION_PREVIE
 | G4 Visual direction | LOOK | look (the **style lock**) |
 | G5 Storyboard & shots | CINEMATOGRAPHY, STORYBOARD + all shots | camera, continuity |
 | G6 First preview | ASSET_PREP, BLENDER_BUILD, PREVIEW | — |
-| G7 Animation preview | ANIMATION, ANIMATION_PREVIEW | animation, audio |
+| G7 Animation, audio and post plan | ANIMATION, ANIMATION_PREVIEW (anim files, animation/audio/edit/post plans, review) | animation, audio |
 | G8 Final render | FINAL_RENDER | — |
 
 Deliverables each phase must have before `fm submit` are in
@@ -30,6 +30,22 @@ Deliverables each phase must have before `fm submit` are in
   review blocks approval.
 - `02_screenplay/SCENES.yaml` for SCREENPLAY — the machine-readable scene index.
 - For G5, `fm check continuity` must have no FAIL.
+
+M6 phases (docs/M6_SCOPE.md 5.5) have contracts too. Besides `fm:` artifacts they can require
+unmanaged files, one file per shot, QA reports and authorizations; a QA report counts only if
+it exists and its `summary.fail` is 0:
+
+| Phase | Must exist before `fm submit` / `fm advance` |
+|---|---|
+| ANIMATION (advance) | `09_animation/ANIMATION_BIBLE.md`; `09_animation/<shot>.anim.yaml` for every shot; `qa/motion_report.json` with no FAIL |
+| ANIMATION_PREVIEW (**G7**) | the above per-shot files and motion report; `12_post/AUDIO_BIBLE.md`, `AUDIO_CUES.yaml`, `EDIT_PLAN.md`, `POST_PLAN.md`; `10_blender/playblast/film.mp4`, `12_post/audio/mix_48k_stereo.wav`, `12_post/animatic.mp4`, `12_post/EDIT.edl`; `qa/audio_report.json` with no FAIL; `qa/reviews/G7_REVIEW.md` |
+| FINAL_RENDER (**G8**) | `fm authorize final-render` recorded; `11_render/final/MANIFEST.json`; `qa/final_frames_report.json` with no FAIL; `qa/reviews/G8_REVIEW.md` |
+| POST (advance; no gate, G9 deferred) | `13_delivery/MANIFEST.json`; `qa/delivery_report.json` with no FAIL |
+
+Approving G7 locks the `animation` and `audio` canon domains but does not authorize the final
+render. G8 locks nothing. New artifact kinds and owners: `animation_bible` (animation-director),
+`audio_bible`, `audio_cues` (sound-designer), `edit_plan`, `post_plan` (post-supervisor).
+Derived refs `audio:` and `edit:` can be recorded with `fm record`.
 
 In Claude Code the whole loop below is driven by the `/film-*` commands
 (`docs/COMMANDS.md`).
@@ -131,4 +147,6 @@ so staleness cannot be silenced by re-stamping.
 
 `fm advance` into FINAL_RENDER requires `fm authorize final-render`
 (human). From M3 every render backend also checks the authorization and
-the Blender pin.
+the Blender pin. `fm authorize` is human-only exactly like `fm approve`: it needs an
+interactive terminal and a typed confirmation, and it is on the `.claude/settings.json` deny
+list, so agents cannot run it. The FINAL_RENDER contract re-checks the authorization at submit.

@@ -8,6 +8,7 @@ Rule of thumb enforced here:
 """
 from __future__ import annotations
 
+import json
 import shutil
 from pathlib import Path
 from typing import Any
@@ -145,6 +146,7 @@ def _contract_problems(project: Project, phase: str, loaded: Loaded) -> list[str
             out.append(f"{rel} has no valid `fm:` metadata block")
     if c.min_shots and len(loaded.shots) < c.min_shots:
         out.append(f"needs at least {c.min_shots} shot spec(s) in 08_shots/")
+    out += _contract_extras(project, c, loaded)
     gate = GATE_FOR_PHASE.get(phase)
     if gate is not None:
         from .reviews import review_problems
@@ -152,6 +154,38 @@ def _contract_problems(project: Project, phase: str, loaded: Loaded) -> list[str
         if gate.covers_shots:
             from .continuity import check_continuity
             out += [f"continuity: {f}" for f in check_continuity(loaded) if f.level == "FAIL"]
+    return out
+
+
+def _contract_extras(project: Project, c, loaded: Loaded) -> list[str]:
+    """M6 contract kinds: unmanaged files, per-shot files, QA reports with no FAIL, authorizations."""
+    out: list[str] = []
+    for rel in c.files:
+        if not (project.dir / rel).exists():
+            out.append(f"missing {rel}")
+    for tpl in c.per_shot:
+        missing = [sid for sid in sorted(loaded.shots) if not (project.dir / tpl.format(shot=sid)).exists()]
+        if missing:
+            shown = ", ".join(missing[:5]) + (f" (+{len(missing) - 5} more)" if len(missing) > 5 else "")
+            out.append(f"missing {tpl} for {len(missing)} shot(s): {shown}")
+    for rel in c.qa_reports:
+        path = project.dir / rel
+        if not path.exists():
+            out.append(f"missing {rel} (run the matching `fm qa ...` check)")
+            continue
+        try:
+            fails = json.loads(path.read_text(encoding="utf-8"))["summary"]["fail"]
+            bad = not isinstance(fails, int) or isinstance(fails, bool)
+        except (OSError, ValueError, KeyError, TypeError):
+            bad = True
+        if bad:
+            out.append(f"{rel} is unreadable (expected JSON with summary.fail)")
+        elif fails > 0:
+            out.append(f"{rel} reports {fails} FAIL")
+    if c.authorizations:
+        state = load_state(project)
+        have = {a.what for a in state.authorizations}
+        out += [f"needs human authorization: `fm authorize {w}`" for w in c.authorizations if w not in have]
     return out
 
 

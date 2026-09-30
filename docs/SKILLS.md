@@ -38,11 +38,13 @@ procedure, B. after a human decision, C. revision procedure.
 | lighting-design | look-director | lighting bible, motivated lighting canon |
 | cinematography | cinematographer | camera language, lens set, continuity canon |
 | storyboarding | cinematographer | storyboard, shot list, shot specs |
-| blender-production | blender-td | resolver -> builders -> previews, pinned vs draft, reading a still |
-| animation-design | animation-director | shot animation blocks |
-| continuity-check | qa-supervisor | continuity findings |
-| creative-review | qa-supervisor | gate reviews |
+| blender-production | blender-td | resolver -> builders -> previews, pinned vs draft, reading a still; M6: frames, playblast, chunked final render with resume |
+| animation-design | animation-director | shot animation blocks; M6: vocabulary canon, `09_animation/*.anim.yaml`, events |
+| continuity-check | qa-supervisor | continuity findings (M6: prop-state continuity across shots) |
+| creative-review | qa-supervisor | gate reviews (M6: G7/G8 rubric) |
+| sound-design (M6) | sound-designer | audio canon, AUDIO_BIBLE, AUDIO_CUES, asks list |
+| post-production (M6) | post-supervisor | EDIT_PLAN, POST_PLAN, EDL, animatic, delivery checks |
 
 Deferred: blender-scene-building, blender-python, blender-materials,
 blender-lighting, blender-camera, blender-animation, render-management (M3);
-visual-qa (M4); post-production (M6).
+visual-qa (M4).

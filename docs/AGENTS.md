@@ -12,7 +12,7 @@ validates it with `fm`, and ends with a fixed **Handoff** (files written, canon
 proposed with the intents it serves, assumptions, open questions, conflicts,
 validation result, limits).
 
-## Roster (10 agents, one file each in `.claude/agents/`)
+## Roster (12 agents, one file each in `.claude/agents/`)
 
 | Agent | Phase | Writes | Canon domains | Skills |
 |---|---|---|---|---|
@@ -23,15 +23,25 @@ validation result, limits).
 | character-designer | WORLD_CHARACTERS | CHARACTER_BIBLE.md | characters | character-design |
 | look-director | LOOK | VISUAL/COLOR/LIGHTING_BIBLE.md | look (style lock at G4) | visual-development, color-design, lighting-design |
 | cinematographer | CINEMATOGRAPHY, STORYBOARD | CINEMATOGRAPHY_BIBLE.md, STORYBOARD.md, SHOT_LIST.md, shot specs | camera, continuity | cinematography, storyboarding |
-| blender-td | ASSET_PREP, BLENDER_BUILD, PREVIEW | runs `fm resolve` / `fm blender preview`, reads stills, reports builder vs spec problems; builder code in `blender/` | (none) | blender-production |
-| animation-director | STORYBOARD | each shot's `animation` block + `rationale.animation` | (animation, from M6) | animation-design |
-| qa-supervisor | every gate | `qa/reviews/G#_REVIEW.md` only | — | creative-review, continuity-check |
+| blender-td | ASSET_PREP, BLENDER_BUILD, PREVIEW; M6: ANIMATION_PREVIEW, FINAL_RENDER | runs `fm resolve` / `fm blender preview`, reads stills, reports builder vs spec problems; M6: `fm blender frames|playblast|final`, `fm qa motion`; builder code in `blender/` | (none) | blender-production |
+| animation-director | STORYBOARD; M6: ANIMATION | STORYBOARD: each shot's `animation` block + `rationale.animation`. M6: `09_animation/<shot>.anim.yaml`, ANIMATION_BIBLE.md; never edits shot files once a shot has an anim file | animation (vocabulary, locked at G7) | animation-design |
+| sound-designer | ANIMATION_PREVIEW (M6) | `audio.*` canon proposals, `12_post/AUDIO_BIBLE.md`, `AUDIO_CUES.yaml`, synthesis recipes, the asks list for the human | audio (locked at G7) | sound-design |
+| post-supervisor | ANIMATION_PREVIEW, POST (M6) | `12_post/EDIT_PLAN.md`, `POST_PLAN.md`; runs `fm post *` and `fm qa delivery` | (none by default) | post-production |
+| qa-supervisor | every gate (G1-G8) | `qa/reviews/G#_REVIEW.md` only | — | creative-review, continuity-check |
 
 Every file in `.claude/agents/` has a row above (creative-director,
 story-architect, screenwriter, world-designer, character-designer,
 look-director, cinematographer, animation-director, blender-td,
-qa-supervisor). Planned, no agent file yet: **post-supervisor** (M6: edit plan,
-audio bible, animatic; already mapped in `config/models.yaml`).
+qa-supervisor, sound-designer, post-supervisor).
+
+**M6 in progress.** The sound-designer and post-supervisor are defined, and
+the animation-director, blender-td and qa-supervisor are extended, but the
+`fm` subcommands and builders they call (`fm audio`, `fm post`, `fm qa
+motion|audio|delivery`, `fm check anim`, `fm blender frames|playblast|final`)
+land incrementally (see [M6_SCOPE.md](M6_SCOPE.md)). Agents report an unknown
+subcommand instead of pretending it ran. Model classes: sound-designer and
+post-supervisor are `creative`, like the animation-director.
+No M6 agent can authorize a final render or approve a gate; that stays yours.
 
 Which command dispatches whom is in [COMMANDS.md](COMMANDS.md); the step-by-step
 use of all of them for a new film is in

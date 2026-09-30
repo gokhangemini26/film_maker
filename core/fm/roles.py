@@ -24,6 +24,13 @@ ARTIFACT_OWNERS: dict[str, str] = {
     "storyboard": "cinematographer",
     "shot_list": "cinematographer",
     "gate_review": "qa-supervisor",
+    # M6: animation, audio and post planning
+    "animation_bible": "animation-director",
+    "shot_animation": "animation-director",
+    "audio_bible": "sound-designer",
+    "audio_cues": "sound-designer",
+    "edit_plan": "post-supervisor",
+    "post_plan": "post-supervisor",
 }
 
 # role -> canon domains it may propose entries in
@@ -36,7 +43,7 @@ CANON_DOMAINS: dict[str, tuple[str, ...]] = {
     "look-director": ("look",),
     "cinematographer": ("camera", "continuity"),
     "animation-director": ("animation",),
-    "post-supervisor": ("audio",),
+    "sound-designer": ("audio",),
 }
 
 # gate -> the review artifact that must accompany its submission
@@ -46,5 +53,7 @@ REVIEW_FOR_GATE: dict[str, str] = {
     "G3": "qa/reviews/G3_REVIEW.md",
     "G4": "qa/reviews/G4_REVIEW.md",
     "G5": "qa/reviews/G5_REVIEW.md",
+    "G7": "qa/reviews/G7_REVIEW.md",
+    "G8": "qa/reviews/G8_REVIEW.md",
 }
 VERDICTS = ("PASS", "WARN", "FAIL")

@@ -1,6 +1,6 @@
 {
   "content_hash": "sha256:5c4e581ed8d50d1a58ad77f7a427e825cb96ce45314102f6b65cb14a444f5ce0",
-  "created_at": "2026-09-29T21:49:11Z",
+  "created_at": "2026-09-30T11:07:00Z",
   "derived_from": [
     {
       "hash": "sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b",
@@ -539,11 +539,11 @@
       "ref": "shot:SC01_SH010"
     },
     {
-      "hash": "sha256:bbd1102adc4f100789f8c28b9bb8101f38b511e9778153cfc1784e865be72dba",
+      "hash": "sha256:7941cdc7602dd3ba6196687b287f11f1bd476f897f6363e990b8bbf6c6bfde7e",
       "ref": "shot:SC01_SH020"
     },
     {
-      "hash": "sha256:0038b02f322130aca28b9a50f2e525944fcb1b8f11bd99ace0ef3e18737dc14e",
+      "hash": "sha256:8699e51bfb186dba0264c42419a8a2cdae365aab80f76e052777657e96023cc8",
       "ref": "shot:SC01_SH030"
     },
     {
@@ -551,7 +551,7 @@
       "ref": "shot:SC01_SH040"
     },
     {
-      "hash": "sha256:fca38b6d0bc93b9032279ffc4738716436e7bff7f094ebd0df13e96039391714",
+      "hash": "sha256:fd8ca343ac306f9e9fffb06fd2bbf4f2edcf56d2aa685ee01f014c284a3b7d81",
       "ref": "shot:SC01_SH050"
     },
     {
@@ -559,11 +559,11 @@
       "ref": "shot:SC01_SH060"
     },
     {
-      "hash": "sha256:2c36bdb57ecd05095c6a802c91dcaf4cdedb2574a3eba2facb1cea18c39841a2",
+      "hash": "sha256:16b4ec9d94ad86fcb4258dff110a619a6834609ba83cb3bb4f7f36815422b929",
       "ref": "shot:SC01_SH070"
     },
     {
-      "hash": "sha256:f556a039402a3c27b6b5e28a3b97a59bd0a04dd692c6a6e1e640298a82baa252",
+      "hash": "sha256:71b49b1bd1391b1ed8a3b1604a47a2ae4d93645ea5fe5e4000150cd02f826bec",
       "ref": "shot:SC01_SH080"
     },
     {
@@ -579,7 +579,7 @@
       "ref": "shot:SC01_SH110"
     },
     {
-      "hash": "sha256:43bdadfe67d6c9a339c51982ac8b8befd41203c077f92087d2c4c2f963cf9e39",
+      "hash": "sha256:2d764a28641d19b14065ed0026354cd5f889a21a43c0f4bf238f96dbceb42b0f",
       "ref": "shot:SC01_SH120"
     },
     {
@@ -587,7 +587,7 @@
       "ref": "shot:SC01_SH130"
     },
     {
-      "hash": "sha256:2b8ef5785295dbbbc30d6ff11ba35ab542863d28bd456b0ad18d90b3e07daf7c",
+      "hash": "sha256:209db68556feab291fba285ddf380490e5dc1bd6f4e72fbab9f119708345bd51",
       "ref": "shot:SC01_SH140"
     },
     {
@@ -627,7 +627,7 @@
       "ref": "shot:SC03_SH050"
     },
     {
-      "hash": "sha256:a1768862865e1079ba5f5b8fe8917c3bc2db729ed564d92ebeb05ebfa3b47ab6",
+      "hash": "sha256:56cfa23e8fda67aa597eefd0b9daa42e7e2639635a9494700e05404c0c52cc27",
       "ref": "shot:SC03_SH060"
     },
     {
@@ -639,11 +639,11 @@
       "ref": "shot:SC04_SH010"
     },
     {
-      "hash": "sha256:93b51b2f50c7cc540253aa3f83c229d95787360ab64f767d8f2edb6d81f55a32",
+      "hash": "sha256:eae1eff6c7167cd05a6372377d7d2b75e71b0dab8683b2f265f450300c1f608a",
       "ref": "shot:SC04_SH020"
     },
     {
-      "hash": "sha256:a861857823fd5dd8a33453e64602ad6db28a581c441553a2d66cff72d475a89e",
+      "hash": "sha256:9aea3b8fc7724109811d12cab015db797fd303bea7f4fb542dad3b75ed708b75",
       "ref": "shot:SC04_SH030"
     },
     {
@@ -651,23 +651,23 @@
       "ref": "shot:SC04_SH040"
     },
     {
-      "hash": "sha256:276eebdb32f7817597391d4a97a5b8376ff2a6f93fb37a09a639300896c12c48",
+      "hash": "sha256:ac63b166dbc778b4b8bcf2712e1fb00f0ab9e003b97dfc6c5873185082001a1d",
       "ref": "shot:SC04_SH050"
     },
     {
-      "hash": "sha256:541fcf93e70b29270b0e6024268fe6ff25bebf9394f5dca29c53c8f573f2c2b9",
+      "hash": "sha256:53725e73fca8f4ceb492885de7d27ee94ef5c956aae3754b2743d8684e3306b4",
       "ref": "shot:SC04_SH060"
     },
     {
-      "hash": "sha256:2012bb3da3b583e80f2b2056694fb835feb81fcf69ad82c407432a338486c936",
+      "hash": "sha256:67f88a2f736aaea3af5d3606e06326f4a4a1cad97295d127bb5c14e64ff76f31",
       "ref": "shot:SC04_SH070"
     },
     {
-      "hash": "sha256:d209481a74bd1a1b7126623271d8923aead68ad6e3bfe74b075ee6a373dfa921",
+      "hash": "sha256:6274d95c0386ecc5c031d1a41f2c64c19d0e7dc53c3bf6fa2b2ec979357d9b59",
       "ref": "shot:SC04_SH080"
     },
     {
-      "hash": "sha256:b7888d4f125f9cbbce72ed678b3afda050d6530f255306ccb455829ada12088f",
+      "hash": "sha256:ba37458305d5c99080be0a44998f4f3680a91d45b3f9a2c2106e97e19ae494d8",
       "ref": "shot:SC04_SH090"
     },
     {

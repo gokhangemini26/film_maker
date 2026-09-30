@@ -4,6 +4,7 @@ from .artifacts import (  # noqa: F401
     CreativeIntent, SceneEntry, SceneIndex,
     Environment, ShotCharacter, ShotRationale, ShotSpec, StyleBreak,
 )
+from .animation import AnimationTracks, anim_artifact_id, anim_path  # noqa: F401
 from .canon import (  # noqa: F401
     CHANGEABLE_FIELDS, DOMAINS, RATIONALE_REQUIRED_DOMAINS, CanonEntry, CanonFile, HistoryItem,
 )
@@ -25,4 +26,5 @@ EXPORTED = {
     "ledger_record": LedgerRecord,
     "change_request": ChangeRequest,
     "derived_record": DerivedRecord,
+    "anim": AnimationTracks,
 }

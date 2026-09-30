@@ -68,7 +68,7 @@ def scope_for(target: str) -> str:
     kind, _, _ = target.partition(":")
     if kind in _SCOPE_KINDS:
         return target
-    if kind in ("canon", "artifact", "resolved", "blend", "render", "qa"):
+    if kind in ("canon", "artifact", "resolved", "blend", "render", "audio", "edit", "qa"):
         return f"ref:{target}"
     raise FMError(f"unsupported feedback target '{target}' (shot:ID, canon:ID, artifact:ID, scene:, ...)")
 
@@ -136,7 +136,7 @@ def add(project: Project, target: str, note: str, *, severity: str = "medium",
         "severity": severity, "suggested_owner": owner, "owner_reason": why,
         "created_at": now_iso(), "created_by": actor,
         "target_hash": loaded.current_hash(target) if ":" in target and target.split(":")[0]
-        in ("canon", "artifact", "shot", "resolved", "blend", "render", "qa") else None,
+        in ("canon", "artifact", "shot", "resolved", "blend", "render", "audio", "edit", "qa") else None,
         "history": [{"at": now_iso(), "actor": actor, "event": "opened"}],
     }
     _save(project, item)

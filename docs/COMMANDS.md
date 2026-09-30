@@ -24,6 +24,12 @@ Gate decisions are always yours, typed in your own terminal:
 | `/film-cinematography` | CINEMATOGRAPHY | cinematographer | advance to STORYBOARD |
 | `/film-storyboard` | STORYBOARD | cinematographer → animation-director → qa-supervisor | **G5** |
 | `/film-blender [shots]` | ASSET_PREP → PREVIEW | blender-td | previews + per-shot report (G6 is yours) |
+| `/film-animate [scope]` | ANIMATION (M6) | animation-director → blender-td | frames + checks; advance to ANIMATION_PREVIEW |
+| `/film-playblast [scope]` | ANIMATION_PREVIEW (M6) | blender-td | frames, playblast, motion QA, contact strips (report) |
+| `/film-audio` | ANIMATION_PREVIEW (M6) | sound-designer | audio canon, bible, cue sheet, asks list (report) |
+| `/film-post` | ANIMATION_PREVIEW (M6) | post-supervisor → qa-supervisor | **G7** |
+| `/film-final [scope]` | FINAL_RENDER (M6) | blender-td → qa-supervisor | **G8** (needs your final-render authorization first) |
+| `/film-export` | POST (M6) | post-supervisor | delivery report |
 | `/film-next` | whatever is next | — | runs the right command above |
 | `/film-status` | any | — | plain-language status + next step |
 | `/film-review` | any | qa-supervisor | review written, nothing submitted |
@@ -64,4 +70,31 @@ animation-director; colour/ui/lighting -> look-director; figure/character ->
 character-designer; world/set/car/prop -> world-designer; builder/blender/proxy
 -> blender-td. `/film-revise` remains the way to act on a plan.
 
-Not yet available: `/film-blender`, `/film-render` (M3–M4), `/film-qa` (M4), `/film-export` (M6).
+## M6 commands (in progress)
+
+`/film-animate`, `/film-playblast`, `/film-audio`, `/film-post`, `/film-final` and
+`/film-export` are defined, but the tools they call land incrementally, so each
+command states which `fm` subcommands may not exist yet and reports the
+missing ones instead of pretending they ran:
+
+| Tool | Lands in M6 step |
+|---|---|
+| `fm check anim`, `ANIM_*` validation | A1 |
+| resolver `motion` block | A3 |
+| `fm blender frames`, `fm blender playblast` | C4 |
+| `fm qa motion` tier 0 | D1 |
+| `fm qa motion` tier 1 (bake report) | D2 |
+| `fm audio synth` | E2 |
+| `fm audio mix`, `fm qa audio` | E5 |
+| `fm post edl`, `fm post animatic` | F2 |
+| `fm blender final` | F3 |
+| `fm post assemble|export`, `fm qa delivery` | F4 |
+
+The steps are the task ids in [M6_SCOPE.md](M6_SCOPE.md) section 6.
+The core enforces what each command must leave behind (files, per-shot anim files, QA reports
+with no FAIL): see the M6 table in [WORKFLOW.md](WORKFLOW.md). G7 is "Animation, audio and post
+plan"; POST has no gate in this cut, so `fm advance` out of POST checks the delivery report.
+Approving G7 does not authorize the final render: `/film-final` needs your own
+`fm authorize final-render` first, typed in your terminal. Agents cannot run it.
+
+Not yet available: `/film-render` (M3–M4), `/film-qa` (M4).

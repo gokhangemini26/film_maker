@@ -17,10 +17,16 @@ from typing import Any
 
 from .deps import build_graph, implicit_shot_deps
 from .errors import FMError
+from .animcheck import lint_tracks
 from .io import hash_file_bytes, write_json
+from .motion import build_motion, vocab_canon_refs
 from .ops import record_derived
 from .project import Loaded, Project
 from .scopes import resolve_scope, shot_key
+from .uitimeline import expand_shot
+
+RESOLVED_SCHEMA = "fm.resolved_shot/2"
+STATES_BY_SHOT = "look.style.phone_screen.states_by_shot"
 
 HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
 CANON_REF_RE = re.compile(r"^(?:canon:)?([a-z][a-z0-9_]*(?:\.[a-z0-9][a-z0-9_\-]*)+)$")
@@ -89,6 +95,30 @@ def frame_table(loaded: Loaded, fps: float) -> dict[str, dict[str, int]]:
     return table
 
 
+def _motion(loaded: Loaded, item, row: dict) -> tuple[dict[str, Any] | None, list]:
+    """`motion` block from the shot's anim file, or None (no file, or a bare stub: the prose block stays the brief).
+    An anim file with ANIM_* errors is refused loudly; nothing is guessed."""
+    sid = item.spec.shot_id
+    mine = [a for a in loaded.artifacts.values()
+            if a.meta.kind == "shot_animation" and a.parsed is not None and a.parsed.shot_id == sid]
+    if not mine:
+        return None, []
+    if len(mine) > 1:
+        raise FMError(f"{sid}: {len(mine)} anim files for one shot ({', '.join(a.meta.id for a in mine)})")
+    anim = mine[0]
+    t = anim.parsed
+    if t.is_stub:
+        return None, []
+    errors = [f"{code} {where or '(file)'}: {msg}" for lvl, code, where, msg in lint_tracks(
+        t, frame_count=row["frames"], shot_characters=[c.id for c in item.spec.characters],
+        shot_movement=item.spec.camera.movement if item.spec.camera and item.spec.camera.movement else None)
+        if lvl == "ERROR"]
+    if errors:
+        raise FMError(f"cannot resolve motion for {sid}: {len(errors)} anim error(s) in "
+                      f"{anim.path.name}: " + "; ".join(errors[:5]) + (" ..." if len(errors) > 5 else ""))
+    return build_motion(t, row["start"], anim.ref), list(t.ui_timeline)
+
+
 def resolve_shot(project: Project, loaded: Loaded, shot_id: str, table: dict, fmt: dict
                  ) -> tuple[dict[str, Any], list[str]]:
     item = next((s for s in loaded.shots.values() if s.spec.shot_id == shot_id), None)
@@ -102,7 +132,7 @@ def resolve_shot(project: Project, loaded: Loaded, shot_id: str, table: dict, fm
     if cam.get("lens_mm"):
         cam["fov_h_deg"] = round(math.degrees(2 * math.atan(fmt["sensor_width_mm"] / (2 * cam["lens_mm"]))), 4)
     out: dict[str, Any] = {
-        "schema": "fm.resolved_shot/1",
+        "schema": RESOLVED_SCHEMA,
         "shot_id": shot_id, "scene_id": sp.scene_id, "sequence_id": sp.sequence_id,
         "frames": {"start": row["start"], "count": row["frames"], "end": row["start"] + row["frames"] - 1,
                    "fps": fps, "duration_s_spec": sp.duration_s},
@@ -129,6 +159,17 @@ def resolve_shot(project: Project, loaded: Loaded, shot_id: str, table: dict, fm
         out["characters"].append(entry)
     out["provenance"] = {"shot": item.ref, "canon": sorted(ex.used)}
     from_refs = {item.ref, *implicit_shot_deps(loaded, sp), *(f"canon:{c}" for c in ex.used)}
+    motion, ui_events = _motion(loaded, item, row)
+    out["motion"] = motion
+    if motion is not None:
+        anim = loaded.anims[shot_id]
+        from_refs |= {anim.ref, *vocab_canon_refs(anim.parsed)}
+    states = loaded.canon.get(STATES_BY_SHOT)
+    out["ui_timeline"] = None
+    if states is not None and isinstance(states.entry.value, dict):
+        out["ui_timeline"] = expand_shot(states.entry.value, shot_id, row["frames"], ui_events)
+        if out["ui_timeline"] is not None:
+            from_refs.add(states.ref)
     if "camera.format" in loaded.canon:
         from_refs.add("canon:camera.format")
     return out, sorted(r for r in from_refs if loaded.current_hash(r) is not None)

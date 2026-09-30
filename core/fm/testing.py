@@ -211,6 +211,8 @@ def produce(project: Project, phase: str) -> None:
         write_shot(P, "SC02_SH010", characters=[], sequence_id="SQ02",
                    creative_intent={"narrative_purpose": "Empty street after she leaves."},
                    rationale={"camera": "Same lens as SH010 for a clean match."})
+    elif phase in ("ANIMATION", "ANIMATION_PREVIEW", "FINAL_RENDER", "POST"):
+        _produce_m6(P, phase)
     stamp_all(P)
     from .phases import GATE_FOR_PHASE
     from .roles import REVIEW_FOR_GATE
@@ -218,6 +220,61 @@ def produce(project: Project, phase: str) -> None:
     if gate is not None and gate.id in REVIEW_FOR_GATE:
         write_review(P, gate.id)
         stamp_all(P)
+
+
+def _write_bytes(project: Project, rel: str, data: bytes = b"fixture") -> None:
+    path = project.dir / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+
+
+def _write_qa_report(project: Project, rel: str, fail: int = 0) -> None:
+    import json
+    path = project.dir / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({"summary": {"fail": fail, "warn": 0}, "rows": []}), encoding="utf-8")
+
+
+def _produce_m6(P: Project, phase: str) -> None:
+    """Fixture content that satisfies the M6 phase contracts (placeholder media, real structure)."""
+    from .phases import ANIM_FILE, AUDIO_REPORT, DELIVERY_REPORT, FINAL_FRAMES_REPORT, MOTION_REPORT
+    if phase == "ANIMATION":
+        write_md(P, "09_animation/ANIMATION_BIBLE.md", "animation_bible", "animation_bible", "ANIMATION",
+                 ["artifact:cinematography_bible"], "# Animation bible\n\nHolds over motion.\n")
+        for sid in sorted(P.load().shots):
+            write_yaml(P.dir / ANIM_FILE.format(shot=sid), {
+                "fm": {"id": f"anim_{sid.lower()}", "kind": "shot_animation", "phase": "ANIMATION",
+                       "status": "PROPOSED", "owner_role": "animation-director",
+                       "derived_from": [{"ref": f"shot:{sid}"}]},
+                "shot_id": sid})
+        _write_qa_report(P, MOTION_REPORT)
+    elif phase == "ANIMATION_PREVIEW":
+        write_canon(P, "audio", [
+            {"id": "audio.principles", "statement": "Quiet street world; no dialogue.",
+             "rationale": "The rain and the phone are the whole soundscape.",
+             "serves": ["intent.isolation"], "source": "agent:sound-designer"},
+        ])
+        write_md(P, "12_post/AUDIO_BIBLE.md", "audio_bible", "audio_bible", "ANIMATION_PREVIEW",
+                 ["canon:audio.principles"], "# Audio bible\n")
+        write_yaml(P.dir / "12_post" / "AUDIO_CUES.yaml", {
+            "fm": {"id": "audio_cues", "kind": "audio_cues", "phase": "ANIMATION_PREVIEW",
+                   "status": "PROPOSED", "owner_role": "sound-designer",
+                   "derived_from": [{"ref": "artifact:audio_bible"}]},
+            "cues": []})
+        write_md(P, "12_post/EDIT_PLAN.md", "edit_plan", "edit_plan", "ANIMATION_PREVIEW",
+                 ["artifact:animation_bible"], "# Edit plan\n")
+        write_md(P, "12_post/POST_PLAN.md", "post_plan", "post_plan", "ANIMATION_PREVIEW",
+                 ["artifact:edit_plan"], "# Post plan\n")
+        for rel in ("10_blender/playblast/film.mp4", "12_post/audio/mix_48k_stereo.wav",
+                    "12_post/animatic.mp4", "12_post/EDIT.edl"):
+            _write_bytes(P, rel)
+        _write_qa_report(P, AUDIO_REPORT)
+    elif phase == "FINAL_RENDER":
+        _write_bytes(P, "11_render/final/MANIFEST.json", b"{}")
+        _write_qa_report(P, FINAL_FRAMES_REPORT)
+    elif phase == "POST":
+        _write_bytes(P, "13_delivery/MANIFEST.json", b"{}")
+        _write_qa_report(P, DELIVERY_REPORT)
 
 
 def stamp_all(project: Project) -> None:

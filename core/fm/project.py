@@ -17,7 +17,7 @@ from .errors import FMError
 from .io import canonical_json, hash_obj, load_json, load_yaml, normalize_text, read_front_matter, sha256_text
 from .schemas import (
     SHOT_NON_CONTENT, ArtifactMeta, Brief, CanonEntry, CanonFile, ChangeRequest, DerivedRecord,
-    SceneIndex, ShotSpec,
+    AnimationTracks, SceneIndex, ShotSpec,
 )
 from .schemas.common import SLUG_RE
 
@@ -84,6 +84,7 @@ class ArtifactItem:
     hash: str
     fmt: str  # "md" | "yaml"
     extra: dict = field(default_factory=dict)  # front-matter/top-level keys besides `fm`
+    parsed: object | None = None  # typed model for kinds that have one (shot_animation -> AnimationTracks)
 
     @property
     def ref(self) -> str:
@@ -113,6 +114,12 @@ class Loaded:
     brief: Brief | None = None
     scene_index: SceneIndex | None = None
     errors: list[tuple[str, str]] = field(default_factory=list)  # (path, message)
+
+    @property
+    def anims(self) -> dict[str, ArtifactItem]:
+        """shot id -> its `shot_animation` artifact (typed model in `.parsed`)."""
+        return {it.parsed.shot_id: it for it in self.artifacts.values()
+                if it.meta.kind == "shot_animation" and it.parsed is not None}
 
     def current_hash(self, ref: str) -> str | None:
         kind, _, ident = ref.partition(":")
@@ -207,6 +214,7 @@ class Project:
 
     def _load_artifacts(self, out: Loaded) -> None:
         for path in self._artifact_files():
+            parsed = None
             try:
                 if path.suffix == ".md":
                     meta, body = read_front_matter(path)
@@ -224,6 +232,8 @@ class Project:
                         out.brief = Brief.model_validate(data)
                     elif art_meta.kind == "scene_index":
                         out.scene_index = SceneIndex.model_validate(data)
+                    elif art_meta.kind == "shot_animation":
+                        parsed = AnimationTracks.model_validate(data)
                     h, fmt = yaml_artifact_hash(data), "yaml"
                     extra = {}
             except ValidationError as exc:
@@ -236,7 +246,7 @@ class Project:
                 out.errors.append((self.rel(path), f"duplicate artifact id '{art_meta.id}' "
                                    f"(also {self.rel(out.artifacts[art_meta.id].path)})"))
                 continue
-            out.artifacts[art_meta.id] = ArtifactItem(art_meta, path, h, fmt, extra)
+            out.artifacts[art_meta.id] = ArtifactItem(art_meta, path, h, fmt, extra, parsed)
 
     def _load_shots(self, out: Loaded) -> None:
         for path in sorted(self.shots_dir.glob("*.shot.yaml")):
