@@ -12,7 +12,7 @@ validates it with `fm`, and ends with a fixed **Handoff** (files written, canon
 proposed with the intents it serves, assumptions, open questions, conflicts,
 validation result, limits).
 
-## Roster (M2)
+## Roster (10 agents, one file each in `.claude/agents/`)
 
 | Agent | Phase | Writes | Canon domains | Skills |
 |---|---|---|---|---|
@@ -27,8 +27,15 @@ validation result, limits).
 | animation-director | STORYBOARD | each shot's `animation` block + `rationale.animation` | (animation, from M6) | animation-design |
 | qa-supervisor | every gate | `qa/reviews/G#_REVIEW.md` only | — | creative-review, continuity-check |
 
-Later: **blender-td** (M3: resolver, scene builders, renders) and
-**post-supervisor** (M6: edit plan, audio bible, animatic).
+Every file in `.claude/agents/` has a row above (creative-director,
+story-architect, screenwriter, world-designer, character-designer,
+look-director, cinematographer, animation-director, blender-td,
+qa-supervisor). Planned, no agent file yet: **post-supervisor** (M6: edit plan,
+audio bible, animatic; already mapped in `config/models.yaml`).
+
+Which command dispatches whom is in [COMMANDS.md](COMMANDS.md); the step-by-step
+use of all of them for a new film is in
+[NEW_FILM_WALKTHROUGH.md](NEW_FILM_WALKTHROUGH.md).
 
 ## What no agent can do
 
@@ -43,6 +50,15 @@ callers) and, as a second layer, by deny rules in `.claude/settings.json`:
 The deny rules are defence in depth. The authoritative guard is `fm` itself:
 in a production project a human decision needs a person typing the
 confirmation in an interactive terminal.
+
+## Feedback is not a decision
+
+`fm feedback add|list|plan|resolve` (M5) turns a review finding into a scoped
+fix. Agents may run all four: `add` routes a suggested owner, `plan` reuses
+`fm plan`/`fm impact` and says whether a change request is needed (locked
+canon still needs `fm change propose`, decided by you), and `resolve` records
+the acting agent and refuses while the plan's nodes are stale (`--force-stale`
+overrides and is recorded). Resolving never approves anything.
 
 ## The review is separate
 

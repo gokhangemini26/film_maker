@@ -63,6 +63,9 @@ animation:
     fps: 24
     frames: 38
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 6
+  preview_frame_reason: thumb settled at the left edge clear of the pin; the fork-and-knife pin whole
+    and still (any frame f4-37 reads the same)
   characters:
     ren:
       locomotion:
@@ -71,9 +74,11 @@ animation:
       - f: 0
         t: 0.0
         pose: left thumb parked at the screen's left edge, clear of the pin; settles 1 mm f0-3
+        pose_ref: phone_hold.thumb_parked_left_edge
       - f: 4
         t: 0.17
         pose: thumb and phone still to the cut
+        pose_ref: phone_hold.thumb_parked_left_edge
       secondary: []
       eyeline: off frame; implied on the pin
   ui:
@@ -227,6 +232,6 @@ derived_from:
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
 - ref: canon:look.color.ui_portraits
   hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
-stamped_content_hash: sha256:bbd1102adc4f100789f8c28b9bb8101f38b511e9778153cfc1784e865be72dba
+stamped_content_hash: sha256:7941cdc7602dd3ba6196687b287f11f1bd476f897f6363e990b8bbf6c6bfde7e
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

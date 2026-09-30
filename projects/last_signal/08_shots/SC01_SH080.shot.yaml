@@ -58,6 +58,9 @@ animation:
     fps: 24
     frames: 30
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 8
+  preview_frame_reason: the red 4 % four frames after the switch at f4, so the still shows the new state,
+    not the charcoal 5 %
   characters:
     ren:
       locomotion:
@@ -66,6 +69,7 @@ animation:
       - f: 0
         t: 0.0
         pose: no hand in frame (thumb stopped above the keys, off the bottom edge); phone still
+        pose_ref: phone_hold.no_hand
       secondary: []
       eyeline: off frame
   ui:
@@ -219,6 +223,6 @@ derived_from:
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
 - ref: canon:look.color.ui_portraits
   hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
-stamped_content_hash: sha256:f556a039402a3c27b6b5e28a3b97a59bd0a04dd692c6a6e1e640298a82baa252
+stamped_content_hash: sha256:71b49b1bd1391b1ed8a3b1604a47a2ae4d93645ea5fe5e4000150cd02f826bec
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

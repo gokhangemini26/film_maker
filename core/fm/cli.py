@@ -399,9 +399,112 @@ def resolve_cmd(c: Ctx, scope):
                f"film = {r['film_frames']} frames at {r['fps']:g} fps ({r['film_seconds']:g} s)")
 
 
+@cli.group("feedback")
+def feedback_group():
+    """Review findings -> scoped regeneration (M5). Agents may add, plan and resolve."""
+
+
+@feedback_group.command("add")
+@click.argument("target")
+@click.option("--note", required=True)
+@click.option("--severity", type=click.Choice(["low", "medium", "high", "blocker"]), default="medium",
+              show_default=True)
+@click.option("--owner", help="Override the suggested owner (default: routed from the note/target).")
+@click.pass_obj
+def feedback_add(c: Ctx, target, note, severity, owner):
+    """Record a feedback item on TARGET (shot:ID, canon:ID, artifact:ID, scene:SC01 ...)."""
+    from .feedback import add
+
+    it = add(c.project(), target, note, severity=severity, owner=owner)
+    click.echo(f"{it['id']} OPEN  {it['target']}  [{it['severity']}]  owner: {it['suggested_owner']} "
+               f"({it['owner_reason']})")
+    click.echo(f"  next: fm feedback plan {it['id']}")
+
+
+@feedback_group.command("list")
+@click.option("--open", "open_only", is_flag=True)
+@click.pass_obj
+def feedback_list(c: Ctx, open_only):
+    from .feedback import list_items
+
+    items = list_items(c.project(), open_only=open_only)
+    for it in items:
+        click.echo(f"{it['id']}  {it['status']:8} {it['severity']:7} {it['target']}  "
+                   f"-> {it['suggested_owner']}  - {it['note']}")
+    if not items:
+        click.echo("no feedback" + (" open" if open_only else ""))
+
+
+@feedback_group.command("plan")
+@click.argument("fid")
+@click.option("--json", "as_json", is_flag=True)
+@click.pass_obj
+def feedback_plan(c: Ctx, fid, as_json):
+    """Minimal stale set, handling agent/command and whether a change request is needed."""
+    from .feedback import plan_for
+
+    r = plan_for(c.project(), fid)
+    if as_json:
+        click.echo(json.dumps(r, indent=2))
+        return
+    click.echo(f"{fid}  target {r['target']}  (scope {r['scope']})")
+    click.echo(f"  handled by: {r['owner']}  via {r['command']}")
+    click.echo(f"  change request: {'YES' if r['change_request_needed'] else 'no'} - {r['change_request_note']}")
+    if r["impact"]:
+        click.echo("  downstream if the target changes:")
+        _print_impact(r["impact"])
+    if not r["stale"]:
+        click.echo("  stale now: nothing (revise the target, then re-stamp and regenerate what `fm plan` lists)")
+    for layer, refs in r["by_layer"].items():
+        click.echo(f"  stale {layer:9} ({len(refs)}): " + ", ".join(refs))
+
+
+@feedback_group.command("resolve")
+@click.argument("fid")
+@click.option("--by", required=True, help="What resolved it (commit, revised shot, review ref ...).")
+@click.option("--force-stale", is_flag=True, help="Resolve even though nodes in scope are still stale (recorded).")
+@click.pass_obj
+def feedback_resolve(c: Ctx, fid, by, force_stale):
+    """Mark RESOLVED (agents allowed; actor recorded; refused while the plan's nodes are stale)."""
+    from .feedback import resolve
+
+    it = resolve(c.project(), fid, by, force_stale=force_stale)
+    res = it["resolution"]
+    click.echo(f"{fid} RESOLVED by {res['actor']} ({res['by']})"
+               + ("  [forced past stale nodes]" if res["forced_stale"] else ""))
+    if res["target_changed"] is False:
+        click.secho("  note: the target's content is unchanged since the feedback was opened", fg="yellow")
+
+
 @cli.group("qa")
 def qa_group():
     """Quality checks on produced material (M4)."""
+
+
+@qa_group.command("review-status")
+@click.option("--file", "rel", default="qa/reviews/PREVIEW_REVIEW.md", show_default=True)
+@click.option("--json", "as_json", is_flag=True)
+@click.pass_obj
+def qa_review_status(c: Ctx, rel, as_json):
+    """PASS/WARN/FAIL counts of the preview review and whether it is stale vs the current project."""
+    from .qa_review import review_status
+
+    r = review_status(c.project(), rel)
+    if as_json:
+        click.echo(json.dumps(r, indent=2))
+        return
+    n = r["counts"]
+    click.echo(f"{r['file']}: verdict {r['verdict']}  |  PASS {n['PASS']}  WARN {n['WARN']}  FAIL {n['FAIL']}"
+               f"  ({r['shots']} shots in table)" + ("" if r["table_found"] else "  [no per-shot table found]"))
+    if r["stale"] is None:
+        click.echo("  staleness: unknown - " + "; ".join(r["stale_reasons"]))
+    elif r["stale"]:
+        click.secho("  STALE: " + "; ".join(r["stale_reasons"][:8]), fg="yellow")
+    else:
+        click.echo("  fresh: every reviewed hash matches the current project")
+    if r["uncovered_previews"]:
+        click.echo(f"  {len(r['uncovered_previews'])} preview(s) not listed in the review's derived_from "
+                   "(freshness unprovable): " + ", ".join(r["uncovered_previews"][:8]))
 
 
 @qa_group.command("stills")
@@ -438,6 +541,45 @@ def blender_preview(c: Ctx, shots, width, draft, jobs):
     r = run(c.project(), c.repo, shots=shots.split(",") if shots else None, width=width, draft=draft, jobs=jobs)
     click.echo(f"rendered {len(r['rendered'])} preview(s) with {r['backend']}; failed: {', '.join(r['failed']) or 'none'}")
     if r["failed"]:
+        sys.exit(1)
+
+
+@blender_group.command("build")
+@click.option("--draft", is_flag=True, help="Use the bpy module (not the pinned Blender): never G6 evidence.")
+@click.option("--json", "as_json", is_flag=True, help="Print the full built/unchanged/removed report as JSON.")
+@click.pass_obj
+def blender_build(c: Ctx, draft, as_json):
+    """Build/update the persistent 10_blender/<project>.blend; only units whose input hash changed are rebuilt."""
+    from .blenderrun import build as run
+
+    r = run(c.project(), c.repo, draft=draft)
+    if as_json:
+        click.echo(json.dumps(r, indent=1))
+        return
+    n = r["counts"]
+    click.echo(f"blend built with {r['backend']}: {n['built']} built, {n['unchanged']} unchanged, {n['removed']} removed; recorded {r['derived']}")
+    for u in r["removed"]:
+        click.echo(f"  removed orphan {u}")
+
+
+@blender_group.command("assets")
+@click.option("--json", "as_json", is_flag=True)
+@click.option("--strict", is_flag=True, help="Exit 1 when any needed asset has no builder.")
+@click.pass_obj
+def blender_assets(c: Ctx, as_json, strict):
+    """ASSET_PREP contract: assets shots need (world.*, ui.*) versus what the Blender builders can produce."""
+    from .blenderrun import assets_report
+
+    r = assets_report(c.project())
+    if as_json:
+        click.echo(json.dumps(r, indent=1))
+    else:
+        for row in r["assets"]:
+            how = f"{row['how']} via {row['builder']}" if row["status"] == "ok" else "NO BUILDER"
+            click.echo(f"{row['status']:7} {row['asset']:32} {len(row['shots']):3} shot(s)  {how}")
+        s = r["summary"]
+        click.echo(f"{s['needed']} asset(s) needed: {s['buildable']} buildable, {s['unknown']} unknown")
+    if strict and r["unknown"]:
         sys.exit(1)
 
 

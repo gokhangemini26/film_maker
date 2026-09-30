@@ -15,7 +15,9 @@
       "Bash(fm hash:*)",
       "Bash(fm change list:*)",
       "Bash(fm change show:*)",
-      "Bash(fm canon annotate:*)"
+      "Bash(fm canon annotate:*)",
+      "Bash(fm feedback:*)",
+      "Bash(fm qa review-status:*)"
     ],
     "deny": [
       "Bash(fm approve:*)",

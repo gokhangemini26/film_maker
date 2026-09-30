@@ -82,6 +82,10 @@ animation:
     fps: 24
     frames: 80
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 46
+  preview_frame_reason: 'crank arm out mid-turn with the pip at full, the glow on his face steady and
+    his eyes just moved to the phone: effort, light and face in one still, early enough that the push
+    has not yet cropped him'
   characters:
     ren:
       locomotion:
@@ -90,52 +94,77 @@ animation:
       keys:
       - f: 0
         t: 0.0
-        pose: crank in both hands in his lap, phone in the left palm; right hand takes the cable's source
-          plug
+        pose: 'crank in both hands, held up between his knees at knee-top height (his lap, knees up: top
+          face and pip above the near knee from the lens), phone in the left palm under it; right hand
+          takes the cable''s source plug'
+        pose_ref: kerb_sit.crank_two_hands_high
       - f: 8
         t: 0.33
-        pose: lines the plug up with the crank's port
+        pose: lines the plug up with the crank's port (port end toward his near, left knee; hands stay
+          at knee-top height)
+        pose_ref: kerb_sit.crank_plug_align
       - f: 10
         t: 0.42
         pose: pushes it in (small wrist push, f10-11)
+        pose_ref: kerb_sit.crank_plug_push
       - f: 12
         t: 0.5
-        pose: clamps the crank body between his knees (port to his left, arm to his right); right thumb
-          lifts the folded knob out of its groove (f12-15)
+        pose: 'clamps the crank between the tops of his knees (see crank_clamp: top face and pip above
+          the near knee); right thumb lifts the folded knob out of its groove (f12-15)'
+        pose_ref: kerb_sit.crank_clamped.knob_lift
       - f: 15
         t: 0.62
         pose: 'slight stiffness: a 2-frame hold (the hinge has never been used)'
+        pose_ref: kerb_sit.crank_clamped.knob_lift
       - f: 17
         t: 0.71
-        pose: swings the arm out on its pivot (ease-out, f17-22), clean stop, no bounce
+        pose: swings the arm out on its pivot (ease-out, f17-22), clean stop, no bounce; the brick does
+          not sink in the clamp
+        pose_ref: kerb_sit.crank_clamped.arm_out
       - f: 22
         t: 0.92
-        pose: right hand grips the knob; left hand lifts the phone to chest height above the crank; breath
-          in (f22-29)
+        pose: right hand grips the knob; left hand lifts the phone to about z 0.76 over the near knee,
+          left of the port end (see phone_hold); breath in (f22-29)
+        pose_ref: kerb_sit.crank_ready.phone_left_high
       - f: 30
         t: 1.25
         pose: 'first turn: handle leaves the top (12 o''clock), ease-in over the first half-turn; first
           revolution completes at f56 (26 f)'
+        pose_ref: kerb_sit.cranking.phone_left_high
       - f: 40
         t: 1.67
         pose: eyes move from the crank to the phone as its light holds steady
+        pose_ref: kerb_sit.cranking.eyes_phone
       - f: 56
         t: 2.33
         pose: 'steady rhythm: 1 turn per second (24 frames per revolution), handle at the top at f56 and
           every 24 frames after'
+        pose_ref: kerb_sit.cranking.eyes_phone
       - f: 56
         t: 2.33
         pose: 'left thumb starts to type, one slow glide per word: ''Dinner'' f56-63, ''at'' f66-70, ''8?''
-          f73-79 (not legible at this size)'
+          f73-79 (not legible at this size); the phone stays in its place beside the crank while he types'
+        pose_ref: kerb_sit.cranking.thumb_glide
+      crank_clamp: 'crank clamp (all keys from f12): brick lying across between the inner faces of his
+        knees at their tops, long axis left-right, port end toward the near (left) knee, pivot end to
+        his right; body centre about z 0.64, top face about z 0.66 (4 cm above the 0.62 m knee tops) and
+        tipped about 30 deg toward the lens (front-left), so from the lens the top face and the pip sit
+        above the near knee''s silhouette, never behind it'
+      phone_hold: 'phone (all keys from f22): left hand holds it at about z 0.74-0.78 over the near (left)
+        knee, just left of the crank''s port end, screen tipped up toward his face; never between the
+        lens and the crank body or pip'
       face: 'focused calm: brows level, eyes on the crank, then on the phone from f40; no comic expression'
       breath: 'in time with the crank from f30: in on the up half-turn, out on the down half-turn; shoulders
         rise and fall 1 cm'
       secondary:
-      - right elbow and shoulder follow the knob's 0.17 m circle; the torso stays quiet
-      - 'cable: short posed loop over his left knee; 2 mm of sway per turn (keyed, no simulation)'
+      - right elbow and shoulder follow the knob's 0.17 m circle; the torso stays quiet; the knob may
+        dip behind the far (right) knee at the bottom of its circle, the pip never does
+      - 'cable: short posed loop from the port over his left knee to the phone; 2 mm of sway per turn
+        (keyed, no simulation)'
       eyeline: the port and the arm f0-39, the phone from f40
   props:
-    crank_charger: 'arm unfolded f17-22; turning clockwise (from his view) from f30; pip brightness follows
+    crank_charger: 'clamped high between his knees from f12 (top face and pip above the near knee from
+      the lens); arm unfolded f17-22; turning clockwise (from his view) from f30; pip brightness follows
       handle speed: 0 -> full over f30-38, steady from f38'
     phone_ren: '1 % flicker until the first turn: dips at f5-6, f17-19 and f26-27; steady from f30 (the
       glow on his face stops flickering and holds); charging bolt beside 1 % from f30 (live source while
@@ -152,7 +181,8 @@ animation:
     SC04_SH060-SH090); breath in time'
   risks_m3:
   - crank handle rotation is a single driven bone; pip emission keyed to its angular speed (driver)
-  - 'crank body wedged between the knees: check knee-to-brick contact on the proxy at G6'
+  - 'crank body wedged between the knees at knee-top height: check knee-to-brick contact and that the
+    pip clears the near-knee silhouette from the lens at f12, f46 and f79 on the proxy'
 render: {}
 assets:
 - world.sets.street
@@ -185,10 +215,15 @@ rationale:
     so the audience hears and sees the same effort. The unused hinge gives a 2-frame resistance, a quiet
     echo of the plant. The flicker''s last dip is at f26 and the light holds from the first turn at f30,
     the same frame the camera starts to move, so light, lens and effort change together (camera.movement.push_in).
-    Clamping the brick between his knees frees the left hand to hold the phone, and the left thumb begins
-    to glide the next words slowly while the right hand keeps turning: one-handed typing while cranking,
-    as the canon allows. Rejected: the crank-pause-type fallback (it breaks the rhythm that makes the
-    effort legible) and a fast, strained crank (desperation, not tenderness).'
+    The brick is clamped high, between the tops of his knees and tipped toward the lens, because from
+    the pavement lens his near knee would otherwise hide it: the pip is the visible proof of his effort
+    (look.lighting.power_indicators) and must stay above the knee in every key, and a crank held high
+    also keeps crank and face inside one medium frame. The phone sits beside it, over the near knee, never
+    in front of it. Clamping frees the left hand for the phone, and the left thumb glides the next words
+    slowly while the right hand keeps turning: one-handed typing while cranking, as the canon allows.
+    Rejected: the brick low in the lap (hidden by the near knee; the first preview lost it), the crank-pause-type
+    fallback (it breaks the rhythm that makes the effort legible) and a fast, strained crank (desperation,
+    not tenderness).'
 style_break: null
 continuity_refs:
 - continuity.sc04.environment
@@ -313,6 +348,6 @@ derived_from:
   hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:276eebdb32f7817597391d4a97a5b8376ff2a6f93fb37a09a639300896c12c48
+stamped_content_hash: sha256:ac63b166dbc778b4b8bcf2712e1fb00f0ab9e003b97dfc6c5873185082001a1d
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

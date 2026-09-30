@@ -9,8 +9,7 @@ from mathutils import Vector
 OWNER = "fm_blender"
 
 
-def h(obj) -> str:
-    return hashlib.sha256(json.dumps(obj, sort_keys=True, default=str).encode()).hexdigest()[:16]
+from .reconcile import h  # noqa: E402,F401  (pure-python; single definition shared with the reconcile logic)
 
 
 def tag(idb, fm_id, **extra):

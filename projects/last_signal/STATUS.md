@@ -104,21 +104,21 @@ LOCKED: 161, PROPOSED: 9
 - G5: artifact:g5_review is stale: artifact:storyboard changed
 - G5: artifact:shot_list was modified after approval (a6a2b5dffb75 -> 92b3bcc6a1e2)
 - G5: artifact:storyboard was modified after approval (3463a5cadda1 -> cf0648aa7179)
-- G5: shot:SC01_SH020 was modified after approval (55abea9f1ede -> bbd1102adc4f)
-- G5: shot:SC01_SH030 was modified after approval (7bd158cdcd69 -> 0038b02f3221)
-- G5: shot:SC01_SH050 was modified after approval (cb7a17707d96 -> fca38b6d0bc9)
-- G5: shot:SC01_SH070 was modified after approval (4bb80127d578 -> 2c36bdb57ecd)
-- G5: shot:SC01_SH080 was modified after approval (578f482dfcd1 -> f556a039402a)
-- G5: shot:SC01_SH120 was modified after approval (d98e26a8cdd5 -> 43bdadfe67d6)
-- G5: shot:SC01_SH140 was modified after approval (e75d1fdff853 -> 2b8ef5785295)
-- G5: shot:SC03_SH060 was modified after approval (aa03e411a9fb -> a1768862865e)
-- G5: shot:SC04_SH020 was modified after approval (2df742e7dee1 -> 93b51b2f50c7)
-- G5: shot:SC04_SH030 was modified after approval (9d56ea0c465a -> a861857823fd)
-- G5: shot:SC04_SH050 was modified after approval (87f164a94d13 -> 276eebdb32f7)
-- G5: shot:SC04_SH060 was modified after approval (fe2659522b8a -> 541fcf93e70b)
-- G5: shot:SC04_SH070 was modified after approval (f0af46aad1a8 -> 2012bb3da3b5)
-- G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> d209481a74bd)
-- G5: shot:SC04_SH090 was modified after approval (451cd791871b -> b7888d4f125f)
+- G5: shot:SC01_SH020 was modified after approval (55abea9f1ede -> 7941cdc7602d)
+- G5: shot:SC01_SH030 was modified after approval (7bd158cdcd69 -> 8699e51bfb18)
+- G5: shot:SC01_SH050 was modified after approval (cb7a17707d96 -> fd8ca343ac30)
+- G5: shot:SC01_SH070 was modified after approval (4bb80127d578 -> 16b4ec9d94ad)
+- G5: shot:SC01_SH080 was modified after approval (578f482dfcd1 -> 71b49b1bd139)
+- G5: shot:SC01_SH120 was modified after approval (d98e26a8cdd5 -> 2d764a28641d)
+- G5: shot:SC01_SH140 was modified after approval (e75d1fdff853 -> 209db68556fe)
+- G5: shot:SC03_SH060 was modified after approval (aa03e411a9fb -> 56cfa23e8fda)
+- G5: shot:SC04_SH020 was modified after approval (2df742e7dee1 -> eae1eff6c716)
+- G5: shot:SC04_SH030 was modified after approval (9d56ea0c465a -> 9aea3b8fc772)
+- G5: shot:SC04_SH050 was modified after approval (87f164a94d13 -> ac63b166dbc7)
+- G5: shot:SC04_SH060 was modified after approval (fe2659522b8a -> 53725e73fca8)
+- G5: shot:SC04_SH070 was modified after approval (f0af46aad1a8 -> 67f88a2f736a)
+- G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> 6274d95c0386)
+- G5: shot:SC04_SH090 was modified after approval (451cd791871b -> ba37458305d5)
 - stale: artifact:g5_review
 - stale: artifact:preview_review
 - stale: qa:stills
@@ -137,6 +137,22 @@ LOCKED: 161, PROPOSED: 9
 - stale: render:preview_SC04_SH070
 - stale: render:preview_SC04_SH080
 - stale: render:preview_SC04_SH090
+- stale: resolved:SC01_SH020
+- stale: resolved:SC01_SH030
+- stale: resolved:SC01_SH050
+- stale: resolved:SC01_SH070
+- stale: resolved:SC01_SH080
+- stale: resolved:SC01_SH120
+- stale: resolved:SC01_SH140
+- stale: resolved:SC03_SH060
+- stale: resolved:SC04_SH020
+- stale: resolved:SC04_SH030
+- stale: resolved:SC04_SH050
+- stale: resolved:SC04_SH060
+- stale: resolved:SC04_SH070
+- stale: resolved:SC04_SH080
+- stale: resolved:SC04_SH090
+- stale: resolved:film
 - change awaiting decision: CHANGE-002
 - change awaiting decision: CHANGE-003
 - change awaiting decision: CHANGE-004

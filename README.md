@@ -6,7 +6,7 @@ cinematography and storyboard to Blender scenes, renders, QA and delivery —
 with human approval at every creative milestone.
 
 **Status: M2 (creative pipeline) built.** The deterministic core (M1) plus
-9 specialist agents, 16 skills and 13 `/film-*` commands take a brief to an
+10 specialist agents, 17 skills and 14 `/film-*` commands take a brief to an
 approved storyboard and shot specs. Blender builders (M3), preview/QA (M4),
 revision through builds (M5) and animation/post (M6) follow. See the [roadmap](#roadmap).
 
@@ -41,12 +41,24 @@ Then open Claude Code in the repository and start a film:
 
 Full walkthrough: [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
 
+## Make your own film
+
+You can start a second film without the author. Read these three, in order:
+
+1. [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) - prerequisites (Python 3.11+, Git, Claude Code, pinned Blender 5.2.x), installing `fm`, laptop vs cloud, and the first ten commands.
+2. [docs/NEW_FILM_WALKTHROUGH.md](docs/NEW_FILM_WALKTHROUGH.md) - every phase from `/film-new` to the first preview: the command, the agent, the artifacts, the gate, the exact decision command, what to look at before you approve, and how to revise.
+3. [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) - the problems already met (PowerShell quoting, `-p` with several projects, git locks, EEVEE frame corruption, tool timeouts, cloud pip, hanging test runs) and their fixes.
+
+Short version: `/film-new my_film <your idea>` in Claude Code, then decide each gate yourself in your own terminal (`fm -p my_film approve G1` ...). Note that the Blender set builders are still specific to Last Signal: a new film gets a generic stage until its own builders are written (see the walkthrough).
+
 ## Documentation
 
 | Doc | What it covers |
 |---|---|
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Principles, layers, agents, Blender strategy, extension points |
-| [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) | Install, first project, daily use |
+| [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) | Prerequisites, install, laptop vs cloud, the first ten commands |
+| [docs/NEW_FILM_WALKTHROUGH.md](docs/NEW_FILM_WALKTHROUGH.md) | Phase-by-phase guide from `/film-new` to preview, gates and revisions |
+| [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Real problems met in this project and their fixes |
 | [docs/WORKFLOW.md](docs/WORKFLOW.md) | Phases, gates, proposals vs locked decisions, change requests |
 | [docs/DATA_MODEL.md](docs/DATA_MODEL.md) | Canon, intent, artifacts, shots, ledger, dependency graph |
 | [docs/BLENDER.md](docs/BLENDER.md) | Resolver, Blender builders, previews, draft vs pinned |
@@ -62,9 +74,9 @@ Full walkthrough: [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
 ```
 film_maker/
 ├── CLAUDE.md               orchestrator rules (Executive Producer = main session)
-├── .claude/agents/         9 specialist agents
-├── .claude/skills/         film-conventions, project-management, 14 domain skills
-├── .claude/commands/       13 /film-* commands
+├── .claude/agents/         10 specialist agents
+├── .claude/skills/         film-conventions, project-management, 15 domain skills
+├── .claude/commands/       14 /film-* commands
 ├── .claude/settings.json   blocks agents from human-only commands
 ├── config/                 repo marker, Blender pin, models, render profiles
 ├── core/fm/                the deterministic `fm` package

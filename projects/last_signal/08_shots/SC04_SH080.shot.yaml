@@ -65,6 +65,9 @@ animation:
     fps: 24
     frames: 58
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 40
+  preview_frame_reason: 'the amber tick held under the sent bubble, progress line full, thumb clear: the
+    send has landed'
   characters:
     ren:
       locomotion:
@@ -73,12 +76,15 @@ animation:
       - f: 0
         t: 0.0
         pose: left thumb resting just above the send arrow; settles 1 mm (f0-3), still
+        pose_ref: phone_hold.thumb_rest_over_send
       - f: 6
         t: 0.25
         pose: presses send (f6-7)
+        pose_ref: phone_hold.thumb_press_send
       - f: 8
         t: 0.33
         pose: thumb lifts (f8-14) and leaves downward, out of the eye path, below the frame by f20
+        pose_ref: phone_hold.thumb_lift_leave_down
       secondary: []
       eyeline: off frame; implied on the line and the tick
   ui:
@@ -242,6 +248,6 @@ derived_from:
   hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:d209481a74bd1a1b7126623271d8923aead68ad6e3bfe74b075ee6a373dfa921
+stamped_content_hash: sha256:6274d95c0386ecc5c031d1a41f2c64c19d0e7dc53c3bf6fa2b2ec979357d9b59
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

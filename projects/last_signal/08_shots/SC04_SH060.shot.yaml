@@ -67,6 +67,9 @@ animation:
     fps: 24
     frames: 68
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 44
+  preview_frame_reason: 'the red heart at the end of the full invitation with his thumb hovering still
+    above backspace: the hesitation, the tender beat'
   characters:
     ren:
       locomotion:
@@ -76,33 +79,43 @@ animation:
         t: 0.0
         pose: left thumb on the keys; 'Are you free tonight? Dinner at 8?' already in the field (the last
           two words glided in SC04_SH050 f56-79)
+        pose_ref: phone_hold.thumb_on_keys
       - f: 0
         t: 0.0
         pose: slow glide for 'My' (f0-5), lifts on f6
+        pose_ref: phone_hold.thumb_glide_word
       - f: 7
         t: 0.29
         pose: slow glide for 'treat' (f7-12) and a tap on '.' at f13
+        pose_ref: phone_hold.thumb_glide_word
       - f: 14
         t: 0.58
         pose: thumb lifts and hovers above the keys, still (the pause, f14-19)
+        pose_ref: phone_hold.thumb_hover_pause
       - f: 20
         t: 0.83
         pose: one press on the emoji-face key at the lower edge (f20-21)
+        pose_ref: phone_hold.thumb_press_emoji_key
       - f: 22
         t: 0.92
         pose: 'thumb lifts back 5 mm and stays still: he looks at the heart (f22-33)'
+        pose_ref: phone_hold.thumb_lifted_looking
       - f: 34
         t: 1.42
         pose: thumb drifts slowly to the backspace key (ease-in-out, f34-40)
+        pose_ref: phone_hold.thumb_drift_to_backspace
       - f: 40
         t: 1.67
         pose: hovers just above backspace, completely still (f40-53)
+        pose_ref: phone_hold.thumb_hover_backspace
       - f: 54
         t: 2.25
         pose: presses backspace once (f54-55)
+        pose_ref: phone_hold.thumb_press_backspace
       - f: 56
         t: 2.33
         pose: thumb lifts and leaves downward, below the frame by f62; plain text alone to the cut
+        pose_ref: phone_hold.thumb_leaves_down
       secondary: []
       eyeline: off frame; implied on the heart
   ui:
@@ -272,6 +285,6 @@ derived_from:
   hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:541fcf93e70b29270b0e6024268fe6ff25bebf9394f5dca29c53c8f573f2c2b9
+stamped_content_hash: sha256:53725e73fca8f4ceb492885de7d27ee94ef5c956aae3754b2743d8684e3306b4
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

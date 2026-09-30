@@ -81,6 +81,9 @@ animation:
     fps: 24
     frames: 36
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 3
+  preview_frame_reason: his face still reads three-quarter to the lens while his eyes are already on the
+    door opening and the glovebox is in frame; later frames lose the face to lost profile
   characters:
     ren:
       locomotion:
@@ -89,31 +92,54 @@ animation:
       keys:
       - f: 0
         t: 0.0
-        pose: starts with his head already two thirds turned toward the open door (screen left, west-north-west),
-          eyes leading
-      - f: 0
-        t: 0.0
-        pose: head completes the turn f0-8 (ease-out)
+        pose: 'head only about one sixth turned toward the open door (about 20 deg of the ~115 deg turn
+          from south to the glovebox, west-north-west), so the face is about 60 deg off the lens: three-quarter,
+          both eyes and brows read; eyes just lifted off the phone and sliding screen left (eyes lead,
+          f0-2)'
+        pose_ref: kerb_hunch.look_up.head_20
+      - f: 2
+        t: 0.08
+        pose: eyes reach the edge of the door opening; head starts the turn, slow ease-in-out f2-16 (about
+          95 deg in 14 frames, 0.58 s; average about 165 deg/s, no snap)
+        pose_ref: kerb_hunch.head_turn_start
       - f: 4
         t: 0.17
-        pose: eyes land on the glovebox (the push-in starts here)
-      - f: 8
-        t: 0.33
-        pose: 'held look (f8-19): brows level, mouth soft, still'
+        pose: 'the look commits: eyes fixed on the door opening, head about 35 deg round (face near profile);
+          the push-in starts here'
+        pose_ref: kerb_hunch.head_turn_35
+      - f: 10
+        t: 0.42
+        pose: eyes land on the glovebox (head about 85 deg round, eyes carrying the last 30 deg); lost
+          profile from here
+        pose_ref: kerb_hunch.head_turn_85.eyes_on_glovebox
+      - f: 16
+        t: 0.67
+        pose: head arrives (about 115 deg), eyes recentre in the head; ease-out, no overshoot, no settle
+          bounce
+        pose_ref: kerb_hunch.look_glovebox
+      - f: 16
+        t: 0.67
+        pose: 'held look (f16-19): brows level, mouth soft, still'
+        pose_ref: kerb_hunch.look_glovebox
       - f: 20
         t: 0.83
         pose: 'small breath in (f20-28): shoulders rise 1 cm; one slow blink f22-27'
+        pose_ref: kerb_hunch.look_glovebox.breath_in
       - f: 28
         t: 1.17
         pose: 'the decision: chin lowers a touch, brows settle level (focused calm), forearms lift off
           his knees (f28-33)'
+        pose_ref: kerb_sit.forearms_up.decision
       - f: 34
         t: 1.42
         pose: held, hands off the knees, weight starting west (matches SC04_SH040 f0)
-      face: hesitation becoming focused calm (brows level, eyes on the glovebox); no comic expression
+        pose_ref: kerb_sit.forearms_up.weight_west
+      face: 'f0-9 readable three-quarter: brows level and very slightly lifted (the question), mouth soft;
+        then hesitation becoming focused calm, read in stillness, breath and the forearms; no comic expression'
       secondary:
       - phone stays low in both hands, flicker continuing
-      eyeline: the glovebox through the open door from f4 to the cut
+      - tuft follows the head turn rigidly (no lag)
+      eyeline: phone -> door opening f0-4 -> the glovebox from f10 to the cut
   props:
     phone_ren: '1 % flicker continues, irregular: dips at f11-12 and f25-27'
   camera:
@@ -123,8 +149,9 @@ animation:
     distance_m: 0.18
     easing: ease-in over f4-8, linear, ease-out over f34-35
     peak_speed_mps: 0.149
-    notes: straight toward him; peak speed stays under the 0.15 m/s cap; starts on the frame his eyes
-      land (camera.movement.push_in)
+    notes: straight toward him; peak speed stays under the 0.15 m/s cap; starts on the frame his look
+      commits to the door opening (f4), his eyes reach the glovebox at f10 while the push is under way
+      (camera.movement.push_in)
 render: {}
 assets:
 - world.sets.street
@@ -151,13 +178,18 @@ rationale:
     eyes land. Motivated by the choice. Rejected: static (the decision would not be felt as a shift).'
   color: Dusk palette; the glovebox interior dark, no highlight on it (it must not glow).
   blocking: He does not stand yet; only his head and eyes move.
-  animation: 'The push has to start at f4 on his look, but the tender tempo forbids a quick head snap,
-    so the shot opens with the head already mostly turned and lets the last third finish unhurried while
-    the eyes land. Then he holds, breathes once and blinks: the hesitation. The decision is stillness
-    followed by a small weight shift, never a comic reset (tone.the_turn). The camera eases in over 4
-    frames and out over 2 so its peak stays at 0.149 m/s while covering the specified 0.18 m in 32 frames.
-    Rejected: the whole head turn inside the shot (it would take about 12 frames and the push would start
-    before the look it is motivated by).'
+  animation: 'From the lens 40 deg east of his facing, the turn toward the glovebox (about 115 deg, through
+    west) turns his face away from us: two thirds turned is already lost profile. So the shot now opens
+    with the head only about one sixth round, face three-quarter to the lens, and the eyes lead: the audience
+    reads the question in his face before the head follows. The turn itself is slow and even (ease-in-out
+    over 14 frames, about 165 deg/s average), the tender tempo, not a snap (characters.ren.movement: turn
+    tempo slow_deliberate). The push still starts at f4, on the frame the look commits, because the 0.18
+    m push needs about 32 frames under the 0.15 m/s cap; the eyes land on the glovebox at f10, inside
+    the push. Then he holds, breathes once and blinks: the hesitation, read in stillness and the forearms
+    lifting, since his face is in lost profile by then. The decision is a small weight shift, never a
+    comic reset (tone.the_turn). Rejected: opening two thirds turned (face already lost from the new lens;
+    QA and camera feedback), and a full turn started at f0 with eyes landing at f4 (about 115 deg in 4
+    frames, a snap that belongs to the comic half).'
 style_break: null
 continuity_refs:
 - continuity.sc04.environment
@@ -279,6 +311,6 @@ derived_from:
   hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:a861857823fd5dd8a33453e64602ad6db28a581c441553a2d66cff72d475a89e
+stamped_content_hash: sha256:9aea3b8fc7724109811d12cab015db797fd303bea7f4fb542dad3b75ed708b75
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

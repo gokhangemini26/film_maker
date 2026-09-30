@@ -59,6 +59,9 @@ animation:
     fps: 24
     frames: 28
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 10
+  preview_frame_reason: 'first clean frame after the swipe: thumb gone, her photo settled and 5 % in the
+    status bar'
   characters:
     ren:
       locomotion:
@@ -67,15 +70,19 @@ animation:
       - f: 0
         t: 0.0
         pose: right thumb already in contact on the right third of the screen
+        pose_ref: phone_hold.thumb_on_right_third
       - f: 1
         t: 0.04
         pose: swipe right to left begins (ease-in-out)
+        pose_ref: phone_hold.thumb_swipe_start
       - f: 6
         t: 0.25
         pose: swipe ends; thumb lifts off the glass
+        pose_ref: phone_hold.thumb_swipe_end_lift
       - f: 8
         t: 0.33
         pose: thumb gone out of frame right; phone still
+        pose_ref: phone_hold.no_hand
       secondary: []
       eyeline: off frame; implied on her photo
   ui:
@@ -226,6 +233,6 @@ derived_from:
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
 - ref: canon:look.color.ui_portraits
   hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
-stamped_content_hash: sha256:0038b02f322130aca28b9a50f2e525944fcb1b8f11bd99ace0ef3e18737dc14e
+stamped_content_hash: sha256:8699e51bfb186dba0264c42419a8a2cdae365aab80f76e052777657e96023cc8
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

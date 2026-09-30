@@ -59,6 +59,9 @@ animation:
     fps: 24
     frames: 26
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 12
+  preview_frame_reason: 'a still insert with no change inside the shot: red 2 %, no bolt, any frame reads;
+    mid-shot for margin'
   characters:
     ren:
       locomotion:
@@ -67,6 +70,7 @@ animation:
       - f: 0
         t: 0.0
         pose: no hand in frame; phone still
+        pose_ref: phone_hold.no_hand
       secondary: []
       eyeline: off frame
   ui:
@@ -193,6 +197,6 @@ derived_from:
   hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:a1768862865e1079ba5f5b8fe8917c3bc2db729ed564d92ebeb05ebfa3b47ab6
+stamped_content_hash: sha256:56cfa23e8fda67aa597eefd0b9daa42e7e2639635a9494700e05404c0c52cc27
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

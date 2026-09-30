@@ -62,6 +62,9 @@ animation:
     fps: 24
     frames: 26
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 6
+  preview_frame_reason: 'the first gain: 2 % with the amber bolt beside it, icon no longer blinking (changes
+    at f2)'
   characters:
     ren:
       locomotion:
@@ -70,6 +73,7 @@ animation:
       - f: 0
         t: 0.0
         pose: no hand in frame; phone still; he keeps cranking off frame
+        pose_ref: phone_hold.no_hand
       secondary: []
       eyeline: off frame
   ui:
@@ -227,6 +231,6 @@ derived_from:
   hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:2012bb3da3b583e80f2b2056694fb835feb81fcf69ad82c407432a338486c936
+stamped_content_hash: sha256:67f88a2f736aaea3af5d3606e06326f4a4a1cad97295d127bb5c14e64ff76f31
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

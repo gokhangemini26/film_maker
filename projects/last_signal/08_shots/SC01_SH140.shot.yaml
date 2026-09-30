@@ -59,6 +59,9 @@ animation:
     fps: 24
     frames: 32
     index: 0-based; f0 is the first frame, t = f / 24; f0 is the frame straight after SC01_SH130 f33
+  preview_frame: 6
+  preview_frame_reason: bolt gone and the number already 3 % (changes at f2), screen back to full brightness
+    after the dip
   characters:
     ren:
       locomotion:
@@ -67,6 +70,7 @@ animation:
       - f: 0
         t: 0.0
         pose: no hand in frame; phone still
+        pose_ref: phone_hold.no_hand
       secondary: []
       eyeline: off frame
   ui:
@@ -227,6 +231,6 @@ derived_from:
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
 - ref: canon:look.color.ui_portraits
   hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
-stamped_content_hash: sha256:2b8ef5785295dbbbc30d6ff11ba35ab542863d28bd456b0ad18d90b3e07daf7c
+stamped_content_hash: sha256:209db68556feab291fba285ddf380490e5dc1bd6f4e72fbab9f119708345bd51
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

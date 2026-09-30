@@ -71,6 +71,9 @@ animation:
     fps: 24
     frames: 28
     index: 0-based; f0 is the first frame, t = f / 24
+  preview_frame: 16
+  preview_frame_reason: 'the release as a still: hand open on the stopped crank, eyes closed, shoulders
+    half down, crank and phone together in the lower frame (the pip fade is motion and cannot be stilled)'
   characters:
     ren:
       locomotion:
@@ -79,27 +82,43 @@ animation:
       keys:
       - f: 0
         t: 0.0
-        pose: 'still cranking at 1 turn/s: handle about 120 deg past the top; eyes on the phone'
+        pose: 'still cranking at 1 turn/s, the SH050 end pose exactly: crank clamped high between his
+          knees (top face and pip above the near knee), phone in the left hand at about z 0.76 over the
+          near knee beside the port end; handle about 120 deg past the top; eyes on the phone'
+        pose_ref: kerb_sit.cranking.eyes_phone
       - f: 0
         t: 0.0
         pose: right hand slows the handle (ease-out, f0-4)
+        pose_ref: kerb_sit.cranking.slowing
       - f: 4
         t: 0.17
         pose: 'fingers open: he lets go of the knob'
+        pose_ref: kerb_sit.crank_let_go
       - f: 7
         t: 0.29
         pose: 'handle coasts about 30 deg and clicks to a stop just past the bottom (phase from SC04_SH050:
           top at SC04_SH080 f50, so f0 here is 120 deg past the top)'
+        pose_ref: kerb_sit.crank_let_go
       - f: 8
         t: 0.33
         pose: 'release: long breath out, shoulders drop 3 cm, spine loosens a little (ease-out, f8-22);
-          right hand comes to rest open on the crank (f8-16)'
+          right hand comes to rest open on the crank (f8-16). The knees stay where they are, so the crank
+          stays clamped high and readable; the phone sinks only about 2 cm with the shoulders and stays
+          beside the crank, not over it'
+        pose_ref: kerb_sit.release.hand_open_on_crank
       - f: 10
         t: 0.42
         pose: eyes close (f10-13)
+        pose_ref: kerb_sit.release.eyes_closing
       - f: 22
         t: 0.92
-        pose: held, eyes closed, to the cut
+        pose: held, eyes closed, to the cut; crank and phone side by side in the lower frame
+        pose_ref: kerb_sit.release.eyes_closed
+      crank_clamp: as SC04_SH050 (top face about z 0.66, tipped toward the lens, pip above the near knee)
+        for all 28 frames; it is still in his lap (knees up), per continuity SC04_end in_lap
+      phone_hold: left hand, about z 0.74-0.78, over the near knee just left of the port end, screen up
+        to his face; crank and phone both readable in frame; the phone never covers the crank body or
+        pip
       face: release_after_send (eyes close, breath out); no smile, no grin
       breath: one long out-breath f8-22; no more crank-locked breathing
       secondary:
@@ -108,7 +127,7 @@ animation:
   props:
     crank_charger: handle stops at f7 and stays; pip brightness falls with the handle speed f2-7 (to about
       40 %) and fades to off f7-12 (within 6 frames of the stop, look.lighting.power_indicators); crank
-      rests in his lap, arm out
+      rests in his lap, clamped high between his knees, arm out, readable in frame beside the phone
     phone_ren: bolt goes off at f7 (source no longer live; not readable here); 2 %, screen steady
   camera:
     easing: none
@@ -133,11 +152,14 @@ rationale:
     for the cut on light.'
   blocking: The crank rests in his lap, arm out, pip off (continuity.props.glovebox_and_crank SC04_end).
   animation: 'Release: he lets go instead of stopping the handle, so it coasts and clicks on its own,
-    and the pip dies within 6 frames at the crank''s frame bottom, the last amber light of the film. Only
-    then does he breathe out and close his eyes: effort first, then rest, in that order. The out-breath
-    is the longest of the film so far and the shoulders drop without springing back, the opposite of every
-    comic reset. Rejected: a fist or a smile at the send (a victory lap, excluded by the character canon)
-    and letting go and looking up here (the look up belongs to SC06).'
+    and the pip dies within 6 frames, the last amber light of the film. Only then does he breathe out
+    and close his eyes: effort first, then rest, in that order. The out-breath is the longest of the film
+    so far and the shoulders drop without springing back, the opposite of every comic reset. The drop
+    is in the shoulders and spine only: the knees hold the crank high and the phone stays beside it, so
+    the thing he let go of and the thing it paid for are both in the frame with his face. Rejected: the
+    crank sinking into the lap as he relaxes (it would fall behind the near knee and out of the bottom
+    of the frame), a fist or a smile at the send (a victory lap, excluded by the character canon) and
+    letting go and looking up here (the look up belongs to SC06).'
 style_break: null
 continuity_refs:
 - continuity.sc04.environment
@@ -260,6 +282,6 @@ derived_from:
   hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:b7888d4f125f9cbbce72ed678b3afda050d6530f255306ccb455829ada12088f
+stamped_content_hash: sha256:ba37458305d5c99080be0a44998f4f3680a91d45b3f9a2c2106e97e19ae494d8
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.
