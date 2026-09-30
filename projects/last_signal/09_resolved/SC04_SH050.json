@@ -12,62 +12,74 @@
     "characters": {
       "ren": {
         "breath": "in time with the crank from f30: in on the up half-turn, out on the down half-turn; shoulders rise and fall 1 cm",
+        "crank_clamp": "crank clamp (all keys from f12): brick lying across between the inner faces of his knees at their tops, long axis left-right, port end toward the near (left) knee, pivot end to his right; body centre about z 0.64, top face about z 0.66 (4 cm above the 0.62 m knee tops) and tipped about 30 deg toward the lens (front-left), so from the lens the top face and the pip sit above the near knee's silhouette, never behind it",
         "eyeline": "the port and the arm f0-39, the phone from f40",
         "face": "focused calm: brows level, eyes on the crank, then on the phone from f40; no comic expression",
         "keys": [
           {
             "f": 0,
-            "pose": "crank in both hands in his lap, phone in the left palm; right hand takes the cable's source plug",
+            "pose": "crank in both hands, held up between his knees at knee-top height (his lap, knees up: top face and pip above the near knee from the lens), phone in the left palm under it; right hand takes the cable's source plug",
+            "pose_ref": "kerb_sit.crank_two_hands_high",
             "t": 0.0
           },
           {
             "f": 8,
-            "pose": "lines the plug up with the crank's port",
+            "pose": "lines the plug up with the crank's port (port end toward his near, left knee; hands stay at knee-top height)",
+            "pose_ref": "kerb_sit.crank_plug_align",
             "t": 0.33
           },
           {
             "f": 10,
             "pose": "pushes it in (small wrist push, f10-11)",
+            "pose_ref": "kerb_sit.crank_plug_push",
             "t": 0.42
           },
           {
             "f": 12,
-            "pose": "clamps the crank body between his knees (port to his left, arm to his right); right thumb lifts the folded knob out of its groove (f12-15)",
+            "pose": "clamps the crank between the tops of his knees (see crank_clamp: top face and pip above the near knee); right thumb lifts the folded knob out of its groove (f12-15)",
+            "pose_ref": "kerb_sit.crank_clamped.knob_lift",
             "t": 0.5
           },
           {
             "f": 15,
             "pose": "slight stiffness: a 2-frame hold (the hinge has never been used)",
+            "pose_ref": "kerb_sit.crank_clamped.knob_lift",
             "t": 0.62
           },
           {
             "f": 17,
-            "pose": "swings the arm out on its pivot (ease-out, f17-22), clean stop, no bounce",
+            "pose": "swings the arm out on its pivot (ease-out, f17-22), clean stop, no bounce; the brick does not sink in the clamp",
+            "pose_ref": "kerb_sit.crank_clamped.arm_out",
             "t": 0.71
           },
           {
             "f": 22,
-            "pose": "right hand grips the knob; left hand lifts the phone to chest height above the crank; breath in (f22-29)",
+            "pose": "right hand grips the knob; left hand lifts the phone to about z 0.76 over the near knee, left of the port end (see phone_hold); breath in (f22-29)",
+            "pose_ref": "kerb_sit.crank_ready.phone_left_high",
             "t": 0.92
           },
           {
             "f": 30,
             "pose": "first turn: handle leaves the top (12 o'clock), ease-in over the first half-turn; first revolution completes at f56 (26 f)",
+            "pose_ref": "kerb_sit.cranking.phone_left_high",
             "t": 1.25
           },
           {
             "f": 40,
             "pose": "eyes move from the crank to the phone as its light holds steady",
+            "pose_ref": "kerb_sit.cranking.eyes_phone",
             "t": 1.67
           },
           {
             "f": 56,
             "pose": "steady rhythm: 1 turn per second (24 frames per revolution), handle at the top at f56 and every 24 frames after",
+            "pose_ref": "kerb_sit.cranking.eyes_phone",
             "t": 2.33
           },
           {
             "f": 56,
-            "pose": "left thumb starts to type, one slow glide per word: 'Dinner' f56-63, 'at' f66-70, '8?' f73-79 (not legible at this size)",
+            "pose": "left thumb starts to type, one slow glide per word: 'Dinner' f56-63, 'at' f66-70, '8?' f73-79 (not legible at this size); the phone stays in its place beside the crank while he types",
+            "pose_ref": "kerb_sit.cranking.thumb_glide",
             "t": 2.33
           }
         ],
@@ -75,19 +87,22 @@
           "note": "seated on the kerb, knees up",
           "type": "none"
         },
+        "phone_hold": "phone (all keys from f22): left hand holds it at about z 0.74-0.78 over the near (left) knee, just left of the crank's port end, screen tipped up toward his face; never between the lens and the crank body or pip",
         "secondary": [
-          "right elbow and shoulder follow the knob's 0.17 m circle; the torso stays quiet",
-          "cable: short posed loop over his left knee; 2 mm of sway per turn (keyed, no simulation)"
+          "right elbow and shoulder follow the knob's 0.17 m circle; the torso stays quiet; the knob may dip behind the far (right) knee at the bottom of its circle, the pip never does",
+          "cable: short posed loop from the port over his left knee to the phone; 2 mm of sway per turn (keyed, no simulation)"
         ]
       }
     },
+    "preview_frame": 46,
+    "preview_frame_reason": "crank arm out mid-turn with the pip at full, the glow on his face steady and his eyes just moved to the phone: effort, light and face in one still, early enough that the push has not yet cropped him",
     "props": {
-      "crank_charger": "arm unfolded f17-22; turning clockwise (from his view) from f30; pip brightness follows handle speed: 0 -> full over f30-38, steady from f38",
+      "crank_charger": "clamped high between his knees from f12 (top face and pip above the near knee from the lens); arm unfolded f17-22; turning clockwise (from his view) from f30; pip brightness follows handle speed: 0 -> full over f30-38, steady from f38",
       "phone_ren": "1 % flicker until the first turn: dips at f5-6, f17-19 and f26-27; steady from f30 (the glow on his face stops flickering and holds); charging bolt beside 1 % from f30 (live source while turning)"
     },
     "risks_m3": [
       "crank handle rotation is a single driven bone; pip emission keyed to its angular speed (driver)",
-      "crank body wedged between the knees: check knee-to-brick contact on the proxy at G6"
+      "crank body wedged between the knees at knee-top height: check knee-to-brick contact and that the pip clears the near-knee silhouette from the lens at f12, f46 and f79 on the proxy"
     ],
     "sound_sync": "ratchet click at each handle top: f56, then every 24 frames (the phase carries on across SC04_SH060-SH090); breath in time",
     "timing": {
@@ -610,6 +625,249 @@
       "temperature_k": 3000
     }
   },
+  "motion": {
+    "camera": {
+      "dist_m": 0.28,
+      "ease_in_f": [
+        30,
+        36
+      ],
+      "ease_out_f": [
+        76,
+        79
+      ],
+      "end_f": 79,
+      "end_f_abs": 1069,
+      "move": "dolly_in",
+      "peak_speed_mps": 0.149,
+      "start_f": 30,
+      "start_f_abs": 1020
+    },
+    "characters": {
+      "ren": {
+        "breath": [
+          {
+            "dur_f": 8,
+            "f": 22,
+            "f_abs": 1012,
+            "ref": "in_slow"
+          },
+          {
+            "dur_f": 50,
+            "f": 30,
+            "f_abs": 1020,
+            "ref": "crank_locked"
+          }
+        ],
+        "face": [
+          {
+            "f": 0,
+            "f_abs": 990,
+            "ref": "focused_calm"
+          }
+        ],
+        "look": [
+          {
+            "f": 0,
+            "f_abs": 990,
+            "target": "crank"
+          },
+          {
+            "f": 40,
+            "f_abs": 1030,
+            "target": "phone"
+          }
+        ],
+        "move": {
+          "first_top_f": 56,
+          "gait": "crank_turn",
+          "handle_tops": [
+            {
+              "f": 56,
+              "f_abs": 1046
+            }
+          ],
+          "path": [],
+          "start_f": 30
+        },
+        "pose": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 990,
+            "ref": "kerb_crank_hold"
+          },
+          {
+            "blend_f": 3,
+            "ease": "ease_in_out",
+            "f": 12,
+            "f_abs": 1002,
+            "ref": "kerb_crank_hold"
+          },
+          {
+            "ease": "hold",
+            "f": 30,
+            "f_abs": 1020,
+            "ref": "kerb_crank_hold"
+          }
+        ]
+      }
+    },
+    "events": [
+      {
+        "f": 5,
+        "f_abs": 995,
+        "id": "flicker_dip_1",
+        "kind": "light",
+        "source": "anim"
+      },
+      {
+        "f": 10,
+        "f_abs": 1000,
+        "id": "plug_in",
+        "kind": "sound",
+        "source": "anim"
+      },
+      {
+        "f": 12,
+        "f_abs": 1002,
+        "id": "crank_clamp",
+        "kind": "state",
+        "source": "anim"
+      },
+      {
+        "f": 15,
+        "f_abs": 1005,
+        "id": "hinge_stiff",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 17,
+        "f_abs": 1007,
+        "id": "flicker_dip_2",
+        "kind": "light",
+        "source": "anim"
+      },
+      {
+        "f": 22,
+        "f_abs": 1012,
+        "id": "arm_out_stop",
+        "kind": "sound",
+        "source": "anim"
+      },
+      {
+        "f": 26,
+        "f_abs": 1016,
+        "id": "flicker_dip_3",
+        "kind": "light",
+        "source": "anim"
+      },
+      {
+        "f": 30,
+        "f_abs": 1020,
+        "id": "first_turn",
+        "kind": "state",
+        "source": "anim"
+      },
+      {
+        "f": 38,
+        "f_abs": 1028,
+        "id": "pip_full",
+        "kind": "light",
+        "source": "anim"
+      },
+      {
+        "f": 40,
+        "f_abs": 1030,
+        "id": "eyes_to_phone",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 56,
+        "f_abs": 1046,
+        "id": "handle_top",
+        "kind": "sound",
+        "source": "derived:crank_turn"
+      },
+      {
+        "f": 56,
+        "f_abs": 1046,
+        "id": "typing_starts",
+        "kind": "visual",
+        "source": "anim"
+      }
+    ],
+    "frame_start": 990,
+    "frames": 80,
+    "holds": [
+      {
+        "character": "ren",
+        "f0": 15,
+        "f1": 16,
+        "min_f": 2,
+        "scope": "body"
+      }
+    ],
+    "preview_frames": [
+      0,
+      12,
+      22,
+      30,
+      46,
+      56,
+      79
+    ],
+    "props": {
+      "crank_charger": [
+        {
+          "arm": "folded",
+          "f": 0,
+          "f_abs": 990,
+          "loc": "hands_both",
+          "pip": 0.0
+        },
+        {
+          "dur_f": 3,
+          "f": 12,
+          "f_abs": 1002,
+          "loc": "lap"
+        },
+        {
+          "arm": "unfolded",
+          "dur_f": 5,
+          "ease": "ease_out",
+          "f": 17,
+          "f_abs": 1007
+        },
+        {
+          "dur_f": 9,
+          "ease": "ease_in",
+          "f": 30,
+          "f_abs": 1020,
+          "pip": 1.0
+        }
+      ],
+      "glovebox_lid": [
+        {
+          "f": 0,
+          "f_abs": 990,
+          "state": "open_down"
+        }
+      ],
+      "phone_ren": [
+        {
+          "attach": "hand_l",
+          "f": 0,
+          "f_abs": 990
+        }
+      ]
+    },
+    "schema": "fm.motion/1",
+    "source": "artifact:anim_sc04_sh050",
+    "vocab_version": 1
+  },
   "provenance": {
     "canon": [
       "characters.ren.expressions",
@@ -636,7 +894,1311 @@
     ]
   },
   "scene_id": "SC04",
-  "schema": "fm.resolved_shot/1",
+  "schema": "fm.resolved_shot/2",
   "sequence_id": "SQ02",
-  "shot_id": "SC04_SH050"
+  "shot_id": "SC04_SH050",
+  "ui_timeline": {
+    "colours": {
+      "charcoal": "#2B303B",
+      "red": "#E5483B"
+    },
+    "frames": [
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 0,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 1,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 2,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 3,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 4,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 5,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 6,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 7,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 8,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 9,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 10,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 11,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 12,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 13,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 14,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 15,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 16,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 17,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 18,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 19,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 20,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 21,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 22,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 23,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 24,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 25,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 26,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 27,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 28,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 29,
+        "flicker": true,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 30,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 31,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 32,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 33,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 34,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 35,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 36,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 37,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 38,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 39,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 40,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 41,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 42,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 43,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 44,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 45,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 46,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 47,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 48,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 49,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 50,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 51,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 52,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 53,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 54,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 55,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 56,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 0
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 57,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 0
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 58,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 0
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 59,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 0
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 60,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 0
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 61,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 0
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 62,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 0
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 63,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 6
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 64,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 6
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 65,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 6
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 66,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 6
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 67,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 6
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 68,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 6
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 69,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 6
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 70,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 71,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": false,
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 72,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 73,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 74,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 75,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 76,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 77,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 78,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 79,
+        "flicker": false,
+        "icon_blink": true,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 2,
+        "pct": 1,
+        "phone": "ren",
+        "red": true,
+        "typed": {
+          "2": 12
+        },
+        "typing": true,
+        "ui": "compose"
+      }
+    ],
+    "phone": "ren",
+    "schema": "fm.ui_timeline/1",
+    "source": "canon:look.style.phone_screen.states_by_shot",
+    "warnings": []
+  }
 }

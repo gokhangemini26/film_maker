@@ -79,16 +79,94 @@ missing ones instead of pretending they ran:
 
 | Tool | Lands in M6 step |
 |---|---|
-| `fm check anim`, `ANIM_*` validation | A1 |
+| `ANIM_*` validation (in `fm validate`) | A1 |
 | resolver `motion` block | A3 |
 | `fm blender frames`, `fm blender playblast` | C4 |
-| `fm qa motion` tier 0 | D1 |
+| `fm qa motion` tier 0, alias `fm check anim` (below) | D1 |
 | `fm qa motion` tier 1 (bake report) | D2 |
-| `fm audio synth` | E2 |
+| `fm audio list`, `fm audio synth` | E2 |
+| `fm audio scaffold`, `AUDIO_*` validation | E4 |
 | `fm audio mix`, `fm qa audio` | E5 |
-| `fm post edl`, `fm post animatic` | F2 |
+| `fm post edl`, `fm post animatic` | F2 (landed) |
 | `fm blender final` | F3 |
-| `fm post assemble|export`, `fm qa delivery` | F4 |
+| `fm post assemble|export`, `fm qa delivery` | F4 (landed) |
+
+```
+fm qa motion [--strict] [--no-record]     # alias: fm check anim; tier 0, no Blender; exit 1 on FAIL
+```
+
+Tier 0 reads the anim files, shot specs, canon and (if present) `09_resolved/`, writes
+`qa/motion_report.json` (`{summary:{fail,warn,shots}, rows:[{shot, findings:[[sev,msg]]}]}`, the file the
+ANIMATION contract requires with `summary.fail == 0`) and records the derived node `qa:motion`
+(`--no-record` writes the report only). Film and scene findings sit in rows named `FILM` / `SCnn`.
+FAIL: `ANIM_*` rules (frames vs the shot table, key range and order, vocabulary and transition
+legality, comic faces after the turn, hold minimums); persistent-prop jumps between consecutive shots
+in film order (a change needs a key after f0, or a `rationale` on the f0 key) and against
+`continuity.props.*` per scene; camera peak speed over the `camera.movement.push_in` cap (0.15 m/s), dolly
+length vs the shot's start/end positions, camera moves outside SC04 or beyond the allowed count; phone
+screen rules from `look.style.phone_screen.states_by_shot` (0 %, digit hidden, colour vs number, battery
+not in `continuity.battery` for the scene or changing at a cut, bolt while the crank arm is folded, overlay
+events changing the table's number/colour/bolt, resolved `ui_timeline` out of date); resolved frame
+counts or `film.json` total differing from the shot table. WARN: a missing or stub anim file (FAIL with
+`--strict`), long pose-key gaps, locomotion speed above the gait limit, `sound_sync` frames with no named
+event, scene running time more than 3 % off `SCENES.yaml`, film length more than 5 % off the brief,
+resolved motion out of date. Technical only; never creative evidence.
+
+```
+fm audio list [--json]                          # synth registry: recipe, placeholder flag, default length, `serves` lines
+fm audio synth [--id NAME]... [--out DIR] [--seed N]   # library WAVs (default 12_post/audio/lib/); writes only DIR
+fm audio scaffold [--out FILE] [--force]        # PROPOSED cue-sheet skeleton (default 12_post/AUDIO_CUES.yaml; never overwrites)
+fm audio mix                                    # AUDIO_CUES.yaml -> 12_post/audio/mix_48k_stereo.wav + stem_<layer>.wav + mix_report.json
+fm qa audio [--final] [--ffmpeg|--no-ffmpeg]    # qa/audio_report.json; exit 1 on FAIL
+```
+
+`12_post/AUDIO_CUES.yaml` (artifact kind `audio_cues`, exactly one; schema `fm.schemas.audio`) holds `mix` targets
+(-16 LUFS +-1, -1 dBTP, silence floor -50 dBFS, 48 kHz stereo 24-bit, `master_gain_db`), `cues`, `beds`, `silence`,
+`human_supply` and `conflicts`. A cue names one `recipe` (synth registry) or one library `asset`
+(`library/audio/<id>/asset.yaml`: `file`, `licence`, optional `tags`, `placeholder`) and is placed at
+`at.event` (a named anim event, optionally `nth` or `each`, plus `offset_f`) or at an explicit shot-local
+`at.frame`; retiming a shot moves event cues. Other fields: `gain_db`, `pan`, `fade_in_f`, `fade_out_f`,
+`duration_f`, `params`, `hits` (sync landmarks inside one cue), `tail_ok`, `allowed_in_silence`, `note`,
+`rationale`. `fm validate` runs the `AUDIO_*` rules: FILE, FPS, SHOT, DUP_ID, SOURCE, RECIPE, ASSET, SPEECH
+(the film is wordless), AT, EVENT, EVENT_AMBIGUOUS, EVENT_NTH, OUT_OF_SHOT, PAST_SHOT, BED, SILENCE,
+SILENCE_OVERLAP, HIT, MIX (errors) and LICENCE, PLACEHOLDER, UNLISTED_PLACEHOLDER (warnings).
+
+`scaffold` builds the skeleton only from facts the repo holds (each shot's `sound_sync` line, anim events, the
+registry's `serves` lines), points a cue at a named `sound` event when one sits on the frame, and lists every sync
+point it could not cover in `scaffold_notes`; the sound-designer edits it, then `fm stamp` and `fm validate`.
+`mix` is deterministic and sample exact (`total_frames x 2000` samples; 2 880 000 for 60 s), applies no limiter or
+normalisation (the suggested `mix.master_gain_db` is printed) and records the derived node `audio:mix`.
+`qa audio` FAILs on: a `sound` anim event or `sound_sync` frame with no cue start or `hits` within +-1 frame, a
+silence span measuring above its floor, clipping, true peak above target, integrated loudness outside target
+(ffmpeg ebur128 when available, else a built-in BS.1770 approximation), wrong length or sample rate, a stale mix,
+no mix; WARNs on placeholders in the mix, digitally silent frames outside the silence map and UNKNOWN licences
+(FAIL with `--final`). It lists `human_supply` and records `qa:audio`. Technical only.
+
+```
+fm post edl [--out DIR]                         # 12_post/EDIT.edl (CMX3600, 24 fps NDF) + edit.ffconcat
+fm post animatic [--out DIR] [--size WxH] [--audio WAV] [--no-audio] [--no-stamp]
+fm post assemble [--out DIR] [--frames DIR] [--audio WAV] [--silent] [--grain] [--vignette N]
+                 [--fade-in N] [--fade-out N]   # master mezzanine in 13_delivery/
+fm post export [--out DIR] [--master FILE] [--no-proxy]   # web MP4 + proxy + MANIFEST.json
+fm qa delivery [--out DIR] [--report-dir DIR] [FILE...]   # qa/delivery_report.json; exit 1 on FAIL
+```
+
+Post tooling reads the resolved frame table (`09_resolved/film.json`, must be contiguous and sum to
+`total_frames`) and never authors the edit: hard cuts in scene-then-shot order, a fade in (canon
+`post.fade_in`, else 12 frames) and the fade out from `camera.rhythm.transitions`. `edl` writes exact
+frame-accurate events and an ffconcat list. `animatic` uses per-shot rendered frames
+(`10_blender/frames/<SHOT>`, then `playblast`) when present, else the preview still held for the shot
+duration with the shot id stamped, and muxes `12_post/audio/mix_48k_stereo.wav` if present (a mix whose
+length is not the film's is refused as stale; `--no-audio` skips it). `assemble` needs a complete
+`11_render/final/<SHOT>/%04d.png` per shot (frame counts checked), applies grain and vignette only when
+asked (strength from look canon; vignette above canon max is refused), fades, two-pass loudnorm to
+-16 LUFS / -1 dBTP, and writes ProRes 422 HQ (x264 crf 8 mkv fallback if `prores_ks` is missing).
+`export` writes the 1080p H.264/AAC web MP4, a 640 px proxy and `MANIFEST.json` (sha256, bytes, probe
+facts, ffmpeg version and source). `qa delivery` checks frame count and duration (60.0 s, 1 frame),
+24 fps, resolution against `camera.format`, 48 kHz stereo audio, loudness and true peak, black or frozen
+head and tail, and manifest checksums. Every command takes `--out` (or `--report-dir`) so dry runs never
+touch the project. ffmpeg is found via `$FM_FFMPEG`, PATH, then `imageio_ffmpeg`; without ffprobe on PATH
+the probe parses `ffmpeg -i` and counts frames by a stream-copy decode.
 
 The steps are the task ids in [M6_SCOPE.md](M6_SCOPE.md) section 6.
 The core enforces what each command must leave behind (files, per-shot anim files, QA reports

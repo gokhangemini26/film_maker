@@ -33,7 +33,44 @@ LOCKED: 161, PROPOSED: 19
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
+| anim_sc01_sh010 | ANIMATION | PROPOSED | dc53fad91aca |
+| anim_sc01_sh020 | ANIMATION | PROPOSED | c8c08db05380 |
+| anim_sc01_sh030 | ANIMATION | PROPOSED | df664b64ea7b |
+| anim_sc01_sh040 | ANIMATION | PROPOSED | 8f24457ddf95 |
+| anim_sc01_sh050 | ANIMATION | PROPOSED | b2e2eabf5660 |
+| anim_sc01_sh060 | ANIMATION | PROPOSED | 906704ad57e4 |
+| anim_sc01_sh070 | ANIMATION | PROPOSED | 7a6c34a017e9 |
+| anim_sc01_sh080 | ANIMATION | PROPOSED | ac0d74c6a149 |
 | anim_sc01_sh090 | ANIMATION | PROPOSED | 442d53bf79bd |
+| anim_sc01_sh100 | ANIMATION | PROPOSED | b8a19e961e0c |
+| anim_sc01_sh110 | ANIMATION | PROPOSED | 8a13c4049246 |
+| anim_sc01_sh120 | ANIMATION | PROPOSED | 34790879054d |
+| anim_sc01_sh130 | ANIMATION | PROPOSED | a1e5c0faab7a |
+| anim_sc01_sh140 | ANIMATION | PROPOSED | 3b0f3771e3da |
+| anim_sc01_sh150 | ANIMATION | PROPOSED | 0e3351e4930a |
+| anim_sc02_sh010 | ANIMATION | PROPOSED | 9e55c3dd23b1 |
+| anim_sc02_sh020 | ANIMATION | PROPOSED | 96cc8711216f |
+| anim_sc02_sh030 | ANIMATION | PROPOSED | d73b879cbbbc |
+| anim_sc03_sh010 | ANIMATION | PROPOSED | f22f024f2948 |
+| anim_sc03_sh020 | ANIMATION | PROPOSED | a057b4f9a1a2 |
+| anim_sc03_sh030 | ANIMATION | PROPOSED | b5dccbcb1383 |
+| anim_sc03_sh040 | ANIMATION | PROPOSED | c4aae1e8e814 |
+| anim_sc03_sh050 | ANIMATION | PROPOSED | 2889673e4116 |
+| anim_sc03_sh060 | ANIMATION | PROPOSED | 6cef18e0a40a |
+| anim_sc03_sh070 | ANIMATION | PROPOSED | d7a54617f5ea |
+| anim_sc04_sh010 | ANIMATION | PROPOSED | 26a2f4c58345 |
+| anim_sc04_sh020 | ANIMATION | PROPOSED | 8176275c26f6 |
+| anim_sc04_sh030 | ANIMATION | PROPOSED | cb8e83d5c564 |
+| anim_sc04_sh040 | ANIMATION | PROPOSED | 6f8c6c78d164 |
+| anim_sc04_sh050 | ANIMATION | PROPOSED | ae12a78a1c11 |
+| anim_sc04_sh060 | ANIMATION | PROPOSED | d486db3a8bfc |
+| anim_sc04_sh070 | ANIMATION | PROPOSED | d99a29baf21d |
+| anim_sc04_sh080 | ANIMATION | PROPOSED | 83f2deba8eba |
+| anim_sc04_sh090 | ANIMATION | PROPOSED | 6a0aa664530a |
+| anim_sc05_sh010 | ANIMATION | PROPOSED | effb20845160 |
+| anim_sc05_sh020 | ANIMATION | PROPOSED | c9f225d98b14 |
+| anim_sc05_sh030 | ANIMATION | PROPOSED | 332df4b49851 |
+| anim_sc06_sh010 | ANIMATION | PROPOSED | a6fe35274df4 |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
@@ -123,37 +160,44 @@ LOCKED: 161, PROPOSED: 19
 - stale: artifact:g5_review
 - stale: artifact:preview_review
 - stale: qa:stills
+- stale: render:preview_SC01_SH010
 - stale: render:preview_SC01_SH020
 - stale: render:preview_SC01_SH030
+- stale: render:preview_SC01_SH040
 - stale: render:preview_SC01_SH050
+- stale: render:preview_SC01_SH060
 - stale: render:preview_SC01_SH070
 - stale: render:preview_SC01_SH080
 - stale: render:preview_SC01_SH090
+- stale: render:preview_SC01_SH100
+- stale: render:preview_SC01_SH110
 - stale: render:preview_SC01_SH120
+- stale: render:preview_SC01_SH130
 - stale: render:preview_SC01_SH140
+- stale: render:preview_SC01_SH150
+- stale: render:preview_SC02_SH010
+- stale: render:preview_SC02_SH020
+- stale: render:preview_SC02_SH030
+- stale: render:preview_SC03_SH010
+- stale: render:preview_SC03_SH020
+- stale: render:preview_SC03_SH030
+- stale: render:preview_SC03_SH040
+- stale: render:preview_SC03_SH050
 - stale: render:preview_SC03_SH060
+- stale: render:preview_SC03_SH070
+- stale: render:preview_SC04_SH010
 - stale: render:preview_SC04_SH020
 - stale: render:preview_SC04_SH030
+- stale: render:preview_SC04_SH040
 - stale: render:preview_SC04_SH050
 - stale: render:preview_SC04_SH060
 - stale: render:preview_SC04_SH070
 - stale: render:preview_SC04_SH080
 - stale: render:preview_SC04_SH090
-- stale: resolved:SC01_SH020
-- stale: resolved:SC01_SH030
-- stale: resolved:SC01_SH050
-- stale: resolved:SC01_SH070
-- stale: resolved:SC01_SH080
-- stale: resolved:SC01_SH120
-- stale: resolved:SC01_SH140
-- stale: resolved:SC03_SH060
-- stale: resolved:SC04_SH020
-- stale: resolved:SC04_SH030
-- stale: resolved:SC04_SH050
-- stale: resolved:SC04_SH060
-- stale: resolved:SC04_SH070
-- stale: resolved:SC04_SH080
-- stale: resolved:SC04_SH090
+- stale: render:preview_SC05_SH010
+- stale: render:preview_SC05_SH020
+- stale: render:preview_SC05_SH030
+- stale: render:preview_SC06_SH010
 - change awaiting decision: CHANGE-002
 - change awaiting decision: CHANGE-003
 - change awaiting decision: CHANGE-004

@@ -1,7 +1,27 @@
 {
-  "content_hash": "sha256:2bee3a04e7a8914bab0d6a5ee66a7b2b722d6f1c0e5eb6d0a1c9128ac62c24aa",
-  "created_at": "2026-09-29T21:49:09Z",
+  "content_hash": "sha256:788146a802a9979c2ef66f47a8fde875865c8be7bc547cb3571f4342606eaca4",
+  "created_at": "2026-09-30T14:32:41Z",
   "derived_from": [
+    {
+      "hash": "sha256:effb20845160e6824a1b5fd19a9890f2053bd3e595c568e873c4bd1755901fef",
+      "ref": "artifact:anim_sc05_sh010"
+    },
+    {
+      "hash": "sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101",
+      "ref": "canon:animation.vocab.ease"
+    },
+    {
+      "hash": "sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603",
+      "ref": "canon:animation.vocab.event_kind"
+    },
+    {
+      "hash": "sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26",
+      "ref": "canon:animation.vocab.prop_states"
+    },
+    {
+      "hash": "sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334",
+      "ref": "canon:animation.vocab.ui_event"
+    },
     {
       "hash": "sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea",
       "ref": "canon:camera.format"

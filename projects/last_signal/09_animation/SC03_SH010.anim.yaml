@@ -1,0 +1,167 @@
+fm:
+  id: anim_sc03_sh010
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC03_SH010
+    hash: sha256:973dab1732fa017ec1689768b6d6768d2b3ef90afb8267a4d20293b388cb70d2
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.anime_feel
+  summary: 'Structured tracks for the shop entry: quick run in under the camera, head snaps left / right,
+    locks on the socket corner at f10, down the west aisle, one quick drop to both knees f44-48.'
+  stamped_content_hash: sha256:f22f024f294890b02354faae10175d9930e40c40ced5792670c3e66651a063dc
+shot_id: SC03_SH010
+frames: 52
+vocab_version: 1
+rationale: 'Comic urgency in an orderly room: the scan is carried by eyeline snaps while the run continues
+  (no stop for a scan pose), then he commits to the aisle and drops to his knees in one move (characters.ren.movement
+  before_turn.kneel: one_quick_drop). The gravity ease on the kneel gives the drop weight and its small
+  forward settle. The final kneel is the pose SH050 freezes, so the two master frames differ only in the
+  light.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: run_phone_out
+      ease: hold
+      note: head and shoulders enter at the frame bottom, running (step on f0), phone and cable loop in
+        the left hand. f10-11 a 2-frame forward-lean anticipation as he spots the socket (no preset; carried
+        by the gait's acceleration); f12 accelerates down the west aisle; f36-43 braking steps, shorter
+        strides
+    - f: 44
+      ref: kneel_upright
+      ease: gravity
+      blend_f: 4
+      note: drops to both knees in one quick move f44-48, phone arm tucks to the chest; the gravity bounce
+        is the small forward settle f49-51. Knees down beside the stand, facing the back wall
+      rationale: one quick drop, weighted, not a knee slide (a stunt and a humiliation risk)
+    - f: 51
+      ref: kneel_upright
+      ease: hold
+      note: final hold, matched by SH020-SH050
+    move:
+      gait: run_phone_out
+      speed_mps: 4.2
+      path:
+      - f: 0
+        x: 1.3
+        y: 1.4
+      - f: 10
+        x: 1.6
+        y: 2.75
+      - f: 16
+        x: 2.1
+        y: 3.6
+      - f: 36
+        x: 2.2
+        y: 7.1
+      - f: 44
+        x: 2.2
+        y: 7.75
+      - f: 48
+        x: 2.2
+        y: 8.0
+      note: 'shop-local coords (x west, y depth south): enters under the camera at (1.3, 1.4), into the
+        west aisle, kneels at (2.2, 8.0). 6.8 m: about 3.3 m/s while scanning (f0-10), 3.9 into the aisle,
+        4.2 down it (f16-36), about 2 m/s braking (f36-44), 0.25 m in the drop (f44-48). The prose''s
+        4.0 m/s entry for f0-2 is folded into the first leg. Distance/time risk from the shot carried
+        over: this is a quick run (mean about 3.7 m/s), not a walk'
+    face:
+    - f: 0
+      ref: neutral
+      note: not readable (from above and behind)
+    look:
+    - f: 0
+      target: road_ahead
+      note: ahead into the shop as he enters
+    - f: 2
+      target: wall_left
+      note: head snaps left to scan the wall; body keeps running
+    - f: 6
+      target: wall_right
+      note: head snaps right
+    - f: 10
+      target: socket
+      note: head locks down the aisle on the socket corner (spots it) and stays there through the kneel
+      rationale: the snaps keep his burst-and-hold rhythm readable at 25 % of frame height without stopping
+    breath:
+    - f: 48
+      ref: out_slow
+      dur_f: 4
+      note: settles with the landing (f48-51)
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: left hand throughout; kneel_upright tucks that hand to the chest. Cable loop swings with the
+      stride and falls slack on the kneel (posed, no cable prop in vocabulary v1)
+events:
+- f: 0
+  id: entry_step
+  kind: sound
+  note: step on f0 as he enters under the camera (further steps every 6 frames come from the gait)
+- f: 2
+  id: head_snap_left
+  kind: visual
+  note: scans the left wall
+- f: 6
+  id: head_snap_right
+  kind: visual
+  note: scans the right wall
+- f: 10
+  id: spots_socket
+  kind: visual
+  note: eyes lock on the socket corner; 2-frame anticipation f10-11
+- f: 36
+  id: brake_steps
+  kind: sound
+  note: braking steps begin, shorter strides (f36-43)
+- f: 44
+  id: knee_drop
+  kind: visual
+  note: the one quick drop begins
+- f: 48
+  id: knees_land
+  kind: sound
+  note: both knees down beside the stand
+preview_frames:
+- 0
+- 10
+- 36
+- 44
+- 48
+- 51
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'Secondary motion with no track in vocabulary v1: jacket hem swings, flares on the drop and settles
+  by f51; cable loop swings with the stride and falls slack on the kneel.'
+- 'Camera locked off: the same frame is reused for the blackout (SC03_SH050).'

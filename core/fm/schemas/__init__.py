@@ -5,6 +5,7 @@ from .artifacts import (  # noqa: F401
     Environment, ShotCharacter, ShotRationale, ShotSpec, StyleBreak,
 )
 from .animation import AnimationTracks, anim_artifact_id, anim_path  # noqa: F401
+from .audio import AUDIO_CUES_ID, AUDIO_CUES_PATH, AudioCues  # noqa: F401
 from .canon import (  # noqa: F401
     CHANGEABLE_FIELDS, DOMAINS, RATIONALE_REQUIRED_DOMAINS, CanonEntry, CanonFile, HistoryItem,
 )
@@ -27,4 +28,5 @@ EXPORTED = {
     "change_request": ChangeRequest,
     "derived_record": DerivedRecord,
     "anim": AnimationTracks,
+    "audio_cues": AudioCues,
 }

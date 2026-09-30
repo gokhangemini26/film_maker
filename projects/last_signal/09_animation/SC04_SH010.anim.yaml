@@ -1,0 +1,165 @@
+fm:
+  id: anim_sc04_sh010
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC04_SH010
+    hash: sha256:86660ae172a141b63b4cfe45f1699051822606d3152f9a0e01774d5c74cff776
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.passenger_door
+    hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  - intent.open_hopeful_ending
+  - intent.anime_feel
+  summary: 'The quiet bookend: one hunched pose, one slow breath cycle, one tired blink, an irregular
+    1 % flicker.'
+  stamped_content_hash: sha256:26a2f4c58345a620dab507fd7f1827646143bfc616067bf50bc35dd44172b83c
+shot_id: SC04_SH010
+frames: 46
+vocab_version: 1
+rationale: 'The film goes quiet in the body first: one preset held for the whole shot, a 2 s breath cycle
+  and one tired blink as the only motion, and the irregular flicker as the only moving light (shot rationale).
+  No freeze-sag-reset and no big sigh: the comic register is over. The pose is the ''before'' SC06_SH010
+  is measured against, so it is one clean, held body configuration.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kerb_hunch
+      ease: hold
+      note: forearms loose over the knees, phone in both hands low between the knees, neck forward (the
+        '?' silhouette); held the whole shot, no reset, no fidget
+      rationale: 'one preset: the stillness is the change of film'
+    move:
+      gait: none
+      note: seated on the kerb, knees up, back to the car
+    face:
+    - f: 0
+      ref: neutral
+      note: 'tired: brows level and low, mouth line soft; not a comic expression'
+      rationale: 'neutral, not letdown: the comic set would restart the gag cycle'
+    look:
+    - f: 0
+      target: phone
+      note: down on the phone throughout
+    - f: 30
+      target: closed
+      note: one slow, tired blink f30-35
+    - f: 36
+      target: phone
+      note: eyes reopen on the phone
+    breath:
+    - f: 0
+      ref: in_slow
+      dur_f: 22
+      note: 'f0-21: shoulders rise 1 cm, ease-in-out'
+    - f: 22
+      ref: out_slow
+      dur_f: 22
+      note: 'f22-43: shoulders fall 1 cm; f44-45 still'
+props:
+  phone_ren:
+  - f: 0
+    attach: hands_both
+    note: both hands, low between the knees; screen from ui_timeline
+    rationale: 'changes from hand_l at the end of SC03_SH070 across the scene gap: ten minutes later he
+      has sat down on the kerb with it in both hands (SC04 narrative_purpose)'
+  passenger_door:
+  - f: 0
+    state: open_60
+    note: open 60 deg, still (continuity.props.passenger_door SC04)
+  glovebox_lid:
+  - f: 0
+    state: closed
+    note: closed; not readable from this lens
+  crank_charger:
+  - f: 0
+    loc: glovebox
+    arm: folded
+    pip: 0.0
+    note: in the closed glovebox, not visible
+  car_body:
+  - f: 0
+    state: still
+    note: 'the car is dead: no tremble'
+ui_timeline:
+- f: 7
+  event: dip
+  value: 0.7
+  dur_f: 2
+  note: irregular 1 % flicker, dip 1 (f7-8); glow on face and hands dips with it
+- f: 19
+  event: dip
+  value: 0.7
+  dur_f: 3
+  note: dip 2 (f19-21)
+- f: 38
+  event: dip
+  value: 0.7
+  dur_f: 2
+  note: dip 3 (f38-39)
+holds:
+- f0: 0
+  f1: 45
+  scope: body
+  character: ren
+  note: 'no pose change: breath and blink only'
+  rationale: 'the quiet is the beat (shot rationale: no reset, no fidget)'
+events:
+- f: 7
+  id: flicker_dip_1
+  kind: light
+  note: screen to 70 % f7-8
+- f: 19
+  id: flicker_dip_2
+  kind: light
+  note: screen to 70 % f19-21
+- f: 30
+  id: tired_blink
+  kind: visual
+  note: eyes close f30-35
+- f: 38
+  id: flicker_dip_3
+  kind: light
+  note: screen to 70 % f38-39
+preview_frames:
+- 0
+- 20
+- 32
+- 45
+notes:
+- Prose brief stays in the shot file's animation block (untouched). No sound_sync line in the shot; the
+  flicker dips are light events audio may ignore or bind.

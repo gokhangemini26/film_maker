@@ -1,0 +1,143 @@
+fm:
+  id: anim_sc01_sh150
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH150
+    hash: sha256:af1a53ec2a14aca104b184d76237a0fdb68bd1a907f85164c6f1c8db6a9ce518
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  summary: 'Defeat played small: a 6-frame held freeze, an 18-frame ease-in-out lower onto the wheel rim,
+    one out-breath, held 12 frames to the hard cut.'
+  stamped_content_hash: sha256:0e3351e4930ad05ade6c1858c02c9df7a5de3af373ea15bf4e31a14a8c332362
+shot_id: SC01_SH150
+frames: 36
+vocab_version: 1
+rationale: 'The only slow fall in the comedy: 18 frames of ease_in_out onto a soft contact on the rim
+  (never the horn pad, no bounce - a honk or a bump would turn sympathy into a bigger gag), then one out-breath
+  and a 12-frame hold to the cut. The face is hidden on the rim (characters.ren.expressions face_hidden_beats
+  forehead_on_wheel_SC01); the tuft stays upright, a small stubborn flag for the reset in SC02.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_upright
+      ease: hold
+      note: 'upright, both hands on the top of the wheel (phone in the left hand against the rim), staring
+        ahead: a held freeze f0-5; >= 10 deg recline or forward lean under the 1.40 m headliner'
+    - f: 6
+      ref: car_forehead_wheel
+      ease: ease_in_out
+      blend_f: 18
+      note: neck bends, spine curls; forehead meets the top of the wheel rim (not the horn pad) at f24,
+        soft contact, no bounce
+      rationale: slow and small is defeat; fast would be manic
+    - f: 24
+      ref: car_forehead_wheel
+      ease: hold
+      note: resting on the rim; shoulders sag 1.5 cm on one out-breath f26-30 (breath track); held to
+        the cut
+    move:
+      gait: none
+    face:
+    - f: 0
+      ref: freeze
+      note: eyes open, brows flat
+    - f: 16
+      ref: letdown
+      note: eyes close on the way down; face hidden from f24
+    look:
+    - f: 0
+      target: road_ahead
+      note: ahead through the windscreen f0-15
+    - f: 16
+      target: closed
+    breath:
+    - f: 26
+      ref: out_long
+      dur_f: 5
+      note: shoulders sag 1.5 cm on one out-breath f26-30 (out_long is 2-3 cm; use the small end)
+props:
+  car_body:
+  - f: 0
+    state: still
+    note: dead still
+  dash_lights_and_adapter_ring:
+  - f: 0
+    state: 'off'
+    note: dash dark (engine died in SH130)
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: in the left hand against the rim; glow invisible in the sun
+  passenger_door:
+  - f: 0
+    state: closed
+    ease: hold
+    note: wild for the camera; closed and still to the hard cut (last SC01 shot, end state for the SC01
+      -> SC02 chain)
+    rationale: 'continuity.props.passenger_door SC01: closed. The door stays shut through the held defeat;
+      it opens across the elliptical cut into SC02_SH010 (see the rationale on that shot''s f0 door key),
+      so this shot must not start the swing'
+holds:
+- f0: 0
+  f1: 5
+  scope: all
+  min_f: 6
+  note: held freeze before the fall
+- f0: 24
+  f1: 35
+  scope: body
+  character: ren
+  min_f: 12
+  note: forehead on the rim, held to the hard cut (only the breath moves the shoulders f26-30)
+  rationale: the storyboard asks the last 12 frames held
+events:
+- f: 6
+  id: head_lower
+  kind: visual
+- f: 16
+  id: eyes_close
+  kind: visual
+- f: 24
+  id: forehead_contact
+  kind: sound
+  note: soft contact on the rim, no horn, no thud (so audio knows to stay silent here)
+- f: 26
+  id: out_breath
+  kind: sound
+  note: soft out-breath
+preview_frames:
+- 0
+- 6
+- 16
+- 24
+- 28
+- 35
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'Tuft stays upright as the head goes down, 1-frame lag, no droop (VOCAB GAP: no tuft track).'

@@ -1,0 +1,110 @@
+fm:
+  id: anim_sc03_sh070
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC03_SH070
+    hash: sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  summary: 'Structured tracks for the stunned stillness: a true 28-frame hold, one slow 12-frame blink
+    f28-39, held to the cut.'
+  stamped_content_hash: sha256:d7a54617f5ea012a7707445f09cdf7cba664d41b6ddd5f7999463728e5af449a
+shot_id: SC03_SH070
+frames: 48
+vocab_version: 1
+rationale: '"He doesn''t move" taken literally: one pose, one face, breath held for the whole shot (no
+  breathing idle), two asserted holds (f0-27, the longest comic hold, and f40-47 to the cut). The only
+  change is one slow blink at about 1.2 s, the hinge from funny to a little sad that hands the film to
+  the tender half.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kneel_upright
+      ease: hold
+      note: kneeling, face lit from below, phone and hands at the frame bottom; the pose never changes
+      rationale: a sigh or a head drop would resolve the hold and give him a reset he no longer makes
+    face:
+    - f: 0
+      ref: stunned_stillness
+      note: brows lifted, eyes down on the phone, mouth flat; the blink is the only change; no graphic
+        symbols
+    look:
+    - f: 0
+      target: phone
+      note: the phone, unchanged
+    - f: 28
+      target: closed
+      note: 'one slow blink: lids close ease-in f28-31, closed f32-33. Head and eyeline must not move:
+        this key is a lid change only (no blink / lid track with ease and duration in vocabulary v1; see
+        gaps)'
+    - f: 34
+      target: phone
+      note: lids open slowly (ease-out, f34-39) to the same stunned eyes on the phone
+    breath:
+    - f: 0
+      ref: hold
+      dur_f: 48
+      note: true hold, no breath and no drift, for the whole shot (the prose names f0-27; a breathing
+        idle is rejected)
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: 2 %, screen steady (no flicker until 1 %); the glow on his face is constant. Right hand rests
+      near it at the frame bottom (the kneel_upright tuck); continuity keeps the phone in the left hand
+holds:
+- f0: 0
+  f1: 27
+  scope: all
+  min_f: 28
+  note: 'true hold f0-27 (28 frames): no breath, no drift'
+  rationale: the longest comic hold (2.0 s shot minimum)
+- f0: 40
+  f1: 47
+  scope: all
+  min_f: 8
+  note: held to the cut after the blink (f40-47); hard cut to the dusk kerb
+events:
+- f: 28
+  id: slow_blink
+  kind: visual
+  note: lids begin to close (ease-in, f28-31)
+- f: 34
+  id: blink_open
+  kind: visual
+  note: lids begin to open (ease-out, f34-39)
+preview_frames:
+- 0
+- 30
+- 36
+- 47
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'The prose calls the blink "12-frame" (f28-39): close 4, closed 2, open 6.'

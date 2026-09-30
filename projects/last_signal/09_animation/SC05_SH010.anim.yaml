@@ -1,0 +1,74 @@
+fm:
+  id: anim_sc05_sh010
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC05_SH010
+    hash: sha256:ca697fb6681d099dddf3be0b8126b615fb84abfee75495b95672debdc91a0413
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.hana.headphones
+    hash: sha256:00dc5293c2843c67e26e1b1a163b027eb1d134338a1ac0927ef2f552bd4dd106
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.open_hopeful_ending
+  - intent.earned_last_signal
+  summary: 'Hana''s phone on the desk: two dark frames, a 3-frame wake, his photo settles 96 -> 100 %
+    f2-5, held still.'
+  stamped_content_hash: sha256:effb20845160e6824a1b5fd19a9890f2053bd3e595c568e873c4bd1755901fef
+shot_id: SC05_SH010
+frames: 24
+vocab_version: 1
+rationale: The cut on light lands on dark glass and her screen wakes just after it, so the amber tick
+  hands over to a new light being born. The only motion is the wake and a tiny settle of his photo; the
+  phone does not buzz or move, because she notices the light, not a sound.
+props:
+  phone_hana:
+  - f: 0
+    attach: desk
+    note: face up right of the sketchbook; no vibration, no shift
+  hana_headphones:
+  - f: 0
+    state: head
+    note: not in frame; on her head (continuity SC05_start on_head)
+ui_timeline:
+- f: 2
+  event: photo_scale
+  phone: hana
+  from_pct: 96
+  to_pct: 100
+  dur_f: 4
+  note: his circular photo, no name, scales 96 -> 100 % over f2-5 (ease-out), then still; canon row carries
+    the wake (off f0-1, brightness 0 -> 1.0 by f4, ease-out)
+holds:
+- f0: 5
+  f1: 23
+  scope: phone
+  min_f: 19
+  note: photo held still f5-23 (19 frames)
+  rationale: 'insert legibility: his photo must read'
+events:
+- f: 2
+  id: screen_wake
+  kind: light
+  note: 'the wake: the new light after the cut on light'
+- f: 5
+  id: photo_settled
+  kind: state
+preview_frames:
+- 0
+- 3
+- 12
+- 23
+notes:
+- No characters in the shot. Sketchbook corner and pencil at the frame edge are static set dressing; no
+  pencil key here because the pencil's hand state is not shown (SC05_SH020 f0 starts it held).

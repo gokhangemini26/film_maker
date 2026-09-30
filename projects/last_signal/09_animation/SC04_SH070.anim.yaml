@@ -1,0 +1,106 @@
+fm:
+  id: anim_sc04_sh070
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC04_SH070
+    hash: sha256:67f88a2f736aaea3af5d3606e06326f4a4a1cad97295d127bb5c14e64ff76f31
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:look.lighting.power_indicators
+    hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.earned_last_signal
+  - intent.race_against_battery
+  summary: 'Battery insert: 1 % to 2 % in one frame at f2, blink stops, held 24 f; ratchet top at f4.'
+  stamped_content_hash: sha256:d99a29baf21db2e2aff25629e8f3e0c9479fd73fc7f80309199f9222abd07089
+shot_id: SC04_SH070
+frames: 26
+vocab_version: 1
+rationale: The first gain changes as quietly as every loss did, in one frame, so the audience does the
+  celebrating; the icon stops blinking with it and the ratchet (derived handle_top at f4) keeps time underneath,
+  so the gain is caused by his hand. Nothing in the frame moves except the digit.
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kerb_crank_hold
+      ease: hold
+      note: 'off frame (insert): clamped-high cranking base: crank lying across between the tops of his
+        knees (top face ~z 0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left
+        hand ~z 0.76 over the near knee beside the port end. Closest preset is kerb_crank_hold (crank
+        in the lap in both hands); the clamp is a vocabulary gap; right hand keeps cranking'
+    move:
+      gait: crank_turn
+      first_top_f: 4
+      note: already turning; top at f4 (SC04_SH060 top at f48 + 24 = its f72)
+    face:
+    - f: 0
+      ref: focused_calm
+      note: off frame
+    look:
+    - f: 0
+      target: phone
+      note: off frame
+    breath:
+    - f: 0
+      ref: crank_locked
+      dur_f: 26
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: no hand in frame; phone still
+  crank_charger:
+  - f: 0
+    loc: lap
+    arm: unfolded
+    pip: 1.0
+    note: off frame, turning
+holds:
+- f0: 2
+  f1: 25
+  scope: all
+  min_f: 24
+  note: 2 % held f2-25 (24 frames, minimum 24); nothing moves in frame
+  rationale: the stillness is the calm (camera.inserts legibility)
+events:
+- f: 2
+  id: pct_to_2
+  kind: state
+  note: 1 % -> 2 % in one frame; icon stops blinking; bolt on throughout (canon row)
+preview_frames:
+- 0
+- 6
+- 25
+notes:
+- 'No ui events: the canon row carries the pct/blink change at f2. No UI sound (shot sound_sync).'
+- preview_frame 6 (shot) is the designated still.

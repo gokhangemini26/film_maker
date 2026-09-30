@@ -1,0 +1,166 @@
+fm:
+  id: anim_sc01_sh060
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH060
+    hash: sha256:a137c047da23405b913fc34b40d27682f1b503d685cd844ddf1fd6d74738257d
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.passenger_door
+    hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  summary: 'First freeze-sag-reset: held breath out, sag with weight, 9-frame held sag, dip, sit-up burst
+    with a small overshoot, resolve held.'
+  stamped_content_hash: sha256:906704ad57e46c40068a106dd5bf49c72eaeac5902ca08835f3e72ec76ad2367
+shot_id: SC01_SH060
+frames: 34
+vocab_version: 1
+rationale: 'The first full freeze-sag-reset (characters.ren.movement setback_pattern): the sag falls with
+  weight (ease_in), holds 9 frames so the letdown is felt, and the reset is one upward burst with a single
+  small overshoot (overshoot_small) - "tries again anyway" (tone.comedy_source). The sit-up lands into
+  the mild low angle so lens and body say the same thing.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_phone_up
+      ease: hold
+      note: 'matches SH040''s end: phone at chest, cheeks full, eyes on the phone (the freeze carried
+        through the ring)'
+    - f: 3
+      ref: car_sag
+      ease: ease_in
+      blend_f: 6
+      note: 'sag: phone drops toward his lap, screen away from us; shoulders fall, head drops forward
+        (falls with weight); lands f9'
+      rationale: ease_in so the fall accelerates into the seat like weight, not a slide
+    - f: 9
+      ref: car_sag
+      ease: hold
+      note: 'sag landed: phone on his lap, shoulders down 3 cm; held, nothing moves f9-17'
+    - f: 18
+      ref: car_sag
+      ease: ease_in
+      blend_f: 2
+      note: 'anticipation: body dips 1 cm, eyes flick up, brows go level and knit (VOCAB GAP: the 1 cm
+        dip is not a preset; same preset keyed so the builder has the beat)'
+    - f: 20
+      ref: car_phone_up
+      ease: overshoot_small
+      blend_f: 7
+      note: 'reset: sits up straight in one burst, phone up in both hands to face distance, elbows tucked,
+        neck forward; 1 cm upward overshoot about f25, settled f27'
+      rationale: one overshoot is persistence; a bigger bounce would read manic
+    - f: 27
+      ref: car_phone_up
+      ease: hold
+      note: 'settled: thumbs poised over the screen, brows knit, mouth pressed; held to the cut'
+    move:
+      gait: none
+    face:
+    - f: 0
+      ref: rehearsed_breath
+      note: cheeks full from SH040, deflate f2-3
+    - f: 9
+      ref: letdown
+      note: inner brows up, mouth flat, f9-17
+    - f: 18
+      ref: neutral
+      note: 'brows level and knit, mouth pressed: resolve. VOCAB GAP - no "resolve" face in the comic
+        set; neutral is the closest legal ref'
+    look:
+    - f: 0
+      target: phone
+      note: follows the phone down to the lap on the sag
+    - f: 18
+      target: road_ahead
+      note: eyes flick up (anticipation), 2 frames
+    - f: 20
+      target: phone
+      note: snaps back to the phone at face height on the reset
+    breath:
+    - f: 2
+      ref: out_slow
+      dur_f: 2
+      note: 'cheeks deflate: the held breath from SH040 goes out (2 f)'
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: CONFLICT flagged - prose says "phone at chest in both hands" at f0 but SH040 ends with the phone
+      in the left hand and the right thumb hovering; kept hand_l so the cut chains; the right hand is
+      close to the phone
+  - f: 20
+    attach: hands_both
+    note: phone comes up in both hands on the reset (continuity.props.phone_ren SC01 grip two_hands_typing)
+  passenger_door:
+  - f: 0
+    state: closed
+    note: wild for the camera (camera clip / visibility off); state stays closed for continuity
+holds:
+- f0: 9
+  f1: 17
+  scope: body
+  character: ren
+  min_f: 9
+  note: held sag, nothing moves
+  rationale: the letdown needs time to land before the reset
+- f0: 27
+  f1: 33
+  scope: body
+  character: ren
+  note: resolve held to the cut
+events:
+- f: 2
+  id: held_breath_out
+  kind: sound
+  note: cheeks deflate, the breath held since SH040 goes out
+- f: 9
+  id: sag_land
+  kind: visual
+- f: 18
+  id: reset_anticipation
+  kind: visual
+- f: 20
+  id: reset_burst
+  kind: visual
+  note: sit-up begins
+- f: 27
+  id: reset_settled
+  kind: visual
+preview_frames:
+- 0
+- 3
+- 9
+- 18
+- 20
+- 25
+- 33
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'Secondary without tracks: jacket fronts swing forward on the sag (skinning only); tuft dips with the
+  head and lifts with the reset, 1-frame lag (VOCAB GAP: no tuft track).'

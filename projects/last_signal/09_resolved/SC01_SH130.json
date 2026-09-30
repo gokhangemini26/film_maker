@@ -458,6 +458,218 @@
       }
     }
   },
+  "motion": {
+    "camera": {
+      "move": "none"
+    },
+    "characters": {
+      "ren": {
+        "breath": [
+          {
+            "dur_f": 17,
+            "f": 4,
+            "f_abs": 430,
+            "ref": "out_long"
+          }
+        ],
+        "face": [
+          {
+            "f": 0,
+            "f_abs": 426,
+            "ref": "neutral"
+          },
+          {
+            "f": 6,
+            "f_abs": 432,
+            "ref": "relief"
+          }
+        ],
+        "look": [
+          {
+            "f": 0,
+            "f_abs": 426,
+            "target": "dash"
+          },
+          {
+            "f": 8,
+            "f_abs": 434,
+            "target": "closed"
+          }
+        ],
+        "move": {
+          "gait": "none",
+          "path": []
+        },
+        "pose": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 426,
+            "ref": "car_upright"
+          },
+          {
+            "blend_f": 11,
+            "ease": "ease_in_out",
+            "f": 1,
+            "f_abs": 427,
+            "ref": "car_recline"
+          },
+          {
+            "ease": "hold",
+            "f": 12,
+            "f_abs": 438,
+            "ref": "car_recline"
+          }
+        ]
+      }
+    },
+    "events": [
+      {
+        "f": 4,
+        "f_abs": 430,
+        "id": "relieved_breath",
+        "kind": "sound",
+        "source": "anim"
+      },
+      {
+        "f": 6,
+        "f_abs": 432,
+        "id": "eyes_close",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 22,
+        "f_abs": 448,
+        "id": "engine_sigh",
+        "kind": "sound",
+        "source": "anim"
+      },
+      {
+        "f": 26,
+        "f_abs": 452,
+        "id": "shudder",
+        "kind": "sound",
+        "source": "anim"
+      },
+      {
+        "f": 32,
+        "f_abs": 458,
+        "id": "bolt_off",
+        "kind": "state",
+        "source": "anim"
+      },
+      {
+        "f": 32,
+        "f_abs": 458,
+        "id": "charge_dip_start",
+        "kind": "state",
+        "source": "anim"
+      },
+      {
+        "f": 32,
+        "f_abs": 458,
+        "id": "dash_off",
+        "kind": "light",
+        "source": "anim"
+      },
+      {
+        "f": 32,
+        "f_abs": 458,
+        "id": "stall",
+        "kind": "sound",
+        "source": "anim"
+      }
+    ],
+    "frame_start": 426,
+    "frames": 34,
+    "holds": [
+      {
+        "character": "ren",
+        "f0": 12,
+        "f1": 33,
+        "scope": "body"
+      },
+      {
+        "character": "ren",
+        "f0": 8,
+        "f1": 33,
+        "scope": "face"
+      }
+    ],
+    "preview_frames": [
+      0,
+      1,
+      12,
+      22,
+      26,
+      32,
+      33
+    ],
+    "props": {
+      "car_body": [
+        {
+          "f": 0,
+          "f_abs": 426,
+          "state": "idle_tremble"
+        },
+        {
+          "dur_f": 5,
+          "f": 22,
+          "f_abs": 448,
+          "state": "sigh_sink"
+        },
+        {
+          "dur_f": 6,
+          "f": 26,
+          "f_abs": 452,
+          "state": "stall_shudder"
+        },
+        {
+          "f": 32,
+          "f_abs": 458,
+          "state": "still"
+        }
+      ],
+      "dash_lights_and_adapter_ring": [
+        {
+          "f": 0,
+          "f_abs": 426,
+          "state": "on"
+        },
+        {
+          "ease": "step",
+          "f": 32,
+          "f_abs": 458,
+          "state": "off"
+        }
+      ],
+      "glovebox_lid": [
+        {
+          "f": 0,
+          "f_abs": 426,
+          "state": "closed"
+        }
+      ],
+      "passenger_door": [
+        {
+          "f": 0,
+          "f_abs": 426,
+          "state": "closed"
+        }
+      ],
+      "phone_ren": [
+        {
+          "attach": "hand_l",
+          "f": 0,
+          "f_abs": 426
+        }
+      ]
+    },
+    "schema": "fm.motion/1",
+    "source": "artifact:anim_sc01_sh130",
+    "vocab_version": 1
+  },
   "provenance": {
     "canon": [
       "characters.ren.expressions",
@@ -483,7 +695,529 @@
     ]
   },
   "scene_id": "SC01",
-  "schema": "fm.resolved_shot/1",
+  "schema": "fm.resolved_shot/2",
   "sequence_id": "SQ01",
-  "shot_id": "SC01_SH130"
+  "shot_id": "SC01_SH130",
+  "ui_timeline": {
+    "colours": {
+      "charcoal": "#2B303B",
+      "red": "#E5483B"
+    },
+    "frames": [
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 0,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 1,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 2,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 3,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 4,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 5,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 6,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 7,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 8,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 9,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 10,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 11,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 12,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 13,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 14,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 15,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 16,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 17,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 18,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 19,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 20,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 21,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 22,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 23,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 24,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 25,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 26,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 27,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 28,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 29,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 30,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": true,
+        "brightness": 1.0,
+        "colour": "red",
+        "f": 31,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 32,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 0.7,
+        "colour": "red",
+        "f": 33,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 4,
+        "phone": "ren",
+        "red": true,
+        "typing": false,
+        "ui": "compose"
+      }
+    ],
+    "phone": "ren",
+    "schema": "fm.ui_timeline/1",
+    "source": "canon:look.style.phone_screen.states_by_shot",
+    "warnings": []
+  }
 }

@@ -1,0 +1,206 @@
+fm:
+  id: anim_sc04_sh060
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC04_SH060
+    hash: sha256:53725e73fca8f4ceb492885de7d27ee94ef5c956aae3754b2743d8684e3306b4
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:look.lighting.power_indicators
+    hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.race_against_battery
+  - intent.open_hopeful_ending
+  - intent.earned_last_signal
+  summary: One thumb finishes 'My treat.', adds the heart, looks at it 12 f, drifts to backspace, hovers
+    14 f, deletes it; ratchet heard at f0/24/48.
+  stamped_content_hash: sha256:d486db3a8bfcfd9b71a7df5b7639b199d48e5156ee53cc575879d943ae0feca6
+shot_id: SC04_SH060
+frames: 68
+vocab_version: 1
+rationale: 'The most tender beat is carried by one thumb because his face is not in the shot: the canon''s
+  hesitation at the heart becomes a thumb that stops and looks (12 f), drifts to delete and hovers perfectly
+  still (14 f) before it presses (characters.ren.expressions hesitation_at_heart). Words arrive by a slow
+  glide, not taps. The crank is heard, not seen: the crank_turn phase from SC04_SH050 drives the clicks
+  at f0, f24 and f48.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kerb_crank_hold
+      ease: hold
+      note: 'off frame (insert): clamped-high cranking base: crank lying across between the tops of his
+        knees (top face ~z 0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left
+        hand ~z 0.76 over the near knee beside the port end. Closest preset is kerb_crank_hold (crank
+        in the lap in both hands); the clamp is a vocabulary gap; right hand keeps cranking'
+    move:
+      gait: crank_turn
+      first_top_f: 0
+      note: 'already turning; handle tops at f0, f24, f48 (phase from SC04_SH050: top at its f56 + 24)'
+    face:
+    - f: 0
+      ref: focused_calm
+      note: off frame
+    - f: 22
+      ref: hesitation_at_heart
+      note: off frame; the thumb stopping over the heart carries it
+    - f: 56
+      ref: focused_calm
+      note: off frame; after the delete
+    look:
+    - f: 0
+      target: phone
+      note: off frame; implied on the text, then the heart
+    breath:
+    - f: 0
+      ref: crank_locked
+      dur_f: 68
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: locked to the frame for legibility
+  crank_charger:
+  - f: 0
+    loc: lap
+    arm: unfolded
+    pip: 1.0
+    note: off frame, turning
+ui_timeline:
+- f: 0
+  event: text
+  line: 3
+  chars: 0
+  dur_f: 1
+  note: line 3 empty; lines 1-2 already typed (canon row compose_3_lines)
+- f: 0
+  event: key_press
+  key: any
+  dur_f: 6
+  note: glided keys darken along the thumb path for 'My' f0-5
+- f: 6
+  event: text
+  line: 3
+  chars: 2
+  dur_f: 1
+  note: '''My'' appears on f6 as the thumb lifts'
+- f: 7
+  event: key_press
+  key: any
+  dur_f: 6
+  note: glide for 'treat' f7-12
+- f: 13
+  event: key_press
+  key: any
+  dur_f: 1
+  note: tap on '.'
+- f: 13
+  event: text
+  line: 3
+  chars: 9
+  dur_f: 1
+  note: '''My treat.'' complete on f13 (last word)'
+- f: 20
+  event: key_press
+  key: emoji
+  dur_f: 2
+  note: emoji-face key darkens f20-21
+- f: 21
+  event: heart
+  dur_f: 34
+  note: red heart f21-54 (canon row compose_3_lines_heart_f21_54)
+- f: 54
+  event: key_press
+  key: backspace
+  dur_f: 2
+  note: backspace darkens f54-55; heart gone on f55
+holds:
+- f0: 14
+  f1: 19
+  scope: phone
+  min_f: 6
+  note: thumb lifts and hovers above the keys, still (the pause)
+- f0: 22
+  f1: 33
+  scope: phone
+  min_f: 12
+  note: 'thumb lifted 5 mm and still: he looks at the heart'
+  rationale: the hesitation read in a still thumb
+- f0: 40
+  f1: 53
+  scope: phone
+  min_f: 14
+  note: thumb hovers just above backspace, completely still, no tremble
+  rationale: the longest stillness in the insert; a tremble would be melodrama (tone.anti_goals)
+events:
+- f: 6
+  id: word_my
+  kind: state
+- f: 13
+  id: word_treat
+  kind: state
+  note: last word typed; text held f14-67 (54 f, minimum 48)
+- f: 20
+  id: emoji_press
+  kind: state
+- f: 21
+  id: heart_on
+  kind: state
+- f: 34
+  id: thumb_to_backspace
+  kind: visual
+  note: slow ease-in-out drift f34-40
+- f: 54
+  id: backspace_press
+  kind: state
+- f: 55
+  id: heart_off
+  kind: state
+  note: plain text alone f55-67 (13 f, minimum 12)
+preview_frames:
+- 0
+- 13
+- 21
+- 44
+- 54
+- 67
+notes:
+- 'Thumb path (no vocabulary for it): on keys f0; glide ''My'' f0-5, lift f6; glide ''treat'' f7-12, tap
+  ''.'' f13; hover f14-19; press emoji f20-21; lift 5 mm f22-33; drift to backspace f34-40 (ease-in-out);
+  hover f40-53; press f54-55; leaves downward, below frame by f62. Never over the text line.'
+- Legibility holds on the text (f14-67 >= 48 f; plain text f55-67 >= 12 f) are not expressible as a hold
+  scope while the thumb moves (gap); they are met by the ui events above.
+- preview_frame 44 (shot) is the designated still.

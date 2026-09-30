@@ -1,7 +1,43 @@
 {
-  "content_hash": "sha256:2ee28e7129cde550d271daee1aef383b7c1ef885d8498f36526af1b8d78951f9",
-  "created_at": "2026-09-29T21:49:09Z",
+  "content_hash": "sha256:280277c6bbe61775a73ee4ca60410f519e697c1cf9aade432dc6c18169c07d8f",
+  "created_at": "2026-09-30T14:32:41Z",
   "derived_from": [
+    {
+      "hash": "sha256:6a0aa664530aa1c404ab43e55f0274d0eb8996c6886ecb9842509de3ac6163f6",
+      "ref": "artifact:anim_sc04_sh090"
+    },
+    {
+      "hash": "sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b",
+      "ref": "canon:animation.vocab.breath"
+    },
+    {
+      "hash": "sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101",
+      "ref": "canon:animation.vocab.ease"
+    },
+    {
+      "hash": "sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603",
+      "ref": "canon:animation.vocab.event_kind"
+    },
+    {
+      "hash": "sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958",
+      "ref": "canon:animation.vocab.face"
+    },
+    {
+      "hash": "sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b",
+      "ref": "canon:animation.vocab.gait"
+    },
+    {
+      "hash": "sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2",
+      "ref": "canon:animation.vocab.look_target"
+    },
+    {
+      "hash": "sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8",
+      "ref": "canon:animation.vocab.pose.ren"
+    },
+    {
+      "hash": "sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26",
+      "ref": "canon:animation.vocab.prop_states"
+    },
     {
       "hash": "sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea",
       "ref": "canon:camera.format"
@@ -227,7 +263,7 @@
       "ref": "canon:world.sets.street"
     },
     {
-      "hash": "sha256:b7888d4f125f9cbbce72ed678b3afda050d6530f255306ccb455829ada12088f",
+      "hash": "sha256:ba37458305d5c99080be0a44998f4f3680a91d45b3f9a2c2106e97e19ae494d8",
       "ref": "shot:SC04_SH090"
     }
   ],

@@ -1,0 +1,278 @@
+fm:
+  id: anim_sc04_sh050
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC04_SH050
+    hash: sha256:ac63b166dbc778b4b8bcf2712e1fb00f0ab9e003b97dfc6c5873185082001a1d
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:look.lighting.power_indicators
+    hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:camera.movement.push_in
+    hash: sha256:b2116094133cd8c9d9331d429d13d6259b58acde02cf25587f7163b9cdc4f092
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  summary: Plug, unfold (2-frame hinge stiffness), first turn at f30 with the push-in and the light steadying,
+    first ratchet top at f56, one-thumb glide typing.
+  stamped_content_hash: sha256:ae12a78a1c1156f9cbf530bf809be8c650a740fc702b52817fe03041440940cb
+shot_id: SC04_SH050
+frames: 80
+vocab_version: 1
+rationale: 'Tenderness through effort: plug, unfold, turn, each finished before the next, then one turn
+  per second with his breath locked to the handle (characters.ren.movement). The last flicker dip ends
+  at f27 and the light holds from the first turn at f30, the frame the push starts, so light, lens and
+  effort change together (camera.movement.push_in). The crank is clamped high between the knee tops so
+  the pip, proof of effort (look.lighting.power_indicators), is never behind the near knee; the phone
+  sits beside it and the left thumb glides the next words while the right hand keeps turning.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kerb_crank_hold
+      ease: hold
+      note: crank in both hands held up between the knees at knee-top height, phone in the left palm under
+        it; right hand takes the cable plug. f8 lines the plug up (port toward the near knee); f10-11
+        small wrist push
+    - f: 12
+      ref: kerb_crank_hold
+      ease: ease_in_out
+      blend_f: 3
+      note: 'clamped-high cranking base: crank lying across between the tops of his knees (top face ~z
+        0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left hand ~z 0.76 over
+        the near knee beside the port end. Closest preset is kerb_crank_hold (crank in the lap in both
+        hands); the clamp is a vocabulary gap. f12-14 clamp into the knees, right thumb lifts the folded
+        knob; f15-16 hinge stiffness hold; f17-21 arm swings out (ease-out), clean stop, no bounce; f22
+        right hand grips the knob, left hand lifts the phone to ~z 0.76 over the near knee (f22-29)'
+      rationale: clamping frees the left hand for the phone and keeps the pip readable
+    - f: 30
+      ref: kerb_crank_hold
+      ease: hold
+      note: cranking from f30 (gait crank_turn); right elbow and shoulder follow the knob's 0.17 m circle,
+        torso quiet; the knob may dip behind the far knee at the bottom, the pip never does. From f56
+        the left thumb glides 'Dinner' f56-63, 'at' f66-70, '8?' f73-79 with the phone kept in place
+      rationale: 'explicit hold of the base pose: the motion is the handle, the breath and the thumb'
+    move:
+      gait: crank_turn
+      start_f: 30
+      first_top_f: 56
+      note: handle leaves 12 o'clock at f30 with an ease-in over the first half-turn; first revolution
+        completes at f56 (26 f), then 24 f per revolution; the handle-top phase carries on through SC04_SH060-SH090
+      rationale: single source for the ratchet click (derived handle_top events)
+    face:
+    - f: 0
+      ref: focused_calm
+      note: brows level, eyes on the crank, then on the phone from f40; no comic expression
+    look:
+    - f: 0
+      target: crank
+      note: the port and the arm f0-39
+    - f: 40
+      target: phone
+      note: eyes move to the phone as its light holds steady
+    breath:
+    - f: 22
+      ref: in_slow
+      dur_f: 8
+      note: breath in f22-29 as he takes the knob
+    - f: 30
+      ref: crank_locked
+      dur_f: 50
+      note: in on the up half-turn, out on the down half-turn, shoulders 1 cm
+props:
+  crank_charger:
+  - f: 0
+    loc: hands_both
+    arm: folded
+    pip: 0.0
+    note: both hands, high between the knees
+  - f: 12
+    loc: lap
+    dur_f: 3
+    note: clamped high between the knee tops f12-14 (knees up); does not sink in the clamp
+    rationale: 'loc lap, not knees: locked continuity.props.glovebox_and_crank has the crank in_lap at
+      SC04 end and through SC06, and the revised prose calls the clamp ''still in his lap (knees up)'''
+  - f: 17
+    arm: unfolded
+    ease: ease_out
+    dur_f: 5
+    note: arm swings out on its pivot f17-21, clean stop, no bounce
+  - f: 30
+    pip: 1.0
+    ease: ease_in
+    dur_f: 9
+    note: 'pip follows the handle speed: 0 -> full over f30-38, steady from f38'
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: left palm under the crank; lifted to ~z 0.76 over the near knee f22-29, still hand_l
+  glovebox_lid:
+  - f: 0
+    state: open_down
+    note: the emptied glovebox sits dark far left of frame; it must not glow
+ui_timeline:
+- f: 5
+  event: dip
+  value: 0.7
+  dur_f: 2
+  note: flicker dip f5-6
+- f: 17
+  event: dip
+  value: 0.7
+  dur_f: 3
+  note: flicker dip f17-19
+- f: 26
+  event: dip
+  value: 0.7
+  dur_f: 2
+  note: 'last flicker dip f26-27; canon row: steady and bolt on from f30'
+- f: 56
+  event: text
+  line: 2
+  chars: 0
+  dur_f: 1
+  note: line 2 opens empty as the typing line starts (canon row f56)
+- f: 56
+  event: key_press
+  key: any
+  dur_f: 8
+  note: glide for 'Dinner' f56-63 (not legible at this size)
+- f: 63
+  event: text
+  line: 2
+  chars: 6
+  dur_f: 1
+  note: '''Dinner'' appears as the glide lifts'
+- f: 66
+  event: key_press
+  key: any
+  dur_f: 5
+  note: glide for 'at' f66-70
+- f: 70
+  event: text
+  line: 2
+  chars: 9
+  dur_f: 1
+  note: '''Dinner at'''
+- f: 73
+  event: key_press
+  key: any
+  dur_f: 7
+  note: glide for '8?' f73-79
+- f: 79
+  event: text
+  line: 2
+  chars: 12
+  dur_f: 1
+  note: '''Dinner at 8?'' complete on the last frame (SC04_SH060 f0 has it)'
+camera:
+  move: dolly_in
+  start_f: 30
+  end_f: 79
+  dist_m: 0.28
+  ease_in_f:
+  - 30
+  - 36
+  ease_out_f:
+  - 76
+  - 79
+  peak_speed_mps: 0.149
+  note: push-in 2 of 2, straight toward him, linear between the eases; ends as a medium close-up
+  rationale: starts with the first turn and the steadying light (camera.movement.push_in)
+holds:
+- f0: 15
+  f1: 16
+  scope: body
+  character: ren
+  min_f: 2
+  note: 'hinge stiffness: the never-used hinge resists for 2 frames'
+  rationale: a quiet echo of the plant
+events:
+- f: 5
+  id: flicker_dip_1
+  kind: light
+- f: 10
+  id: plug_in
+  kind: sound
+  note: small wrist push, plug seats in the port
+- f: 12
+  id: crank_clamp
+  kind: state
+  note: crank clamped between the knee tops
+- f: 15
+  id: hinge_stiff
+  kind: visual
+  note: 2-frame resistance before the arm swings
+- f: 17
+  id: flicker_dip_2
+  kind: light
+- f: 22
+  id: arm_out_stop
+  kind: sound
+  note: arm reaches its stop, no bounce; right hand on the knob
+- f: 26
+  id: flicker_dip_3
+  kind: light
+- f: 30
+  id: first_turn
+  kind: state
+  note: handle leaves the top; push-in starts; light steady, bolt on (canon row)
+- f: 38
+  id: pip_full
+  kind: light
+  note: pip reaches full brightness
+- f: 40
+  id: eyes_to_phone
+  kind: visual
+- f: 56
+  id: typing_starts
+  kind: visual
+  note: left thumb starts the slow glide; ratchet click is the derived handle_top at f56
+preview_frames:
+- 0
+- 12
+- 22
+- 30
+- 46
+- 56
+- 79
+notes:
+- preview_frame 46 (shot) is the designated still; f12 and f79 are the shot's pip-vs-near-knee check frames.
+- Ratchet clicks come only from the derived handle_top events (f56 here; phase continues into SC04_SH060
+  f0).
+- 'Cable: short posed loop over the left knee, 2 mm sway per turn, keyed by the builder (no cable prop
+  in the vocabulary).'

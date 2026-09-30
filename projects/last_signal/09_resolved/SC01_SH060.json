@@ -520,6 +520,189 @@
       }
     }
   },
+  "motion": {
+    "camera": {
+      "move": "none"
+    },
+    "characters": {
+      "ren": {
+        "breath": [
+          {
+            "dur_f": 2,
+            "f": 2,
+            "f_abs": 182,
+            "ref": "out_slow"
+          }
+        ],
+        "face": [
+          {
+            "f": 0,
+            "f_abs": 180,
+            "ref": "rehearsed_breath"
+          },
+          {
+            "f": 9,
+            "f_abs": 189,
+            "ref": "letdown"
+          },
+          {
+            "f": 18,
+            "f_abs": 198,
+            "ref": "neutral"
+          }
+        ],
+        "look": [
+          {
+            "f": 0,
+            "f_abs": 180,
+            "target": "phone"
+          },
+          {
+            "f": 18,
+            "f_abs": 198,
+            "target": "road_ahead"
+          },
+          {
+            "f": 20,
+            "f_abs": 200,
+            "target": "phone"
+          }
+        ],
+        "move": {
+          "gait": "none",
+          "path": []
+        },
+        "pose": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 180,
+            "ref": "car_phone_up"
+          },
+          {
+            "blend_f": 6,
+            "ease": "ease_in",
+            "f": 3,
+            "f_abs": 183,
+            "ref": "car_sag"
+          },
+          {
+            "ease": "hold",
+            "f": 9,
+            "f_abs": 189,
+            "ref": "car_sag"
+          },
+          {
+            "blend_f": 2,
+            "ease": "ease_in",
+            "f": 18,
+            "f_abs": 198,
+            "ref": "car_sag"
+          },
+          {
+            "blend_f": 7,
+            "ease": "overshoot_small",
+            "f": 20,
+            "f_abs": 200,
+            "ref": "car_phone_up"
+          },
+          {
+            "ease": "hold",
+            "f": 27,
+            "f_abs": 207,
+            "ref": "car_phone_up"
+          }
+        ]
+      }
+    },
+    "events": [
+      {
+        "f": 2,
+        "f_abs": 182,
+        "id": "held_breath_out",
+        "kind": "sound",
+        "source": "anim"
+      },
+      {
+        "f": 9,
+        "f_abs": 189,
+        "id": "sag_land",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 18,
+        "f_abs": 198,
+        "id": "reset_anticipation",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 20,
+        "f_abs": 200,
+        "id": "reset_burst",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 27,
+        "f_abs": 207,
+        "id": "reset_settled",
+        "kind": "visual",
+        "source": "anim"
+      }
+    ],
+    "frame_start": 180,
+    "frames": 34,
+    "holds": [
+      {
+        "character": "ren",
+        "f0": 9,
+        "f1": 17,
+        "min_f": 9,
+        "scope": "body"
+      },
+      {
+        "character": "ren",
+        "f0": 27,
+        "f1": 33,
+        "scope": "body"
+      }
+    ],
+    "preview_frames": [
+      0,
+      3,
+      9,
+      18,
+      20,
+      25,
+      33
+    ],
+    "props": {
+      "passenger_door": [
+        {
+          "f": 0,
+          "f_abs": 180,
+          "state": "closed"
+        }
+      ],
+      "phone_ren": [
+        {
+          "attach": "hand_l",
+          "f": 0,
+          "f_abs": 180
+        },
+        {
+          "attach": "hands_both",
+          "f": 20,
+          "f_abs": 200
+        }
+      ]
+    },
+    "schema": "fm.motion/1",
+    "source": "artifact:anim_sc01_sh060",
+    "vocab_version": 1
+  },
   "provenance": {
     "canon": [
       "characters.ren.expressions",
@@ -545,7 +728,495 @@
     ]
   },
   "scene_id": "SC01",
-  "schema": "fm.resolved_shot/1",
+  "schema": "fm.resolved_shot/2",
   "sequence_id": "SQ01",
-  "shot_id": "SC01_SH060"
+  "shot_id": "SC01_SH060",
+  "ui_timeline": {
+    "colours": {
+      "charcoal": "#2B303B",
+      "red": "#E5483B"
+    },
+    "frames": [
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 0,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 1,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 2,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 3,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 4,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 5,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 6,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 7,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 8,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 9,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 10,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 11,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 12,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 13,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 14,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 15,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 16,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 17,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 18,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 19,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 20,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 21,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 22,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 23,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 24,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 25,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 26,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 27,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 28,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 29,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 30,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 31,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 32,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "call_state": "unanswered",
+        "colour": "charcoal",
+        "f": 33,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "call"
+      }
+    ],
+    "phone": "ren",
+    "schema": "fm.ui_timeline/1",
+    "source": "canon:look.style.phone_screen.states_by_shot",
+    "warnings": []
+  }
 }

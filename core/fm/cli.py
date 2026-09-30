@@ -523,6 +523,28 @@ def qa_stills(c: Ctx):
         sys.exit(1)
 
 
+def _run_qa_motion(c: Ctx, strict: bool, record: bool):
+    from .qa_motion import check as motion_check
+
+    r = motion_check(c.project(), strict=strict, record=record)
+    for row in r["rows"]:
+        for sev, msg in row["findings"]:
+            click.echo(f"{sev:4} {row['shot']}: {msg}")
+    s = r["summary"]
+    click.echo(f"{s['shots']} shots: {s['fail']} FAIL, {s['warn']} WARN (qa/motion_report.json)")
+    if s["fail"]:
+        sys.exit(1)
+
+
+@qa_group.command("motion")
+@click.option("--strict", is_flag=True, help="A missing or stub anim file is a FAIL (default: WARN while M6 is in progress).")
+@click.option("--no-record", "no_record", is_flag=True, help="Write the report but do not record the qa:motion derived node.")
+@click.pass_obj
+def qa_motion(c: Ctx, strict, no_record):
+    """Tier 0 motion checks on the anim files (timing, vocabulary, prop continuity, speeds, UI, running time). Exit 1 on FAIL."""
+    _run_qa_motion(c, strict, not no_record)
+
+
 @cli.group("blender")
 def blender_group():
     """Blender-side production (M3): previews from resolved shot files."""
@@ -713,6 +735,15 @@ def check_continuity_cmd(c: Ctx):
         sys.exit(1)
 
 
+@check.command("anim")
+@click.option("--strict", is_flag=True, help="A missing or stub anim file is a FAIL.")
+@click.option("--no-record", "no_record", is_flag=True, help="Write the report but do not record the qa:motion derived node.")
+@click.pass_obj
+def check_anim_cmd(c: Ctx, strict, no_record):
+    """Alias of `fm qa motion`."""
+    _run_qa_motion(c, strict, not no_record)
+
+
 # ------------------------------------------------------------------ ledger / tools
 @cli.command("log")
 @click.option("--tail", default=20, show_default=True)
@@ -751,6 +782,191 @@ def doctor(c: Ctx):
         click.secho(f"blender: REFUSED - {exc}", fg="red")
     if not ok:
         sys.exit(4)
+
+
+@cli.group("post")
+def post_group():
+    """Post-production (M6): EDL, animatic, master assembly, delivery encodes."""
+
+
+def _size(v: str) -> tuple[int, int]:
+    try:
+        w, h = v.lower().split("x")
+        return int(w), int(h)
+    except ValueError:
+        raise click.BadParameter("use WIDTHxHEIGHT, e.g. 1280x720")
+
+
+@post_group.command("edl")
+@click.option("--out", type=click.Path(path_type=Path), default=None, help="Output dir (default 12_post).")
+@click.pass_obj
+def post_edl(c: Ctx, out):
+    """CMX3600 EDL (24 fps NDF) + ffconcat list from the resolved frame table."""
+    from . import post
+
+    r = post.build_edl(c.project(), out)
+    click.echo(f"{r['edl']}: {r['events']} events, {r['total_frames']} frames, end {r['end_timecode']}, "
+               f"fade in {r['fade_in']} / out {r['fade_out']} frames")
+    click.echo(r["ffconcat"])
+
+
+@post_group.command("animatic")
+@click.option("--out", type=click.Path(path_type=Path), default=None, help="Output dir (default 12_post).")
+@click.option("--size", "size", default="1280x720", show_default=True, callback=lambda ctx, p, v: _size(v))
+@click.option("--audio", type=click.Path(path_type=Path), default=None, help="Mix wav (default 12_post/audio/mix_48k_stereo.wav).")
+@click.option("--no-audio", is_flag=True, help="Silent animatic even if a mix exists.")
+@click.option("--no-stamp", is_flag=True, help="Do not stamp the shot id.")
+@click.pass_obj
+def post_animatic(c: Ctx, out, size, audio, no_audio, no_stamp):
+    """animatic.mp4 from rendered frames, else preview stills held for the shot duration (H.264, 24 fps)."""
+    from . import post
+
+    p = c.project()
+    r = post.build_animatic(p, out, size=size, audio=audio, stamp=not no_stamp, no_audio=no_audio)
+    click.echo(f"{r['file']}: {r['duration_s']:.3f} s, {r['video']['frames']} frames @ {r['video']['fps']} fps, "
+               f"{r['size'][0]}x{r['size'][1]}, audio: {'yes' if r['with_audio'] else 'silent'}, "
+               f"{r['shots_from_frames']} shots from frames, {r['shots_from_stills']} from stills")
+    if r["missing_sources"]:
+        click.secho("no frame or still for: " + ", ".join(r["missing_sources"]), fg="yellow")
+
+
+@post_group.command("assemble")
+@click.option("--out", type=click.Path(path_type=Path), default=None, help="Output dir (default 13_delivery).")
+@click.option("--frames", "frames_dir", type=click.Path(path_type=Path), default=None,
+              help="Final frames root, <SHOT>/%04d.png (default 11_render/final).")
+@click.option("--audio", type=click.Path(path_type=Path), default=None)
+@click.option("--silent", is_flag=True, help="Assemble without sound.")
+@click.option("--grain", is_flag=True, help="Apply the locked film grain (off by default).")
+@click.option("--vignette", type=float, default=0.0, help="Corner darkening 0..canon max (off by default).")
+@click.option("--fade-in", type=int, default=None, help="Frames (default: canon, else 12).")
+@click.option("--fade-out", type=int, default=None, help="Frames (default: canon camera.rhythm.transitions).")
+@click.pass_obj
+def post_assemble(c: Ctx, out, frames_dir, audio, silent, grain, vignette, fade_in, fade_out):
+    """Master mezzanine from final frames: grain, vignette, fades, audio (loudnorm -16 LUFS / -1 dBTP)."""
+    from . import post
+
+    r = post.assemble(c.project(), out, frames_dir=frames_dir, audio=audio, grain=grain, vignette=vignette,
+                      fade_in=fade_in, fade_out=fade_out, silent=silent)
+    click.echo(f"{r['master']} [{r['codec']}]: {r['duration_s']:.3f} s; fades {r['fade_in']}/{r['fade_out']}; "
+               f"grain {'on' if grain else 'off'}, vignette {vignette or 'off'}")
+    if r["loudnorm_pass1"]:
+        click.echo(f"  loudnorm pass 1: {r['loudnorm_pass1']['input_i']} LUFS, {r['loudnorm_pass1']['input_tp']} dBTP")
+
+
+@post_group.command("export")
+@click.option("--out", type=click.Path(path_type=Path), default=None, help="Delivery dir (default 13_delivery).")
+@click.option("--master", type=click.Path(path_type=Path), default=None)
+@click.option("--no-proxy", is_flag=True)
+@click.pass_obj
+def post_export(c: Ctx, out, master, no_proxy):
+    """Web MP4 (+ review proxy) from the master and MANIFEST.json (files, sha256, probe facts)."""
+    from . import post
+
+    r = post.export(c.project(), out, master=master, proxy=not no_proxy)
+    for f in r["files"]:
+        click.echo(f"{f['path']}  {f['bytes']} bytes  sha256 {f['sha256'][:16]}...")
+    click.echo(r["manifest"])
+
+
+@qa_group.command("delivery")
+@click.option("--out", type=click.Path(path_type=Path), default=None, help="Delivery dir (default 13_delivery).")
+@click.option("--report-dir", type=click.Path(path_type=Path), default=None, help="Where to write delivery_report.json (default qa/).")
+@click.argument("files", nargs=-1, type=click.Path(path_type=Path))
+@click.pass_obj
+def qa_delivery_cmd(c: Ctx, out, report_dir, files):
+    """ffprobe checks on the delivery files: duration, fps, resolution, audio spec, loudness, head/tail."""
+    from . import post
+
+    r = post.qa_delivery(c.project(), out, files=list(files) or None, report_dir=report_dir)
+    for row in r["rows"]:
+        for sev, msg in row["findings"]:
+            click.echo(f"{sev:4} {row['file']}: {msg}")
+    s = r["summary"]
+    click.echo(f"{s['files']} delivery file(s): {s['fail']} FAIL, {s['warn']} WARN -> {r['report_file']}")
+    if s["fail"]:
+        sys.exit(1)
+
+
+@cli.group("audio")
+def audio_group():
+    """Sound (M6): procedural library, cue-sheet scaffold and the sample-exact mixer."""
+
+
+@audio_group.command("list")
+@click.option("--json", "as_json", is_flag=True)
+def audio_list(as_json):
+    """The synth registry: recipe, description, placeholder flag and the shot lines it serves."""
+    from .audio import synth
+
+    rows = synth.list_recipes()
+    if as_json:
+        click.echo(json.dumps(rows, indent=1))
+        return
+    for r in rows:
+        click.echo(f"{r['name']:34} {'PLACEHOLDER ' if r['placeholder'] else ''}{r['default_duration']:.3f}s  {r['desc']}")
+    click.echo(f"{len(rows)} recipe(s); {sum(r['placeholder'] for r in rows)} placeholder(s)")
+
+
+@audio_group.command("synth")
+@click.option("--id", "ids", multiple=True, help="Recipe name (repeatable; default: every recipe).")
+@click.option("--out", "out", type=click.Path(path_type=Path), default=None, help="Output directory (default 12_post/audio/lib/).")
+@click.option("--seed", default=0, show_default=True)
+@click.pass_obj
+def audio_synth(c: Ctx, ids, out, seed):
+    """Render library WAVs deterministically (one per recipe, default duration). Writes only into the output directory."""
+    from .audiorun import synth_library
+
+    r = synth_library(c.project(), out, list(ids) or None, seed=seed)
+    click.echo(f"rendered {len(r['rendered'])} recipe(s) into {r['out']}")
+
+
+@audio_group.command("scaffold")
+@click.option("--out", type=click.Path(path_type=Path), default=None, help="Default 12_post/AUDIO_CUES.yaml (refuses to overwrite).")
+@click.option("--force", is_flag=True, help="Overwrite an existing file.")
+@click.pass_obj
+def audio_scaffold(c: Ctx, out, force):
+    """PROPOSED cue-sheet skeleton from sound_sync lines, anim events and the registry (the sound-designer edits it)."""
+    from .audioscaffold import scaffold
+
+    r = scaffold(c.project(), out, force=force)
+    click.echo(f"scaffolded {r['out']}: {r['cues']} cue(s), {r['beds']} bed(s), {r['silence']} silence span(s), "
+               f"{r['human_supply']} human-supply item(s), {r['notes']} note(s) about points it could not cover")
+    click.echo("status PROPOSED; edit it, then `fm stamp 12_post/AUDIO_CUES.yaml` and `fm validate`")
+
+
+@audio_group.command("mix")
+@click.pass_obj
+def audio_mix(c: Ctx):
+    """Render AUDIO_CUES.yaml to 12_post/audio/mix_48k_stereo.wav plus one stem per layer; record the audio:mix node."""
+    from .audiorun import mix_project
+
+    r = mix_project(c.project())
+    m = r["measure"]
+    click.echo(f"mixed {r['placements']} placement(s) -> {r['wav']} ({r['samples']} samples; stems: {', '.join(r['stems']) or '-'})")
+    click.echo(f"  peak {m['peak_dbfs']} dBFS, true peak {m['true_peak_dbfs']} dBTP, ~{m['lufs_approx']} LUFS"
+               + (f"  (suggested mix.master_gain_db: {r['suggested_master_gain_db']})" if r["suggested_master_gain_db"] is not None else ""))
+    for s in r["placeholders"]:
+        click.secho(f"  PLACEHOLDER in the mix: {s}", fg="yellow")
+    click.echo(f"recorded {r['derived']}; next: `fm qa audio`")
+
+
+@qa_group.command("audio")
+@click.option("--final", is_flag=True, help="Final-export mode: an UNKNOWN licence is a FAIL (default WARN).")
+@click.option("--ffmpeg/--no-ffmpeg", "use_ffmpeg", default=None, help="Measure loudness with ffmpeg ebur128 (default: when available).")
+@click.pass_obj
+def qa_audio(c: Ctx, final, use_ffmpeg):
+    """Sync, silence-map, level, length and licence checks on the rendered mix (qa/audio_report.json). Exit 1 on FAIL."""
+    from .qa_audio import check
+
+    r = check(c.project(), use_ffmpeg=use_ffmpeg, final=final)
+    for row in r["rows"]:
+        for sev, msg in row["findings"]:
+            click.echo(f"{sev:4} {row['shot']}: {msg}")
+    s = r["summary"]
+    click.echo(f"audio: {s['fail']} FAIL, {s['warn']} WARN ({r.get('sync_points', 0)} sync point(s); "
+               f"{r['human_supply_open']} human-supply item(s) still needed) -> qa/audio_report.json")
+    if s["fail"]:
+        sys.exit(1)
 
 
 @cli.group()

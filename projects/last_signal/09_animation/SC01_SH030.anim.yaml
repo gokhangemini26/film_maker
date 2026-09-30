@@ -1,0 +1,100 @@
+fm:
+  id: anim_sc01_sh030
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH030
+    hash: sha256:8699e51bfb186dba0264c42419a8a2cdae365aab80f76e052777657e96023cc8
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:camera.geography.sc01
+    hash: sha256:94f775f6b00cbf59b6c0d7bac2358bed443eee5cbfa483a212d4c42dffb6d032
+  serves:
+  - intent.race_against_battery
+  summary: 'Swipe insert: right thumb swipes right to left f1-6, her call screen slides in f1-7, photo
+    held clean f8-27.'
+  stamped_content_hash: sha256:df664b64ea7b894cdfc4abfd01282c3d9d17b388b914591b0d0146dab50dcf3d
+shot_id: SC01_SH030
+frames: 28
+vocab_version: 1
+rationale: 'The swipe runs right to left, the film''s direction of effort (camera.geography.screen_direction),
+  as one quick burst in his comic tempo; the thumb is gone by f8 so her photo holds clean for 20 frames
+  and the flutter lands on her. The UI change is one slide event (ease-out, no overshoot): the phone talks
+  in icons, never in flourishes.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_phone_up
+      ease: hold
+      note: 'body off frame; phone in the left hand, right thumb already in contact on the right third
+        of the screen. Swipe f1-6, thumb lifts at f6, out of frame right by f8 (VOCAB GAP: no thumb refs;
+        prose names phone_hold.thumb_on_right_third / thumb_swipe_start / thumb_swipe_end_lift / no_hand)'
+    move:
+      gait: none
+    look:
+    - f: 0
+      target: phone
+      note: off frame; implied on her photo
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: phone still in the left hand; only the right thumb moves
+ui_timeline:
+- f: 1
+  event: slide
+  to: call
+  dur_f: 7
+  note: map slides out to screen left f1-6 with the thumb; call screen slides in from screen right f1-7,
+    ease-out, no overshoot; status bar 5 % charcoal static
+holds:
+- f0: 8
+  f1: 27
+  scope: phone
+  min_f: 20
+  note: her circular photo clear and still f8-27 (20 frames), no hand in frame
+  rationale: the flutter lands on her, not on the gesture
+events:
+- f: 1
+  id: swipe_start
+  kind: visual
+  note: thumb starts right to left; screen starts to slide
+- f: 6
+  id: thumb_lift
+  kind: visual
+  note: swipe ends, thumb leaves the glass
+- f: 8
+  id: photo_settled
+  kind: state
+  note: call screen settled, thumb out of frame right
+preview_frames:
+- 0
+- 1
+- 6
+- 10
+- 27
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- preview_frame 10 kept from the shot file (first clean frame after the swipe).

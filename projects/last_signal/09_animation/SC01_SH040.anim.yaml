@@ -1,0 +1,143 @@
+fm:
+  id: anim_sc01_sh040
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH040
+    hash: sha256:6d7c21340e8fa08d14e537476be053e78dfb439ec00561158dc21a691a0e885d
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  summary: 'The rehearsed breath: in, 8-frame true hold with eyes shut, eyes snap open, tap, breath still
+    held across the cut.'
+  stamped_content_hash: sha256:8f24457ddf950ca6d063d7453a1e15562055768990271b2463dbdcda3f2e2d2f
+shot_id: SC01_SH040
+frames: 30
+vocab_version: 1
+rationale: 'The rehearsed breath is a held pose, not a rubbery take (characters.ren.expressions comic_style
+  held_pose_reactions): breath in f2-7, a true 8-frame hold f8-15, eyes open in one frame at f16, thumb
+  down and tap f18-21. The breath is never let out here: the breath track holds from f8 to the last frame
+  so the ring insert plays as held breath and the audience holds it with him.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_phone_up
+      ease: hold
+      note: phone in the left hand at chest height about 0.3 m from his face, right thumb poised, elbows
+        tucked, neck forward. Upright seated beats need >= 10 deg recline or forward lean under the 1.40
+        m headliner; car_phone_up's neck-forward lean covers it (blender-td to confirm)
+    - f: 8
+      ref: car_phone_up
+      ease: hold
+      note: true hold, nothing moves (8 f)
+    - f: 18
+      ref: car_phone_up
+      ease: ease_in
+      blend_f: 2
+      note: right thumb comes down to the call button; contact f20-21 (VOCAB GAP - thumb tap is not a
+        body preset; the preset does not change)
+    - f: 22
+      ref: car_phone_up
+      ease: hold
+      note: thumb lifts 1 cm and hovers; cheeks full, eyes wide on the phone; still to the cut
+    move:
+      gait: none
+    face:
+    - f: 0
+      ref: rehearsed_breath
+      note: cheeks fill from f2, eyes closed f7-15, eyes open in one frame at f16 (cel switch), cheeks
+        full to the cut; the eye states are the face ref's own controls
+      rationale: comic set legal (before SC04_SH030); no graphic symbols
+    look:
+    - f: 0
+      target: phone
+    - f: 7
+      target: closed
+      note: eyes shut; the head stays aimed at the phone (does not turn)
+    - f: 16
+      target: phone
+      note: eyes open in one frame (cel switch)
+    breath:
+    - f: 2
+      ref: in_slow
+      dur_f: 6
+      note: 'breath in f2-7: prose asks chest and shoulders up 2 cm (ease-in); in_slow is defined as about
+        1 cm - builder should read the rehearsed breath as the larger end'
+    - f: 8
+      ref: hold
+      dur_f: 22
+      note: breath held f8-29 and across the cut into SH050/SH060 (released in SH060 f2)
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: phone in the left hand, screen away from the sun (glow not visible); right thumb works it
+  glovebox_lid:
+  - f: 0
+    state: closed
+    note: 'FG lid edge bottom-left, closed (continuity.props.glovebox_and_crank SC01: closed_open_closed)'
+holds:
+- f0: 8
+  f1: 15
+  scope: all
+  min_f: 8
+  note: 'true hold with eyes shut: nothing moves'
+  rationale: the held breath is the joke's set-up; any drift reads as a pause, not a hold
+- f0: 22
+  f1: 29
+  scope: body
+  character: ren
+  note: thumb hovering, breath held, still to the cut
+events:
+- f: 2
+  id: breath_in
+  kind: sound
+  note: the rehearsed breath in begins (audible in-breath, if audio wants one)
+- f: 7
+  id: eyes_shut
+  kind: visual
+- f: 16
+  id: eyes_open
+  kind: visual
+  note: one-frame cel switch
+- f: 20
+  id: call_tap
+  kind: visual
+  note: thumb contact on the call button (2 frames); call screen state from the canon table
+- f: 22
+  id: thumb_hover
+  kind: visual
+preview_frames:
+- 0
+- 7
+- 16
+- 20
+- 29
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.

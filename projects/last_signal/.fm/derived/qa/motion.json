@@ -1,0 +1,314 @@
+{
+  "content_hash": "sha256:817ebf105534e2d6eda99db85923671cb5ed6881d05cd491a1c65fc0711fbc73",
+  "created_at": "2026-09-30T15:02:23Z",
+  "derived_from": [
+    {
+      "hash": "sha256:dc53fad91acabf7542a83ac6809873bf093bd979dd9027e87b81eb3f17064c6e",
+      "ref": "artifact:anim_sc01_sh010"
+    },
+    {
+      "hash": "sha256:c8c08db05380edb1cf96a13ac75368d60bd5ab9d9d32afd6877181fbbd18f573",
+      "ref": "artifact:anim_sc01_sh020"
+    },
+    {
+      "hash": "sha256:df664b64ea7b894cdfc4abfd01282c3d9d17b388b914591b0d0146dab50dcf3d",
+      "ref": "artifact:anim_sc01_sh030"
+    },
+    {
+      "hash": "sha256:8f24457ddf950ca6d063d7453a1e15562055768990271b2463dbdcda3f2e2d2f",
+      "ref": "artifact:anim_sc01_sh040"
+    },
+    {
+      "hash": "sha256:b2e2eabf5660e3f95a3cf147cdcdc4f6f7855acb9ab063c9f6875201796dd87e",
+      "ref": "artifact:anim_sc01_sh050"
+    },
+    {
+      "hash": "sha256:906704ad57e46c40068a106dd5bf49c72eaeac5902ca08835f3e72ec76ad2367",
+      "ref": "artifact:anim_sc01_sh060"
+    },
+    {
+      "hash": "sha256:7a6c34a017e983315f8a9598f6a551049f753838c83fd95c0f9dbae8b3a1c9c9",
+      "ref": "artifact:anim_sc01_sh070"
+    },
+    {
+      "hash": "sha256:ac0d74c6a149648f0194919f58052ca8f05bf13dc5d5cccc919871b3ab3634c7",
+      "ref": "artifact:anim_sc01_sh080"
+    },
+    {
+      "hash": "sha256:442d53bf79bd98907f9ffd7373774945bb311b78252de0cc830840e73c096318",
+      "ref": "artifact:anim_sc01_sh090"
+    },
+    {
+      "hash": "sha256:b8a19e961e0c344260993d858c09abe58c165377e0304df7c945a8ea33eb1fa7",
+      "ref": "artifact:anim_sc01_sh100"
+    },
+    {
+      "hash": "sha256:8a13c40492464b11f6c1752c064028bfdde952a43d97f0069ae65732e3556a28",
+      "ref": "artifact:anim_sc01_sh110"
+    },
+    {
+      "hash": "sha256:34790879054d61ab5edd43d66392d6c4711128065a34c141aec110bfa5e91b0b",
+      "ref": "artifact:anim_sc01_sh120"
+    },
+    {
+      "hash": "sha256:a1e5c0faab7ad72eafd188d732e5a442d3b8a80374cb972db286a3ccd8a0568c",
+      "ref": "artifact:anim_sc01_sh130"
+    },
+    {
+      "hash": "sha256:3b0f3771e3dad5cf3fdd72d8757fccd22bd92284cc9d8e716239652445a8d7de",
+      "ref": "artifact:anim_sc01_sh140"
+    },
+    {
+      "hash": "sha256:0e3351e4930ad05ade6c1858c02c9df7a5de3af373ea15bf4e31a14a8c332362",
+      "ref": "artifact:anim_sc01_sh150"
+    },
+    {
+      "hash": "sha256:9e55c3dd23b1d2e8838959bf95f75eb46dd00f20b5855a10971fd1bd4ae187e8",
+      "ref": "artifact:anim_sc02_sh010"
+    },
+    {
+      "hash": "sha256:96cc8711216f1701deea921ddedd7acdaf1242ca436517cd11b987ea2e0a832b",
+      "ref": "artifact:anim_sc02_sh020"
+    },
+    {
+      "hash": "sha256:d73b879cbbbc4507a7868f2592a7a1c1f75c0be22e6986d34a6a115895e4538c",
+      "ref": "artifact:anim_sc02_sh030"
+    },
+    {
+      "hash": "sha256:f22f024f294890b02354faae10175d9930e40c40ced5792670c3e66651a063dc",
+      "ref": "artifact:anim_sc03_sh010"
+    },
+    {
+      "hash": "sha256:a057b4f9a1a229a41d358e40e419965869ecb34f448e3e9b80b283a567d39827",
+      "ref": "artifact:anim_sc03_sh020"
+    },
+    {
+      "hash": "sha256:b5dccbcb13833c289faed490fa7097b89fc3752b7b3bc3a2ba605a599e6e9608",
+      "ref": "artifact:anim_sc03_sh030"
+    },
+    {
+      "hash": "sha256:c4aae1e8e8144b7d9d9f5f85c351e2afad1692ef798803d359d3032ea8129c64",
+      "ref": "artifact:anim_sc03_sh040"
+    },
+    {
+      "hash": "sha256:2889673e4116d0283ac8ab0ee7d78c2091702a7783f03c9cd74f1a931b8aa9ca",
+      "ref": "artifact:anim_sc03_sh050"
+    },
+    {
+      "hash": "sha256:6cef18e0a40a17158245894470d70ef45850a28994dca4e8da787704ba18d6bd",
+      "ref": "artifact:anim_sc03_sh060"
+    },
+    {
+      "hash": "sha256:d7a54617f5ea012a7707445f09cdf7cba664d41b6ddd5f7999463728e5af449a",
+      "ref": "artifact:anim_sc03_sh070"
+    },
+    {
+      "hash": "sha256:26a2f4c58345a620dab507fd7f1827646143bfc616067bf50bc35dd44172b83c",
+      "ref": "artifact:anim_sc04_sh010"
+    },
+    {
+      "hash": "sha256:8176275c26f606e68e229d3c1c9ce3905e77cc8a9b4f17e65b32ab4a6201b828",
+      "ref": "artifact:anim_sc04_sh020"
+    },
+    {
+      "hash": "sha256:cb8e83d5c5641be707dd5fb88fbf6ff0a0019af185e2593677e608ee2c8c2bea",
+      "ref": "artifact:anim_sc04_sh030"
+    },
+    {
+      "hash": "sha256:6f8c6c78d164fcfc8e7c0e4d564fff6878f5daadf71ee6a3113c8151c4665d64",
+      "ref": "artifact:anim_sc04_sh040"
+    },
+    {
+      "hash": "sha256:ae12a78a1c1156f9cbf530bf809be8c650a740fc702b52817fe03041440940cb",
+      "ref": "artifact:anim_sc04_sh050"
+    },
+    {
+      "hash": "sha256:d486db3a8bfcfd9b71a7df5b7639b199d48e5156ee53cc575879d943ae0feca6",
+      "ref": "artifact:anim_sc04_sh060"
+    },
+    {
+      "hash": "sha256:d99a29baf21db2e2aff25629e8f3e0c9479fd73fc7f80309199f9222abd07089",
+      "ref": "artifact:anim_sc04_sh070"
+    },
+    {
+      "hash": "sha256:83f2deba8eba36d18fdc4e33d4573d1b2485323bc547d57c419621cc29f0f478",
+      "ref": "artifact:anim_sc04_sh080"
+    },
+    {
+      "hash": "sha256:6a0aa664530aa1c404ab43e55f0274d0eb8996c6886ecb9842509de3ac6163f6",
+      "ref": "artifact:anim_sc04_sh090"
+    },
+    {
+      "hash": "sha256:effb20845160e6824a1b5fd19a9890f2053bd3e595c568e873c4bd1755901fef",
+      "ref": "artifact:anim_sc05_sh010"
+    },
+    {
+      "hash": "sha256:c9f225d98b141c23718ab92e707c7b11aa6b9842b4caacf18f128b9da4f47256",
+      "ref": "artifact:anim_sc05_sh020"
+    },
+    {
+      "hash": "sha256:332df4b498518cf267698eb726587db0304d410e690569207945fda135dd8ec4",
+      "ref": "artifact:anim_sc05_sh030"
+    },
+    {
+      "hash": "sha256:a6fe35274df4027bfad4b35b0a6d75245d07816bca75bbdad06aadc1545e6b78",
+      "ref": "artifact:anim_sc06_sh010"
+    },
+    {
+      "hash": "sha256:9a945dba560653964401bf5a16391a2bf130ce592bb9a17097e9a558a8b87d00",
+      "ref": "resolved:SC01_SH010"
+    },
+    {
+      "hash": "sha256:578b33560b055ee5f10de2b0d3cebda0733bc60ed66d3c3bae16210cf75a0e62",
+      "ref": "resolved:SC01_SH020"
+    },
+    {
+      "hash": "sha256:8bfb94b4184859957eb109731f2aeed12a200e83b8bce69980dd4822a57227d9",
+      "ref": "resolved:SC01_SH030"
+    },
+    {
+      "hash": "sha256:77636cc3cc81e6ecd2469f72413821739059b0afd2bccacb7e45e2d256e332c1",
+      "ref": "resolved:SC01_SH040"
+    },
+    {
+      "hash": "sha256:ed7c9b09e0f6088d11a6247af2d849fbb9ae0756a6f419508efb32acc14a2a72",
+      "ref": "resolved:SC01_SH050"
+    },
+    {
+      "hash": "sha256:f4dee3d4e1bc2726fbbc4dec02ded153c3dc1e1feaf5e9dcabb9dcf0082c272a",
+      "ref": "resolved:SC01_SH060"
+    },
+    {
+      "hash": "sha256:9ee775970ae16150ae213d304c69c8ad35655ed675bf140aa631ef02969d364d",
+      "ref": "resolved:SC01_SH070"
+    },
+    {
+      "hash": "sha256:bb3004b831682d19cc4b1543aabe6d517d0db1912b2ce72a10484f8d9512ef05",
+      "ref": "resolved:SC01_SH080"
+    },
+    {
+      "hash": "sha256:1f55b9fb374c0edf400e324c7d8b40ab316bbadecb7ed8a92b2c050f3bb7dd17",
+      "ref": "resolved:SC01_SH090"
+    },
+    {
+      "hash": "sha256:e18e5ccc1e1e68ecfcaa6a56a372b1727f5afbd3703b1aa4156b2ab33bfc03dc",
+      "ref": "resolved:SC01_SH100"
+    },
+    {
+      "hash": "sha256:52e1e4aee12e588330584070bfd3143a4445bf50a23d8a0b792eab46ddbb91d0",
+      "ref": "resolved:SC01_SH110"
+    },
+    {
+      "hash": "sha256:46465d567f5d4449868a5a890467db745a78c17fe6663509717dac36aa295a2c",
+      "ref": "resolved:SC01_SH120"
+    },
+    {
+      "hash": "sha256:bcdcbf01cbfea70d687f4cbbd032d0e3e076f3e7c1f8990e7c4fdb7bd4fb904f",
+      "ref": "resolved:SC01_SH130"
+    },
+    {
+      "hash": "sha256:d9a65d6799ab4a34b6f3efabadec81df4eae07c4ec408f4900d027b912d0c5dc",
+      "ref": "resolved:SC01_SH140"
+    },
+    {
+      "hash": "sha256:569bb3e7e8d00cb6e190397059af95e39e7e393bc3d2e6e5357ecc03bc5f5ba8",
+      "ref": "resolved:SC01_SH150"
+    },
+    {
+      "hash": "sha256:5e6c9fac0e4aaf05aaebb1a45695154857269057ee5f54630bf80b88161eddd3",
+      "ref": "resolved:SC02_SH010"
+    },
+    {
+      "hash": "sha256:636399d33cbb8a6f7452f6e53e9ac7701d576f41d151e0702a734390742b5178",
+      "ref": "resolved:SC02_SH020"
+    },
+    {
+      "hash": "sha256:fb5fa0ba975c298a21dcdaffec5c081f42a85e3c3640f2195fb22f79543e266c",
+      "ref": "resolved:SC02_SH030"
+    },
+    {
+      "hash": "sha256:bc1e1a1fe3f36d33e3def3893ff7ee9dc266d6794b2be9e61ee734815b25db7e",
+      "ref": "resolved:SC03_SH010"
+    },
+    {
+      "hash": "sha256:f9b812a47b3848863528f0f4bc7051fb7a641654193af95d0f2e1c7347692621",
+      "ref": "resolved:SC03_SH020"
+    },
+    {
+      "hash": "sha256:6c2b65f29181b12183751224683660fe1bd3f0c4120f8820539e5b3402ed7edf",
+      "ref": "resolved:SC03_SH030"
+    },
+    {
+      "hash": "sha256:191c806b5287e43eb63e10fa680c5e42feb941f85dae43884afba40dee522760",
+      "ref": "resolved:SC03_SH040"
+    },
+    {
+      "hash": "sha256:6dd764654ee9a03a0f9d727d3c29ee43c5f6bf903b03bfda482cb507f66cf22c",
+      "ref": "resolved:SC03_SH050"
+    },
+    {
+      "hash": "sha256:82df3927127c28e8604308d912ab99879baa48de033241f3306c7958caa5f8b4",
+      "ref": "resolved:SC03_SH060"
+    },
+    {
+      "hash": "sha256:cfee9e1d89667b285af6dfd00e311f62c2d3757fb9a530f067fa31fafb3a21a9",
+      "ref": "resolved:SC03_SH070"
+    },
+    {
+      "hash": "sha256:ebbb5e0a71bb84deeda33fa9bf7c01f4df16f33f28676c09abc433ed4cf1361b",
+      "ref": "resolved:SC04_SH010"
+    },
+    {
+      "hash": "sha256:83e99fa021e7ea6c73f0cc016f59d4dec9963eae0880156d1cb100436392f336",
+      "ref": "resolved:SC04_SH020"
+    },
+    {
+      "hash": "sha256:c85c2fe49f155b45e3ed26fca508120af9dfc5168b5866416e0e2226b2308daf",
+      "ref": "resolved:SC04_SH030"
+    },
+    {
+      "hash": "sha256:f14b0d0a0921b656bf85c8dd9d0415f974086db2e1c3cd066a317e1cbeabade3",
+      "ref": "resolved:SC04_SH040"
+    },
+    {
+      "hash": "sha256:88df2e94126177209e5ce2983b728bac2124e9063c0be15b1746ab47ae0bc564",
+      "ref": "resolved:SC04_SH050"
+    },
+    {
+      "hash": "sha256:611f3497a403c58fda3bebc2fd38fb0e720f71e536bd60ef6d98ca0c98ab7dbf",
+      "ref": "resolved:SC04_SH060"
+    },
+    {
+      "hash": "sha256:404aee1ea695dc4bfe1a372435fb1d26625fe75ab0ae9134878522c1142047b5",
+      "ref": "resolved:SC04_SH070"
+    },
+    {
+      "hash": "sha256:0d86eea4052ef5b033bd9838fac4480b8a3be79d3cafddb95e42e8547d6a0dcf",
+      "ref": "resolved:SC04_SH080"
+    },
+    {
+      "hash": "sha256:280277c6bbe61775a73ee4ca60410f519e697c1cf9aade432dc6c18169c07d8f",
+      "ref": "resolved:SC04_SH090"
+    },
+    {
+      "hash": "sha256:788146a802a9979c2ef66f47a8fde875865c8be7bc547cb3571f4342606eaca4",
+      "ref": "resolved:SC05_SH010"
+    },
+    {
+      "hash": "sha256:e112794f2855a3c331cae56baa89356c3fceebf53c0da6e4ed1ef4de3ca824c9",
+      "ref": "resolved:SC05_SH020"
+    },
+    {
+      "hash": "sha256:3b512c02af576fd2dc485164425b66e1f8463b266ddd6c3b0fe416412e9097cc",
+      "ref": "resolved:SC05_SH030"
+    },
+    {
+      "hash": "sha256:c4f7905d0bb6f639a760e225202a77cfafeff402c71337147a5a051776a659b5",
+      "ref": "resolved:SC06_SH010"
+    }
+  ],
+  "notes": null,
+  "path": "qa/motion_report.json",
+  "producer": "fm.qa.motion",
+  "ref": "qa:motion"
+}

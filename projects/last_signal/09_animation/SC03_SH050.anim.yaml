@@ -1,0 +1,136 @@
+fm:
+  id: anim_sc03_sh050
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC03_SH050
+    hash: sha256:c3373f2053320994f6637889fd0ecf12f1d06f3b328b95c9b74755e594276a50
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.anime_feel
+  summary: 'Structured tracks for the blackout: 8 lit frames of a relaxed man, the room off in one frame
+    on the clunk at f8, 22 frames of dark; he does not move; the phone glow dips and comes back.'
+  stamped_content_hash: sha256:2889673e4116d0283ac8ab0ee7d78c2091702a7783f03c9cd74f1a931b8aa9ca
+shot_id: SC03_SH050
+frames: 30
+vocab_version: 1
+rationale: 'The gag is that nothing moves: one pose, one face, breath held and a whole-shot `all` hold,
+  so any flinch is a checkable error. The world does the gag: shop_lights on -> off as a one-frame step
+  at f8, on the same frame as the clunk, the fridge-hum stop and the charge-loss events audio binds to.
+  The dip mirrors the canon screen row so the pool of phone light stutters once and blooms back at f11.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kneel_upright
+      ease: hold
+      note: the relief pose from SH040 (kneeling, head slightly back), facing away from the lens; no motion
+        at all f0-29, no flinch at the blackout
+      rationale: stillness gives the joke to the world, the biggest and most room-sized failure (tone.comedy_source)
+    face:
+    - f: 0
+      ref: relief
+      note: carried from SH040; not visible (he faces away)
+    look:
+    - f: 0
+      target: closed
+      note: closed / not visible
+    breath:
+    - f: 0
+      ref: hold
+      dur_f: 30
+      note: nothing moves f0-29
+props:
+  shop_lights:
+  - f: 0
+    state: 'on'
+    note: lit f0-7 (8 frames)
+  - f: 8
+    state: 'off'
+    ease: step
+    dur_f: 1
+    note: ceiling panels, fridges and fascia sign all off in one frame on the clunk (the shot note's "frame
+      9" is f8 here); dark hold f8-29 (22 frames)
+    rationale: a one-frame switch, no fade, so the room is simply switched off around him
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: plugged in; stays plugged in after the blackout (continuity.props.cable SC03)
+ui_timeline:
+- f: 8
+  event: dip
+  phone: ren
+  value: 0.7
+  dur_f: 3
+  note: 'charge lost: screen dips to 70 % f8-10, back to 100 % on f11. Mirrors the canon states_by_shot
+    row (brightness f8 0.7, f11 1.0); the overlay takes the minimum, so the two agree. Bolt off and 3
+    % -> 2 % on f8 come from the table (not readable at this size; the result is SH060)'
+holds:
+- f0: 0
+  f1: 29
+  scope: all
+  min_f: 30
+  note: no motion at all, including through the blackout
+  rationale: any flinch would give the joke to his body
+events:
+- f: 8
+  id: blackout
+  kind: light
+  note: ceiling panels, fridges and fascia sign off in one frame
+- f: 8
+  id: clunk
+  kind: sound
+  note: the clunk - shot sound_sync
+- f: 8
+  id: fridge_hum_stop
+  kind: sound
+  note: the fridge hum stops on the same frame - shot sound_sync
+- f: 8
+  id: charge_lost
+  kind: state
+  note: bolt vanishes, 3 % -> 2 %, screen dip to 70 % (continuity.battery SC03)
+- f: 11
+  id: glow_back
+  kind: light
+  note: screen back to 100 %; the pool of phone light on the stand and floor blooms back up, the only
+    thing alive in the frame
+preview_frames:
+- 0
+- 8
+- 11
+- 29
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'Four events share f8 (blackout, clunk, fridge_hum_stop, charge_lost): same frame, different consumers
+  (light, two sound cues, screen state).'
+- Camera locked off, identical to SC03_SH010; no shake on the clunk.

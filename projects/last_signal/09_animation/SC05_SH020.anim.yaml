@@ -1,0 +1,164 @@
+fm:
+  id: anim_sc05_sh020
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC05_SH020
+    hash: sha256:9702f4d8ad33291ac4878eca7a7c2ba5f75e44c4641ecd40b120fd8765796bc6
+  - ref: canon:characters.hana.expressions
+    hash: sha256:489e56798bb001a8026e56f8f482436ed4c3a4df186ecf755e94450b6756335c
+  - ref: canon:characters.hana.movement
+    hash: sha256:55f3b5718c3183edc21042ed66555c8298293d01934ca2a38b64078d6e5d1120
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.hana.headphones
+    hash: sha256:00dc5293c2843c67e26e1b1a163b027eb1d134338a1ac0927ef2f552bd4dd106
+  - ref: canon:animation.vocab.pose.hana
+    hash: sha256:cfbee4fbc0e42f095b9f2e2ee4d3f45e84619bea454b7c20349b6f37e1545184
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  summary: 'Eyes, head, hands: pencil stops f4 and is laid down, both hands slide the headphones to the
+    neck f12-19, short reach, phone low in both hands by f30.'
+  stamped_content_hash: sha256:c9f225d98b141c23718ab92e707c7b11aa6b9842b4caacf18f128b9da4f47256
+shot_id: SC05_SH020
+frames: 32
+vocab_version: 1
+rationale: 'Four actions fit in 32 frames only as overlapping, economical moves in the canon''s order:
+  eyes, head, hands (characters.hana.movement). Each begins before the last ends, so it reads as one calm
+  gesture; the two-handed slide is smooth in its own 8 frames, curious rather than startled, and the reach
+  is short because the phone lies by her pencil hand.'
+characters:
+  hana:
+    pose:
+    - f: 0
+      ref: desk_sketch
+      ease: hold
+      note: absorbed over the sketchbook, headphones on, right hand finishing a small stroke f0-2; slow
+        breath
+    - f: 5
+      ref: desk_notice
+      ease: ease_out
+      blend_f: 3
+      note: head turns ~25 deg toward the phone after the eyes (ease-out, head arrives f10); pencil laid
+        f6-8
+    - f: 8
+      ref: desk_headphones_off
+      ease: ease_in_out
+      blend_f: 4
+      note: both hands rise to the ear cups f8-12, then slide down with the cups f12-19 (prop arc)
+    - f: 19
+      ref: desk_phone_low
+      ease: ease_in_out
+      blend_f: 11
+      note: 'hands leave the cups; right hand reaches the short way to the phone (~0.2 m) f19-23, grips
+        f23, lifts it low toward her chest f24-29, left hand joins f28-30; left hand lowers to the desk
+        edge on the way (no reach preset: gap, carried by the blend and phone_hana attach)'
+    - f: 30
+      ref: desk_phone_low
+      ease: hold
+      note: low near her chest in both hands, eyes on the screen (matches SH030 f0)
+    move:
+      gait: none
+      note: seated; she does not stand
+    face:
+    - f: 0
+      ref: absorbed
+    - f: 6
+      ref: noticing
+      note: brows lift a touch
+    - f: 25
+      ref: reading
+      note: reading begins as the phone comes up; no gasp, no grin, no blush
+    look:
+    - f: 0
+      target: sketchbook
+      note: the page f0-2
+    - f: 3
+      target: phone
+      note: eyes flick to the lit phone f3-5, before the head; on the screen in her hands from f25
+    breath:
+    - f: 0
+      ref: in_slow
+      dur_f: 8
+      note: slow breath, absorbed
+    - f: 19
+      ref: out_slow
+      dur_f: 4
+      note: shoulders drop a little as the headphones come off f19-22
+props:
+  pencil:
+  - f: 0
+    state: held
+    note: finishing a stroke; stops at f4
+  - f: 6
+    state: laid
+    dur_f: 3
+    note: laid down on the sketchbook f6-8, still after
+  hana_headphones:
+  - f: 0
+    state: head
+  - f: 12
+    state: neck
+    ease: ease_in_out
+    dur_f: 8
+    note: 'rigid prop on the arc head -> neck f12-19, constraint switched to the neck at f19; bob not
+      deformed (M3 risk: 1-3 frames of cup/bob intersection)'
+  phone_hana:
+  - f: 0
+    attach: desk
+    note: lit, face up right of the sketchbook
+  - f: 23
+    attach: hand_r
+    note: gripped f23, lifted f24-29
+  - f: 28
+    attach: hands_both
+    dur_f: 3
+    note: left hand joins f28-30
+events:
+- f: 3
+  id: eyes_flick
+  kind: visual
+- f: 4
+  id: pencil_stop
+  kind: visual
+- f: 8
+  id: pencil_down
+  kind: sound
+  note: pencil laid on the page
+- f: 12
+  id: headphones_slide
+  kind: sound
+  note: 'the cups leave her ears: her music, if any, drops away'
+- f: 19
+  id: headphones_on_neck
+  kind: state
+- f: 23
+  id: phone_grip
+  kind: sound
+  note: phone lifted off the desk
+preview_frames:
+- 0
+- 5
+- 12
+- 19
+- 24
+- 31
+notes:
+- 'Order fixed by characters.hana.movement: eyes (f3), head (f5), hands (f6 pencil, f8 cups, f19 reach).'

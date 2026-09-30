@@ -1,0 +1,188 @@
+fm:
+  id: anim_sc01_sh130
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH130
+    hash: sha256:8cc649e0e5b4be56b4c014462a5204889ccdcc3fee7989d30ce5bfa2cfc5b080
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.passenger_door
+    hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:look.lighting.sc01
+    hash: sha256:0456faefddfd67f2c2c6febcf99a936c5ed6f16e1d13efef673b603911e38a4a
+  - ref: canon:look.lighting.power_indicators
+    hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  summary: 'Relief: he sinks back with eyes closed f1-12; the car sighs, shudders and stalls at f32 (dash
+    off, bolt off, dip starts) while he never sees it.'
+  stamped_content_hash: sha256:a1e5c0faab7ad72eafd188d732e5a442d3b8a80374cb972db286a3ccd8a0568c
+shot_id: SC01_SH130
+frames: 34
+vocab_version: 1
+rationale: 'The relief is the first slow, unhurried move of the film (12-frame ease_in_out recline, a
+  17-frame long out-breath), so it feels earned for a moment. He is passive from f12: eyes closed through
+  the sigh, shudder and stall, so the audience sees the death before he does (tone.comedy_source). The
+  stall is frame-exact on f32: car_body still, dash and ring off, bolt off (canon table) and the phone''s
+  3-frame dip starts, straddling the cut (frames 1-2 here, frame 3 is SH140 f0).'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_upright
+      ease: hold
+      note: sitting forward, right hand just back from the adapter, phone in the left hand on his thigh
+        (>= 10 deg forward lean under the 1.40 m headliner). Prose starts the recline at f0; it starts
+        at f1 here because the first key cannot carry a blend
+    - f: 1
+      ref: car_recline
+      ease: ease_in_out
+      blend_f: 11
+      note: 'sinks back f1-12: spine reclines into the seat, head back to the headrest'
+      rationale: ease_in_out, the first slow move of the film
+    - f: 12
+      ref: car_recline
+      ease: hold
+      note: relief held; he rides the car's sigh and shudder passively (car_body drives it); tuft and
+        head follow the shudder 1 frame late f26-32
+    move:
+      gait: none
+    face:
+    - f: 0
+      ref: neutral
+    - f: 6
+      ref: relief
+      note: eyes close f6-8, mouth soft, head back; unchanged through the stall
+    look:
+    - f: 0
+      target: dash
+      note: just back from the adapter
+    - f: 8
+      target: closed
+      note: eyes closed from f8; he never sees the stall
+    breath:
+    - f: 4
+      ref: out_long
+      dur_f: 17
+      note: long exhale f4-20, shoulders fall 2 cm
+props:
+  car_body:
+  - f: 0
+    state: idle_tremble
+    note: continues from SH100 f0-21
+  - f: 22
+    state: sigh_sink
+    dur_f: 5
+    note: body sinks 5 mm (ease-in) f22-26, tremble stops
+  - f: 26
+    state: stall_shudder
+    dur_f: 6
+    note: three decaying oscillations (4, 3, 1 mm; 0.3 deg roll) on 2s, f26-31
+  - f: 32
+    state: still
+    note: dead still from the stall frame
+  dash_lights_and_adapter_ring:
+  - f: 0
+    state: 'on'
+  - f: 32
+    state: 'off'
+    ease: step
+    note: off in one frame on the stall frame (look.lighting.sc01 practical_off_event engine_stall_same_frame)
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: on his thigh, screen down; charge lost at f32 is carried for continuity, not readable here
+  glovebox_lid:
+  - f: 0
+    state: closed
+    note: chains from SH110 (closed on the shove)
+  passenger_door:
+  - f: 0
+    state: closed
+    note: wild for the camera; state stays closed for continuity
+ui_timeline:
+- f: 32
+  event: dip
+  value: 0.7
+  dur_f: 2
+  note: charge-loss dip frames 1 and 2 of 3 (f32-33); frame 3 is SC01_SH140 f0. Bolt off at f32 comes
+    from the canon table
+holds:
+- f0: 12
+  f1: 33
+  scope: body
+  character: ren
+  note: relief held, passive only (the car body carries the shudder)
+- f0: 8
+  f1: 33
+  scope: face
+  character: ren
+  note: eyes closed, face unchanged through the stall
+events:
+- f: 4
+  id: relieved_breath
+  kind: sound
+- f: 6
+  id: eyes_close
+  kind: visual
+- f: 22
+  id: engine_sigh
+  kind: sound
+- f: 26
+  id: shudder
+  kind: sound
+- f: 32
+  id: stall
+  kind: sound
+  note: engine stops; cut after f33
+- f: 32
+  id: dash_off
+  kind: light
+  note: dash lights and adapter ring off in one frame
+- f: 32
+  id: bolt_off
+  kind: state
+  note: charging bolt vanishes the same frame (look.lighting.power_indicators)
+- f: 32
+  id: charge_dip_start
+  kind: state
+  note: screen dip to 70 % begins; straddles the cut
+preview_frames:
+- 0
+- 1
+- 12
+- 22
+- 26
+- 32
+- 33
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.

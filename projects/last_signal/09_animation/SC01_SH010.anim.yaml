@@ -1,0 +1,196 @@
+fm:
+  id: anim_sc01_sh010
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH010
+    hash: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.sc01.environment
+    hash: sha256:f9c2539706ed77bc0049f9b94c094dceb0c61f1534926afea28f01b0c07bf28c
+  - ref: canon:look.lighting.power_indicators
+    hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+  serves:
+  - intent.race_against_battery
+  - intent.anime_feel
+  summary: 'Structured tracks for the vanity beat: mirror tilt, tuft press, let it be, eyes drop to the
+    phone.'
+  stamped_content_hash: sha256:dc53fad91acabf7542a83ac6809873bf093bd979dd9027e87b81eb3f17064c6e
+shot_id: SC01_SH010
+frames: 40
+vocab_version: 1
+rationale: 'Quick bursts between short holds (characters.ren.movement before_turn): reach, tilt, a 4-frame
+  check, press, spring, a 4-frame look, tilt back, settle. The two short holds are explicit so the builder
+  cannot smooth them away; they are what makes the tuft beat his earnest nerves rather than a gag. The
+  eyes drop to the phone at f34 and hold to the cut to hand the audience to the map insert.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_upright
+      ease: hold
+      note: 'seated upright, phone low in the left hand on his thigh; the right hand is already leaving
+        the wheel (prose: "already rising" at f0 - the rise is the f1 blend)'
+      rationale: start from the neutral driver pose so the first burst reads from frame 1 as the FADE
+        IN clears
+    - f: 1
+      ref: car_reach_up
+      ease: ease_out
+      blend_f: 5
+      note: right hand up to the mirror, contact at f6 (quick burst)
+    - f: 10
+      ref: car_reach_up
+      ease: hold
+      note: 'held check (4 f): chin tucked a touch, brows lift slightly, mouth line pressed'
+    - f: 14
+      ref: car_reach_up
+      ease: ease_in_out
+      blend_f: 3
+      note: right hand from the mirror up to the crown, flat palm presses the tuft (VOCAB GAP - car_reach_up
+        covers mirror and tuft with one preset; the hand target is not expressible)
+    - f: 19
+      ref: car_reach_up
+      ease: ease_out
+      blend_f: 2
+      note: palm lifts off the crown; the tuft springs back (tuft has no track, see notes)
+    - f: 22
+      ref: car_reach_up
+      ease: hold
+      note: 'held beat (4 f): eyes on the tuft in the mirror, mouth line flattens; he lets it be, no take'
+      rationale: the non-reaction is the character (no second attempt, camera.gags.no_repeat)
+    - f: 26
+      ref: car_reach_up
+      ease: ease_out
+      blend_f: 3
+      note: right hand back to the mirror, tilts it back toward the road (quick burst)
+    - f: 31
+      ref: car_upright
+      ease: ease_out
+      blend_f: 3
+      note: right hand returns to the top of the wheel
+    - f: 34
+      ref: car_upright
+      ease: hold
+      note: held to the cut; only the eyes move (to the phone)
+    move:
+      gait: none
+    face:
+    - f: 0
+      ref: neutral
+      note: 'comic set before any setback: brows level, lifting slightly at the mirror, mouth line pressed;
+        no smile of his own, no graphic symbols. VOCAB GAP: no "nervous/pressed" face ref; neutral is
+        the closest'
+    look:
+    - f: 0
+      target: mirror
+      note: up, frame top-left, f0-33
+    - f: 34
+      target: phone
+      note: eyes drop to the phone in his lap (lead into the map insert)
+    breath:
+    - f: 31
+      ref: out_slow
+      dur_f: 3
+      note: shoulders settle 1 cm as the hand returns to the wheel
+props:
+  rear_view_mirror:
+  - f: 0
+    tilt_deg: 0.0
+    note: set for driving
+  - f: 6
+    tilt_deg: 8.0
+    ease: ease_out
+    dur_f: 4
+    note: rotates about 8 deg toward him f6-9, keyed to the hand contact
+  - f: 26
+    tilt_deg: 0.0
+    ease: ease_out
+    dur_f: 4
+    note: rotates back f26-29
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: low in the left hand on his thigh, screen away from the lens (glow invisible in the sun)
+  car_body:
+  - f: 0
+    state: still
+    note: engine off (it is started in SH100)
+  dash_lights_and_adapter_ring:
+  - f: 0
+    state: 'off'
+    note: engine off until SH100 f14 (look.lighting.power_indicators ring lit_while engine_running). CONFLICT
+      flagged - the shot's lighting block lists dash lights and adapter ring as practicals
+holds:
+- f0: 10
+  f1: 13
+  scope: body
+  character: ren
+  min_f: 4
+  note: held check at the mirror
+- f0: 22
+  f1: 25
+  scope: body
+  character: ren
+  min_f: 4
+  note: held beat on the tuft, he lets it be
+- f0: 34
+  f1: 39
+  scope: body
+  character: ren
+  note: held to the cut; eyes on the phone
+events:
+- f: 6
+  id: mirror_tilt
+  kind: visual
+  note: hand contact, mirror turns toward him
+- f: 14
+  id: tuft_press
+  kind: visual
+  note: palm flattens the tuft (squash f14-18)
+- f: 19
+  id: tuft_spring
+  kind: visual
+  note: tuft springs back up with one overshoot, settled by f22
+- f: 26
+  id: mirror_back
+  kind: visual
+  note: mirror tilted back toward the road
+- f: 34
+  id: eyes_to_phone
+  kind: visual
+  note: eyeline drops to the phone; the cut to the map insert follows
+preview_frames:
+- 0
+- 6
+- 14
+- 19
+- 22
+- 34
+- 39
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'VOCAB GAP: crown tuft has no track (squash f14-18 under the palm, spring-back with one overshoot f19-22
+  ending settled at f22). Needs a tuft prop/secondary track using ease overshoot_small; M3 risk: single
+  keyed bone, no physics.'

@@ -1,0 +1,158 @@
+fm:
+  id: anim_sc04_sh090
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC04_SH090
+    hash: sha256:ba37458305d5c99080be0a44998f4f3680a91d45b3f9a2c2106e97e19ae494d8
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:look.lighting.power_indicators
+    hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  - intent.open_hopeful_ending
+  summary: 'Release: he lets go at f4, the handle coasts and clicks to a stop at f7, the pip dies by f12,
+    then the long out-breath and the eyes close; crank stays clamped high.'
+  stamped_content_hash: sha256:6a0aa664530aa1c404ab43e55f0274d0eb8996c6886ecb9842509de3ac6163f6
+shot_id: SC04_SH090
+frames: 28
+vocab_version: 1
+rationale: He lets go instead of stopping the handle, so it coasts and clicks on its own and the pip dies
+  within 6 frames of the stop, the last amber light of the film (look.lighting.power_indicators). Only
+  then the longest out-breath so far, shoulders and spine dropping without springing back. The knees hold
+  the crank high and the phone stays beside it, so what he let go of and what it paid for are both in
+  frame with his face.
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kerb_crank_hold
+      ease: hold
+      note: 'SH050 end pose exactly: crank clamped high between the knee tops (pip above the near knee),
+        phone in the left hand ~z 0.76 over the near knee beside the port end; right hand slows the handle
+        f0-3 (ease-out), fingers open at f4, hand comes to rest open on the crank f8-16. Release f8-22:
+        shoulders drop 3 cm, spine loosens a little; knees do not move, so the crank stays clamped; the
+        phone sinks ~2 cm with the shoulders. No clamped-release preset exists (gap): the release rides
+        on breath out_long'
+      rationale: the drop is in shoulders and spine only; the crank must stay readable
+    move:
+      gait: crank_turn
+      first_top_f: -8
+      stop_f: 7
+      note: 'already turning: last top was SC04_SH080 f50, so f0 is 8 f (120 deg) past the top; slows
+        f0-4, let go at f4, coasts ~30 deg and stops at f7. No handle top falls inside the shot'
+      rationale: the stop click is hand-written as event ratchet_stop (the only hand-written ratchet event)
+    face:
+    - f: 0
+      ref: focused_calm
+      note: eyes on the phone
+    - f: 8
+      ref: release_after_send
+      note: breath out, eyes close f10-13; no smile, no grin
+      rationale: effort first, then rest
+    look:
+    - f: 0
+      target: phone
+    - f: 10
+      target: closed
+      note: eyes close f10-13 and stay closed to the cut
+    breath:
+    - f: 8
+      ref: out_long
+      dur_f: 15
+      note: one long out-breath f8-22; no more crank-locked breathing
+props:
+  crank_charger:
+  - f: 0
+    loc: lap
+    arm: unfolded
+    pip: 1.0
+    note: clamped high, turning
+  - f: 2
+    pip: 0.4
+    ease: ease_out
+    dur_f: 5
+    note: pip falls with the handle speed f2-6 to about 40 %
+  - f: 7
+    pip: 0.0
+    ease: ease_in
+    dur_f: 6
+    note: 'handle stopped at f7; pip fades to off f7-12 (within 6 frames of the stop); arm stays out;
+      crank stays clamped high (continuity SC04_end in_lap: clamped between the knee tops, knees up)'
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: beside the crank, never over it; bolt off at f7 from the canon row
+holds:
+- f0: 22
+  f1: 27
+  scope: all
+  min_f: 6
+  note: held, eyes closed, to the cut; crank and phone side by side in the lower frame
+events:
+- f: 4
+  id: let_go
+  kind: visual
+  note: fingers open on the knob
+- f: 7
+  id: ratchet_stop
+  kind: sound
+  note: 'last ratchet click: the handle clicks to a stop (sound_sync f7)'
+  rationale: hand-written because the stop is not a handle top
+- f: 7
+  id: bolt_off
+  kind: state
+  note: source no longer live (canon row)
+- f: 8
+  id: release_breath
+  kind: sound
+  note: long breath out from f8 (sound_sync)
+- f: 12
+  id: pip_off
+  kind: light
+  note: the last amber light of the film goes out
+- f: 13
+  id: eyes_closed
+  kind: visual
+preview_frames:
+- 0
+- 4
+- 7
+- 12
+- 16
+- 27
+notes:
+- preview_frame 16 (shot) is the designated still; the pip fade f2-12 is motion.
+- Cut on light to SC05_SH010.

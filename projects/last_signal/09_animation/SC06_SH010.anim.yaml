@@ -1,0 +1,182 @@
+fm:
+  id: anim_sc06_sh010
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC06_SH010
+    hash: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:look.lighting.power_indicators
+    hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
+  - ref: canon:continuity.props.passenger_door
+    hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:tone.ending_restraint
+    hash: sha256:96e2bcf71a89d916ed0ce17fe4ccdc55c000fef096ccaf31653c15b648f4f0ad
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.open_hopeful_ending
+  - intent.earned_last_signal
+  - intent.soft_but_cinematic
+  - intent.anime_feel
+  summary: 'The bookend: he watches the screen die without reaching (f0-24), leans back against the car
+    (f20-46), lays the dark phone on his chest (f24-46), looks up west (f40-56), holds one breath under
+    the fade.'
+  stamped_content_hash: sha256:a6fe35274df4027bfad4b35b0a6d75245d07816bca75bbdad06aadc1545e6b78
+shot_id: SC06_SH010
+frames: 82
+vocab_version: 1
+rationale: 'It is out of his hands and the body says so in order: watch the screen die without reaching,
+  lean back, lay the dark phone on his chest under a flat hand, and only then look up to the west. Each
+  move starts before the last ends and eases in and out with no overshoot, so the three read as one long
+  exhale in the frame that opened SC04 hunched (camera.geography.sc04_sc06). The look up stops short of
+  a smile (tone.ending_restraint); the last 26 frames hold on one breath under the fade out.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kerb_crank_hold
+      ease: hold
+      note: 'as SC04_SH090 ended but eyes open: phone at his left knee, screen turned to the lens; crank
+        in his lap, arm out, right hand resting on it; completely still f0-19'
+    - f: 20
+      ref: kerb_lean_back
+      ease: ease_in_out
+      blend_f: 26
+      note: spine loosens and reclines against the car's rear quarter f20-46; knees stay up but open ~10
+        deg; left hand carries the dark phone to his chest f24-40 and lies flat over it f40-46
+      rationale: 'one slow blend: the lean, the hand and the settle overlap as one exhale'
+    - f: 46
+      ref: kerb_lean_back
+      ease: hold
+      note: final hold to the cut
+    move:
+      gait: none
+      note: seated on the kerb, back to the car
+    face:
+    - f: 0
+      ref: neutral
+      note: eyes open on the fading screen; quiet
+    - f: 50
+      ref: final_look_up
+      note: eyelids low, mouth soft, the faintest ease at the corners f50-60; short of a smile
+    look:
+    - f: 0
+      target: phone
+      note: the fading screen f0-39; he does not reach for it
+    - f: 40
+      target: sky
+      note: eyes lift first f40-43, then the head tips up and to screen left (west, the afterglow) f42-56,
+        ease-in-out
+    breath:
+    - f: 56
+      ref: in_slow
+      dur_f: 12
+      note: in f56-67, shoulders rise 0.5 cm
+    - f: 68
+      ref: out_slow
+      dur_f: 14
+      note: out f68-81
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: held at the left knee, screen turned to the lens (prose 'at his left knee'; hand_l keeps the
+      chain from SC04_SH090)
+  - f: 40
+    attach: chest
+    dur_f: 6
+    note: laid flat on the oat centre strip, screen out, under the flat left hand f40-45
+  crank_charger:
+  - f: 0
+    loc: lap
+    arm: unfolded
+    pip: 0.0
+    note: 'in his lap, arm out, pip off, still (continuity SC06 in_lap_arm_out_pip_off). OPEN QUESTION:
+      in SC04_SH090 the lap is the clamp between the knee tops; the knees opening ~10 deg at f20 here
+      would loosen it. Kept still, as the prose says'
+  passenger_door:
+  - f: 0
+    state: open_60
+    note: still
+  glovebox_lid:
+  - f: 0
+    state: open_down
+    note: lid down (continuity SC06), not readable from this lens
+holds:
+- f0: 0
+  f1: 19
+  scope: body
+  character: ren
+  min_f: 20
+  note: 'watches the screen fade without reaching: completely still'
+  rationale: not reaching is the beat
+- f0: 56
+  f1: 81
+  scope: all
+  min_f: 26
+  note: one slow breath, nothing else moves; FADE OUT f64-81 (post) over the held pose
+  rationale: calm and open, not frozen
+events:
+- f: 20
+  id: lean_back_start
+  kind: visual
+- f: 24
+  id: screen_dark
+  kind: light
+  note: 'the fade (canon row, ease-out f0-24) ends: screen off'
+- f: 40
+  id: phone_on_chest
+  kind: sound
+  note: phone laid on his chest under the flat hand
+- f: 43
+  id: head_tips_up
+  kind: visual
+  note: head starts up toward the afterglow
+- f: 56
+  id: look_up_arrives
+  kind: visual
+- f: 64
+  id: fade_out_start
+  kind: visual
+  note: post fade out f64-81, 18 frames
+preview_frames:
+- 0
+- 20
+- 40
+- 50
+- 56
+- 81
+notes:
+- Same camera as SC04_SH010 (the bookend); the lens stays above the jacket top as he leans back.
+- Cable from phone to crank follows the hand from knee to chest on a hooked curve, keyed with the hand
+  (no cable prop in the vocabulary).

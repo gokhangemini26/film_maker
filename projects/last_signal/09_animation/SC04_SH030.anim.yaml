@@ -1,0 +1,197 @@
+fm:
+  id: anim_sc04_sh030
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC04_SH030
+    hash: sha256:9aea3b8fc7724109811d12cab015db797fd303bea7f4fb542dad3b75ed708b75
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.passenger_door
+    hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:camera.movement.push_in
+    hash: sha256:b2116094133cd8c9d9331d429d13d6259b58acde02cf25587f7163b9cdc4f092
+  - ref: canon:tone.the_turn
+    hash: sha256:653b9a834c3b4f01813d471792c37227f6b7476e3a4d314cc4792b6e51f5b361
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  summary: Eyes lead a slow head turn from the phone to the glovebox (commit f4, eyes land f10, head arrives
+    f16), a held look, a blink, the decision.
+  stamped_content_hash: sha256:cb8e83d5c5641be707dd5fb88fbf6ff0a0019af185e2593677e608ee2c8c2bea
+shot_id: SC04_SH030
+frames: 36
+vocab_version: 1
+rationale: Opens with the head about one sixth turned so the question reads three-quarter to the lens;
+  the eyes lead, the look commits at f4 (the push-in starts on it) and lands on the glovebox at f10; the
+  head arrives at f16 with an even ease-in-out, the tender tempo (characters.ren.movement turn tempo slow_deliberate).
+  Then stillness, one breath, one blink, and the decision as a small weight shift, never a comic reset
+  (tone.the_turn).
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kerb_hunch
+      ease: hold
+      note: 'head about 20 deg of the ~115 deg turn toward the open door at f0 (not expressible as a preset:
+        gap). Only head and eyes move until f28. f28-33 the forearms lift off the knees and weight starts
+        west (no preset for it: gap); matches SC04_SH040 f0'
+      rationale: the body stays hunched while the look does the work; the lift at f28 is the decision
+    move:
+      gait: none
+      note: seated on the kerb
+    face:
+    - f: 0
+      ref: neutral
+      note: 'f0-9 readable three-quarter: brows level, very slightly lifted (the question), mouth soft'
+    - f: 28
+      ref: focused_calm
+      note: 'the decision: chin lowers a touch, brows settle level'
+      rationale: hesitation becomes focused calm, read in stillness and the forearms
+    look:
+    - f: 0
+      target: phone
+      note: eyes just lifted off the phone, sliding screen left f0-2 (eyes lead); head at ~20 deg
+    - f: 4
+      target: glovebox
+      note: the look commits at f4 (eyes fixed on the door opening, head ~35 deg); head turn ease-in-out
+        f2-16, ~95 deg in 14 f, no snap; eyes land on the glovebox f10 (head ~85 deg); head arrives f16,
+        no overshoot
+      rationale: the push-in starts on this frame; the audience follows his look into depth
+    - f: 22
+      target: closed
+      note: one slow blink f22-27
+    - f: 28
+      target: glovebox
+      note: eyes reopen on the glovebox, held to the cut
+    breath:
+    - f: 20
+      ref: in_slow
+      dur_f: 9
+      note: small breath in f20-28, shoulders rise 1 cm
+props:
+  phone_ren:
+  - f: 0
+    attach: hands_both
+    note: low in both hands, flicker continuing
+  - f: 33
+    attach: hand_l
+    note: 'CONFLICT (flagged): prose keeps it ''low in both hands'' here but SC04_SH040 f0 has it in the
+      left hand. Keyed to hand_l at the end of the forearm lift so the chain holds; the right hand simply
+      leaves it'
+  passenger_door:
+  - f: 0
+    state: open_60
+    note: door panel enters from frame left
+  glovebox_lid:
+  - f: 0
+    state: closed
+    note: closed glovebox about 10 deg left of centre, seen through the opening
+  crank_charger:
+  - f: 0
+    loc: glovebox
+    arm: folded
+    pip: 0.0
+    note: inside the closed glovebox
+ui_timeline:
+- f: 11
+  event: dip
+  value: 0.7
+  dur_f: 2
+  note: '1 % flicker continues: dip f11-12'
+- f: 25
+  event: dip
+  value: 0.7
+  dur_f: 3
+  note: dip f25-27
+camera:
+  move: dolly_in
+  start_f: 4
+  end_f: 35
+  dist_m: 0.18
+  ease_in_f:
+  - 4
+  - 8
+  ease_out_f:
+  - 34
+  - 35
+  peak_speed_mps: 0.149
+  note: straight toward him, push-in 1 of 2; linear between the eases; under the 0.15 m/s cap
+  rationale: starts on the frame his look commits (camera.movement.push_in)
+holds:
+- f0: 16
+  f1: 19
+  scope: face
+  character: ren
+  min_f: 4
+  note: 'held look f16-19: brows level, mouth soft, still'
+events:
+- f: 4
+  id: look_commits
+  kind: visual
+  note: eyes fix on the door opening; push-in starts
+- f: 10
+  id: eyes_on_glovebox
+  kind: visual
+  note: eyes land on the glovebox
+- f: 11
+  id: flicker_dip_1
+  kind: light
+  note: screen dip f11-12
+- f: 16
+  id: head_arrives
+  kind: visual
+  note: head turn complete, no settle bounce
+- f: 20
+  id: breath_in
+  kind: sound
+  note: small breath in f20-28
+- f: 25
+  id: flicker_dip_2
+  kind: light
+  note: screen dip f25-27
+- f: 28
+  id: decision
+  kind: visual
+  note: forearms lift off the knees, weight starts west
+preview_frames:
+- 0
+- 3
+- 10
+- 16
+- 28
+- 35
+notes:
+- preview_frame 3 (shot) is the designated still.
+- Head angles between look keys are the builder's ease-in-out f2-16; the vocabulary has no partial-turn
+  target or look ease (gap).

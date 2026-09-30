@@ -1,0 +1,122 @@
+fm:
+  id: anim_sc03_sh030
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC03_SH030
+    hash: sha256:4e8d8794bce81a3e44a3b60b5e5e677f726f94660ecd5da0c72213b34faf6495
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.comic_then_tender
+  summary: 'Structured tracks for the wary look up: eyes flick to the panels at f1, head follows, a 14-frame
+    dead hold f5-18, slow return to the phone, shoulders start to drop on f23 into SH040.'
+  stamped_content_hash: sha256:b5dccbcb13833c289faed490fa7097b89fc3752b7b3bc3a2ba605a599e6e9608
+shot_id: SC03_SH030
+frames: 26
+vocab_version: 1
+rationale: 'The wary half of the wary relief: he expects the pattern, freezes looking at the panels, and
+  nothing happens. Eyes first, head second, a 14-frame dead hold (asserted as a hold), then a slow return.
+  The panels carry an explicit `steady` key so QA can assert the gag is the absence. The out-breath starts
+  at f23 so SH040 continues one motion (match on action).'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kneel_upright
+      ease: hold
+      note: kneeling, facing the lens, head level; the head tilt is carried by the look track
+    face:
+    - f: 0
+      ref: neutral
+      note: f0-1 the wary face carried from SH020 (brows level, mouth pressed)
+    - f: 2
+      ref: freeze
+      note: 'brows lift and slightly knit, eyes wide, small pupils, mouth pressed; no graphic symbols.
+        Held through the return: the face does not relax until SH040'
+      rationale: comic set legal here (before SC04_SH030); a held pose, not a rubbery take
+    look:
+    - f: 0
+      target: phone
+      note: eyes down on the phone
+    - f: 1
+      target: ceiling
+      note: eyes flick up to the panels in a 1-frame cel switch on f1; the head tilts up about 20 deg
+        after the eyes (ease-out, f2-5). The look track has no separate eye/head timing in vocabulary
+        v1; see gaps
+      rationale: eyes first, head second is the delay that sells the suspense
+    - f: 19
+      target: phone
+      note: eyes lower slowly, head levels after them (ease-in-out, f19-24); about 18 frames up in total
+    breath:
+    - f: 0
+      ref: hold
+      dur_f: 23
+      note: breath held from the cut through the freeze and the return (f0-22)
+    - f: 23
+      ref: out_long
+      dur_f: 3
+      note: shoulders begin to drop (f23-25); the long exhale continues into SH040 f0-14 (match on action)
+props:
+  ceiling_panels:
+  - f: 0
+    state: steady
+    note: 'no change at all: no flicker, no hum change (the gag is the absence)'
+    rationale: a deliberate no-op QA can assert; a flicker tease would spoil the delay
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: left hand, plugged in, bolt on (canon screen table)
+holds:
+- f0: 5
+  f1: 18
+  scope: all
+  min_f: 14
+  note: freeze held, completely still, eyes up (f5-18, 14 frames)
+  rationale: the delay only works if nothing moves
+events:
+- f: 1
+  id: eyes_up
+  kind: visual
+  note: eyes flick up to the panels (1-frame cel switch)
+- f: 5
+  id: freeze_locked
+  kind: visual
+  note: head tilt complete; the 14-frame dead hold begins
+- f: 19
+  id: eyes_down
+  kind: visual
+  note: eyes begin to lower
+- f: 23
+  id: shoulders_drop
+  kind: visual
+  note: the exhale begins; continues into SH040
+preview_frames:
+- 0
+- 5
+- 19
+- 25
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- Camera locked off; the delay only works in a still frame.

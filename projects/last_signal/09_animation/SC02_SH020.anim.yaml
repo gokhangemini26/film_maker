@@ -1,0 +1,105 @@
+fm:
+  id: anim_sc02_sh020
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC02_SH020
+    hash: sha256:783ca6dc0c914156c5b4dd7b6e25ae9f2c4fb2afce34a03973fd60b4f77b2de9
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  - intent.anime_feel
+  summary: 'Structured tracks for the compass run away from the lens: one rigid-arm run preset, 4.2 m/s,
+    a step every 6 frames, 2.3 m in 14 frames.'
+  stamped_content_hash: sha256:96cc8711216f1701deea921ddedd7acdaf1242ca436517cd11b987ea2e0a832b
+shot_id: SC02_SH020
+frames: 14
+vocab_version: 1
+rationale: 'The legs work and the phone arm does not (characters.ren.movement before_turn.run): one run_phone_out
+  preset held for the whole shot, with the run_phone_out gait carrying the contacts, bob and stride, so
+  nothing can swing the phone arm. At 4.2 m/s the figure visibly shrinks into the sunlit pavement inside
+  the elliptical cut.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: run_phone_out
+      ease: hold
+      note: right foot contact on f0; left arm straight out ahead holding the phone, right forearm tucked
+        to the chest; contacts f0 / f6 / f12 and the airborne passes f3 / f9 (body up 4 cm, down 3 cm
+        on contact) come from the gait; toe-off on f13, cut
+      rationale: the phone arm stays rigid, no swing (tone.anti_goals rejects a flailing sprint)
+    move:
+      gait: run_phone_out
+      speed_mps: 4.2
+      path:
+      - f: 0
+        x: -0.9
+        y: 4.8
+      - f: 13
+        x: -0.9
+        y: 7.08
+      note: away from the lens (camera at y 2.5) along the pavement, centred on the shot's position y
+        6.0. The prose "about 4.8 m -> 7.2 m from the camera" is read as street y 4.8 -> 7.2 (the range
+        centred on y 6.0); read literally as distance from the camera it would be y 7.3 -> 9.7, off the
+        blocking position. 4.2 m/s x 13/24 s = 2.28 m
+    face:
+    - f: 0
+      ref: neutral
+      note: not visible (from behind)
+    look:
+    - f: 0
+      target: road_ahead
+      note: ahead, over the phone
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: phone out ahead in the left hand 'like a compass'; cable loop in the same hand swings opposite
+      each stride (two posed shapes; no cable prop in vocabulary v1)
+events:
+- f: 0
+  id: step_r_1
+  kind: sound
+  note: right foot contact
+- f: 6
+  id: step_l_1
+  kind: sound
+  note: left foot contact
+- f: 12
+  id: step_r_2
+  kind: sound
+  note: right foot contact
+preview_frames:
+- 0
+- 6
+- 13
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'Secondary motion with no track in vocabulary v1: head bob 3-4 cm on contacts (gait), jacket hem flares
+  with the hips (shape keys), cable loop swings opposite each stride (two posed shapes).'

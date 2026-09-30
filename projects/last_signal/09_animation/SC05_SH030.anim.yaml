@@ -1,0 +1,135 @@
+fm:
+  id: anim_sc05_sh030
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC05_SH030
+    hash: sha256:fe59950a5823efe8c8ad34c1a74192a78ea62fa7a90efb08872e242264b7d7b3
+  - ref: canon:characters.hana.expressions
+    hash: sha256:489e56798bb001a8026e56f8f482436ed4c3a4df186ecf755e94450b6756335c
+  - ref: canon:characters.hana.movement
+    hash: sha256:55f3b5718c3183edc21042ed66555c8298293d01934ca2a38b64078d6e5d1120
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.hana.headphones
+    hash: sha256:00dc5293c2843c67e26e1b1a163b027eb1d134338a1ac0927ef2f552bd4dd106
+  - ref: canon:tone.ending_restraint
+    hash: sha256:96e2bcf71a89d916ed0ce17fe4ccdc55c000fef096ccaf31653c15b648f4f0ad
+  - ref: canon:animation.vocab.pose.hana
+    hash: sha256:cfbee4fbc0e42f095b9f2e2ee4d3f45e84619bea454b7c20349b6f37e1545184
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.open_hopeful_ending
+  - intent.soft_but_cinematic
+  summary: She reads; the small smile arrives as one wave (lids f14, corners f16, head dip f18, shoulders
+    f20), lands f22 and is held 30 frames with one blink and one breath.
+  stamped_content_hash: sha256:332df4b498518cf267698eb726587db0304d410e690569207945fda135dd8ec4
+shot_id: SC05_SH030
+frames: 52
+vocab_version: 1
+rationale: 'The film''s only answer, built as characters.hana.expressions describes it: eyes finish reading,
+  then lids lift, corners rise with lips closed, head dips and shoulders settle, each a few frames after
+  the last, so the smile lands at f22 as one soft wave and is held 30 frames without growing. She never
+  looks up: private pleasure, a yes to dinner, not a declaration (tone.ending_restraint).'
+characters:
+  hana:
+    pose:
+    - f: 0
+      ref: desk_phone_low
+      ease: hold
+      note: 'phone low in both hands, headphones on the neck; head dips ~4 deg f18-24 (no preset for the
+        dip: gap, noted for the builder)'
+    move:
+      gait: none
+      note: seated
+    face:
+    - f: 0
+      ref: reading
+      note: soft and attentive; eyes track the text in three small steps f2, f6, f10, short hold f10-14
+    - f: 14
+      ref: small_smile
+      note: 'the wave: lower lids lift f14-20 (ease-in), corners rise lips closed f16-22 (ease-in-out);
+        landed at f22 and does not grow; no teeth, no grin, no blush'
+      rationale: one soft wave in the canon's order
+    look:
+    - f: 0
+      target: phone
+      note: down on the phone to the cut; the three reading steps are eye offsets on the same target
+    - f: 36
+      target: closed
+      note: one soft blink f36-41; lids return to their lifted smile shape
+    - f: 42
+      target: phone
+    breath:
+    - f: 20
+      ref: out_slow
+      dur_f: 7
+      note: shoulders settle 1 cm f20-26
+    - f: 30
+      ref: in_slow
+      dur_f: 10
+      note: 'one slow breath during the hold: in f30-39'
+    - f: 40
+      ref: out_slow
+      dur_f: 12
+      note: out f40-51
+props:
+  phone_hana:
+  - f: 0
+    attach: hands_both
+    note: held low and still; glow on her face steady
+  hana_headphones:
+  - f: 0
+    state: neck
+    note: ride the collar with the shoulder settle (parented)
+holds:
+- f0: 22
+  f1: 51
+  scope: face
+  character: hana
+  min_f: 30
+  note: the small smile held 30 frames to the cut; it never grows
+  rationale: 'restraint: the smile is the answer'
+- f0: 0
+  f1: 51
+  scope: body
+  character: hana
+  min_f: 30
+  note: 'no pose change in the shot: the smile, the head dip, breath and one blink carry it (a moving
+    hold)'
+events:
+- f: 10
+  id: last_line_read
+  kind: visual
+- f: 14
+  id: smile_onset
+  kind: visual
+- f: 22
+  id: smile_landed
+  kind: visual
+- f: 36
+  id: soft_blink
+  kind: visual
+preview_frames:
+- 0
+- 12
+- 22
+- 38
+- 51
+notes:
+- 'Cut on direction to SC06_SH010. Her screen is not readable here (canon row: received).'

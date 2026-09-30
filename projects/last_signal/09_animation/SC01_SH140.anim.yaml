@@ -1,0 +1,94 @@
+fm:
+  id: anim_sc01_sh140
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH140
+    hash: sha256:209db68556feab291fba285ddf380490e5dc1bd6f4e72fbab9f119708345bd51
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  summary: 'Battery insert across the cut: last dip frame at f0, back to full at f1, 4 % to 3 % at f2,
+    held 30 frames; the bolt is gone.'
+  stamped_content_hash: sha256:3b0f3771e3dad5cf3fdd72d8757fccd22bd92284cc9d8e716239652445a8d7de
+shot_id: SC01_SH140
+frames: 32
+vocab_version: 1
+rationale: 'The frame-exact order across the cut is the gag''s second half: stall at SH130 f32, two dip
+  frames, cut, the last dip frame here (f0), full brightness on f1, the number drops on f2 (canon table).
+  The eye first finds the empty place where the bolt was, then the 3: two small steps down (story.escalation).
+  No UI sound.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_recline
+      ease: hold
+      note: 'none in frame; carries SH130''s end (reclined, eyes closed). The insert framing reference
+        cheats the screen to about (1.29, -0.09, 0.97). SH150 opens upright at the wheel: the change happens
+        off screen'
+    move:
+      gait: none
+    look:
+    - f: 0
+      target: closed
+      note: off frame
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+ui_timeline:
+- f: 0
+  event: dip
+  value: 0.7
+  dur_f: 1
+  note: dip frame 3 of 3 (frames 1-2 were SC01_SH130 f32-33); back to 100 % in one frame at f1
+holds:
+- f0: 2
+  f1: 31
+  scope: phone
+  min_f: 24
+  note: 3 % held f2-31 (30 frames, minimum 24); bolt absence held all 32 frames (minimum 18)
+events:
+- f: 0
+  id: car_silence
+  kind: sound
+  note: silence in the car; no UI sound on the number change
+- f: 1
+  id: dip_end
+  kind: state
+  note: screen back to full brightness
+- f: 2
+  id: battery_3
+  kind: state
+  note: 3 %, red, switched in one frame
+preview_frames:
+- 0
+- 1
+- 2
+- 6
+- 31
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- preview_frame 6 kept from the shot file (bolt gone, 3 %, full brightness).

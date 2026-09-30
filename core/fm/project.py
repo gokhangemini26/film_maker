@@ -17,7 +17,7 @@ from .errors import FMError
 from .io import canonical_json, hash_obj, load_json, load_yaml, normalize_text, read_front_matter, sha256_text
 from .schemas import (
     SHOT_NON_CONTENT, ArtifactMeta, Brief, CanonEntry, CanonFile, ChangeRequest, DerivedRecord,
-    AnimationTracks, SceneIndex, ShotSpec,
+    AnimationTracks, AudioCues, SceneIndex, ShotSpec,
 )
 from .schemas.common import SLUG_RE
 
@@ -120,6 +120,11 @@ class Loaded:
         """shot id -> its `shot_animation` artifact (typed model in `.parsed`)."""
         return {it.parsed.shot_id: it for it in self.artifacts.values()
                 if it.meta.kind == "shot_animation" and it.parsed is not None}
+
+    @property
+    def audio_cues(self) -> list[ArtifactItem]:
+        """`audio_cues` artifacts (typed model in `.parsed`); the contract is exactly one."""
+        return [it for it in self.artifacts.values() if it.meta.kind == "audio_cues" and it.parsed is not None]
 
     def current_hash(self, ref: str) -> str | None:
         kind, _, ident = ref.partition(":")
@@ -234,6 +239,8 @@ class Project:
                         out.scene_index = SceneIndex.model_validate(data)
                     elif art_meta.kind == "shot_animation":
                         parsed = AnimationTracks.model_validate(data)
+                    elif art_meta.kind == "audio_cues":
+                        parsed = AudioCues.model_validate(data)
                     h, fmt = yaml_artifact_hash(data), "yaml"
                     extra = {}
             except ValidationError as exc:

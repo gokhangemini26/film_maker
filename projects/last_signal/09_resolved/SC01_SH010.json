@@ -527,6 +527,224 @@
       }
     }
   },
+  "motion": {
+    "camera": {
+      "move": "none"
+    },
+    "characters": {
+      "ren": {
+        "breath": [
+          {
+            "dur_f": 3,
+            "f": 31,
+            "f_abs": 31,
+            "ref": "out_slow"
+          }
+        ],
+        "face": [
+          {
+            "f": 0,
+            "f_abs": 0,
+            "ref": "neutral"
+          }
+        ],
+        "look": [
+          {
+            "f": 0,
+            "f_abs": 0,
+            "target": "mirror"
+          },
+          {
+            "f": 34,
+            "f_abs": 34,
+            "target": "phone"
+          }
+        ],
+        "move": {
+          "gait": "none",
+          "path": []
+        },
+        "pose": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 0,
+            "ref": "car_upright"
+          },
+          {
+            "blend_f": 5,
+            "ease": "ease_out",
+            "f": 1,
+            "f_abs": 1,
+            "ref": "car_reach_up"
+          },
+          {
+            "ease": "hold",
+            "f": 10,
+            "f_abs": 10,
+            "ref": "car_reach_up"
+          },
+          {
+            "blend_f": 3,
+            "ease": "ease_in_out",
+            "f": 14,
+            "f_abs": 14,
+            "ref": "car_reach_up"
+          },
+          {
+            "blend_f": 2,
+            "ease": "ease_out",
+            "f": 19,
+            "f_abs": 19,
+            "ref": "car_reach_up"
+          },
+          {
+            "ease": "hold",
+            "f": 22,
+            "f_abs": 22,
+            "ref": "car_reach_up"
+          },
+          {
+            "blend_f": 3,
+            "ease": "ease_out",
+            "f": 26,
+            "f_abs": 26,
+            "ref": "car_reach_up"
+          },
+          {
+            "blend_f": 3,
+            "ease": "ease_out",
+            "f": 31,
+            "f_abs": 31,
+            "ref": "car_upright"
+          },
+          {
+            "ease": "hold",
+            "f": 34,
+            "f_abs": 34,
+            "ref": "car_upright"
+          }
+        ]
+      }
+    },
+    "events": [
+      {
+        "f": 6,
+        "f_abs": 6,
+        "id": "mirror_tilt",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 14,
+        "f_abs": 14,
+        "id": "tuft_press",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 19,
+        "f_abs": 19,
+        "id": "tuft_spring",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 26,
+        "f_abs": 26,
+        "id": "mirror_back",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 34,
+        "f_abs": 34,
+        "id": "eyes_to_phone",
+        "kind": "visual",
+        "source": "anim"
+      }
+    ],
+    "frame_start": 0,
+    "frames": 40,
+    "holds": [
+      {
+        "character": "ren",
+        "f0": 10,
+        "f1": 13,
+        "min_f": 4,
+        "scope": "body"
+      },
+      {
+        "character": "ren",
+        "f0": 22,
+        "f1": 25,
+        "min_f": 4,
+        "scope": "body"
+      },
+      {
+        "character": "ren",
+        "f0": 34,
+        "f1": 39,
+        "scope": "body"
+      }
+    ],
+    "preview_frames": [
+      0,
+      6,
+      14,
+      19,
+      22,
+      34,
+      39
+    ],
+    "props": {
+      "car_body": [
+        {
+          "f": 0,
+          "f_abs": 0,
+          "state": "still"
+        }
+      ],
+      "dash_lights_and_adapter_ring": [
+        {
+          "f": 0,
+          "f_abs": 0,
+          "state": "off"
+        }
+      ],
+      "phone_ren": [
+        {
+          "attach": "hand_l",
+          "f": 0,
+          "f_abs": 0
+        }
+      ],
+      "rear_view_mirror": [
+        {
+          "f": 0,
+          "f_abs": 0,
+          "tilt_deg": 0.0
+        },
+        {
+          "dur_f": 4,
+          "ease": "ease_out",
+          "f": 6,
+          "f_abs": 6,
+          "tilt_deg": 8.0
+        },
+        {
+          "dur_f": 4,
+          "ease": "ease_out",
+          "f": 26,
+          "f_abs": 26,
+          "tilt_deg": 0.0
+        }
+      ]
+    },
+    "schema": "fm.motion/1",
+    "source": "artifact:anim_sc01_sh010",
+    "vocab_version": 1
+  },
   "provenance": {
     "canon": [
       "characters.ren.expressions",
@@ -552,7 +770,539 @@
     ]
   },
   "scene_id": "SC01",
-  "schema": "fm.resolved_shot/1",
+  "schema": "fm.resolved_shot/2",
   "sequence_id": "SQ01",
-  "shot_id": "SC01_SH010"
+  "shot_id": "SC01_SH010",
+  "ui_timeline": {
+    "colours": {
+      "charcoal": "#2B303B",
+      "red": "#E5483B"
+    },
+    "frames": [
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 0,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 1,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 2,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 3,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 4,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 5,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 6,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 7,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 8,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 9,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 10,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 11,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 12,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 13,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 14,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 15,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 16,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 17,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 18,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 19,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 20,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 21,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 22,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 23,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 24,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 25,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 26,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 27,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 28,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 29,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 30,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 31,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 32,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 33,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 34,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 35,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 36,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 37,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 38,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 39,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "ui": "map"
+      }
+    ],
+    "phone": "ren",
+    "schema": "fm.ui_timeline/1",
+    "source": "canon:look.style.phone_screen.states_by_shot",
+    "warnings": []
+  }
 }

@@ -1,0 +1,77 @@
+fm:
+  id: anim_sc03_sh060
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC03_SH060
+    hash: sha256:56cfa23e8fda67aa597eefd0b9daa42e7e2639635a9494700e05404c0c52cc27
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.race_against_battery
+  summary: 'Structured tracks for the 2 % insert: nothing moves for 26 frames (minimum 24); no hand in
+    frame.'
+  stamped_content_hash: sha256:6cef18e0a40a17158245894470d70ef45850a28994dca4e8da787704ba18d6bd
+shot_id: SC03_SH060
+frames: 26
+vocab_version: 1
+rationale: 'A completely still insert: in the shop the damage is already done, so the phone only states
+  the cost. A whole-shot `all` hold with the insert minimum (24) makes the stillness and the legibility
+  rule checkable; there are no ui events, so the screen stays exactly the canon row (2 %, red, no bolt,
+  brightness 1.0).'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kneel_upright
+      ease: hold
+      note: 'off frame: kneeling, eyes at about 1.05 m, head behind the lens. The prose pose_ref "phone_hold.no_hand"
+        is not a vocabulary name; kneel_upright is kept only so the phone has a holder in the same place
+        as SH050/SH070. The lens sits 0.30 m from the screen, between his eyes and the phone: the builder
+        must keep the head out of the near plane (hide or clip the body, as the M3 insert path does)'
+    look:
+    - f: 0
+      target: phone
+      note: off frame; his eyeline is the lens axis
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: no hand in frame; phone still. Screen centre about (2.2, 8.29, 0.72), camera up = the phone's
+      top edge
+holds:
+- f0: 0
+  f1: 25
+  scope: all
+  min_f: 24
+  note: battery 2 %, red, no bolt, steady f0-25 (26 frames, minimum 24); no dip and no change inside the
+    shot
+  rationale: insert legibility rule; a still frame after the car's busy insert is the joke told differently
+events:
+- f: 0
+  id: insert_2pct
+  kind: state
+  note: the insert opens on the result of the blackout (2 %, red, no bolt); nothing changes after this
+preview_frames:
+- 12
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'preview_frames [12] follows the shot''s preview_frame: a still insert, any frame reads; mid-shot for
+  margin.'
+- 'This shot file shows G5 drift (shot:SC03_SH060 modified after approval, per fm validate): this anim
+  file is written against its current content.'

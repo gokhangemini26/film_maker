@@ -1,0 +1,135 @@
+fm:
+  id: anim_sc04_sh020
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC04_SH020
+    hash: sha256:eae1eff6c7167cd05a6372377d7d2b75e71b0dab8683b2f265f450300c1f608a
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.race_against_battery
+  - intent.earned_last_signal
+  summary: Two slow thumb presses, two stutters (screen dips f14-16 and f20-21), nothing typed, a quiet
+    withdrawal.
+  stamped_content_hash: sha256:8176275c26f606e68e229d3c1c9ce3905e77cc8a9b4f17e65b32ab4a6201b828
+shot_id: SC04_SH020
+frames: 32
+vocab_version: 1
+rationale: 'The attempt is slow and the withdrawal quiet: two presses, two stutters, nothing typed, and
+  the thumb goes back down without forcing it, the first sign that he no longer resets (characters.ren.movement).
+  The dips are timed to the presses so the phone visibly cannot be used at 1 % (continuity.battery). The
+  body is a held preset; the thumb beats are carried by the key_press and dip events plus notes, because
+  the vocabulary has no thumb/hand presets (listed as a gap).'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kerb_hunch
+      ease: hold
+      note: 'body off frame behind the lens (insert). Thumb, not in the vocabulary: no thumb f0-9; left
+        thumb enters from the frame bottom f10-13 (ease-in-out) and hovers; press f14-15; lifts 3 mm and
+        pauses f16-19; press f20-21; still over the keys f22-23; withdraws down f24-27 (ease-in), gone
+        by f28'
+      rationale: the body does not change; only the thumb acts, slowly
+    move:
+      gait: none
+    face:
+    - f: 0
+      ref: neutral
+      note: off frame; tired, not comic (the comic set is still legal here but wrong)
+    look:
+    - f: 0
+      target: phone
+      note: off frame; implied on the screen
+props:
+  phone_ren:
+  - f: 0
+    attach: hands_both
+    note: phone still, low between the knees; locked to the frame
+ui_timeline:
+- f: 14
+  event: key_press
+  key: any
+  dur_f: 2
+  note: pressed key darkens f14-15
+- f: 14
+  event: dip
+  value: 0.7
+  dur_f: 3
+  note: screen to 70 % f14-16 on the first press (canon row f14 0.7 -> f17 1.0)
+- f: 20
+  event: key_press
+  key: any
+  dur_f: 2
+  note: pressed key darkens f20-21
+- f: 20
+  event: dip
+  value: 0.7
+  dur_f: 2
+  note: screen to 70 % f20-21 on the second press (canon row f20 0.7 -> f22 1.0)
+holds:
+- f0: 0
+  f1: 31
+  scope: body
+  character: ren
+  note: body off frame, unchanged
+- f0: 0
+  f1: 31
+  scope: phone
+  note: phone fixed in frame; icon blink comes from the canon row (visible f0-11, hidden f12-23, visible
+    f24-31)
+  rationale: 'insert legibility: the ''1 %'' and the icon must read'
+events:
+- f: 10
+  id: thumb_enters
+  kind: visual
+  note: left thumb enters from the frame bottom
+- f: 14
+  id: stutter_tick_1
+  kind: sound
+  note: tiny electrical tick on the first press (sound_sync f14)
+- f: 20
+  id: stutter_tick_2
+  kind: sound
+  note: tiny electrical tick on the second press (sound_sync f20)
+- f: 28
+  id: thumb_gone
+  kind: visual
+  note: thumb out of frame; compose field unchanged
+preview_frames:
+- 11
+- 14
+- 20
+- 29
+notes:
+- 'No compose character appears: the ui row stays compose_1_line; no text event on purpose.'
+- 'Hold ''phone'' spans the thumb moves: the thumb is not a phone prop key, the phone itself never moves.'

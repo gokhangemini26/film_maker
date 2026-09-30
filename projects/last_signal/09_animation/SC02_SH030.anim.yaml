@@ -1,0 +1,142 @@
+fm:
+  id: anim_sc02_sh030
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC02_SH030
+    hash: sha256:6882916b0d762100ecafed0ac04fa926a7a8aa92c5124aa714187c867d543195
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:continuity.props.passenger_door
+    hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.gait
+    hash: sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  summary: 'Structured tracks for the arrival: run toward the lens, bank to his left under the awning,
+    through the shop door by f13; the chime on the cut frame f15.'
+  stamped_content_hash: sha256:d73b879cbbbc4507a7868f2592a7a1c1f75c0be22e6986d34a6a115895e4538c
+shot_id: SC02_SH030
+frames: 16
+vocab_version: 1
+rationale: 'Brief hope in motion: he made it. The run banks rather than skids (the curve lives in the
+  path, not in a skid pose), he is gone by f13 so the last frames are the empty swinging door, and the
+  chime event sits on f15, the cut point and the scene''s full stop.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: run_phone_out
+      ease: hold
+      note: 'running toward the lens, left foot contact on f0, phone out ahead. f6 right foot plants and
+        he starts to bank toward screen right (his left); f8 banked about 10 deg, head ducks under the
+        awning; f10 right hand pushes the door; f11 ducking through; f13 last of him (heel, jacket hem)
+        through the door. No swerve, door-push or duck preset exists in vocabulary v1: the bank comes
+        from the path curvature and the rest is held on the run preset'
+      rationale: keeping the compass run through the swerve keeps it earnest (no near-miss, no wall bump)
+    move:
+      gait: run_phone_out
+      speed_mps: 4.1
+      path:
+      - f: 0
+        x: -0.8
+        y: 10.4
+      - f: 6
+        x: -0.85
+        y: 11.4
+      - f: 10
+        x: -1.45
+        y: 11.85
+      - f: 13
+        x: -2.0
+        y: 12.0
+      note: 'street coords: west along x -0.8 toward the lens (camera at y 17 looking east), swerving
+        south (screen right, his left) through the shop door at (-1.8, 12.0). f13 ends 0.2 m past the
+        door plane so the body is through by the prose''s "gone". 2.3 m in 13 f: mean about 4.3 m/s, about
+        4.5 m/s through the swerve (prose 4.1). Start moved from the prose''s "about y 10.2" to y 10.4
+        to keep the swerve from getting faster than the straight'
+    face:
+    - f: 0
+      ref: neutral
+      note: small in frame; eyes on the door
+    look:
+    - f: 0
+      target: shop_door
+      note: the shop door from f0
+props:
+  shop_door:
+  - f: 0
+    state: closed
+    note: closed until his hand reaches it
+  - f: 10
+    state: open_70
+    ease: ease_out
+    dur_f: 4
+    note: 'his right hand pushes it; swings in to about 70 deg over f10-13. The prose swing-back "from
+      f14 (continues after the cut)" is not expressible: a closed key at f14 would have to finish by f15
+      (a slam). Held at open_70 to the cut instead; see gaps'
+  passenger_door:
+  - f: 0
+    state: open_60
+    note: far in the background behind him, readable as a shape; still open at 60 deg (continuity.props.passenger_door)
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: phone out ahead in the left hand; cable loop swings wide on the turn (posed, no cable prop in
+      vocabulary v1)
+events:
+- f: 0
+  id: step_l_1
+  kind: sound
+  note: left foot contact
+- f: 6
+  id: step_r_plant
+  kind: sound
+  note: right foot plants into the swerve
+- f: 10
+  id: door_push
+  kind: sound
+  note: right hand pushes the shop door open
+- f: 13
+  id: ren_gone
+  kind: visual
+  note: last of him through the door; the frame holds the empty, swinging door
+- f: 15
+  id: chime
+  kind: sound
+  note: door chime on f15, the last frame (the cut point) - shot sound_sync
+  rationale: the chime is the scene's full stop; it must land on the cut
+preview_frames:
+- 0
+- 8
+- 10
+- 13
+- 15
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'Secondary motion with no track in vocabulary v1: jacket hem swings out on the swerve; cable loop swings
+  wide on the turn.'
+- 'Carried over from the shot notes: the swerve is to his left (screen right), per world.sets.street;
+  the shot''s blocking rationale once said "his own right".'

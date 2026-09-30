@@ -1,0 +1,81 @@
+fm:
+  id: anim_sc01_sh080
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH080
+    hash: sha256:71b49b1bd1391b1ed8a3b1604a47a2ae4d93645ea5fe5e4000150cd02f826bec
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
+  summary: 'Battery insert: 5 % charcoal to 4 % red in one frame at f4, held 26 frames; nothing moves.'
+  stamped_content_hash: sha256:ac0d74c6a149648f0194919f58052ca8f05bf13dc5d5cccc919871b3ab3634c7
+shot_id: SC01_SH080
+frames: 30
+vocab_version: 1
+rationale: 'The jolt is a one-frame change inside a still frame, four frames after the cut so the eye
+  has landed on the number first. The number and colour change come from the canon table (pct f0 5 / f4
+  4, colour charcoal / red); this file names the frame as an event and asserts the 26-frame hold. No flash
+  or pulse: the world''s timing is the joke, not the phone''s performance.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_phone_up
+      ease: hold
+      note: body off frame; no hand in frame (right thumb stopped above the keys, off the bottom edge);
+        phone still
+    move:
+      gait: none
+    look:
+    - f: 0
+      target: phone
+      note: off frame
+props:
+  phone_ren:
+  - f: 0
+    attach: hands_both
+    note: chains from SH070's two-hand typing grip
+  - f: 2
+    attach: hand_l
+    note: 'the right thumb rises off the bottom edge to hover above the keys (off frame below the insert,
+      nothing in frame moves); sets up SH090''s thumb in the air with the phone in the left hand. ASSUMPTION:
+      the grip change is placed here, before the f4 change, so the phone hold f4-29 is untouched'
+holds:
+- f0: 4
+  f1: 29
+  scope: phone
+  min_f: 24
+  note: 4 % red held f4-29 (26 frames, minimum 24)
+events:
+- f: 4
+  id: battery_4_red
+  kind: state
+  note: 4 %, icon and digits battery red, switched in one frame; no tween, flash or pulse
+preview_frames:
+- 0
+- 4
+- 8
+- 29
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- preview_frame 8 kept from the shot file (red 4 % four frames after the switch).

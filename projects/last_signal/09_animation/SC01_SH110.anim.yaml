@@ -1,0 +1,173 @@
+fm:
+  id: anim_sc01_sh110
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH110
+    hash: sha256:b76e5460354748a8b00dd6191f88adaed0e1238a17bd1d169363aa39eccb4165
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.glovebox_and_crank
+    hash: sha256:1a07722fc5b25ac9e48d8fa4597991629967aa68fc89db15ce4175247e556e7a
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  serves:
+  - intent.earned_last_signal
+  - intent.comic_then_tender
+  summary: 'Crank insert: one hand grips, lifts, rolls the brick once, shoves it back to the glovebox;
+    returns with the cable end and pulls it toward the adapter.'
+  stamped_content_hash: sha256:8a13c40492464b11f6c1752c064028bfdde952a43d97f0069ae65732e3556a28
+shot_id: SC01_SH110
+frames: 32
+vocab_version: 1
+rationale: 'One hand, one turn, one shove: a quick comic dismissal built to be answered by the slow two-handed
+  lift at the kerb (SC04_SH040, story.crank_plant). The brick lags the wrist by a frame on the lift so
+  it has weight, which makes the later careful hold of the same object read. The crank goes back to the
+  glovebox folded and pip off, and the lid is closed on the shove, so SC01 ends closed_open_closed per
+  continuity.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_upright
+      ease: hold
+      note: body off frame except the right hand; left hand keeps the phone out of frame. Right hand enters
+        from frame right f1 (quick burst), grips f3, lifts 5 cm f4, wrist roll 180 deg f6-10, 2-frame
+        hold f11-12 (VOCAB GAP - hand-only actions have no preset)
+    - f: 13
+      ref: car_lean_glovebox
+      ease: ease_in
+      blend_f: 4
+      note: one-handed shove out frame left toward the glovebox (accelerates out); brick gone by f17
+      rationale: ease_in = the shove speeds up as it leaves, a dismissal
+    - f: 18
+      ref: car_upright
+      ease: ease_out
+      blend_f: 3
+      note: hand comes back in from frame left holding the cable end
+    - f: 21
+      ref: car_upright
+      ease: ease_in_out
+      blend_f: 8
+      note: pulls the cable across the frame toward the console adapter; hand leaves frame by f29 (VOCAB
+        GAP - no console/adapter reach preset)
+    - f: 29
+      ref: car_upright
+      ease: hold
+      note: empty lap with the cable lying across it; still to the cut
+    move:
+      gait: none
+    look:
+    - f: 0
+      target: crank
+      note: off frame; implied on the brick
+    - f: 13
+      target: glovebox
+      note: follows the shove
+    - f: 21
+      target: dash
+      note: 'toward the console adapter (VOCAB GAP: no console/adapter target; dash is the closest)'
+props:
+  crank_charger:
+  - f: 0
+    loc: lap
+    arm: folded
+    pip: 0.0
+    note: lying folded on his thighs, pip off (chains from SH100's end)
+  - f: 3
+    loc: hand_r
+    note: grips the brick; lifts 5 cm at f4 with a 1-frame lag behind the wrist (weight); wrist roll 180
+      deg f6-10, back upright f11 (VOCAB GAP - no prop rotation/roll field)
+  - f: 13
+    loc: glovebox
+    ease: ease_in
+    dur_f: 5
+    note: shoved out frame left into the glovebox f13-17; arm stays folded, pip off throughout
+  glovebox_lid:
+  - f: 0
+    state: open_down
+    note: chains from SH100 (rests open)
+  - f: 17
+    state: closed
+    ease: ease_out
+    dur_f: 2
+    note: 'off frame left. ASSUMPTION: the shove''s follow-through flicks the lid shut f17-18 with the
+      cable end already in his fingers, pulled "back through" the lid gap. The prose never says where
+      the lid closes; continuity needs SC01 to end closed (closed_open_closed; SC04_SH010 finds it closed)'
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: in the left hand, out of frame
+holds:
+- f0: 11
+  f1: 12
+  scope: body
+  character: ren
+  min_f: 2
+  note: 2-frame hold, brick back upright - the "not now" look
+- f0: 29
+  f1: 31
+  scope: all
+  note: empty lap, cable across it, still to the cut
+events:
+- f: 1
+  id: hand_in
+  kind: visual
+- f: 3
+  id: crank_grip
+  kind: sound
+  note: hand closes on the brick (small plastic contact, if audio wants it)
+- f: 6
+  id: crank_roll
+  kind: visual
+  note: the one wrist roll, f6-10
+- f: 13
+  id: crank_shove
+  kind: visual
+- f: 17
+  id: crank_stowed
+  kind: sound
+  note: off frame, the brick lands in the glovebox
+- f: 17
+  id: lid_close
+  kind: state
+  note: off frame; see the ASSUMPTION on the glovebox_lid key
+- f: 18
+  id: cable_in_hand
+  kind: visual
+- f: 21
+  id: cable_pull
+  kind: sound
+  note: cable drags across the lap
+- f: 29
+  id: hand_out
+  kind: visual
+preview_frames:
+- 0
+- 3
+- 6
+- 11
+- 13
+- 18
+- 21
+- 29
+- 31
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'VOCAB GAP: no charging_cable prop (a posed curve with a hook at the hand, dragged along the hand path;
+  keep the visible length short - M3 risk from the shot).'

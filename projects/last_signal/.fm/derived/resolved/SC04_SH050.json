@@ -1,7 +1,47 @@
 {
-  "content_hash": "sha256:5fe8a9a8048a4e311960988c067d2240c4ab3eb020e1c074d873f5d857cfc59c",
-  "created_at": "2026-09-29T21:49:07Z",
+  "content_hash": "sha256:88df2e94126177209e5ce2983b728bac2124e9063c0be15b1746ab47ae0bc564",
+  "created_at": "2026-09-30T14:32:39Z",
   "derived_from": [
+    {
+      "hash": "sha256:ae12a78a1c1156f9cbf530bf809be8c650a740fc702b52817fe03041440940cb",
+      "ref": "artifact:anim_sc04_sh050"
+    },
+    {
+      "hash": "sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b",
+      "ref": "canon:animation.vocab.breath"
+    },
+    {
+      "hash": "sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101",
+      "ref": "canon:animation.vocab.ease"
+    },
+    {
+      "hash": "sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603",
+      "ref": "canon:animation.vocab.event_kind"
+    },
+    {
+      "hash": "sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958",
+      "ref": "canon:animation.vocab.face"
+    },
+    {
+      "hash": "sha256:ea3330e9a3aeaf73beeec3474dede9d8ce7e0ec50da6801efddbc2ab582f509b",
+      "ref": "canon:animation.vocab.gait"
+    },
+    {
+      "hash": "sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2",
+      "ref": "canon:animation.vocab.look_target"
+    },
+    {
+      "hash": "sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8",
+      "ref": "canon:animation.vocab.pose.ren"
+    },
+    {
+      "hash": "sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26",
+      "ref": "canon:animation.vocab.prop_states"
+    },
+    {
+      "hash": "sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334",
+      "ref": "canon:animation.vocab.ui_event"
+    },
     {
       "hash": "sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea",
       "ref": "canon:camera.format"
@@ -223,7 +263,7 @@
       "ref": "canon:world.sets.street"
     },
     {
-      "hash": "sha256:276eebdb32f7817597391d4a97a5b8376ff2a6f93fb37a09a639300896c12c48",
+      "hash": "sha256:ac63b166dbc778b4b8bcf2712e1fb00f0ab9e003b97dfc6c5873185082001a1d",
       "ref": "shot:SC04_SH050"
     }
   ],

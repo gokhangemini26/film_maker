@@ -1,0 +1,188 @@
+{
+ "summary": {
+  "shots": 38,
+  "fail": 0,
+  "warn": 3
+ },
+ "rows": [
+  {
+   "shot": "SC01_SH010",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH020",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH030",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH040",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH050",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH060",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH070",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH080",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH090",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH100",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH110",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH120",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH130",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH140",
+   "findings": []
+  },
+  {
+   "shot": "SC01_SH150",
+   "findings": []
+  },
+  {
+   "shot": "SC02_SH010",
+   "findings": []
+  },
+  {
+   "shot": "SC02_SH020",
+   "findings": []
+  },
+  {
+   "shot": "SC02_SH030",
+   "findings": []
+  },
+  {
+   "shot": "SC03_SH010",
+   "findings": []
+  },
+  {
+   "shot": "SC03_SH020",
+   "findings": []
+  },
+  {
+   "shot": "SC03_SH030",
+   "findings": []
+  },
+  {
+   "shot": "SC03_SH040",
+   "findings": []
+  },
+  {
+   "shot": "SC03_SH050",
+   "findings": []
+  },
+  {
+   "shot": "SC03_SH060",
+   "findings": []
+  },
+  {
+   "shot": "SC03_SH070",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH010",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH020",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH030",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH040",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH050",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH060",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH070",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH080",
+   "findings": []
+  },
+  {
+   "shot": "SC04_SH090",
+   "findings": []
+  },
+  {
+   "shot": "SC05_SH010",
+   "findings": []
+  },
+  {
+   "shot": "SC05_SH020",
+   "findings": []
+  },
+  {
+   "shot": "SC05_SH030",
+   "findings": []
+  },
+  {
+   "shot": "SC06_SH010",
+   "findings": []
+  },
+  {
+   "shot": "SC04",
+   "findings": [
+    [
+     "WARN",
+     "scene running time 434 f (18.1 s) vs SCENES.yaml 456 f (19 s): -22 f"
+    ]
+   ]
+  },
+  {
+   "shot": "SC05",
+   "findings": [
+    [
+     "WARN",
+     "scene running time 108 f (4.5 s) vs SCENES.yaml 96 f (4 s): +12 f"
+    ]
+   ]
+  },
+  {
+   "shot": "SC06",
+   "findings": [
+    [
+     "WARN",
+     "scene running time 82 f (3.4 s) vs SCENES.yaml 72 f (3 s): +10 f"
+    ]
+   ]
+  }
+ ]
+}

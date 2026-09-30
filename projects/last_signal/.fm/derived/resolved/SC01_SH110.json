@@ -1,7 +1,31 @@
 {
-  "content_hash": "sha256:5b9b94995cf4db38d07da5feec8a4b446c7c9c610f585a6a86cbd590e3837111",
-  "created_at": "2026-09-29T21:48:58Z",
+  "content_hash": "sha256:52e1e4aee12e588330584070bfd3143a4445bf50a23d8a0b792eab46ddbb91d0",
+  "created_at": "2026-09-30T14:32:27Z",
   "derived_from": [
+    {
+      "hash": "sha256:8a13c40492464b11f6c1752c064028bfdde952a43d97f0069ae65732e3556a28",
+      "ref": "artifact:anim_sc01_sh110"
+    },
+    {
+      "hash": "sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101",
+      "ref": "canon:animation.vocab.ease"
+    },
+    {
+      "hash": "sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603",
+      "ref": "canon:animation.vocab.event_kind"
+    },
+    {
+      "hash": "sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2",
+      "ref": "canon:animation.vocab.look_target"
+    },
+    {
+      "hash": "sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8",
+      "ref": "canon:animation.vocab.pose.ren"
+    },
+    {
+      "hash": "sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26",
+      "ref": "canon:animation.vocab.prop_states"
+    },
     {
       "hash": "sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea",
       "ref": "canon:camera.format"

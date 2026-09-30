@@ -1,0 +1,84 @@
+fm:
+  id: anim_sc01_sh020
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH020
+    hash: sha256:7941cdc7602dd3ba6196687b287f11f1bd476f897f6363e990b8bbf6c6bfde7e
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.battery
+    hash: sha256:3ae887fb83c87d7b62fa330892adc433d0a7258b0ebcb3ee0adf07fd003bf12e
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  serves:
+  - intent.race_against_battery
+  summary: 'Map insert: the pin is still from the first frame; thumb parked at the edge; nothing else
+    moves.'
+  stamped_content_hash: sha256:c8c08db05380edb1cf96a13ac75368d60bd5ab9d9d32afd6877181fbbd18f573
+shot_id: SC01_SH020
+frames: 38
+vocab_version: 1
+rationale: 'An insert reads fastest when one thing matters: the phone and the pin hold still for all 38
+  frames (minimum 36) and the only motion is a 1 mm thumb settle in the first 4 frames. The screen is
+  the static map from the canon table (map, 5 %, charcoal), so no ui_timeline event is needed.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_phone_up
+      ease: hold
+      note: 'body off frame; phone held square to the insert lens at the framing reference (screen centre
+        about (1.29, -0.09, 0.97)). Left thumb parked at the screen''s left edge, clear of the pin, settles
+        1 mm f0-3 (VOCAB GAP: no thumb/hand-on-phone refs; shot prose names phone_hold.thumb_parked_left_edge)'
+      rationale: one preset for the whole insert; legibility first
+    move:
+      gait: none
+    look:
+    - f: 0
+      target: phone
+      note: off frame; implied on the pin
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: held still in the left hand (no hand drift)
+holds:
+- f0: 0
+  f1: 37
+  scope: phone
+  min_f: 36
+  note: pin present and still f0-37 (38 frames, minimum 36); no drop-in or bounce
+  rationale: camera.inserts.legibility; the pin is the only thing that matters
+- f0: 0
+  f1: 37
+  scope: body
+  character: ren
+  note: nothing but the 1 mm thumb settle f0-3
+events:
+- f: 4
+  id: thumb_settled
+  kind: visual
+  note: thumb and phone still to the cut
+preview_frames:
+- 0
+- 6
+- 37
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- preview_frame 6 kept from the shot file (thumb settled, pin whole and still).

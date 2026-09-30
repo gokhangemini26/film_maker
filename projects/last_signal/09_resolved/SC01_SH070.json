@@ -11,26 +11,31 @@
           {
             "f": 0,
             "pose": "both thumbs on the blank keys, below the compose field",
+            "pose_ref": "phone_hold.two_thumbs_on_keys",
             "t": 0.0
           },
           {
             "f": 0,
             "pose": "two-thumb burst: taps alternate thumbs on 1s f0-15",
+            "pose_ref": "phone_hold.two_thumb_burst",
             "t": 0.0
           },
           {
             "f": 15,
             "pose": "last tap ('?')",
+            "pose_ref": "phone_hold.two_thumb_last_tap",
             "t": 0.62
           },
           {
             "f": 16,
             "pose": "both thumbs lift away and down (ease-in)",
+            "pose_ref": "phone_hold.thumbs_lift_away",
             "t": 0.67
           },
           {
             "f": 20,
             "pose": "thumbs at rest on the frame's bottom edge, still to the cut",
+            "pose_ref": "phone_hold.thumbs_parked_bottom",
             "t": 0.83
           }
         ],
@@ -41,6 +46,8 @@
       }
     },
     "notes": "ASSUMPTION: the typing speed is an anime ellipsis, not real typing (about 31 characters per second); it is what lets the 42-frame reading hold fit the 58-frame shot",
+    "preview_frame": 24,
+    "preview_frame_reason": "the whole line \"Are you free tonight?\" typed and the thumbs parked at the bottom edge, nothing over the text",
     "timing": {
       "fps": 24,
       "frames": 58,
@@ -577,6 +584,101 @@
       }
     }
   },
+  "motion": {
+    "camera": {
+      "move": "none"
+    },
+    "characters": {
+      "ren": {
+        "breath": [],
+        "face": [],
+        "look": [
+          {
+            "f": 0,
+            "f_abs": 214,
+            "target": "phone"
+          }
+        ],
+        "move": {
+          "gait": "none",
+          "path": []
+        },
+        "pose": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 214,
+            "ref": "car_phone_up"
+          },
+          {
+            "blend_f": 4,
+            "ease": "ease_in",
+            "f": 16,
+            "f_abs": 230,
+            "ref": "car_phone_up"
+          },
+          {
+            "ease": "hold",
+            "f": 20,
+            "f_abs": 234,
+            "ref": "car_phone_up"
+          }
+        ]
+      }
+    },
+    "events": [
+      {
+        "f": 0,
+        "f_abs": 214,
+        "id": "typing_start",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 15,
+        "f_abs": 229,
+        "id": "last_key",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 20,
+        "f_abs": 234,
+        "id": "thumbs_parked",
+        "kind": "visual",
+        "source": "anim"
+      }
+    ],
+    "frame_start": 214,
+    "frames": 58,
+    "holds": [
+      {
+        "f0": 16,
+        "f1": 57,
+        "min_f": 41,
+        "scope": "phone"
+      }
+    ],
+    "preview_frames": [
+      0,
+      15,
+      20,
+      24,
+      57
+    ],
+    "props": {
+      "phone_ren": [
+        {
+          "attach": "hands_both",
+          "f": 0,
+          "f_abs": 214
+        }
+      ]
+    },
+    "schema": "fm.motion/1",
+    "source": "artifact:anim_sc01_sh070",
+    "vocab_version": 1
+  },
   "provenance": {
     "canon": [
       "characters.ren.expressions",
@@ -601,7 +703,1079 @@
     ]
   },
   "scene_id": "SC01",
-  "schema": "fm.resolved_shot/1",
+  "schema": "fm.resolved_shot/2",
   "sequence_id": "SQ01",
-  "shot_id": "SC01_SH070"
+  "shot_id": "SC01_SH070",
+  "ui_timeline": {
+    "colours": {
+      "charcoal": "#2B303B",
+      "red": "#E5483B"
+    },
+    "frames": [
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 0,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 1
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 1,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 3
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 2,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 4
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 3,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 5
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 4,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 7
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 5,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 8
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 6,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 9
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 7,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 10
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 8,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 12
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 9,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 13
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 10,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 14
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 11,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 16
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 12,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 17
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 13,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 18
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 14,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 20
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 15,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "key_pressed": "any",
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": true,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 16,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 17,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 18,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 19,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 20,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 21,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 22,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 23,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 24,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 25,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 26,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 27,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 28,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 29,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 30,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 31,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 32,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 33,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 34,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 35,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 36,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 37,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 38,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 39,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 40,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 41,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 42,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 43,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 44,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 45,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 46,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 47,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 48,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 49,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 50,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 51,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 52,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 53,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 54,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 55,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 56,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": "charcoal",
+        "f": 57,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "lines": 1,
+        "pct": 5,
+        "phone": "ren",
+        "red": false,
+        "typed": {
+          "1": 21
+        },
+        "typing": false,
+        "ui": "compose"
+      }
+    ],
+    "phone": "ren",
+    "schema": "fm.ui_timeline/1",
+    "source": "canon:look.style.phone_screen.states_by_shot",
+    "warnings": []
+  }
 }

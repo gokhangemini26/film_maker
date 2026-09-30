@@ -1,0 +1,174 @@
+fm:
+  id: anim_sc01_sh070
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC01_SH070
+    hash: sha256:16b4ec9d94ad86fcb4258dff110a619a6834609ba83cb3bb4f7f36815422b929
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.ui_event
+    hash: sha256:5b1a6b0da5ace606f93176d9bff3faabb0665c001c0b5b2b1e3ff06fef1f6334
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:look.style.phone_screen.states_by_shot
+    hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+  serves:
+  - intent.race_against_battery
+  - intent.open_hopeful_ending
+  summary: 'Typing insert: 16-frame two-thumb burst types "Are you free tonight?" (21 chars), thumbs park,
+    text held 42 frames.'
+  stamped_content_hash: sha256:7a6c34a017e983315f8a9598f6a551049f753838c83fd95c0f9dbae8b3a1c9c9
+shot_id: SC01_SH070
+frames: 58
+vocab_version: 1
+rationale: 'A comic-section two-thumb burst: rehearsed words come out in one go (hope and hurry), so the
+  burst is short (16 frames, one key press per frame) and the reading hold is long (42 frames, minimum
+  41). The thumbs leave the text area at once and park on the bottom edge. Opposite of the tender half''s
+  one-thumb glide (SC04_SH050/060). ASSUMPTION carried from the shot: ~31 characters per second is an
+  anime ellipsis.'
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: car_phone_up
+      ease: hold
+      note: 'body off frame; both thumbs on the blank keys below the compose field, alternating taps on
+        1s f0-15, last tap ("?") f15 (VOCAB GAP: no thumb refs; prose names phone_hold.two_thumbs_on_keys
+        / two_thumb_burst / two_thumb_last_tap)'
+    - f: 16
+      ref: car_phone_up
+      ease: ease_in
+      blend_f: 4
+      note: both thumbs lift away and down (ease-in), below the compose field (phone_hold.thumbs_lift_away)
+    - f: 20
+      ref: car_phone_up
+      ease: hold
+      note: thumbs at rest on the frame's bottom edge, still to the cut (phone_hold.thumbs_parked_bottom)
+    move:
+      gait: none
+    look:
+    - f: 0
+      target: phone
+      note: off frame; implied on the text
+props:
+  phone_ren:
+  - f: 0
+    attach: hands_both
+    note: two-hand typing grip (continuity.props.phone_ren SC01 grip two_hands_typing)
+ui_timeline:
+- f: 0
+  event: text
+  line: 1
+  chars: 21
+  dur_f: 16
+  note: '"Are you free tonight?" revealed f0-15 at about 1.3 characters per frame, on the tap frames;
+    cursor steady, no blink'
+- f: 0
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 1
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 2
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 3
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 4
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 5
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 6
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 7
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 8
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 9
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 10
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 11
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 12
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 13
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 14
+  event: key_press
+  key: any
+  dur_f: 1
+- f: 15
+  event: key_press
+  key: any
+  dur_f: 1
+  note: last tap, the "?"
+holds:
+- f0: 16
+  f1: 57
+  scope: phone
+  min_f: 41
+  note: text held f16-57 (42 frames, minimum 41); the phone never moves; the thumbs lift out below the
+    text f16-19 and never cross it
+  rationale: the words matter more than the typing (0.5 s + 4 x 0.3 s reading rule)
+events:
+- f: 0
+  id: typing_start
+  kind: visual
+  note: first key press; one press per frame f0-15
+- f: 15
+  id: last_key
+  kind: visual
+  note: the "?"
+- f: 20
+  id: thumbs_parked
+  kind: visual
+preview_frames:
+- 0
+- 15
+- 20
+- 24
+- 57
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- preview_frame 24 kept from the shot file (whole line typed, thumbs parked).
+- 'VOCAB GAP (minor): no cursor state (steady vs blink); the prose asks steady.'

@@ -1,0 +1,103 @@
+fm:
+  id: anim_sc03_sh040
+  kind: shot_animation
+  phase: ANIMATION
+  status: PROPOSED
+  owner_role: animation-director
+  derived_from:
+  - ref: shot:SC03_SH040
+    hash: sha256:06e3006cc3af99ffa8af55a7be7bfc4d615e8042e34874b49932869a2881ce48
+  - ref: canon:characters.ren.movement
+    hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
+  - ref: canon:characters.ren.expressions
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+  - ref: canon:continuity.props.phone_ren
+    hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:animation.vocab.pose.ren
+    hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
+  - ref: canon:animation.vocab.face
+    hash: sha256:40ff1ba974e7c783370dd34e38acfe98760b1c3ff306dc72dfa1b189f742e958
+  - ref: canon:animation.vocab.look_target
+    hash: sha256:05d82b4dbbe11094c8f74e04c1d503086323100e5a808861c1c446ef91388cb2
+  - ref: canon:animation.vocab.breath
+    hash: sha256:c2f7a1ad3dc15bc85bdacc47dadddcc340ac7a596ad41db80104d47e12142b4b
+  - ref: canon:animation.vocab.ease
+    hash: sha256:4d635b8ca8aba95f27394e9f98060be22160238f0483830290a6d406f59a1101
+  - ref: canon:animation.vocab.prop_states
+    hash: sha256:e627aad6b3be50c926765c80cecc0c9e52b53e7a6c50b2d5fc48e555e4710d26
+  - ref: canon:animation.vocab.event_kind
+    hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
+  serves:
+  - intent.comic_then_tender
+  summary: 'Structured tracks for the relief: long ease-out exhale f0-14, head tips back, eyes close f6-8,
+    relief held f14-21 into the blackout shot.'
+  stamped_content_hash: sha256:c4aae1e8e8144b7d9d9f5f85c351e2afad1692ef798803d359d3032ea8129c64
+shot_id: SC03_SH040
+frames: 22
+vocab_version: 1
+rationale: Full relief, held to the cut, so the blackout arrives only after he has relaxed. The long out-breath
+  (quick start, long slow tail) reads as tension leaving the body; an 8-frame hold of the relief pose
+  ends the shot, and SH050 keeps it exactly.
+characters:
+  ren:
+    pose:
+    - f: 0
+      ref: kneel_upright
+      ease: hold
+      note: 'kneeling, shoulders already dropping (match on action from SH030 f23-25). The head tips back
+        about 8 deg f4-14: no kneel preset with the head back exists in vocabulary v1; carried by the
+        relief face and the out_long breath; see gaps'
+    face:
+    - f: 0
+      ref: relief
+      note: relief (eyes close, long exhale, head back), no graphic symbols; the freeze from SH030 gives
+        way on the cut as the exhale starts
+    look:
+    - f: 0
+      target: phone
+      note: eyes still on the phone as the exhale starts
+    - f: 6
+      target: closed
+      note: eyes close f6-8; closed from f8 to the cut
+    breath:
+    - f: 0
+      ref: out_long
+      dur_f: 15
+      note: 'long exhale f0-14: chest and shoulders fall 3 cm, ease-out (quick start, long slow tail)'
+      rationale: the audience holds their laugh while he lets his out
+props:
+  phone_ren:
+  - f: 0
+    attach: hand_l
+    note: still in the left hand, plugged in; cable unchanged
+holds:
+- f0: 14
+  f1: 21
+  scope: all
+  min_f: 8
+  note: 'held relief: eyes closed, mouth soft, head back (f14-21)'
+  rationale: he must be fully relaxed before the room goes out
+events:
+- f: 0
+  id: long_exhale
+  kind: sound
+  note: long exhale begins (f0-14)
+- f: 6
+  id: eyes_closing
+  kind: visual
+  note: eyes close f6-8
+- f: 14
+  id: relief_held
+  kind: visual
+  note: relief pose held to the cut
+preview_frames:
+- 0
+- 6
+- 14
+- 21
+notes:
+- Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
+  version of it.
+- 'Secondary with no track in vocabulary v1: jacket shoulders settle with the exhale (skinning only).'

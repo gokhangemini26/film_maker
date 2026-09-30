@@ -474,6 +474,150 @@
     },
     "second_key": "phone screen from below as she holds it low to read"
   },
+  "motion": {
+    "camera": {
+      "move": "none"
+    },
+    "characters": {
+      "hana": {
+        "breath": [
+          {
+            "dur_f": 7,
+            "f": 20,
+            "f_abs": 1326,
+            "ref": "out_slow"
+          },
+          {
+            "dur_f": 10,
+            "f": 30,
+            "f_abs": 1336,
+            "ref": "in_slow"
+          },
+          {
+            "dur_f": 12,
+            "f": 40,
+            "f_abs": 1346,
+            "ref": "out_slow"
+          }
+        ],
+        "face": [
+          {
+            "f": 0,
+            "f_abs": 1306,
+            "ref": "reading"
+          },
+          {
+            "f": 14,
+            "f_abs": 1320,
+            "ref": "small_smile"
+          }
+        ],
+        "look": [
+          {
+            "f": 0,
+            "f_abs": 1306,
+            "target": "phone"
+          },
+          {
+            "f": 36,
+            "f_abs": 1342,
+            "target": "closed"
+          },
+          {
+            "f": 42,
+            "f_abs": 1348,
+            "target": "phone"
+          }
+        ],
+        "move": {
+          "gait": "none",
+          "path": []
+        },
+        "pose": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 1306,
+            "ref": "desk_phone_low"
+          }
+        ]
+      }
+    },
+    "events": [
+      {
+        "f": 10,
+        "f_abs": 1316,
+        "id": "last_line_read",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 14,
+        "f_abs": 1320,
+        "id": "smile_onset",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 22,
+        "f_abs": 1328,
+        "id": "smile_landed",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
+        "f": 36,
+        "f_abs": 1342,
+        "id": "soft_blink",
+        "kind": "visual",
+        "source": "anim"
+      }
+    ],
+    "frame_start": 1306,
+    "frames": 52,
+    "holds": [
+      {
+        "character": "hana",
+        "f0": 22,
+        "f1": 51,
+        "min_f": 30,
+        "scope": "face"
+      },
+      {
+        "character": "hana",
+        "f0": 0,
+        "f1": 51,
+        "min_f": 30,
+        "scope": "body"
+      }
+    ],
+    "preview_frames": [
+      0,
+      12,
+      22,
+      38,
+      51
+    ],
+    "props": {
+      "hana_headphones": [
+        {
+          "f": 0,
+          "f_abs": 1306,
+          "state": "neck"
+        }
+      ],
+      "phone_hana": [
+        {
+          "attach": "hands_both",
+          "f": 0,
+          "f_abs": 1306
+        }
+      ]
+    },
+    "schema": "fm.motion/1",
+    "source": "artifact:anim_sc05_sh030",
+    "vocab_version": 1
+  },
   "provenance": {
     "canon": [
       "characters.hana.expressions",
@@ -500,7 +644,695 @@
     ]
   },
   "scene_id": "SC05",
-  "schema": "fm.resolved_shot/1",
+  "schema": "fm.resolved_shot/2",
   "sequence_id": "SQ02",
-  "shot_id": "SC05_SH030"
+  "shot_id": "SC05_SH030",
+  "ui_timeline": {
+    "colours": {
+      "charcoal": "#2B303B",
+      "red": "#E5483B"
+    },
+    "frames": [
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 0,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 1,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 2,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 3,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 4,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 5,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 6,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 7,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 8,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 9,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 10,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 11,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 12,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 13,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 14,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 15,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 16,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 17,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 18,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 19,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 20,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 21,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 22,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 23,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 24,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 25,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 26,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 27,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 28,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 29,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 30,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 31,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 32,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 33,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 34,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 35,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 36,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 37,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 38,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 39,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 40,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 41,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 42,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 43,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 44,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 45,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 46,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 47,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 48,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 49,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 50,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      },
+      {
+        "bolt": false,
+        "brightness": 1.0,
+        "colour": null,
+        "f": 51,
+        "flicker": false,
+        "icon_blink": false,
+        "icon_visible": true,
+        "pct": null,
+        "phone": "hana",
+        "red": null,
+        "ui": "received"
+      }
+    ],
+    "phone": "hana",
+    "schema": "fm.ui_timeline/1",
+    "source": "canon:look.style.phone_screen.states_by_shot",
+    "warnings": []
+  }
 }
