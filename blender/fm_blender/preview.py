@@ -239,6 +239,52 @@ def aim(obj, target, up="Y"):
     obj.rotation_quaternion = d.to_track_quat("-Z", up)
 
 
+def aim_up(obj, target, up_vec):
+    """Point -Z at target with the camera's +Y as close to up_vec as possible (roll-exact)."""
+    d = Vector(target) - obj.location
+    obj.rotation_mode = "QUATERNION"
+    z = (-d).normalized()
+    x = Vector(up_vec).cross(z)
+    x = x.normalized() if x.length > 1e-6 else Vector((1, 0, 0))
+    y = z.cross(x)
+    m = __import__("mathutils").Matrix(((x.x, y.x, z.x), (x.y, y.y, z.y), (x.z, y.z, z.z)))
+    obj.rotation_quaternion = m.to_quaternion()
+
+
+def headphones_down(all_shots, sid, cid, scene):
+    """Hana's headphones slide to the neck (animation.props hana_headphones text 'switched to the neck ... at fNN')."""
+    if cid != "hana":
+        return False
+    down = False
+    for k, sh in all_shots.items():
+        if sh.get("scene_id") != scene:
+            continue
+        for t in _prop_texts(sh, "headphones"):
+            m = _re.search(r"neck[^.;]*?\bf(\d+)", t.lower())
+            if "neck" in t.lower():
+                f_ = int(m.group(1)) if m else 0
+                if k == sid:
+                    mid = ((sh.get("frames") or {}).get("count") or 0) // 2
+                    down = down or mid >= f_
+                else:
+                    down = True
+        if k == sid:
+            break
+    return down
+
+
+CAR_PIECES = ("car_", "seat_passenger", "dashboard", "console", "seat_driver")
+
+
+def crank_lap(i, scene, n):
+    """Where the crank sits: in the lap, or in both hands in SC04 SH040/SH050 (lifted out / turning)."""
+    if scene == "SC04" and n in (40, 50):
+        return i["hands"] + i["facing"] * 0.08 + Vector((0, 0, 0.03))
+    if scene == "SC04" and n == 90:
+        return i["hip"] + i["facing"] * 0.16 + Vector((0, 0, 0.2))  # rests on the near knee, top and pip above it
+    return i["hip"] + i["facing"] * 0.16 + Vector((0, 0, 0.14))
+
+
 def unit_offset(scene):
     if scene == "SC03":
         return S.SHOP_ORIGIN
@@ -285,8 +331,8 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
         base = Vector(door.get("fm_closed_loc", door.location))
         door["fm_closed_loc"] = list(base)
         ang = math.radians(door_deg)
-        hy = base.y + dl / 2
-        rel = Vector((0, -dl / 2, 0))
+        hy = float((door.get("fm_hinge_xy") or [base.x, base.y + dl / 2])[1])  # canon: hinge at the door's front end (y 0.525)
+        rel = Vector((0, base.y - hy, 0))
         rel.rotate(__import__("mathutils").Euler((0, 0, -ang)))
         door.location = Vector((base.x, hy, base.z)) + rel
         door.rotation_euler = (0, 0, -ang)
@@ -302,7 +348,12 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
         facing = parse_facing(ch.get("facing", "camera"), pos, cpos, street, scene)
         if pose.startswith("sit") or pose == "kneel":
             pos.z = off.z
-        props = (ch.get("canon") or {}).get("proportions") or {"height_m": 1.7}
+        props = dict((ch.get("canon") or {}).get("proportions") or {"height_m": 1.7})
+        if headphones_down(all_shots, sid, ch["id"], scene):
+            props["headphones_state"] = "down"
+        face_txt = str((((shot.get("animation") or {}).get("characters") or {}).get(ch["id"]) or {}).get("face", "")).lower()
+        if _re.search(r"face (is )?(hidden|not seen|turned away)|mouth (is )?(hidden|covered)|hand to (the|her|his) mouth", face_txt):
+            props["mouth_hidden"] = True
         tmp = bpy.data.collections.new("fm.tmp." + ch["id"])
         rig.children.link(tmp) if False else bpy.context.scene.collection.children.link(tmp)
         info = figure(tmp, ch["id"], canon, props, pos, facing, pose, hold=True)
@@ -313,8 +364,8 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
     def target(name):
         if name in figs:
             i_ = figs[name][0]
-            if name == "ren" and scene == "SC04" and n in (50, 90):  # eyes-on-crank/phone beats: hold head and lap in frame
-                return (i_["head"] + i_["hip"]) / 2 - Vector((0, 0, 0.05))
+            if name == "ren" and scene == "SC04" and n in (40, 50, 90):  # shot notes: aim between the crown and the pip
+                return (i_["head"] + Vector((0, 0, 0.1))) * 0.62 + crank_lap(i_, scene, n) * 0.38
             return i_["head"] - Vector((0, 0, 0.1))
         if name == "crank_charger" and "ren" in figs:
             return figs["ren"][0]["hip"] + figs["ren"][0]["facing"] * 0.16 + Vector((0, 0, 0.14))
@@ -330,9 +381,6 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
         }.get(name, Vector((cpos.x, cpos.y + 3, cpos.z)))
 
     tgt = target(cam_c.get("look_at", ""))
-    if (shot.get("composition") or {}).get("framing") == "insert" and cam_c.get("look_at", "") in ("phone_ren", "crank_charger") and (tgt - cpos).length < 0.3:
-        cam.location = tgt - (tgt - cpos).normalized() * 0.3  # blockout adjustment: keep the prop out of the near plane
-        cpos = cam.location.copy()
     aim(cam, tgt)
     if cam_c.get("dof", {}).get("enabled"):
         cam_data.dof.focus_distance = max((target(cam_c.get("look_at", "")) - cpos).length, 0.1)
@@ -351,39 +399,63 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
                             PH.screen_state(scene, n, ui_assets), PH.colors_for(shot, canon), screen_on=(scene != "SC06" or n < 90))
         for o in figs["ren"][1].objects:
             mark(o)
-        if is_insert:  # frame the part of the screen the shot is about (composition notes), staying square to the screen
-            ua = set(ui_assets)
-            if ua == {"ui.status_bar"}:
-                du, dv = 0.012, 0.056
-            elif "ui.compose_field" in ua:
-                du, dv = 0.0, 0.03
-            elif "ui.call_screen" in ua and n < 50:
-                du, dv = 0.0, 0.028
-            elif "ui.thread_sent_bubble" in ua:
-                du, dv = 0.005, 0.02
-            else:
-                du, dv = 0.0, 0.0
-            sh_ = xv.normalized() * du + yv.normalized() * dv
-            cam.location = cam.location + sh_
-            cpos = cam.location.copy()
-            aim(cam, i["phone"] + sh_)
+        if is_insert:  # resolved camera honoured as-is: screen squared to the lens, camera up = phone top edge
+            sh_ = Vector((0, 0, 0))
+            if (cpos - i["phone"]).length < 0.4:  # 0.30 m text inserts: the spec centres the screen; shift the lens parallel to it (never tilt) to the named part
+                ua = set(ui_assets)
+                if ua == {"ui.status_bar"}:
+                    du, dv = 0.012, 0.056
+                elif "ui.compose_field" in ua:
+                    du, dv = 0.0, -0.004
+                elif "ui.thread_sent_bubble" in ua:
+                    du, dv = 0.005, 0.02
+                else:
+                    du, dv = 0.0, 0.0
+                sh_ = xv.normalized() * du + yv.normalized() * dv
+                cam.location = cam.location + sh_
+                cpos = cam.location.copy()
+            aim_up(cam, i["phone"] + sh_, yv)
             if cam_c.get("dof", {}).get("enabled"):
                 cam_data.dof.focus_distance = max(((i["phone"] + sh_) - cpos).length, 0.1)
     # crank charger: built for every shot that lists it (world.props.crank_charger); the pip is the only amber
     if "ren" in figs and "world.props.crank_charger" in shot.get("assets", []):
         i = figs["ren"][0]
         f_ = i["facing"]
-        lap = i["hip"] + f_ * 0.16 + Vector((0, 0, 0.14))
-        cranking = scene == "SC04" and n >= 90 or scene == "SC06"
-        if scene == "SC04" and n == 50:
-            lap = i["hands"] + f_ * 0.05 - Vector((0, 0, 0.1))
+        lap = crank_lap(i, scene, n)
+        # canon world.props.crank_charger: body 0.13x0.065x0.042, arm 0.085, knob dia 0.02 x 0.022, pip dia 0.006
+        # pip state from the shot text / look.lighting.power_indicators: lit while cranking (SC04 SH050 from f30, SH060-SH080),
+        # 40 % and falling at the SH090 stop, off in SH040 (arm folded), SC01 and SC06
+        arm_out = (scene == "SC04" and n >= 50) or scene == "SC06"
+        pip_k = 1.0 if (scene == "SC04" and 50 <= n < 90) else (0.25 if (scene == "SC04" and n == 90) else 0.0)
         yaw = math.atan2(f_.y, f_.x)
-        cr = U.box("crank_body." + sid, (0.16, 0.09, 0.09), lap, figs["ren"][1], U.toon({"hex": "#D6C592", "linear": U.lin("#D6C592")}), rot=(0, 0, yaw))
-        h_ = U.box("crank_handle." + sid, (0.03, 0.03, 0.09), lap + Vector((0, 0, 0.1)) - f_ * 0.04, figs["ren"][1], U.toon({"hex": "#B8A878", "linear": U.lin("#B8A878")}), rot=(0, 0, yaw))
+        rz = Vector((0, 0, 1))
+
+        def at(x_, y_, z_):
+            v_ = Vector((x_, y_, z_))
+            v_.rotate(__import__("mathutils").Euler((0, 0, yaw)))
+            return lap + v_
+        cm = U.toon({"hex": "#D6C592", "linear": U.lin("#D6C592")})
+        am = U.toon({"hex": "#B8A878", "linear": U.lin("#B8A878")})
+        parts = [U.box("crank_body." + sid, (0.13, 0.065, 0.042), lap, figs["ren"][1], cm, rot=(0, 0, yaw))]
+        top = 0.021
+        sx = 0.045  # spindle at the near end of the top face
+        if arm_out:
+            parts.append(U.box("crank_arm." + sid, (0.012, 0.012, 0.085), at(sx, 0, top + 0.0425), figs["ren"][1], am, rot=(0, 0, yaw)))
+            parts.append(U.cyl("crank_knob." + sid, 0.01, 0.022, at(sx, 0.0, top + 0.085 + 0.006), figs["ren"][1], am, rot=(math.pi / 2, 0, yaw)))
+        else:
+            parts.append(U.box("crank_arm." + sid, (0.085, 0.012, 0.01), at(sx - 0.0425, 0, top + 0.005), figs["ren"][1], am, rot=(0, 0, yaw)))
+            parts.append(U.cyl("crank_knob." + sid, 0.01, 0.022, at(sx - 0.085, 0.0, top + 0.011), figs["ren"][1], am, rot=(math.pi / 2, 0, yaw)))
         amb = canon.get("look.color.accent_power_amber") or {}
-        ph_hex = amb.get("hex", "#F5B940") if cranking else "#6B6B5F"
-        pip = U.box("crank_pip." + sid, (0.02, 0.02, 0.012), lap + f_ * 0.0 + Vector((0, 0, 0.051)), figs["ren"][1], U.flat({"hex": ph_hex, "linear": U.lin(ph_hex)}), rot=(0, 0, yaw))
-        for o in (cr, h_, pip):
+        a_hex = amb.get("hex", "#F5B940")
+        off_hex = "#6B6B5F"
+        if pip_k >= 1.0:
+            ph_hex = a_hex
+        elif pip_k > 0:
+            ph_hex = "#" + "".join("%02X" % int(round(int(a_hex[k:k + 2], 16) * pip_k + int(off_hex[k:k + 2], 16) * (1 - pip_k))) for k in (1, 3, 5))
+        else:
+            ph_hex = off_hex
+        parts.append(U.cyl("crank_pip." + sid, 0.003, 0.004, at(-0.05, 0.0, top + 0.002), figs["ren"][1], U.flat({"hex": ph_hex, "linear": U.lin(ph_hex)})))
+        for o in parts:
             mark(o)
     # Hana's phone (SC05): held when she is in the shot, else lying on the desk, square to the lens for inserts
     if "world.props.phone_hana" in shot.get("assets", []):
@@ -426,24 +498,43 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
                 o.hide_render = True
                 o["fm_culled_by_preview"] = 1
                 culled.append(o.name)
-    if (shot.get("composition") or {}).get("framing") == "insert" and cam_c.get("look_at", "") in ("crank_charger", "phone_ren"):
-        # insert sight-line clearance: hide static set pieces standing between lens and subject
+    # sight-line clearance: hide static set pieces standing between the lens and what the shot is about.
+    # Inserts: every static piece may go, ray-cast to the screen/prop corners (not only the centre).
+    # Other shots: car body pieces only (CAR_PIECES), cast to the subject's head/chest/hip; the subject is never touched.
+    is_ins = (shot.get("composition") or {}).get("framing") == "insert"
+    pts = []
+    if is_ins and cam_c.get("look_at", "") == "phone_ren" and "ren" in figs:
+        i_ = figs["ren"][0]
+        zup_ = Vector((0, 0, 1))
+        nz_ = (cpos - i_["phone"]).normalized()
+        yv_ = zup_ - nz_ * zup_.dot(nz_)
+        yv_ = yv_.normalized() if yv_.length > 1e-4 else Vector((0, 1, 0))
+        xv_ = yv_.cross(nz_)
+        pts = [i_["phone"] + xv_ * a_ * 0.034 + yv_ * b_ * 0.072 for a_ in (-1, 0, 1) for b_ in (-1, 0, 1)]
+    elif is_ins:
+        pts = [tgt + Vector((a_, b_, c_)) * 0.05 for a_ in (-1, 1) for b_ in (-1, 1) for c_ in (0,)] + [tgt]
+    else:
+        for cid_, (info_, _t) in figs.items():
+            pts += [info_["head"], info_["chest"], info_["hip"], (info_["chest"] + info_["hip"]) / 2]
+        if cam_c.get("look_at", "") in figs:
+            pass
+    if pts:
         dg = bpy.context.evaluated_depsgraph_get()
-        org = cam.location.copy()
-        goal = tgt.copy()
-        for _ in range(8):
-            d_ = goal - org
-            dist = d_.length
-            if dist < 0.05:
-                break
-            hit, loc, _nrm, _idx, ho, _m = bpy.context.scene.ray_cast(dg, org, d_.normalized(), distance=dist - 0.03)
-            if not hit:
-                break
-            if not ho.get("fm_shot") and not ho.hide_render:
-                ho.hide_render = True
-                ho["fm_culled_by_preview"] = 1
-                culled.append(ho.name)
-            org = loc + d_.normalized() * 0.01
+        for goal in pts:
+            org = cam.location.copy()
+            for _ in range(10):
+                d_ = goal - org
+                dist = d_.length
+                if dist < 0.05:
+                    break
+                hit, loc, _nrm, _idx, ho, _m = bpy.context.scene.ray_cast(dg, org, d_.normalized(), distance=dist - 0.03)
+                if not hit:
+                    break
+                if not ho.get("fm_shot") and not ho.hide_render and (is_ins or ho.name.startswith(CAR_PIECES)):
+                    ho.hide_render = True
+                    ho["fm_culled_by_preview"] = 1
+                    culled.append(ho.name)
+                org = loc + d_.normalized() * 0.01
     if (shot.get("composition") or {}).get("framing") == "insert":
         for cid, (info, tmp) in figs.items():
             for o in tmp.objects:

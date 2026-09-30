@@ -140,7 +140,8 @@ def figure(col, cid, canon, props, pos, facing, pose, hold=False):
         b = U.box(f"{cid}_brow{i}", (0.008, hh * 0.19, 0.008), bp, col, brow_col, rot=(0, 0, yaw))
         b.rotation_euler = (arched * sgn * 0.0, 0, yaw)
     mouth_w = hh * (0.13 if "small" in fv("mouth") or "line" in fv("mouth") else 0.16)
-    U.box(f"{cid}_mouth", (0.01, mouth_w, 0.006), head + f * hh * 0.385 - up * hh * 0.2, col, U.flat(hexs("#6B4444")), rot=(0, 0, yaw))
+    if not P.get("mouth_hidden"):
+      U.box(f"{cid}_mouth", (0.01, mouth_w, 0.006), head + f * hh * 0.385 - up * hh * 0.2, col, U.flat(hexs("#6B4444")), rot=(0, 0, yaw))
     for i, sgn in enumerate((-1, 1)):
         U.sphere(f"{cid}_eye{i}", 0.012, head + f * hh * 0.42 + r * sgn * hh * 0.17 + Vector((0, 0, hh * 0.02)), col, eye)
     tuft = P.get("tuft_extra_m")

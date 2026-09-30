@@ -155,9 +155,9 @@ def build_car(col, canon):
     lid["fm_open_loc"] = [pas_x, gb_y - 0.111 - gb_h / 2, gb_z - gb_h / 2]
     # passenger door on the kerb side (x = x0): hinged rectangle, angle applied per shot via property
     door = U.box("car_door_passenger", (0.05, c["door_length_m"], 0.85), (0, c["door_length_m"] / 2, 0), col, body)
-    door.location = (x0, cy - c["door_length_m"] / 2 + 0.0, sill + 0.62)
+    door.location = (x0, 0.525 - c["door_length_m"] / 2, sill + 0.62)  # closed: hinge at the front end, y 0.525 (canon door centre y 0)
     door["fm_open_angle_deg"] = c["door_open_angle_deg"]
-    door["fm_hinge_xy"] = [x0, y1 - 0.35]
+    door["fm_hinge_xy"] = [x0, 0.525]
     return {"door": door.name, "glovebox_lid": lid.name}
 
 
