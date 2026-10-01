@@ -7,7 +7,7 @@ project: last_signal
 sandbox: false
 current_phase: PREVIEW
 status: in_progress
-ledger: 33 records, head 2fdb4375acfe
+ledger: 35 records, head 90e93a5e617e
 ```
 
 **Next:** Gate approved: `fm advance`
@@ -51,18 +51,18 @@ LOCKED: 161, PROPOSED: 37
 | anim_sc02_sh010 | ANIMATION | PROPOSED | 6612947a3065 |
 | anim_sc02_sh020 | ANIMATION | PROPOSED | 0879c17e5ae2 |
 | anim_sc02_sh030 | ANIMATION | PROPOSED | d0a4e940d557 |
-| anim_sc03_sh010 | ANIMATION | PROPOSED (stale) | fd455ab9e3da |
+| anim_sc03_sh010 | ANIMATION | PROPOSED | 2b068e497045 |
 | anim_sc03_sh020 | ANIMATION | PROPOSED | dfed90e33553 |
 | anim_sc03_sh030 | ANIMATION | PROPOSED | 1353c981eade |
 | anim_sc03_sh040 | ANIMATION | PROPOSED | 75673aa63ff1 |
 | anim_sc03_sh050 | ANIMATION | PROPOSED | d6aa76ac62e7 |
 | anim_sc03_sh060 | ANIMATION | PROPOSED | 88856bdccd1e |
 | anim_sc03_sh070 | ANIMATION | PROPOSED | 0343633f7b72 |
-| anim_sc04_sh010 | ANIMATION | PROPOSED | d495c8ed15fc |
+| anim_sc04_sh010 | ANIMATION | PROPOSED | eb079680b80a |
 | anim_sc04_sh020 | ANIMATION | PROPOSED | df20290707bd |
 | anim_sc04_sh030 | ANIMATION | PROPOSED | 3738966a71d6 |
 | anim_sc04_sh040 | ANIMATION | PROPOSED | 65bd0bb32e46 |
-| anim_sc04_sh050 | ANIMATION | PROPOSED | 75483d6d8c23 |
+| anim_sc04_sh050 | ANIMATION | PROPOSED | 52eed3d88421 |
 | anim_sc04_sh060 | ANIMATION | PROPOSED | 10e5fd013ae8 |
 | anim_sc04_sh070 | ANIMATION | PROPOSED | 0d317f2d30f4 |
 | anim_sc04_sh080 | ANIMATION | PROPOSED | 52454eaba294 |
@@ -71,7 +71,7 @@ LOCKED: 161, PROPOSED: 37
 | anim_sc05_sh020 | ANIMATION | PROPOSED | 96739267e57b |
 | anim_sc05_sh030 | ANIMATION | PROPOSED | 363ebe9df82f |
 | anim_sc06_sh010 | ANIMATION | PROPOSED | ddee172d1a5b |
-| animation_bible | ANIMATION | PROPOSED (stale) | 05c8c4a918a6 |
+| animation_bible | ANIMATION | PROPOSED | b7253cda5903 |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
 | audio_bible | ANIMATION_PREVIEW | PROPOSED | 3126772f9cb9 |
 | audio_cues | ANIMATION_PREVIEW | PROPOSED (stale) | ad57b7753519 |
@@ -169,8 +169,6 @@ LOCKED: 161, PROPOSED: 37
 - G5: shot:SC04_SH070 was modified after approval (f0af46aad1a8 -> 67f88a2f736a)
 - G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> 6274d95c0386)
 - G5: shot:SC04_SH090 was modified after approval (451cd791871b -> ba37458305d5)
-- stale: artifact:anim_sc03_sh010
-- stale: artifact:animation_bible
 - stale: artifact:audio_cues
 - stale: artifact:edit_plan
 - stale: artifact:g5_review
@@ -182,7 +180,6 @@ LOCKED: 161, PROPOSED: 37
 - stale: edit:edl
 - stale: qa:audio
 - stale: qa:delivery
-- stale: qa:motion
 - stale: qa:stills
 - stale: render:preview_SC01_SH010
 - stale: render:preview_SC01_SH020
@@ -219,7 +216,7 @@ LOCKED: 161, PROPOSED: 37
 - stale: render:preview_SC05_SH020
 - stale: render:preview_SC05_SH030
 - stale: render:preview_SC06_SH010
-- stale: resolved:SC03_SH010
 - change awaiting decision: CHANGE-002
 - change awaiting decision: CHANGE-003
 - change awaiting decision: CHANGE-004
+- change awaiting decision: CHANGE-005

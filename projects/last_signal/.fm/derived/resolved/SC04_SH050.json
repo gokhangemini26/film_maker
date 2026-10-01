@@ -1,9 +1,9 @@
 {
   "content_hash": "sha256:801285eb8da87aabd28910b07173273101e7d6b3fb2b3becb2fbf89794927347",
-  "created_at": "2026-10-01T11:17:58Z",
+  "created_at": "2026-10-01T18:21:16Z",
   "derived_from": [
     {
-      "hash": "sha256:75483d6d8c23e73350aa1c52f6c76ddb8f781764a84179339473f19cda8fc679",
+      "hash": "sha256:52eed3d88421fde8203548211249aa5cbf4063033c7b8e6fc848fdcf35bfb1c4",
       "ref": "artifact:anim_sc04_sh050"
     },
     {

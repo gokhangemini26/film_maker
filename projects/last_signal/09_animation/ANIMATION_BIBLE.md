@@ -93,7 +93,7 @@ fm:
   - ref: artifact:anim_sc02_sh030
     hash: sha256:d0a4e940d55739db52c3a4ccd317bd6cf6af6a88f9466ea2d1dee0c0c4097cbb
   - ref: artifact:anim_sc03_sh010
-    hash: sha256:fd455ab9e3dad76566a22e2e748f11fcd0d398c94b3b98c1f8f100a4bc246adf
+    hash: sha256:2b068e497045ca68624e4b3965cdca22d44910847e0107e2128d9d1b38c64ec0
   - ref: artifact:anim_sc03_sh020
     hash: sha256:dfed90e33553c261e053632097aac7de32c018546b392fe8ec3418c21df7ceec
   - ref: artifact:anim_sc03_sh030
@@ -107,7 +107,7 @@ fm:
   - ref: artifact:anim_sc03_sh070
     hash: sha256:0343633f7b721a1aca1b3f7ffd95846613f600ba7507e32242ad138bd34dd2d7
   - ref: artifact:anim_sc04_sh010
-    hash: sha256:d495c8ed15fce391534333c53cf6db8fd49a5e665a1c24a28158db0676733efa
+    hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
   - ref: artifact:anim_sc04_sh020
     hash: sha256:df20290707bdfffef814be53d6a06e84660e980c7a5174d817555b5009a4657d
   - ref: artifact:anim_sc04_sh030
@@ -115,7 +115,7 @@ fm:
   - ref: artifact:anim_sc04_sh040
     hash: sha256:65bd0bb32e465142e5079deb7ba1a16c9de76e9ae1f07086213d58ca72b67ec0
   - ref: artifact:anim_sc04_sh050
-    hash: sha256:75483d6d8c23e73350aa1c52f6c76ddb8f781764a84179339473f19cda8fc679
+    hash: sha256:52eed3d88421fde8203548211249aa5cbf4063033c7b8e6fc848fdcf35bfb1c4
   - ref: artifact:anim_sc04_sh060
     hash: sha256:10e5fd013ae8af51fb14173396a7eff243f4b5e90c9f4428567a2de030384642
   - ref: artifact:anim_sc04_sh070
@@ -140,7 +140,7 @@ fm:
   - intent.anime_feel
   summary: Movement philosophy, vocabulary v1+v2, per-character movement language, timing and holds, event
     naming, and the open animation items for G7.
-  stamped_content_hash: sha256:05c8c4a918a6e632b9a515c090b0f0fc3703991026781d1d4d4650aaef8b06c9
+  stamped_content_hash: sha256:b7253cda5903b4c665397f8ec953ed2bdd38854bbcb5d0531345f8dd948f1baa
 title: Animation Bible — Last Signal
 ---
 # Animation Bible — Last Signal
@@ -274,31 +274,35 @@ file changes. RECOMMENDATION: before G7 locks the entry, add the rejected altern
 ("`neutral`: loses the expectation half of the wary gag and the reset of freeze-sag-reset"), as G7 review
 #19 asks.
 
-### 7.2 Cable hidden in SC04_SH010–SH040 (ASSUMPTION, against locked `continuity.props.cable`)
-FACT: the four files key `charging_cable {f: 0, loc: loose, state: hidden}`. The locked canon says the
-cable is "always plugged into the phone" and that in wides "most of its length" is out of frame, which
-means some of it is visible. `hidden` removes all of it, including the phone end, in shots where the phone
-is visible (SH010, SH020 insert, SH040). G7 review #10.
+### 7.2 Cable in SC04_SH010–SH040: now posed (applied; was hidden, against locked `continuity.props.cable`)
+FACT: applied in this revision. SC04_SH010 keys `charging_cable {f: 0, loc: loose, state: posed}`;
+SC04_SH020–SH040 carry it with no keys (builder carry-over keeps loc and state across cuts, as
+`chain_by_shot` already records for those shots). The earlier text here said "the four files key" the
+cable: that was wrong, only SC04_SH010 keys it. DECISION, rationale: the LOCKED canon keeps the cable
+plugged into the phone and only "most of its length" out of frame in wides, so `hidden` (which also removed
+the phone end in SH010, the SH020 insert and SH040) broke it (G7 review #10). Applied on the
+orchestrator's instruction (it reports that the human delegated creative choices); this is not a human
+ruling on #10, which G7 still decides. Rejected: `hidden`, and a new "stub only" state (not needed for G7).
+The chain is unchanged: `loose` (SC04_SH010) → `hand_r` (SC04_SH050 f0) → `crank_port` (f10), only `loc`
+chains. The builder (`loose`) puts the source end on the pavement about 0.12 m beside and 0.14 m in
+front of his left foot, so the cable drops from the phone port to the ground.
 
-**Proposal (RECOMMENDATION, vocab-legal, not yet applied):** change the key in all four files to
-`{f: 0, loc: loose, state: posed}`. FACT: the vocabulary already allows it (`posed` is a legal state and
-`loose` a legal loc). FACT: the builder (`blender/fm_blender/animate.py`, `loc == "loose"`) puts the
-source end on the ground about 0.12 m beside and 0.14 m in front of his left foot, and the phone end on the
-phone. So the cable runs from the phone port down to the pavement by his foot. The chain is unchanged
-(`loose` → `hand_r` at SC04_SH050 f0 is a legal transition; only `loc` chains). Expected read per shot
-(ASSUMPTION until the playblast):
+Expected read per shot (ASSUMPTION until the playblast):
 - SH010 (wide, kerb hunch): a short drop from the phone between his knees to his foot, mostly behind his
-  hands and shins. This matches canon.
-- SH020 (insert): a plug stub at the phone's bottom edge, where the thumb enters. Check it does not cover
+  hands and shins.
+- SH020 (insert): a plug stub at the phone's bottom edge where the thumb enters; check it does not cover
   the keys.
 - SH030 (medium close): the phone is low and probably out of frame, so little or nothing shows.
 - SH040 (low lunge into the car): the run from the seat edge to the pavement may be 0.6 m or more in view.
+  If it reads as too much cable, the fix is builder routing (along the leg or behind the hand), owned by
+  blender-td, not a new vocabulary name.
 
-**Gap:** the vocabulary has no "stub only" option. It is either the full posed curve or nothing. If the
-SH040 run reads as too much cable, the fix is builder routing (along the leg or behind the hand), not a
-new name. I did not apply this because the human has not ruled on #10, and editing four anim files makes
-the qa:motion and audio/post chain stale again. It is one key per file and can be applied straight after
-a ruling.
+Open: the PROPOSED canon `animation.vocab.v2.prop.charging_cable` still says `loose hidden` in its
+`chain_by_shot` text for SC04_SH010–SH040 and in its rationale ASSUMPTION. That text is documentation
+(no code reads it), and editing the entry's value would re-hash it and stale all 35 shots and every anim
+file that cites it. The correction is recorded as a canon annotation (notes, outside the hash). The value
+text should be corrected when the entry is next revised (with the v3 thumb bump after G7, or by the human
+at G7).
 
 ### 7.3 No thumb track for SC04_SH020 / SC04_SH060
 FACT: the vocabulary has no hand or thumb names. In both shots the thumb path lives only in `notes`, so
@@ -330,5 +334,7 @@ timing alone.
   (a vocabulary gap; secondary motion, M3 risk). It is not needed for G7.
 - No full playblast exists yet (`10_blender/playblast/film.mp4`). Arcs, eases, the 5.0 m/s sprint, the
   crank rhythm and the SC06 hold have only been checked as keys on paper.
-- SC03_SH010 changed upstream (run-path prose only). The anim file must be checked against it and
-  restamped (G7 review #5).
+- SC03_SH010 changed upstream (run-path prose only; G7 review #5). Done: the anim file was re-checked
+  against the revised shot. The prose now describes the same 7.9 m run, speeds and 52 frames as the
+  typed tracks, so no key changed; the obsolete "prose still describes the old run" note was replaced and
+  the file restamped.

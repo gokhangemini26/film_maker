@@ -53,7 +53,7 @@ fm:
   - intent.soft_but_cinematic
   summary: Plug, unfold (2-frame hinge stiffness), first turn at f30 with the push-in and the light steadying,
     first ratchet top at f56, one-thumb glide typing.
-  stamped_content_hash: sha256:75483d6d8c23e73350aa1c52f6c76ddb8f781764a84179339473f19cda8fc679
+  stamped_content_hash: sha256:52eed3d88421fde8203548211249aa5cbf4063033c7b8e6fc848fdcf35bfb1c4
 shot_id: SC04_SH050
 frames: 80
 vocab_version: 2
@@ -154,8 +154,8 @@ props:
     loc: hand_r
     state: posed
     note: right hand holds the cable plug; f8 lines it up with the port (port toward the near knee)
-    rationale: 'the cut hides the pick-up of the loose end (ASSUMPTION: it lay hidden by his left foot
-      through SC04_SH010-SH040)'
+    rationale: the cut hides the pick-up of the loose end (it lay posed on the pavement by his left foot
+      through SC04_SH010-SH040, the SC04_SH010 key)
   - f: 10
     loc: crank_port
     note: f10-11 small wrist push, plug into the crank port (event plug_in); short posed loop over the

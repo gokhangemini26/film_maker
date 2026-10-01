@@ -1,0 +1,314 @@
+id: CHANGE-005
+status: PROPOSED
+target: characters.ren.expressions
+reason: 'G7 review #3: animation.vocab.v2.face.ren adds wary and determined to Ren''s comic set, used
+  in SC01_SH060 f18, SC02_SH010 f0, SC03_SH020 f0 and SC03_SH030 f0, but LOCKED characters.ren.expressions
+  lists only the five v1 comic faces. Adds both to comic_set with definitions and shot usage, keeps them
+  illegal from SC04_SH030 (the turn), and states that tender focused_calm keeps level brows so it stays
+  distinct from determined. Rejected alternative: revert the four keys to neutral or another v1 face (loses
+  the expectation half of the wary gag and the reset of freeze-sag-reset). Serves intent.comic_then_tender,
+  intent.earned_last_signal, intent.soft_but_cinematic.'
+set:
+  value:
+    comic_set:
+    - rehearsed_breath
+    - letdown
+    - freeze
+    - relief
+    - stunned_stillness
+    - wary
+    - determined
+    comic_set_defs:
+      wary: brows level and very slightly lowered, eyes a touch narrowed, mouth pressed closed, no smile;
+        a held pose
+      determined: brows level and knit (inner ends slightly down), eyes fully open and forward, mouth
+        pressed small; the reset of freeze-sag-reset; a held pose
+    comic_set_used_in:
+      wary:
+      - SC03_SH020
+      - SC03_SH030
+      determined:
+      - SC01_SH060
+      - SC02_SH010
+    tender_set:
+    - focused_calm
+    - hesitation_at_heart
+    - release_after_send
+    - final_look_up
+    tender_distinct_from_comic: focused_calm keeps brows level (no knit, no inner-end drop) so it never
+      reads as determined
+    comic_illegal_from_shot: SC04_SH030
+    comic_style: held_pose_reactions
+    graphic_symbols: false
+    super_deformed: false
+    mouth_open_max: slight
+    lip_sync: false
+    face_hidden_beats:
+    - forehead_on_wheel_SC01
+  statement: |
+    Two expression sets split at the turn. Comic set (SC01-SC03): the rehearsed breath
+    (cheeks fill, eyes shut, then open), the letdown (inner brows up, mouth flat), the
+    freeze (eyes wide, pupils small, whole body held), relief (eyes close, long exhale, head
+    back), the stunned stillness in the dark shop (face lit from below, brows lifted, no
+    movement), wary (brows level and very slightly lowered, eyes a touch narrowed, mouth
+    pressed, no smile: he expects the catch) and determined (brows level and knit, eyes fully
+    open and forward, mouth pressed small: the reset after a setback). Tender set (SC04, SC06):
+    focused calm (brows level, eyes on the phone), the hesitation at the heart (lips pressed, a
+    slow blink), the release after the send (eyes close, breath out), the final look up
+    (eyelids low, mouth soft, the faintest ease at the corners). Focused calm keeps its brows
+    level so it never reads as determined. Every comic reaction is a held pose, not a rubbery
+    take. No sweat drops, anger marks, super-deformed faces or other graphic comic symbols.
+  rationale: |
+    The comic reactions are timed on held frames (CREATIVE_DIRECTION: frozen stare,
+    slumped shoulder, pause before he tries again), so each is a pose with a clear read
+    rather than a flurry of shapes, which also suits the proxy face. Splitting the sets at
+    the turn makes the change of key visible on his face as well as in the pace
+    (tone.the_turn): after the crank begins he never uses a comic expression again. The
+    final look up stays short of a smile: his effort is done and the answer is not his to
+    see (tone.ending_restraint). Graphic symbols and super-deformed takes are excluded:
+    they are the loud end of anime comedy, they read as manic, and they would break the
+    "framed and lit like cinema" half of intent.soft_but_cinematic. Rejected: a big
+    triumphant grin at the tick (turns a small earned triumph into a victory lap).
+
+    v2 additions (wary, determined). The comedy is bad timing plus persistence
+    (tone.comedy_source), and characters.ren.movement gives every setback the pattern
+    freeze, sag, reset. The v1 set has a face for the freeze and the sag (freeze, letdown)
+    but none for the reset, so the beat that makes the next setback funny had no face of its
+    own; determined is that face (SC01_SH060 f18, the storyboard's "resolve"; SC02_SH010 f0,
+    the same resolve, bigger, as he bursts out to run). The SC03 "wary relief" (G3 finding 7)
+    is a two-part gag: he expects the catch, nothing happens, then the exhale; the v1 set
+    has the relief half but not the expectation half; wary is that half (SC03_SH020 f0,
+    SC03_SH030 f0). Both are held poses with no graphic symbols, mouth closed, so they keep
+    comic_style held_pose_reactions and intent.soft_but_cinematic. Both join the comic set,
+    so the turn rule bans them from SC04_SH030 on and the change of key stays intact
+    (intent.comic_then_tender); the tender focused_calm must keep level brows so it does not
+    collapse into determined (G7 review #4). The persistence these faces show is what makes
+    the last signal earned (intent.earned_last_signal). Rejected: revert the four keys to
+    neutral or to an existing v1 face. neutral drops the expectation half of the wary gag and
+    the reset of freeze-sag-reset, so the setbacks lose their rhythm; freeze in SC03 would
+    pre-empt the freeze already keyed at SC03_SH030 f2 and flatten the gag; relief would
+    spend the exhale saved for SC03_SH040; letdown on the reset reads as giving up, the
+    opposite of persistence. Low on-screen risk: the face is legible only in SC03_SH030 f0
+    (SC01_SH060 rear 3/4, SC02_SH010 back of head), per G7 review #3.
+base_version: 1
+base_hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+proposed_by: agent:claude-code
+proposed_at: '2026-10-01T18:18:28Z'
+impact:
+  CANON:
+  - canon:animation.vocab.face
+  - canon:animation.vocab.pose.hana
+  - canon:animation.vocab.pose.ren
+  - canon:animation.vocab.ui_event
+  - canon:animation.vocab.v2
+  - canon:animation.vocab.v2.face.ren
+  - canon:animation.vocab.v2.lids
+  - canon:animation.vocab.v2.pose.hana
+  - canon:animation.vocab.v2.pose.ren
+  - canon:camera.dof.default_deep
+  - canon:camera.format
+  - canon:camera.movement.default_static
+  - canon:camera.rhythm.pace
+  - canon:characters.hana.representation
+  - canon:characters.ren.representation
+  - canon:look.exposure.scene_keys
+  - canon:look.exposure.value_structure
+  - canon:look.lighting.eevee_feasibility
+  - canon:look.style.background_shading
+  - canon:look.style.character_shading
+  - canon:look.style.outlines
+  - canon:look.style.phone_screen.call
+  - canon:look.style.phone_screen.compose
+  - canon:look.style.phone_screen.geometry
+  - canon:look.style.phone_screen.hana
+  - canon:look.style.phone_screen.map
+  - canon:look.style.phone_screen.sent
+  - canon:look.style.phone_screen.states_by_shot
+  - canon:look.style.phone_screen.status_bar
+  - canon:look.style.realism
+  - canon:look.style.render_constraints
+  - canon:look.style.texture_and_grain
+  ARTIFACT:
+  - artifact:anim_sc01_sh010
+  - artifact:anim_sc01_sh020
+  - artifact:anim_sc01_sh030
+  - artifact:anim_sc01_sh040
+  - artifact:anim_sc01_sh050
+  - artifact:anim_sc01_sh060
+  - artifact:anim_sc01_sh070
+  - artifact:anim_sc01_sh080
+  - artifact:anim_sc01_sh090
+  - artifact:anim_sc01_sh100
+  - artifact:anim_sc01_sh110
+  - artifact:anim_sc01_sh120
+  - artifact:anim_sc01_sh130
+  - artifact:anim_sc01_sh140
+  - artifact:anim_sc01_sh150
+  - artifact:anim_sc02_sh010
+  - artifact:anim_sc02_sh020
+  - artifact:anim_sc02_sh030
+  - artifact:anim_sc03_sh010
+  - artifact:anim_sc03_sh020
+  - artifact:anim_sc03_sh030
+  - artifact:anim_sc03_sh040
+  - artifact:anim_sc03_sh050
+  - artifact:anim_sc03_sh060
+  - artifact:anim_sc03_sh070
+  - artifact:anim_sc04_sh010
+  - artifact:anim_sc04_sh020
+  - artifact:anim_sc04_sh030
+  - artifact:anim_sc04_sh040
+  - artifact:anim_sc04_sh050
+  - artifact:anim_sc04_sh060
+  - artifact:anim_sc04_sh070
+  - artifact:anim_sc04_sh080
+  - artifact:anim_sc04_sh090
+  - artifact:anim_sc05_sh010
+  - artifact:anim_sc05_sh020
+  - artifact:anim_sc05_sh030
+  - artifact:anim_sc06_sh010
+  - artifact:animation_bible
+  - artifact:audio_bible
+  - artifact:audio_cues
+  - artifact:character_bible
+  - artifact:cinematography_bible
+  - artifact:color_bible
+  - artifact:edit_plan
+  - artifact:g3_review
+  - artifact:g4_review
+  - artifact:g5_review
+  - artifact:g7_review
+  - artifact:lighting_bible
+  - artifact:post_plan
+  - artifact:preview_review
+  - artifact:shot_list
+  - artifact:storyboard
+  - artifact:visual_bible
+  SHOT:
+  - shot:SC01_SH010
+  - shot:SC01_SH020
+  - shot:SC01_SH030
+  - shot:SC01_SH040
+  - shot:SC01_SH050
+  - shot:SC01_SH060
+  - shot:SC01_SH070
+  - shot:SC01_SH080
+  - shot:SC01_SH090
+  - shot:SC01_SH100
+  - shot:SC01_SH110
+  - shot:SC01_SH120
+  - shot:SC01_SH130
+  - shot:SC01_SH140
+  - shot:SC01_SH150
+  - shot:SC02_SH010
+  - shot:SC02_SH020
+  - shot:SC02_SH030
+  - shot:SC03_SH010
+  - shot:SC03_SH020
+  - shot:SC03_SH030
+  - shot:SC03_SH040
+  - shot:SC03_SH050
+  - shot:SC03_SH060
+  - shot:SC03_SH070
+  - shot:SC04_SH010
+  - shot:SC04_SH020
+  - shot:SC04_SH030
+  - shot:SC04_SH040
+  - shot:SC04_SH050
+  - shot:SC04_SH060
+  - shot:SC04_SH070
+  - shot:SC04_SH080
+  - shot:SC04_SH090
+  - shot:SC05_SH010
+  - shot:SC05_SH020
+  - shot:SC05_SH030
+  - shot:SC06_SH010
+  RESOLVED:
+  - resolved:SC01_SH010
+  - resolved:SC01_SH020
+  - resolved:SC01_SH030
+  - resolved:SC01_SH040
+  - resolved:SC01_SH050
+  - resolved:SC01_SH060
+  - resolved:SC01_SH070
+  - resolved:SC01_SH080
+  - resolved:SC01_SH090
+  - resolved:SC01_SH100
+  - resolved:SC01_SH110
+  - resolved:SC01_SH120
+  - resolved:SC01_SH130
+  - resolved:SC01_SH140
+  - resolved:SC01_SH150
+  - resolved:SC02_SH010
+  - resolved:SC02_SH020
+  - resolved:SC02_SH030
+  - resolved:SC03_SH010
+  - resolved:SC03_SH020
+  - resolved:SC03_SH030
+  - resolved:SC03_SH040
+  - resolved:SC03_SH050
+  - resolved:SC03_SH060
+  - resolved:SC03_SH070
+  - resolved:SC04_SH010
+  - resolved:SC04_SH020
+  - resolved:SC04_SH030
+  - resolved:SC04_SH040
+  - resolved:SC04_SH050
+  - resolved:SC04_SH060
+  - resolved:SC04_SH070
+  - resolved:SC04_SH080
+  - resolved:SC04_SH090
+  - resolved:SC05_SH010
+  - resolved:SC05_SH020
+  - resolved:SC05_SH030
+  - resolved:SC06_SH010
+  - resolved:film
+  RENDER:
+  - render:preview_SC01_SH010
+  - render:preview_SC01_SH020
+  - render:preview_SC01_SH030
+  - render:preview_SC01_SH040
+  - render:preview_SC01_SH050
+  - render:preview_SC01_SH060
+  - render:preview_SC01_SH070
+  - render:preview_SC01_SH080
+  - render:preview_SC01_SH090
+  - render:preview_SC01_SH100
+  - render:preview_SC01_SH110
+  - render:preview_SC01_SH120
+  - render:preview_SC01_SH130
+  - render:preview_SC01_SH140
+  - render:preview_SC01_SH150
+  - render:preview_SC02_SH010
+  - render:preview_SC02_SH020
+  - render:preview_SC02_SH030
+  - render:preview_SC03_SH010
+  - render:preview_SC03_SH020
+  - render:preview_SC03_SH030
+  - render:preview_SC03_SH040
+  - render:preview_SC03_SH050
+  - render:preview_SC03_SH060
+  - render:preview_SC03_SH070
+  - render:preview_SC04_SH010
+  - render:preview_SC04_SH020
+  - render:preview_SC04_SH030
+  - render:preview_SC04_SH040
+  - render:preview_SC04_SH050
+  - render:preview_SC04_SH060
+  - render:preview_SC04_SH070
+  - render:preview_SC04_SH080
+  - render:preview_SC04_SH090
+  - render:preview_SC05_SH010
+  - render:preview_SC05_SH020
+  - render:preview_SC05_SH030
+  - render:preview_SC06_SH010
+  AUDIO:
+  - audio:mix
+  EDIT:
+  - edit:animatic
+  - edit:edl
+  QA:
+  - qa:audio
+  - qa:delivery
+  - qa:motion
+  - qa:stills

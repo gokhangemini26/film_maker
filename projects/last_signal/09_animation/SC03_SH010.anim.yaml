@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH010
-    hash: sha256:b3cf9247ac6dadd65ad67e388e53e984521f849267f6f42a021cdaace83291cd
+    hash: sha256:1f76a5f9b1d9f67b45b4d32494cd8fa297d0e56eeec18ea1eaacf0bb5c82e63f
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -40,7 +40,7 @@ fm:
   summary: 'Structured tracks for the shop entry: hard run in under the camera and round the near gondola''s
     front end, head snaps left / right, locks on the socket corner at f10, down the west aisle, one quick
     drop to both knees at (3.45, 8.66) f44-48.'
-  stamped_content_hash: sha256:fd455ab9e3dad76566a22e2e748f11fcd0d398c94b3b98c1f8f100a4bc246adf
+  stamped_content_hash: sha256:2b068e497045ca68624e4b3965cdca22d44910847e0107e2128d9d1b38c64ec0
 shot_id: SC03_SH010
 frames: 52
 vocab_version: 2
@@ -192,6 +192,11 @@ notes:
   loop swing is posed per stride on the charging_cable track (vocabulary v2), not simulated.'
 - 'Camera locked off: the same frame is reused for the blackout (SC03_SH050).'
 - 'Kneel moved to (3.45, 8.66) with the cinematographer''s SC03 blocking fix (socket reach); the path,
-  speeds and notes follow it. The shot file''s prose animation block (locomotion.path, risks_m3) still
-  describes the old run to (2.2, 8.0), 6.7 m: the shot file is not edited from here once this anim file
-  exists; flagged to the orchestrator.'
+  speeds and notes follow it. Re-checked against the revised shot (G7 review #5): the prose animation
+  block (locomotion speeds and path, keys f0-48, risks_m3) now describes the same 7.9 m run to (3.45,
+  8.66) in 48 f, the same speeds per segment and the same 52 frames. No key, path point, event id or frame
+  changed in this revision; segment speeds recomputed from the path (3.3 / 2.9 / 4.5 / 5.0 / 3.0 m/s)
+  and match.'
+- Shot prose f2 says the run "eases to about 3.2 m/s" while scanning; the path gives 3.3 m/s f0-5 and
+  2.9 m/s f5-10, which is that ease. The prose f48 "eyes to the stand" is the socket target (the socket
+  is behind the stand); no new look target needed.

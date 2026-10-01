@@ -43,8 +43,6 @@ fm:
     hash: sha256:cef88be8e44828b4e3ef9da072436c22ebe8c4798b74dac8d4eac9b689d9430a
   - ref: canon:animation.vocab.v2.prop.charging_cable
     hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
-  - ref: canon:animation.vocab.v2.prop_state.hidden
-    hash: sha256:4fb40b00cebe7f4048846db48534de0f4a724989e10aa57e3386de5728d2dec2
   - ref: canon:continuity.props.cable
     hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
   serves:
@@ -54,7 +52,7 @@ fm:
   - intent.anime_feel
   summary: 'The quiet bookend: one hunched pose, one slow breath cycle, one tired blink, an irregular
     1 % flicker.'
-  stamped_content_hash: sha256:d495c8ed15fce391534333c53cf6db8fd49a5e665a1c24a28158db0676733efa
+  stamped_content_hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
 shot_id: SC04_SH010
 frames: 46
 vocab_version: 2
@@ -136,12 +134,16 @@ props:
   charging_cable:
   - f: 0
     loc: loose
-    state: hidden
-    note: 'phone end on the phone; the loose source end lies out of view. ASSUMPTION: it is hidden by
-      his left foot through SC04_SH010-SH040 and he picks it up across the cut into SC04_SH050 (the prose
-      never says where it is)'
-    rationale: unplugged from the shop socket off screen in the ten-minute gap between SC03 and SC04 (continuity.props.cable
-      notes); hidden is deliberate framing, not a missing prop
+    state: posed
+    note: 'phone end on the phone; the loose source end lies on the pavement by his left foot (builder
+      loose loc), so the cable drops from the phone port to the ground. Carried without keys through SC04_SH020-SH040
+      (builder carry-over keeps loc and state); he picks the source end up across the cut into SC04_SH050
+      (loose -> hand_r, a legal transition). ASSUMPTION until the playblast: in this wide the drop reads
+      short, mostly behind his hands and shins'
+    rationale: 'unplugged from the shop socket off screen in the ten-minute gap between SC03 and SC04
+      (continuity.props.cable notes). Posed, not hidden: the LOCKED continuity.props.cable keeps the cable
+      plugged into the phone and only most of its length out of frame in wides, so some must show (G7
+      review #10). Rejected: hidden (removes the phone end too, against locked canon)'
 ui_timeline:
 - f: 7
   event: dip
