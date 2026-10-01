@@ -101,11 +101,11 @@ fm:
   - ref: artifact:anim_sc03_sh040
     hash: sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90
   - ref: artifact:anim_sc03_sh050
-    hash: sha256:d6aa76ac62e7151a391211b703d2ff0991300ae091e9307f3f93399d281fe9f7
+    hash: sha256:3c11c5cd4d48cecce9eff3617544ac58aa90d9cee26535a2844513f500d7db08
   - ref: artifact:anim_sc03_sh060
-    hash: sha256:88856bdccd1ee3d8033737be802370565eb42f5a534cb2fa84ba1505aa516cf9
+    hash: sha256:5ea5f1daa7b8299784bf622691323b64fba4e1c8e3bfb854ad656d3e36dd87e6
   - ref: artifact:anim_sc03_sh070
-    hash: sha256:0343633f7b721a1aca1b3f7ffd95846613f600ba7507e32242ad138bd34dd2d7
+    hash: sha256:6ec95c3080c839aaa01b965ffa4e4eccb3131e96c1fe954c619ba21bc9b6163f
   - ref: artifact:anim_sc04_sh010
     hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
   - ref: artifact:anim_sc04_sh020
@@ -140,7 +140,7 @@ fm:
   - intent.anime_feel
   summary: Movement philosophy, vocabulary v1+v2, per-character movement language, timing and holds, event
     naming, and the open animation items for G7.
-  stamped_content_hash: sha256:b7253cda5903b4c665397f8ec953ed2bdd38854bbcb5d0531345f8dd948f1baa
+  stamped_content_hash: sha256:0991004f83be93116451b1337f541643ea9811a282d496ef118a6e1b6a40740c
 title: Animation Bible — Last Signal
 ---
 # Animation Bible — Last Signal
@@ -338,3 +338,8 @@ timing alone.
   against the revised shot. The prose now describes the same 7.9 m run, speeds and 52 frames as the
   typed tracks, so no key changed; the obsolete "prose still describes the old run" note was replaced and
   the file restamped.
+- SC03_SH050/060/070 changed upstream (lighting only: `render_spec: look.lighting.sc03_blackout_render`,
+  blue-black ambient `#1E2030` over floor `#1B1C29`, exposure target 0.08; no timing change). Done: the
+  three anim files were re-checked against the new resolved shots. Frames (30/26/48), the f8 blackout
+  (resolved `blackout_event_frame` 9, 1-based), events, holds and the screen dip are unchanged; no key
+  changed. Each file got a review note and was restamped.

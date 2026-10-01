@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH050
-    hash: sha256:6d33bc402d926df5233ad93a87333c57736ab06a62d818b2973238da758e2d69
+    hash: sha256:fe6d162c8fe336bdf88659bc425297b8ce8015bc24171ccd724131e4ba560f20
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -41,7 +41,7 @@ fm:
   - intent.anime_feel
   summary: 'Structured tracks for the blackout: 8 lit frames of a relaxed man, the room off in one frame
     on the clunk at f8, 22 frames of dark; he does not move; the phone glow dips and comes back.'
-  stamped_content_hash: sha256:d6aa76ac62e7151a391211b703d2ff0991300ae091e9307f3f93399d281fe9f7
+  stamped_content_hash: sha256:3c11c5cd4d48cecce9eff3617544ac58aa90d9cee26535a2844513f500d7db08
 shot_id: SC03_SH050
 frames: 30
 vocab_version: 2
@@ -139,3 +139,7 @@ notes:
 - 'Reviewed against the SC03 blocking fix: he holds at (3.45, 8.66), the SH010 end position (SH010 path
   re-routed to it); the lens moved with SH010 to x 2.65. Tracks and the f8 events are position-free and
   stand unchanged.'
+- 'Reviewed against the blackout render spec (look.lighting.sc03_blackout_render: after f8 the room reads
+  blue-black, ambient #1E2030 over floor #1B1C29, exposure 0.08, not pure black). Lighting only: frames
+  30, the f8 switch (resolved blackout_event_frame 9, 1-based), all events and the hold stand unchanged.
+  "Dark" in this file means that blue-black floor.'

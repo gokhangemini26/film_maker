@@ -55,9 +55,9 @@ LOCKED: 161, PROPOSED: 38
 | anim_sc03_sh020 | ANIMATION | PROPOSED | dfed90e33553 |
 | anim_sc03_sh030 | ANIMATION | PROPOSED | 1353c981eade |
 | anim_sc03_sh040 | ANIMATION | PROPOSED | 75673aa63ff1 |
-| anim_sc03_sh050 | ANIMATION | PROPOSED (stale) | d6aa76ac62e7 |
-| anim_sc03_sh060 | ANIMATION | PROPOSED (stale) | 88856bdccd1e |
-| anim_sc03_sh070 | ANIMATION | PROPOSED (stale) | 0343633f7b72 |
+| anim_sc03_sh050 | ANIMATION | PROPOSED | 3c11c5cd4d48 |
+| anim_sc03_sh060 | ANIMATION | PROPOSED | 5ea5f1daa7b8 |
+| anim_sc03_sh070 | ANIMATION | PROPOSED | 6ec95c3080c8 |
 | anim_sc04_sh010 | ANIMATION | PROPOSED | eb079680b80a |
 | anim_sc04_sh020 | ANIMATION | PROPOSED | df20290707bd |
 | anim_sc04_sh030 | ANIMATION | PROPOSED | 3738966a71d6 |
@@ -71,7 +71,7 @@ LOCKED: 161, PROPOSED: 38
 | anim_sc05_sh020 | ANIMATION | PROPOSED | 96739267e57b |
 | anim_sc05_sh030 | ANIMATION | PROPOSED | 363ebe9df82f |
 | anim_sc06_sh010 | ANIMATION | PROPOSED | ddee172d1a5b |
-| animation_bible | ANIMATION | PROPOSED (stale) | b7253cda5903 |
+| animation_bible | ANIMATION | PROPOSED | 0991004f83be |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
 | audio_bible | ANIMATION_PREVIEW | PROPOSED | 3126772f9cb9 |
 | audio_cues | ANIMATION_PREVIEW | PROPOSED (stale) | ad57b7753519 |
@@ -169,10 +169,6 @@ LOCKED: 161, PROPOSED: 38
 - G5: shot:SC04_SH070 was modified after approval (f0af46aad1a8 -> 67f88a2f736a)
 - G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> 6274d95c0386)
 - G5: shot:SC04_SH090 was modified after approval (451cd791871b -> ba37458305d5)
-- stale: artifact:anim_sc03_sh050
-- stale: artifact:anim_sc03_sh060
-- stale: artifact:anim_sc03_sh070
-- stale: artifact:animation_bible
 - stale: artifact:audio_cues
 - stale: artifact:edit_plan
 - stale: artifact:g5_review
@@ -184,14 +180,10 @@ LOCKED: 161, PROPOSED: 38
 - stale: edit:edl
 - stale: qa:audio
 - stale: qa:delivery
-- stale: qa:motion
 - stale: qa:stills
 - stale: render:preview_SC03_SH050
 - stale: render:preview_SC03_SH060
 - stale: render:preview_SC03_SH070
-- stale: resolved:SC03_SH050
-- stale: resolved:SC03_SH060
-- stale: resolved:SC03_SH070
 - change awaiting decision: CHANGE-002
 - change awaiting decision: CHANGE-003
 - change awaiting decision: CHANGE-004
