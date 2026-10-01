@@ -27,10 +27,10 @@ fm:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Battery insert: 5 % charcoal to 4 % red in one frame at f4, held 26 frames; nothing moves.'
-  stamped_content_hash: sha256:ac0d74c6a149648f0194919f58052ca8f05bf13dc5d5cccc919871b3ab3634c7
+  stamped_content_hash: sha256:fa336523cafb18489c30c446d12fbd2e568e6e1b02cd80267c41af10730c92c3
 shot_id: SC01_SH080
 frames: 30
-vocab_version: 1
+vocab_version: 2
 rationale: 'The jolt is a one-frame change inside a still frame, four frames after the cut so the eye
   has landed on the number first. The number and colour change come from the canon table (pct f0 5 / f4
   4, colour charcoal / red); this file names the frame as an event and asserts the 26-frame hold. No flash

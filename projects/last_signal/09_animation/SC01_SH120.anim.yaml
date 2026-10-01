@@ -19,6 +19,8 @@ fm:
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
   - ref: canon:continuity.props.phone_ren
     hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
+  - ref: canon:animation.vocab.v2.prop.charging_cable
+    hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
   - ref: canon:continuity.props.cable
     hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
   - ref: canon:continuity.battery
@@ -31,10 +33,10 @@ fm:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Bolt insert: amber bolt on in one frame at f2 with the charging chime, held 18 frames.'
-  stamped_content_hash: sha256:34790879054d61ab5edd43d66392d6c4711128065a34c141aec110bfa5e91b0b
+  stamped_content_hash: sha256:34347251a334dca256cb7e10c3d9b21da3aa13dee9bbc33118467055f620bbcc
 shot_id: SC01_SH120
 frames: 20
-vocab_version: 1
+vocab_version: 2
 rationale: 'The bolt switches on in one frame (look.lighting.power_indicators: lit the moment the cable
   goes live; canon table bolt f0 false / f2 true); any ease would soften the relief into a maybe. Nothing
   else moves, so the relief is exact and short. The chime is a named event on the same frame.'
@@ -56,6 +58,16 @@ props:
   phone_ren:
   - f: 0
     attach: hand_l
+  charging_cable:
+  - f: 0
+    loc: hand_r
+    state: posed
+    note: plug end in the right hand off frame at the console adapter (chained from SC01_SH110 f18)
+  - f: 2
+    loc: car_usb_adapter
+    note: plugged into the car USB adapter on the bolt frame (event bolt_on); stays there through SC01_SH150
+    rationale: the cable goes live the frame the bolt lights (look.lighting.power_indicators), so the
+      plug-in and bolt_on share f2 (animation.vocab.v2.prop.charging_cable chain_by_shot SC01_SH120)
 holds:
 - f0: 2
   f1: 19

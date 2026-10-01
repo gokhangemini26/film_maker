@@ -35,10 +35,10 @@ fm:
   - intent.comic_then_tender
   summary: 'Structured tracks for the relief: long ease-out exhale f0-14, head tips back, eyes close f6-8,
     relief held f14-21 into the blackout shot.'
-  stamped_content_hash: sha256:ab0d09d0bd4e8f63577394aaab8e2c73453a09fc727f11c7947318e2f738dc88
+  stamped_content_hash: sha256:2b790f5c3632cf075df599308e4f5565cd663eb64af29e73792b20670c5ccb6c
 shot_id: SC03_SH040
 frames: 22
-vocab_version: 1
+vocab_version: 2
 rationale: Full relief, held to the cut, so the blackout arrives only after he has relaxed. The long out-breath
   (quick start, long slow tail) reads as tension leaving the body; an 8-frame hold of the relief pose
   ends the shot, and SH050 keeps it exactly.
@@ -48,11 +48,19 @@ characters:
     - f: 0
       ref: kneel_upright
       ease: hold
-      note: 'kneeling, shoulders already dropping (match on action from SH030 f23-25). The head tips back
-        about 8 deg f4-14: no kneel preset with the head back exists in vocabulary v1; carried by the
-        relief face and the out_long breath. V2 PENDING (animation.vocab.v2.pose.ren): f0 kneel_upright
-        hold; f4 kneel_head_back ease_out blend_f 10; f14 kneel_head_back hold (the blend ends on the
-        f14-21 hold)'
+      note: kneeling, shoulders already dropping (match on action from SH030 f23-25)
+    - f: 4
+      ref: kneel_head_back
+      ease: ease_out
+      blend_f: 10
+      note: the head tips back about 8 deg f4-14, chest opens; the shoulder drop comes from the out_long
+        breath, not the preset
+      rationale: the relief head tilt is the beat the blackout then punishes; holding kneel_upright would
+        flatten it into the same pose as the wary watch
+    - f: 14
+      ref: kneel_head_back
+      ease: hold
+      note: the blend ends on the f14-21 hold
     face:
     - f: 0
       ref: relief
@@ -104,4 +112,4 @@ preview_frames:
 notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
-- 'Secondary with no track in vocabulary v1: jacket shoulders settle with the exhale (skinning only).'
+- 'Secondary with no track in the vocabulary (v2): jacket shoulders settle with the exhale (skinning only).'

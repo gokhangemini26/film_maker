@@ -30,10 +30,10 @@ fm:
   - intent.open_hopeful_ending
   summary: 'Typing insert: 16-frame two-thumb burst types "Are you free tonight?" (21 chars), thumbs park,
     text held 42 frames.'
-  stamped_content_hash: sha256:7a6c34a017e983315f8a9598f6a551049f753838c83fd95c0f9dbae8b3a1c9c9
+  stamped_content_hash: sha256:4abb568eeea7b67d4accb0a72009da5452fa1a61cb48e1253d4c7322cc2f00c2
 shot_id: SC01_SH070
 frames: 58
-vocab_version: 1
+vocab_version: 2
 rationale: 'A comic-section two-thumb burst: rehearsed words come out in one go (hope and hurry), so the
   burst is short (16 frames, one key press per frame) and the reading hold is long (42 frames, minimum
   41). The thumbs leave the text area at once and park on the bottom edge. Opposite of the tender half''s

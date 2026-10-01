@@ -548,6 +548,7 @@
             "ref": "neutral"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -697,6 +698,67 @@
       34,
       39
     ],
+    "prop_info": {
+      "car_body": {
+        "before_first_key": {},
+        "chained_fields": [],
+        "fields": [
+          "state"
+        ],
+        "persistent": false
+      },
+      "dash_lights_and_adapter_ring": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      },
+      "rear_view_mirror": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "tilt_deg"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "car_body": [
         {
@@ -743,7 +805,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc01_sh010",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

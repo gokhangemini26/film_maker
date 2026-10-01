@@ -33,10 +33,10 @@ fm:
   - intent.comic_then_tender
   summary: 'Structured tracks for the wary look up: eyes flick to the panels at f1, head follows, a 14-frame
     dead hold f5-18, slow return to the phone, shoulders start to drop on f23 into SH040.'
-  stamped_content_hash: sha256:dca6bff2e21641fd674c5e240b52f8300723a4394d79d3314d7e22478bb63eae
+  stamped_content_hash: sha256:6aaac5fde8146cb2529e220cb9e8caa730fc863b67f47731d88801f20990abc6
 shot_id: SC03_SH030
 frames: 26
-vocab_version: 1
+vocab_version: 2
 rationale: 'The wary half of the wary relief: he expects the pattern, freezes looking at the panels, and
   nothing happens. Eyes first, head second, a 14-frame dead hold (asserted as a hold), then a slow return.
   The panels carry an explicit `steady` key so QA can assert the gag is the absence. The out-breath starts
@@ -50,9 +50,10 @@ characters:
       note: kneeling, facing the lens, head level; the head tilt is carried by the look track
     face:
     - f: 0
-      ref: neutral
-      note: 'f0-1 the wary face carried from SH020 (brows level, mouth pressed); neutral is the v1 stand-in;
-        V2 PENDING (animation.vocab.v2.face.ren): ref wary'
+      ref: wary
+      note: 'f0-1 the wary face carried from SH020 (brows level, mouth pressed). DEPENDENCY: wary is a
+        v2 comic-set face (animation.vocab.v2.face.ren); characters.ren.expressions is LOCKED and does
+        not list it, so this key stands only after a human ruling or a character change request'
     - f: 2
       ref: freeze
       note: 'brows lift and slightly knit, eyes wide, small pupils, mouth pressed; no graphic symbols.
@@ -123,3 +124,7 @@ notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
 - Camera locked off; the delay only works in a still frame.
+- 'DEPENDENCY (human ruling needed): the face ref wary is a v2 addition to Ren''s comic set (animation.vocab.v2.face.ren).
+  characters.ren.expressions is LOCKED and does not list it; the key stands only if the human rules that
+  animation faces may refine a listed expression, or approves a character-designer change request. Fallback
+  if refused: neutral (the v1 stand-in).'

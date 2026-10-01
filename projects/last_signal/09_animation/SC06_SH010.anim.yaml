@@ -25,6 +25,8 @@ fm:
     hash: sha256:195d16fbdcc723e419ef5e6f96fd6651af9d8ed610f0110918586ca60780d937
   - ref: canon:continuity.props.cable
     hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:animation.vocab.v2.prop.charging_cable
+    hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
   - ref: canon:tone.ending_restraint
     hash: sha256:96e2bcf71a89d916ed0ce17fe4ccdc55c000fef096ccaf31653c15b648f4f0ad
   - ref: canon:animation.vocab.pose.ren
@@ -51,10 +53,10 @@ fm:
   summary: 'The bookend: he watches the screen die without reaching (f0-24), leans back against the car
     (f20-46), lays the dark phone on his chest (f24-46), looks up west (f40-56), holds one breath under
     the fade.'
-  stamped_content_hash: sha256:a6fe35274df4027bfad4b35b0a6d75245d07816bca75bbdad06aadc1545e6b78
+  stamped_content_hash: sha256:ddee172d1a5bc97e90175aa013becd8ac65954a79212ae9ea5f46a1dcc197bf7
 shot_id: SC06_SH010
 frames: 82
-vocab_version: 1
+vocab_version: 2
 rationale: 'It is out of his hands and the body says so in order: watch the screen die without reaching,
   lean back, lay the dark phone on his chest under a flat hand, and only then look up to the west. Each
   move starts before the last ends and eases in and out with no overshoot, so the three read as one long
@@ -132,6 +134,13 @@ props:
   - f: 0
     state: open_down
     note: lid down (continuity SC06), not readable from this lens
+  charging_cable:
+  - f: 0
+    loc: crank_port
+    state: posed
+    note: source end stays in the crank port (chained from SC04_SH090); the phone end follows the hand
+      from knee to chest f24-46 on a hooked posed curve
+    rationale: animation.vocab.v2.prop.charging_cable chain_by_shot SC06_SH010 (crank_port posed)
 holds:
 - f0: 0
   f1: 19
@@ -178,5 +187,5 @@ preview_frames:
 - 81
 notes:
 - Same camera as SC04_SH010 (the bookend); the lens stays above the jacket top as he leans back.
-- Cable from phone to crank follows the hand from knee to chest on a hooked curve, keyed with the hand
-  (no cable prop in the vocabulary).
+- 'Cable (vocabulary v2, charging_cable track): phone to crank port, following the hand from knee to chest
+  on a hooked posed curve; no simulation.'

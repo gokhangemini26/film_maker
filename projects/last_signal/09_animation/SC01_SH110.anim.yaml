@@ -32,10 +32,10 @@ fm:
   - intent.comic_then_tender
   summary: 'Crank insert: one hand grips, lifts, rolls the brick once, shoves it back to the glovebox;
     returns with the cable end and pulls it toward the adapter.'
-  stamped_content_hash: sha256:a9d04987fd43634776aeb7489a430e3fa2662ca8a54e0cc89c804c844ef7f965
+  stamped_content_hash: sha256:43b58eddc63ec89284be787ddcaf2c1dd2bfa4d6270f646bb2f5dd20e9aacf46
 shot_id: SC01_SH110
 frames: 32
-vocab_version: 1
+vocab_version: 2
 rationale: 'One hand, one turn, one shove: a quick comic dismissal built to be answered by the slow two-handed
   lift at the kerb (SC04_SH040, story.crank_plant). The brick lags the wrist by a frame on the lift so
   it has weight, which makes the later careful hold of the same object read. The crank goes back to the
@@ -114,6 +114,18 @@ props:
   - f: 0
     attach: hand_l
     note: in the left hand, out of frame
+  charging_cable:
+  - f: 0
+    loc: glovebox
+    state: posed
+    note: source end in the glovebox (off frame left); the cable shows with the open lid
+    rationale: first key of the cable in the film; before it the cable is in the glovebox, hidden (animation.vocab.v2.prop.charging_cable
+      before_first_key), so the chain starts here
+  - f: 18
+    loc: hand_r
+    note: 'the hand comes back in holding the cable end (event cable_in_hand), pulled through the lid
+      gap; stays hand_r to the cut, posed curve dragged along the hand path, short visible length (M3
+      risk: no cable simulation). Plugged into car_usb_adapter at SC01_SH120 f2'
 holds:
 - f0: 11
   f1: 12
@@ -171,7 +183,5 @@ preview_frames:
 notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
-- 'No charging_cable prop in v1 (a posed curve with a hook at the hand, dragged along the hand path; keep
-  the visible length short - M3 risk from the shot). V2 PENDING (animation.vocab.v2.prop.charging_cable):
-  props.charging_cable f0 loc glovebox state posed; f18 loc hand_r (event cable_in_hand); it stays hand_r
-  to the cut and is plugged into car_usb_adapter at SC01_SH120 f2.'
+- 'Cable (vocabulary v2, animation.vocab.v2.prop.charging_cable): a posed curve with a hook at the hand,
+  dragged along the hand path; keep the visible length short (M3 risk from the shot).'

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from . import animvocab as V
 from .animcheck import crank_tops
 from .schemas.animation import AnimationTracks
 
@@ -20,6 +21,22 @@ def _key(k, start: int) -> dict[str, Any]:
     d = {n: v for n, v in k.model_dump(mode="json", exclude_none=True).items() if n not in _DROP}
     d["f_abs"] = start + k.f
     return d
+
+
+_ALL_FIELDS = ("state", "loc", "arm", "attach", "pip", "tilt_deg", "swing_deg", "bounce_f")
+
+
+def _prop_info(prop: str) -> dict[str, Any]:
+    """Vocabulary facts a builder needs about a prop that the keys alone do not say: which fields chain across cuts
+    (e.g. the charging cable's source `loc` chains, `posed`/`hidden` is framing), whether it persists between shots, and
+    the value of each field before the first key."""
+    spec = V.PROPS.get(prop, {})
+    return {
+        "fields": sorted(spec.get("fields", {})),
+        "persistent": bool(spec.get("persistent", False)),
+        "chained_fields": list(V.prop_chained_fields(prop, _ALL_FIELDS)) if spec.get("persistent") else [],
+        "before_first_key": dict(spec.get("before_first_key", {})),
+    }
 
 
 def build_motion(t: AnimationTracks, frame_start: int, source_ref: str) -> dict[str, Any]:
@@ -43,6 +60,7 @@ def build_motion(t: AnimationTracks, frame_start: int, source_ref: str) -> dict[
             "face": [_key(k, frame_start) for k in ct.face],
             "look": [_key(k, frame_start) for k in ct.look],
             "breath": [_key(k, frame_start) for k in ct.breath],
+            "lids": [_key(k, frame_start) for k in ct.lids],                      # vocabulary v2: blinks / heavy lids
         }
         pose_frames |= {k.f for k in ct.pose}
     cam = {k: v for k, v in t.camera.model_dump(mode="json", exclude_none=True).items() if k not in _DROP}
@@ -58,6 +76,7 @@ def build_motion(t: AnimationTracks, frame_start: int, source_ref: str) -> dict[
         "frames": n, "frame_start": frame_start,
         "characters": chars,
         "props": {p: [_key(k, frame_start) for k in keys] for p, keys in sorted(t.props.items())},
+        "prop_info": {p: _prop_info(p) for p in sorted(t.props)},
         "camera": cam, "holds": holds, "events": events,
         "preview_frames": preview,
     }
@@ -75,10 +94,13 @@ def vocab_canon_refs(t: AnimationTracks) -> set[str]:
             out.add("canon:animation.vocab.look_target")
         if ct.breath:
             out.add("canon:animation.vocab.breath")
+        if ct.lids:
+            out |= {"canon:animation.vocab.v2.lids", "canon:animation.vocab.ease"}
         if ct.move.gait != "none":
             out.add("canon:animation.vocab.gait")
     if t.props:
         out |= {"canon:animation.vocab.prop_states", "canon:animation.vocab.ease"}
+        out |= {f"canon:animation.vocab.v2.prop.{p}" for p in t.props if p in ("charging_cable", "shop_door")}
     if t.ui_timeline:
         out.add("canon:animation.vocab.ui_event")
     if t.events or t.holds or t.camera.move != "none":

@@ -1,7 +1,7 @@
 shot_id: SC03_SH020
 scene_id: SC03
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 1.5
 serves:
 - intent.race_against_battery
@@ -17,8 +17,8 @@ camera:
   height_m: 1.15
   movement: static
   start_position:
-  - 1.75
-  - 7.45
+  - 2.95
+  - 8.3
   - 1.15
   end_position: null
   look_at: phone_ren
@@ -28,16 +28,19 @@ composition:
   framing: medium_close
   aspect_ratio: 1.778
   subject_position: phone_foreground_left
-  notes: 'Over the shoulder (no insert: camera.gags.no_repeat shop). Phone about 0.25 m from the lens;
-    the bolt appears at frame 14 and holds 22 frames. DEPENDENCY: the bolt glyph must be about 4.4 mm
-    tall on the phone model to reach 3 % of frame height here; check at G6.'
+  notes: 'Over the shoulder (no insert: camera.gags.no_repeat shop). Lens inside the footprint of the
+    westmost fridge, which is wild for this shot (the builder drops a set piece whose box contains the
+    lens); the lens is about 0.8 m from the phone and about 41 deg off his back axis on his left. The
+    stand is at frame right, its back edge near the right frame edge; the socket sits just below the frame.
+    The bolt appears at frame 14 and holds 22 frames. DEPENDENCY: the bolt glyph must be about 4.4 mm
+    tall on the phone model to reach 3 % of frame height here; check at the next preview.'
 characters:
 - id: ren
   position:
-  - 2.2
-  - 8.0
+  - 3.45
+  - 8.66
   - 0.0
-  facing: south, toward the stand
+  facing: south (+y), toward the back wall; the stand on his right
   action: right arm reaches behind the stand and plugs in; phone in his left hand near his chest
 environment:
   location: corner shop (interior)
@@ -116,13 +119,24 @@ assets:
 rationale:
   camera: '35 mm over the shoulder at his kneeling eye level (lens 1.15 m, within 0.1 m of 1.05 m): the
     hope is seen in the room, not in an insert, so the second gag is not the car''s again (camera.gags.no_repeat).
-    Rejected: the car''s status-bar insert (beat-for-beat repeat, G2 finding 2).'
-  composition: 'Phone large at frame left, his reaching arm and the stand at right, fridges glowing behind:
-    hope and the room in one frame.'
-  lighting: Panels from above, fridges rim the stand; the amber bolt is the warmest point in frame.
+    Rejected: the car''s status-bar insert (beat-for-beat repeat, G2 finding 2). Moved with him to the
+    stand (builder reach fix: at (3.45, 8.66) facing +y his right hand reaches the socket within 2 cm;
+    the old spot (2.2, 8.0) was about 2.05 m from the stand, reach error about 1.22 m): the same over-the-left-shoulder
+    relation (was 0.9 m and 30 deg off his back axis, now 0.8 m and about 41 deg). The westmost fridge
+    now stands 0.25 m east of him, so any lens behind his left shoulder and in front of the fridge face
+    loses the phone behind the fridge corner; the lens therefore sits inside the fridge footprint with
+    the fridge wild. Rejected: a lens straight behind him (x 3.25, y 7.95, no wild piece), where his head
+    covers the phone.'
+  composition: 'Phone in the foreground over his left shoulder, his reaching arm and the stand at right,
+    the back-wall corner behind the stand: hope and the place he trusted in one frame. The fridges are
+    no longer behind the stand (they are beside him, behind the lens).'
+  lighting: Panels from above; the fridges' cool light comes from behind the lens and edges his left shoulder
+    and the phone; the amber bolt is the warmest point in frame.
   movement: Static.
   color: Cool shop, amber bolt.
   blocking: The cable runs from the phone over his knee and behind the stand, a short posed length (continuity.props.cable).
+    The stand is about 0.3 m to his right and the socket about 0.8 m right and 0.3 m ahead of his pelvis,
+    inside his reach.
   animation: 'Hope again, a notch warier: in the car he sank back the moment the bolt appeared; here he
     only watches it, no relief (camera.gags.no_repeat, G3 finding 7). The fumble behind the stand is two
     small adjustments, busy not clumsy. The phone is locked still from f10 so the small bolt reads over
@@ -228,6 +242,10 @@ derived_from:
   hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:0f9f605d61b9255f8ce80f096217c88d03e4330dbfc6f21eed57111bff9ab313
-stamp_note: Shot list changed only in other shots' rows (preview pass 1 camera fixes to SC01/SC03/SC04
-  inserts and SC04_SH030/050/090); this shot's camera was checked against the preview and needs no revision.
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+stamped_content_hash: sha256:17749ce74a849d3eba33ea4bf0956df92d31b5356e2e09a7de3aa480ef97db77

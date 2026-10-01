@@ -230,3 +230,44 @@ def test_clamped_crank_left_hand_follows_the_charger_loc():
     s, m = _motion_with("SC04_SH050", props={"crank_charger": [{"f": 0, "loc": "hands_both", "arm": "unfolded"}]})
     jb = A.frame_state(s, m, s["ui_timeline"], 30)["characters"]["ren"]["joints"]
     assert jb["handL"].z < j["handL"].z - 0.05                          # under the crank body
+
+
+def _film_canon():
+    return json.loads((RES / "film.json").read_text(encoding="utf-8"))["canon"]
+
+
+def test_shop_kneel_ctx_uses_the_sets_real_stand_and_socket():
+    from fm_blender.anchors import shop_anchors
+    canon = _film_canon()
+    if "world.sets.corner_shop" not in canon:  # pragma: no cover
+        pytest.skip("shop canon absent")
+    s = shot("SC03_SH020")
+    st = A.Stage(s, canon, motion=s["motion"])
+    base, fac = st.home["ren"]
+    anc = shop_anchors(canon["world.sets.corner_shop"], A.SHOP_ORIGIN)
+    sh = st.ctx["shop"]
+    assert (A.PS.to_world(A.Vector(sh["socket"]), base, fac) - anc["socket"]).length < 1e-4
+    assert (A.PS.to_world(A.Vector(sh["stand_back_edge"]), base, fac) - anc["stand_back_edge"]).length < 1e-4
+    # the stand really is where the set builds it: right of Ren at (2.2, 8.0), not the figure-relative 0.62 m default
+    assert sh["stand_back_edge"][1] > 1.5 and sh["stand_back_edge"] != A.PS.CTX_DEFAULT["shop"]["stand_back_edge"]
+    # the default stage (no canon) and other scenes keep the poses' own defaults
+    assert A.Stage(s, None, motion=s["motion"]).ctx["shop"] == A.PS.CTX_DEFAULT["shop"]
+    s4 = shot("SC04_SH050")
+    assert A.Stage(s4, canon, motion=s4["motion"]).ctx["shop"] == A.PS.CTX_DEFAULT["shop"]
+
+
+def test_kneel_reach_follows_the_real_socket_when_ren_kneels_beside_the_stand():
+    import copy
+    canon = _film_canon()
+    s = copy.deepcopy(shot("SC03_SH020"))
+    s["characters"][0]["position"] = [3.45, 8.66, 0.0]          # kneeling left of the stand, as the preset assumes
+    st = A.Stage(s, canon, motion=s["motion"])
+    j = A.PS.pose("ren", "kneel_reach_stand", st.props["ren"], st.ctx)
+    base, fac = st.home["ren"]
+    hand = A.PS.to_world(j["handR"], base, fac)
+    from fm_blender.anchors import shop_anchors
+    assert (hand - shop_anchors(canon["world.sets.corner_shop"], A.SHOP_ORIGIN)["socket"]).length <= 0.02
+    # at the shot's own position the real socket is out of reach: reported, not hidden by a default
+    st0 = A.Stage(shot("SC03_SH020"), canon, motion=shot("SC03_SH020")["motion"])
+    far = A.PS.pose("ren", "kneel_reach_stand", st0.props["ren"], st0.ctx)
+    assert far["reach_err"][1] > 0.5

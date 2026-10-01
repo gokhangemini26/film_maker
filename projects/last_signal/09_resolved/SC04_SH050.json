@@ -666,6 +666,7 @@
             "ref": "focused_calm"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -819,7 +820,90 @@
       56,
       79
     ],
+    "prop_info": {
+      "charging_cable": {
+        "before_first_key": {
+          "loc": "glovebox",
+          "state": "hidden"
+        },
+        "chained_fields": [
+          "loc"
+        ],
+        "fields": [
+          "loc",
+          "state"
+        ],
+        "persistent": true
+      },
+      "crank_charger": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "arm",
+          "loc",
+          "pip"
+        ],
+        "persistent": true
+      },
+      "glovebox_lid": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "bounce_f",
+          "state"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
+      "charging_cable": [
+        {
+          "f": 0,
+          "f_abs": 990,
+          "loc": "hand_r",
+          "state": "posed"
+        },
+        {
+          "f": 10,
+          "f_abs": 1000,
+          "loc": "crank_port"
+        }
+      ],
       "crank_charger": [
         {
           "arm": "folded",
@@ -866,7 +950,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc04_sh050",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

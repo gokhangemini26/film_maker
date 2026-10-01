@@ -54,7 +54,7 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      1.2,
+      2.65,
       0.3,
       2.3
     ]
@@ -239,11 +239,11 @@
           }
         }
       },
-      "facing": "south (away from camera)",
+      "facing": "south (+y), his back to the lens",
       "id": "ren",
       "position": [
-        2.2,
-        8.0,
+        3.45,
+        8.66,
         0.0
       ]
     }
@@ -397,7 +397,7 @@
     "aspect_ratio": 1.778,
     "framing": "wide",
     "notes": "Identical to SC03_SH010 (camera.geography.sc03 master reused_for blackout). Lit for 8 frames, blackout on the clunk at frame 9 (one frame), 22 frames held in near-black. Widest frame of the film (camera.framing.shot_size_arc). He faces away from the lens, so the glow reads as a pool around him on the stand and the floor, not on his face; his lit face is SH070.",
-    "subject_position": "far_right"
+    "subject_position": "centre_left"
   },
   "environment": {
     "location": "corner shop (interior)",
@@ -538,6 +538,7 @@
             "ref": "relief"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -554,7 +555,7 @@
             "ease": "hold",
             "f": 0,
             "f_abs": 712,
-            "ref": "kneel_upright"
+            "ref": "kneel_head_back"
           }
         ]
       }
@@ -612,6 +613,42 @@
       11,
       29
     ],
+    "prop_info": {
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      },
+      "shop_lights": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "phone_ren": [
         {
@@ -637,7 +674,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc03_sh050",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

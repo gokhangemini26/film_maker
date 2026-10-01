@@ -162,3 +162,31 @@ def test_cable_chains_loc_but_not_state():
 def test_prop_chained_fields_default_is_every_tracked_field():
     assert V.prop_chained_fields("charging_cable", ("state", "loc")) == ("loc",)
     assert V.prop_chained_fields("glovebox_lid", ("state", "loc")) == ("state", "loc")
+
+
+# ---------------------------------------------------------------- resolver: v2 tracks reach the resolved motion block
+def test_resolved_motion_carries_lids_cable_and_shop_door_v2():
+    from fm.motion import build_motion, vocab_canon_refs
+    d = with_ren(v2(), lids=[{"f": 0, "ref": "open", "ease": "hold"}, {"f": 8, "ref": "closed", "ease": "ease_in", "dur_f": 4,
+                                                                      "note": "blink"}])
+    d["props"] = {
+        "charging_cable": [{"f": 0, "loc": "hand_r", "state": "posed"}, {"f": 12, "loc": "shop_socket"}],
+        "shop_door": [{"f": 0, "state": "open_70"}, {"f": 4, "state": "swing_back", "swing_deg": 40, "dur_f": 20}],
+    }
+    t = parse(d)
+    m = build_motion(t, 1000, "artifact:x")
+    assert [(k["f"], k["f_abs"], k["ref"]) for k in m["characters"]["ren"]["lids"]] == [(0, 1000, "open"), (8, 1008, "closed")]
+    assert m["characters"]["ren"]["lids"][1]["dur_f"] == 4 and "note" not in m["characters"]["ren"]["lids"][1]
+    cab = m["props"]["charging_cable"]
+    assert [(k["loc"], k.get("state")) for k in cab] == [("hand_r", "posed"), ("shop_socket", None)]
+    assert m["props"]["shop_door"][1]["state"] == "swing_back" and m["props"]["shop_door"][1]["swing_deg"] == 40
+    info = m["prop_info"]
+    assert info["charging_cable"]["chained_fields"] == ["loc"]            # only the source end chains across cuts
+    assert info["charging_cable"]["persistent"] is True
+    assert info["charging_cable"]["before_first_key"] == {"loc": "glovebox", "state": "hidden"}
+    assert "swing_deg" in info["shop_door"]["fields"] and info["shop_door"]["persistent"] is False and info["shop_door"]["chained_fields"] == []
+    refs = vocab_canon_refs(t)
+    assert {"canon:animation.vocab.v2.lids", "canon:animation.vocab.v2.prop.charging_cable",
+            "canon:animation.vocab.v2.prop.shop_door"} <= refs
+    # no lids track: an empty list, not a missing key
+    assert build_motion(parse(with_ren(v2())), 0, "x")["characters"]["ren"]["lids"] == []

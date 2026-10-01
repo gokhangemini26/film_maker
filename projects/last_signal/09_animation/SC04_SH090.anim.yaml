@@ -45,10 +45,10 @@ fm:
   - intent.open_hopeful_ending
   summary: 'Release: he lets go at f4, the handle coasts and clicks to a stop at f7, the pip dies by f12,
     then the long out-breath and the eyes close; crank stays clamped high.'
-  stamped_content_hash: sha256:6a0aa664530aa1c404ab43e55f0274d0eb8996c6886ecb9842509de3ac6163f6
+  stamped_content_hash: sha256:9b28b5c65e5f379fb745f3fb64078979043796bc1576e2f8b87e45099d94a36b
 shot_id: SC04_SH090
 frames: 28
-vocab_version: 1
+vocab_version: 2
 rationale: He lets go instead of stopping the handle, so it coasts and clicks on its own and the pip dies
   within 6 frames of the stop, the last amber light of the film (look.lighting.power_indicators). Only
   then the longest out-breath so far, shoulders and spine dropping without springing back. The knees hold

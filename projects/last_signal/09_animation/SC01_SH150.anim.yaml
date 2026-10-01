@@ -32,10 +32,10 @@ fm:
   - intent.race_against_battery
   summary: 'Defeat played small: a 6-frame held freeze, an 18-frame ease-in-out lower onto the wheel rim,
     one out-breath, held 12 frames to the hard cut.'
-  stamped_content_hash: sha256:0e3351e4930ad05ade6c1858c02c9df7a5de3af373ea15bf4e31a14a8c332362
+  stamped_content_hash: sha256:838b5e24815c1e61ad1d895bf4097b2cec953bf8d0e4e2fbb51dbc69ab42e9f8
 shot_id: SC01_SH150
 frames: 36
-vocab_version: 1
+vocab_version: 2
 rationale: 'The only slow fall in the comedy: 18 frames of ease_in_out onto a soft contact on the rim
   (never the horn pad, no bounce - a honk or a bump would turn sympathy into a bigger gag), then one out-breath
   and a 12-frame hold to the cut. The face is hidden on the rim (characters.ren.expressions face_hidden_beats

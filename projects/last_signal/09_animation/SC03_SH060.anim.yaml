@@ -25,10 +25,10 @@ fm:
   - intent.race_against_battery
   summary: 'Structured tracks for the 2 % insert: nothing moves for 26 frames (minimum 24); no hand in
     frame.'
-  stamped_content_hash: sha256:6cef18e0a40a17158245894470d70ef45850a28994dca4e8da787704ba18d6bd
+  stamped_content_hash: sha256:277958c4d0ef2bfec18d68103716ed514432aa790f060ae52753e3d6f6a62fc2
 shot_id: SC03_SH060
 frames: 26
-vocab_version: 1
+vocab_version: 2
 rationale: 'A completely still insert: in the shop the damage is already done, so the phone only states
   the cost. A whole-shot `all` hold with the insert minimum (24) makes the stillness and the legibility
   rule checkable; there are no ui events, so the screen stays exactly the canon row (2 %, red, no bolt,

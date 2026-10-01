@@ -1,7 +1,7 @@
 shot_id: SC03_SH070
 scene_id: SC03
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 2.0
 serves:
 - intent.comic_then_tender
@@ -20,8 +20,8 @@ camera:
   height_m: 1.05
   movement: static
   start_position:
-  - 2.25
-  - 8.9
+  - 3.75
+  - 9.55
   - 1.05
   end_position: null
   look_at: ren
@@ -31,17 +31,22 @@ composition:
   framing: medium_close
   aspect_ratio: 1.778
   subject_position: centre
-  notes: 'Reverse from the back wall (wild fridge; camera.geography.sc03), looking north. FG: phone and
-    hands at the frame bottom (source in frame, camera.phone_lit.framing); MG: his lit face, centred;
-    BG: the dark aisle and the small warm door rectangle above his shoulder. 48 frames: the longest comic
-    hold (2.0 s minimum). Hard cut to the dusk kerb.'
+  notes: 'Reverse from behind the back wall, looking north up the west aisle (camera.geography.sc03).
+    The back wall is wild for this shot: the lens is about 0.5 m outside the wall plane (wall y 8.95-9.05).
+    DEPENDENCY for the builder: the preview only drops set pieces whose box contains the lens, so shop_wall_back
+    must be hidden for this shot. Lens 0.3 m west of his axis (about 20 deg off his facing, on his right,
+    within the 45 deg lit side). FG: phone and hands at the frame bottom (source in frame, camera.phone_lit.framing);
+    MG: his lit face, centred; BG: the dark west aisle and the west strip of the warm door rectangle above
+    his right shoulder, about a quarter of frame width left of his face (computed), the dark stand flanking
+    frame left and the westmost fridge''s flank at frame right. 48 frames: the longest comic hold (2.0
+    s minimum). Hard cut to the dusk kerb.'
 characters:
 - id: ren
   position:
-  - 2.2
-  - 8.0
+  - 3.45
+  - 8.66
   - 0.0
-  facing: south toward camera
+  facing: south (+y), toward the back wall and the lens
   action: does not move; eyes on the phone; one slow blink
 environment:
   location: corner shop (interior)
@@ -106,10 +111,16 @@ assets:
 rationale:
   camera: '35 mm at his kneeling eye level, in front of his lit face (the lit side, camera.phone_lit.framing).
     Rejected: a close-up on 85 (the tender section''s lens, too early) and a side angle (the phone light
-    would rim only).'
-  composition: 'Centred and still with the door as a tiny warm rectangle behind: the room he crossed is
-    now just a far light (the lighting bible''s post-blackout hierarchy). The phone is the brightest thing
-    near his face (L9).'
+    would rim only). Moved with him to the stand (builder reach fix: at (3.45, 8.66) facing +y his right
+    hand reaches the socket within 2 cm; the old spot (2.2, 8.0) was about 2.05 m from the stand, reach
+    error about 1.22 m): his face is now 0.23 m from the back wall, so the 0.9 m reverse needs the wild
+    back wall the geography canon already allows. The lens moved 0.3 m west of his axis because from straight
+    in front the door sits behind his head and the near gondola hides its east half; from here its west
+    strip shows beside his head. Rejected: a lens inside the wall slab (0.3 m from his face, a 35 mm close-up
+    that breaks the shot-size arc) and a lens on the fridge side (off the lit side).'
+  composition: 'Centred and still with the door as a tiny warm strip above his right shoulder: the room
+    he crossed is now just a far light (the lighting bible''s post-blackout hierarchy). The phone is the
+    brightest thing near his face (L9).'
   lighting: Phone key from below-front, soft 0.5 m falloff, no fill; faint door rectangle; contrast 16:1
     (look.lighting.sc03 blackout).
   movement: 'Static: the held stillness is the beat and the first time the film stops.'
@@ -222,6 +233,10 @@ derived_from:
   hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0
-stamp_note: Shot list changed only in other shots' rows (preview pass 1 camera fixes to SC01/SC03/SC04
-  inserts and SC04_SH030/050/090); this shot's camera was checked against the preview and needs no revision.
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+stamped_content_hash: sha256:c943fa8776bee45915f96d41d7cbb2c060a78f6a93e0cee3910c79ca39dff1fd

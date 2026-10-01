@@ -1,9 +1,9 @@
 {
-  "content_hash": "sha256:1f55b9fb374c0edf400e324c7d8b40ab316bbadecb7ed8a92b2c050f3bb7dd17",
-  "created_at": "2026-09-30T16:15:13Z",
+  "content_hash": "sha256:b67d06ee18385636348fb34239c0a481b3f6b0a9d3cb91b094fcd664515b0939",
+  "created_at": "2026-10-01T11:20:35Z",
   "derived_from": [
     {
-      "hash": "sha256:442d53bf79bd98907f9ffd7373774945bb311b78252de0cc830840e73c096318",
+      "hash": "sha256:4742205134c353232504da38be3aba8ecefdfac1683403148fc1857b3b9b1649",
       "ref": "artifact:anim_sc01_sh090"
     },
     {

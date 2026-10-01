@@ -35,10 +35,10 @@ fm:
   - intent.anime_feel
   summary: 'Structured tracks for the compass run away from the lens: one rigid-arm run preset, 4.2 m/s,
     a step every 6 frames, 2.3 m in 14 frames.'
-  stamped_content_hash: sha256:96cc8711216f1701deea921ddedd7acdaf1242ca436517cd11b987ea2e0a832b
+  stamped_content_hash: sha256:0879c17e5ae247692af922bcddf6391eeda2974b98ce067ef4179417995574d9
 shot_id: SC02_SH020
 frames: 14
-vocab_version: 1
+vocab_version: 2
 rationale: 'The legs work and the phone arm does not (characters.ren.movement before_turn.run): one run_phone_out
   preset held for the whole shot, with the run_phone_out gait carrying the contacts, bob and stride, so
   nothing can swing the phone arm. At 4.2 m/s the figure visibly shrinks into the sunlit pavement inside

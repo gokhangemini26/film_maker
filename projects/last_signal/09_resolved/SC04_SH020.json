@@ -634,6 +634,7 @@
             "ref": "neutral"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -706,6 +707,25 @@
       20,
       29
     ],
+    "prop_info": {
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "phone_ren": [
         {
@@ -717,7 +737,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc04_sh020",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

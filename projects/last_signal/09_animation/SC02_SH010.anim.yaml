@@ -33,15 +33,17 @@ fm:
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
   - ref: canon:animation.vocab.v2.face.ren
     hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+  - ref: canon:animation.vocab.v2.prop.charging_cable
+    hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
   serves:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Structured tracks for the scramble out: mid-action start, door overshoot to 63 then 60 deg,
     unfold into the compass run and out frame left in 18 frames.'
-  stamped_content_hash: sha256:93f1450b51d99571f3a9d7595f53b53ef72af0234501f114667ff0ea12eca9c9
+  stamped_content_hash: sha256:6612947a30653e8892b4b96d9e8ff50da78fa7778281d58d3867a7d0f45ffb0e
 shot_id: SC02_SH010
 frames: 18
-vocab_version: 1
+vocab_version: 2
 rationale: 'The reset, bigger (shot rationale.animation): the cut lands mid-scramble so 18 frames hold
   the exit, the pivot and two strides as efficient bursts, never a pratfall. One blend from the ducked
   scramble to the rigid-arm run carries the unfolding; the scramble gait carries the steps. The door gets
@@ -98,10 +100,10 @@ characters:
         must change, which is the cinematographer's call
     face:
     - f: 0
-      ref: neutral
-      note: 'not readable at this size; head forward, eyes ahead. In v1 no determined/urgent face exists
-        in the comic set, neutral is the closest legal ref. V2 PENDING (animation.vocab.v2.face.ren):
-        ref determined'
+      ref: determined
+      note: 'not readable at this size; head forward, eyes ahead: the reset, bigger. DEPENDENCY: determined
+        is a v2 comic-set face (animation.vocab.v2.face.ren); characters.ren.expressions is LOCKED and
+        does not list it, so this key stands only after a human ruling or a character change request'
     look:
     - f: 0
       target: road_ahead
@@ -143,8 +145,16 @@ props:
   - f: 0
     attach: hand_l
     note: 'phone in the left hand, thrust out ahead; the cable end pulled from the adapter loops in the
-      same hand (continuity.props.cable SC02: looped_in_left_hand) - no cable prop in vocabulary v1, posed
-      by the builder'
+      same hand (continuity.props.cable SC02: looped_in_left_hand); the cable itself is the charging_cable
+      track'
+  charging_cable:
+  - f: 0
+    loc: hand_l_loop
+    state: posed
+    note: the cable end pulled from the adapter, looped in the left hand with the phone; the loop swings
+      on two posed shapes per stride (no simulation)
+    rationale: the cut hides the pull from the adapter (SC01_SH120 plugged it into car_usb_adapter); continuity.props.cable
+      SC02 pulls it out as he goes (looped_in_left_hand)
 events:
 - f: 0
   id: door_swing
@@ -187,8 +197,12 @@ preview_frames:
 notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
-- 'Secondary motion from the prose that has no track in vocabulary v1 (builder shape keys / posed alternates,
+- 'Secondary motion from the prose that has no track in the vocabulary (builder shape keys / posed alternates,
   no simulation): jacket fronts flare back from f9; cable loop swings on two posed shapes alternating
   per stride; crown tuft bobs on each contact.'
 - 'M3 risk carried over: a 1.72 m proxy crouching out through a 1.45 m door opening; check head and shoulder
   intersections on the scramble_out preset.'
+- 'DEPENDENCY (human ruling needed): the face ref determined is a v2 addition to Ren''s comic set (animation.vocab.v2.face.ren).
+  characters.ren.expressions is LOCKED and does not list it; the key stands only if the human rules that
+  animation faces may refine a listed expression, or approves a character-designer change request. Fallback
+  if refused: neutral (the v1 stand-in).'

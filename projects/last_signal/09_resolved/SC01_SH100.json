@@ -529,6 +529,7 @@
             "ref": "neutral"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -694,6 +695,119 @@
       36,
       47
     ],
+    "prop_info": {
+      "car_body": {
+        "before_first_key": {},
+        "chained_fields": [],
+        "fields": [
+          "state"
+        ],
+        "persistent": false
+      },
+      "charging_cable": {
+        "before_first_key": {
+          "loc": "glovebox",
+          "state": "hidden"
+        },
+        "chained_fields": [
+          "loc"
+        ],
+        "fields": [
+          "loc",
+          "state"
+        ],
+        "persistent": true
+      },
+      "crank_charger": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "arm",
+          "loc",
+          "pip"
+        ],
+        "persistent": true
+      },
+      "dash_lights_and_adapter_ring": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state"
+        ],
+        "persistent": true
+      },
+      "glovebox_lid": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "bounce_f",
+          "state"
+        ],
+        "persistent": true
+      },
+      "passenger_door": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state",
+          "swing_deg"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "car_body": [
         {
@@ -711,6 +825,19 @@
           "f": 14,
           "f_abs": 340,
           "state": "idle_tremble"
+        }
+      ],
+      "charging_cable": [
+        {
+          "f": 0,
+          "f_abs": 326,
+          "loc": "glovebox",
+          "state": "hidden"
+        },
+        {
+          "f": 23,
+          "f_abs": 349,
+          "state": "posed"
         }
       ],
       "crank_charger": [
@@ -781,7 +908,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc01_sh100",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

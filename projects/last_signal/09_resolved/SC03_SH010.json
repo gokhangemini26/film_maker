@@ -89,14 +89,14 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      1.2,
+      2.65,
       0.3,
       2.3
     ]
   },
   "characters": [
     {
-      "action": "enters under the camera, scans, hurries down the west aisle, drops to his knees by the display stand",
+      "action": "enters under the camera, scans, hurries down the west aisle, drops to his knees between the westmost fridge and the display stand",
       "canon": {
         "proportions": {
           "arm_span_m": 1.74,
@@ -274,11 +274,11 @@
           }
         }
       },
-      "facing": "south (away from camera)",
+      "facing": "south (+y), his back to the lens",
       "id": "ren",
       "position": [
-        2.2,
-        8.0,
+        3.45,
+        8.66,
         0.0
       ]
     }
@@ -714,8 +714,8 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "wide",
-    "notes": "Shop-local coords (x west, y depth south, z up). Master: on-axis high wide above the door, tilt down about 11 deg (camera.geography.sc03). The kneeling figure at about 7.6 m is about 25-28 % of frame height. Three layers: counter and near gondola ends / aisle and figure / fridges and back wall. Pastel packets, no readable labels.",
-    "subject_position": "centre_then_far_right"
+    "notes": "Shop-local coords (origin at the front-left corner as you enter, door centre x 2.25; x west, y depth south, z up). Master: high wide from above the west end of the doorway (lens x 2.65, inside the 1.75-2.75 opening), down the west aisle (x 2.86-4.15) to the socket corner, tilt down about 12 deg (camera.geography.sc03). He ends kneeling at (3.45, 8.66) facing the back wall, in the 0.55 m gap between the westmost fridge (x <= 3.2) and the display stand (x 3.75-4.35): about 8.5 m from the lens, about 24 % of frame height crown to knee (computed), centre-left with the stand just right of him. Three layers: counter and near gondola ends / west aisle and figure / fridges, stand and back wall. Pastel packets, no readable labels.",
+    "subject_position": "bottom_then_centre_left"
   },
   "environment": {
     "location": "corner shop (interior)",
@@ -804,6 +804,7 @@
             "ref": "neutral"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -953,7 +954,53 @@
       48,
       51
     ],
+    "prop_info": {
+      "charging_cable": {
+        "before_first_key": {
+          "loc": "glovebox",
+          "state": "hidden"
+        },
+        "chained_fields": [
+          "loc"
+        ],
+        "fields": [
+          "loc",
+          "state"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
+      "charging_cable": [
+        {
+          "f": 0,
+          "f_abs": 576,
+          "loc": "hand_l_loop",
+          "state": "posed"
+        },
+        {
+          "f": 44,
+          "f_abs": 620,
+          "loc": "hand_r"
+        }
+      ],
       "phone_ren": [
         {
           "attach": "hand_l",
@@ -964,7 +1011,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc03_sh010",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

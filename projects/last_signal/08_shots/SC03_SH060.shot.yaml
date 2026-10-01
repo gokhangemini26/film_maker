@@ -15,8 +15,8 @@ camera:
   height_m: 0.97
   movement: static
   start_position:
-  - 2.2
-  - 8.12
+  - 3.45
+  - 8.78
   - 0.97
   end_position: null
   look_at: phone_ren
@@ -31,15 +31,18 @@ composition:
   notes: 'Text-size status-bar insert (as SC01_SH080: frame about 71 mm tall, 85 mm at 0.30 m). The change
     to 2 % happened on the blackout frame; this insert holds the result 26 frames (minimum 24). No dip
     and no change inside the shot: in the shop the damage is already done (camera.gags.no_repeat: insert
-    after the loss). Framing reference (DEPENDENCY for the animation hold and the builder): kneeling,
-    eyes at 1.05 m; screen centre at about (2.2, 8.29, 0.72), 0.40 m in front of and below his eyes. Lens
-    0.30 m from it on his eyeline (his head behind the lens), camera''s up = the phone''s top edge; shift
-    parallel to the screen for the status bar, never tilt.'
+    after the loss). Framing reference (DEPENDENCY for the animation hold and the builder): kneeling at
+    (3.45, 8.66) facing +y, eyes at 1.05 m; the lens keeps exactly its old relation to him (0.12 m ahead
+    of his pelvis, 0.97 m high), on his eyeline with his head behind the lens; camera''s up = the phone''s
+    top edge; shift parallel to the screen for the status bar, never tilt. The screen-centre reference
+    used so far (0.29 m ahead of him, 0.72 m high) now falls on the back-wall face (y 8.95); the kneel
+    rig holds the phone 0.22 m ahead at 0.93 m (y 8.88, 7 cm off the wall), about 0.11 m from this lens:
+    check the 71 mm frame at the next preview.'
 characters:
 - id: ren
   position:
-  - 2.2
-  - 8.0
+  - 3.45
+  - 8.66
   - 0.0
   facing: the phone
   action: none in frame
@@ -94,7 +97,9 @@ rationale:
   lighting: Screen only; no defocused emissive in the background (camera.dof.inserts).
   movement: Static.
   color: 'Red number, no amber: amber has now failed twice (look.style.motifs).'
-  blocking: None.
+  blocking: 'None in frame. He kneels at the stand (builder reach fix: at (3.45, 8.66) facing +y his right
+    hand reaches the socket within 2 cm; the old spot (2.2, 8.0) was about 2.05 m from the stand, reach
+    error about 1.22 m); the lens moved with him unchanged.'
   animation: 'A completely still insert: in the shop the damage is already done, so the phone only states
     the cost. A frame with nothing moving after the car''s busy insert is the second telling of the joke,
     told differently (camera.gags.no_repeat). Rejected: replaying the dip or the number change here (a
@@ -197,6 +202,10 @@ derived_from:
   hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:56cfa23e8fda67aa597eefd0b9daa42e7e2639635a9494700e05404c0c52cc27
-stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
-  and shots); no content revision needed.
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+stamped_content_hash: sha256:ded035b15ea796e0efdee325911aac7d94676bdda993d717268ac7f81cf48be9

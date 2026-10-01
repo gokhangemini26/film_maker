@@ -30,6 +30,7 @@ except ImportError:  # the standalone python: importing bpy registers the mathut
     from mathutils import Vector
 
 from . import poses as PS
+from .anchors import shop_anchors
 from .framesel import contact_strip, parse_frames, select_frames  # noqa: F401  (pure helpers, re-exported)
 
 LOOK_BLEND_F = 4          # frames the head takes to turn to a new look target
@@ -323,6 +324,17 @@ class Stage:
                           "console_top": tuple(L(a["console_top"]))}
             db, df = self.frames["door"]
             ctx["door"] = {"latch": tuple(PS.to_local(a["latch"], db, df)), "roof_z": a["roof_z"]}
+        shop = self.canon.get("world.sets.corner_shop")
+        if self.scene == "SC03" and shop and self.home:
+            # the kneel presets reach for the set's REAL display stand and socket, expressed in the figure's own frame
+            # (the figure-relative defaults put the stand 0.62 m to the right wherever the figure actually kneels)
+            hb, hf = self.home.get("ren") or next(iter(self.home.values()))
+            sa = shop_anchors(shop, SHOP_ORIGIN)
+            ctx["shop"] = {
+                "stand_back_edge": tuple(PS.to_local(sa["stand_back_edge"], hb, hf)),
+                "stand_back_normal": tuple(PS.to_local(sa["stand_back_normal"], Vector((0, 0, 0)), hf)),
+                "socket": tuple(PS.to_local(sa["socket"], hb, hf)),
+            }
         self.ctx = PS.merged_ctx(ctx)
 
     # ---- paths

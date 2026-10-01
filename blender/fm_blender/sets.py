@@ -5,6 +5,7 @@ import bpy
 from mathutils import Vector
 
 from . import util as U
+from .anchors import shop_anchors
 
 SHOP_ORIGIN = Vector((100.0, 0.0, 0.0))
 ROOM_ORIGIN = Vector((200.0, 0.0, 0.0))
@@ -289,15 +290,15 @@ def build_shop(col, canon):
                 U.cyl(f"fridge{i}_b{r}{k}", 0.03, 0.2, (fx_ - 0.24 + k * 0.12, O.y + fd - fz[1] - 0.09, zb + 0.11), col, fam[(i + r + k) % 4])
     # USB wall socket, right-hand corner, low on the back wall
     sock = c["socket"]
-    sx_ = O.x + fw - 0.25
+    anc = shop_anchors(c, O)
+    sx_ = anc["socket"].x
     U.box("shop_socket", (0.146, 0.02, 0.086), (sx_, O.y + fd - 0.06, sock["height_m"]), col, _t(col, pal(2)))
     for k, ox in enumerate((-0.035, 0.035)):
         U.box(f"shop_socket_port{k}", (0.03, 0.01, 0.014), (sx_ + ox, O.y + fd - 0.07, sock["height_m"] + 0.022), col, dark)
         U.cyl(f"shop_socket_pin{k}", 0.013, 0.01, (sx_ + ox, O.y + fd - 0.07, sock["height_m"] - 0.012), col, dark, rot=(math.pi / 2, 0, 0))
     # tiered display stand standing 0.25 m in front of the socket, hiding it from the door
     dw, dd, dh = c["display_stand"]["size_m"]
-    sy_ = O.y + fd - 0.06 - c["display_stand"]["gap_to_wall_m"] - dd / 2
-    stx = sx_ - 0.2
+    sy_, stx = anc["stand_centre"].y, anc["stand_centre"].x
     for t_, (tw, tz, th) in enumerate(((dw, 0.0, 0.45), (dw - 0.1, 0.45, 0.4), (dw - 0.2, 0.85, 0.45))):
         U.box(f"display_stand_tier{t_}", (tw, dd - 0.04 * t_, th), (stx, sy_, tz + th / 2), col, stand_m)
         U.cyl(f"display_stand_tin{t_}", 0.05, 0.1, (stx - 0.05, sy_ - 0.08, tz + th + 0.05), col, fam[t_])

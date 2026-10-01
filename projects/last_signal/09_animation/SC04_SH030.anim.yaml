@@ -50,10 +50,10 @@ fm:
   - intent.comic_then_tender
   summary: Eyes lead a slow head turn from the phone to the glovebox (commit f4, eyes land f10, head arrives
     f16), a held look, a blink, the decision.
-  stamped_content_hash: sha256:a42c1e24b9da249ae85f462ae0b57377457760b90cf707ba970235e5d6393ed5
+  stamped_content_hash: sha256:3738966a71d6addff2427d0768c6510ab6ba3d9b11162fdaed991f0d00f24fbb
 shot_id: SC04_SH030
 frames: 36
-vocab_version: 1
+vocab_version: 2
 rationale: Opens with the head about one sixth turned so the question reads three-quarter to the lens;
   the eyes lead, the look commits at f4 (the push-in starts on it) and lands on the glovebox at f10; the
   head arrives at f16 with an even ease-in-out, the tender tempo (characters.ren.movement turn tempo slow_deliberate).
@@ -90,13 +90,23 @@ characters:
         f2-16, ~95 deg in 14 f, no snap; eyes land on the glovebox f10 (head ~85 deg); head arrives f16,
         no overshoot
       rationale: the push-in starts on this frame; the audience follows his look into depth
+    lids:
+    - f: 0
+      ref: open
+      ease: hold
+      note: lids open; the f4 glovebox look carries to the cut
     - f: 22
-      target: closed
-      note: 'one slow blink f22-27 (hesitation_at_heart). v1 stand-in (look closed is a binary switch);
-        V2 PENDING (animation.vocab.v2.lids): drop this key and the f28 glovebox key (the f4 glovebox
-        look carries); lids f0 open hold, f22 closed ease_in dur_f 2, f25 open ease_out dur_f 3'
-    - f: 28
-      target: glovebox
+      ref: closed
+      ease: ease_in
+      dur_f: 2
+      note: one slow blink f22-27 (characters.ren.expressions hesitation_at_heart); the gaze stays on
+        the glovebox
+      rationale: the hesitation blink must not re-aim the eyes; he reopens on the same glovebox he already
+        committed to
+    - f: 25
+      ref: open
+      ease: ease_out
+      dur_f: 3
       note: eyes reopen on the glovebox, held to the cut
     breath:
     - f: 20

@@ -36,10 +36,10 @@ fm:
   - intent.race_against_battery
   summary: 'First freeze-sag-reset: held breath out, sag with weight, 9-frame held sag, dip, sit-up burst
     with a small overshoot, resolve held.'
-  stamped_content_hash: sha256:04525b6e1913eb7b93312d21bf883a14406ff3642ee8172f07889e02daf20c8e
+  stamped_content_hash: sha256:3afd76076cf7659408d73988e5749959dcf3b52d501ca79aa3c3f728b4a8f9d9
 shot_id: SC01_SH060
 frames: 34
-vocab_version: 1
+vocab_version: 2
 rationale: 'The first full freeze-sag-reset (characters.ren.movement setback_pattern): the sag falls with
   weight (ease_in), holds 9 frames so the letdown is felt, and the reset is one upward burst with a single
   small overshoot (overshoot_small) - "tries again anyway" (tone.comedy_source). The sit-up lands into
@@ -90,9 +90,11 @@ characters:
       ref: letdown
       note: inner brows up, mouth flat, f9-17
     - f: 18
-      ref: neutral
-      note: 'brows level and knit, mouth pressed: resolve. neutral is the v1 stand-in; V2 PENDING (animation.vocab.v2.face.ren):
-        ref determined'
+      ref: determined
+      note: 'brows level and knit, mouth pressed: resolve (the reset of freeze-sag-reset). DEPENDENCY:
+        determined is a v2 comic-set face (animation.vocab.v2.face.ren); characters.ren.expressions is
+        LOCKED and does not list it, so this key stands only after a human ruling or a character change
+        request'
     look:
     - f: 0
       target: phone
@@ -166,3 +168,7 @@ notes:
   version of it.
 - 'Secondary without tracks: jacket fronts swing forward on the sag (skinning only); tuft dips with the
   head and lifts with the reset, 1-frame lag (VOCAB GAP: no tuft track).'
+- 'DEPENDENCY (human ruling needed): the face ref determined is a v2 addition to Ren''s comic set (animation.vocab.v2.face.ren).
+  characters.ren.expressions is LOCKED and does not list it; the key stands only if the human rules that
+  animation faces may refine a listed expression, or approves a character-designer change request. Fallback
+  if refused: neutral (the v1 stand-in).'

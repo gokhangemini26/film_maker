@@ -52,8 +52,8 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      2.2,
-      8.12,
+      3.45,
+      8.78,
       0.97
     ]
   },
@@ -240,8 +240,8 @@
       "facing": "the phone",
       "id": "ren",
       "position": [
-        2.2,
-        8.0,
+        3.45,
+        8.66,
         0.0
       ]
     }
@@ -524,7 +524,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "insert",
-    "notes": "Text-size status-bar insert (as SC01_SH080: frame about 71 mm tall, 85 mm at 0.30 m). The change to 2 % happened on the blackout frame; this insert holds the result 26 frames (minimum 24). No dip and no change inside the shot: in the shop the damage is already done (camera.gags.no_repeat: insert after the loss). Framing reference (DEPENDENCY for the animation hold and the builder): kneeling, eyes at 1.05 m; screen centre at about (2.2, 8.29, 0.72), 0.40 m in front of and below his eyes. Lens 0.30 m from it on his eyeline (his head behind the lens), camera's up = the phone's top edge; shift parallel to the screen for the status bar, never tilt.",
+    "notes": "Text-size status-bar insert (as SC01_SH080: frame about 71 mm tall, 85 mm at 0.30 m). The change to 2 % happened on the blackout frame; this insert holds the result 26 frames (minimum 24). No dip and no change inside the shot: in the shop the damage is already done (camera.gags.no_repeat: insert after the loss). Framing reference (DEPENDENCY for the animation hold and the builder): kneeling at (3.45, 8.66) facing +y, eyes at 1.05 m; the lens keeps exactly its old relation to him (0.12 m ahead of his pelvis, 0.97 m high), on his eyeline with his head behind the lens; camera's up = the phone's top edge; shift parallel to the screen for the status bar, never tilt. The screen-centre reference used so far (0.29 m ahead of him, 0.72 m high) now falls on the back-wall face (y 8.95); the kneel rig holds the phone 0.22 m ahead at 0.93 m (y 8.88, 7 cm off the wall), about 0.11 m from this lens: check the 71 mm frame at the next preview.",
     "subject_position": "upper_right"
   },
   "environment": {
@@ -594,6 +594,7 @@
       "ren": {
         "breath": [],
         "face": [],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -637,6 +638,25 @@
     "preview_frames": [
       12
     ],
+    "prop_info": {
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "phone_ren": [
         {
@@ -648,7 +668,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc03_sh060",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

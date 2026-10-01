@@ -674,6 +674,7 @@
             "ref": "focused_calm"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -812,6 +813,44 @@
       54,
       67
     ],
+    "prop_info": {
+      "crank_charger": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "arm",
+          "loc",
+          "pip"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "crank_charger": [
         {
@@ -832,7 +871,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc04_sh060",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

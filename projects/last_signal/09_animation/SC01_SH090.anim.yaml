@@ -26,10 +26,10 @@ fm:
   serves:
   - intent.comic_then_tender
   summary: 'Structured tracks for the freeze: a true 16-frame hold, then one small stuck exhale.'
-  stamped_content_hash: sha256:442d53bf79bd98907f9ffd7373774945bb311b78252de0cc830840e73c096318
+  stamped_content_hash: sha256:4742205134c353232504da38be3aba8ecefdfac1683403148fc1857b3b9b1649
 shot_id: SC01_SH090
 frames: 24
-vocab_version: 1
+vocab_version: 2
 rationale: 'The freeze is funny only if nothing moves (shot note ''locked off: the freeze is funny only
   if nothing moves''): one pose key, a body-and-face hold for f0-15, then the smallest possible exhale
   so the frozen body reads as held rather than paused. Structured so the builder poses one preset and

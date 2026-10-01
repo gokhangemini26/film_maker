@@ -25,9 +25,7 @@ fm:
   - intent.earned_last_signal
   summary: Text storyboard for all 38 shots of Last Signal - frame layers, eye path, movement, sound cue
     and transition per shot, in film order.
-  stamped_content_hash: sha256:cf0648aa717949827441cf7b2c037b512da536eb8a33e34fbfbcac6bd70c7b66
-  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
-    and shots); no content revision needed.
+  stamped_content_hash: sha256:891aec9e44443e0c00e161d46f5cdf7a23346d513b4fbd2cb228e807f7f18523
 title: Storyboard
 ---
 # Storyboard: Last Signal
@@ -210,30 +208,34 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
   glowing on the back wall, the display stand at the far right corner.
 - Eye: Ren entering from the bottom of frame, then following him down the
   aisle to the far corner.
-- Moves: he enters, scans, hurries down the aisle, drops to his knees by the
-  stand.
+- Moves: he enters, scans, hurries down the west aisle, drops to his knees
+  between the westmost fridge and the stand, ending centre-left beside it
+  (lens at the west end of the doorway so the near gondola does not hide him).
 - Sound: chime tail; fridge hum; his quick steps.
 - Out: cut.
 
 **SC03_SH020 · 36 f · MCU · 35 mm over his left shoulder · eye level (kneeling)**
-- Frame: FG the phone large at frame left, screen toward us; MG his right arm
-  reaching behind the stand; BG the fridges glowing behind the stand.
+- Frame: FG the phone over his left shoulder; MG his right arm reaching
+  behind the stand at right; BG the back-wall corner behind the stand (the
+  westmost fridge is wild for this lens; its cool light comes from behind us).
 - Eye: the phone; the amber bolt appears at frame 14 beside 3 %.
 - Moves: arm reaching, plug going in.
 - Sound: a scrape, a click, the charging chime.
 - Out: cut.
 
-**SC03_SH030 · 26 f · MCU · 24 mm from the back wall · mild low**
+**SC03_SH030 · 26 f · MCU · 24 mm from behind the back wall (wild) · mild low**
 - Frame: Ren's upturned face low right, eyes on the ceiling; the ceiling panels
-  glowing steadily across the upper third toward the door.
+  glowing steadily up the middle toward the door; the stand a dark foreground
+  block at frame left, the westmost fridge's flank at frame right.
 - Eye: his eyes, then the panels, then back.
 - Moves: he freezes, looking up; nothing happens; eyes come down.
 - Sound: the fridge hum, unchanged.
 - Out: cut.
 
 **SC03_SH040 · 22 f · MCU · 35 mm lateral from the east · eye level**
-- Frame: Ren at right third facing screen left; the fridges' cool glow on the
-  front of his face; the stand in front of him.
+- Frame: Ren facing screen left toward the back-wall corner and the socket;
+  the stand behind him at screen right; the fridges' cool light from the lens
+  side on his near cheek (lens inside the westmost fridge, wild).
 - Eye: his shoulders dropping.
 - Moves: a long exhale.
 - Sound: the long breath out.
@@ -254,10 +256,11 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: silence.
 - Out: cut.
 
-**SC03_SH070 · 48 f · MCU · 35 mm reverse from the back wall · eye level**
+**SC03_SH070 · 48 f · MCU · 35 mm reverse from behind the back wall (wild) · eye level**
 - Frame: FG the glowing phone and his hands at the frame bottom; MG his face,
-  lit from below, centred; BG the long dark aisle and, far off above his
-  shoulder, the faint warm rectangle of the door.
+  lit from below, centred; BG the long dark west aisle and, far off above his
+  right shoulder, the faint warm strip of the door; the dark stand at frame
+  left, the fridge flank at frame right.
 - Eye: his lit face, then the tiny door.
 - Moves: nothing; one slow blink.
 - Sound: silence; a distant car passing outside.

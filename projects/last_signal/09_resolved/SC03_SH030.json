@@ -74,8 +74,8 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      1.7,
-      8.7,
+      3.85,
+      9.4,
       0.85
     ]
   },
@@ -259,11 +259,11 @@
           }
         }
       },
-      "facing": "south toward camera, eyes up",
+      "facing": "south (+y), toward the back wall and the lens, eyes up",
       "id": "ren",
       "position": [
-        2.2,
-        8.0,
+        3.45,
+        8.66,
         0.0
       ]
     }
@@ -699,7 +699,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "From the back wall (fridge wild), looking north and tilted up 8 deg. Mild low: lens 0.20 m under his kneeling eye (camera.height.low, SC03 wary check). Panels in the upper third over the aisle toward the door.",
+    "notes": "From behind the back wall, looking north up the west aisle toward the ceiling panels. The back wall is wild for this shot (camera.geography.sc03 reverse wild_piece): the lens is about 0.35 m outside the wall plane (wall y 8.95-9.05). DEPENDENCY for the builder: the preview only drops set pieces whose box contains the lens, so shop_wall_back must be hidden for this shot. Mild low: lens 0.20 m under his kneeling eye (camera.height.low, SC03 wary check). Computed frame: his face low right (about x 0.64, y 0.58), the stand a foreground block at frame left, the westmost fridge's flank at frame right, three panels receding up the middle toward the door. Tilt up is about 20 deg (look_at ceiling_panels), see rationale.camera.",
     "subject_position": "lower_right"
   },
   "environment": {
@@ -792,7 +792,7 @@
           {
             "f": 0,
             "f_abs": 664,
-            "ref": "neutral"
+            "ref": "wary"
           },
           {
             "f": 2,
@@ -800,6 +800,7 @@
             "ref": "freeze"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -877,6 +878,33 @@
       19,
       25
     ],
+    "prop_info": {
+      "ceiling_panels": {
+        "before_first_key": {},
+        "chained_fields": [],
+        "fields": [
+          "state"
+        ],
+        "persistent": false
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "ceiling_panels": [
         {
@@ -895,7 +923,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc03_sh030",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

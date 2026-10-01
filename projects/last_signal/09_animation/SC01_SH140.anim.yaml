@@ -30,10 +30,10 @@ fm:
   - intent.comic_then_tender
   summary: 'Battery insert across the cut: last dip frame at f0, back to full at f1, 4 % to 3 % at f2,
     held 30 frames; the bolt is gone.'
-  stamped_content_hash: sha256:3b0f3771e3dad5cf3fdd72d8757fccd22bd92284cc9d8e716239652445a8d7de
+  stamped_content_hash: sha256:826c1833ee777c4a6424887801f33d7058d5d645ad2849a9fd049c2a27e8ad3b
 shot_id: SC01_SH140
 frames: 32
-vocab_version: 1
+vocab_version: 2
 rationale: 'The frame-exact order across the cut is the gag''s second half: stall at SH130 f32, two dip
   frames, cut, the last dip frame here (f0), full brightness on f1, the number drops on f2 (canon table).
   The eye first finds the empty place where the bolt was, then the 3: two small steps down (story.escalation).

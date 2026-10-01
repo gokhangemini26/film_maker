@@ -35,10 +35,10 @@ fm:
   - intent.soft_but_cinematic
   summary: 'Structured tracks for the stunned stillness: a true 28-frame hold, one slow 12-frame blink
     f28-39, held to the cut.'
-  stamped_content_hash: sha256:2498852c7944c85ed4871c2ed206bbe7133c3a28068470b64bdf67124c572b70
+  stamped_content_hash: sha256:ffba81a2f787e13b994604a5981bf9cc9bc60853d827668424add3ff76aef453
 shot_id: SC03_SH070
 frames: 48
-vocab_version: 1
+vocab_version: 2
 rationale: '"He doesn''t move" taken literally: one pose, one face, breath held for the whole shot (no
   breathing idle), two asserted holds (f0-27, the longest comic hold, and f40-47 to the cut). The only
   change is one slow blink at about 1.2 s, the hinge from funny to a little sad that hands the film to
@@ -60,15 +60,25 @@ characters:
     - f: 0
       target: phone
       note: the phone, unchanged
+    lids:
+    - f: 0
+      ref: open
+      ease: hold
+      note: lids at the stunned face's own openness
     - f: 28
-      target: closed
-      note: 'one slow blink: lids close ease-in f28-31, closed f32-33. Head and eyeline must not move:
-        this key is a lid change only. v1 stand-in (look closed is a binary switch); V2 PENDING (animation.vocab.v2.lids):
-        look keeps phone throughout; lids f0 open hold, f28 closed ease_in dur_f 4, f34 open ease_out
-        dur_f 6'
+      ref: closed
+      ease: ease_in
+      dur_f: 4
+      note: 'one slow blink: lids close ease-in f28-31, closed f32-33. Head and eyeline do not move; the
+        gaze stays on the phone through the blink'
+      rationale: the slow blink is the hinge from funny to sad; a lids key keeps the gaze, so the eyes
+        reopen on the same point instead of re-aiming
     - f: 34
-      target: phone
-      note: lids open slowly (ease-out, f34-39) to the same stunned eyes on the phone
+      ref: open
+      ease: ease_out
+      dur_f: 6
+      note: lids open slowly f34-39 to the same stunned eyes on the phone (close 4, shut 2, open 6 = the
+        12-frame blink)
     breath:
     - f: 0
       ref: hold

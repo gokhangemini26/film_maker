@@ -33,46 +33,46 @@ LOCKED: 161, PROPOSED: 37
 
 | Artifact | Phase | Status | Hash |
 |---|---|---|---|
-| anim_sc01_sh010 | ANIMATION | PROPOSED | dc53fad91aca |
-| anim_sc01_sh020 | ANIMATION | PROPOSED | c8c08db05380 |
-| anim_sc01_sh030 | ANIMATION | PROPOSED | df664b64ea7b |
-| anim_sc01_sh040 | ANIMATION | PROPOSED | 8f24457ddf95 |
-| anim_sc01_sh050 | ANIMATION | PROPOSED | b2e2eabf5660 |
-| anim_sc01_sh060 | ANIMATION | PROPOSED | 04525b6e1913 |
-| anim_sc01_sh070 | ANIMATION | PROPOSED | 7a6c34a017e9 |
-| anim_sc01_sh080 | ANIMATION | PROPOSED | ac0d74c6a149 |
-| anim_sc01_sh090 | ANIMATION | PROPOSED | 442d53bf79bd |
-| anim_sc01_sh100 | ANIMATION | PROPOSED | b8a19e961e0c |
-| anim_sc01_sh110 | ANIMATION | PROPOSED | a9d04987fd43 |
-| anim_sc01_sh120 | ANIMATION | PROPOSED | 34790879054d |
-| anim_sc01_sh130 | ANIMATION | PROPOSED | a1e5c0faab7a |
-| anim_sc01_sh140 | ANIMATION | PROPOSED | 3b0f3771e3da |
-| anim_sc01_sh150 | ANIMATION | PROPOSED | 0e3351e4930a |
-| anim_sc02_sh010 | ANIMATION | PROPOSED | 93f1450b51d9 |
-| anim_sc02_sh020 | ANIMATION | PROPOSED | 96cc8711216f |
-| anim_sc02_sh030 | ANIMATION | PROPOSED | c6d54d3ec79b |
-| anim_sc03_sh010 | ANIMATION | PROPOSED | f22f024f2948 |
-| anim_sc03_sh020 | ANIMATION | PROPOSED | 2555bce8650e |
-| anim_sc03_sh030 | ANIMATION | PROPOSED | dca6bff2e216 |
-| anim_sc03_sh040 | ANIMATION | PROPOSED | ab0d09d0bd4e |
-| anim_sc03_sh050 | ANIMATION | PROPOSED | 073ab9c81b6d |
-| anim_sc03_sh060 | ANIMATION | PROPOSED | 6cef18e0a40a |
-| anim_sc03_sh070 | ANIMATION | PROPOSED | 2498852c7944 |
-| anim_sc04_sh010 | ANIMATION | PROPOSED | dca3d3dd78b3 |
-| anim_sc04_sh020 | ANIMATION | PROPOSED | 8176275c26f6 |
-| anim_sc04_sh030 | ANIMATION | PROPOSED | a42c1e24b9da |
-| anim_sc04_sh040 | ANIMATION | PROPOSED | 6f8c6c78d164 |
-| anim_sc04_sh050 | ANIMATION | PROPOSED | ce2d9b0b092e |
-| anim_sc04_sh060 | ANIMATION | PROPOSED | c0a17687a950 |
-| anim_sc04_sh070 | ANIMATION | PROPOSED | 0d7fb1fb4d41 |
-| anim_sc04_sh080 | ANIMATION | PROPOSED | 13046caeebcc |
-| anim_sc04_sh090 | ANIMATION | PROPOSED | 6a0aa664530a |
-| anim_sc05_sh010 | ANIMATION | PROPOSED | effb20845160 |
-| anim_sc05_sh020 | ANIMATION | PROPOSED | c9f225d98b14 |
-| anim_sc05_sh030 | ANIMATION | PROPOSED | 9422ee5d99b1 |
-| anim_sc06_sh010 | ANIMATION | PROPOSED | a6fe35274df4 |
+| anim_sc01_sh010 | ANIMATION | PROPOSED | b749f224559d |
+| anim_sc01_sh020 | ANIMATION | PROPOSED | 165676c4f0db |
+| anim_sc01_sh030 | ANIMATION | PROPOSED | 141491680d97 |
+| anim_sc01_sh040 | ANIMATION | PROPOSED | 25b07967c26f |
+| anim_sc01_sh050 | ANIMATION | PROPOSED | e344369ce2ad |
+| anim_sc01_sh060 | ANIMATION | PROPOSED | 3afd76076cf7 |
+| anim_sc01_sh070 | ANIMATION | PROPOSED | 4abb568eeea7 |
+| anim_sc01_sh080 | ANIMATION | PROPOSED | fa336523cafb |
+| anim_sc01_sh090 | ANIMATION | PROPOSED | 4742205134c3 |
+| anim_sc01_sh100 | ANIMATION | PROPOSED | 3e727eb2f308 |
+| anim_sc01_sh110 | ANIMATION | PROPOSED | 43b58eddc63e |
+| anim_sc01_sh120 | ANIMATION | PROPOSED | 34347251a334 |
+| anim_sc01_sh130 | ANIMATION | PROPOSED | 243861eae4be |
+| anim_sc01_sh140 | ANIMATION | PROPOSED | 826c1833ee77 |
+| anim_sc01_sh150 | ANIMATION | PROPOSED | 838b5e24815c |
+| anim_sc02_sh010 | ANIMATION | PROPOSED | 6612947a3065 |
+| anim_sc02_sh020 | ANIMATION | PROPOSED | 0879c17e5ae2 |
+| anim_sc02_sh030 | ANIMATION | PROPOSED | d0a4e940d557 |
+| anim_sc03_sh010 | ANIMATION | PROPOSED (stale) | 1379a283280d |
+| anim_sc03_sh020 | ANIMATION | PROPOSED (stale) | e9c1d18060a9 |
+| anim_sc03_sh030 | ANIMATION | PROPOSED (stale) | 6aaac5fde814 |
+| anim_sc03_sh040 | ANIMATION | PROPOSED (stale) | 2b790f5c3632 |
+| anim_sc03_sh050 | ANIMATION | PROPOSED (stale) | f8e2963a1fd1 |
+| anim_sc03_sh060 | ANIMATION | PROPOSED (stale) | 277958c4d0ef |
+| anim_sc03_sh070 | ANIMATION | PROPOSED (stale) | ffba81a2f787 |
+| anim_sc04_sh010 | ANIMATION | PROPOSED | d495c8ed15fc |
+| anim_sc04_sh020 | ANIMATION | PROPOSED | df20290707bd |
+| anim_sc04_sh030 | ANIMATION | PROPOSED | 3738966a71d6 |
+| anim_sc04_sh040 | ANIMATION | PROPOSED | 65bd0bb32e46 |
+| anim_sc04_sh050 | ANIMATION | PROPOSED | 75483d6d8c23 |
+| anim_sc04_sh060 | ANIMATION | PROPOSED | 10e5fd013ae8 |
+| anim_sc04_sh070 | ANIMATION | PROPOSED | 0d317f2d30f4 |
+| anim_sc04_sh080 | ANIMATION | PROPOSED | 52454eaba294 |
+| anim_sc04_sh090 | ANIMATION | PROPOSED | 9b28b5c65e5f |
+| anim_sc05_sh010 | ANIMATION | PROPOSED | 1ea4ff83197d |
+| anim_sc05_sh020 | ANIMATION | PROPOSED | 96739267e57b |
+| anim_sc05_sh030 | ANIMATION | PROPOSED | 363ebe9df82f |
+| anim_sc06_sh010 | ANIMATION | PROPOSED | ddee172d1a5b |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
-| audio_bible | ANIMATION_PREVIEW | PROPOSED | 72ce84317161 |
+| audio_bible | ANIMATION_PREVIEW | PROPOSED (stale) | 72ce84317161 |
 | audio_cues | ANIMATION_PREVIEW | PROPOSED (stale) | 7429405e767d |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
@@ -94,7 +94,7 @@ LOCKED: 161, PROPOSED: 37
 | shot_list | STORYBOARD | APPROVED | 92b3bcc6a1e2 |
 | story_bible | STORY | APPROVED | 1604e946f2ee |
 | story_structure | STORY | APPROVED | d8a12c83b7c3 |
-| storyboard | STORYBOARD | APPROVED | cf0648aa7179 |
+| storyboard | STORYBOARD | APPROVED | 891aec9e4444 |
 | visual_bible | LOOK | APPROVED | 4cb45f98d39b |
 | world_bible | WORLD_CHARACTERS | APPROVED | c5a7ce8fda07 |
 
@@ -120,13 +120,13 @@ LOCKED: 161, PROPOSED: 37
 | SC02_SH010 | 0.75s | APPROVED | spec |
 | SC02_SH020 | 0.5833s | APPROVED | spec |
 | SC02_SH030 | 0.6667s | APPROVED | spec |
-| SC03_SH010 | 2.1667s | APPROVED | spec |
-| SC03_SH020 | 1.5s | APPROVED | spec |
-| SC03_SH030 | 1.0833s | APPROVED | spec |
-| SC03_SH040 | 0.9167s | APPROVED | spec |
-| SC03_SH050 | 1.25s | APPROVED | spec |
+| SC03_SH010 | 2.1667s | PROPOSED | spec |
+| SC03_SH020 | 1.5s | PROPOSED | spec |
+| SC03_SH030 | 1.0833s | PROPOSED | spec |
+| SC03_SH040 | 0.9167s | PROPOSED | spec |
+| SC03_SH050 | 1.25s | PROPOSED | spec |
 | SC03_SH060 | 1.0833s | PROPOSED | spec |
-| SC03_SH070 | 2s | APPROVED | spec |
+| SC03_SH070 | 2s | PROPOSED | spec |
 | SC04_SH010 | 1.9167s | APPROVED | spec |
 | SC04_SH020 | 1.3333s | PROPOSED | spec |
 | SC04_SH030 | 1.5s | PROPOSED | spec |
@@ -145,7 +145,7 @@ LOCKED: 161, PROPOSED: 37
 
 - G5: artifact:g5_review is stale: artifact:storyboard changed
 - G5: artifact:shot_list was modified after approval (a6a2b5dffb75 -> 92b3bcc6a1e2)
-- G5: artifact:storyboard was modified after approval (3463a5cadda1 -> cf0648aa7179)
+- G5: artifact:storyboard was modified after approval (3463a5cadda1 -> 891aec9e4444)
 - G5: shot:SC01_SH020 was modified after approval (55abea9f1ede -> 7941cdc7602d)
 - G5: shot:SC01_SH030 was modified after approval (7bd158cdcd69 -> 8699e51bfb18)
 - G5: shot:SC01_SH050 was modified after approval (cb7a17707d96 -> fd8ca343ac30)
@@ -153,7 +153,13 @@ LOCKED: 161, PROPOSED: 37
 - G5: shot:SC01_SH080 was modified after approval (578f482dfcd1 -> 71b49b1bd139)
 - G5: shot:SC01_SH120 was modified after approval (d98e26a8cdd5 -> 2d764a28641d)
 - G5: shot:SC01_SH140 was modified after approval (e75d1fdff853 -> 209db68556fe)
-- G5: shot:SC03_SH060 was modified after approval (aa03e411a9fb -> 56cfa23e8fda)
+- G5: shot:SC03_SH010 was modified after approval (973dab1732fa -> b3cf9247ac6d)
+- G5: shot:SC03_SH020 was modified after approval (0f9f605d61b9 -> 17749ce74a84)
+- G5: shot:SC03_SH030 was modified after approval (4e8d8794bce8 -> d1561f8bdead)
+- G5: shot:SC03_SH040 was modified after approval (06e3006cc3af -> 1020cdbc3745)
+- G5: shot:SC03_SH050 was modified after approval (c3373f205332 -> 6d33bc402d92)
+- G5: shot:SC03_SH060 was modified after approval (aa03e411a9fb -> ded035b15ea7)
+- G5: shot:SC03_SH070 was modified after approval (0b9219ced30c -> c943fa8776be)
 - G5: shot:SC04_SH020 was modified after approval (2df742e7dee1 -> eae1eff6c716)
 - G5: shot:SC04_SH030 was modified after approval (9d56ea0c465a -> 9aea3b8fc772)
 - G5: shot:SC04_SH050 was modified after approval (87f164a94d13 -> ac63b166dbc7)
@@ -161,13 +167,25 @@ LOCKED: 161, PROPOSED: 37
 - G5: shot:SC04_SH070 was modified after approval (f0af46aad1a8 -> 67f88a2f736a)
 - G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> 6274d95c0386)
 - G5: shot:SC04_SH090 was modified after approval (451cd791871b -> ba37458305d5)
+- stale: artifact:anim_sc03_sh010
+- stale: artifact:anim_sc03_sh020
+- stale: artifact:anim_sc03_sh030
+- stale: artifact:anim_sc03_sh040
+- stale: artifact:anim_sc03_sh050
+- stale: artifact:anim_sc03_sh060
+- stale: artifact:anim_sc03_sh070
+- stale: artifact:audio_bible
 - stale: artifact:audio_cues
 - stale: artifact:edit_plan
 - stale: artifact:g5_review
 - stale: artifact:post_plan
 - stale: artifact:preview_review
 - stale: audio:mix
+- stale: edit:animatic
+- stale: edit:edl
 - stale: qa:audio
+- stale: qa:delivery
+- stale: qa:motion
 - stale: qa:stills
 - stale: render:preview_SC01_SH010
 - stale: render:preview_SC01_SH020
@@ -207,6 +225,13 @@ LOCKED: 161, PROPOSED: 37
 - stale: render:preview_SC05_SH020
 - stale: render:preview_SC05_SH030
 - stale: render:preview_SC06_SH010
+- stale: resolved:SC03_SH010
+- stale: resolved:SC03_SH020
+- stale: resolved:SC03_SH030
+- stale: resolved:SC03_SH040
+- stale: resolved:SC03_SH050
+- stale: resolved:SC03_SH060
+- stale: resolved:SC03_SH070
 - change awaiting decision: CHANGE-002
 - change awaiting decision: CHANGE-003
 - change awaiting decision: CHANGE-004

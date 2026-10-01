@@ -641,6 +641,28 @@
             "ref": "focused_calm"
           }
         ],
+        "lids": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 894,
+            "ref": "open"
+          },
+          {
+            "dur_f": 2,
+            "ease": "ease_in",
+            "f": 22,
+            "f_abs": 916,
+            "ref": "closed"
+          },
+          {
+            "dur_f": 3,
+            "ease": "ease_out",
+            "f": 25,
+            "f_abs": 919,
+            "ref": "open"
+          }
+        ],
         "look": [
           {
             "f": 0,
@@ -650,16 +672,6 @@
           {
             "f": 4,
             "f_abs": 898,
-            "target": "glovebox"
-          },
-          {
-            "f": 22,
-            "f_abs": 916,
-            "target": "closed"
-          },
-          {
-            "f": 28,
-            "f_abs": 922,
             "target": "glovebox"
           }
         ],
@@ -747,6 +759,80 @@
       28,
       35
     ],
+    "prop_info": {
+      "crank_charger": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "arm",
+          "loc",
+          "pip"
+        ],
+        "persistent": true
+      },
+      "glovebox_lid": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "bounce_f",
+          "state"
+        ],
+        "persistent": true
+      },
+      "passenger_door": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state",
+          "swing_deg"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "crank_charger": [
         {
@@ -786,7 +872,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc04_sh030",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

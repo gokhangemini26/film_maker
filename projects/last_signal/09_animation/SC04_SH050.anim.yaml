@@ -53,10 +53,10 @@ fm:
   - intent.soft_but_cinematic
   summary: Plug, unfold (2-frame hinge stiffness), first turn at f30 with the push-in and the light steadying,
     first ratchet top at f56, one-thumb glide typing.
-  stamped_content_hash: sha256:ce2d9b0b092e78ae2216a8d3932bb35df4efa98f4f2f6eef0d5f6afaff4f032e
+  stamped_content_hash: sha256:75483d6d8c23e73350aa1c52f6c76ddb8f781764a84179339473f19cda8fc679
 shot_id: SC04_SH050
 frames: 80
-vocab_version: 1
+vocab_version: 2
 rationale: 'Tenderness through effort: plug, unfold, turn, each finished before the next, then one turn
   per second with his breath locked to the handle (characters.ren.movement). The last flicker dip ends
   at f27 and the light holds from the first turn at f30, the frame the push starts, so light, lens and
@@ -78,12 +78,11 @@ characters:
       blend_f: 3
       note: 'clamped-high cranking base: crank lying across between the tops of his knees (top face ~z
         0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left hand ~z 0.76 over
-        the near knee beside the port end. kerb_crank_hold in v1 reads "crank in the lap in both hands";
-        V2 PENDING (animation.vocab.v2.pose.ren) redefines it so the left hand follows crank_charger loc
-        (hands_both f0-11 under the crank, lap from f12 holding the phone), no key change. f12-14 clamp
-        into the knees, right thumb lifts the folded knob; f15-16 hinge stiffness hold; f17-21 arm swings
-        out (ease-out), clean stop, no bounce; f22 right hand grips the knob, left hand lifts the phone
-        to ~z 0.76 over the near knee (f22-29)'
+        the near knee beside the port end. The v2 kerb_crank_hold drives the left hand from crank_charger
+        loc (hands_both f0-11 under the crank, lap from f12 holding the phone). f12-14 clamp into the
+        knees, right thumb lifts the folded knob; f15-16 hinge stiffness hold; f17-21 arm swings out (ease-out),
+        clean stop, no bounce; f22 right hand grips the knob, left hand lifts the phone to ~z 0.76 over
+        the near knee (f22-29)'
       rationale: clamping frees the left hand for the phone and keeps the pip readable
     - f: 30
       ref: kerb_crank_hold
@@ -150,6 +149,17 @@ props:
   - f: 0
     state: open_down
     note: the emptied glovebox sits dark far left of frame; it must not glow
+  charging_cable:
+  - f: 0
+    loc: hand_r
+    state: posed
+    note: right hand holds the cable plug; f8 lines it up with the port (port toward the near knee)
+    rationale: 'the cut hides the pick-up of the loose end (ASSUMPTION: it lay hidden by his left foot
+      through SC04_SH010-SH040)'
+  - f: 10
+    loc: crank_port
+    note: f10-11 small wrist push, plug into the crank port (event plug_in); short posed loop over the
+      left knee, 2 mm sway per turn from the builder, no simulation. Stays crank_port through SC06
 ui_timeline:
 - f: 5
   event: dip
@@ -280,7 +290,5 @@ notes:
 - preview_frame 46 (shot) is the designated still; f12 and f79 are the shot's pip-vs-near-knee check frames.
 - Ratchet clicks come only from the derived handle_top events (f56 here; phase continues into SC04_SH060
   f0).
-- 'Cable: short posed loop over the left knee, 2 mm sway per turn, keyed by the builder (no cable prop
-  in vocabulary v1). V2 PENDING (animation.vocab.v2.prop.charging_cable): props.charging_cable f0 loc
-  hand_r state posed, rationale "the cut hides the pick-up of the loose end"; f10 loc crank_port (event
-  plug_in).'
+- 'Cable: the charging_cable track (vocabulary v2); the 2 mm sway per turn is builder secondary motion,
+  not a key.'

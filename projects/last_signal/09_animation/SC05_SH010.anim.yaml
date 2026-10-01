@@ -24,10 +24,10 @@ fm:
   - intent.earned_last_signal
   summary: 'Hana''s phone on the desk: two dark frames, a 3-frame wake, his photo settles 96 -> 100 %
     f2-5, held still.'
-  stamped_content_hash: sha256:effb20845160e6824a1b5fd19a9890f2053bd3e595c568e873c4bd1755901fef
+  stamped_content_hash: sha256:1ea4ff83197d66b1b2c17796bd2d659232d19d192e15b6055b428ba2099eed97
 shot_id: SC05_SH010
 frames: 24
-vocab_version: 1
+vocab_version: 2
 rationale: The cut on light lands on dark glass and her screen wakes just after it, so the amber tick
   hands over to a new light being born. The only motion is the wake and a tiny settle of his photo; the
   phone does not buzz or move, because she notices the light, not a sound.

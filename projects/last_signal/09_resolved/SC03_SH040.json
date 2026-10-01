@@ -71,8 +71,8 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      0.9,
-      8.0,
+      2.5,
+      8.66,
       1.05
     ]
   },
@@ -256,11 +256,11 @@
           }
         }
       },
-      "facing": "south (screen left)",
+      "facing": "south (+y, screen left)",
       "id": "ren",
       "position": [
-        2.2,
-        8.0,
+        3.45,
+        8.66,
         0.0
       ]
     }
@@ -696,7 +696,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "Lateral from the east, in the back cross-aisle (behind the gondola ends): he faces screen left toward the socket and the fridges (camera.geography.sc03).",
+    "notes": "Lateral from the east at his eye level, in the back cross-aisle: he faces screen left toward the back wall and the socket corner (camera.geography.sc03); the display stand is beyond him at screen right. The westmost fridge stands 0.25 m east of him, so the lens sits inside its footprint and the fridge is wild for this shot (the builder drops a set piece whose box contains the lens). The lens is 0.95 m from his head (was 1.3 m): the frame is about 0.58 m tall at him, chest up, with the crown at the top edge.",
     "subject_position": "right_third_facing_left"
   },
   "environment": {
@@ -786,6 +786,7 @@
             "ref": "relief"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -808,6 +809,19 @@
             "f": 0,
             "f_abs": 690,
             "ref": "kneel_upright"
+          },
+          {
+            "blend_f": 10,
+            "ease": "ease_out",
+            "f": 4,
+            "f_abs": 694,
+            "ref": "kneel_head_back"
+          },
+          {
+            "ease": "hold",
+            "f": 14,
+            "f_abs": 704,
+            "ref": "kneel_head_back"
           }
         ]
       }
@@ -851,6 +865,25 @@
       14,
       21
     ],
+    "prop_info": {
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "phone_ren": [
         {
@@ -862,7 +895,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc03_sh040",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

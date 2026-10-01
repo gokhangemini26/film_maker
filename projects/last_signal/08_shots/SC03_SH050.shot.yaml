@@ -1,7 +1,7 @@
 shot_id: SC03_SH050
 scene_id: SC03
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 1.25
 serves:
 - intent.comic_then_tender
@@ -18,7 +18,7 @@ camera:
   height_m: 2.3
   movement: static
   start_position:
-  - 1.2
+  - 2.65
   - 0.3
   - 2.3
   end_position: null
@@ -28,7 +28,7 @@ camera:
 composition:
   framing: wide
   aspect_ratio: 1.778
-  subject_position: far_right
+  subject_position: centre_left
   notes: Identical to SC03_SH010 (camera.geography.sc03 master reused_for blackout). Lit for 8 frames,
     blackout on the clunk at frame 9 (one frame), 22 frames held in near-black. Widest frame of the film
     (camera.framing.shot_size_arc). He faces away from the lens, so the glow reads as a pool around him
@@ -36,10 +36,10 @@ composition:
 characters:
 - id: ren
   position:
-  - 2.2
-  - 8.0
+  - 3.45
+  - 8.66
   - 0.0
-  facing: south (away from camera)
+  facing: south (+y), his back to the lens
   action: kneels, frozen
 environment:
   location: corner shop (interior)
@@ -103,7 +103,10 @@ assets:
 rationale:
   camera: 'The unchanged master: the gag is the room, not a cut (camera.geography.sc03). The strongest
     high angle is spent on the bigger failure (camera.height.high). Rejected: a close-up on the blackout
-    (repeats the car, G2 finding 2).'
+    (repeats the car, G2 finding 2). The lens moved with SH010 to x 2.65 (still above the doorway) so
+    the two master frames stay identical and he is not hidden by the near gondola at the new kneel spot
+    (builder reach fix: at (3.45, 8.66) facing +y his right hand reaches the socket within 2 cm; the old
+    spot (2.2, 8.0) was about 2.05 m from the stand, reach error about 1.22 m).'
   composition: Nothing changes in the frame except the light, which is the joke; he stays small at the
     far end.
   lighting: All shop sources off in one frame on the clunk; no fill; the phone's glow is the only source
@@ -220,6 +223,10 @@ derived_from:
   hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:c3373f2053320994f6637889fd0ecf12f1d06f3b328b95c9b74755e594276a50
-stamp_note: Shot list changed only in other shots' rows (preview pass 1 camera fixes to SC01/SC03/SC04
-  inserts and SC04_SH030/050/090); this shot's camera was checked against the preview and needs no revision.
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+stamped_content_hash: sha256:6d33bc402d926df5233ad93a87333c57736ab06a62d818b2973238da758e2d69

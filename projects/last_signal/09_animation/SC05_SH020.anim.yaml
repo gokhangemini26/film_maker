@@ -36,10 +36,10 @@ fm:
   - intent.soft_but_cinematic
   summary: 'Eyes, head, hands: pencil stops f4 and is laid down, both hands slide the headphones to the
     neck f12-19, short reach, phone low in both hands by f30.'
-  stamped_content_hash: sha256:c9f225d98b141c23718ab92e707c7b11aa6b9842b4caacf18f128b9da4f47256
+  stamped_content_hash: sha256:96739267e57b45a074ccc549b005f3190d2a4ff2bc7d5d4e160f185dbe03bfe5
 shot_id: SC05_SH020
 frames: 32
-vocab_version: 1
+vocab_version: 2
 rationale: 'Four actions fit in 32 frames only as overlapping, economical moves in the canon''s order:
   eyes, head, hands (characters.hana.movement). Each begins before the last ends, so it reads as one calm
   gesture; the two-handed slide is smooth in its own 8 frames, curious rather than startled, and the reach

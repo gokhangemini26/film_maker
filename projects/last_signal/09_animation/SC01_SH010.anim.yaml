@@ -36,10 +36,10 @@ fm:
   - intent.anime_feel
   summary: 'Structured tracks for the vanity beat: mirror tilt, tuft press, let it be, eyes drop to the
     phone.'
-  stamped_content_hash: sha256:dc53fad91acabf7542a83ac6809873bf093bd979dd9027e87b81eb3f17064c6e
+  stamped_content_hash: sha256:b749f224559d8be2e0a06281e9c441772c9aea3445fb0df3349bf53f83b4108a
 shot_id: SC01_SH010
 frames: 40
-vocab_version: 1
+vocab_version: 2
 rationale: 'Quick bursts between short holds (characters.ren.movement before_turn): reach, tilt, a 4-frame
   check, press, spring, a 4-frame look, tilt back, settle. The two short holds are explicit so the builder
   cannot smooth them away; they are what makes the tuft beat his earnest nerves rather than a gag. The

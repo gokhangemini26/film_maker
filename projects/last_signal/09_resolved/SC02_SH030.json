@@ -493,6 +493,7 @@
             "ref": "neutral"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -587,6 +588,52 @@
       13,
       15
     ],
+    "prop_info": {
+      "passenger_door": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state",
+          "swing_deg"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      },
+      "shop_door": {
+        "before_first_key": {},
+        "chained_fields": [],
+        "fields": [
+          "state",
+          "swing_deg"
+        ],
+        "persistent": false
+      }
+    },
     "props": {
       "passenger_door": [
         {
@@ -614,12 +661,18 @@
           "f": 10,
           "f_abs": 570,
           "state": "open_70"
+        },
+        {
+          "ease": "ease_in",
+          "f": 14,
+          "f_abs": 574,
+          "state": "swing_back"
         }
       ]
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc02_sh030",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

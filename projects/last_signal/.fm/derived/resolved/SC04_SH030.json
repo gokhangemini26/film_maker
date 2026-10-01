@@ -1,9 +1,9 @@
 {
-  "content_hash": "sha256:c85c2fe49f155b45e3ed26fca508120af9dfc5168b5866416e0e2226b2308daf",
-  "created_at": "2026-09-30T16:15:27Z",
+  "content_hash": "sha256:0bf3735477851c030201c6ac6e1438d0d98ef2a6684c5a92c32cbda8e4213669",
+  "created_at": "2026-10-01T11:17:57Z",
   "derived_from": [
     {
-      "hash": "sha256:a42c1e24b9da249ae85f462ae0b57377457760b90cf707ba970235e5d6393ed5",
+      "hash": "sha256:3738966a71d6addff2427d0768c6510ab6ba3d9b11162fdaed991f0d00f24fbb",
       "ref": "artifact:anim_sc04_sh030"
     },
     {
@@ -41,6 +41,10 @@
     {
       "hash": "sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660",
       "ref": "canon:animation.vocab.v2.face.ren"
+    },
+    {
+      "hash": "sha256:cef88be8e44828b4e3ef9da072436c22ebe8c4798b74dac8d4eac9b689d9430a",
+      "ref": "canon:animation.vocab.v2.lids"
     },
     {
       "hash": "sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706",

@@ -283,6 +283,42 @@
       12,
       23
     ],
+    "prop_info": {
+      "hana_headphones": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state"
+        ],
+        "persistent": true
+      },
+      "phone_hana": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "hana_headphones": [
         {
@@ -301,7 +337,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc05_sh010",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

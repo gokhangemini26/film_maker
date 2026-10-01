@@ -40,10 +40,10 @@ fm:
   - intent.earned_last_signal
   summary: Two slow thumb presses, two stutters (screen dips f14-16 and f20-21), nothing typed, a quiet
     withdrawal.
-  stamped_content_hash: sha256:8176275c26f606e68e229d3c1c9ce3905e77cc8a9b4f17e65b32ab4a6201b828
+  stamped_content_hash: sha256:df20290707bdfffef814be53d6a06e84660e980c7a5174d817555b5009a4657d
 shot_id: SC04_SH020
 frames: 32
-vocab_version: 1
+vocab_version: 2
 rationale: 'The attempt is slow and the withdrawal quiet: two presses, two stutters, nothing typed, and
   the thumb goes back down without forcing it, the first sign that he no longer resets (characters.ren.movement).
   The dips are timed to the presses so the phone visibly cannot be used at 1 % (continuity.battery). The

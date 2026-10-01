@@ -38,10 +38,10 @@ fm:
   - intent.comic_then_tender
   summary: 'Structured tracks for the arrival: run toward the lens, bank to his left under the awning,
     through the shop door by f13; the chime on the cut frame f15.'
-  stamped_content_hash: sha256:c6d54d3ec79b3b2bcc0d98ddd19d234bc89688ca3de1566f4ea2f3a1693afed3
+  stamped_content_hash: sha256:d0a4e940d55739db52c3a4ccd317bd6cf6af6a88f9466ea2d1dee0c0c4097cbb
 shot_id: SC02_SH030
 frames: 16
-vocab_version: 1
+vocab_version: 2
 rationale: 'Brief hope in motion: he made it. The run banks rather than skids (the curve lives in the
   path, not in a skid pose), he is gone by f13 so the last frames are the empty swinging door, and the
   chime event sits on f15, the cut point and the scene''s full stop.'
@@ -54,8 +54,8 @@ characters:
       note: 'running toward the lens, left foot contact on f0, phone out ahead. f6 right foot plants and
         he starts to bank toward screen right (his left); f8 banked about 10 deg, head ducks under the
         awning; f10 right hand pushes the door; f11 ducking through; f13 last of him (heel, jacket hem)
-        through the door. No swerve, door-push or duck preset exists in vocabulary v1: the bank comes
-        from the path curvature and the rest is held on the run preset'
+        through the door. No swerve, door-push or duck preset exists in vocabulary v2 either: the bank
+        comes from the path curvature and the rest is held on the run preset'
       rationale: keeping the compass run through the swerve keeps it earnest (no near-miss, no wall bump)
     move:
       gait: run_phone_out
@@ -95,10 +95,14 @@ props:
     state: open_70
     ease: ease_out
     dur_f: 4
-    note: 'his right hand pushes it; swings in to about 70 deg over f10-13. The prose swing-back "from
-      f14 (continues after the cut)" is not expressible: a closed key at f14 would have to finish by f15
-      (a slam). Held at open_70 to the cut in v1. V2 PENDING (animation.vocab.v2.prop.shop_door): add
-      f14 state swing_back ease ease_in, no dur_f (the closer runs past the cut)'
+    note: his right hand pushes it; swings in to about 70 deg over f10-13
+  - f: 14
+    state: swing_back
+    ease: ease_in
+    note: the closer starts pulling the empty door back from f14; the decay continues after the cut (no
+      dur_f), so the last frame is mid-swing, never a slam
+    rationale: the empty, swinging door is the shot's last image and the chime on f15 is the full stop;
+      a closed key would finish by f15 as a slam, the loud gag tone.comedy_source rules out (animation.vocab.v2.prop.shop_door)
   passenger_door:
   - f: 0
     state: open_60
@@ -106,8 +110,8 @@ props:
   phone_ren:
   - f: 0
     attach: hand_l
-    note: phone out ahead in the left hand; cable loop swings wide on the turn (posed, no cable prop in
-      vocabulary v1)
+    note: phone out ahead in the left hand; cable loop swings wide on the turn (posed; charging_cable
+      stays hand_l_loop from SC02_SH010, no keys here)
 events:
 - f: 0
   id: step_l_1
@@ -139,7 +143,7 @@ preview_frames:
 notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
-- 'Secondary motion with no track in vocabulary v1: jacket hem swings out on the swerve; cable loop swings
+- 'Secondary motion with no track in the vocabulary: jacket hem swings out on the swerve; cable loop swings
   wide on the turn.'
 - 'Carried over from the shot notes: the swerve is to his left (screen right), per world.sets.street;
   the shot''s blocking rationale once said "his own right".'

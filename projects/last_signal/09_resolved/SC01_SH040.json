@@ -544,6 +544,7 @@
             "ref": "rehearsed_breath"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -654,6 +655,43 @@
       20,
       29
     ],
+    "prop_info": {
+      "glovebox_lid": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "bounce_f",
+          "state"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "glovebox_lid": [
         {
@@ -672,7 +710,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc01_sh040",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

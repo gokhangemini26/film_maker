@@ -34,10 +34,10 @@ fm:
   - intent.comic_then_tender
   summary: 'The rehearsed breath: in, 8-frame true hold with eyes shut, eyes snap open, tap, breath still
     held across the cut.'
-  stamped_content_hash: sha256:8f24457ddf950ca6d063d7453a1e15562055768990271b2463dbdcda3f2e2d2f
+  stamped_content_hash: sha256:25b07967c26ffda6960b4347fdedb3de9da11e4d8c14abd8038e4c7e28067e80
 shot_id: SC01_SH040
 frames: 30
-vocab_version: 1
+vocab_version: 2
 rationale: 'The rehearsed breath is a held pose, not a rubbery take (characters.ren.expressions comic_style
   held_pose_reactions): breath in f2-7, a true 8-frame hold f8-15, eyes open in one frame at f16, thumb
   down and tap f18-21. The breath is never let out here: the breath track holds from f8 to the last frame

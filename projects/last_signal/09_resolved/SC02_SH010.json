@@ -498,9 +498,10 @@
           {
             "f": 0,
             "f_abs": 528,
-            "ref": "neutral"
+            "ref": "determined"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -629,6 +630,65 @@
       12,
       17
     ],
+    "prop_info": {
+      "car_body": {
+        "before_first_key": {},
+        "chained_fields": [],
+        "fields": [
+          "state"
+        ],
+        "persistent": false
+      },
+      "charging_cable": {
+        "before_first_key": {
+          "loc": "glovebox",
+          "state": "hidden"
+        },
+        "chained_fields": [
+          "loc"
+        ],
+        "fields": [
+          "loc",
+          "state"
+        ],
+        "persistent": true
+      },
+      "passenger_door": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state",
+          "swing_deg"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "car_body": [
         {
@@ -641,6 +701,14 @@
           "f": 8,
           "f_abs": 536,
           "state": "still"
+        }
+      ],
+      "charging_cable": [
+        {
+          "f": 0,
+          "f_abs": 528,
+          "loc": "hand_l_loop",
+          "state": "posed"
         }
       ],
       "passenger_door": [
@@ -675,7 +743,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc02_sh010",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

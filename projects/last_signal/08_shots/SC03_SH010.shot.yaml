@@ -1,7 +1,7 @@
 shot_id: SC03_SH010
 scene_id: SC03
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 2.1667
 serves:
 - intent.comic_then_tender
@@ -20,7 +20,7 @@ camera:
   height_m: 2.3
   movement: static
   start_position:
-  - 1.2
+  - 2.65
   - 0.3
   - 2.3
   end_position: null
@@ -30,20 +30,24 @@ camera:
 composition:
   framing: wide
   aspect_ratio: 1.778
-  subject_position: centre_then_far_right
-  notes: 'Shop-local coords (x west, y depth south, z up). Master: on-axis high wide above the door, tilt
-    down about 11 deg (camera.geography.sc03). The kneeling figure at about 7.6 m is about 25-28 % of
-    frame height. Three layers: counter and near gondola ends / aisle and figure / fridges and back wall.
-    Pastel packets, no readable labels.'
+  subject_position: bottom_then_centre_left
+  notes: 'Shop-local coords (origin at the front-left corner as you enter, door centre x 2.25; x west,
+    y depth south, z up). Master: high wide from above the west end of the doorway (lens x 2.65, inside
+    the 1.75-2.75 opening), down the west aisle (x 2.86-4.15) to the socket corner, tilt down about 12
+    deg (camera.geography.sc03). He ends kneeling at (3.45, 8.66) facing the back wall, in the 0.55 m
+    gap between the westmost fridge (x <= 3.2) and the display stand (x 3.75-4.35): about 8.5 m from the
+    lens, about 24 % of frame height crown to knee (computed), centre-left with the stand just right of
+    him. Three layers: counter and near gondola ends / west aisle and figure / fridges, stand and back
+    wall. Pastel packets, no readable labels.'
 characters:
 - id: ren
   position:
-  - 2.2
-  - 8.0
+  - 3.45
+  - 8.66
   - 0.0
-  facing: south (away from camera)
-  action: enters under the camera, scans, hurries down the west aisle, drops to his knees by the display
-    stand
+  facing: south (+y), his back to the lens
+  action: enters under the camera, scans, hurries down the west aisle, drops to his knees between the
+    westmost fridge and the display stand
 environment:
   location: corner shop (interior)
   weather: clear
@@ -122,17 +126,27 @@ assets:
 rationale:
   camera: '35 mm high wide (lens 2.3 m, tilt 11 deg): the strongest high angle in the film is set up here
     and paid off unchanged at the blackout (camera.height.high SC03_aisle_wide_strong). Rejected: an eye-level
-    entry (the room would not dominate him).'
+    entry (the room would not dominate him). Lens moved 1.45 m west (x 1.2 to 2.65, still above the doorway)
+    when his kneel moved to the stand (builder reach fix: at (3.45, 8.66) facing +y his right hand reaches
+    the socket within 2 cm; the old spot (2.2, 8.0) was about 2.05 m from the stand, reach error about
+    1.22 m): from x 1.2 the near gondola hides him completely at the new spot; from x 2.65 his shoulder
+    line clears the gondola end by about 0.25 m and the whole run down the west aisle stays in view. Height,
+    lens, look_at and tilt are unchanged in kind. Rejected: a lens on the west aisle centre (x 3.45),
+    which leaves the doorway the master is defined by, and keeping x 1.2 (he would vanish behind the gondola).'
   composition: 'Symmetric aisle frame with the ordered shelves pressing in (look.style.composition comic).
-    He travels from the frame bottom to the far right corner, so the room''s depth is the distance he
-    spent. Rejected: a lateral entry (loses the aisle''s depth).'
+    He travels from the frame bottom to the far corner, ending centre-left beside the stand, so the room''s
+    depth is the distance he spent. Rejected: a lateral entry (loses the aisle''s depth).'
   lighting: 'Soft, near-shadowless panels, fridges glowing on the back wall: comic order (look.lighting.sc03
     lit state).'
   movement: 'Static: he crosses the room; the camera stays put so the same frame can be reused. Rejected:
     a follow-pan (the blackout frame would no longer match).'
   color: 'Cool, bright shop palette (look.color.shop) after the gold street: we are inside.'
-  blocking: He ends kneeling at the west end of the back cross-aisle, facing the back wall, beside the
-    stand; the socket is behind the stand (world.sets.corner_shop).
+  blocking: 'He ends kneeling at (3.45, 8.66) at the west end of the back cross-aisle, facing the back
+    wall (+y), in the gap between the westmost fridge and the stand, the stand on his right; the socket
+    is behind the stand, inside his right hand''s reach (builder reach fix: at (3.45, 8.66) facing +y
+    his right hand reaches the socket within 2 cm; the old spot (2.2, 8.0) was about 2.05 m from the stand,
+    reach error about 1.22 m; world.sets.corner_shop). Rejected: the old spot (2.2, 8.0), where he could
+    not reach it.'
   animation: 'Comic urgency in an orderly room: he scans with head snaps while still moving, which keeps
     his burst-and-hold rhythm readable at 25 % of frame height without stopping, then commits to the aisle
     and drops to his knees in one move (characters.ren.movement). The run keeps the SC02 pace so the shop
@@ -241,6 +255,10 @@ derived_from:
   hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:973dab1732fa017ec1689768b6d6768d2b3ef90afb8267a4d20293b388cb70d2
-stamp_note: Shot list changed only in other shots' rows (preview pass 1 camera fixes to SC01/SC03/SC04
-  inserts and SC04_SH030/050/090); this shot's camera was checked against the preview and needs no revision.
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+stamped_content_hash: sha256:b3cf9247ac6dadd65ad67e388e53e984521f849267f6f42a021cdaace83291cd

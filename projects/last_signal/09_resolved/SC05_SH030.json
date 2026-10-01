@@ -512,20 +512,32 @@
             "ref": "small_smile"
           }
         ],
+        "lids": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 1306,
+            "ref": "open"
+          },
+          {
+            "dur_f": 2,
+            "ease": "ease_in",
+            "f": 36,
+            "f_abs": 1342,
+            "ref": "closed"
+          },
+          {
+            "dur_f": 3,
+            "ease": "ease_out",
+            "f": 39,
+            "f_abs": 1345,
+            "ref": "open"
+          }
+        ],
         "look": [
           {
             "f": 0,
             "f_abs": 1306,
-            "target": "phone"
-          },
-          {
-            "f": 36,
-            "f_abs": 1342,
-            "target": "closed"
-          },
-          {
-            "f": 42,
-            "f_abs": 1348,
             "target": "phone"
           }
         ],
@@ -598,6 +610,42 @@
       38,
       51
     ],
+    "prop_info": {
+      "hana_headphones": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state"
+        ],
+        "persistent": true
+      },
+      "phone_hana": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "hana_headphones": [
         {
@@ -616,7 +664,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc05_sh030",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

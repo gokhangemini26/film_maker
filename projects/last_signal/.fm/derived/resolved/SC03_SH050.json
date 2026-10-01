@@ -1,9 +1,9 @@
 {
-  "content_hash": "sha256:6dd764654ee9a03a0f9d727d3c29ee43c5f6bf903b03bfda482cb507f66cf22c",
-  "created_at": "2026-09-30T16:15:23Z",
+  "content_hash": "sha256:b338b27e99e0ef509dbe21c2f68278e44e4eca1fd56ce9b6796fabe520f445fa",
+  "created_at": "2026-10-01T11:30:50Z",
   "derived_from": [
     {
-      "hash": "sha256:073ab9c81b6d5b299b25613fc427efab62f54dea879165cb5eca0ed26d249ed7",
+      "hash": "sha256:f8e2963a1fd179b7450454d41d694a789807558e6b046d048ab24e89b9d73223",
       "ref": "artifact:anim_sc03_sh050"
     },
     {
@@ -235,7 +235,7 @@
       "ref": "canon:world.sets.corner_shop"
     },
     {
-      "hash": "sha256:c3373f2053320994f6637889fd0ecf12f1d06f3b328b95c9b74755e594276a50",
+      "hash": "sha256:6d33bc402d926df5233ad93a87333c57736ab06a62d818b2973238da758e2d69",
       "ref": "shot:SC03_SH050"
     }
   ],

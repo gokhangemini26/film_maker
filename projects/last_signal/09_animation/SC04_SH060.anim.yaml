@@ -49,10 +49,10 @@ fm:
   - intent.earned_last_signal
   summary: One thumb finishes 'My treat.', adds the heart, looks at it 12 f, drifts to backspace, hovers
     14 f, deletes it; ratchet heard at f0/24/48.
-  stamped_content_hash: sha256:c0a17687a9506c676fe1302fd68d3c5fd232e0ebc2274269b2ef53e69161fe6d
+  stamped_content_hash: sha256:10e5fd013ae8af51fb14173396a7eff243f4b5e90c9f4428567a2de030384642
 shot_id: SC04_SH060
 frames: 68
-vocab_version: 1
+vocab_version: 2
 rationale: 'The most tender beat is carried by one thumb because his face is not in the shot: the canon''s
   hesitation at the heart becomes a thumb that stops and looks (12 f), drifts to delete and hovers perfectly
   still (14 f) before it presses (characters.ren.expressions hesitation_at_heart). Words arrive by a slow
@@ -64,11 +64,10 @@ characters:
     - f: 0
       ref: kerb_crank_hold
       ease: hold
-      note: 'off frame (insert): clamped-high cranking base: crank lying across between the tops of his
-        knees (top face ~z 0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left
-        hand ~z 0.76 over the near knee beside the port end. kerb_crank_hold in v1 reads "crank in the
-        lap in both hands"; V2 PENDING (animation.vocab.v2.pose.ren) redefines it as exactly this clamped
-        base (left hand driven by crank_charger loc lap), no key change; right hand keeps cranking'
+      note: 'off frame (insert): clamped-high cranking base (v2 kerb_crank_hold, left hand driven by crank_charger
+        loc lap): crank lying across between the tops of his knees (top face ~z 0.66, tipped ~30 deg to
+        the lens, pip above the near knee), phone in the left hand ~z 0.76 over the near knee beside the
+        port end; right hand keeps cranking'
     move:
       gait: crank_turn
       first_top_f: 0

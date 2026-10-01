@@ -44,10 +44,10 @@ fm:
   - intent.race_against_battery
   summary: 'Relief: he sinks back with eyes closed f1-12; the car sighs, shudders and stalls at f32 (dash
     off, bolt off, dip starts) while he never sees it.'
-  stamped_content_hash: sha256:a1e5c0faab7ad72eafd188d732e5a442d3b8a80374cb972db286a3ccd8a0568c
+  stamped_content_hash: sha256:243861eae4be628218e260e49d9d59bd6f4e6c7405b2cef8dbdd281f81c44e45
 shot_id: SC01_SH130
 frames: 34
-vocab_version: 1
+vocab_version: 2
 rationale: 'The relief is the first slow, unhurried move of the film (12-frame ease_in_out recline, a
   17-frame long out-breath), so it feels earned for a moment. He is passive from f12: eyes closed through
   the sigh, shudder and stall, so the audience sees the death before he does (tone.comedy_source). The

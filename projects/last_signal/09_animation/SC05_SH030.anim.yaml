@@ -40,10 +40,10 @@ fm:
   - intent.soft_but_cinematic
   summary: She reads; the small smile arrives as one wave (lids f14, corners f16, head dip f18, shoulders
     f20), lands f22 and is held 30 frames with one blink and one breath.
-  stamped_content_hash: sha256:9422ee5d99b1a5073ffd66d94ae4d3aa3fdf81244f485d7d643373a2a7102bf5
+  stamped_content_hash: sha256:363ebe9df82fe66520bf5919b6aab11f6aa3b3601ee001e9482d9d1b0bbde6b2
 shot_id: SC05_SH030
 frames: 52
-vocab_version: 1
+vocab_version: 2
 rationale: 'The film''s only answer, built as characters.hana.expressions describes it: eyes finish reading,
   then lids lift, corners rise with lips closed, head dips and shoulders settle, each a few frames after
   the last, so the smile lands at f22 as one soft wave and is held 30 frames without growing. She never
@@ -72,14 +72,23 @@ characters:
     - f: 0
       target: phone
       note: down on the phone to the cut; the three reading steps are eye offsets on the same target
+    lids:
+    - f: 0
+      ref: open
+      ease: hold
+      note: lids at small_smile's own (lifted) openness
     - f: 36
-      target: closed
-      note: 'one soft blink f36-41; lids return to their lifted smile shape. v1 stand-in (look closed
-        is a binary switch); V2 PENDING (animation.vocab.v2.lids): drop this key and the f42 phone key;
-        lids f0 open hold, f36 closed ease_in dur_f 2, f39 open ease_out dur_f 3 (lids multiply small_smile''s
-        openness)'
-    - f: 42
-      target: phone
+      ref: closed
+      ease: ease_in
+      dur_f: 2
+      note: one soft blink f36-41; the gaze stays on the phone
+      rationale: a lids key multiplies small_smile's openness, so the blink keeps her lifted lower lids
+        and the held smile (the face hold f22-51) is untouched
+    - f: 39
+      ref: open
+      ease: ease_out
+      dur_f: 3
+      note: lids return to their lifted smile shape by f41
     breath:
     - f: 20
       ref: out_slow

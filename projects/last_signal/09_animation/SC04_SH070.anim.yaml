@@ -43,10 +43,10 @@ fm:
   - intent.earned_last_signal
   - intent.race_against_battery
   summary: 'Battery insert: 1 % to 2 % in one frame at f2, blink stops, held 24 f; ratchet top at f4.'
-  stamped_content_hash: sha256:0d7fb1fb4d41594d2f01085a899116f5a29bb0337a74816ca18d8263165ef8b6
+  stamped_content_hash: sha256:0d317f2d30f472f02c8f1b12698dd4b421f64acc04d5b2d2b84d3af5dd445db5
 shot_id: SC04_SH070
 frames: 26
-vocab_version: 1
+vocab_version: 2
 rationale: The first gain changes as quietly as every loss did, in one frame, so the audience does the
   celebrating; the icon stops blinking with it and the ratchet (derived handle_top at f4) keeps time underneath,
   so the gain is caused by his hand. Nothing in the frame moves except the digit.
@@ -56,11 +56,10 @@ characters:
     - f: 0
       ref: kerb_crank_hold
       ease: hold
-      note: 'off frame (insert): clamped-high cranking base: crank lying across between the tops of his
-        knees (top face ~z 0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left
-        hand ~z 0.76 over the near knee beside the port end. kerb_crank_hold in v1 reads "crank in the
-        lap in both hands"; V2 PENDING (animation.vocab.v2.pose.ren) redefines it as exactly this clamped
-        base (left hand driven by crank_charger loc lap), no key change; right hand keeps cranking'
+      note: 'off frame (insert): clamped-high cranking base (v2 kerb_crank_hold, left hand driven by crank_charger
+        loc lap): crank lying across between the tops of his knees (top face ~z 0.66, tipped ~30 deg to
+        the lens, pip above the near knee), phone in the left hand ~z 0.76 over the near knee beside the
+        port end; right hand keeps cranking'
     move:
       gait: crank_turn
       first_top_f: 4

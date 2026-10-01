@@ -29,10 +29,10 @@ fm:
   - intent.race_against_battery
   summary: 'Map insert: the pin is still from the first frame; thumb parked at the edge; nothing else
     moves.'
-  stamped_content_hash: sha256:c8c08db05380edb1cf96a13ac75368d60bd5ab9d9d32afd6877181fbbd18f573
+  stamped_content_hash: sha256:165676c4f0dbd2eca2c9462560b1d3bcc3678c36b8710c95d672b6ef2a137869
 shot_id: SC01_SH020
 frames: 38
-vocab_version: 1
+vocab_version: 2
 rationale: 'An insert reads fastest when one thing matters: the phone and the pin hold still for all 38
   frames (minimum 36) and the only motion is a 1 mm thumb settle in the first 4 frames. The screen is
   the static map from the canon table (map, 5 %, charcoal), so no ui_timeline event is needed.'

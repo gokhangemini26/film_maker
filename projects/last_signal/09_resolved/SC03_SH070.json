@@ -74,8 +74,8 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      2.25,
-      8.9,
+      3.75,
+      9.55,
       1.05
     ]
   },
@@ -259,11 +259,11 @@
           }
         }
       },
-      "facing": "south toward camera",
+      "facing": "south (+y), toward the back wall and the lens",
       "id": "ren",
       "position": [
-        2.2,
-        8.0,
+        3.45,
+        8.66,
         0.0
       ]
     }
@@ -416,7 +416,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "Reverse from the back wall (wild fridge; camera.geography.sc03), looking north. FG: phone and hands at the frame bottom (source in frame, camera.phone_lit.framing); MG: his lit face, centred; BG: the dark aisle and the small warm door rectangle above his shoulder. 48 frames: the longest comic hold (2.0 s minimum). Hard cut to the dusk kerb.",
+    "notes": "Reverse from behind the back wall, looking north up the west aisle (camera.geography.sc03). The back wall is wild for this shot: the lens is about 0.5 m outside the wall plane (wall y 8.95-9.05). DEPENDENCY for the builder: the preview only drops set pieces whose box contains the lens, so shop_wall_back must be hidden for this shot. Lens 0.3 m west of his axis (about 20 deg off his facing, on his right, within the 45 deg lit side). FG: phone and hands at the frame bottom (source in frame, camera.phone_lit.framing); MG: his lit face, centred; BG: the dark west aisle and the west strip of the warm door rectangle above his right shoulder, about a quarter of frame width left of his face (computed), the dark stand flanking frame left and the westmost fridge's flank at frame right. 48 frames: the longest comic hold (2.0 s minimum). Hard cut to the dusk kerb.",
     "subject_position": "centre"
   },
   "environment": {
@@ -506,20 +506,32 @@
             "ref": "stunned_stillness"
           }
         ],
+        "lids": [
+          {
+            "ease": "hold",
+            "f": 0,
+            "f_abs": 768,
+            "ref": "open"
+          },
+          {
+            "dur_f": 4,
+            "ease": "ease_in",
+            "f": 28,
+            "f_abs": 796,
+            "ref": "closed"
+          },
+          {
+            "dur_f": 6,
+            "ease": "ease_out",
+            "f": 34,
+            "f_abs": 802,
+            "ref": "open"
+          }
+        ],
         "look": [
           {
             "f": 0,
             "f_abs": 768,
-            "target": "phone"
-          },
-          {
-            "f": 28,
-            "f_abs": 796,
-            "target": "closed"
-          },
-          {
-            "f": 34,
-            "f_abs": 802,
             "target": "phone"
           }
         ],
@@ -575,6 +587,25 @@
       36,
       47
     ],
+    "prop_info": {
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "phone_ren": [
         {
@@ -586,7 +617,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc03_sh070",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

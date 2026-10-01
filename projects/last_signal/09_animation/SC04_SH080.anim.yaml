@@ -47,10 +47,10 @@ fm:
   - intent.open_hopeful_ending
   summary: 'Send: thumb rests, presses f6, leaves; bubble rises f7-10, amber line fills f8-32, empty beat
     f33, tick whole at f34, held 24 f; ratchet at f2/26/50.'
-  stamped_content_hash: sha256:13046caeebcc21653c624f79d2db6c95f8f686bca7bbbdee6abd9d966e9227f2
+  stamped_content_hash: sha256:52454eaba2942493b5ba7916834cfc2cd80916399cc6b28817fa15a6ae39d80e
 shot_id: SC04_SH080
 frames: 58
-vocab_version: 1
+vocab_version: 2
 rationale: 'A small earned triumph held quietly: the thumb rests, presses once and leaves, so nothing
   covers the tick (camera.inserts.legibility). The line fills evenly (a stall would be a gag after the
   turn, tone.the_turn), the tick appears whole after one empty beat and is held without a pop, and the
@@ -61,11 +61,10 @@ characters:
     - f: 0
       ref: kerb_crank_hold
       ease: hold
-      note: 'off frame (insert): clamped-high cranking base: crank lying across between the tops of his
-        knees (top face ~z 0.66, tipped ~30 deg to the lens, pip above the near knee), phone in the left
-        hand ~z 0.76 over the near knee beside the port end. kerb_crank_hold in v1 reads "crank in the
-        lap in both hands"; V2 PENDING (animation.vocab.v2.pose.ren) redefines it as exactly this clamped
-        base (left hand driven by crank_charger loc lap), no key change; right hand keeps cranking'
+      note: 'off frame (insert): clamped-high cranking base (v2 kerb_crank_hold, left hand driven by crank_charger
+        loc lap): crank lying across between the tops of his knees (top face ~z 0.66, tipped ~30 deg to
+        the lens, pip above the near knee), phone in the left hand ~z 0.76 over the near knee beside the
+        port end; right hand keeps cranking'
     move:
       gait: crank_turn
       first_top_f: 2

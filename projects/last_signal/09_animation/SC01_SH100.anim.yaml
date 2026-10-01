@@ -35,16 +35,22 @@ fm:
     hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
   - ref: canon:world.sets.ren_car
     hash: sha256:238ade8c11d56ccb22e595cd9e42829e593e23808c6d83fbff3d5e00f541cb99
+  - ref: canon:animation.vocab.v2.prop.charging_cable
+    hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+  - ref: canon:animation.vocab.v2.prop_state.hidden
+    hash: sha256:4fb40b00cebe7f4048846db48534de0f4a724989e10aa57e3386de5728d2dec2
+  - ref: canon:continuity.props.cable
+    hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
   serves:
   - intent.earned_last_signal
   - intent.comic_then_tender
   - intent.race_against_battery
   summary: Key, cough, catch, lean, lid drops; the crank tips onto his reaching forearm, rides it as he
     snaps upright, rolls onto his lap with the clunk; he freezes and looks.
-  stamped_content_hash: sha256:b8a19e961e0c344260993d858c09abe58c165377e0304df7c945a8ea33eb1fa7
+  stamped_content_hash: sha256:3e727eb2f3081bbe006b7aced60fd2c34196f5f84e7ec651b5ee7f4f76204931
 shot_id: SC01_SH100
 frames: 48
-vocab_version: 1
+vocab_version: 2
 rationale: 'Brisk comic busyness in bursts: key, cough, catch, lean, drop. He lets the lid fall by itself
   (hurry; the lowered lid is saved for SC04). Revised crank beat from the previous animation pass: from
   the 0.75 m reach his forearm is under the glovebox mouth, so the crank tips onto it at f25 and rides
@@ -182,6 +188,17 @@ props:
   - f: 0
     state: closed
     note: wild for the camera; state stays closed for continuity
+  charging_cable:
+  - f: 0
+    loc: glovebox
+    state: hidden
+    note: in the closed glovebox with the crank and napkins; not drawn while the lid is shut
+    rationale: start of the cable chain (animation.vocab.v2.prop.charging_cable chain_by_shot SC01_SH100;
+      before_first_key glovebox hidden)
+  - f: 23
+    state: posed
+    note: the lid drops open at f23 and the cable shows with the napkins; source end stays in the glovebox
+      (continues glovebox posed into SC01_SH110 f0)
 holds:
 - f0: 31
   f1: 47
@@ -257,6 +274,7 @@ notes:
   at G7 or the shot prose revised by the cinematographer/animation pass.'
 - 'Secondary without tracks: jacket hem swings with the lean (skinning only); tuft lags the lean by 1
   frame (no tuft track).'
-- charging_cable stays posed in the glovebox (no cable prop in vocabulary v1).
+- 'Cable (vocabulary v2, animation.vocab.v2.prop.charging_cable): hidden in the closed glovebox, posed
+  from f23 when the lid drops; a posed curve, no simulation.'
 - M3 risk kept from the shot - crank motion is keyed on the arm, not a rigid-body simulation; proxy reach
   0.75 m needs the torso lean.

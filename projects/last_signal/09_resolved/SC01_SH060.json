@@ -548,9 +548,10 @@
           {
             "f": 18,
             "f_abs": 198,
-            "ref": "neutral"
+            "ref": "determined"
           }
         ],
+        "lids": [],
         "look": [
           {
             "f": 0,
@@ -678,6 +679,43 @@
       25,
       33
     ],
+    "prop_info": {
+      "passenger_door": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "state",
+          "swing_deg"
+        ],
+        "persistent": true
+      },
+      "phone_ren": {
+        "before_first_key": {},
+        "chained_fields": [
+          "state",
+          "loc",
+          "arm",
+          "attach",
+          "pip",
+          "tilt_deg",
+          "swing_deg",
+          "bounce_f"
+        ],
+        "fields": [
+          "attach"
+        ],
+        "persistent": true
+      }
+    },
     "props": {
       "passenger_door": [
         {
@@ -701,7 +739,7 @@
     },
     "schema": "fm.motion/1",
     "source": "artifact:anim_sc01_sh060",
-    "vocab_version": 1
+    "vocab_version": 2
   },
   "provenance": {
     "canon": [

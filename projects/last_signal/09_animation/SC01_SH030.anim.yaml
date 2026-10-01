@@ -33,10 +33,10 @@ fm:
   - intent.race_against_battery
   summary: 'Swipe insert: right thumb swipes right to left f1-6, her call screen slides in f1-7, photo
     held clean f8-27.'
-  stamped_content_hash: sha256:df664b64ea7b894cdfc4abfd01282c3d9d17b388b914591b0d0146dab50dcf3d
+  stamped_content_hash: sha256:141491680d97201cdb3895f423b627f3bb6cdfcb0f4dac0d44192d2dc3cf22b8
 shot_id: SC01_SH030
 frames: 28
-vocab_version: 1
+vocab_version: 2
 rationale: 'The swipe runs right to left, the film''s direction of effort (camera.geography.screen_direction),
   as one quick burst in his comic tempo; the thumb is gone by f8 so her photo holds clean for 20 frames
   and the flutter lands on her. The UI change is one slide event (ease-out, no overshoot): the phone talks

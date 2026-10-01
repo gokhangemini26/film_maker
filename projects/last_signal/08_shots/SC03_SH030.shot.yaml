@@ -1,7 +1,7 @@
 shot_id: SC03_SH030
 scene_id: SC03
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 1.0833
 serves:
 - intent.comic_then_tender
@@ -16,8 +16,8 @@ camera:
   height_m: 0.85
   movement: static
   start_position:
-  - 1.7
-  - 8.7
+  - 3.85
+  - 9.4
   - 0.85
   end_position: null
   look_at: ceiling_panels
@@ -27,16 +27,21 @@ composition:
   framing: medium_close
   aspect_ratio: 1.778
   subject_position: lower_right
-  notes: 'From the back wall (fridge wild), looking north and tilted up 8 deg. Mild low: lens 0.20 m under
-    his kneeling eye (camera.height.low, SC03 wary check). Panels in the upper third over the aisle toward
-    the door.'
+  notes: 'From behind the back wall, looking north up the west aisle toward the ceiling panels. The back
+    wall is wild for this shot (camera.geography.sc03 reverse wild_piece): the lens is about 0.35 m outside
+    the wall plane (wall y 8.95-9.05). DEPENDENCY for the builder: the preview only drops set pieces whose
+    box contains the lens, so shop_wall_back must be hidden for this shot. Mild low: lens 0.20 m under
+    his kneeling eye (camera.height.low, SC03 wary check). Computed frame: his face low right (about x
+    0.64, y 0.58), the stand a foreground block at frame left, the westmost fridge''s flank at frame right,
+    three panels receding up the middle toward the door. Tilt up is about 20 deg (look_at ceiling_panels),
+    see rationale.camera.'
 characters:
 - id: ren
   position:
-  - 2.2
-  - 8.0
+  - 3.45
+  - 8.66
   - 0.0
-  facing: south toward camera, eyes up
+  facing: south (+y), toward the back wall and the lens, eyes up
   action: freezes, eyes up at the panels, then slowly lowers them
 environment:
   location: corner shop (interior)
@@ -99,12 +104,20 @@ assets:
 - world.props.phone_ren
 - world.props.charging_cable
 rationale:
-  camera: '24 mm mild low within the comic-reset limits (0.2 m under his eye, tilt 8 deg): the only way
-    to put his face and the ceiling in one frame, and the lens that lets the panels loom (camera.lens.roles:
-    shop low angle to the ceiling). Rejected: a cutaway of the panels alone (a sky-like cutaway of a light
-    fixture; he must be the one waiting).'
-  composition: 'His face low right, the lit panels in the upper frame: the threat is where he looks. Rejected:
-    framing him centred (would read as the failure frame before the failure).'
+  camera: '24 mm mild low, lens 0.2 m under his eye: the only way to put his face and the ceiling in one
+    frame, and the lens that lets the panels loom (camera.lens.roles: shop low angle to the ceiling).
+    Moved with him to the stand (builder reach fix: at (3.45, 8.66) facing +y his right hand reaches the
+    socket within 2 cm; the old spot (2.2, 8.0) was about 2.05 m from the stand, reach error about 1.22
+    m): he now kneels 0.23 m from the back wall, so the lens has to sit behind the wall plane with the
+    wall wild; it is 0.3 m west of him so the near panels clear the westmost fridge. FACT (computed):
+    aiming at ceiling_panels gives about 20 deg of tilt up, above the 8 deg comic-reset limit in camera.height.low;
+    the approved version computed to about 24 deg, so this was already the case and is flagged for the
+    human, not changed here. Rejected: a cutaway of the panels alone (a sky-like cutaway of a light fixture;
+    he must be the one waiting), and a lens inside the wall slab (0.3 m from his face: the panels leave
+    the frame).'
+  composition: 'His face low right, the lit panels in the upper middle: the threat is where he looks;
+    the stand he plugged into is a dark foreground block at frame left. Rejected: framing him centred
+    (would read as the failure frame before the failure).'
   lighting: 'Panels steady and bright: ''nothing happens'' is a lighting non-event.'
   movement: 'Static: the delay only works in a still frame.'
   color: Cool panels above, warm skin below.
@@ -211,6 +224,10 @@ derived_from:
   hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:4e8d8794bce81a3e44a3b60b5e5e677f726f94660ecd5da0c72213b34faf6495
-stamp_note: Shot list changed only in other shots' rows (preview pass 1 camera fixes to SC01/SC03/SC04
-  inserts and SC04_SH030/050/090); this shot's camera was checked against the preview and needs no revision.
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+stamped_content_hash: sha256:d1561f8bdeadad2d570fde17acecdc7c4b9a6e7feb9d54c9e3c6ece5edb27b20

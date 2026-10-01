@@ -44,10 +44,10 @@ fm:
   - intent.comic_then_tender
   summary: 'Structured tracks for the plug-in: reach behind the stand, a short fumble, plug in at f12,
     bolt at f14, eyes to the phone at f15; phone locked still f10-35 so the bolt reads; no relief.'
-  stamped_content_hash: sha256:2555bce8650e03ef9f1fd8904ca96abba29cfb551ff4ed05f3a5e9f7c1ee11cd
+  stamped_content_hash: sha256:e9c1d18060a9d4214b8cfa80bfc1922d846898192cea656f81fd2914d59f52c6
 shot_id: SC03_SH020
 frames: 36
-vocab_version: 1
+vocab_version: 2
 rationale: 'Hope again, a notch warier: he only watches the bolt, no relief (camera.gags.no_repeat, G3
   finding 7). The phone is locked still from f10 so the small bolt reads over his shoulder at f14 and
   holds 22 frames; the bolt itself comes from the canon screen table (SC03_SH020 bolt f14), the anim file
@@ -58,21 +58,35 @@ characters:
     - f: 0
       ref: kneel_upright
       ease: hold
-      note: 'kneeling, phone in the left hand near his chest (large in the foreground). The right-arm
-        action has no preset in vocabulary v1: f0 right hand with the cable plug moves toward the back
-        of the stand; f6 arm behind the stand to the elbow, shoulder dips, head tilts to look past it;
-        f8-11 short fumble (two small forearm adjustments, hand hidden); f12-13 plug goes in, shoulder
-        pushes forward 1 cm; f16-26 arm withdraws slowly (ease-in-out). Held on kneel_upright with the
-        beats named as events in v1. V2 PENDING (animation.vocab.v2.pose.ren): f0 kneel_upright hold;
-        f1 kneel_reach_stand ease_out blend_f 5; f16 kneel_upright ease_in_out blend_f 10; f26 kneel_upright
-        hold (the left hand and phone are identical in both presets, so the f10-35 phone hold stands)'
-      rationale: the body stays kneeling and the phone arm still; the busy part is the hidden right hand
+      note: kneeling, phone in the left hand near his chest (large in the foreground); f0 right hand with
+        the cable plug starts toward the back of the stand
+    - f: 1
+      ref: kneel_reach_stand
+      ease: ease_out
+      blend_f: 5
+      note: arm behind the stand to the elbow by f6, shoulder dips, head tilts to look past the stand
+        edge; f8-11 short fumble (two small forearm adjustments, hand hidden; events, no pose change);
+        f12-13 plug goes in, shoulder pushes forward 1 cm
+      rationale: the fumble behind the stand is the action that turns hope into a plug-in; the left hand
+        and phone are identical to kneel_upright, so the f10-35 phone hold stands
+    - f: 16
+      ref: kneel_upright
+      ease: ease_in_out
+      blend_f: 10
+      note: arm withdraws slowly from behind the stand, f16-26
+    - f: 26
+      ref: kneel_upright
+      ease: hold
+      note: still to the cut; he only watches the bolt
+      rationale: the body stays kneeling and the phone arm still; the busy part was the hidden right hand
     face:
     - f: 0
-      ref: neutral
-      note: 'wary: brows level, mouth pressed; no relief expression in this shot. neutral (level brows,
-        closed mouth) is the v1 stand-in and keeps relief out; V2 PENDING (animation.vocab.v2.face.ren):
-        ref wary'
+      ref: wary
+      note: 'wary: brows level and slightly lowered, mouth pressed; no relief expression in this shot.
+        DEPENDENCY: wary is a v2 comic-set face (animation.vocab.v2.face.ren); characters.ren.expressions
+        is LOCKED and does not list it, so this key stands only after a human ruling or a character change
+        request'
+      rationale: wary keeps the half of the gag where he expects the catch (G3 finding 7)
     look:
     - f: 0
       target: socket
@@ -90,10 +104,19 @@ props:
   phone_ren:
   - f: 0
     attach: hand_l
-    note: 'left hand near the chest; cable from the phone over his knee to behind the stand, a short posed
-      length, hooked to the right hand while plugging (continuity.props.cable; no cable prop in vocabulary
-      v1). V2 PENDING (animation.vocab.v2.prop.charging_cable): props.charging_cable f0 loc hand_r state
-      posed; f12 loc shop_socket (event plug_in)'
+    note: left hand near the chest
+  charging_cable:
+  - f: 0
+    loc: hand_r
+    state: posed
+    note: cable from the phone over his knee to behind the stand, a short posed length, plug end in the
+      right hand
+    rationale: he took the plug from the loop in his left hand as he dropped to the kneel at the end of
+      SC03_SH010 (animation.vocab.v2.prop.charging_cable chain); the cut hides the hand-over
+  - f: 12
+    loc: shop_socket
+    note: plug goes in behind the stand (event plug_in); stays plugged to the end of SC03, through the
+      blackout
 holds:
 - f0: 10
   f1: 35
@@ -140,3 +163,7 @@ notes:
   ui_timeline events are needed; the bolt has no ui event type and the table already carries it.'
 - 'DEPENDENCY carried from the shot: the bolt glyph must be about 4.4 mm tall on the phone model to reach
   3 % of frame height here; check at preview.'
+- 'DEPENDENCY (human ruling needed): the face ref wary is a v2 addition to Ren''s comic set (animation.vocab.v2.face.ren).
+  characters.ren.expressions is LOCKED and does not list it; the key stands only if the human rules that
+  animation faces may refine a listed expression, or approves a character-designer change request. Fallback
+  if refused: neutral (the v1 stand-in).'

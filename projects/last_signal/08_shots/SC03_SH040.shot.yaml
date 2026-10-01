@@ -1,7 +1,7 @@
 shot_id: SC03_SH040
 scene_id: SC03
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 0.9167
 serves:
 - intent.comic_then_tender
@@ -16,8 +16,8 @@ camera:
   height_m: 1.05
   movement: static
   start_position:
-  - 0.9
-  - 8.0
+  - 2.5
+  - 8.66
   - 1.05
   end_position: null
   look_at: ren
@@ -27,15 +27,19 @@ composition:
   framing: medium_close
   aspect_ratio: 1.778
   subject_position: right_third_facing_left
-  notes: 'Lateral from the east, in the back cross-aisle (behind the gondola ends): he faces screen left
-    toward the socket and the fridges (camera.geography.sc03).'
+  notes: 'Lateral from the east at his eye level, in the back cross-aisle: he faces screen left toward
+    the back wall and the socket corner (camera.geography.sc03); the display stand is beyond him at screen
+    right. The westmost fridge stands 0.25 m east of him, so the lens sits inside its footprint and the
+    fridge is wild for this shot (the builder drops a set piece whose box contains the lens). The lens
+    is 0.95 m from his head (was 1.3 m): the frame is about 0.58 m tall at him, chest up, with the crown
+    at the top edge.'
 characters:
 - id: ren
   position:
-  - 2.2
-  - 8.0
+  - 3.45
+  - 8.66
   - 0.0
-  facing: south (screen left)
+  facing: south (+y, screen left)
   action: long exhale; shoulders drop; head tips back a little
 environment:
   location: corner shop (interior)
@@ -96,12 +100,19 @@ assets:
 - world.props.charging_cable
 rationale:
   camera: '35 mm at kneeling eye level (1.05 m): with him, not judging (camera.height.eye_level). Rejected:
-    repeating the car''s frontal reaction (camera.gags.no_repeat: reaction comes before the room here).'
-  composition: 'The fridges'' glow fills the space in front of his face at screen left: the thing about
-    to go out is in his eyeline. Rejected: a tight close-up (too much weight on a small relief).'
-  lighting: Fridges edge his profile from screen left; panels above.
+    repeating the car''s frontal reaction (camera.gags.no_repeat: reaction comes before the room here).
+    Moved with him to the stand (builder reach fix: at (3.45, 8.66) facing +y his right hand reaches the
+    socket within 2 cm; the old spot (2.2, 8.0) was about 2.05 m from the stand, reach error about 1.22
+    m): same side (east), same height and lens; the lens is 0.35 m closer because the fridge beside him
+    limits how far east it can go. Rejected: 24 mm to keep the old frame size (camera.lens.roles keeps
+    24 mm for the shop low angle and comic wides, not mediums) and a lateral from the west (flips his
+    screen direction).'
+  composition: 'The dark back-wall corner and the socket fill the space in front of his face at screen
+    left, the stand he plugged into stands behind him: what he trusted is in his eyeline. Rejected: a
+    tight close-up (too much weight on a small relief).'
+  lighting: The fridges, now on the lens side, light the near side of his face; panels above.
   movement: Static.
-  color: Cool fridge light on the front of his face.
+  color: Cool fridge light on the near side of his face.
   blocking: The exhale is visible in his shoulders; phone still plugged in his left hand.
   animation: 'Full relief, held to the cut, so the blackout arrives only after he has relaxed (camera.gags.no_repeat:
     the loss comes late and room-sized). The ease-out exhale reads as tension leaving the body; the audience,
@@ -205,6 +216,10 @@ derived_from:
   hash: sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
-stamped_content_hash: sha256:06e3006cc3af99ffa8af55a7be7bfc4d615e8042e34874b49932869a2881ce48
-stamp_note: Shot list changed only in other shots' rows (preview pass 1 camera fixes to SC01/SC03/SC04
-  inserts and SC04_SH030/050/090); this shot's camera was checked against the preview and needs no revision.
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+stamped_content_hash: sha256:1020cdbc37450a1d9b016968b8c442e36d3bc59e91447dbe3cd3c941513c22e4

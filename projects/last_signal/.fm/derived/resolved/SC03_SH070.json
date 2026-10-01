@@ -1,9 +1,9 @@
 {
-  "content_hash": "sha256:cfee9e1d89667b285af6dfd00e311f62c2d3757fb9a530f067fa31fafb3a21a9",
-  "created_at": "2026-09-30T16:15:25Z",
+  "content_hash": "sha256:06e017d3d69e43011a735a6fdd84d82266e4f3f821c689c06a88f5852af9876e",
+  "created_at": "2026-10-01T11:30:52Z",
   "derived_from": [
     {
-      "hash": "sha256:2498852c7944c85ed4871c2ed206bbe7133c3a28068470b64bdf67124c572b70",
+      "hash": "sha256:ffba81a2f787e13b994604a5981bf9cc9bc60853d827668424add3ff76aef453",
       "ref": "artifact:anim_sc03_sh070"
     },
     {
@@ -37,6 +37,10 @@
     {
       "hash": "sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660",
       "ref": "canon:animation.vocab.v2.face.ren"
+    },
+    {
+      "hash": "sha256:cef88be8e44828b4e3ef9da072436c22ebe8c4798b74dac8d4eac9b689d9430a",
+      "ref": "canon:animation.vocab.v2.lids"
     },
     {
       "hash": "sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706",
@@ -231,7 +235,7 @@
       "ref": "canon:world.sets.corner_shop"
     },
     {
-      "hash": "sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0",
+      "hash": "sha256:c943fa8776bee45915f96d41d7cbb2c060a78f6a93e0cee3910c79ca39dff1fd",
       "ref": "shot:SC03_SH070"
     }
   ],

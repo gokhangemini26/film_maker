@@ -28,10 +28,10 @@ fm:
   - intent.comic_then_tender
   summary: 'Ring insert: three identical 11-frame pulses (rings on f0, f11, f22), button grey in one frame
     at f33, phone perfectly still.'
-  stamped_content_hash: sha256:b2e2eabf5660e3f95a3cf147cdcdc4f6f7855acb9ab063c9f6875201796dd87e
+  stamped_content_hash: sha256:e344369ce2adf6fad048878113f3210b2a38041cff359fcc5e62edc5646d538c
 shot_id: SC01_SH050
 frames: 44
-vocab_version: 1
+vocab_version: 2
 rationale: Three even pulses are a patient, polite ring; the even rhythm makes its stopping the event.
   The grey arrives as a plain one-frame switch (canon states_by_shot call_ringing_then_unanswered_f33)
   and the phone never moves, so there is nothing to read into the unanswered call (tone.wordless). Each

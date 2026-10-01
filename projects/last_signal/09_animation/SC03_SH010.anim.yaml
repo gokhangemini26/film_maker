@@ -15,6 +15,8 @@ fm:
     hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
   - ref: canon:continuity.props.cable
     hash: sha256:4db888d6dba86f7106b088e7c7eac2a8a32c3a74f2bc925a7269d8fa39d1fc0b
+  - ref: canon:animation.vocab.v2.prop.charging_cable
+    hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
   - ref: canon:animation.vocab.pose.ren
     hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
   - ref: canon:animation.vocab.face
@@ -37,10 +39,10 @@ fm:
   - intent.anime_feel
   summary: 'Structured tracks for the shop entry: quick run in under the camera, head snaps left / right,
     locks on the socket corner at f10, down the west aisle, one quick drop to both knees f44-48.'
-  stamped_content_hash: sha256:f22f024f294890b02354faae10175d9930e40c40ced5792670c3e66651a063dc
+  stamped_content_hash: sha256:1379a283280dd69671c0b03ba5833f3586c03f0a393b6590f06e8247ba275f20
 shot_id: SC03_SH010
 frames: 52
-vocab_version: 1
+vocab_version: 2
 rationale: 'Comic urgency in an orderly room: the scan is carried by eyeline snaps while the run continues
   (no stop for a scan pose), then he commits to the aisle and drops to his knees in one move (characters.ren.movement
   before_turn.kneel: one_quick_drop). The gravity ease on the kneel gives the drop weight and its small
@@ -121,8 +123,19 @@ props:
   phone_ren:
   - f: 0
     attach: hand_l
-    note: left hand throughout; kneel_upright tucks that hand to the chest. Cable loop swings with the
-      stride and falls slack on the kneel (posed, no cable prop in vocabulary v1)
+    note: left hand throughout; kneel_upright tucks that hand to the chest. The cable itself is the charging_cable
+      track
+  charging_cable:
+  - f: 0
+    loc: hand_l_loop
+    state: posed
+    note: cable end looped in the left hand with the phone (chained from SC02_SH030); the loop swings
+      on posed shapes per stride and falls slack on the kneel, no simulation
+  - f: 44
+    loc: hand_r
+    note: he takes the plug into the right hand as he drops to the kneel (f44-48); plug end in the right
+      hand at the cut into SC03_SH020 f0
+    rationale: animation.vocab.v2.prop.charging_cable chain_by_shot SC03_SH010; the drop hides the hand-over
 events:
 - f: 0
   id: entry_step
@@ -162,6 +175,6 @@ preview_frames:
 notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
-- 'Secondary motion with no track in vocabulary v1: jacket hem swings, flares on the drop and settles
-  by f51; cable loop swings with the stride and falls slack on the kneel.'
+- 'Secondary motion with no track: jacket hem swings, flares on the drop and settles by f51. The cable
+  loop swing is posed per stride on the charging_cable track (vocabulary v2), not simulated.'
 - 'Camera locked off: the same frame is reused for the blackout (SC03_SH050).'

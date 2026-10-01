@@ -44,10 +44,10 @@ fm:
   - intent.comic_then_tender
   summary: Onto one knee, lean in, lower the lid by hand, lift the crank so its weight shows, back to
     the kerb with it in both hands; 6-frame still hold.
-  stamped_content_hash: sha256:6f8c6c78d164fcfc8e7c0e4d564fff6878f5daadf71ee6a3113c8151c4665d64
+  stamped_content_hash: sha256:65bd0bb32e465142e5079deb7ba1a16c9de76e9ae1f07086213d58ca72b67ec0
 shot_id: SC04_SH040
 frames: 60
-vocab_version: 1
+vocab_version: 2
 rationale: 'The same object, now held with care (story.crank_plant): the lid is lowered by hand, the crank
   lifted so its weight shows and cradled in both hands. He never stands, so the jacket stays under the
   roof line (camera.framing.jacket_off_sky). Every move overlaps the next with ease-in-out and no overshoot;
