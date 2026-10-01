@@ -47,13 +47,15 @@ def aim_head(head, facing, target, max_yaw_deg=75.0, max_pitch_deg=50.0):
             max(-math.radians(max_pitch_deg), min(math.radians(max_pitch_deg), p)))
 
 
-def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=None, face=None, look=None):
+def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=None, face=None, look=None, lids=1.0):
     """Build a proxy figure. pos = (x,y,z) of feet/base; facing = unit XY Vector.
 
     pose   one of the stances stand|kneel|sit_car|sit_kerb|sit_chair (the original behaviour, unchanged), or
     joints a joint dict from poses.py (local frame, see poses.py) which replaces the stance entirely.
     face   a vocabulary face ref (poses.FACE_SHAPES) for brows, eyes and mouth; None keeps joints['face'] or neutral.
-    look   a WORLD point the head turns toward (clamped); None keeps the pose's own head yaw and pitch."""
+    look   a WORLD point the head turns toward (clamped); None keeps the pose's own head yaw and pitch.
+    lids   0..1 factor on the face's eye openness (v2 lids track: open 1.0, low 0.55, closed 0.0). It scales the eye
+           height only, so the gaze (the head's aim) is untouched; 1.0 builds exactly what it always built."""
     P = props
     H = P["height_m"]
     hh = P.get("head_height_m", H / P.get("head_count", 6.5))
@@ -208,7 +210,7 @@ def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=No
             for i, sgn in enumerate((-1, 1)):
                 cp_ = mc + hr * sgn * mouth_w * 0.25 + hu * (mouth_w * 0.25 * math.sin(abs(a_)) * (1 if a_ > 0 else -1) * 0.5)
                 U.box(f"{cid}_mouth{i}", (0.01, mouth_w * 0.5, 0.006 * fs["mouth_h"]), cp_, col, mm, rot=rot(-sgn * a_))
-    ez = fs["eye"]
+    ez = fs["eye"] * float(lids)
     for i, sgn in enumerate((-1, 1)):
         U.sphere(f"{cid}_eye{i}", 0.012, head + hf * hh * 0.42 + hr * sgn * hh * 0.17 + hu * hh * 0.02, col, eye,
                  **({} if ez == 1.0 else {"scale": (1.0, 1.0, max(ez, 0.12))}))

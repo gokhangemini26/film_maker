@@ -4,13 +4,6 @@
       "additionalProperties": false,
       "description": "The `fm:` block at the top of every managed document.\n\nEverything outside this block is the artifact's content and is hashed.",
       "properties": {
-        "derived_from": {
-          "items": {
-            "$ref": "#/$defs/DepRef"
-          },
-          "title": "Derived From",
-          "type": "array"
-        },
         "id": {
           "title": "Id",
           "type": "string"
@@ -19,6 +12,14 @@
           "description": "e.g. story_bible, screenplay, color_bible",
           "title": "Kind",
           "type": "string"
+        },
+        "phase": {
+          "title": "Phase",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/Status",
+          "default": "PROPOSED"
         },
         "owner_role": {
           "anyOf": [
@@ -32,9 +33,12 @@
           "default": null,
           "title": "Owner Role"
         },
-        "phase": {
-          "title": "Phase",
-          "type": "string"
+        "derived_from": {
+          "items": {
+            "$ref": "#/$defs/DepRef"
+          },
+          "title": "Derived From",
+          "type": "array"
         },
         "serves": {
           "description": "intent.* ids",
@@ -44,7 +48,7 @@
           "title": "Serves",
           "type": "array"
         },
-        "stamp_note": {
+        "summary": {
           "anyOf": [
             {
               "type": "string"
@@ -54,7 +58,7 @@
             }
           ],
           "default": null,
-          "title": "Stamp Note"
+          "title": "Summary"
         },
         "stamped_content_hash": {
           "anyOf": [
@@ -68,11 +72,7 @@
           "default": null,
           "title": "Stamped Content Hash"
         },
-        "status": {
-          "$ref": "#/$defs/Status",
-          "default": "PROPOSED"
-        },
-        "summary": {
+        "stamp_note": {
           "anyOf": [
             {
               "type": "string"
@@ -82,7 +82,7 @@
             }
           ],
           "default": null,
-          "title": "Summary"
+          "title": "Stamp Note"
         }
       },
       "required": [
@@ -96,19 +96,6 @@
     "BreathKey": {
       "additionalProperties": false,
       "properties": {
-        "dur_f": {
-          "anyOf": [
-            {
-              "minimum": 1,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Dur F"
-        },
         "f": {
           "description": "shot-local frame, 0-based",
           "minimum": 0,
@@ -151,6 +138,19 @@
           ],
           "title": "Ref",
           "type": "string"
+        },
+        "dur_f": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dur F"
         }
       },
       "required": [
@@ -163,6 +163,41 @@
     "CameraTrack": {
       "additionalProperties": false,
       "properties": {
+        "move": {
+          "default": "none",
+          "enum": [
+            "none",
+            "dolly_in"
+          ],
+          "title": "Move",
+          "type": "string"
+        },
+        "start_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start F"
+        },
+        "end_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End F"
+        },
         "dist_m": {
           "anyOf": [
             {
@@ -220,40 +255,6 @@
           "default": null,
           "title": "Ease Out F"
         },
-        "end_f": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "End F"
-        },
-        "move": {
-          "default": "none",
-          "enum": [
-            "none",
-            "dolly_in"
-          ],
-          "title": "Move",
-          "type": "string"
-        },
-        "note": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Note"
-        },
         "peak_speed_mps": {
           "anyOf": [
             {
@@ -267,6 +268,18 @@
           "default": null,
           "title": "Peak Speed Mps"
         },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
         "rationale": {
           "anyOf": [
             {
@@ -278,19 +291,6 @@
           ],
           "default": null,
           "title": "Rationale"
-        },
-        "start_f": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Start F"
         }
       },
       "title": "CameraTrack",
@@ -299,12 +299,15 @@
     "CharacterTracks": {
       "additionalProperties": false,
       "properties": {
-        "breath": {
+        "pose": {
           "items": {
-            "$ref": "#/$defs/BreathKey"
+            "$ref": "#/$defs/PoseKey"
           },
-          "title": "Breath",
+          "title": "Pose",
           "type": "array"
+        },
+        "move": {
+          "$ref": "#/$defs/MoveTrack"
         },
         "face": {
           "items": {
@@ -320,14 +323,19 @@
           "title": "Look",
           "type": "array"
         },
-        "move": {
-          "$ref": "#/$defs/MoveTrack"
-        },
-        "pose": {
+        "breath": {
           "items": {
-            "$ref": "#/$defs/PoseKey"
+            "$ref": "#/$defs/BreathKey"
           },
-          "title": "Pose",
+          "title": "Breath",
+          "type": "array"
+        },
+        "lids": {
+          "description": "vocabulary v2: blinks and heavy lids that keep the gaze",
+          "items": {
+            "$ref": "#/$defs/LidKey"
+          },
+          "title": "Lids",
           "type": "array"
         }
       },
@@ -338,6 +346,10 @@
       "additionalProperties": false,
       "description": "An upstream dependency. `hash` is the upstream content hash at the\ntime this node was produced; None means a structural edge only.",
       "properties": {
+        "ref": {
+          "title": "Ref",
+          "type": "string"
+        },
         "hash": {
           "anyOf": [
             {
@@ -349,10 +361,6 @@
           ],
           "default": null,
           "title": "Hash"
-        },
-        "ref": {
-          "title": "Ref",
-          "type": "string"
         }
       },
       "required": [
@@ -369,23 +377,6 @@
           "minimum": 0,
           "title": "F",
           "type": "integer"
-        },
-        "id": {
-          "description": "unique per shot; audio and QA refer to it",
-          "pattern": "^[a-z][a-z0-9_]*$",
-          "title": "Id",
-          "type": "string"
-        },
-        "kind": {
-          "default": "sound",
-          "enum": [
-            "sound",
-            "light",
-            "state",
-            "visual"
-          ],
-          "title": "Kind",
-          "type": "string"
         },
         "note": {
           "anyOf": [
@@ -412,6 +403,23 @@
           "default": null,
           "description": "why this key serves the shot",
           "title": "Rationale"
+        },
+        "id": {
+          "description": "unique per shot; audio and QA refer to it",
+          "pattern": "^[a-z][a-z0-9_]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "default": "sound",
+          "enum": [
+            "sound",
+            "light",
+            "state",
+            "visual"
+          ],
+          "title": "Kind",
+          "type": "string"
         }
       },
       "required": [
@@ -472,6 +480,26 @@
     "Hold": {
       "additionalProperties": false,
       "properties": {
+        "f0": {
+          "minimum": 0,
+          "title": "F0",
+          "type": "integer"
+        },
+        "f1": {
+          "minimum": 0,
+          "title": "F1",
+          "type": "integer"
+        },
+        "scope": {
+          "enum": [
+            "body",
+            "face",
+            "phone",
+            "all"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
         "character": {
           "anyOf": [
             {
@@ -483,16 +511,6 @@
           ],
           "default": null,
           "title": "Character"
-        },
-        "f0": {
-          "minimum": 0,
-          "title": "F0",
-          "type": "integer"
-        },
-        "f1": {
-          "minimum": 0,
-          "title": "F1",
-          "type": "integer"
         },
         "min_f": {
           "anyOf": [
@@ -531,16 +549,6 @@
           ],
           "default": null,
           "title": "Rationale"
-        },
-        "scope": {
-          "enum": [
-            "body",
-            "face",
-            "phone",
-            "all"
-          ],
-          "title": "Scope",
-          "type": "string"
         }
       },
       "required": [
@@ -549,6 +557,88 @@
         "scope"
       ],
       "title": "Hold",
+      "type": "object"
+    },
+    "LidKey": {
+      "additionalProperties": false,
+      "description": "v2: eyelid openness multiplier on the face's own eye openness; the gaze (look track) is kept.",
+      "properties": {
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
+        },
+        "ref": {
+          "enum": [
+            "open",
+            "low",
+            "closed"
+          ],
+          "title": "Ref",
+          "type": "string"
+        },
+        "ease": {
+          "default": "ease_in_out",
+          "enum": [
+            "hold",
+            "step",
+            "linear",
+            "ease_in",
+            "ease_out",
+            "ease_in_out",
+            "overshoot_small",
+            "gravity"
+          ],
+          "title": "Ease",
+          "type": "string"
+        },
+        "dur_f": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "frames the change INTO this lids value takes, starting at f; must end by the next lids key",
+          "title": "Dur F"
+        }
+      },
+      "required": [
+        "f",
+        "ref"
+      ],
+      "title": "LidKey",
       "type": "object"
     },
     "LookKey": {
@@ -620,19 +710,6 @@
     "MoveTrack": {
       "additionalProperties": false,
       "properties": {
-        "first_top_f": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "crank_turn: a frame at which the handle is at 12 o'clock; tops repeat every 24 frames (may be negative when the cycle was already running before the shot)",
-          "title": "First Top F"
-        },
         "gait": {
           "default": "none",
           "enum": [
@@ -644,18 +721,6 @@
           "title": "Gait",
           "type": "string"
         },
-        "note": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Note"
-        },
         "path": {
           "description": "waypoints in set coords; required for locomotion gaits",
           "items": {
@@ -663,18 +728,6 @@
           },
           "title": "Path",
           "type": "array"
-        },
-        "rationale": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Rationale"
         },
         "speed_mps": {
           "anyOf": [
@@ -704,6 +757,19 @@
           "description": "crank_turn: frame the first turn begins (default: already turning)",
           "title": "Start F"
         },
+        "first_top_f": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "crank_turn: a frame at which the handle is at 12 o'clock; tops repeat every 24 frames (may be negative when the cycle was already running before the shot)",
+          "title": "First Top F"
+        },
         "stop_f": {
           "anyOf": [
             {
@@ -717,6 +783,30 @@
           "default": null,
           "description": "crank_turn: frame the handle stops (optional)",
           "title": "Stop F"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
         }
       },
       "title": "MoveTrack",
@@ -750,35 +840,6 @@
     "PoseKey": {
       "additionalProperties": false,
       "properties": {
-        "blend_f": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "frames the blend INTO this pose takes, starting at f (0/None = switch at f); must end by the next key",
-          "title": "Blend F"
-        },
-        "ease": {
-          "default": "ease_in_out",
-          "enum": [
-            "hold",
-            "step",
-            "linear",
-            "ease_in",
-            "ease_out",
-            "ease_in_out",
-            "overshoot_small",
-            "gravity"
-          ],
-          "title": "Ease",
-          "type": "string"
-        },
         "f": {
           "description": "shot-local frame, 0-based",
           "minimum": 0,
@@ -816,6 +877,35 @@
           "title": "Ref",
           "type": "string",
           "x-vocab": "pose.<character>"
+        },
+        "ease": {
+          "default": "ease_in_out",
+          "enum": [
+            "hold",
+            "step",
+            "linear",
+            "ease_in",
+            "ease_out",
+            "ease_in_out",
+            "overshoot_small",
+            "gravity"
+          ],
+          "title": "Ease",
+          "type": "string"
+        },
+        "blend_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "frames the blend INTO this pose takes, starting at f (0/None = switch at f); must end by the next key",
+          "title": "Blend F"
         }
       },
       "required": [
@@ -829,96 +919,11 @@
       "additionalProperties": false,
       "description": "One key of a prop track. Which value fields are legal depends on the prop (animvocab.PROPS).",
       "properties": {
-        "arm": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Arm"
-        },
-        "attach": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Attach"
-        },
-        "bounce_f": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Bounce F"
-        },
-        "dur_f": {
-          "anyOf": [
-            {
-              "minimum": 1,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "frames the change takes, starting at f",
-          "title": "Dur F"
-        },
-        "ease": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "enum": [
-            "hold",
-            "step",
-            "linear",
-            "ease_in",
-            "ease_out",
-            "ease_in_out",
-            "overshoot_small",
-            "gravity"
-          ],
-          "title": "Ease"
-        },
         "f": {
           "description": "shot-local frame, 0-based",
           "minimum": 0,
           "title": "F",
           "type": "integer"
-        },
-        "loc": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Loc"
         },
         "note": {
           "anyOf": [
@@ -932,20 +937,6 @@
           "default": null,
           "description": "free text for humans; never parsed",
           "title": "Note"
-        },
-        "pip": {
-          "anyOf": [
-            {
-              "maximum": 1,
-              "minimum": 0,
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Pip"
         },
         "rationale": {
           "anyOf": [
@@ -972,9 +963,47 @@
           "default": null,
           "title": "State"
         },
-        "swing_deg": {
+        "loc": {
           "anyOf": [
             {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Loc"
+        },
+        "arm": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Arm"
+        },
+        "attach": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Attach"
+        },
+        "pip": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
               "type": "number"
             },
             {
@@ -982,7 +1011,7 @@
             }
           ],
           "default": null,
-          "title": "Swing Deg"
+          "title": "Pip"
         },
         "tilt_deg": {
           "anyOf": [
@@ -995,6 +1024,67 @@
           ],
           "default": null,
           "title": "Tilt Deg"
+        },
+        "swing_deg": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Swing Deg"
+        },
+        "bounce_f": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bounce F"
+        },
+        "ease": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "enum": [
+            "hold",
+            "step",
+            "linear",
+            "ease_in",
+            "ease_out",
+            "ease_in_out",
+            "overshoot_small",
+            "gravity"
+          ],
+          "title": "Ease"
+        },
+        "dur_f": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "frames the change takes, starting at f",
+          "title": "Dur F"
         }
       },
       "required": [
@@ -1018,31 +1108,37 @@
     "UiEvent": {
       "additionalProperties": false,
       "properties": {
-        "chars": {
-          "anyOf": [
-            {
-              "minimum": 0,
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Chars"
+        "f": {
+          "description": "shot-local frame, 0-based",
+          "minimum": 0,
+          "title": "F",
+          "type": "integer"
         },
-        "dur_f": {
+        "note": {
           "anyOf": [
             {
-              "minimum": 1,
-              "type": "integer"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Dur F"
+          "description": "free text for humans; never parsed",
+          "title": "Note"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "why this key serves the shot",
+          "title": "Rationale"
         },
         "event": {
           "enum": [
@@ -1059,13 +1155,29 @@
           "title": "Event",
           "type": "string"
         },
-        "f": {
-          "description": "shot-local frame, 0-based",
-          "minimum": 0,
-          "title": "F",
-          "type": "integer"
+        "phone": {
+          "default": "ren",
+          "enum": [
+            "ren",
+            "hana"
+          ],
+          "title": "Phone",
+          "type": "string"
         },
-        "from_pct": {
+        "dur_f": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dur F"
+        },
+        "value": {
           "anyOf": [
             {
               "type": "number"
@@ -1075,7 +1187,8 @@
             }
           ],
           "default": null,
-          "title": "From Pct"
+          "description": "dip: brightness (default 0.7)",
+          "title": "Value"
         },
         "key": {
           "anyOf": [
@@ -1109,40 +1222,18 @@
           "default": null,
           "title": "Line"
         },
-        "note": {
+        "chars": {
           "anyOf": [
             {
-              "type": "string"
+              "minimum": 0,
+              "type": "integer"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "free text for humans; never parsed",
-          "title": "Note"
-        },
-        "phone": {
-          "default": "ren",
-          "enum": [
-            "ren",
-            "hana"
-          ],
-          "title": "Phone",
-          "type": "string"
-        },
-        "rationale": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "why this key serves the shot",
-          "title": "Rationale"
+          "title": "Chars"
         },
         "to": {
           "anyOf": [
@@ -1165,6 +1256,18 @@
           ],
           "title": "To"
         },
+        "from_pct": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "From Pct"
+        },
         "to_pct": {
           "anyOf": [
             {
@@ -1176,19 +1279,6 @@
           ],
           "default": null,
           "title": "To Pct"
-        },
-        "value": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "dip: brightness (default 0.7)",
-          "title": "Value"
         }
       },
       "required": [
@@ -1202,25 +1292,12 @@
   "additionalProperties": false,
   "description": "`09_animation/<SHOT>.anim.yaml`.",
   "properties": {
-    "camera": {
-      "$ref": "#/$defs/CameraTrack"
-    },
-    "characters": {
-      "additionalProperties": {
-        "$ref": "#/$defs/CharacterTracks"
-      },
-      "title": "Characters",
-      "type": "object"
-    },
-    "events": {
-      "items": {
-        "$ref": "#/$defs/EventKey"
-      },
-      "title": "Events",
-      "type": "array"
-    },
     "fm": {
       "$ref": "#/$defs/ArtifactMeta"
+    },
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
     },
     "frames": {
       "anyOf": [
@@ -1236,38 +1313,19 @@
       "description": "must equal the resolver's frame count for the shot",
       "title": "Frames"
     },
-    "holds": {
-      "items": {
-        "$ref": "#/$defs/Hold"
-      },
-      "title": "Holds",
-      "type": "array"
-    },
-    "notes": {
-      "description": "free text for humans; never parsed",
-      "items": {
-        "type": "string"
-      },
-      "title": "Notes",
-      "type": "array"
-    },
-    "preview_frames": {
-      "description": "default: every pose key plus the last frame",
-      "items": {
-        "type": "integer"
-      },
-      "title": "Preview Frames",
-      "type": "array"
-    },
-    "props": {
-      "additionalProperties": {
-        "items": {
-          "$ref": "#/$defs/PropKey"
+    "vocab_version": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
         },
-        "type": "array"
-      },
-      "title": "Props",
-      "type": "object"
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "animation.vocab version this was written against",
+      "title": "Vocab Version"
     },
     "rationale": {
       "anyOf": [
@@ -1282,9 +1340,22 @@
       "description": "why this motion serves the shot (CLAUDE.md rule 4)",
       "title": "Rationale"
     },
-    "shot_id": {
-      "title": "Shot Id",
-      "type": "string"
+    "characters": {
+      "additionalProperties": {
+        "$ref": "#/$defs/CharacterTracks"
+      },
+      "title": "Characters",
+      "type": "object"
+    },
+    "props": {
+      "additionalProperties": {
+        "items": {
+          "$ref": "#/$defs/PropKey"
+        },
+        "type": "array"
+      },
+      "title": "Props",
+      "type": "object"
     },
     "ui_timeline": {
       "items": {
@@ -1293,19 +1364,38 @@
       "title": "Ui Timeline",
       "type": "array"
     },
-    "vocab_version": {
-      "anyOf": [
-        {
-          "minimum": 1,
-          "type": "integer"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "animation.vocab version this was written against",
-      "title": "Vocab Version"
+    "camera": {
+      "$ref": "#/$defs/CameraTrack"
+    },
+    "holds": {
+      "items": {
+        "$ref": "#/$defs/Hold"
+      },
+      "title": "Holds",
+      "type": "array"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/$defs/EventKey"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "preview_frames": {
+      "description": "default: every pose key plus the last frame",
+      "items": {
+        "type": "integer"
+      },
+      "title": "Preview Frames",
+      "type": "array"
+    },
+    "notes": {
+      "description": "free text for humans; never parsed",
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
     }
   },
   "required": [

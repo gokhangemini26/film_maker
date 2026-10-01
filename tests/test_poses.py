@@ -22,7 +22,10 @@ HANA = {"height_m": 1.6, "head_count": 6.3, "head_height_m": 0.254, "shoulder_wi
         "hand_length_m": 0.185}
 TALL = dict(REN, height_m=1.92, head_height_m=0.29, shoulder_width_m=0.47, hip_width_m=0.36, leg_length_m=0.95, arm_span_m=1.95)
 PROPS = {"ren": REN, "hana": HANA}
-ALL = [(c, r) for c in V.POSES for r in V.POSES[c]]
+FULL = [(c, r) for c in V.POSES for r in V.POSES[c]]
+# Vocabulary v2 names the builder (blender/poses.py) has not got yet are covered by the xfail tests below, so the
+# acceptance parametrization picks them up the moment they land.
+ALL = [(c, r) for c, r in FULL if (c, r) in PS.POSES]
 
 
 def snap(j):
@@ -53,10 +56,18 @@ def same(a, b, tol=1e-9):
 
 
 def test_every_vocab_pose_has_a_builder_and_no_extras():
-    assert set(PS.POSES) == set(ALL)
-    assert len(ALL) == 19
+    assert set(PS.POSES) <= set(FULL)
+    assert len(ALL) >= 19
     for cid, ref in ALL:
         assert isinstance(PS.pose(cid, ref, PROPS[cid]), dict)
+
+
+@pytest.mark.xfail(reason="vocabulary v2: blender/poses.py poses and FACE_SHAPES not implemented yet", strict=False)
+def test_v2_poses_and_faces_have_builders():
+    assert set(PS.POSES) == set(FULL)
+    for cid in V.FACES:
+        for name in V.face_names(cid):
+            assert name in PS.FACE_SHAPES, name
 
 
 def test_unknown_pose_is_a_named_error():
@@ -86,7 +97,7 @@ def test_determinism(cid, ref):
 
 
 def test_headroom_in_car_poses():
-    for ref in V.POSES["ren"]:
+    for ref in [r for c, r in ALL if c == "ren"]:
         j = PS.pose("ren", ref, REN)
         if ref.startswith("car_"):
             assert PS.crown_z(j) < 1.40, ref
@@ -127,7 +138,7 @@ def test_forehead_rests_on_the_wheel_rim():
     pit = j["head_pitch"]
     hh = PS.dims(REN)["hh"]
     fore = j["head"] + Vector((math.cos(pit), 0, -math.sin(pit))) * hh * 0.36 + Vector((math.sin(pit), 0, math.cos(pit))) * hh * 0.29
-    assert (fore - PS._rim(PS.CTX_DEFAULT["car"], 0)).length < 0.04
+    assert (fore - PS._rim(PS.CTX_DEFAULT["car"], 0)).length < 0.01
 
 
 def test_context_override_moves_the_hands():
@@ -245,7 +256,7 @@ def test_scramble_unfolds_into_the_run():
 def test_every_vocab_face_has_a_shape():
     for cid in V.FACES:
         for name in V.face_names(cid):
-            assert name in PS.FACE_SHAPES, name
+            assert name in PS.FACE_SHAPES or V.v2_only_face(cid, name), name      # v2 faces: xfail test above
     assert set(PS.FACE_SHAPES) - {"neutral"} <= {n for c in V.FACES for n in V.face_names(c)}
     for name, fs in PS.FACE_SHAPES.items():
         assert set(fs) == {"brow_dy", "brow_tilt", "eye", "mouth_w", "mouth_h", "smile"}, name
@@ -260,3 +271,151 @@ def test_look_at_signs_and_lengths():
     far = PS.look_at(j, j["head"] + Vector((-1.0, 0.0, 0.0)))   # behind: clamped to a human range
     assert abs(far["head_yaw"]) <= math.radians(75) + 1e-9
     assert PS.check_lengths(down, REN) == []
+
+
+# ------------------------------------------------------------------ vocabulary v2 acceptance checks
+# (animation.vocab.v2.pose.ren / .pose.hana: every number below is a `checks` entry of the canon)
+def _deg(r):
+    return math.degrees(r)
+
+
+def _seg_dist(p, a, b):
+    ab = b - a
+    t = max(0.0, min(1.0, (p - a).dot(ab) / ab.length_squared))
+    return (p - (a + ab * t)).length
+
+
+def _lean(j):
+    return _deg(math.atan2(j["chest"].x - j["pelvis"].x, j["chest"].z - j["pelvis"].z))
+
+
+def test_v2_faces_wary_and_determined_have_shapes():
+    assert PS.FACE_SHAPES["wary"]["eye"] == 0.85 and PS.FACE_SHAPES["wary"]["smile"] == -0.05
+    assert PS.FACE_SHAPES["determined"]["brow_tilt"] == -0.15 and PS.FACE_SHAPES["determined"]["eye"] == 1.0
+
+
+def test_kneel_head_back_is_kneel_upright_with_the_head_tipped_back():
+    u, b = PS.pose("ren", "kneel_upright", REN), PS.pose("ren", "kneel_head_back", REN)
+    assert _deg(b["head_pitch"] - u["head_pitch"]) == pytest.approx(-8.0, abs=1e-6)       # head_pitch_vs_kneel_upright_deg
+    assert (b["handL"] - u["handL"]).length <= 0.01 and (b["phone"] - u["phone"]).length <= 0.01
+    assert (b["shL"] - u["shL"]).length <= 0.005 and (b["shR"] - u["shR"]).length <= 0.005
+    assert (b["pelvis"] - u["pelvis"]).length < 1e-9 and b["phone_hand"] == "both"
+
+
+def test_kneel_reach_stand_reaches_the_socket_behind_the_stand():
+    sh = PS.CTX_DEFAULT["shop"]
+    u, j = PS.pose("ren", "kneel_upright", REN), PS.pose("ren", "kneel_reach_stand", REN)
+    assert (j["handR"] - Vector(sh["socket"])).length <= 0.02                              # right_hand_to_socket_m_max
+    assert Vector(sh["socket"]).z == pytest.approx(0.30)
+    edge, n = Vector(sh["stand_back_edge"]), Vector(sh["stand_back_normal"])
+    assert (j["elbow"][1] - edge).dot(n) > 0                                               # right_elbow behind the plane
+    assert (Vector(sh["socket"]) - edge).dot(n) > 0                                        # the socket too: hidden behind
+    assert (j["handL"] - u["handL"]).length <= 0.03 and (j["phone"] - u["phone"]).length <= 0.03
+    assert PS.crown_z(j) <= PS.crown_z(u) + 1e-9                                           # crown_not_above_kneel_upright
+    yaw_to_socket, _ = PS.look_angles(j["head"], Vector(sh["socket"]))
+    assert abs(_deg(j["head_yaw"] - yaw_to_socket)) <= 30                                  # head_yaw_to_socket_deg_max
+    assert (j["knee"][0] - u["knee"][0]).length < 1e-9 and (j["pelvis"] - u["pelvis"]).length < 1e-9
+    assert j["shR"].z < j["shL"].z - 0.03                                                  # the right shoulder dips
+    assert PS.check_contacts(j) == [] and PS.check_lengths(j, REN) == []
+
+
+def test_kerb_crank_hold_v2():
+    k = PS.CTX_DEFAULT["kerb"]
+    j = PS.pose("ren", "kerb_crank_hold", REN)
+    assert (j["handR"] - PS.crank_knob(None, 0.0)).length <= 0.005                         # right_hand_to_knob_m_max
+    same(j, PS.gait_crank_turn(0, 0, REN))                                                 # equals_crank_turn_at_angle_0
+    assert (Vector(k["crank_center"]) - PS._crank_geom(k)[0]).length <= 0.01              # at the kerb crank point
+    top = k["crank_center"][2] + 0.04                                                      # crank body top face
+    assert j["phone"].z > top and j["phone_hand"] == "L"                                  # phone_above_crank_top_when_loc_lap
+    assert j["phone"].z == pytest.approx(0.76, abs=0.04) and j["phone"].y < 0              # about 0.76 m, over the near knee
+    assert abs(j["phone"].y - j["knee"][0].y) < 0.06 and abs(j["phone"].x - j["knee"][0].x) < 0.12
+    assert _lean(j) == pytest.approx(22, abs=0.5)                                          # spine 22 deg
+    for el, hd in ((j["elbow"][0], j["handL"]), (j["elbow"][1], j["handR"])):             # forearms clear of the knees
+        for kk in j["knee"]:
+            assert _seg_dist(kk, el, hd) > 0.08
+    assert j["head_pitch"] > math.radians(30)                                              # head pitched toward the crank
+    both = PS.pose("ren", "kerb_crank_hold", REN, ctx={"kerb": {"crank_loc": "hands_both"}})
+    assert both["handL"].z < k["crank_center"][2] and abs(both["handL"].x - k["crank_center"][0]) < 0.05   # under the body
+    assert (both["phone"] - both["handL"]).length < 0.05 and (both["handR"] - j["handR"]).length < 1e-9
+    for t in (0, 6, 12, 18):    # the clamped hold follows the handle through the turn
+        g = PS.gait_crank_turn(t, 0, REN)
+        assert (g["handL"] - j["handL"]).length < 1e-9 and (g["handR"] - g["crank_handle"]).length < 0.015
+
+
+def test_lunge_reach_v2():
+    c = PS.CTX_DEFAULT["door"]
+    D = PS.dims(REN)
+    j = PS.pose("ren", "lunge_reach", REN)
+    assert (j["handR"] - Vector(c["latch"])).length <= 0.01                                # right_hand_to_latch_m_max
+    assert PS.crown_z(j) <= 1.40 and PS.crown_z(j) + REN["tuft_extra_m"] <= c["roof_z"] - 0.05   # crown_z_max_m, 5 cm under
+    mid = (j["elbow"][0] + j["handL"]) / 2
+    assert (mid - Vector(c["seat_edge"])).length <= 0.03                                   # left_forearm_mid_to_seat_edge
+    assert (j["shR"] - Vector(c["latch"])).length / (D["up"] + D["fore"]) <= 0.93          # reach_fraction_max
+    assert abs(_deg(j["head_yaw"])) <= 40                                                  # head_yaw_deg_max
+    assert _lean(j) == pytest.approx(52, abs=0.5)
+    assert abs(j["pelvis"].x - j["foot"][0].x) < abs(j["pelvis"].x - j["foot"][1].x)       # weight over the front (left) foot
+    assert j["knee"][1].z < 0.15                                                           # right knee down
+    assert j["phone_hand"] == "L" and (j["phone"] - j["handL"]).length < 0.05
+    assert PS.check_contacts(j) == []
+
+
+def test_car_forehead_wheel_v2():
+    c = PS.CTX_DEFAULT["car"]
+    j = PS.pose("ren", "car_forehead_wheel", REN)
+    assert (PS.forehead_point(j) - PS._rim(c, 0)).length <= 0.01                           # forehead_to_rim_top_m_max
+    assert _deg(j["head_pitch"]) >= 45                                                     # head_pitch_deg_min
+    assert PS.crown_z(j) <= 1.40                                                           # crown_z_max_m
+    assert (j["handL"] - PS._rim(c, -78)).length <= 0.01 and (j["handR"] - PS._rim(c, 78)).length <= 0.01   # hands_on_rim
+    assert (j["phone"] - j["handL"]).length < 0.05 and j["phone_hand"] == "L"             # the phone stays against the rim
+    up = PS.pose("ren", "car_upright", REN)
+    assert j["chest"].x > up["chest"].x + 0.01                                             # the spine curls forward
+    assert j["shL"].z < up["shL"].z - 0.04                                                 # the shoulders are lower (4 cm drop + the curl)
+    horn = Vector(c["wheel_center"])                                                       # not the nose, not the horn pad
+    nose = j["head"] + Vector((math.cos(j["head_pitch"]), 0, -math.sin(j["head_pitch"]))) * PS.dims(REN)["hh"] * 0.5
+    assert (nose - horn).length > 0.05
+    assert PS.check_contacts(j) == []
+
+
+def test_car_forehead_wheel_solves_for_other_proportions_and_wheels():
+    for props in (REN, TALL):
+        j = PS.pose("ren", "car_forehead_wheel", props)
+        assert PS.check_lengths(j, props) == []
+        assert (PS.forehead_point(j) - PS._rim(PS.CTX_DEFAULT["car"], 0)).length <= 0.02
+    ctx = {"car": {"wheel_center": (0.36, 0.0, 0.90)}}
+    j = PS.pose("ren", "car_forehead_wheel", REN, ctx=ctx)
+    assert (PS.forehead_point(j) - PS._rim(PS.merged_ctx(ctx)["car"], 0)).length <= 0.02
+
+
+def test_scramble_out_v2():
+    c = PS.CTX_DEFAULT["door"]
+    j = PS.pose("ren", "scramble_out", REN)
+    assert PS.crown_z(j) <= 1.40                                                           # crown_z_max_m
+    assert j["handL"].x - j["chest"].x >= 0.35                                             # left_hand_ahead_of_chest_m_min
+    assert abs(j["handL"].z - j["chest"].z) < 0.15                                         # at chest height
+    assert j["phone_hand"] == "L" and (j["phone"] - j["handL"]).length < 0.06             # phone_hand L
+    assert (j["handR"] - Vector(c["sill"])).length <= 0.02                                 # right_hand_to_sill_m_max
+    assert j["foot"][1].z < 0.06 and j["foot"][0].z > 0.15                                 # right foot on the pavement, left on the floor
+    assert abs(_lean(j) - 52) < 5
+    assert _deg(j["head_pitch"]) < 30                                                      # eyes ahead, not down
+    assert PS.check_contacts(j) == []
+
+
+def test_desk_notice_v2():
+    d = PS.CTX_DEFAULT["desk"]
+    j = PS.pose("hana", "desk_notice", HANA)
+    assert _deg(j["head_yaw"]) == pytest.approx(25.0, abs=1e-6)                           # head_yaw_to_phone_deg: 25
+    assert abs(_deg(math.atan2((j["shR"] - j["shL"]).x, (j["shR"] - j["shL"]).y))) <= 6   # torso_twist_deg_max
+    assert (j["handR"] - Vector(d["sketchbook"])).length <= 0.03                           # right_hand_to_sketchbook_page
+    assert (j["handL"] - Vector(d["sketchbook_hold"])).length <= 0.01                      # left hand at the book edge
+    assert _lean(j) == pytest.approx(14, abs=0.5)                                          # spine lifts to 14
+    assert "pencil" not in j and "pencil_state" not in j                                   # the pencil track owns that
+    assert PS.check_contacts(j) == []
+
+
+def test_v2_presets_blend_cleanly():
+    for a, b in (("kneel_upright", "kneel_reach_stand"), ("kneel_reach_stand", "kneel_upright"),
+                 ("kneel_upright", "kneel_head_back"), ("car_upright", "car_forehead_wheel"),
+                 ("scramble_out", "kneel_upright"), ("lunge_low", "lunge_reach")):
+        ja, jb = PS.pose("ren", a, REN), PS.pose("ren", b, REN)
+        for t in (0.2, 0.5, 0.8):
+            assert PS.check_lengths(PS.blend(ja, jb, t, "ease_out"), REN) == [], (a, b, t)

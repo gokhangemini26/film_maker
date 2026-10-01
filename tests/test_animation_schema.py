@@ -61,7 +61,7 @@ def test_vocabulary_names_are_unique_and_described():
             assert 20 < len(line) < 130 and line.endswith("."), f"{ch}.{pose} needs a one-line meaning"
     for table in (V.EASES, V.LOOK_TARGETS, V.BREATHS, V.EVENT_KINDS, V.UI_EVENTS, V.CAMERA_MOVES, V.HOLD_SCOPES):
         assert all(table.values())
-    assert 12 <= len(V.POSES["ren"]) <= 16 and len(V.POSES["hana"]) == 4      # M6-lite size
+    assert 12 <= len(V.POSES["ren"]) <= 17 and len(V.POSES["hana"]) == 4      # M6-lite size
 
 
 def test_prop_transitions_only_use_declared_states():
@@ -79,12 +79,12 @@ def test_canon_proposals_are_proposed_only_and_well_formed():
     assert len(ids) == len(set(ids)) and all(i.startswith("animation.vocab.") for i in ids)
     for e in ents:
         ce = CanonEntry.model_validate(e)
-        assert ce.status.value == "PROPOSED" and ce.rationale and ce.value["vocab_version"] == V.VOCAB_VERSION
+        assert ce.status.value == "PROPOSED" and ce.rationale and ce.value["vocab_version"] == 1   # the animation.vocab.* proposals describe v1; v2 is animation.vocab.v2.*
     # the proposals carry exactly the module's names
     by_id = {e["id"]: e["value"] for e in ents}
-    assert set(by_id["animation.vocab.pose.ren"]["presets"]) == set(V.POSES["ren"])
+    assert set(by_id["animation.vocab.pose.ren"]["presets"]) == set(V._v1_view()[0]["ren"])
     assert set(by_id["animation.vocab.pose.hana"]["presets"]) == set(V.POSES["hana"])
-    assert set(by_id["animation.vocab.prop_states"]["props"]) == set(V.PROPS)
+    assert set(by_id["animation.vocab.prop_states"]["props"]) == set(V.PROPS) - set(V.V2_PROPS)
 
 
 @pytest.mark.skipif(not LAST_SIGNAL.exists(), reason="Last Signal project not present")
@@ -94,7 +94,10 @@ def test_faces_come_from_canon_and_canon_ids_exist():
         for e in yaml.safe_load(p.read_text(encoding="utf-8"))["entries"]:
             canon[e["id"]] = e
     ren = canon["characters.ren.expressions"]["value"]
-    assert tuple(ren["comic_set"]) == V.FACES["ren"]["comic"] and tuple(ren["tender_set"]) == V.FACES["ren"]["tender"]
+    # the LOCKED canon lists the v1 faces; wary/determined (v2) wait for a change request or a human ruling
+    v1_ren = V._v1_view()[1]["ren"]
+    assert tuple(ren["comic_set"]) == v1_ren["comic"] and tuple(ren["tender_set"]) == v1_ren["tender"]
+    assert tuple(ren["comic_set"]) == V.FACES["ren"]["comic"][:len(ren["comic_set"])]
     assert tuple(canon["characters.hana.expressions"]["value"]["sequence"]) == V.FACES["hana"]["sequence"]
     for e in V.canon_entry_dicts():
         for ref in [*e["serves"], *e["depends_on"]]:

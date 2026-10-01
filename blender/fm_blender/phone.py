@@ -634,6 +634,20 @@ def build_phone(col, sid, center, x_axis, y_axis, z_axis, ui_assets, st, colors,
     return e
 
 
+def build_cable(col, points, name="charging_cable", radius=0.003, hex_="#E4E1DA"):
+    """The one charging cable as a chain of thin cylinders along `points` (poses.cable_points). Returns the objects.
+    The cable is rebuilt for each frame it is `posed`; a `hidden` frame does not build it (nothing to render)."""
+    mat = U.toon({"hex": hex_, "linear": U.lin(hex_)})
+    objs = []
+    for k in range(len(points) - 1):
+        if (points[k + 1] - points[k]).length < 1e-6:
+            continue
+        o = U.between(f"{name}.{k}", points[k], points[k + 1], radius, col, mat, segs=6)
+        o["fm_cable"] = True
+        objs.append(o)
+    return objs
+
+
 def colors_for(shot, canon):
     c = dict(DEFAULTS)
 

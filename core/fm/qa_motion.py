@@ -290,7 +290,7 @@ def _props(rep: _Report, s: ShotInfo, carried: dict) -> None:
         spec = V.PROPS.get(prop)
         if spec is None or not spec.get("persistent"):
             continue
-        for fld in TRACKED_FIELDS:
+        for fld in V.prop_chained_fields(prop, TRACKED_FIELDS):
             vals = _values(keys, fld)
             if not vals:
                 continue

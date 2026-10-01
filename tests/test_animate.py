@@ -129,3 +129,104 @@ def test_parse_frames_and_select():
     assert FS.select_frames(s, frames=None, every_key=False, preview_frame=False) == [s["frames"]["count"] // 2]
     pf = FS.select_frames(s, frames=None, every_key=False, preview_frame=True)
     assert pf == [s["animation"]["preview_frame"]]
+
+
+# ------------------------------------------------------------------ vocabulary v2 builder pieces
+def _motion_with(sid, chars=None, props=None):
+    s = shot(sid)
+    m = json.loads(json.dumps(s["motion"]))
+    for cid, tr in (chars or {}).items():
+        m["characters"].setdefault(cid, {}).update(tr)
+    m.setdefault("props", {}).update(props or {})
+    return s, m
+
+
+def test_lids_track_blink_keeps_the_gaze():
+    blink = [{"f": 0, "ref": "open", "ease": "hold"}, {"f": 4, "ref": "closed", "ease": "ease_in", "dur_f": 4},
+             {"f": 10, "ref": "open", "ease": "ease_out", "dur_f": 6}]
+    vals = [A.lids_at(blink, f) for f in range(18)]
+    assert vals[0] == 1.0 and vals[3] == 1.0
+    assert vals[7] == 0.0 and vals[8] == 0.0 and vals[9] == 0.0           # shut for the frames between the keys
+    assert vals[4] > vals[5] > vals[6] > vals[7]                          # closes over dur_f frames
+    assert vals[10] < vals[11] < vals[14] and vals[15] == 1.0             # opens over its dur_f
+    assert A.lids_at([{"f": 2, "ref": "low"}], 0) == 1.0                  # open before the first key
+    assert A.lids_at([{"f": 2, "ref": "low"}], 3) == 0.55
+    assert A.lids_at([{"f": 2, "ref": "bogus"}], 3) == 1.0 and A.lids_at(None, 3) == 1.0
+    # the head aim does not change while the lids move: only `lids` differs between the frames
+    s, m = _motion_with("SC04_SH050", {"ren": {"lids": blink}})
+    a = A.frame_state(s, m, s["ui_timeline"], 2)["characters"]["ren"]
+    b = A.frame_state(s, m, s["ui_timeline"], 8)["characters"]["ren"]
+    assert a["lids"] == 1.0 and b["lids"] == 0.0 and a["eyes_closed"] is False and b["eyes_closed"] is False
+    assert b["joints"]["head_yaw"] == a["joints"]["head_yaw"] and b["look"] == a["look"]
+
+
+def test_shop_door_swing_back_decays_past_the_cut():
+    keys = [{"f": 0, "state": "open_70", "ease": "hold"}, {"f": 14, "state": "swing_back", "ease": "ease_in"}]
+    ang = [A.shop_door_angle(keys, f) for f in range(0, 90)]
+    assert ang[13] == 70.0 and ang[14] == 70.0                            # starts from where it was
+    assert 69.0 < ang[15] <= 70.0                                         # the shot's last frame: barely started, no slam
+    assert all(ang[i] >= ang[i + 1] for i in range(14, 89))               # monotone decay
+    assert ang[14 + 36] == pytest.approx(0.0, abs=1e-9) and ang[89] == 0.0   # about 36 frames to shut
+    assert max(ang[i] - ang[i + 1] for i in range(14, 89)) < 4.0          # never a slam
+    # a pinned partial angle: the decay starts from it
+    k2 = [{"f": 0, "state": "open_70"}, {"f": 4, "state": "swing_back", "swing_deg": 30}]
+    a2 = [A.shop_door_angle(k2, f) for f in range(0, 30)]
+    assert a2[3] == 70.0 and a2[4] == 30.0 and a2[5] < 30.0 and a2[29] == 0.0
+    # plain states keep their meaning (and swing_deg alone pins an angle)
+    assert A.shop_door_angle([{"f": 0, "state": "closed"}, {"f": 2, "state": "open_70", "dur_f": 4}], 5) == 70.0
+    assert A.shop_door_angle([{"f": 0, "swing_deg": 25}], 3) == 25.0
+    s, m = _motion_with("SC02_SH030", props={"shop_door": keys})
+    st = A.frame_state(s, m, s["ui_timeline"], 15)["props"]["shop_door"]
+    assert st["state"] == "swing_back" and 69.0 < st["angle_deg"] <= 70.0
+
+
+def test_cable_loc_chains_and_hidden_state():
+    ks = [{"f": 0, "loc": "glovebox", "state": "hidden"}, {"f": 23, "state": "posed"}, {"f": 30, "loc": "hand_r"}]
+    assert A.cable_at(ks, 5) == ("glovebox", "hidden")
+    assert A.cable_at(ks, 23) == ("glovebox", "posed")
+    assert A.cable_at(ks, 31) == ("hand_r", "posed")
+    assert A.cable_at([{"f": 4, "loc": "loose"}], 1) == ("glovebox", "hidden")          # before the first key
+    assert A.cable_at([{"f": 0, "loc": "loose", "state": "hidden"}], 9) == ("loose", "hidden")
+    assert A.cable_at([{"f": 0, "loc": "elsewhere"}], 3) == ("glovebox", "posed")       # unknown values are ignored
+    s, m = _motion_with("SC04_SH050", props={"charging_cable": [{"f": 0, "loc": "hand_r", "state": "posed"},
+                                                                 {"f": 10, "loc": "crank_port"}]})
+    a = A.frame_state(s, m, s["ui_timeline"], 5)["props"]["charging_cable"]
+    b = A.frame_state(s, m, s["ui_timeline"], 12)["props"]["charging_cable"]
+    assert (a["loc"], a["hide_render"]) == ("hand_r", False) and b["loc"] == "crank_port"
+    assert a["src"] is not None and a["phone_end"] is not None and b["src"] is not None
+    hid = A.frame_state(*(lambda s_, m_: (s_, m_, s_["ui_timeline"], 5))(*_motion_with(
+        "SC04_SH050", props={"charging_cable": [{"f": 0, "loc": "loose", "state": "hidden"}]})))["props"]["charging_cable"]
+    assert hid["hide_render"] is True and hid["src"] is None and hid["loc"] == "loose"   # hidden: nothing to render, loc kept
+
+
+def test_cable_carries_between_shots():
+    s1, m1 = _motion_with("SC04_SH050", props={"charging_cable": [{"f": 0, "loc": "shop_socket", "state": "posed"}]})
+    s1 = dict(s1, motion=m1)
+    s2 = shot("SC04_SH060")
+    carried = A.with_carried_props(s2, [s1])["props"]["charging_cable"]
+    assert carried == [{"loc": "shop_socket", "state": "posed", "f": 0}]
+    s1h = dict(s1, motion=_motion_with("SC04_SH050", props={"charging_cable": [{"f": 0, "loc": "loose", "state": "hidden"}]})[1])
+    assert A.with_carried_props(s2, [s1h])["props"]["charging_cable"] == [{"loc": "loose", "state": "hidden", "f": 0}]
+
+
+def test_cable_curve_ends_on_the_two_plugs_and_stays_above_ground():
+    from fm_blender import poses as PS
+    from mathutils import Vector
+    a, b = Vector((0.0, 0.0, 0.4)), Vector((0.5, 0.2, 0.9))
+    pts = PS.cable_points(a, b, ground_z=0.0)
+    assert (pts[0] - a).length < 1e-9 and (pts[-1] - b).length < 1e-9 and len(pts) == 17
+    assert min(p.z for p in pts) < min(a.z, b.z)                       # it hangs below the chord
+    low = PS.cable_points(Vector((0, 0, 0.02)), Vector((0.6, 0, 0.05)), ground_z=0.0)
+    assert min(p.z for p in low[1:-1]) >= 0.004                         # a loose cable lies on the ground, not in it
+    assert [tuple(p) for p in pts] == [tuple(p) for p in PS.cable_points(a, b, ground_z=0.0)]
+
+
+def test_clamped_crank_left_hand_follows_the_charger_loc():
+    s = shot("SC04_SH050")
+    st = A.frame_state(s, s["motion"], s["ui_timeline"], 30)
+    j = st["characters"]["ren"]["joints"]
+    assert st["props"]["crank_charger"]["loc"] == "lap"
+    assert j["phone_hand"] == "L" and j["phone"].z > 0.7               # the phone is held over the knee, above the crank
+    s, m = _motion_with("SC04_SH050", props={"crank_charger": [{"f": 0, "loc": "hands_both", "arm": "unfolded"}]})
+    jb = A.frame_state(s, m, s["ui_timeline"], 30)["characters"]["ren"]["joints"]
+    assert jb["handL"].z < j["handL"].z - 0.05                          # under the crank body

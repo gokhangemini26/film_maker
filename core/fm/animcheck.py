@@ -70,9 +70,15 @@ def lint_tracks(t: AnimationTracks, *, frame_count: int | None = None,
         add("ERROR", "ANIM_INCOMPLETE", "", "`frames` and `vocab_version` are required once a file carries tracks")
         return out
     nf = t.frames
-    if t.vocab_version != V.VOCAB_VERSION:
+    if t.vocab_version not in V.ACCEPTED_VOCAB_VERSIONS:
         add("ERROR", "ANIM_VOCAB_VERSION", "vocab_version",
-            f"written against vocabulary v{t.vocab_version}, the current vocabulary is v{V.VOCAB_VERSION}")
+            f"written against vocabulary v{t.vocab_version}, the current vocabulary is v{V.VOCAB_VERSION} "
+            f"(accepted: {', '.join(f'v{v}' for v in V.ACCEPTED_VOCAB_VERSIONS)})")
+    v2 = t.vocab_version is not None and t.vocab_version >= 2
+
+    def need_v2(where: str, what: str) -> None:
+        if not v2:
+            add("ERROR", "ANIM_VOCAB_VERSION", where, f"{what} needs vocab_version 2 (this file says {t.vocab_version})")
     if frame_count is not None and nf != frame_count:
         add("ERROR", "ANIM_FRAMES", "frames", f"frames is {nf} but the resolved shot has {frame_count}")
     if not t.rationale:
@@ -102,7 +108,8 @@ def lint_tracks(t: AnimationTracks, *, frame_count: int | None = None,
         for i, k in enumerate(ct.pose):
             kw = f"{w}.pose[{i}]"
             rng(k.f, kw)
-            enum(k.ref, V.POSES[cid], kw, "pose ref")
+            if enum(k.ref, V.POSES[cid], kw, "pose ref") and V.v2_only_pose(cid, k.ref):
+                need_v2(kw, f"pose '{k.ref}'")
             enum(k.ease, V.EASES, kw, "ease")
             b = k.blend_f or 0
             if i == 0 and b:
@@ -143,15 +150,39 @@ def lint_tracks(t: AnimationTracks, *, frame_count: int | None = None,
         for i, k in enumerate(ct.face):
             kw = f"{w}.face[{i}]"
             rng(k.f, kw)
-            if enum(k.ref, V.face_names(cid), kw, "face ref") and k.ref in V.comic_faces(cid) \
-                    and _shot_key(t.shot_id) >= turn:
-                add("ERROR", "ANIM_FACE_AFTER_TURN", kw,
-                    f"comic-set face '{k.ref}' is illegal from {V.COMIC_ENDS_BEFORE} on (tone.the_turn)")
+            if enum(k.ref, V.face_names(cid), kw, "face ref"):
+                if V.v2_only_face(cid, k.ref):
+                    need_v2(kw, f"face '{k.ref}'")
+                if k.ref in V.comic_faces(cid) and _shot_key(t.shot_id) >= turn:
+                    add("ERROR", "ANIM_FACE_AFTER_TURN", kw,
+                        f"comic-set face '{k.ref}' is illegal from {V.COMIC_ENDS_BEFORE} on (tone.the_turn)")
         # look, breath
         _increasing(ct.look, f"{w}.look", out)
         for i, k in enumerate(ct.look):
             rng(k.f, f"{w}.look[{i}]")
             enum(k.target, V.LOOK_TARGETS, f"{w}.look[{i}]", "look target")
+        # lids (v2)
+        if ct.lids:
+            need_v2(f"{w}.lids", "a lids track")
+        _increasing(ct.lids, f"{w}.lids", out)
+        for i, k in enumerate(ct.lids):
+            kw = f"{w}.lids[{i}]"
+            rng(k.f, kw)
+            enum(k.ref, V.LIDS, kw, "lids ref")
+            enum(k.ease, V.EASES, kw, "ease")
+            d = k.dur_f or 0
+            if d and k.ease in ("hold", "step"):
+                add("ERROR", "ANIM_LIDS", kw, f"ease '{k.ease}' cannot have dur_f")
+            limit = ct.lids[i + 1].f if i + 1 < len(ct.lids) else nf
+            if k.f + d > limit:
+                add("ERROR", "ANIM_LIDS", kw, f"dur_f runs f{k.f}+{d} past the next lids key (or the shot end) at f{limit}")
+        for i, k in enumerate(ct.look):                      # a lids key may not fall inside a look `closed` span
+            if k.target == "closed":
+                end = ct.look[i + 1].f if i + 1 < len(ct.look) else nf
+                for lk in ct.lids:
+                    if k.f <= lk.f < end:
+                        add("ERROR", "ANIM_LIDS", f"{w}.lids", f"lids key at f{lk.f} falls inside the look 'closed' span "
+                            f"f{k.f}-{end - 1} (use one or the other)")
         _increasing(ct.breath, f"{w}.breath", out)
         for i, k in enumerate(ct.breath):
             kw = f"{w}.breath[{i}]"
@@ -164,6 +195,8 @@ def lint_tracks(t: AnimationTracks, *, frame_count: int | None = None,
         if not enum(prop, V.PROPS, w, "prop"):
             continue
         spec = V.PROPS[prop]
+        if prop in V.V2_PROPS:
+            need_v2(w, f"prop '{prop}'")
         _increasing(keys, w, out)
         running: dict[str, str] = {}
         for i, k in enumerate(keys):
@@ -179,8 +212,12 @@ def lint_tracks(t: AnimationTracks, *, frame_count: int | None = None,
                 allowed = spec["fields"].get(n)
                 if allowed is None:
                     add("ERROR", "ANIM_PROP", kw, f"field '{n}' is not legal for {prop} (legal: {', '.join(spec['fields'])})")
+                elif n in V.V2_PROP_FIELDS.get(prop, ()):
+                    need_v2(kw, f"{prop}.{n}")
                 elif isinstance(allowed, tuple):
                     if enum(v, allowed, kw, f"{prop}.{n}"):
+                        if v in V.V2_PROP_VALUES.get((prop, n), ()):
+                            need_v2(kw, f"{prop}.{n} '{v}'")
                         prev = running.get(n)
                         legal = spec["transitions"].get(n)
                         if prev is not None and legal and v != prev and v not in legal.get(prev, ()):
@@ -254,6 +291,11 @@ def lint_tracks(t: AnimationTracks, *, frame_count: int | None = None,
                 for k in t.characters[cid].face:
                     if h.f0 < k.f <= h.f1:
                         add("ERROR", "ANIM_HOLD", w, f"{cid} has a face key at f{k.f} inside the hold f{h.f0}-{h.f1}")
+        if h.scope == "all":                                  # `face` does not block lids (a blink keeps the face)
+            for cid in who:
+                for k in t.characters[cid].lids:
+                    if h.f0 < k.f <= h.f1:
+                        add("ERROR", "ANIM_HOLD", w, f"{cid} has a lids key at f{k.f} inside the hold f{h.f0}-{h.f1}")
         if h.scope in ("phone", "all"):
             for prop, keys in t.props.items():
                 if prop.startswith("phone_"):
@@ -324,7 +366,8 @@ def check_animation(project, loaded) -> list[tuple[str, str, str, str]]:
     for cid, it in sorted(have.items()):
         w = project.rel(it.path)
         if cid not in want:
-            out.append(("WARN", "ANIM_VOCAB_CANON", w, f"{cid} is not part of the vocabulary module"))
+            if not cid.startswith("animation.vocab.v2"):   # v2 spec entries are hand-written proposals
+                out.append(("WARN", "ANIM_VOCAB_CANON", w, f"{cid} is not part of the vocabulary module"))
         elif _norm(it.entry.value) != _norm(want[cid]["value"]):
             out.append(("WARN", "ANIM_VOCAB_CANON", w,
                         f"{cid} differs from core/fm/animvocab.py (regenerate the proposal or bump VOCAB_VERSION)"))

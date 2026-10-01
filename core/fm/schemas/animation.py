@@ -65,12 +65,22 @@ class BreathKey(_Key):
     dur_f: int | None = Field(default=None, ge=1)
 
 
+class LidKey(_Key):
+    """v2: eyelid openness multiplier on the face's own eye openness; the gaze (look track) is kept."""
+
+    ref: str = Field(json_schema_extra={"enum": list(V.LIDS)})
+    ease: str = Field(default="ease_in_out", json_schema_extra={"enum": list(V.EASES)})
+    dur_f: int | None = Field(default=None, ge=1, description=(
+        "frames the change INTO this lids value takes, starting at f; must end by the next lids key"))
+
+
 class CharacterTracks(StrictModel):
     pose: list[PoseKey] = Field(default_factory=list)
     move: MoveTrack = Field(default_factory=MoveTrack)
     face: list[FaceKey] = Field(default_factory=list)
     look: list[LookKey] = Field(default_factory=list)
     breath: list[BreathKey] = Field(default_factory=list)
+    lids: list[LidKey] = Field(default_factory=list, description="vocabulary v2: blinks and heavy lids that keep the gaze")
 
 
 class PropKey(_Key):

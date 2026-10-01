@@ -17,7 +17,11 @@ stale through the canon entry hash.
 """
 from __future__ import annotations
 
-VOCAB_VERSION = 1
+VOCAB_VERSION = 2
+# Anim files written against any of these versions are accepted: v2 only ADDS names and tightens five
+# presets (no renames), so every v1 key stays legal. Names that exist only in v2 are listed in the
+# V2_* tables below; a file that says `vocab_version: 1` may not use them.
+ACCEPTED_VOCAB_VERSIONS = (1, 2)
 
 # ------------------------------------------------------------------ eases
 EASES: dict[str, str] = {
@@ -41,21 +45,23 @@ POSES: dict[str, dict[str, str]] = {
         "car_sag": "Seated, shoulders dropped and head forward, phone fallen to the lap (the letdown).",
         "car_lean_glovebox": "Torso tipped across the cabin, right arm out to the glovebox latch (reach about 0.75 m).",
         "car_recline": "Sunk back into the seat, head on the headrest, arms slack (relief, eyes closed).",
-        "car_forehead_wheel": "Head lowered until the forehead rests on the top of the wheel rim, shoulders sagged.",
+        "car_forehead_wheel": 'Forehead on the top of the wheel rim, spine curled, head pitched 45 deg or more, face hidden from the lens.',
         # street and shop
         "run_phone_out": "Upright running stance, phone arm straight out ahead, right forearm tucked, arms not swinging.",
-        "scramble_out": "Ducked and unfolding out of the passenger doorway below the 1.45 m roof line.",
+        "scramble_out": "Ducked in the passenger doorway (crown 1.40 m or lower), phone hand thrust out ahead, right hand pushing off the sill.",
         "kneel_upright": "Kneeling on both knees, torso upright, phone tucked at the chest (shop aisle).",
+        "kneel_reach_stand": "kneel_upright turned 25 deg and leaning 12 deg to the display stand, right arm behind its back edge to the socket.",
+        "kneel_head_back": "kneel_upright with the head tipped back about 8 deg, chest open 2 deg; hands and phone stay put.",
         # kerb
         "kerb_hunch": "Seated on the kerb, back to the car, knees up, forearms loose over the knees, neck forward.",
-        "kerb_crank_hold": "Seated on the kerb as kerb_hunch with the crank held in both hands in the lap (cranking base).",
+        "kerb_crank_hold": "Kerb seat as kerb_hunch, crank across the knee tops, right hand on the knob, left hand follows crank_charger.loc.",
         "kerb_lean_back": "Seated on the kerb, spine reclined against the car's rear quarter, knees open, head tipping up.",
         "lunge_low": "Right knee down, left foot forward, low lunge toward the passenger doorway.",
-        "lunge_reach": "Lunge leaning in through the doorway, left forearm on the seat edge, right arm to the glovebox.",
+        "lunge_reach": "Lunge leaning in through the doorway (crown under the roof), left forearm on the seat edge, right hand on the glovebox latch.",
     },
     "hana": {
         "desk_sketch": "Seated at the desk, head tilted down over the sketchbook, right hand drawing, headphones on.",
-        "desk_notice": "Seated, head turned about 25 deg toward the lit phone, pencil laid down.",
+        "desk_notice": "Seated, head turned 25 deg toward the phone (yaw only), eyes lead; the pencil state comes from the pencil track.",
         "desk_headphones_off": "Both hands at the ear cups, sliding the headphones down to the neck.",
         "desk_phone_low": "Seated, phone low near the chest in both hands, headphones on the neck, eyes on the screen.",
     },
@@ -65,7 +71,7 @@ POSES: dict[str, dict[str, str]] = {
 FACES: dict[str, dict[str, tuple[str, ...]]] = {
     "ren": {
         # characters.ren.expressions value.comic_set / tender_set, plus neutral
-        "comic": ("rehearsed_breath", "letdown", "freeze", "relief", "stunned_stillness"),
+        "comic": ("rehearsed_breath", "letdown", "freeze", "relief", "stunned_stillness", "wary", "determined"),
         "tender": ("focused_calm", "hesitation_at_heart", "release_after_send", "final_look_up"),
         "neutral": ("neutral",),
     },
@@ -76,6 +82,15 @@ FACES: dict[str, dict[str, tuple[str, ...]]] = {
 }
 # From this shot on (film order) Ren's comic set is illegal (tone.the_turn).
 COMIC_ENDS_BEFORE = "SC04_SH030"
+
+# ------------------------------------------------------------------ lids (v2)
+# Per-character lids track: a multiplier on the face's own eye openness; the gaze is kept.
+LIDS: dict[str, float] = {
+    "open": 1.0,     # upper lids at the face's own openness
+    "low": 0.55,     # heavy lids (tired, tender)
+    "closed": 0.0,   # lids shut
+}
+BLINK_TIMING_F = {"close": (2, 4), "shut": (1, 2), "open": (3, 6), "total_min": 6}
 
 # ------------------------------------------------------------------ eyeline targets
 LOOK_TARGETS: dict[str, str] = {
@@ -195,9 +210,10 @@ PROPS: dict[str, dict] = {
         "persistent": True,
     },
     "shop_door": {
-        "desc": "Shop door (swing continues after the cut).",
-        "fields": {"state": ("closed", "open_70")},
-        "transitions": {"state": {"closed": ("open_70",), "open_70": ("closed",)}},
+        "desc": "Shop door; swing_back is the closer decay (about 70 -> 0 deg over about 36 frames) and carries on past the cut.",
+        "fields": {"state": ("closed", "open_70", "swing_back"), "swing_deg": "deg"},
+        "transitions": {"state": {"closed": ("open_70",), "open_70": ("swing_back", "closed"),
+                                  "swing_back": ("closed", "open_70")}},
         "persistent": False,
     },
     "shop_lights": {
@@ -205,6 +221,30 @@ PROPS: dict[str, dict] = {
         "fields": {"state": ("on", "off")},
         "transitions": {"state": {"on": ("off",), "off": ("on",)}},
         "persistent": True,
+    },
+    "charging_cable": {
+        "desc": "Ren's one charging cable (continuity.props.cable): a posed curve, phone end always on phone_ren; `loc` is the source end.",
+        "fields": {
+            "loc": ("glovebox", "hand_r", "car_usb_adapter", "hand_l_loop", "shop_socket", "loose", "crank_port"),
+            "state": ("posed", "hidden"),
+        },
+        "transitions": {
+            "loc": {
+                "glovebox": ("hand_r",),
+                "hand_r": ("car_usb_adapter", "shop_socket", "crank_port", "hand_l_loop", "glovebox", "loose"),
+                "car_usb_adapter": ("hand_l_loop", "hand_r"),
+                "hand_l_loop": ("hand_r", "loose"),
+                "shop_socket": ("loose", "hand_l_loop", "hand_r"),
+                "loose": ("hand_r", "hand_l_loop"),
+                "crank_port": ("loose", "hand_r"),
+            },
+            "state": {"posed": ("hidden",), "hidden": ("posed",)},
+        },
+        "persistent": True,
+        # only the source end chains across cuts; posed/hidden is framing and may change at any cut
+        "chained_fields": ("loc",),
+        "before_first_key": {"loc": "glovebox", "state": "hidden"},
+        "phone_end": "phone_ren",
     },
     "ceiling_panels": {
         "desc": "Ceiling panels: `steady` is a deliberate no-op QA can assert (the gag is the absence).",
@@ -248,6 +288,41 @@ UI_SCREENS = ("map", "call", "compose", "sent", "off", "wake", "received")
 UI_KEYS = ("any", "emoji", "backspace", "send")
 UI_PHONES = ("ren", "hana")
 
+# ------------------------------------------------------------------ v2 additions
+# Names that exist only from vocabulary v2 on (an anim file with vocab_version 1 may not use them).
+V2_POSES: dict[str, tuple[str, ...]] = {"ren": ("kneel_reach_stand", "kneel_head_back")}
+V2_FACES: dict[str, tuple[str, ...]] = {"ren": ("wary", "determined")}
+V2_PROPS: tuple[str, ...] = ("charging_cable",)
+V2_PROP_VALUES: dict[tuple[str, str], tuple[str, ...]] = {("shop_door", "state"): ("swing_back",)}
+V2_PROP_FIELDS: dict[str, tuple[str, ...]] = {"shop_door": ("swing_deg",)}
+V2_TRACKS: tuple[str, ...] = ("lids",)
+# v1 text of the presets v2 tightened (kept so the v1 canon proposals still match the module)
+_V1_POSE_DESCS: dict[str, str] = {
+    "car_forehead_wheel": "Head lowered until the forehead rests on the top of the wheel rim, shoulders sagged.",
+    "scramble_out": "Ducked and unfolding out of the passenger doorway below the 1.45 m roof line.",
+    "kerb_crank_hold": "Seated on the kerb as kerb_hunch with the crank held in both hands in the lap (cranking base).",
+    "lunge_reach": "Lunge leaning in through the doorway, left forearm on the seat edge, right arm to the glovebox.",
+    "desk_notice": "Seated, head turned about 25 deg toward the lit phone, pencil laid down."
+}
+
+_V1_PROP_DESCS: dict[str, str] = {"shop_door": "Shop door (swing continues after the cut)."}
+
+
+def v2_only_pose(character: str, name: str) -> bool:
+    return name in V2_POSES.get(character, ())
+
+
+def v2_only_face(character: str, name: str) -> bool:
+    return name in V2_FACES.get(character, ())
+
+
+def prop_chained_fields(prop: str, default: tuple[str, ...]) -> tuple[str, ...]:
+    """Fields of a persistent prop that must agree across cuts (default: every tracked field)."""
+    spec = PROPS.get(prop, {})
+    cf = spec.get("chained_fields")
+    return tuple(f for f in default if f in cf) if cf is not None else tuple(default)
+
+
 # ------------------------------------------------------------------ helpers
 def all_pose_names() -> list[str]:
     return [n for names in POSES.values() for n in names]
@@ -275,7 +350,7 @@ def enum_groups() -> dict[str, tuple[str, ...]]:
         "ease": tuple(EASES), "look_target": tuple(LOOK_TARGETS), "breath": tuple(BREATHS),
         "gait": tuple(GAITS), "prop": tuple(PROPS), "camera_move": tuple(CAMERA_MOVES),
         "hold_scope": tuple(HOLD_SCOPES), "event_kind": tuple(EVENT_KINDS), "ui_event": tuple(UI_EVENTS),
-        "ui_screen": UI_SCREENS, "ui_key": UI_KEYS,
+        "ui_screen": UI_SCREENS, "ui_key": UI_KEYS, "lids": tuple(LIDS),
     }
     for ch in POSES:
         g[f"pose.{ch}"] = tuple(POSES[ch])
@@ -289,11 +364,32 @@ def enum_groups() -> dict[str, tuple[str, ...]]:
 
 
 # ------------------------------------------------------------------ canon proposals
+def _v1_view() -> tuple[dict, dict, dict]:
+    """(POSES, FACES, PROPS) as vocabulary v1 had them. The `animation.vocab.*` proposals describe v1;
+    v2 is specified by the `animation.vocab.v2.*` entries (the PROPOSED v2 canon), so the two never mix."""
+    poses = {ch: {n: _V1_POSE_DESCS.get(n, d) for n, d in t.items() if n not in V2_POSES.get(ch, ())}
+             for ch, t in POSES.items()}
+    faces = {ch: {g: tuple(n for n in names if n not in V2_FACES.get(ch, ())) for g, names in grp.items()}
+             for ch, grp in FACES.items()}
+    props = {}
+    for name, spec in PROPS.items():
+        if name in V2_PROPS:
+            continue
+        flds = {f: (tuple(x for x in a if x not in V2_PROP_VALUES.get((name, f), ())) if isinstance(a, tuple) else a)
+                for f, a in spec["fields"].items() if f not in V2_PROP_FIELDS.get(name, ())}
+        trans = {f: {k: tuple(x for x in v if x not in V2_PROP_VALUES.get((name, f), ()))
+                     for k, v in m.items() if k not in V2_PROP_VALUES.get((name, f), ())}
+                 for f, m in spec["transitions"].items()}
+        props[name] = {**spec, "desc": _V1_PROP_DESCS.get(name, spec["desc"]), "fields": flds, "transitions": trans}
+    return poses, faces, props
+
+
 def canon_entry_dicts() -> list[dict]:
-    """The vocabulary as PROPOSED canon entries (`animation.vocab.*`), each with a rationale.
-    The human ratifies them at G7; agents only ever write PROPOSED."""
+    """The v1 vocabulary as PROPOSED canon entries (`animation.vocab.*`), each with a rationale.
+    The human ratifies them at G7; agents only ever write PROPOSED. v2 lives in `animation.vocab.v2.*`."""
+    v1_poses, v1_faces, v1_props = _v1_view()
     common = {"tag": "DECISION", "status": "PROPOSED", "source": "agent:animation-director", "version": 1}
-    ver = {"vocab_version": VOCAB_VERSION}
+    ver = {"vocab_version": 1}
 
     def entry(eid, statement, value, rationale, serves, depends_on):
         return {"id": f"animation.vocab.{eid}", "statement": statement, "value": {**ver, **value},
@@ -301,7 +397,7 @@ def canon_entry_dicts() -> list[dict]:
 
     return [
         entry("pose.ren", "Ren's pose presets: the only body configurations an anim file may name for Ren.",
-              {"presets": dict(POSES["ren"])},
+              {"presets": dict(v1_poses["ren"])},
               "Derived from the 224 free-text keys in the shot animation blocks. Each preset is one body "
               "configuration a builder can pose from joints; hands on props, breath, blink and the tuft are "
               "carried by other tracks so the list stays short. Rejected: a preset per prose key (about 90 "
@@ -309,14 +405,14 @@ def canon_entry_dicts() -> list[dict]:
               ["intent.comic_then_tender", "intent.anime_feel"],
               ["characters.ren.movement", "characters.ren.representation"]),
         entry("pose.hana", "Hana's pose presets.",
-              {"presets": dict(POSES["hana"])},
+              {"presets": dict(v1_poses["hana"])},
               "Hana has one desk and four beats (absorbed, noticing, headphones off, reading); four presets "
               "cover them and the blends between. Rejected: a rig for a character who never stands.",
               ["intent.open_hopeful_ending"],
               ["characters.hana.movement", "characters.hana.representation"]),
         entry("face", "Face refs: Ren's comic and tender sets, plus neutral; Hana's four states.",
-              {"ren": {k: list(v) for k, v in FACES["ren"].items()},
-               "hana": {k: list(v) for k, v in FACES["hana"].items()},
+              {"ren": {k: list(v) for k, v in v1_faces["ren"].items()},
+               "hana": {k: list(v) for k, v in v1_faces["hana"].items()},
                "comic_illegal_from_shot": COMIC_ENDS_BEFORE},
               "Taken from characters.*.expressions, not invented. The comic set is illegal from "
               "SC04_SH030 on so the change of key (tone.the_turn) is checkable on his face.",
@@ -345,7 +441,7 @@ def canon_entry_dicts() -> list[dict]:
                                                             for f, a in s["fields"].items()},
                              "transitions": {f: {k: list(v) for k, v in m.items()}
                                              for f, m in s["transitions"].items()},
-                             "persistent": s["persistent"]} for p, s in PROPS.items()}},
+                             "persistent": s["persistent"]} for p, s in v1_props.items()}},
               "Props are where prose was ambiguous: SC04_SH040 'lowered by hand ... left down' was read as "
               "open, and the crank is 'in the closed glovebox' in SC04_SH010. An enum (closed | open_down) "
               "settles it and makes cross-shot continuity checkable.",

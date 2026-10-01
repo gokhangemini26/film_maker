@@ -48,6 +48,9 @@ CAR_BODY = {
 }
 DOOR_DEG = {"closed": 0.0, "open_60": 60.0}
 SHOP_DOOR_DEG = {"closed": 0.0, "open_70": 70.0}
+SWING_BACK_REF_DEG, SWING_BACK_F = 70.0, 36.0     # shop door closer (v2): about 70 -> 0 deg over about 36 frames
+LIDS_FACTOR = {"open": 1.0, "low": 0.55, "closed": 0.0}     # v2 lids track: multiplies the face's eye openness
+CABLE_LOCS = ("glovebox", "hand_r", "car_usb_adapter", "hand_l_loop", "shop_socket", "loose", "crank_port")
 BREATH_M = {"in_slow": 0.010, "out_slow": 0.0, "out_long": -0.025}
 FALLBACK_FACE = "neutral"
 TWO_PI = 2 * math.pi
@@ -134,6 +137,72 @@ def _enum(keys, field, f, default=None):
         return cur, cur, 1.0
     t = _clip01((f - f0 + 1) / float(dur))
     return prev, cur, _ease(ease or "ease_in_out", t)
+
+
+def lids_at(keys, f):
+    """Eye-openness factor (1 open, 0.55 low, 0 closed) of a lids track at frame f. A key with dur_f eases from the
+    previous factor over frames f0..f0+dur-1 (the last one complete); before the first key the lids are open. Unknown
+    refs are ignored (read defensively: the key shape is {f, ref, ease, dur_f})."""
+    segs = [(-10 ** 6, None, None, 1.0)]
+    for k in sorted((k for k in (keys or []) if k.get("ref") in LIDS_FACTOR), key=lambda k: k["f"]):
+        segs.append((k["f"], k.get("dur_f"), k.get("ease"), LIDS_FACTOR[k["ref"]]))
+    return _seg_value(segs, f, 1.0, _lerp)
+
+
+def shop_door_angle(keys, f):
+    """Shop door angle in degrees at frame f. States: closed 0, open_70 70, swing_back (the closer pulls the door from
+    its current angle, or from `swing_deg` when the key pins one, toward closed at about 70 deg per 36 frames with the key's
+    ease; with no dur_f the decay carries on past the shot's last frame and the value at that frame is whatever it has reached,
+    never a slam). A key with swing_deg and no state, or state + swing_deg on closed/open_70, moves to that angle
+    (dur_f / ease as for any key). Keys the builder does not know are skipped."""
+    ks = []
+    for k in sorted(keys or [], key=lambda k: k["f"]):
+        st, sd = k.get("state"), k.get("swing_deg")
+        if st == "swing_back" or sd is not None or st in SHOP_DOOR_DEG:
+            ks.append(k)
+    if not ks:
+        return 0.0
+
+    def tgt(k):
+        if k.get("swing_deg") is not None and k.get("state") != "swing_back":
+            return float(k["swing_deg"])
+        return SHOP_DOOR_DEG.get(k.get("state"), 0.0)
+
+    def val(i, fr):
+        k = ks[i]
+        if fr < k["f"]:
+            return val(i - 1, fr) if i > 0 else (SWING_BACK_REF_DEG if k.get("state") == "swing_back" else tgt(k))
+        start = val(i - 1, k["f"]) if i > 0 else None
+        if k.get("state") == "swing_back":
+            a0 = float(k["swing_deg"]) if k.get("swing_deg") is not None else (start if start is not None else SWING_BACK_REF_DEG)
+            dur = float(k.get("dur_f") or max(6.0, SWING_BACK_F * abs(a0) / SWING_BACK_REF_DEG))
+            u = _ease(k.get("ease") or "ease_in_out", _clip01((fr - k["f"]) / dur))
+            return a0 * (1.0 - u)
+        t, dur = tgt(k), k.get("dur_f")
+        if start is None or not dur:
+            return t
+        return _lerp(start, t, _ease(k.get("ease") or "ease_in_out", _clip01((fr - k["f"] + 1) / float(dur))))
+
+    i = max((j for j, k in enumerate(ks) if k["f"] <= f), default=0)
+    return val(i, f)
+
+
+def cable_at(keys, f):
+    """(loc, state) of the charging cable's source end at frame f. Before the first key: glovebox, hidden. Afterwards loc is
+    the last loc key (chained) and state the last state key, `posed` when no key has set one (a key that gives only a loc
+    makes the cable visible: `hidden` must be asked for). Unknown values are ignored."""
+    ks = sorted((k for k in (keys or [])), key=lambda k: k["f"])
+    if not ks or f < ks[0]["f"]:
+        return "glovebox", "hidden"
+    loc, state = "glovebox", "posed"
+    for k in ks:
+        if k["f"] > f:
+            break
+        if k.get("loc") in CABLE_LOCS:
+            loc = k["loc"]
+        if k.get("state") in ("posed", "hidden"):
+            state = k["state"]
+    return loc, state
 
 
 # ----------------------------------------------------------------------------------- stage (geometry of the shot)
@@ -350,15 +419,32 @@ def _home_frame_name(pose_keys):
     return fam if fam in ("car", "kerb") else "home"
 
 
-def _pose_joints(cid, ref, f, stage, move, first_step_f):
+def _crank_ctx(ctx, loc):
+    c = {k: dict(v) for k, v in ctx.items()}
+    c.setdefault("kerb", {})["crank_loc"] = loc
+    return c
+
+
+def _pose_joints(cid, ref, f, stage, move, first_step_f, crank=None):
     """Joints of preset `ref` at frame f in ITS family frame. The gait poses (run_phone_out, crank hold) are gait
-    frames, not still poses."""
+    frames, not still poses. `crank` = the crank_charger prop state: the clamped crank hold's left hand follows its loc
+    (v2): the phone in the lap hand, or under the crank body with hands_both; between the two it blends with the change."""
     props, ctx = stage.props[cid], stage.ctx
     gait = move.get("gait", "none")
     if ref == "run_phone_out" and gait in ("run_phone_out", "scramble"):
         return PS.gait_run_phone_out(f, props, ctx, speed_mps=move.get("speed_mps") or 4.2, first_step_f=first_step_f)
-    if ref == "kerb_crank_hold" and gait == "crank_turn" and move.get("first_top_f") is not None:
-        return PS.gait_crank_turn(f, move["first_top_f"], props, ctx, start_f=move.get("start_f"), stop_f=move.get("stop_f"))
+    if ref == "kerb_crank_hold":
+        def one(loc):
+            c2 = _crank_ctx(ctx, loc)
+            if gait == "crank_turn" and move.get("first_top_f") is not None:
+                return PS.gait_crank_turn(f, move["first_top_f"], props, c2, start_f=move.get("start_f"), stop_f=move.get("stop_f"))
+            return PS.pose(cid, ref, props, c2)
+
+        a, b, t = (crank["loc_from"], crank["loc_to"], crank["loc_t"]) if crank else ("lap", "lap", 1.0)
+        ha, hb = a == "hands_both", b == "hands_both"
+        if ha != hb and 0.0 < t < 1.0:
+            return PS.blend(one("hands_both" if ha else "lap"), one("hands_both" if hb else "lap"), t, "linear")
+        return one("hands_both" if (hb if t >= 0.5 else ha) else "lap")
     return PS.pose(cid, ref, props, ctx)
 
 
@@ -370,7 +456,7 @@ def _char_frame(stage, cid, fam, root, f):
     return stage.frames[fam]
 
 
-def _pose_track(cid, mc, stage, f, n):
+def _pose_track(cid, mc, stage, f, n, crank=None):
     """(joints in the output frame, output frame, info) for character cid at frame f."""
     keys = mc.get("pose") or []
     move = mc.get("move") or {}
@@ -397,11 +483,11 @@ def _pose_track(cid, mc, stage, f, n):
     else:
         A = B = k["ref"]
         t, ease = 1.0, "hold"
-    ja = _pose_joints(cid, A, f, stage, move, first_step)
+    ja = _pose_joints(cid, A, f, stage, move, first_step, crank)
     fa = _char_frame(stage, cid, _family(A), root, f)
     if A == B:
         return ja, fa, {"from": A, "to": B, "t": 1.0}
-    jb = _pose_joints(cid, B, f, stage, move, first_step)
+    jb = _pose_joints(cid, B, f, stage, move, first_step, crank)
     fb = _char_frame(stage, cid, _family(B), root, f)
     u = PS.ease_value(ease, t)
     out_base = fa[0] * (1 - u) + fb[0] * u
@@ -587,8 +673,12 @@ def _prop_states(shot_motion, f, stage, chars):
             segs.append((k["f"], k.get("dur_f"), k.get("ease"), tgt))
         out["passenger_door"] = {"angle_deg": _seg_value(segs, f, 0.0, _lerp)}
     if "shop_door" in props:
-        segs = [(k["f"], k.get("dur_f"), k.get("ease"), SHOP_DOOR_DEG[k["state"]]) for k in props["shop_door"] if k.get("state")]
-        out["shop_door"] = {"angle_deg": _seg_value(segs, f, 0.0, _lerp)}
+        ks = props["shop_door"]
+        i, k = _last([k for k in sorted(ks, key=lambda k: k["f"]) if k.get("state")], f)
+        out["shop_door"] = {"angle_deg": shop_door_angle(ks, f), "state": k["state"] if k else "closed"}
+    if "charging_cable" in props:
+        loc, state = cable_at(props["charging_cable"], f)
+        out["charging_cable"] = {"loc": loc, "state": state, "hide_render": state == "hidden"}
     if "glovebox_lid" in props:
         segs = [(k["f"], k.get("dur_f"), k.get("ease"), 1.0 if k["state"] == "open_down" else 0.0)
                 for k in props["glovebox_lid"] if k.get("state")]
@@ -698,6 +788,39 @@ def _camera_state(stage, cam_motion, f):
     return {"pos": pos, "progress": p, "move": (cam_motion or {}).get("move", "none")}
 
 
+# ----------------------------------------------------------------------------------- the charging cable
+SHOP_SOCKET_PLUG = Vector((4.215, 8.925, 0.322))     # shop-local: the left USB port of the wall socket sets.build_shop builds
+
+
+def _cable_ends(cab, cs, props, stage):
+    """World points of the cable: `phone_end` (fixed to phone_ren: a little below its centre, the render refines it with the
+    phone's own axes) and `src` (where the source end is for cab['loc']; None when the shot lacks the anchor, which draws nothing)."""
+    base, fac = cs["frame"]
+    j = cs["joints"]
+    w = lambda v: PS.to_world(Vector(v), base, fac)   # noqa: E731
+    ph = _phone_local(j, cs.get("phone_attach"), stage.ctx)
+    phone_w = w(ph)
+    car, loc = stage.car, cab["loc"]
+    src = None
+    if loc == "hand_r":
+        src = w(j["handR"] + Vector((0.0, 0.0, 0.02)))
+    elif loc == "hand_l_loop":
+        src = w(j["handL"] + Vector((0.0, 0.0, 0.02)))
+    elif loc == "glovebox" and car:
+        src = Vector(car["glovebox_front"]) + Vector((0.0, -0.03, 0.0))
+    elif loc == "car_usb_adapter" and car:
+        src = Vector(car["adapter"]) + Vector((0.0, 0.0, 0.01))
+    elif loc == "shop_socket":
+        src = SHOP_ORIGIN + SHOP_SOCKET_PLUG
+    elif loc == "crank_port":
+        cw = (props.get("crank_charger") or {}).get("world")
+        src = Vector(cw) + Vector((0.0, 0.0, 0.0)) if cw is not None else None
+    elif loc == "loose":
+        f0 = j["foot"][0]
+        src = w(Vector((f0.x + 0.12, f0.y - 0.14, f0.z - 0.035)))   # on the ground by his left foot, out of view in the wides
+    return {"src": src, "phone_end": phone_w + Vector((0.0, 0.0, -0.07)), "ground_z": stage.ground_z(phone_w)}
+
+
 # ----------------------------------------------------------------------------------- the public function
 def frame_state(shot, motion, ui_timeline, f, *, stage=None):
     """Everything one frame of `shot` needs, as a pure function of the resolved shot, its motion block, its ui_timeline
@@ -718,7 +841,7 @@ def frame_state(shot, motion, ui_timeline, f, *, stage=None):
     for cid, mc in (motion.get("characters") or {}).items():
         if cid not in stage.home:
             continue
-        j, frame, pinfo = _pose_track(cid, mc, stage, f, n)
+        j, frame, pinfo = _pose_track(cid, mc, stage, f, n, props.get("crank_charger"))
         ang = j.get("crank_angle")
         if cid == "ren" and "crank_charger" in props:
             props["crank_charger"]["world"] = _crank_place(props["crank_charger"], j, frame, stage)
@@ -729,11 +852,17 @@ def frame_state(shot, motion, ui_timeline, f, *, stage=None):
         att = (props.get("phone_ren") if cid == "ren" else props.get("phone_hana")) or {}
         chars[cid] = {
             "frame": frame, "joints": j, "face": face, "look": look, "eyes_closed": closed,
+            "lids": lids_at(mc.get("lids"), f),
             "pose": pinfo, "phone_attach": att.get("attach"), "gait": (mc.get("move") or {}).get("gait", "none"),
             "crank_angle": ang, "handle_top": bool(j.get("handle_top")),
         }
     if "crank_charger" in props and "world" not in props["crank_charger"]:
         props["crank_charger"]["world"] = None
+    cab = props.get("charging_cable")
+    if cab is not None:
+        cab.update({"src": None, "phone_end": None, "ground_z": 0.0})
+        if "ren" in chars and not cab["hide_render"]:
+            cab.update(_cable_ends(cab, chars["ren"], props, stage))
     ui_frames = (ui_timeline or {}).get("frames") if isinstance(ui_timeline, dict) else ui_timeline
     st = ui_to_st(ui_frames[f]) if ui_frames else None
     return {"f": f, "shot_id": stage.sid, "characters": chars, "props": props, "ui": st,
@@ -742,7 +871,7 @@ def frame_state(shot, motion, ui_timeline, f, *, stage=None):
 
 # ----------------------------------------------------------------------------------- prop continuity across shots
 PERSISTENT_PROPS = ("passenger_door", "glovebox_lid", "crank_charger", "phone_ren", "phone_hana", "hana_headphones",
-                    "pencil", "shop_lights", "dash_lights_and_adapter_ring")
+                    "pencil", "shop_lights", "dash_lights_and_adapter_ring", "charging_cable")
 
 
 def _end_key(prop, st):
@@ -760,6 +889,8 @@ def _end_key(prop, st):
         return {"state": st["state"]}
     if prop in ("shop_lights", "dash_lights_and_adapter_ring"):
         return {"state": "on" if st["on"] else "off"}
+    if prop == "charging_cable":   # the source end chains; a shot with no key keeps the last visibility too (builder carry-over)
+        return {"loc": st["loc"], "state": st["state"]}
     return None
 
 
@@ -923,8 +1054,19 @@ class _FrameRig:
         """Props the set does not build but the vocabulary animates: the rear-view mirror and the adapter ring LED."""
         U, bpy = self.U, self.bpy
         self.mirror = self.adapter_on = self.adapter_off = None
+        self.shop_door = None
         a = self.stage.car
         pr = self.motion.get("props") or {}
+        st = self.canon.get("world.sets.street") or {}
+        if "shop_door" in pr and self.scene in STREET_SCENES and st.get("shop_door_centre"):
+            # the leaf of the street shop door (the static set leaves the gap open): hinged on the far jamb, 0.94 m wide,
+            # swinging inward (toward -x, into the shop) by the prop's angle. Built only for shots that animate the door.
+            from .sets import Pal
+            bs, dcy = st.get("building_line_south_x", -1.8), st["shop_door_centre"][1]
+            hex_ = (Pal(self.canon, "look.color.shop", "#BFE0D2")(10))
+            leaf = U.box("shop_door_leaf", (0.04, 0.94, 2.05), (bs - 0.15, dcy, 1.025), self.rig, U.toon(hex_))
+            leaf["fm_shot"] = True
+            self.shop_door = (leaf, Vector((bs - 0.15, dcy + 0.47, 0.0)))
         if a and "rear_view_mirror" in pr:
             m = U.box("rear_view_mirror", (0.22, 0.03, 0.06), a["mirror"], self.rig, U.toon({"hex": "#2B2E36", "linear": U.lin("#2B2E36")}))
             m["fm_shot"] = True
@@ -950,6 +1092,7 @@ class _FrameRig:
         for cid, cs in S["characters"].items():
             infos[cid] = self._character(cid, cs, S)
         self._phones(S, infos)
+        self._cable(S, infos)
         self._crank(S, infos)
         self._pencil(S, infos)
         self._lights(S, infos)
@@ -1003,8 +1146,11 @@ class _FrameRig:
                 if o.get("fm_shop_light"):
                     o.hide_render = not props.get("shop_lights", {}).get("on", True)
         sd = props.get("shop_door")
-        if sd is not None and "shop_door" in self.bpy.data.objects:
-            pass
+        if sd is not None and self.shop_door is not None:
+            leaf, hinge = self.shop_door
+            ang = -math.radians(sd["angle_deg"])      # + angle swings the free end toward -x (inward)
+            leaf.location = (hinge.x + math.sin(ang) * 0.47, hinge.y - math.cos(ang) * 0.47, 1.025)
+            leaf.rotation_euler = (0.0, 0.0, ang)
 
     def _character(self, cid, cs, S):
         bpy, U = self.bpy, self.U
@@ -1024,7 +1170,7 @@ class _FrameRig:
                 PS.FACE_SHAPES[face] = dict(PS.FACE_SHAPES[cs["face"]], eye=0.12)
         col = bpy.data.collections.new("fm.frame." + cid)
         self.frame_col.children.link(col)
-        info = figure(col, cid, self.canon, pr, base, fac, joints=cs["joints"], face=face)
+        info = figure(col, cid, self.canon, pr, base, fac, joints=cs["joints"], face=face, lids=cs.get("lids", 1.0))
         if self.is_insert:
             for o in col.objects:
                 n_ = o.name.split("_", 1)[1] if "_" in o.name else o.name
@@ -1082,6 +1228,20 @@ class _FrameRig:
             for o in col.all_objects:
                 o["fm_shot"] = True
             hp["fm_shot"] = True
+
+    def _cable(self, S, infos):
+        """The charging cable as a posed curve: the phone end fixed to phone_ren, the source end at its loc. A hidden cable
+        (state hidden) is not built, so nothing of it renders; its loc keeps chaining in the prop state."""
+        cab = S["props"].get("charging_cable")
+        if cab is None or cab.get("hide_render") or cab.get("src") is None or "ren" not in infos:
+            return
+        end = cab["phone_end"]
+        i = infos["ren"]
+        if i.get("phone_axes"):     # the phone is on screen: its port is the middle of the bottom edge
+            _xv, yv, _nz = i["phone_axes"]
+            end = i["phone_w"] - yv * 0.0735
+        pts = PS.cable_points(cab["src"], end, ground_z=cab.get("ground_z"))
+        self.PH.build_cable(self.frame_col, pts)
 
     def _crank(self, S, infos):
         U, bpy = self.U, self.bpy

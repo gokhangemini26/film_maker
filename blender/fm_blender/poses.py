@@ -48,7 +48,7 @@ CTX_DEFAULT = {
     },
     # Standing on the pavement beside the passenger door, facing into the car.
     "door": {
-        "seat_edge": (0.62, -0.22, 0.47), "latch": (1.02, 0.10, 0.72), "sill": (0.60, -0.20, 0.72),
+        "seat_edge": (0.62, -0.22, 0.47), "latch": (1.02, 0.10, 0.72), "sill": (0.60, 0.20, 0.72),
         "roof_z": 1.45,
     },
     "kerb": {
@@ -64,6 +64,13 @@ CTX_DEFAULT = {
         "sketchbook_hold": (0.47, -0.36, 0.775),
         "phone": (0.55, 0.25, 0.775),         # phone lying on the desk
     },
+    # Kneeling in the shop (v2): the display stand is on the figure's right, the USB socket behind it on the wall.
+    # Local (fw, rt, up) of the kneeling figure (base on the floor under the pelvis). stand_back_edge is a point on the
+    # stand's back edge and stand_back_normal points away from the figure; "behind the stand" is the +normal side.
+    "shop": {
+        "stand_back_edge": (0.03, 0.62, 0.0), "stand_back_normal": (1.0, 0.0, 0.0),
+        "socket": (0.26, 0.40, 0.30),
+    },
 }
 
 FACE_SHAPES = {
@@ -76,6 +83,9 @@ FACE_SHAPES = {
     "freeze": dict(brow_dy=0.12, brow_tilt=0.05, eye=1.35, mouth_w=0.55, mouth_h=3.5, smile=0.0),
     "relief": dict(brow_dy=0.05, brow_tilt=0.18, eye=0.12, mouth_w=1.0, mouth_h=1.5, smile=0.35),
     "stunned_stillness": dict(brow_dy=0.08, brow_tilt=0.0, eye=1.25, mouth_w=0.7, mouth_h=2.4, smile=0.0),
+    # v2 (animation.vocab.v2.face.ren): comic set additions, shape hints from the canon
+    "wary": dict(brow_dy=-0.01, brow_tilt=0.0, eye=0.85, mouth_w=0.85, mouth_h=0.7, smile=-0.05),
+    "determined": dict(brow_dy=0.0, brow_tilt=-0.15, eye=1.0, mouth_w=0.8, mouth_h=0.7, smile=0.0),
     # ren, tender set
     "focused_calm": dict(brow_dy=-0.03, brow_tilt=-0.10, eye=0.85, mouth_w=0.85, mouth_h=1.0, smile=0.0),
     "hesitation_at_heart": dict(brow_dy=0.02, brow_tilt=0.35, eye=0.95, mouth_w=0.7, mouth_h=1.0, smile=-0.10),
@@ -485,44 +495,151 @@ def car_recline(props, ctx=None):
                knee_pole=_KP_SIT, hand=(Vector((0.05, -0.30, 0.50)), Vector((0.05, 0.30, 0.50))), elbow_pole=_EP_DOWN)
 
 
+_FW_CACHE = {}
+
+
+def _forehead_point(j_neck, D, t):
+    """Forehead contact point for a head whose total pitch is t (radians): neck + head offset + forehead offset."""
+    hf = Vector((math.cos(t), 0, -math.sin(t)))
+    hu = Vector((math.sin(t), 0, math.cos(t)))
+    return j_neck + hu * D["headoff"] + hf * D["hh"] * 0.36 + hu * D["hh"] * 0.29
+
+
+def _fw_solve(D, c, top, neck_pitch):
+    """(pelvis dx, spine pitch deg, total head pitch deg) that put the forehead on `top` (the rim top). The neck depends
+    only on the pelvis and the spine pitch, so each (dx, pitch) has one best head pitch: a coarse scan then a fine one. dx
+    stays 0 (the pelvis does not move) whenever that already reaches; a wheel set further away lets him slide forward."""
+    key = (round(D["hh"], 4), round(D["spine"], 4), round(D["neck"], 4), round(D["headoff"], 4), round(D["thigh"], 4),
+           round(c["seat_z"], 4), tuple(round(x, 4) for x in c["wheel_center"]), round(c["wheel_radius"], 4),
+           tuple(round(x, 4) for x in c["wheel_up"]), neck_pitch)
+    if key in _FW_CACHE:
+        return _FW_CACHE[key]
+
+    def best_t(neck, lo, hi, step):
+        best = None
+        n = int(round((hi - lo) / step))
+        for k in range(n + 1):
+            t = lo + k * step
+            e = (_forehead_point(neck, D, _R(t)) - top).length
+            if best is None or e < best[0]:
+                best = (e, t)
+        return best
+
+    def solve(dx):
+        pel = _car_pelvis(c, dx=dx, dz=-0.02)
+
+        def neck_of(p):
+            return pel + _dir(p) * D["spine"] + _dir(p + neck_pitch) * D["neck"]
+
+        best = None
+        for p in range(8, 56):
+            e, t = best_t(neck_of(float(p)), 45.0, 85.0, 1.0)
+            if best is None or e < best[0]:
+                best = (e, float(p), t)
+        _, p0, t0 = best
+        for k in range(-20, 21):
+            p = p0 + k * 0.05
+            e, t = best_t(neck_of(p), max(45.0, t0 - 1.0), t0 + 1.0, 0.05)
+            if e < best[0]:
+                best = (e, p, t)
+        return best
+
+    out = None
+    for dx in (0.0, 0.04, 0.08, 0.12):
+        e, p, t = solve(dx)
+        if out is None or e < out[0]:
+            out = (e, dx, p, t)
+        if e <= 0.003:
+            break
+    _FW_CACHE[key] = (out[1], out[2], out[3])
+    return _FW_CACHE[key]
+
+
 def car_forehead_wheel(props, ctx=None):
+    """The forehead (not the nose, not the horn pad) on the top of the rim: the spine curls forward and the head pitches
+    down to meet the rim top. Hands on the rim at +/-78 deg, the left one holding the phone against it, shoulders 4 cm
+    down. The spine and head pitch are solved so the forehead point lies on the rim top (acceptance: 1 cm); when the wheel
+    is too far for that the pelvis slides forward on the seat, up to 12 cm."""
     D, c = dims(props), merged_ctx(ctx)["car"]
     top = _rim(c, 0)
-    hh = D["hh"]
-    best = None
-    for p in range(10, 76):
-        j = rig(D, pelvis=_car_pelvis(c, dz=-0.02), spine=(p, 0), neck_pitch=12, head_pitch=22, shoulder_drop=0.04,
-                foot=_car_legs(c), knee_pole=_KP_SIT, hand=(_rim(c, -78), _rim(c, 78)), elbow_pole=_EP_DOWN)
-        pit = j["head_pitch"]
-        hf = Vector((math.cos(pit), 0, -math.sin(pit)))
-        hu = Vector((math.sin(pit), 0, math.cos(pit)))
-        fore = j["head"] + hf * hh * 0.36 + hu * hh * 0.29
-        err = (fore - top).length
-        if best is None or err < best[0]:
-            best = (err, j)
-    return best[1]
+    neck_pitch = 12
+    dx, p, t = _fw_solve(D, c, top, neck_pitch)
+    hl = _rim(c, -78)
+    return rig(D, pelvis=_car_pelvis(c, dx=dx, dz=-0.02), spine=(p, 0), neck_pitch=neck_pitch, head_pitch=t - p - neck_pitch,
+               shoulder_drop=0.04, foot=_car_legs(c), knee_pole=_KP_SIT, hand=(hl, _rim(c, 78)), elbow_pole=_EP_DOWN,
+               phone=hl, phone_hand="L")
+
+
+def forehead_point(j):
+    """The forehead contact point of a joint dict (local): where the head touches a rim."""
+    pit = j["head_pitch"]
+    hh = j["_dims"]["hh"]
+    return j["head"] + Vector((math.cos(pit), 0, -math.sin(pit))) * hh * 0.36 + Vector((math.sin(pit), 0, math.cos(pit))) * hh * 0.29
 
 
 def _stand_legs(D, spread=0.0):
     return (Vector((0.06, -D["hip"], D["ankle"])), Vector((0.06, D["hip"], D["ankle"])))
 
 
-def kneel_upright(props, ctx=None):
+_KNEEL_PH = Vector((0.22, 0, 0.93))
+
+
+def _kneel_rig(props, spine=(4, 0), twist=0.0, neck_pitch=6, head_pitch=10, shoulder_drop=0.0, hand_r=None, elbow_pole_r=None):
+    """kneel_upright and its variants share knees, pelvis, feet and the left hand with the phone at the chest."""
     D = dims(props)
     h = D["hip"]
-    ph = Vector((0.22, 0, 0.93))
-    return rig(D, pelvis=Vector((0, 0, D["thigh"] + 0.07)), spine=(4, 0), neck_pitch=6, head_pitch=10,
+    ph = _KNEEL_PH
+    ep = _EP_TUCK if elbow_pole_r is None else (_EP_TUCK[0], elbow_pole_r)
+    return rig(D, pelvis=Vector((0, 0, D["thigh"] + 0.07)), spine=spine, twist=twist, neck_pitch=neck_pitch,
+               head_pitch=head_pitch, shoulder_drop=shoulder_drop,
                foot=(Vector((-0.42, -h, 0.05)), Vector((-0.42, h, 0.05))), knee_pole=((1, 0, -0.8), (1, 0, -0.8)),
-               hand=(ph + Vector((0, -0.05, 0)), ph + Vector((0, 0.05, 0))), elbow_pole=_EP_TUCK, phone=ph, phone_hand="both")
+               hand=(ph + Vector((0, -0.05, 0)), ph + Vector((0, 0.05, 0)) if hand_r is None else hand_r),
+               elbow_pole=ep, phone=ph, phone_hand="both" if hand_r is None else "L")
+
+
+def kneel_upright(props, ctx=None):
+    return _kneel_rig(props)
+
+
+def kneel_head_back(props, ctx=None):
+    """kneel_upright with the head tipped back 8 deg (the neck extends 2 deg, the head 6 deg). Spine, shoulders, hands
+    and phone are exactly kneel_upright's: the shoulder drop belongs to the breath track."""
+    return _kneel_rig(props, neck_pitch=4, head_pitch=4)
+
+
+def kneel_reach_stand(props, ctx=None):
+    """kneel_upright's knees, pelvis and left hand with the phone at the chest; the torso turns 25 deg to the right
+    and bends toward the display stand just far enough for the right hand to reach the socket behind the stand
+    (shop ctx: stand_back_edge, socket). The right shoulder dips 4 cm and the head turns toward the socket."""
+    D = dims(props)
+    sh = merged_ctx(ctx)["shop"]
+    sock = _v(sh["socket"])
+    best = None
+    for roll in range(8, 61):   # least side-bend that gets the hand to the socket (arm 0.59 m, a 0.30 m socket)
+        j = _kneel_rig(props, spine=(12, float(roll)), twist=25.0, neck_pitch=6, head_pitch=10, shoulder_drop=0.04,
+                       hand_r=sock, elbow_pole_r=(-0.3, 0.5, -1))
+        best = j
+        if j["reach_err"][1] < 1e-4 and j["reach_err"][0] < 1e-4:
+            break
+    return look_at(best, sock, max_yaw_deg=45, max_pitch_deg=35)
 
 
 def scramble_out(props, ctx=None):
+    """Ducked in the passenger doorway: crown <= 1.40 m, spine about 52 deg forward, head leading with the eyes ahead.
+    The LEFT hand carries the phone, thrust out ahead of the chest; the RIGHT hand pushes off the sill. Right foot on
+    the pavement, left foot still on the car floor. Frame 0 of gait scramble."""
     D, c = dims(props), merged_ctx(ctx)["door"]
     h = D["hip"]
+
+    def phone_hand(j):   # ahead of the chest at chest height, a little left of the spine
+        return j["chest"] + Vector((0.42, -0.10, -0.03))
+
     j = rig(D, pelvis=Vector((0.05, 0, 0.60)), spine=(52, -4), neck_pitch=-28, head_pitch=-8, twist=8,
-            foot=(Vector((0.34, -h, 0.04)), Vector((-0.22, h, 0.04))), knee_pole=((1, 0, 0.6), (1, 0, 0.6)),
-            hand=(_v(c["sill"]) + Vector((0, 0, 0.16)), Vector((0.28, 0.26, 0.72))),
+            foot=(Vector((0.34, -h, 0.22)), Vector((-0.22, h, 0.04))), knee_pole=((1, 0, 0.6), (1, 0, 0.6)),
+            hand=(phone_hand, _v(c["sill"])),
             elbow_pole=((0, -0.6, -0.5), (-0.6, 0.6, -0.6)))
+    j["phone"] = j["handL"] + Vector((0.04, 0, 0.03))
+    j["phone_hand"] = "L"
     return j
 
 
@@ -556,14 +673,27 @@ def crank_knob(ctx, angle):
 
 
 def _kerb_crank(props, ctx, angle):
+    """Clamped cranking base (pelvis and feet as kerb_hunch): the crank body lies across the knees at the kerb crank
+    point, the spine leans 22 deg, the right hand is on the knob at `angle` (0 = 12 o'clock) and the head is pitched
+    toward the crank. The left hand follows ctx kerb crank_loc: 'lap' (default, clamped: phone held about 0.76 m high
+    over the near knee beside the port) or 'hands_both' (under the crank body with the phone flat in the palm)."""
     k = merged_ctx(ctx)["kerb"]
     cc, _, _ = _crank_geom(k)
     knob = crank_knob(ctx, angle)
-    j = _kerb_base(props, ctx, (22, 0), 10, 0,
-                   (Vector((cc.x - 0.02, cc.y - 0.07, cc.z + 0.03)), knob),
+    loc = k.get("crank_loc") or "lap"
+    D = dims(props)
+    both = loc == "hands_both"
+    if both:
+        left = Vector((cc.x - 0.02, cc.y - 0.07, cc.z - 0.06))
+    else:
+        left = lambda j: Vector((j["knee"][0].x + 0.04, j["knee"][0].y + 0.02, k.get("phone_lap_z", 0.76) - 0.03))  # noqa: E731
+    j = _kerb_base(props, ctx, (22, 0), 10, 0, (left, knob),
                    ((0.3, -0.7, -0.6), (0.3, 0.7, -0.6)), feet=None)
+    j["phone"] = j["handL"] + (Vector((0.0, 0.0, 0.02)) if both else Vector((0.0, 0.0, 0.03)))
+    j["phone_hand"] = "L"
     j["crank_handle"] = knob
     j["crank_angle"] = angle
+    j["crank_loc"] = loc
     return look_at(j, cc, max_yaw_deg=20)
 
 
@@ -596,19 +726,35 @@ def lunge_low(props, ctx=None):
 
 
 def lunge_reach(props, ctx=None):
+    """lunge_low's legs (right knee down, left foot forward). The torso leans about 52 deg in through the passenger
+    doorway (crown well under the 1.45 m roof), the left forearm rests on the seat edge with the phone screen up, the
+    right hand is on the glovebox latch (well inside the arm's length, elbow not locked) and the eyes are on it."""
     c = merged_ctx(ctx)["door"]
-    D = dims(props)
-    hand = (Vector(c["seat_edge"]) + Vector((0.16, -0.03, 0.06)), _v(c["latch"]))
-    j = _lunge(props, ctx, Vector((0.24, 0, 0.42)), (52, 0), -18, -8, hand, ((0, -0.6, -0.8), (0, 0.5, -0.5)),
-               rfoot_x=-0.38, lfoot_x=0.62)
-    return look_at(j, _v(c["latch"]), max_yaw_deg=40)
+    seat = _v(c["seat_edge"])
+    latch = _v(c["latch"])
+    hl = seat + Vector((0.16, -0.03, 0.06))
+
+    def solve(h_left):
+        return _lunge(props, ctx, Vector((0.24, 0, 0.42)), (52, 0), -18, -8, (h_left, latch),
+                      ((0, -0.6, -0.8), (0, 0.5, -0.5)), rfoot_x=-0.38, lfoot_x=0.62)
+
+    for _ in range(14):   # put the middle of the left forearm on the seat edge
+        j = solve(hl)
+        mid = (j["elbow"][0] + j["handL"]) / 2
+        err = seat - mid
+        if err.length < 0.002:
+            break
+        hl = hl + err
+    j["phone"] = j["handL"] + Vector((0.0, 0.0, 0.03))
+    j["phone_hand"] = "L"
+    return look_at(j, latch, max_yaw_deg=40)
 
 
 # hana at her desk
-def _desk(props, ctx, spine, neck_pitch, head_pitch, hand, elbow_pole, twist=0.0, head_yaw=0.0, **kw):
+def _desk(props, ctx, spine, neck_pitch, head_pitch, hand, elbow_pole, twist=0.0, head_yaw=0.0, pelvis_x=-0.04, **kw):
     D, d = dims(props), merged_ctx(ctx)["desk"]
     h = D["hip"]
-    return rig(D, pelvis=Vector((-0.04, 0, d["seat_z"] + 0.03)), spine=spine, twist=twist, neck_pitch=neck_pitch,
+    return rig(D, pelvis=Vector((pelvis_x, 0, d["seat_z"] + 0.03)), spine=spine, twist=twist, neck_pitch=neck_pitch,
                head_pitch=head_pitch, head_yaw=head_yaw,
                foot=(Vector((0.30, -h, D["ankle"])), Vector((0.30, h, D["ankle"]))), knee_pole=((0.6, 0, 1), (0.6, 0, 1)),
                hand=hand, elbow_pole=elbow_pole, **kw)
@@ -621,11 +767,13 @@ def desk_sketch(props, ctx=None):
 
 
 def desk_notice(props, ctx=None):
+    """Seated as desk_sketch with the head turned 25 deg toward the phone (yaw only). The spine lifts from 26 to 14 deg,
+    the torso twists 5.5 deg toward the book (6 deg is the limit), the right (pencil) hand stays on the page where the stroke ended (the pelvis slides 2.5 cm forward
+    on the chair so the arm still reaches with the spine up) and the left hand stays at the sketchbook edge. Whether the pencil is held or laid is the pencil track's job, not this pose's."""
     d = merged_ctx(ctx)["desk"]
-    j = _desk(props, ctx, (14, 0), 8, 6, (_v(d["sketchbook_hold"]), Vector((0.44, 0.02, d["desk_z"] + 0.03))),
-              ((0, -0.7, -0.6), (0.2, 0.6, -0.6)), twist=6, head_yaw=25)
-    j = look_at(j, _v(d["phone"]), yaw=_R(25))
-    return j
+    j = _desk(props, ctx, (14, 0), 8, 6, (_v(d["sketchbook_hold"]), _v(d["sketchbook"])),
+              ((0, -0.7, -0.6), (0.2, 0.5, -0.6)), twist=-5.5, head_yaw=25, pelvis_x=-0.015)
+    return look_at(j, _v(d["phone"]), yaw=_R(25))
 
 
 def desk_headphones_off(props, ctx=None):
@@ -734,6 +882,26 @@ def gait_crank_turn(t, first_top_f, props, ctx=None, *, start_f=None, stop_f=Non
 GAITS = {"run_phone_out": gait_run_phone_out, "scramble": gait_scramble, "crank_turn": gait_crank_turn}
 
 
+# ----------------------------------------------------------------------------------- the charging cable (posed, never simulated)
+def cable_points(src, dst, n=16, ground_z=None, sag=None):
+    """Points of a hanging cable from `src` (source end) to `dst` (the phone end), both world points: a cubic Bezier whose
+    inner control points sag below the chord (about 18 % of its length), pushed up so no point is below `ground_z`. The two
+    end points are exactly src and dst. Pure and deterministic; the cable is posed per frame, there is no simulation."""
+    a, b = Vector(src), Vector(dst)
+    L = (b - a).length
+    drop = Vector((0.0, 0.0, -(0.18 * L + 0.03 if sag is None else sag)))
+    c1, c2 = a + (b - a) * 0.28 + drop, a + (b - a) * 0.72 + drop
+    out = []
+    for i in range(n + 1):
+        t = i / float(n)
+        u = 1.0 - t
+        p = a * (u ** 3) + c1 * (3 * u * u * t) + c2 * (3 * u * t * t) + b * (t ** 3)
+        if ground_z is not None and 0 < i < n:
+            p = Vector((p.x, p.y, max(p.z, ground_z + 0.004)))
+        out.append(p)
+    return out
+
+
 # ----------------------------------------------------------------------------------- registry
 POSES = {
     ("ren", "car_upright"): car_upright,
@@ -746,6 +914,8 @@ POSES = {
     ("ren", "run_phone_out"): lambda props, ctx=None: gait_run_phone_out(0, props, ctx),
     ("ren", "scramble_out"): scramble_out,
     ("ren", "kneel_upright"): kneel_upright,
+    ("ren", "kneel_reach_stand"): kneel_reach_stand,
+    ("ren", "kneel_head_back"): kneel_head_back,
     ("ren", "kerb_hunch"): kerb_hunch,
     ("ren", "kerb_crank_hold"): kerb_crank_hold,
     ("ren", "kerb_lean_back"): kerb_lean_back,
