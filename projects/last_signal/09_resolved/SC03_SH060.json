@@ -540,7 +540,36 @@
     "start": 742
   },
   "lighting": {
-    "key": "phone screen emission; surround black",
+    "ambient": {
+      "hex": "#1E2030",
+      "linear": [
+        0.012983,
+        0.014444,
+        0.029557
+      ],
+      "srgb": [
+        0.117647,
+        0.12549,
+        0.188235
+      ]
+    },
+    "ambient_ref": "look.color.scene.sc03.blackout.dominant",
+    "exposure_target": 0.08,
+    "exposure_target_ref": "look.exposure.scene_keys.SC03_blackout",
+    "floor": {
+      "hex": "#1B1C29",
+      "linear": [
+        0.01096,
+        0.011612,
+        0.022174
+      ],
+      "srgb": [
+        0.105882,
+        0.109804,
+        0.160784
+      ]
+    },
+    "key": "phone screen emission; surround at the film floor '#1B1C29' to the blackout ambient '#1E2030', blue-black, not neutral grey or pure black",
     "ref": {
       "$canon": "look.lighting.sc03",
       "value": {
@@ -582,6 +611,154 @@
           }
         },
         "volumetrics": "none"
+      }
+    },
+    "render_spec": {
+      "$canon": "look.lighting.sc03_blackout_render",
+      "value": {
+        "applies_from": "SC03_SH050_f8",
+        "checks": {
+          "dip_visible_SC03_SH050": "pool_mean_luma_f8_to_f10_at_least_15pct_below_f11",
+          "mean_luma": [
+            0.08,
+            0.14
+          ],
+          "mean_luma_target": 0.12,
+          "pastel_merch_identifiable": false,
+          "pool": {
+            "area_frac_SC03_SH050": [
+              0.005,
+              0.04
+            ],
+            "brightest_non_screen_element": true,
+            "peak_luma_min": 0.55
+          },
+          "room_pixels_outside_pool": {
+            "chroma_max_8bit": 20,
+            "hue_deg": [
+              225,
+              245
+            ],
+            "luma": [
+              0.1,
+              0.14
+            ],
+            "neutral_grey_forbidden": true
+          },
+          "sh060_surround": "#1B1C29 to #1E2030, not neutral grey",
+          "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool"
+        },
+        "door_rectangle": {
+          "hex_max": {
+            "hex": "#C9A77E",
+            "linear": [
+              0.584078,
+              0.386429,
+              0.208637
+            ],
+            "srgb": [
+              0.788235,
+              0.654902,
+              0.494118
+            ]
+          },
+          "in_frame": [
+            "SC03_SH070"
+          ]
+        },
+        "pool": {
+          "colour": {
+            "hex": "#FFF1DE",
+            "linear": [
+              1.0,
+              0.879622,
+              0.730461
+            ],
+            "srgb": [
+              1.0,
+              0.945098,
+              0.870588
+            ]
+          },
+          "follows_screen_dip": true,
+          "lit_tone": "mix(base, base_x_key_colour, 0.30)",
+          "reach_m": 0.5,
+          "source": "phone_screen"
+        },
+        "shadow_tone_substitution": {
+          "characters_unlit": {
+            "hex": "#1B1C29",
+            "linear": [
+              0.01096,
+              0.011612,
+              0.022174
+            ],
+            "srgb": [
+              0.105882,
+              0.109804,
+              0.160784
+            ]
+          },
+          "forbidden": "material_shadow_times_scalar",
+          "merch_props_fridges_posters_counter": {
+            "hex": "#1B1C29",
+            "linear": [
+              0.01096,
+              0.011612,
+              0.022174
+            ],
+            "srgb": [
+              0.105882,
+              0.109804,
+              0.160784
+            ]
+          },
+          "method": "replace_not_scale",
+          "set_surfaces": {
+            "hex": "#1E2030",
+            "linear": [
+              0.012983,
+              0.014444,
+              0.029557
+            ],
+            "srgb": [
+              0.117647,
+              0.12549,
+              0.188235
+            ]
+          }
+        },
+        "shots": [
+          "SC03_SH050",
+          "SC03_SH060",
+          "SC03_SH070"
+        ],
+        "silhouette": {
+          "SC03_SH050": "ren_back_head_tuft_at_floor_against_pool"
+        },
+        "sources_off": {
+          "emissive_off_hex": {
+            "hex": "#1B1C29",
+            "linear": [
+              0.01096,
+              0.011612,
+              0.022174
+            ],
+            "srgb": [
+              0.105882,
+              0.109804,
+              0.160784
+            ]
+          },
+          "emissives": {
+            "fascia_sign": "off_material",
+            "fridge_glow": "off_material",
+            "shop_panel": "off_material"
+          },
+          "exposure_or_grade_lift": "none",
+          "lights_w": 0,
+          "world_strength": 0
+        }
       }
     },
     "state": "blackout"
@@ -683,7 +860,8 @@
       "characters.ren.wardrobe.outfit",
       "look.color.accent_battery_red",
       "look.color.ui",
-      "look.lighting.sc03"
+      "look.lighting.sc03",
+      "look.lighting.sc03_blackout_render"
     ],
     "shot": "shot:SC03_SH060"
   },

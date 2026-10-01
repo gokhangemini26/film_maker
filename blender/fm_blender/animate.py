@@ -29,6 +29,7 @@ except ImportError:  # the standalone python: importing bpy registers the mathut
     import bpy  # noqa: F401
     from mathutils import Vector
 
+from . import blackout as BO
 from . import poses as PS
 from .anchors import CAR_V2, CAR_SEAT_SHIFT_V2, car_layout, shop_anchors
 from .framesel import contact_strip, parse_frames, select_frames  # noqa: F401  (pure helpers, re-exported)
@@ -1065,8 +1066,11 @@ class _FrameRig:
             o["fm_base_energy"] = 260 if o.data.energy < 1 else o.data.energy
         for o in self.fridge_lights:
             o["fm_base_energy"] = o.data.energy
-        glow = P.add_light("POINT", "phoneglow." + self.sid, Vector((0, 0, 0)), 15, P.kelvin_lin(4200), self.rig, size=0.1)
-        glow["fm_base_energy"] = 15.0
+        # the blackout pool: canon look.color.phone_glow (#FFF1DE), not a kelvin value; power from blackout.POOL_W
+        self.bo = BO.spec(self.shot, self.canon)
+        self.bo_shot = BO.is_blackout_shot(self.shot, self.canon)
+        glow = BO.make_pool_light(bpy, "phoneglow." + self.sid, Vector((0, 0, 0)), self.bo["pool_w"], self.bo["key_lin"], self.rig)
+        glow["fm_base_energy"] = self.bo["pool_w"]
         self.shop_glow = glow
 
     def _setup_extras(self):
@@ -1160,10 +1164,7 @@ class _FrameRig:
             self.adapter_off.hide_render = on
             for o in (self.adapter_on, self.adapter_off):
                 o.location = self.stage.car["adapter"] + d
-        if self.scene == "SC03":
-            for o in self.bpy.data.objects:
-                if o.get("fm_shop_light"):
-                    o.hide_render = not props.get("shop_lights", {}).get("on", True)
+        # (SC03: the shop emissives are swapped to the dark off material in _lights, never hidden)
         sd = props.get("shop_door")
         if sd is not None and self.shop_door is not None:
             leaf, hinge = self.shop_door
@@ -1322,20 +1323,23 @@ class _FrameRig:
             o.data.energy = o["fm_base_energy"] * bright
         if self.scene == "SC03":
             on = S["props"].get("shop_lights", {}).get("on", True)
+            # blackout look (canon look.lighting.sc03_blackout_render): panels / fridges 0 W, emissives to the dark off
+            # material, shadow tones REPLACED (not scaled); re-applied every frame because figures are rebuilt per frame
+            self.bo = BO.spec(self.shot, self.canon)
+            BO.apply(self.bpy, not on, self.bo)
             for o in self.panel_lights:
                 o.data.energy = o["fm_base_energy"] if on else 0.0
             for o in self.fridge_lights:
                 o.data.energy = o["fm_base_energy"] if on else 0.0
+            for o in self.lights:       # the static phone light: lit-shop level while the shop is on, the glow takes over in the dark
+                o.data.energy = self.bo["lit_phone_w"] * bright if on else 0.0
             if self.shop_glow is not None:
-                self.shop_glow.data.energy = 0.0 if on else 15.0 * bright
-                if "ren" in infos:
-                    self.shop_glow.location = infos["ren"]["w"](S["characters"]["ren"]["joints"]["handL"]) + infos["ren"]["fac"] * 0.15
-            dk = 1.0 if on else 0.04
-            for m in self.bpy.data.materials:
-                if "fm_shadow" in m and m.node_tree:
-                    for nd in m.node_tree.nodes:
-                        if nd.type == "VALTORGB":
-                            nd.color_ramp.elements[0].color = (*[c * dk for c in m["fm_shadow"]], 1)
+                self.shop_glow.data.energy = 0.0 if on else self.bo["pool_w"] * bright
+                if "ren" in infos:      # same place as the static assembly's pool light: on the screen side of the phone
+                    ph = infos["ren"].get("phone_w") or infos["ren"]["phone"]
+                    self.shop_glow.location = BO.pool_position(ph, infos["ren"]["fac"])
+                    axes = infos["ren"].get("phone_axes")
+                    BO.aim_pool(self.shop_glow, axes[2] if axes else -infos["ren"]["fac"])     # along the screen normal
 
     def _camera_aim(self, S, infos):
         """Static cameras keep the rotation from the static assembly (but aim once at the animated subject); inserts stay

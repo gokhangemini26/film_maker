@@ -15,6 +15,7 @@ from . import sets as S
 from .characters import figure
 from . import phone as PH
 from . import sightline as SL
+from . import blackout as BO
 
 STREET_SCENES = {"SC01", "SC02", "SC04", "SC06"}
 DUSK = {"SC04", "SC05", "SC06"}
@@ -620,11 +621,9 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
             sun("sun", None if dusk else 3200, 6.0, 2.5 if dusk else 4.0, "afterglow_rim_dusk" if dusk else "sun_golden_hour")
             bg.inputs[1].default_value = 0.8
     elif scene == "SC03":
-        lit = n < 50
-        bg.inputs[1].default_value = 0.0
-        for o in bpy.data.objects:
-            if o.get("fm_shop_light"):
-                o.hide_render = not lit
+        bo_on = BO.is_blackout_shot(shot, canon)
+        lit = not bo_on
+        bg.inputs[1].default_value = 0.0          # world strength 0 in the whole of SC03 (the shop is lit by its own sources)
         if lit:
             pc = kelvin_lin(key_k or 5000)
             for i in range(4):
@@ -633,8 +632,18 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
                 add_light("AREA", "fridges." + sid, S.SHOP_ORIGIN + Vector((2.25, 8.6, 1.0)), 60, kelvin_lin(6500), col, size=2.0,
                           rot=(math.radians(90), 0, math.pi))
         else:
+            # blackout: every shop source is off (no panel / fridge lights at all); the phone screen is the only light
+            # and the colour is canon look.color.phone_glow. Its power puts the cel threshold at ~0.5 m (blackout.POOL_W)
+            bo_spec = BO.spec(shot, canon)
             i = figs["ren"][0]
-            add_light("POINT", "phone." + sid, i["hands"] + i["facing"] * 0.15, 15 * flick, ls_col("phone_glow", "#FFF1DE"), col, size=0.1)
+            pool = BO.make_pool_light(bpy, "phone." + sid, BO.pool_position(i["phone"], i["facing"]), bo_spec["pool_w"] * flick,
+                                      bo_spec["key_lin"], col)
+            BO.aim_pool(pool, i["head"] - i["phone"])      # the screen faces the holder's face
+            if sid in bo_spec["door_shots"]:
+                BO.add_door_rectangle(bpy, units["shop"], S.SHOP_ORIGIN, canon["world.sets.corner_shop"]["footprint_m"][0], bo_spec)
+        # emissives (panels, fridge glass, fascia) -> dark non-emissive "off" material in the blackout, originals otherwise
+        BO.apply(bpy, bo_on, BO.spec(shot, canon))
+
     else:
         bg.inputs[1].default_value = 0.25
         lamp_on = "lamp" in key_src or "lamp" in str(fill).lower() or "lamp" in str(lt.get("background_practicals", ""))
@@ -644,12 +653,8 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
             add_light("POINT", "lamp." + sid, S.ROOM_ORIGIN + Vector((-0.35, -0.28, 1.1)), 60, kelvin_lin(key_k if lamp_on and key_k else 2700), col, size=0.08)
         add_light("POINT", "phone." + sid, S.ROOM_ORIGIN + Vector((0.25, -0.3, 0.85)), 8, ls_col("phone_glow", "#FFF1DE"), col, size=0.05)
 
-    dark_k = 0.04 if (scene == "SC03" and n >= 50) else 1.0
-    for m in bpy.data.materials:
-        if "fm_shadow" in m and m.node_tree:
-            for nd in m.node_tree.nodes:
-                if nd.type == "VALTORGB":
-                    nd.color_ramp.elements[0].color = (*[c * dark_k for c in m["fm_shadow"]], 1)
+    if scene != "SC03":
+        BO.apply(bpy, False, BO.spec(shot, canon))   # puts any blackout variant of an earlier shot back
     if os.environ.get("FM_DEBUG"):
         near = sorted(((o.matrix_world.translation - cpos).length, o.name) for o in bpy.data.objects
                       if o.type in ("MESH", "LIGHT") and not o.hide_render)[:6]

@@ -2825,3 +2825,118 @@ entries:
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+- id: look.lighting.sc03_blackout_render
+  statement: |
+    How the SC03 blackout must render (SC03_SH050 from f8, SH060, SH070), so that it reads
+    as a power cut and not as a dimmer. It is an implementation spec for locked canon and
+    changes no locked value. (1) Every shop source is off: the panel and fridge lights at 0 W,
+    the panel, fridge-glass and fascia emissives switched to a non-emissive "off" material,
+    world strength 0, and no exposure, gamma or compositor lift on the frame. (2) Hue
+    collapse: in the dark, colour goes. The shadow tone of every set surface is replaced by
+    the blackout ambient #1E2030. Merchandise, fridge bodies, posters, the counter, and
+    Ren's and the cable's unlit tones are replaced by the film floor #1B1C29. It is not
+    the material's own shadow colour scaled down, because scaling keeps the pastel hues
+    and lifts them to a neutral grey veil. The ambient is a shadow colour (look.style.
+    character_shading exception), not a light, so no fill is added. (3) The only lit tones
+    are inside the phone's pool. Within about 0.5 m of the screen (look.lighting.sc03
+    falloff_m), surfaces that cross the cel threshold take the lit tone mix(base,
+    base x #FFF1DE, 0.30). Outside it, nothing crosses the threshold. (4) Ren reads as a
+    dark silhouette: in SH050 his back, head and tuft sit at the film floor, edged by the
+    pool on the display stand and the floor in front of him. His lit face is saved for
+    SH070. (5) The door glass is the only other light: a small warm rectangle, #C9A77E or
+    darker, visible only where the camera faces the front of the shop (SH070). It is out
+    of frame in SH050.
+  value:
+    applies_from: SC03_SH050_f8
+    shots: [SC03_SH050, SC03_SH060, SC03_SH070]
+    sources_off:
+      lights_w: 0
+      emissives: {shop_panel: off_material, fridge_glow: off_material, fascia_sign: off_material}
+      emissive_off_hex: '#1B1C29'
+      world_strength: 0
+      exposure_or_grade_lift: none
+    shadow_tone_substitution:
+      method: replace_not_scale
+      set_surfaces: '#1E2030'
+      merch_props_fridges_posters_counter: '#1B1C29'
+      characters_unlit: '#1B1C29'
+      forbidden: material_shadow_times_scalar
+    pool:
+      source: phone_screen
+      colour: '#FFF1DE'
+      reach_m: 0.5
+      lit_tone: mix(base, base_x_key_colour, 0.30)
+      follows_screen_dip: true
+    silhouette:
+      SC03_SH050: ren_back_head_tuft_at_floor_against_pool
+    door_rectangle:
+      hex_max: '#C9A77E'
+      in_frame: [SC03_SH070]
+    checks:
+      mean_luma: [0.08, 0.14]
+      mean_luma_target: 0.12
+      room_pixels_outside_pool:
+        hue_deg: [225, 245]
+        chroma_max_8bit: 20
+        luma: [0.10, 0.14]
+        neutral_grey_forbidden: true
+      pastel_merch_identifiable: false
+      pool:
+        peak_luma_min: 0.55
+        area_frac_SC03_SH050: [0.005, 0.04]
+        brightest_non_screen_element: true
+      silhouette_contrast_SC03_SH050: ren_mean_luma_at_least_0.25_below_adjacent_pool
+      dip_visible_SC03_SH050: pool_mean_luma_f8_to_f10_at_least_15pct_below_f11
+      sh060_surround: '#1B1C29 to #1E2030, not neutral grey'
+  rationale: |
+    The G6 still for SC03_SH050 (preview and frames 8, 11 and 29) renders the blackout at mean
+    luma 0.160, with 90 % of pixels between 0.141 and 0.173, neutral grey (mean RGB 40/41/40,
+    sampled wall #2B2C2A), the merchandise still pastel-coloured, and no visible phone pool.
+    Frames 8, 11 and 29 are identical, so the screen dip never registers. That reads as
+    "someone turned the lights down", which is the slow fade look.lighting.sc03 rejected,
+    not a trip. Cause, from reading the builder (FACT): the blackout multiplies each
+    material's own shadow colour by 0.04 (preview.py `dark_k`, animate.py `dk`). Linear 0.04 x
+    a pale shadow comes out around sRGB 0.17 and keeps every hue. Canon already sets the
+    answer (look.color.scene.sc03.blackout.dominant #1E2030, film floor #1B1C29,
+    SC03_blackout key 0.08 +- 0.06, phone as the only key). This entry makes it buildable
+    and checkable. Hue collapse rather than darkening is what makes it read as a power
+    cut: the eye loses colour before it loses shape. The pool is the only colour left, which
+    is the point where the glow motif is born (look.style.motifs) and where the audience
+    "feels how small his light is" (SH050 audience_effect). Holding him as a silhouette
+    against his own light gives the joke to the room and keeps his reaction for SH070.
+    Rejected: a global exposure drop or grade (crushes the phone and the 2 % red, and
+    look.style.texture_and_grain forbids an extra LUT); pure black #000000 (below the film
+    floor, and look.color.scene.sc03 asks for blue-violet); a cool street or moon fill (no
+    such source: outside is golden hour and the door is warm, look.lighting.sc03 says no
+    fill).
+  serves:
+  - intent.comic_then_tender
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.lighting.sc03
+  - look.color.scene.sc03
+  - look.color.shop
+  - look.color.phone_glow
+  - look.exposure.value_structure
+  - look.exposure.scene_keys
+  - look.style.character_shading
+  - look.style.composition
+  applies_to: [SC03]
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+  notes: |
+    Field owners. Cinematographer: in SC03_SH050 `lighting.after`, SC03_SH060 `lighting` and
+    SC03_SH070 `lighting`, add `render_spec: look.lighting.sc03_blackout_render`,
+    `ambient: look.color.scene.sc03` (blackout.dominant #1E2030), `floor: '#1B1C29'` and
+    `exposure_target: look.exposure.scene_keys` (SC03_blackout). In SH060, replace "surround
+    black" with the floor/ambient. In SH050, keep blackout_event_frame 9 (= f8). Blender-td
+    (builder, not edited here): preview.py SC03 branch and the `dark_k` loop; animate.py
+    `_setup_shop`, the shop_lights block (`dk` loop), and the fm_shop_light visibility.
+    Change scale to substitution (rule 2); swap emissives to the off material instead of
+    hiding them, so the fridges stay as dark shapes; set the phoneglow light colour to
+    look.color.phone_glow #FFF1DE (animate.py uses kelvin 4200, preview uses the canon
+    colour); calibrate phone-light power and position so the pool meets the checks and the
+    f8-10 dip shows. ASSUMPTION: the area fractions above were estimated from the SH050 lens
+    (35 mm, about 8.5 m to Ren) and need confirming on the first re-render.

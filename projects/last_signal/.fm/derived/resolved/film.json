@@ -1,6 +1,6 @@
 {
-  "content_hash": "sha256:5c4e581ed8d50d1a58ad77f7a427e825cb96ce45314102f6b65cb14a444f5ce0",
-  "created_at": "2026-10-01T11:37:34Z",
+  "content_hash": "sha256:bcc4a741073037f71e621452daa0342fe9f0ff6cbaed9b8d7891a93e4adca0b9",
+  "created_at": "2026-10-01T19:49:27Z",
   "derived_from": [
     {
       "hash": "sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b",
@@ -335,6 +335,10 @@
       "ref": "canon:look.lighting.sc03"
     },
     {
+      "hash": "sha256:ed20ed56e432664997ca31b24d8dbd844a769b9b708734cd04c720a1517a31f6",
+      "ref": "canon:look.lighting.sc03_blackout_render"
+    },
+    {
       "hash": "sha256:210c71d6f0cc9dfe8409897ffd19631f2ba137090a00d4989150cabbe9f56d50",
       "ref": "canon:look.lighting.sc04"
     },
@@ -623,15 +627,15 @@
       "ref": "shot:SC03_SH040"
     },
     {
-      "hash": "sha256:6d33bc402d926df5233ad93a87333c57736ab06a62d818b2973238da758e2d69",
+      "hash": "sha256:fe6d162c8fe336bdf88659bc425297b8ce8015bc24171ccd724131e4ba560f20",
       "ref": "shot:SC03_SH050"
     },
     {
-      "hash": "sha256:ded035b15ea796e0efdee325911aac7d94676bdda993d717268ac7f81cf48be9",
+      "hash": "sha256:c43f37e77fdfb715025916595237f38107227a3a83f65b70f5254c459e0fec4c",
       "ref": "shot:SC03_SH060"
     },
     {
-      "hash": "sha256:c943fa8776bee45915f96d41d7cbb2c060a78f6a93e0cee3910c79ca39dff1fd",
+      "hash": "sha256:e06563d294197113c8a20c3f5e4c6d2545fc841d26fba98f476debb9b7428a1b",
       "ref": "shot:SC03_SH070"
     },
     {

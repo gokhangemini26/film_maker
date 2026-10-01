@@ -1,6 +1,6 @@
 {
-  "content_hash": "sha256:06e017d3d69e43011a735a6fdd84d82266e4f3f821c689c06a88f5852af9876e",
-  "created_at": "2026-10-01T11:34:53Z",
+  "content_hash": "sha256:c17dd3ee02b8715fd5723ef56e2a91335fa016ecaefe89a8199b9f51d03c3654",
+  "created_at": "2026-10-01T19:49:26Z",
   "derived_from": [
     {
       "hash": "sha256:0343633f7b721a1aca1b3f7ffd95846613f600ba7507e32242ad138bd34dd2d7",
@@ -167,6 +167,10 @@
       "ref": "canon:look.lighting.sc03"
     },
     {
+      "hash": "sha256:ed20ed56e432664997ca31b24d8dbd844a769b9b708734cd04c720a1517a31f6",
+      "ref": "canon:look.lighting.sc03_blackout_render"
+    },
+    {
       "hash": "sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f",
       "ref": "canon:look.style.phone_screen.compose"
     },
@@ -235,7 +239,7 @@
       "ref": "canon:world.sets.corner_shop"
     },
     {
-      "hash": "sha256:c943fa8776bee45915f96d41d7cbb2c060a78f6a93e0cee3910c79ca39dff1fd",
+      "hash": "sha256:e06563d294197113c8a20c3f5e4c6d2545fc841d26fba98f476debb9b7428a1b",
       "ref": "shot:SC03_SH070"
     }
   ],

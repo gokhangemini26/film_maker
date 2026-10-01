@@ -63,6 +63,12 @@ lighting:
     background: faint warm door rectangle
     fill: none
     contrast: '16:1'
+    render_spec: look.lighting.sc03_blackout_render
+    ambient: '#1E2030'
+    ambient_ref: look.color.scene.sc03.blackout.dominant
+    floor: '#1B1C29'
+    exposure_target: 0.08
+    exposure_target_ref: look.exposure.scene_keys.SC03_blackout
 color:
   dominant: look.color.scene.sc03
   accent: look.color.phone_glow
@@ -191,6 +197,8 @@ derived_from:
   hash: sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4
 - ref: canon:look.lighting.sc03
   hash: sha256:32462060af0a84d74d1aa75c41df1ac8a20f33d0262c8463342eb0a2f58d3ec0
+- ref: canon:look.lighting.sc03_blackout_render
+  hash: sha256:ed20ed56e432664997ca31b24d8dbd844a769b9b708734cd04c720a1517a31f6
 - ref: canon:look.lighting.power_indicators
   hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
 - ref: canon:world.rules.weather
@@ -229,4 +237,4 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:6d33bc402d926df5233ad93a87333c57736ab06a62d818b2973238da758e2d69
+stamped_content_hash: sha256:fe6d162c8fe336bdf88659bc425297b8ce8015bc24171ccd724131e4ba560f20
