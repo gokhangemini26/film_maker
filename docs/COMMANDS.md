@@ -88,8 +88,21 @@ missing ones instead of pretending they ran:
 | `fm audio scaffold`, `AUDIO_*` validation | E4 |
 | `fm audio mix`, `fm qa audio` | E5 |
 | `fm post edl`, `fm post animatic` | F2 (landed) |
-| `fm blender final` | F3 |
+| `fm blender final`, `fm qa final` | F3 (landed) |
 | `fm post assemble|export`, `fm qa delivery` | F4 (landed) |
+
+```
+fm blender final [--scope S] [--resume] [--width N] [--samples N] [--route exe|cloud] [--chunk-frames N] [--frames SPEC] [--jobs N] [--timeout S]
+fm qa final [--allow-reduced]
+```
+
+`fm blender final` renders `11_render/final/<SHOT>/NNNN.png` (PNG, 0-based shot-local frames; the `final` profile in
+`config/render_profiles.yaml` is `output: png`) in chunks of at most 48 frames per Blender process, resumable, and writes
+`11_render/final/MANIFEST.json` (per shot: frame count, sha256 per frame, Blender version, route, profile settings, hash of the resolved
+shot). It refuses unless the human's `fm authorize final-render` is in the ledger and covers the scope; it never creates one. `--route exe`
+is the pinned Blender and the only route `fm qa final` accepts; `cloud` is the bpy draft. `fm qa final` writes `qa/final_frames_report.json`
+(frame counts vs the resolved film, size, corrupt and black frames, hashes vs the manifest, stale frames): the G8 contract file.
+See `docs/PRODUCTION_RUNBOOK.md`.
 
 ```
 fm qa motion [--strict] [--no-record]     # alias: fm check anim; tier 0, no Blender; exit 1 on FAIL

@@ -74,14 +74,14 @@ LOCKED: 161, PROPOSED: 37
 | animation_bible | ANIMATION | PROPOSED | b7253cda5903 |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
 | audio_bible | ANIMATION_PREVIEW | PROPOSED | 3126772f9cb9 |
-| audio_cues | ANIMATION_PREVIEW | PROPOSED (stale) | ad57b7753519 |
+| audio_cues | ANIMATION_PREVIEW | PROPOSED | ad57b7753519 |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
 | character_bible | WORLD_CHARACTERS | APPROVED | 71e9d285acb3 |
 | cinematography_bible | CINEMATOGRAPHY | APPROVED | 0ece10f8b6c2 |
 | color_bible | LOOK | APPROVED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
-| edit_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 9ba470785c3b |
+| edit_plan | ANIMATION_PREVIEW | PROPOSED | 5cf11cfaeb28 |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
 | g3_review | WORLD_CHARACTERS | APPROVED | d26db206b8cf |
@@ -89,7 +89,7 @@ LOCKED: 161, PROPOSED: 37
 | g5_review | STORYBOARD | APPROVED (stale) | 51c65bce1415 |
 | g7_review | ANIMATION_PREVIEW | PROPOSED (stale) | 667d747da0b9 |
 | lighting_bible | LOOK | APPROVED | 95224320170d |
-| post_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 225abb2b90a7 |
+| post_plan | ANIMATION_PREVIEW | PROPOSED | ec1c50f9e73e |
 | preview_review | PREVIEW | PROPOSED (stale) | 59ee7a61839b |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
@@ -169,17 +169,9 @@ LOCKED: 161, PROPOSED: 37
 - G5: shot:SC04_SH070 was modified after approval (f0af46aad1a8 -> 67f88a2f736a)
 - G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> 6274d95c0386)
 - G5: shot:SC04_SH090 was modified after approval (451cd791871b -> ba37458305d5)
-- stale: artifact:audio_cues
-- stale: artifact:edit_plan
 - stale: artifact:g5_review
 - stale: artifact:g7_review
-- stale: artifact:post_plan
 - stale: artifact:preview_review
-- stale: audio:mix
-- stale: edit:animatic
-- stale: edit:edl
-- stale: qa:audio
-- stale: qa:delivery
 - stale: qa:stills
 - stale: render:preview_SC01_SH010
 - stale: render:preview_SC01_SH020

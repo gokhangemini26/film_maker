@@ -545,6 +545,23 @@ def qa_motion(c: Ctx, strict, no_record):
     _run_qa_motion(c, strict, not no_record)
 
 
+@qa_group.command("final")
+@click.option("--allow-reduced", is_flag=True, help="Frames narrower than the film's resolution are a WARN (dry runs), not a FAIL.")
+@click.pass_obj
+def qa_final(c: Ctx, allow_reduced):
+    """Final frames vs the resolved film and MANIFEST.json (counts, size, corrupt/black frames, hashes) -> qa/final_frames_report.json. Exit 1 on FAIL."""
+    from .finalrender import qa_final as run
+
+    r = run(c.project(), allow_reduced=allow_reduced)
+    for row in r["rows"]:
+        for sev, msg in row["findings"]:
+            click.echo(f"{sev:4} {row['shot']}: {msg}")
+    s = r["summary"]
+    click.echo(f"{s['shots']} shots, {s['frames_found']}/{s['frames_expected']} frames: {s['fail']} FAIL, {s['warn']} WARN ({r['report_file']})")
+    if s["fail"]:
+        sys.exit(1)
+
+
 @cli.group("blender")
 def blender_group():
     """Blender-side production (M3): previews from resolved shot files."""
@@ -604,6 +621,35 @@ def blender_playblast(c: Ctx, scope, draft, width, jobs, resume):
     if r["film"]:
         click.echo(f"  film: {r['film']}")
     if r["failed"]:
+        sys.exit(1)
+
+
+@blender_group.command("final")
+@click.option("--scope", help="shot:ID[,ID] | scene:SCxx | shots:A..B (default: whole film).")
+@click.option("--resume", is_flag=True, help="Keep valid frames already on disk (same settings, same resolved shot); render the rest.")
+@click.option("--width", type=int, default=None, help="Frame width in px (default: the film's width x the final profile's resolution_scale).")
+@click.option("--samples", type=int, default=None, help="Render samples (default: the final profile's samples).")
+@click.option("--route", type=click.Choice(["exe", "cloud"]), default="exe", show_default=True,
+              help="exe = the pinned Blender (the only route G8 accepts); cloud = the bpy module, a draft that `fm qa final` rejects.")
+@click.option("--chunk-frames", type=int, default=None, help="Max frames per Blender process (default: profile chunk_frames, 48).")
+@click.option("--frames", "frames_spec", help="Shot-local frames to (re)render, e.g. 30-47 (needs a one-shot scope).")
+@click.option("--jobs", default=1, show_default=True, help="Parallel Blender processes (chunks).")
+@click.option("--timeout", "timeout_s", default=3600, show_default=True, help="Seconds allowed per Blender process.")
+@click.pass_obj
+def blender_final(c: Ctx, scope, resume, width, samples, route, chunk_frames, frames_spec, jobs, timeout_s):
+    """Final render: every frame to 11_render/final/<SHOT>/NNNN.png in chunks, then MANIFEST.json. REFUSES without the human's `fm authorize final-render`."""
+    from .finalrender import final as run
+
+    r = run(c.project(), c.repo, scope=scope, resume=resume, width=width, samples=samples, route=route,
+            chunk_frames=chunk_frames, frames=frames_spec, jobs=jobs, timeout_s=timeout_s)
+    click.echo(f"final render with {r['backend']} ({r['route']}): {r['width']}x{r['height']}, {r['samples']} samples, "
+               f"{r['rendered_chunks']} chunk(s) ok, {len(r['failed_chunks'])} failed; complete shots: {len(r['complete'])}")
+    if r["failed_chunks"]:
+        click.echo("  failed chunks (re-run with --resume): " + ", ".join(r["failed_chunks"]))
+    for sid, k in r["incomplete"].items():
+        click.echo(f"  {sid}: {k} frame(s) missing")
+    click.echo(f"  manifest: {r['manifest']}")
+    if r["failed_chunks"] or r["incomplete"]:
         sys.exit(1)
 
 

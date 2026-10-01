@@ -40,7 +40,7 @@ fm:
   - intent.soft_but_cinematic
   summary: Readable cut list generated from the resolved frame table; hard cuts, FADE IN (length D7, UNKNOWN)
     and 18-frame FADE OUT from canon; scene-time and sound-cut notes.
-  stamped_content_hash: sha256:9ba470785c3ba566c77bd5b9558f251882edbbc01f1107e7a5ad0807c1ca17bf
+  stamped_content_hash: sha256:5cf11cfaeb28b7f2a843e37958d8e195506e08d343755daad330c96dd87aff08
 title: Edit Plan
 ---
 # Edit Plan: Last Signal
@@ -147,6 +147,20 @@ Record out is exclusive, as in the EDL.
   `artifact:anim_sc03_sh010` and `resolved:SC03_SH010` as stale (`shot:SC03_SH010 changed`), so the SC03_SH010
   keys may not match the current shot file. Post judges only timing in SC03.
 
+### 2.2 Re-run after the SC04 cable posing and the SC03_SH010 restamp (2026-10-01, late)
+
+- FACT: upstream changed in commit 1598a4f: `anim_sc04_sh010` (cable `prop_state` hidden -> posed, loose
+  end on the pavement by his left foot), `anim_sc04_sh050` (rationale text only), `anim_sc03_sh010`
+  restamped, and `fm resolve` re-run. Compared against 1598a4f^: frame counts unchanged (SC03_SH010 52,
+  SC04_SH010 46, SC04_SH050 80) and every anim event id, frame and kind identical. AUDIO_CUES was restamped
+  with that note and no cue edit (content hash `ad57b775...` unchanged).
+- FACT: `fm post edl` printed "38 events, 1440 frames, end 00:01:00:00, fade in 12 / out 18 frames";
+  `EDIT.edl` is byte-identical to the previous one. No record frame in section 2 moved.
+- FACT: the SC04_SH010 picture in the animatic is still the preview still `10_blender/previews/SC04_SH010.png`
+  dated 2026-09-30, which predates the cable posing; `render:preview_SC04_SH010` is STALE in `fm validate`.
+  So the animatic does not yet show the posed cable in that wide. Post judges only its timing (816-861).
+  Owner of the re-render: blender-td.
+
 ## 3. Head and tail
 
 - **Head.** FADE IN from black over record frames 0-11 (if D7 = 12). FACT: the `SC01_SH010` camera notes
@@ -186,7 +200,9 @@ Record out is exclusive, as in the EDL.
 
 Frames below are record frames. FACT: placements are read from `12_post/audio/mix_report.json`, written by
 the 2026-10-01 `fm audio mix` (138 placements, 1440 frames, 3 silence windows, 5 placeholder recipes; cues hash
-`ad57b775...`, which matches the stamped `12_post/AUDIO_CUES.yaml`, PROPOSED). Against the wave-6 mix
+`ad57b775...`, which matches the stamped `12_post/AUDIO_CUES.yaml`, PROPOSED). FACT (late 2026-10-01 re-run):
+`fm audio mix` again "mixed 138 placement(s)", ~-16.39 LUFS, true peak -1.73 dBTP, and `mix_report.json` is
+identical to the previous one key for key, so every placement below still holds. Against the wave-6 mix
 (136 placements) two cues were added and none removed or moved: `c_SC01_SH120_plug_click` (408-412, inside
 SC01_SH120, no cut involved) and `c_SC02_SH030_door_swing_back` (574-582, across the SC02 -> SC03 cut, below).
 These are edit-side requirements for the sound-designer, not mix decisions.

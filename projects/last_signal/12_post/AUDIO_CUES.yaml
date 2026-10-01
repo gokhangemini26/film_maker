@@ -38,7 +38,7 @@ fm:
   - ref: artifact:anim_sc02_sh030
     hash: sha256:d0a4e940d55739db52c3a4ccd317bd6cf6af6a88f9466ea2d1dee0c0c4097cbb
   - ref: artifact:anim_sc03_sh010
-    hash: sha256:fd455ab9e3dad76566a22e2e748f11fcd0d398c94b3b98c1f8f100a4bc246adf
+    hash: sha256:2b068e497045ca68624e4b3965cdca22d44910847e0107e2128d9d1b38c64ec0
   - ref: artifact:anim_sc03_sh020
     hash: sha256:dfed90e33553c261e053632097aac7de32c018546b392fe8ec3418c21df7ceec
   - ref: artifact:anim_sc03_sh030
@@ -50,7 +50,7 @@ fm:
   - ref: artifact:anim_sc03_sh070
     hash: sha256:0343633f7b721a1aca1b3f7ffd95846613f600ba7507e32242ad138bd34dd2d7
   - ref: artifact:anim_sc04_sh010
-    hash: sha256:d495c8ed15fce391534333c53cf6db8fd49a5e665a1c24a28158db0676733efa
+    hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
   - ref: artifact:anim_sc04_sh020
     hash: sha256:df20290707bdfffef814be53d6a06e84660e980c7a5174d817555b5009a4657d
   - ref: artifact:anim_sc04_sh030
@@ -58,7 +58,7 @@ fm:
   - ref: artifact:anim_sc04_sh040
     hash: sha256:65bd0bb32e465142e5079deb7ba1a16c9de76e9ae1f07086213d58ca72b67ec0
   - ref: artifact:anim_sc04_sh050
-    hash: sha256:75483d6d8c23e73350aa1c52f6c76ddb8f781764a84179339473f19cda8fc679
+    hash: sha256:52eed3d88421fde8203548211249aa5cbf4063033c7b8e6fc848fdcf35bfb1c4
   - ref: artifact:anim_sc04_sh060
     hash: sha256:10e5fd013ae8af51fb14173396a7eff243f4b5e90c9f4428567a2de030384642
   - ref: artifact:anim_sc04_sh070
@@ -108,7 +108,7 @@ fm:
   - ref: shot:SC02_SH030
     hash: sha256:6882916b0d762100ecafed0ac04fa926a7a8aa92c5124aa714187c867d543195
   - ref: shot:SC03_SH010
-    hash: sha256:b3cf9247ac6dadd65ad67e388e53e984521f849267f6f42a021cdaace83291cd
+    hash: sha256:1f76a5f9b1d9f67b45b4d32494cd8fa297d0e56eeec18ea1eaacf0bb5c82e63f
   - ref: shot:SC03_SH020
     hash: sha256:17749ce74a849d3eba33ea4bf0956df92d31b5356e2e09a7de3aa480ef97db77
   - ref: shot:SC03_SH030
@@ -194,9 +194,10 @@ fm:
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
   stamped_content_hash: sha256:ad57b77535192c291ed921e797e542e8ca319119171c92379f36852d9ccc433a
-  stamp_note: 'Re-sync check after the SC03 kneel/path re-blocking: every SC03_SH010-SH070 anim event
-    id, frame and kind and every frame count compared against HEAD and found identical; cues anchor on
-    those events and the SC03 hum die_at 6.0 s (scene f144) still holds, so no cue revision is needed.'
+  stamp_note: 'Re-sync after SC04 cable posing (anim_sc04_sh010 cable prop_state hidden->posed, anim_sc04_sh050
+    rationale text only) and the SC03_SH010 restamp: all three anim files compared against 1598a4f^, frame
+    counts and every event id/frame/kind identical, no sound-bearing motion changed; all event-anchored
+    cues resolve (handle_top is derived from crank_turn in SC04_SH050-080). No cue revision needed.'
 mix:
   integrated_lufs: -16.0
   lufs_tolerance: 1.0

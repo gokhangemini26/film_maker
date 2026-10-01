@@ -12,7 +12,13 @@ profiles:
     resolution_scale: 1.0
     samples: 64
     motion_blur: false
-    output: exr
+    # PNG, not exr: `fm post assemble` reads a PNG sequence (8-bit, Standard view transform) and EXR for the
+    # whole film is ~10 GB with no grading headroom needed (docs/M6_SCOPE.md 4.3). Switch back only together
+    # with a post-assembly that reads EXR.
+    output: png
+    # `fm blender final` renders at most this many frames per Blender process (long processes corrupted
+    # colours on Windows ARM); override per run with --chunk-frames.
+    chunk_frames: 48
     # Final renders need a human authorization recorded in the ledger
     # (`fm authorize final-render`) before any backend may start them.
     requires_authorization: true
