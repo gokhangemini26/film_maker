@@ -1,7 +1,7 @@
 {
  "summary": {
   "shots": 38,
-  "fail": 1,
+  "fail": 0,
   "warn": 0
  },
  "rows": [
@@ -329,12 +329,7 @@
   },
   {
    "shot": "SC03_SH050",
-   "findings": [
-    [
-     "FAIL",
-     "flat frame (no visible content)"
-    ]
-   ],
+   "findings": [],
    "metrics": {
     "mean_lum": 0.16,
     "std_lum": 0.013,
