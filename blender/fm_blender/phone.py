@@ -395,12 +395,14 @@ class Screen:
     # ---- screens
     def call_screen(self, st, subject="hana", unanswered=False, ring_f=None):
         c = self.c
-        self.portrait(0.50, 0.30, 0.60, subject)
+        ps = st.get("photo_scale_pct")      # ui event photo_scale (resolved per frame): the caller photo scales about its centre
+        self.portrait(0.50, 0.30, 0.60, subject, 1.0 if ps is None else float(ps) / 100.0)
         bu, bv = self.X(0.5), self.Y(0.80)
         br = 0.15 * self.sw
         s, hexv = 1.0, (c["icon_unanswered_grey"] if unanswered else c["call_green"])
-        if ring_f is not None and not unanswered:
-            ph = (ring_f % 11) / 11.0
+        pulse = st.get("pulse")             # ui event pulse: one beat of the ring over dur_f frames (phase 0..1, same shape)
+        if (pulse is not None or ring_f is not None) and not unanswered:
+            ph = float(pulse) if pulse is not None else (ring_f % 11) / 11.0
             s = 1.0 + 0.12 * math.sin(math.pi * ph)
             hp = ph  # halo grows 100 -> 150 % and fades out
             halo = _lerp_hex(c["call_green"], c["screen_background"], min(1.0, 0.25 + 0.75 * hp))
@@ -467,21 +469,23 @@ class Screen:
         kw, kh = 5.4 * self.mm, 10.7 * self.mm
         rows = [0.610, 0.708, 0.806, 0.904]
 
-        def key(fx, fy, w=None, hexv=None):
+        def key(fx, fy, w=None, hexv=None, name=None):
             u, v = self.X(fx), self.Y(fy)
+            if name is not None and name == pressed:
+                hexv = c["keyboard_key_pressed"]
             w = w if w is not None else kw
             self.rect(u - w / 2, v - kh / 2, u + w / 2, v + kh / 2, hexv or c["keyboard_key"], 2, 0.0013)
             return u, v
 
         for i in range(10):
-            key(0.05 + 0.10 * i, rows[0])
+            key(0.05 + 0.10 * i, rows[0], name="any" if i == 4 else None)     # `any` darkens one letter key (the "t" of "tonight")
         for i in range(9):
             key(0.10 + 0.10 * i, rows[1])
         for i in range(7):
             key(0.16 + 0.10 * i, rows[2])
         # backspace x 0.855-0.99 with an ink backspace arrow
         bw = (0.99 - 0.855) * self.sw
-        bu, bv = key((0.855 + 0.99) / 2, rows[2], bw)
+        bu, bv = key((0.855 + 0.99) / 2, rows[2], bw, name="backspace")
         ink, kk = c["ink_text_and_glyphs"], c["keyboard_key"]
         gw, gh = 0.62 * bw, 0.30 * kh
         self.poly([(bu - gw / 2, bv), (bu - gw / 2 + gh * 0.6, bv + gh / 2), (bu + gw / 2, bv + gh / 2), (bu + gw / 2, bv - gh / 2), (bu - gw / 2 + gh * 0.6, bv - gh / 2)], ink, 4)
@@ -489,7 +493,7 @@ class Screen:
         self.line((xc - xr, bv - xr), (xc + xr, bv + xr), gh * 0.13, kk, 5)
         self.line((xc - xr, bv + xr), (xc + xr, bv - xr), gh * 0.13, kk, 5)
         # row 4: emoji key, space bar, blank key
-        eu, ev = key((0.01 + 0.145) / 2, rows[3], (0.145 - 0.01) * self.sw)
+        eu, ev = key((0.01 + 0.145) / 2, rows[3], (0.145 - 0.01) * self.sw, name="emoji")
         er = 0.20 * kh
         self.ring(eu, ev, er, er * 0.80, c["icon_neutral"], 4)
         for sx in (-1, 1):
@@ -525,7 +529,7 @@ class Screen:
         if heart_f and last_u:
             self.heart(last_u[0] + 1.6 * self.mm + 1.7 * self.mm, last_u[1], 1.1 * cap, self.c["ui_heart"])
 
-    def compose(self, lines=1, prog=1.0, heart=False, send_pressed=False):
+    def compose(self, lines=1, prog=1.0, heart=False, send_pressed=False, key_pressed=None):
         c = self.c
         if lines > 0:
             top = 0.545 - (0.020 + 0.040 * lines)
@@ -542,7 +546,7 @@ class Screen:
         w = c["glyph_white"]
         self.poly([(su, sv + sr * 0.55), (su - sr * 0.5, sv + sr * 0.02), (su + sr * 0.5, sv + sr * 0.02)], w, 4)
         self.rect(su - sr * 0.13, sv - sr * 0.5, su + sr * 0.13, sv + sr * 0.05, w, 4)
-        self.keyboard()
+        self.keyboard(key_pressed)
 
     def sent(self, sent=None):
         c = self.c
@@ -611,6 +615,8 @@ def build_phone(col, sid, center, x_axis, y_axis, z_axis, ui_assets, st, colors,
             sc.hana_received()
         else:
             scale = 0.96 if (st.get("scene_n") == 10 and st.get("frame", 9) < 5) else 1.0
+            if st.get("photo_scale_pct") is not None:      # the resolved ui_timeline's photo_scale event replaces the stills' constant
+                scale = float(st["photo_scale_pct"]) / 100.0
             sc.portrait(0.50, 0.30, 0.60, subject or "ren", scale)
         return e
     ui_state = st.get("ui")
@@ -629,7 +635,7 @@ def build_phone(col, sid, center, x_axis, y_axis, z_axis, ui_assets, st, colors,
         if st.get("typing1"):
             prog = st["typing1"]
         heart = bool(st.get("heart"))
-        sc.compose(lines, prog, heart, send_pressed=bool(st.get("send_pressed")))
+        sc.compose(lines, prog, heart, send_pressed=bool(st.get("send_pressed")), key_pressed=st.get("key_pressed"))
     sc.status_bar(st)  # every screen-on state of Ren's phone shows the status bar
     return e
 

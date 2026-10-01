@@ -30,7 +30,7 @@ except ImportError:  # the standalone python: importing bpy registers the mathut
     from mathutils import Vector
 
 from . import poses as PS
-from .anchors import shop_anchors
+from .anchors import CAR_V2, CAR_SEAT_SHIFT_V2, car_layout, shop_anchors
 from .framesel import contact_strip, parse_frames, select_frames  # noqa: F401  (pure helpers, re-exported)
 
 LOOK_BLEND_F = 4          # frames the head takes to turn to a new look target
@@ -227,10 +227,11 @@ def _car_anchors(canon):
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     sill, H = c["sill_height_m"], c["height_m"]
     seat_z = c["seat_height_m"]
-    fy = cy + 0.15
+    seat_dy, gb_dy = car_layout(True)      # the animation path always uses the v2 interior (anchors.car_layout)
+    fy = cy + 0.15 + seat_dy
     drv_x, pas_x = x1 - W * 0.27, x0 + W * 0.27
     gb_w, gb_h = c["glovebox"]["opening_m"]
-    gb_y, gb_z = y1 - 0.72, sill + 0.4
+    gb_y, gb_z = y1 - 0.72 + gb_dy, sill + 0.4
     return {
         "drv_x": drv_x, "pas_x": pas_x, "seat_z": seat_z, "roof_z": H, "sill": sill,
         "wheel": Vector((drv_x, y1 - 0.85, sill + 0.62)),
@@ -248,7 +249,7 @@ class Stage:
     """Where things are for one shot: per-character home frames, the constant pose-family frames (car, kerb, door),
     the merged poses context, world anchors for the look targets. Pure; `canon` is optional (defaults otherwise)."""
 
-    CAR_BASE_Y = 0.05        # driver pelvis y (the set's wheel is 0.65 m ahead of it; sets.py puts the seat further back)
+    CAR_BASE_Y = 0.05 + CAR_SEAT_SHIFT_V2   # driver pelvis y: 0.40 m behind the wheel in the v2 interior (anchors.car_layout)
 
     def __init__(self, shot, canon=None, motion=None):
         self.shot = shot
@@ -745,6 +746,12 @@ def ui_to_st(fr):
         "brightness": 0.0 if off else float(fr.get("brightness", 1.0)),
         "frame": fr["f"], "sent": fr.get("sent"),
     }
+    if fr.get("photo_scale_pct") is not None:
+        st["photo_scale_pct"] = float(fr["photo_scale_pct"])
+    if fr.get("pulse") is not None:
+        st["pulse"] = float(fr["pulse"])
+    if fr.get("key_pressed") in ("any", "emoji", "backspace"):
+        st["key_pressed"] = fr["key_pressed"]
     if screen == "compose":
         lines = int(fr.get("lines") or 1)
         st["ui"] = f"compose{min(3, max(1, lines))}"
@@ -1401,6 +1408,7 @@ def render_frames(resolved_dir, shot_id, frames, out_dir, width, *, stamp=False,
     static assembly (preview.render_shot), then re-poses everything per frame. Returns the list of PNG paths."""
     bpy = _bpy()
     from . import preview as P
+    CAR_V2[0] = True      # frames use the v2 car interior (wheel/glovebox within the canon reach); stills keep v1
     film, shots, canon, units, rig, door = P.init_scene(resolved_dir, width)
     ev = bpy.context.scene.eevee
     try:

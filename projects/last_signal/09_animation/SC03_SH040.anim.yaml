@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH040
-    hash: sha256:06e3006cc3af99ffa8af55a7be7bfc4d615e8042e34874b49932869a2881ce48
+    hash: sha256:1020cdbc37450a1d9b016968b8c442e36d3bc59e91447dbe3cd3c941513c22e4
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -35,7 +35,7 @@ fm:
   - intent.comic_then_tender
   summary: 'Structured tracks for the relief: long ease-out exhale f0-14, head tips back, eyes close f6-8,
     relief held f14-21 into the blackout shot.'
-  stamped_content_hash: sha256:2b790f5c3632cf075df599308e4f5565cd663eb64af29e73792b20670c5ccb6c
+  stamped_content_hash: sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90
 shot_id: SC03_SH040
 frames: 22
 vocab_version: 2
@@ -113,3 +113,5 @@ notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
 - 'Secondary with no track in the vocabulary (v2): jacket shoulders settle with the exhale (skinning only).'
+- 'Reviewed against the SC03 blocking fix (kneel at (3.45, 8.66) facing +y, lateral lens 0.35 m closer):
+  the relief exhale and head tilt are position-free and stand unchanged.'

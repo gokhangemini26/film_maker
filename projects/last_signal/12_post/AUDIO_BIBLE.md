@@ -55,7 +55,7 @@ fm:
   - ref: canon:audio.conflicts
     hash: sha256:6ed601c6debe4079741c5088600614a0437e50428fc5b79880ed65368bcec11b
   - ref: artifact:storyboard
-    hash: sha256:cf0648aa717949827441cf7b2c037b512da536eb8a33e34fbfbcac6bd70c7b66
+    hash: sha256:891aec9e44443e0c00e161d46f5cdf7a23346d513b4fbd2cb228e807f7f18523
   serves:
   - intent.race_against_battery
   - intent.comic_then_tender
@@ -65,7 +65,7 @@ fm:
   summary: The sound world of Last Signal. It is wordless and has no score. The mishaps are busy with
     sound until the crank, after which only the ratchet and breath are heard. There is one true silence,
     and the human supplies the bodies, feet and music.
-  stamped_content_hash: sha256:72ce8431716184fb4bdcd47fe177b96c6936bf4e500db725c483dcc7193830c7
+  stamped_content_hash: sha256:3126772f9cb95dfdc7d6dac505a55c55923fed0a8c1180e1a5ee5a7cd75ec1ff
 title: Audio Bible
 ---
 # Audio Bible: Last Signal
@@ -92,14 +92,17 @@ the human decides).
 - **ui**: tap, key tap, swipe, ring pulse, low-battery blip, charging chime, electrical tick, soft send,
   delivered tick. Sine bodies, nothing shrill, no brand-like alert tones.
 - **car**: heat ticks, starter, cough, rough idle, engine die (sigh, shudder, stop), glovebox lid
-  (drop / latch), door open.
+  (drop / latch), door open. The cable's three plug-ins (car adapter SC01_SH120 `bolt_on`, shop socket
+  SC03_SH020 `plug_in`, crank port SC04_SH050 `plug_in`) share one small latch tick at -30 to -32 dB,
+  so plugging in always sounds the same and the chime, or its absence, is what changes.
 - **shop**: door chime, fridge hum (50 Hz), panel buzz (100 Hz), the breaker CLUNK.
 - **crank**: one click (pawl, tock, spring), 90 ms.
 - **body**: breaths, sigh, nose-laugh. These are PLACEHOLDERS until the human records them.
 - **room**: car cabin, dusk street, shop, quiet room. SC03_SH070 uses the quiet-room preset as a dead
   room. There is also a distant car pass and exact silence.
 - Excluded: desk buzz and message chime (D4), generated headphone music (agents never generate music),
-  car door close (the door stays open on screen).
+  car door close (the door stays open on screen), blink sounds (the vocab v2 `lids` blinks in SC03_SH070,
+  SC04_SH010, SC04_SH030 and SC05_SH030 stay silent).
 
 ## 3. Motifs (`audio.motifs`, `audio.ratchet`)
 
@@ -122,7 +125,7 @@ the human decides).
 | Scene | Room | Foreground |
 |---|---|---|
 | SC01 car | Closed cabin tone, outside muffled | UI close; the engine as the comic antagonist |
-| SC02 street | Open dusk street | Footsteps, the door, the shop chime on the cut |
+| SC02 street | Open dusk street | Footsteps, the door, the shop chime on the cut; the closer's soft swing-back decays under the cut, never a slam |
 | SC03 shop | Shop tone, fridge hum and panel buzz in every shot | The CLUNK; then true silence; then a dead room and a distant car |
 | SC04 kerb | Quiet street at dusk (SC04_SH010: nothing else) | The ratchet and his breath only |
 | SC05 Hana's room | Near silence | Pencil, headphones, the nose-laugh; the headphone leak only if supplied |
@@ -150,15 +153,14 @@ the human decides).
 - **Licensed or own.** Hana's headphone track. It must have no lyrics (`tone.wordless`). It is not in
   the mix yet.
 - Stand-ins in the current mix are marked PLACEHOLDER. They are `body.*_placeholder` (24 cues),
-  `fx.soft_bump` (23 cues) and `fx.plastic_scuff` (5 cues), all listed in AUDIO_CUES `human_supply`.
-
+  `fx.soft_bump` (23 cues) and `fx.plastic_scuff` (6 cues), all listed in AUDIO_CUES `human_supply`.
 ## 7. What the human must supply
 
 This is the full asks list, with shot and event ids, in `12_post/AUDIO_CUES.yaml` under `human_supply`.
 In short:
 
 1. About 16 breath takes for Ren, a sigh, and Hana's nose-laugh (phone recording, 48 kHz).
-2. Footsteps on pavement (9) and on a shop floor (8), plus knees, kerb sit and the shop door push.
+2. Footsteps on pavement (9) and on a shop floor (8), plus knees, kerb sit and the shop door push and swing-back.
 3. Cloth, seat creak, pencil (stroke and set-down), headphones slide, phone lift, phone on chest.
 4. Birdsong for SC01_SH010 and SC01_SH150. Optionally, distant traffic for the streets and a better
    car pass for SC03_SH070.

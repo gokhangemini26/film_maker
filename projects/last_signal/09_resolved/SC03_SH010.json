@@ -51,8 +51,8 @@
           }
         ],
         "locomotion": {
-          "path": "shop-local coords: enters under the camera head-first at about (1.3, 1.4) (the frame bottom at head height), runs down the west aisle to kneel at (2.2, 8.0); about 6.7 m in 44 f",
-          "speed_mps": "about 4.0 entering, 3.2 while scanning, 4.0 down the aisle, braking from f36; average about 3.7",
+          "path": "shop-local coords: enters through the door under the camera (lens x 2.65) head-first at about (2.3, 1.4) (the frame bottom at head height), 0.3 m clear of the counter; curves west round the front end of the near gondola (end cap x 2.34-2.86, y about 1.96, >= 0.3 m clearance) to the west aisle mouth (3.35, 2.05) at f10, straightens onto the aisle centre x 3.45 by f14, runs straight down it and kneels at (3.45, 8.66) facing +y; about 7.9 m in 48 f (typed tracks: 09_animation/SC03_SH010.anim.yaml)",
+          "speed_mps": "about 3.3 entering (f0-5), 2.9 rounding the gondola end cap while scanning (f5-10), 4.5 accelerating (f10-14), 5.0 peak down the west aisle (f14-36), 3.0 braking (f36-44); mean about 4.1 over f0-44",
           "type": "quick_run_then_kneel"
         },
         "secondary": [
@@ -62,7 +62,7 @@
       }
     },
     "risks_m3": [
-      "6.7 m in 1.83 s is a quick run (about 3.7 m/s), not a walk: the entry keeps the pace of the SC02 dash. A walking hurry (about 2.5 m/s) would need about 2.7 s; flagged, not changed"
+      "7.9 m to the new kneel (3.45, 8.66) in 48 f is a hard run (mean about 4.1 m/s over f0-44, peak 5.0 m/s down the west aisle, stride about 1.25 m): the top of the run range but under the run_phone_out QA ceiling (5.5 m/s), so no cut-length change. It keeps and slightly exceeds the pace of the SC02 dash. A walking hurry (about 2.5 m/s) would need about 3.2 s; flagged, not changed"
     ],
     "timing": {
       "fps": 24,
@@ -833,41 +833,47 @@
             {
               "f": 0,
               "f_abs": 576,
-              "x": 1.3,
+              "x": 2.3,
               "y": 1.4
+            },
+            {
+              "f": 5,
+              "f_abs": 581,
+              "x": 2.95,
+              "y": 1.6
             },
             {
               "f": 10,
               "f_abs": 586,
-              "x": 1.6,
-              "y": 2.75
+              "x": 3.35,
+              "y": 2.05
             },
             {
-              "f": 16,
-              "f_abs": 592,
-              "x": 2.1,
-              "y": 3.6
+              "f": 14,
+              "f_abs": 590,
+              "x": 3.45,
+              "y": 2.8
             },
             {
               "f": 36,
               "f_abs": 612,
-              "x": 2.2,
-              "y": 7.1
+              "x": 3.45,
+              "y": 7.38
             },
             {
               "f": 44,
               "f_abs": 620,
-              "x": 2.2,
-              "y": 7.75
+              "x": 3.45,
+              "y": 8.38
             },
             {
               "f": 48,
               "f_abs": 624,
-              "x": 2.2,
-              "y": 8.0
+              "x": 3.45,
+              "y": 8.66
             }
           ],
-          "speed_mps": 4.2
+          "speed_mps": 5.0
         },
         "pose": [
           {

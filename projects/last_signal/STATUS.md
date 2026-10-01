@@ -51,13 +51,13 @@ LOCKED: 161, PROPOSED: 37
 | anim_sc02_sh010 | ANIMATION | PROPOSED | 6612947a3065 |
 | anim_sc02_sh020 | ANIMATION | PROPOSED | 0879c17e5ae2 |
 | anim_sc02_sh030 | ANIMATION | PROPOSED | d0a4e940d557 |
-| anim_sc03_sh010 | ANIMATION | PROPOSED (stale) | 1379a283280d |
-| anim_sc03_sh020 | ANIMATION | PROPOSED (stale) | e9c1d18060a9 |
-| anim_sc03_sh030 | ANIMATION | PROPOSED (stale) | 6aaac5fde814 |
-| anim_sc03_sh040 | ANIMATION | PROPOSED (stale) | 2b790f5c3632 |
-| anim_sc03_sh050 | ANIMATION | PROPOSED (stale) | f8e2963a1fd1 |
-| anim_sc03_sh060 | ANIMATION | PROPOSED (stale) | 277958c4d0ef |
-| anim_sc03_sh070 | ANIMATION | PROPOSED (stale) | ffba81a2f787 |
+| anim_sc03_sh010 | ANIMATION | PROPOSED (stale) | fd455ab9e3da |
+| anim_sc03_sh020 | ANIMATION | PROPOSED | dfed90e33553 |
+| anim_sc03_sh030 | ANIMATION | PROPOSED | 1353c981eade |
+| anim_sc03_sh040 | ANIMATION | PROPOSED | 75673aa63ff1 |
+| anim_sc03_sh050 | ANIMATION | PROPOSED | d6aa76ac62e7 |
+| anim_sc03_sh060 | ANIMATION | PROPOSED | 88856bdccd1e |
+| anim_sc03_sh070 | ANIMATION | PROPOSED | 0343633f7b72 |
 | anim_sc04_sh010 | ANIMATION | PROPOSED | d495c8ed15fc |
 | anim_sc04_sh020 | ANIMATION | PROPOSED | df20290707bd |
 | anim_sc04_sh030 | ANIMATION | PROPOSED | 3738966a71d6 |
@@ -72,15 +72,15 @@ LOCKED: 161, PROPOSED: 37
 | anim_sc05_sh030 | ANIMATION | PROPOSED | 363ebe9df82f |
 | anim_sc06_sh010 | ANIMATION | PROPOSED | ddee172d1a5b |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
-| audio_bible | ANIMATION_PREVIEW | PROPOSED (stale) | 72ce84317161 |
-| audio_cues | ANIMATION_PREVIEW | PROPOSED (stale) | 7429405e767d |
+| audio_bible | ANIMATION_PREVIEW | PROPOSED | 3126772f9cb9 |
+| audio_cues | ANIMATION_PREVIEW | PROPOSED (stale) | ad57b7753519 |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
 | character_bible | WORLD_CHARACTERS | APPROVED | 71e9d285acb3 |
 | cinematography_bible | CINEMATOGRAPHY | APPROVED | 0ece10f8b6c2 |
 | color_bible | LOOK | APPROVED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
-| edit_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 963f35db15fd |
+| edit_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 3f3b6bc4771e |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
 | g3_review | WORLD_CHARACTERS | APPROVED | d26db206b8cf |
@@ -153,7 +153,7 @@ LOCKED: 161, PROPOSED: 37
 - G5: shot:SC01_SH080 was modified after approval (578f482dfcd1 -> 71b49b1bd139)
 - G5: shot:SC01_SH120 was modified after approval (d98e26a8cdd5 -> 2d764a28641d)
 - G5: shot:SC01_SH140 was modified after approval (e75d1fdff853 -> 209db68556fe)
-- G5: shot:SC03_SH010 was modified after approval (973dab1732fa -> b3cf9247ac6d)
+- G5: shot:SC03_SH010 was modified after approval (973dab1732fa -> 1f76a5f9b1d9)
 - G5: shot:SC03_SH020 was modified after approval (0f9f605d61b9 -> 17749ce74a84)
 - G5: shot:SC03_SH030 was modified after approval (4e8d8794bce8 -> d1561f8bdead)
 - G5: shot:SC03_SH040 was modified after approval (06e3006cc3af -> 1020cdbc3745)
@@ -168,13 +168,6 @@ LOCKED: 161, PROPOSED: 37
 - G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> 6274d95c0386)
 - G5: shot:SC04_SH090 was modified after approval (451cd791871b -> ba37458305d5)
 - stale: artifact:anim_sc03_sh010
-- stale: artifact:anim_sc03_sh020
-- stale: artifact:anim_sc03_sh030
-- stale: artifact:anim_sc03_sh040
-- stale: artifact:anim_sc03_sh050
-- stale: artifact:anim_sc03_sh060
-- stale: artifact:anim_sc03_sh070
-- stale: artifact:audio_bible
 - stale: artifact:audio_cues
 - stale: artifact:edit_plan
 - stale: artifact:g5_review
@@ -226,12 +219,6 @@ LOCKED: 161, PROPOSED: 37
 - stale: render:preview_SC05_SH030
 - stale: render:preview_SC06_SH010
 - stale: resolved:SC03_SH010
-- stale: resolved:SC03_SH020
-- stale: resolved:SC03_SH030
-- stale: resolved:SC03_SH040
-- stale: resolved:SC03_SH050
-- stale: resolved:SC03_SH060
-- stale: resolved:SC03_SH070
 - change awaiting decision: CHANGE-002
 - change awaiting decision: CHANGE-003
 - change awaiting decision: CHANGE-004

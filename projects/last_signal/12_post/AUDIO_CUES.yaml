@@ -6,75 +6,75 @@ fm:
   owner_role: sound-designer
   derived_from:
   - ref: artifact:anim_sc01_sh010
-    hash: sha256:dc53fad91acabf7542a83ac6809873bf093bd979dd9027e87b81eb3f17064c6e
+    hash: sha256:b749f224559d8be2e0a06281e9c441772c9aea3445fb0df3349bf53f83b4108a
   - ref: artifact:anim_sc01_sh020
-    hash: sha256:c8c08db05380edb1cf96a13ac75368d60bd5ab9d9d32afd6877181fbbd18f573
+    hash: sha256:165676c4f0dbd2eca2c9462560b1d3bcc3678c36b8710c95d672b6ef2a137869
   - ref: artifact:anim_sc01_sh030
-    hash: sha256:df664b64ea7b894cdfc4abfd01282c3d9d17b388b914591b0d0146dab50dcf3d
+    hash: sha256:141491680d97201cdb3895f423b627f3bb6cdfcb0f4dac0d44192d2dc3cf22b8
   - ref: artifact:anim_sc01_sh040
-    hash: sha256:8f24457ddf950ca6d063d7453a1e15562055768990271b2463dbdcda3f2e2d2f
+    hash: sha256:25b07967c26ffda6960b4347fdedb3de9da11e4d8c14abd8038e4c7e28067e80
   - ref: artifact:anim_sc01_sh050
-    hash: sha256:b2e2eabf5660e3f95a3cf147cdcdc4f6f7855acb9ab063c9f6875201796dd87e
+    hash: sha256:e344369ce2adf6fad048878113f3210b2a38041cff359fcc5e62edc5646d538c
   - ref: artifact:anim_sc01_sh060
-    hash: sha256:906704ad57e46c40068a106dd5bf49c72eaeac5902ca08835f3e72ec76ad2367
+    hash: sha256:3afd76076cf7659408d73988e5749959dcf3b52d501ca79aa3c3f728b4a8f9d9
   - ref: artifact:anim_sc01_sh070
-    hash: sha256:7a6c34a017e983315f8a9598f6a551049f753838c83fd95c0f9dbae8b3a1c9c9
+    hash: sha256:4abb568eeea7b67d4accb0a72009da5452fa1a61cb48e1253d4c7322cc2f00c2
   - ref: artifact:anim_sc01_sh080
-    hash: sha256:ac0d74c6a149648f0194919f58052ca8f05bf13dc5d5cccc919871b3ab3634c7
+    hash: sha256:fa336523cafb18489c30c446d12fbd2e568e6e1b02cd80267c41af10730c92c3
   - ref: artifact:anim_sc01_sh090
-    hash: sha256:442d53bf79bd98907f9ffd7373774945bb311b78252de0cc830840e73c096318
+    hash: sha256:4742205134c353232504da38be3aba8ecefdfac1683403148fc1857b3b9b1649
   - ref: artifact:anim_sc01_sh100
-    hash: sha256:b8a19e961e0c344260993d858c09abe58c165377e0304df7c945a8ea33eb1fa7
+    hash: sha256:3e727eb2f3081bbe006b7aced60fd2c34196f5f84e7ec651b5ee7f4f76204931
   - ref: artifact:anim_sc01_sh110
-    hash: sha256:8a13c40492464b11f6c1752c064028bfdde952a43d97f0069ae65732e3556a28
+    hash: sha256:43b58eddc63ec89284be787ddcaf2c1dd2bfa4d6270f646bb2f5dd20e9aacf46
   - ref: artifact:anim_sc01_sh120
-    hash: sha256:34790879054d61ab5edd43d66392d6c4711128065a34c141aec110bfa5e91b0b
+    hash: sha256:34347251a334dca256cb7e10c3d9b21da3aa13dee9bbc33118467055f620bbcc
   - ref: artifact:anim_sc01_sh130
-    hash: sha256:a1e5c0faab7ad72eafd188d732e5a442d3b8a80374cb972db286a3ccd8a0568c
+    hash: sha256:243861eae4be628218e260e49d9d59bd6f4e6c7405b2cef8dbdd281f81c44e45
   - ref: artifact:anim_sc01_sh150
-    hash: sha256:0e3351e4930ad05ade6c1858c02c9df7a5de3af373ea15bf4e31a14a8c332362
+    hash: sha256:838b5e24815c1e61ad1d895bf4097b2cec953bf8d0e4e2fbb51dbc69ab42e9f8
   - ref: artifact:anim_sc02_sh010
-    hash: sha256:9e55c3dd23b1d2e8838959bf95f75eb46dd00f20b5855a10971fd1bd4ae187e8
+    hash: sha256:6612947a30653e8892b4b96d9e8ff50da78fa7778281d58d3867a7d0f45ffb0e
   - ref: artifact:anim_sc02_sh030
-    hash: sha256:d73b879cbbbc4507a7868f2592a7a1c1f75c0be22e6986d34a6a115895e4538c
+    hash: sha256:d0a4e940d55739db52c3a4ccd317bd6cf6af6a88f9466ea2d1dee0c0c4097cbb
   - ref: artifact:anim_sc03_sh010
-    hash: sha256:f22f024f294890b02354faae10175d9930e40c40ced5792670c3e66651a063dc
+    hash: sha256:fd455ab9e3dad76566a22e2e748f11fcd0d398c94b3b98c1f8f100a4bc246adf
   - ref: artifact:anim_sc03_sh020
-    hash: sha256:a057b4f9a1a229a41d358e40e419965869ecb34f448e3e9b80b283a567d39827
+    hash: sha256:dfed90e33553c261e053632097aac7de32c018546b392fe8ec3418c21df7ceec
   - ref: artifact:anim_sc03_sh030
-    hash: sha256:b5dccbcb13833c289faed490fa7097b89fc3752b7b3bc3a2ba605a599e6e9608
+    hash: sha256:1353c981eadef8ca8cb30081399c778ca2f07e2a88d1d1f37e6a7f683eed7ad4
   - ref: artifact:anim_sc03_sh040
-    hash: sha256:c4aae1e8e8144b7d9d9f5f85c351e2afad1692ef798803d359d3032ea8129c64
+    hash: sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90
   - ref: artifact:anim_sc03_sh050
-    hash: sha256:2889673e4116d0283ac8ab0ee7d78c2091702a7783f03c9cd74f1a931b8aa9ca
+    hash: sha256:d6aa76ac62e7151a391211b703d2ff0991300ae091e9307f3f93399d281fe9f7
   - ref: artifact:anim_sc03_sh070
-    hash: sha256:d7a54617f5ea012a7707445f09cdf7cba664d41b6ddd5f7999463728e5af449a
+    hash: sha256:0343633f7b721a1aca1b3f7ffd95846613f600ba7507e32242ad138bd34dd2d7
   - ref: artifact:anim_sc04_sh010
-    hash: sha256:26a2f4c58345a620dab507fd7f1827646143bfc616067bf50bc35dd44172b83c
+    hash: sha256:d495c8ed15fce391534333c53cf6db8fd49a5e665a1c24a28158db0676733efa
   - ref: artifact:anim_sc04_sh020
-    hash: sha256:8176275c26f606e68e229d3c1c9ce3905e77cc8a9b4f17e65b32ab4a6201b828
+    hash: sha256:df20290707bdfffef814be53d6a06e84660e980c7a5174d817555b5009a4657d
   - ref: artifact:anim_sc04_sh030
-    hash: sha256:cb8e83d5c5641be707dd5fb88fbf6ff0a0019af185e2593677e608ee2c8c2bea
+    hash: sha256:3738966a71d6addff2427d0768c6510ab6ba3d9b11162fdaed991f0d00f24fbb
   - ref: artifact:anim_sc04_sh040
-    hash: sha256:6f8c6c78d164fcfc8e7c0e4d564fff6878f5daadf71ee6a3113c8151c4665d64
+    hash: sha256:65bd0bb32e465142e5079deb7ba1a16c9de76e9ae1f07086213d58ca72b67ec0
   - ref: artifact:anim_sc04_sh050
-    hash: sha256:ae12a78a1c1156f9cbf530bf809be8c650a740fc702b52817fe03041440940cb
+    hash: sha256:75483d6d8c23e73350aa1c52f6c76ddb8f781764a84179339473f19cda8fc679
   - ref: artifact:anim_sc04_sh060
-    hash: sha256:d486db3a8bfcfd9b71a7df5b7639b199d48e5156ee53cc575879d943ae0feca6
+    hash: sha256:10e5fd013ae8af51fb14173396a7eff243f4b5e90c9f4428567a2de030384642
   - ref: artifact:anim_sc04_sh070
-    hash: sha256:d99a29baf21db2e2aff25629e8f3e0c9479fd73fc7f80309199f9222abd07089
+    hash: sha256:0d317f2d30f472f02c8f1b12698dd4b421f64acc04d5b2d2b84d3af5dd445db5
   - ref: artifact:anim_sc04_sh080
-    hash: sha256:83f2deba8eba36d18fdc4e33d4573d1b2485323bc547d57c419621cc29f0f478
+    hash: sha256:52454eaba2942493b5ba7916834cfc2cd80916399cc6b28817fa15a6ae39d80e
   - ref: artifact:anim_sc04_sh090
-    hash: sha256:6a0aa664530aa1c404ab43e55f0274d0eb8996c6886ecb9842509de3ac6163f6
+    hash: sha256:9b28b5c65e5f379fb745f3fb64078979043796bc1576e2f8b87e45099d94a36b
   - ref: artifact:anim_sc05_sh010
-    hash: sha256:effb20845160e6824a1b5fd19a9890f2053bd3e595c568e873c4bd1755901fef
+    hash: sha256:1ea4ff83197d66b1b2c17796bd2d659232d19d192e15b6055b428ba2099eed97
   - ref: artifact:anim_sc05_sh020
-    hash: sha256:c9f225d98b141c23718ab92e707c7b11aa6b9842b4caacf18f128b9da4f47256
+    hash: sha256:96739267e57b45a074ccc549b005f3190d2a4ff2bc7d5d4e160f185dbe03bfe5
   - ref: artifact:anim_sc05_sh030
-    hash: sha256:332df4b498518cf267698eb726587db0304d410e690569207945fda135dd8ec4
+    hash: sha256:363ebe9df82fe66520bf5919b6aab11f6aa3b3601ee001e9482d9d1b0bbde6b2
   - ref: artifact:anim_sc06_sh010
-    hash: sha256:a6fe35274df4027bfad4b35b0a6d75245d07816bca75bbdad06aadc1545e6b78
+    hash: sha256:ddee172d1a5bc97e90175aa013becd8ac65954a79212ae9ea5f46a1dcc197bf7
   - ref: shot:SC01_SH010
     hash: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
   - ref: shot:SC01_SH020
@@ -108,17 +108,17 @@ fm:
   - ref: shot:SC02_SH030
     hash: sha256:6882916b0d762100ecafed0ac04fa926a7a8aa92c5124aa714187c867d543195
   - ref: shot:SC03_SH010
-    hash: sha256:973dab1732fa017ec1689768b6d6768d2b3ef90afb8267a4d20293b388cb70d2
+    hash: sha256:b3cf9247ac6dadd65ad67e388e53e984521f849267f6f42a021cdaace83291cd
   - ref: shot:SC03_SH020
-    hash: sha256:0f9f605d61b9255f8ce80f096217c88d03e4330dbfc6f21eed57111bff9ab313
+    hash: sha256:17749ce74a849d3eba33ea4bf0956df92d31b5356e2e09a7de3aa480ef97db77
   - ref: shot:SC03_SH030
-    hash: sha256:4e8d8794bce81a3e44a3b60b5e5e677f726f94660ecd5da0c72213b34faf6495
+    hash: sha256:d1561f8bdeadad2d570fde17acecdc7c4b9a6e7feb9d54c9e3c6ece5edb27b20
   - ref: shot:SC03_SH040
-    hash: sha256:06e3006cc3af99ffa8af55a7be7bfc4d615e8042e34874b49932869a2881ce48
+    hash: sha256:1020cdbc37450a1d9b016968b8c442e36d3bc59e91447dbe3cd3c941513c22e4
   - ref: shot:SC03_SH050
-    hash: sha256:c3373f2053320994f6637889fd0ecf12f1d06f3b328b95c9b74755e594276a50
+    hash: sha256:6d33bc402d926df5233ad93a87333c57736ab06a62d818b2973238da758e2d69
   - ref: shot:SC03_SH070
-    hash: sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0
+    hash: sha256:c943fa8776bee45915f96d41d7cbb2c060a78f6a93e0cee3910c79ca39dff1fd
   - ref: shot:SC04_SH010
     hash: sha256:86660ae172a141b63b4cfe45f1699051822606d3152f9a0e01774d5c74cff776
   - ref: shot:SC04_SH020
@@ -146,17 +146,17 @@ fm:
   - ref: shot:SC06_SH010
     hash: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd
   - ref: artifact:anim_sc01_sh140
-    hash: sha256:3b0f3771e3dad5cf3fdd72d8757fccd22bd92284cc9d8e716239652445a8d7de
+    hash: sha256:826c1833ee777c4a6424887801f33d7058d5d645ad2849a9fd049c2a27e8ad3b
   - ref: artifact:anim_sc02_sh020
-    hash: sha256:96cc8711216f1701deea921ddedd7acdaf1242ca436517cd11b987ea2e0a832b
+    hash: sha256:0879c17e5ae247692af922bcddf6391eeda2974b98ce067ef4179417995574d9
   - ref: artifact:anim_sc03_sh060
-    hash: sha256:6cef18e0a40a17158245894470d70ef45850a28994dca4e8da787704ba18d6bd
+    hash: sha256:88856bdccd1ee3d8033737be802370565eb42f5a534cb2fa84ba1505aa516cf9
   - ref: shot:SC01_SH140
     hash: sha256:209db68556feab291fba285ddf380490e5dc1bd6f4e72fbab9f119708345bd51
   - ref: shot:SC02_SH020
     hash: sha256:783ca6dc0c914156c5b4dd7b6e25ae9f2c4fb2afce34a03973fd60b4f77b2de9
   - ref: shot:SC03_SH060
-    hash: sha256:56cfa23e8fda67aa597eefd0b9daa42e7e2639635a9494700e05404c0c52cc27
+    hash: sha256:ded035b15ea796e0efdee325911aac7d94676bdda993d717268ac7f81cf48be9
   - ref: canon:audio.principles
     hash: sha256:2ed0685e13a4ee7ef1d37d1ab31f5403fb357a506b856c86dbef5bf932da5661
   - ref: canon:audio.score
@@ -182,9 +182,9 @@ fm:
   - ref: canon:tone.the_turn
     hash: sha256:653b9a834c3b4f01813d471792c37227f6b7476e3a4d314cc4792b6e51f5b361
   - ref: artifact:audio_bible
-    hash: sha256:72ce8431716184fb4bdcd47fe177b96c6936bf4e500db725c483dcc7193830c7
+    hash: sha256:3126772f9cb95dfdc7d6dac505a55c55923fed0a8c1180e1a5ee5a7cd75ec1ff
   - ref: artifact:storyboard
-    hash: sha256:cf0648aa717949827441cf7b2c037b512da536eb8a33e34fbfbcac6bd70c7b66
+    hash: sha256:891aec9e44443e0c00e161d46f5cdf7a23346d513b4fbd2cb228e807f7f18523
   summary: 'Complete cue sheet: every cue on an animation event id (handle_top derived for the ratchet),
     beds per scene, the silence map, mix targets and the human_supply asks.'
   serves:
@@ -193,7 +193,10 @@ fm:
   - intent.earned_last_signal
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
-  stamped_content_hash: sha256:7429405e767d311ddc2be98036e0d1da623777dee787584b4e10771d0e523e68
+  stamped_content_hash: sha256:ad57b77535192c291ed921e797e542e8ca319119171c92379f36852d9ccc433a
+  stamp_note: 'Re-sync check after the SC03 kneel/path re-blocking: every SC03_SH010-SH070 anim event
+    id, frame and kind and every frame count compared against HEAD and found identical; cues anchor on
+    those events and the SC03 hum die_at 6.0 s (scene f144) still holds, so no cue revision is needed.'
 mix:
   integrated_lufs: -16.0
   lufs_tolerance: 1.0
@@ -628,6 +631,28 @@ cues:
     speed: 16
   serves:
   - intent.comic_then_tender
+- id: c_SC01_SH120_plug_click
+  shot: SC01_SH120
+  recipe: car.glovebox_lid
+  at:
+    event: bolt_on
+  gain_db: -32
+  params:
+    mode: latch
+  duration_f: 4
+  note: 'vocab v2 cable chain: the plug seats in the car USB adapter off frame on f2 (charging_cable loc
+    car_usb_adapter), the same frame the bolt lights; anchored to bolt_on because the anim names no separate
+    plug event'
+  rationale: 'DECISION (v2 refresh): the same small latch tick as the other two plug-ins (SC03_SH020,
+    SC04_SH050), so the three plug-ins are one sound family and the audience hears cause (click) then
+    reward (chime) on the same frame. Mechanism: a -32 dB transient under the -22 dB tonal chime reads
+    as contact, not as a second UI sound. Anchored to bolt_on, not a typed f2: the anim states plug-in
+    and bolt_on share f2 (look.lighting.power_indicators), so a retime moves both. Rejected: offset -1
+    (puts the click before the cable is live, contradicting the anim) and no click (the first plug-in
+    would be the only silent one of three).'
+  serves:
+  - intent.race_against_battery
+  - intent.comic_then_tender
 - id: c_SC01_SH120_charge_chime
   shot: SC01_SH120
   recipe: ui.charge_chime
@@ -874,6 +899,33 @@ cues:
   serves:
   - intent.comic_then_tender
   - intent.race_against_battery
+- id: c_SC02_SH030_door_swing_back
+  shot: SC02_SH030
+  recipe: fx.plastic_scuff
+  at:
+    event: door_push
+    offset_f: 4
+  gain_db: -38
+  layer: foley
+  duration_f: 8
+  fade_out_f: 5
+  params:
+    speed: 4
+  placeholder: true
+  tail_ok: true
+  note: 'PLACEHOLDER door closer pulling the empty door back from f14 (vocab v2 shop_door key swing_back,
+    ease_in, no dur_f); settles under SC03_SH010, never a slam (human_supply foley.shop_door_push). ASSUMPTION:
+    anchored door_push +4 until the animation-director names an event at f14'
+  rationale: 'DECISION (v2 refresh): the swing-back is the shot''s last image, so it gets a soft, slow
+    closer sound that keeps decaying past the cut instead of a stop. Mechanism: -38 dB with a 5 f fade
+    sits well under the -20 dB chime on f15, so it adds air and motion to the empty door without competing
+    with the one chime (still exactly one shop.door_chime cue). Anchored to the door''s own door_push
+    event +4 (push f10, swing-in f10-13, swing-back f14): the anim has no event on the swing_back key,
+    so the animation-director is asked for one. Rejected: a door-close thud or latch (the anim rules out
+    a slam, tone.comedy_source), and a second bell strike for the swing (two chimes read as two doors).'
+  serves:
+  - intent.race_against_battery
+  - intent.soft_but_cinematic
 - id: c_SC03_hum_fridge
   shot: SC03_SH010
   recipe: hum.fridge
@@ -1049,7 +1101,8 @@ cues:
   params:
     mode: latch
   duration_f: 4
-  note: 'board: a click; a small latch tick as the plug seats'
+  note: 'board: a click; a small latch tick as the plug seats (vocab v2: charging_cable loc shop_socket
+    on plug_in f12)'
   serves:
   - intent.comic_then_tender
 - id: c_SC03_SH020_charge_chime
@@ -1185,7 +1238,7 @@ cues:
   params:
     mode: latch
   duration_f: 4
-  note: small plug seat click
+  note: 'small plug seat click (vocab v2: charging_cable loc crank_port on plug_in f10)'
   serves:
   - intent.earned_last_signal
 - id: c_SC04_SH050_arm_stop
@@ -1764,13 +1817,15 @@ human_supply:
   status: NEEDED
   note: 'stand-in: fx.soft_bump PLACEHOLDER'
 - sound: fx.soft_bump
-  need: 'foley.shop_door_push: a glass shop door pushed open by hand (SC02_SH030 door_push)'
+  need: 'foley.shop_door_push: a glass shop door pushed open by hand (SC02_SH030 door_push); and the same
+    door''s closer pulling it back, soft, no slam or latch, about 1 s that can run past the cut (SC02_SH030
+    door_push +4 = f14, swing_back; stand-in fx.plastic_scuff)'
   shots:
   - SC02_SH030
   source: library
   licence: UNKNOWN
   status: NEEDED
-  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+  note: 'stand-ins: fx.soft_bump (push) and fx.plastic_scuff (swing-back) PLACEHOLDER'
 - sound: fx.soft_bump
   need: 'foley.pencil: a pencil laid down on a sketchbook page (SC05_SH020 pencil_down)'
   shots:
@@ -1889,3 +1944,12 @@ scaffold_notes:
   door is never closed on screen (continuity: the open door in SC04).'
 - 'Two cues carry hand-derived lengths across shots (c_SC01_SH100_idle 110 f; the SC03 hums die_at 6.0
   s): re-derive them if SC01_SH100-SH130 or SC03_SH010-SH050 are retimed.'
+- 'Vocab v2 refresh (sound-designer): the v2 migration added prop/lids keys, not event ids; every anim
+  event id the cues reference still exists at the same frame. New cues: c_SC01_SH120_plug_click (bolt_on),
+  c_SC02_SH030_door_swing_back (door_push +4, PLACEHOLDER). Existing plug clicks c_SC03_SH020_plug_click
+  and c_SC04_SH050_plug already sit on the plug_in events. Deliberately silent: the SC03_SH010 plug hand-over
+  f44-48 (hidden by the drop and covered by the knees landing on knees_land), the SC02_SH010 unplug (cut
+  hides it), and the v2 lids blinks (SC03_SH070, SC04_SH010, SC04_SH030, SC05_SH030): a blink has no sound,
+  and after the turn the film hears only ratchet, breath and street (audio.principles).'
+- 'Asked of the animation-director (via the orchestrator): a sound event on SC02_SH030 f14 (shop_door
+  swing_back) so c_SC02_SH030_door_swing_back can anchor on it instead of door_push +4.'

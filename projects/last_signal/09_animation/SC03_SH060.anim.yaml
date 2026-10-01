@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH060
-    hash: sha256:56cfa23e8fda67aa597eefd0b9daa42e7e2639635a9494700e05404c0c52cc27
+    hash: sha256:ded035b15ea796e0efdee325911aac7d94676bdda993d717268ac7f81cf48be9
   - ref: canon:continuity.props.phone_ren
     hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
   - ref: canon:continuity.battery
@@ -25,7 +25,7 @@ fm:
   - intent.race_against_battery
   summary: 'Structured tracks for the 2 % insert: nothing moves for 26 frames (minimum 24); no hand in
     frame.'
-  stamped_content_hash: sha256:277958c4d0ef2bfec18d68103716ed514432aa790f060ae52753e3d6f6a62fc2
+  stamped_content_hash: sha256:88856bdccd1ee3d8033737be802370565eb42f5a534cb2fa84ba1505aa516cf9
 shot_id: SC03_SH060
 frames: 26
 vocab_version: 2
@@ -51,8 +51,10 @@ props:
   phone_ren:
   - f: 0
     attach: hand_l
-    note: no hand in frame; phone still. Screen centre about (2.2, 8.29, 0.72), camera up = the phone's
-      top edge
+    note: no hand in frame; phone still. He kneels at (3.45, 8.66) facing +y; the kneel_upright rig holds
+      the phone about 0.22 m ahead at 0.93 m (screen centre about (3.45, 8.88, 0.93), 7 cm off the back-wall
+      face), per the shot's framing reference; camera up = the phone's top edge. The old (2.2, 8.29, 0.72)
+      reference is retired
 holds:
 - f0: 0
   f1: 25

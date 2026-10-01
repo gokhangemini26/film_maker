@@ -5,7 +5,7 @@ import bpy
 from mathutils import Vector
 
 from . import util as U
-from .anchors import shop_anchors
+from .anchors import car_layout, shop_anchors
 
 SHOP_ORIGIN = Vector((100.0, 0.0, 0.0))
 ROOM_ORIGIN = Vector((200.0, 0.0, 0.0))
@@ -137,7 +137,8 @@ def build_car(col, canon):
         U.cyl(f"car_wheel{i}", 0.3, 0.2, (cx + dx * (W / 2 + 0.02), cy + dy * (c["wheelbase_m"] / 2), 0.3), col, dark, rot=(0, math.pi / 2, 0))
     # interior, front half: driver seat (kerb side is passenger: x small), passenger seat, dash, wheel, console, glovebox
     seat_z = c["seat_height_m"]
-    fy = cy + 0.15  # front seats forward of centre (+y is west; the car faces west)
+    seat_dy, gb_dy = car_layout()
+    fy = cy + 0.15 + seat_dy  # front seats forward of centre (+y is west; the car faces west)
     drv_x = x1 - W * 0.27
     pas_x = x0 + W * 0.27
     for nm, sx in (("driver", drv_x), ("passenger", pas_x)):
@@ -148,7 +149,7 @@ def build_car(col, canon):
     U.box("console", (0.22, 0.5, 0.22), (cx, fy + 0.25, seat_z + 0.05), col, dark)
     U.cyl("steering_wheel", 0.19, 0.03, (drv_x, y1 - 0.85, sill + 0.62), col, dark, rot=(math.radians(60), 0, 0))
     gb_w, gb_h = c["glovebox"]["opening_m"]
-    gb_y, gb_z = y1 - 0.72, sill + 0.4
+    gb_y, gb_z = y1 - 0.72 + gb_dy, sill + 0.4
     U.box("glovebox", (gb_w, 0.2, gb_h), (pas_x, gb_y, gb_z), col, U.toon({"hex": "#3A3630", "linear": U.lin("#3A3630")}))
     # glovebox lid: face toward the seat (-y). Closed = vertical panel; open = dropped flat, hinged on its bottom edge
     lid = U.box("glovebox_lid", (gb_w, 0.02, gb_h), (pas_x, gb_y - 0.111, gb_z), col, _t(col, pal(4)))

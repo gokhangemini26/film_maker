@@ -14,6 +14,7 @@ from . import util as U
 from . import sets as S
 from .characters import figure
 from . import phone as PH
+from . import sightline as SL
 
 STREET_SCENES = {"SC01", "SC02", "SC04", "SC06"}
 DUSK = {"SC04", "SC05", "SC06"}
@@ -518,6 +519,23 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
             pts += [info_["head"], info_["chest"], info_["hip"], (info_["chest"] + info_["hip"]) / 2]
         if cam_c.get("look_at", "") in figs:
             pass
+    # wall rule: a thin interior slab (wall/ceiling) the lens is outside of, relative to the subject, is hidden (reverse shots)
+    if pts:
+        cp_ = (cam.location.x, cam.location.y, cam.location.z)
+        sp_ = [(v.x, v.y, v.z) for v in pts]
+        boxes_ = {}
+        for coll in (units["shop"], units["room"]):
+            if coll.hide_render:
+                continue
+            for o in coll.objects:
+                if o.type != "MESH" or o.hide_render or o.get("fm_shot"):
+                    continue
+                bp_ = [o.matrix_world @ Vector(c) for c in o.bound_box]
+                boxes_[o.name] = (tuple(min(v[k] for v in bp_) for k in range(3)), tuple(max(v[k] for v in bp_) for k in range(3)))
+        for n_ in SL.walls_to_hide(boxes_, cp_, sp_):
+            bpy.data.objects[n_].hide_render = True
+            bpy.data.objects[n_]["fm_culled_by_preview"] = 1
+            culled.append(n_)
     if pts:
         dg = bpy.context.evaluated_depsgraph_get()
         for goal in pts:

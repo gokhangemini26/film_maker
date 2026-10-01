@@ -83,8 +83,8 @@
   },
   {
    "licence": "UNKNOWN",
-   "need": "foley.shop_door_push: a glass shop door pushed open by hand (SC02_SH030 door_push)",
-   "note": "stand-in: fx.soft_bump PLACEHOLDER",
+   "need": "foley.shop_door_push: a glass shop door pushed open by hand (SC02_SH030 door_push); and the same door's closer pulling it back, soft, no slam or latch, about 1 s that can run past the cut (SC02_SH030 door_push +4 = f14, swing_back; stand-in fx.plastic_scuff)",
+   "note": "stand-ins: fx.soft_bump (push) and fx.plastic_scuff (swing-back) PLACEHOLDER",
    "shots": [
     "SC02_SH030"
    ],
@@ -244,6 +244,7 @@
   {
    "cues": [
     "c_SC01_SH060_seat_creak",
+    "c_SC02_SH030_door_swing_back",
     "c_SC04_SH040_cloth",
     "c_SC05_SH020_headphones",
     "c_SC05_SH020_pencil_stroke",
@@ -297,7 +298,7 @@
     ],
     [
      "WARN",
-     "AUDIO_PLACEHOLDER 12_post/AUDIO_CUES.yaml: fx.plastic_scuff is a PLACEHOLDER used by 5 cue(s) (c_SC01_SH060_seat_creak, c_SC04_SH040_cloth, c_SC05_SH020_headphones, c_SC05_SH020_pencil_stroke, c_SC05_SH020_phone_grip): the human supplies the real sound"
+     "AUDIO_PLACEHOLDER 12_post/AUDIO_CUES.yaml: fx.plastic_scuff is a PLACEHOLDER used by 6 cue(s) (c_SC01_SH060_seat_creak, c_SC02_SH030_door_swing_back, c_SC04_SH040_cloth, c_SC05_SH020_headphones, c_SC05_SH020_pencil_stroke, c_SC05_SH020_phone_grip): the human supplies the real sound"
     ],
     [
      "WARN",
@@ -317,7 +318,7 @@
     ],
     [
      "WARN",
-     "PLACEHOLDER fx.plastic_scuff is in the mix (5 cue(s)): stands in until the human supplies the real sound"
+     "PLACEHOLDER fx.plastic_scuff is in the mix (6 cue(s)): stands in until the human supplies the real sound"
     ],
     [
      "WARN",

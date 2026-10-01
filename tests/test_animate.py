@@ -248,8 +248,9 @@ def test_shop_kneel_ctx_uses_the_sets_real_stand_and_socket():
     sh = st.ctx["shop"]
     assert (A.PS.to_world(A.Vector(sh["socket"]), base, fac) - anc["socket"]).length < 1e-4
     assert (A.PS.to_world(A.Vector(sh["stand_back_edge"]), base, fac) - anc["stand_back_edge"]).length < 1e-4
-    # the stand really is where the set builds it: right of Ren at (2.2, 8.0), not the figure-relative 0.62 m default
-    assert sh["stand_back_edge"][1] > 1.5 and sh["stand_back_edge"] != A.PS.CTX_DEFAULT["shop"]["stand_back_edge"]
+    # the stand really is where the set builds it (0.8 m to Ren's right at the shot's spot), not the 0.62 m default
+    assert sh["stand_back_edge"] != A.PS.CTX_DEFAULT["shop"]["stand_back_edge"]
+    assert abs(sh["stand_back_edge"][1] - 0.8) < 0.02
     # the default stage (no canon) and other scenes keep the poses' own defaults
     assert A.Stage(s, None, motion=s["motion"]).ctx["shop"] == A.PS.CTX_DEFAULT["shop"]
     s4 = shot("SC04_SH050")
@@ -260,7 +261,7 @@ def test_kneel_reach_follows_the_real_socket_when_ren_kneels_beside_the_stand():
     import copy
     canon = _film_canon()
     s = copy.deepcopy(shot("SC03_SH020"))
-    s["characters"][0]["position"] = [3.45, 8.66, 0.0]          # kneeling left of the stand, as the preset assumes
+    s["characters"][0]["position"] = [3.45, 8.66, 0.0]          # kneeling left of the stand, as the preset assumes (the shot's own spot)
     st = A.Stage(s, canon, motion=s["motion"])
     j = A.PS.pose("ren", "kneel_reach_stand", st.props["ren"], st.ctx)
     base, fac = st.home["ren"]
@@ -268,6 +269,8 @@ def test_kneel_reach_follows_the_real_socket_when_ren_kneels_beside_the_stand():
     from fm_blender.anchors import shop_anchors
     assert (hand - shop_anchors(canon["world.sets.corner_shop"], A.SHOP_ORIGIN)["socket"]).length <= 0.02
     # at the shot's own position the real socket is out of reach: reported, not hidden by a default
-    st0 = A.Stage(shot("SC03_SH020"), canon, motion=shot("SC03_SH020")["motion"])
+    s0 = copy.deepcopy(shot("SC03_SH020"))
+    s0["characters"][0]["position"] = [1.2, 5.0, 0.0]            # across the shop: the socket is out of reach
+    st0 = A.Stage(s0, canon, motion=s0["motion"])
     far = A.PS.pose("ren", "kneel_reach_stand", st0.props["ren"], st0.ctx)
     assert far["reach_err"][1] > 0.5

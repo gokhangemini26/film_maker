@@ -1,6 +1,6 @@
 {
   "content_hash": "sha256:817ebf105534e2d6eda99db85923671cb5ed6881d05cd491a1c65fc0711fbc73",
-  "created_at": "2026-10-01T11:20:48Z",
+  "created_at": "2026-10-01T17:17:20Z",
   "derived_from": [
     {
       "hash": "sha256:b749f224559d8be2e0a06281e9c441772c9aea3445fb0df3349bf53f83b4108a",
@@ -75,31 +75,31 @@
       "ref": "artifact:anim_sc02_sh030"
     },
     {
-      "hash": "sha256:1379a283280dd69671c0b03ba5833f3586c03f0a393b6590f06e8247ba275f20",
+      "hash": "sha256:fd455ab9e3dad76566a22e2e748f11fcd0d398c94b3b98c1f8f100a4bc246adf",
       "ref": "artifact:anim_sc03_sh010"
     },
     {
-      "hash": "sha256:e9c1d18060a9d4214b8cfa80bfc1922d846898192cea656f81fd2914d59f52c6",
+      "hash": "sha256:dfed90e33553c261e053632097aac7de32c018546b392fe8ec3418c21df7ceec",
       "ref": "artifact:anim_sc03_sh020"
     },
     {
-      "hash": "sha256:6aaac5fde8146cb2529e220cb9e8caa730fc863b67f47731d88801f20990abc6",
+      "hash": "sha256:1353c981eadef8ca8cb30081399c778ca2f07e2a88d1d1f37e6a7f683eed7ad4",
       "ref": "artifact:anim_sc03_sh030"
     },
     {
-      "hash": "sha256:2b790f5c3632cf075df599308e4f5565cd663eb64af29e73792b20670c5ccb6c",
+      "hash": "sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90",
       "ref": "artifact:anim_sc03_sh040"
     },
     {
-      "hash": "sha256:f8e2963a1fd179b7450454d41d694a789807558e6b046d048ab24e89b9d73223",
+      "hash": "sha256:d6aa76ac62e7151a391211b703d2ff0991300ae091e9307f3f93399d281fe9f7",
       "ref": "artifact:anim_sc03_sh050"
     },
     {
-      "hash": "sha256:277958c4d0ef2bfec18d68103716ed514432aa790f060ae52753e3d6f6a62fc2",
+      "hash": "sha256:88856bdccd1ee3d8033737be802370565eb42f5a534cb2fa84ba1505aa516cf9",
       "ref": "artifact:anim_sc03_sh060"
     },
     {
-      "hash": "sha256:ffba81a2f787e13b994604a5981bf9cc9bc60853d827668424add3ff76aef453",
+      "hash": "sha256:0343633f7b721a1aca1b3f7ffd95846613f600ba7507e32242ad138bd34dd2d7",
       "ref": "artifact:anim_sc03_sh070"
     },
     {
@@ -227,31 +227,31 @@
       "ref": "resolved:SC02_SH030"
     },
     {
-      "hash": "sha256:522aa49725a8d2d1201d4138b0744d19ef051a142c4367b23479e672e55264bf",
+      "hash": "sha256:adbe8397f7f49dd0daf6eb04833af9c97331cba489e3675a03a93d49cc848a36",
       "ref": "resolved:SC03_SH010"
     },
     {
-      "hash": "sha256:83918476e1575c1729813746bb740795045cf2ba194a976b40c35672c82c8e72",
+      "hash": "sha256:4c7d990761a5310097a803ae0a9d3a418191b6db2b84a930bfceebd14b45295c",
       "ref": "resolved:SC03_SH020"
     },
     {
-      "hash": "sha256:75977d1fe56586697ad61092b8548ee312b19c8d0f83399b21629ecf0a1fd147",
+      "hash": "sha256:0ffd846171e18ceb411cee47eb2dbbcffac67ad5dfe39ad5f50e1a5bd2a84b58",
       "ref": "resolved:SC03_SH030"
     },
     {
-      "hash": "sha256:c2ecb144f11d89c2c6e87f6802a4b334aa33dfb20b7450e7d692c3e0b619beed",
+      "hash": "sha256:2958263acb0b9b2dd8fb4fc3378a1df5959ea5704c6efba9f3bb0b6c3f0a10f2",
       "ref": "resolved:SC03_SH040"
     },
     {
-      "hash": "sha256:cfa01e891fef9452b8a4d499b1ce87a16a14325c3afa4e20706ef4be52320094",
+      "hash": "sha256:b338b27e99e0ef509dbe21c2f68278e44e4eca1fd56ce9b6796fabe520f445fa",
       "ref": "resolved:SC03_SH050"
     },
     {
-      "hash": "sha256:2f5576f44f3d58eb23ddcf174f985c6bc748513bb7fe0bcfcc9897baed0b7590",
+      "hash": "sha256:2fc782f7b4621cde2e8c90c57cb1defa591ba75a4526600269d2a81dc158a428",
       "ref": "resolved:SC03_SH060"
     },
     {
-      "hash": "sha256:ae645e8f9335e7e012eaaf1a7e2bf9813a006e1e8a251ba1875f208f69543985",
+      "hash": "sha256:06e017d3d69e43011a735a6fdd84d82266e4f3f821c689c06a88f5852af9876e",
       "ref": "resolved:SC03_SH070"
     },
     {

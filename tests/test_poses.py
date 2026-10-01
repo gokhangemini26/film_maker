@@ -62,7 +62,6 @@ def test_every_vocab_pose_has_a_builder_and_no_extras():
         assert isinstance(PS.pose(cid, ref, PROPS[cid]), dict)
 
 
-@pytest.mark.xfail(reason="vocabulary v2: blender/poses.py poses and FACE_SHAPES not implemented yet", strict=False)
 def test_v2_poses_and_faces_have_builders():
     assert set(PS.POSES) == set(FULL)
     for cid in V.FACES:

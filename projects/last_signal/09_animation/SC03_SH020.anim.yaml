@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH020
-    hash: sha256:0f9f605d61b9255f8ce80f096217c88d03e4330dbfc6f21eed57111bff9ab313
+    hash: sha256:17749ce74a849d3eba33ea4bf0956df92d31b5356e2e09a7de3aa480ef97db77
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -44,7 +44,7 @@ fm:
   - intent.comic_then_tender
   summary: 'Structured tracks for the plug-in: reach behind the stand, a short fumble, plug in at f12,
     bolt at f14, eyes to the phone at f15; phone locked still f10-35 so the bolt reads; no relief.'
-  stamped_content_hash: sha256:e9c1d18060a9d4214b8cfa80bfc1922d846898192cea656f81fd2914d59f52c6
+  stamped_content_hash: sha256:dfed90e33553c261e053632097aac7de32c018546b392fe8ec3418c21df7ceec
 shot_id: SC03_SH020
 frames: 36
 vocab_version: 2
@@ -167,3 +167,6 @@ notes:
   characters.ren.expressions is LOCKED and does not list it; the key stands only if the human rules that
   animation faces may refine a listed expression, or approves a character-designer change request. Fallback
   if refused: neutral (the v1 stand-in).'
+- 'Reviewed against the SC03 blocking fix (kneel at (3.45, 8.66) facing +y, stand about 0.3 m to his right,
+  socket about 0.8 m right and 0.3 m ahead of his pelvis): the reach behind the stand, the f12 plug-in
+  and all tracks are position-free and stand unchanged; no coordinates in this file.'

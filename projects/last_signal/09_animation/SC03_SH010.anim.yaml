@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH010
-    hash: sha256:973dab1732fa017ec1689768b6d6768d2b3ef90afb8267a4d20293b388cb70d2
+    hash: sha256:b3cf9247ac6dadd65ad67e388e53e984521f849267f6f42a021cdaace83291cd
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -37,9 +37,10 @@ fm:
   - intent.comic_then_tender
   - intent.race_against_battery
   - intent.anime_feel
-  summary: 'Structured tracks for the shop entry: quick run in under the camera, head snaps left / right,
-    locks on the socket corner at f10, down the west aisle, one quick drop to both knees f44-48.'
-  stamped_content_hash: sha256:1379a283280dd69671c0b03ba5833f3586c03f0a393b6590f06e8247ba275f20
+  summary: 'Structured tracks for the shop entry: hard run in under the camera and round the near gondola''s
+    front end, head snaps left / right, locks on the socket corner at f10, down the west aisle, one quick
+    drop to both knees at (3.45, 8.66) f44-48.'
+  stamped_content_hash: sha256:fd455ab9e3dad76566a22e2e748f11fcd0d398c94b3b98c1f8f100a4bc246adf
 shot_id: SC03_SH010
 frames: 52
 vocab_version: 2
@@ -55,15 +56,17 @@ characters:
       ref: run_phone_out
       ease: hold
       note: head and shoulders enter at the frame bottom, running (step on f0), phone and cable loop in
-        the left hand. f10-11 a 2-frame forward-lean anticipation as he spots the socket (no preset; carried
-        by the gait's acceleration); f12 accelerates down the west aisle; f36-43 braking steps, shorter
-        strides
+        the left hand. f3-9 a slight lean into the curve round the near gondola's front end (west, screen
+        right); f10-11 a 2-frame forward-lean anticipation as he spots the socket from the aisle mouth
+        (no preset; carried by the gait's acceleration); f12 accelerates down the west aisle; f36-43 braking
+        steps, shorter strides
     - f: 44
       ref: kneel_upright
       ease: gravity
       blend_f: 4
       note: drops to both knees in one quick move f44-48, phone arm tucks to the chest; the gravity bounce
-        is the small forward settle f49-51. Knees down beside the stand, facing the back wall
+        is the small forward settle f49-51. Knees down at (3.45, 8.66) facing the back wall, the stand
+        on his right
       rationale: one quick drop, weighted, not a knee slide (a stunt and a humiliation risk)
     - f: 51
       ref: kneel_upright
@@ -71,31 +74,40 @@ characters:
       note: final hold, matched by SH020-SH050
     move:
       gait: run_phone_out
-      speed_mps: 4.2
+      speed_mps: 5.0
       path:
       - f: 0
-        x: 1.3
+        x: 2.3
         y: 1.4
+      - f: 5
+        x: 2.95
+        y: 1.6
       - f: 10
-        x: 1.6
-        y: 2.75
-      - f: 16
-        x: 2.1
-        y: 3.6
+        x: 3.35
+        y: 2.05
+      - f: 14
+        x: 3.45
+        y: 2.8
       - f: 36
-        x: 2.2
-        y: 7.1
+        x: 3.45
+        y: 7.38
       - f: 44
-        x: 2.2
-        y: 7.75
+        x: 3.45
+        y: 8.38
       - f: 48
-        x: 2.2
-        y: 8.0
-      note: 'shop-local coords (x west, y depth south): enters under the camera at (1.3, 1.4), into the
-        west aisle, kneels at (2.2, 8.0). 6.8 m: about 3.3 m/s while scanning (f0-10), 3.9 into the aisle,
-        4.2 down it (f16-36), about 2 m/s braking (f36-44), 0.25 m in the drop (f44-48). The prose''s
-        4.0 m/s entry for f0-2 is folded into the first leg. Distance/time risk from the shot carried
-        over: this is a quick run (mean about 3.7 m/s), not a walk'
+        x: 3.45
+        y: 8.66
+      note: 'shop-local coords (x west, y depth south). Enters through the door under the lens (x 2.65)
+        at (2.3, 1.4), 0.3 m clear of the counter (x <= 2.0); curves west round the front end of the near
+        gondola (end cap x 2.34-2.86, y about 1.96; path keeps >= 0.3 m from its corner) while scanning,
+        is at the mouth of the west aisle at f10 when he spots the socket, straightens onto the aisle
+        centre (x 3.45) by f14, runs straight down it and kneels at (3.45, 8.66) facing +y, between the
+        westmost fridge (x <= 3.2) and the stand (x >= 3.75). 7.9 m (was 6.8 m to the old spot (2.2, 8.0)):
+        3.3 m/s f0-5, 2.9 m/s rounding the end cap f5-10, 4.5 m/s accelerating f10-14, 5.0 m/s down the
+        aisle f14-36 (peak; stride about 1.25 m at a step every 6 frames), 3.0 m/s braking f36-44 (5 down
+        to about 1), 0.28 m forward in the drop f44-48. Mean about 4.1 m/s over f0-44. A hard run, at
+        the top of the run range and under the run_phone_out QA ceiling (5.5 m/s); no cut-length change
+        needed'
     face:
     - f: 0
       ref: neutral
@@ -112,7 +124,8 @@ characters:
       note: head snaps right
     - f: 10
       target: socket
-      note: head locks down the aisle on the socket corner (spots it) and stays there through the kneel
+      note: at the west aisle mouth, head locks down the aisle on the socket corner (spots it) and stays
+        there through the kneel
       rationale: the snaps keep his burst-and-hold rhythm readable at 25 % of frame height without stopping
     breath:
     - f: 48
@@ -178,3 +191,7 @@ notes:
 - 'Secondary motion with no track: jacket hem swings, flares on the drop and settles by f51. The cable
   loop swing is posed per stride on the charging_cable track (vocabulary v2), not simulated.'
 - 'Camera locked off: the same frame is reused for the blackout (SC03_SH050).'
+- 'Kneel moved to (3.45, 8.66) with the cinematographer''s SC03 blocking fix (socket reach); the path,
+  speeds and notes follow it. The shot file''s prose animation block (locomotion.path, risks_m3) still
+  describes the old run to (2.2, 8.0), 6.7 m: the shot file is not edited from here once this anim file
+  exists; flagged to the orchestrator.'

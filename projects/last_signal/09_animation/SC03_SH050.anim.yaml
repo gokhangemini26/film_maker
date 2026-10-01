@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH050
-    hash: sha256:c3373f2053320994f6637889fd0ecf12f1d06f3b328b95c9b74755e594276a50
+    hash: sha256:6d33bc402d926df5233ad93a87333c57736ab06a62d818b2973238da758e2d69
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -41,7 +41,7 @@ fm:
   - intent.anime_feel
   summary: 'Structured tracks for the blackout: 8 lit frames of a relaxed man, the room off in one frame
     on the clunk at f8, 22 frames of dark; he does not move; the phone glow dips and comes back.'
-  stamped_content_hash: sha256:f8e2963a1fd179b7450454d41d694a789807558e6b046d048ab24e89b9d73223
+  stamped_content_hash: sha256:d6aa76ac62e7151a391211b703d2ff0991300ae091e9307f3f93399d281fe9f7
 shot_id: SC03_SH050
 frames: 30
 vocab_version: 2
@@ -136,3 +136,6 @@ notes:
 - 'Four events share f8 (blackout, clunk, fridge_hum_stop, charge_lost): same frame, different consumers
   (light, two sound cues, screen state).'
 - Camera locked off, identical to SC03_SH010; no shake on the clunk.
+- 'Reviewed against the SC03 blocking fix: he holds at (3.45, 8.66), the SH010 end position (SH010 path
+  re-routed to it); the lens moved with SH010 to x 2.65. Tracks and the f8 events are position-free and
+  stand unchanged.'

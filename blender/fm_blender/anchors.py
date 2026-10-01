@@ -36,3 +36,19 @@ def shop_anchors(c, origin):
         "stand_back_normal": Vector((0.0, 1.0, 0.0)),
         "stand_size": (dw, dd, dh),
     }
+
+
+# ---- the car interior (v2 layout, animated frames only)
+# The v1 set puts the driver's pelvis 0.65 m from the steering wheel (arms 0.59 m: the hands float 0.25 m off the rim) and
+# 0.95 m from the glovebox latch (canon reach_from_driver_seat_m 0.75). The v2 layout moves the front seats 0.25 m forward and the
+# glovebox 0.10 m toward the dash, which gives wheel 0.40 m ahead of the pelvis (the poses' own default) and a latch 0.75 m
+# away horizontally. Still previews keep the v1 layout (pixel-identical); animate.main/render_frames switch this flag on.
+CAR_V2 = [False]
+CAR_SEAT_SHIFT_V2 = 0.25
+CAR_GLOVEBOX_BACK_V2 = 0.10
+
+
+def car_layout(v2=None):
+    """(seat_dy, glovebox_dy): offsets from the v1 seat row (cy + 0.15) and glovebox y (y1 - 0.72)."""
+    v2 = CAR_V2[0] if v2 is None else v2
+    return (CAR_SEAT_SHIFT_V2, -CAR_GLOVEBOX_BACK_V2) if v2 else (0.0, 0.0)

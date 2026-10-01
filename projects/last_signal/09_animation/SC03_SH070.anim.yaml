@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH070
-    hash: sha256:0b9219ced30c876d04122ad9d966e80190f4702d8f22369f60db36cb756331f0
+    hash: sha256:c943fa8776bee45915f96d41d7cbb2c060a78f6a93e0cee3910c79ca39dff1fd
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -35,7 +35,7 @@ fm:
   - intent.soft_but_cinematic
   summary: 'Structured tracks for the stunned stillness: a true 28-frame hold, one slow 12-frame blink
     f28-39, held to the cut.'
-  stamped_content_hash: sha256:ffba81a2f787e13b994604a5981bf9cc9bc60853d827668424add3ff76aef453
+  stamped_content_hash: sha256:0343633f7b721a1aca1b3f7ffd95846613f600ba7507e32242ad138bd34dd2d7
 shot_id: SC03_SH070
 frames: 48
 vocab_version: 2
@@ -121,3 +121,5 @@ notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
 - 'The prose calls the blink "12-frame" (f28-39): close 4, closed 2, open 6.'
+- 'Reviewed against the SC03 blocking fix (kneel at (3.45, 8.66) facing +y, reverse lens behind the wild
+  back wall): the stillness, blink and breath hold are position-free and stand unchanged.'
