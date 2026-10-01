@@ -173,7 +173,37 @@ def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=No
             (hm @ Matrix.Rotation(roll, 3, "X")).to_euler())
     hd = U.sphere(f"{cid}_head", hh * 0.5, head, col, skin, scale=(0.85, 0.95, 1.0))
     hd.rotation_euler = (0, 0, yaw) if (hyaw == 0.0 and hpit == 0.0) else rot()
-    U.sphere(f"{cid}_hair", hh * 0.52, head + hu * hh * 0.14 - hf * hh * 0.1, col, hair, scale=(0.95, 1.0, 0.85))
+    hair_o = U.sphere(f"{cid}_hair", hh * 0.52, head + hu * hh * 0.14 - hf * hh * 0.1, col, hair, scale=(0.95, 1.0, 0.85))
+    pitched = hpit < 0.0  # tipped back (+ pitch = looking down keeps its authored face exactly)
+    wt = min(1.0, -hpit / 0.35) if pitched else 0.0  # fades the surface fit in over the first 20 deg, so no pop
+    if pitched:  # the hair cap turns with the head, so the hairline stays where the face is
+        hair_o.rotation_euler = rot()
+
+    def brow_z(lat, z):
+        """Pitched head: the brow height clamped to the forehead skin, below the hairline (where the hair cap pokes out of the
+        head ellipsoid), so a raised brow never floats above the head or vanishes into the hair. Unpitched: unchanged."""
+        if not pitched:
+            return z
+        zz = 0.02
+        while zz < z:
+            nz = zz + 0.005
+            qs, qh = 1.0 - (lat / 0.475) ** 2 - (nz / 0.5) ** 2, 1.0 - (lat / 0.52) ** 2 - ((nz - 0.14) / 0.442) ** 2
+            if qs <= 0.0 or (qh > 0.0 and -0.1 + 0.494 * math.sqrt(qh) > 0.425 * math.sqrt(qs) - 0.004):
+                break
+            zz = nz
+        return z + wt * (min(z, zz) - z)
+
+    def face_fwd(lat, up_, dflt, lift=0.006):
+        """Forward offset (in head frame) of a face decal at (lat, up_) head-height fractions. A pitched head sits the decal ON
+        the head ellipsoid (semi-axes .425/.475/.5 head heights) or the hair cap in front of it, so brows, eyes and mouth ride the face surface, never above
+        it; an unpitched head keeps the authored offset exactly."""
+        if not pitched:
+            return dflt
+        q = 1.0 - (lat / 0.475) ** 2 - (up_ / 0.5) ** 2
+        xs = 0.425 * math.sqrt(max(q, 0.0))
+        qh = 1.0 - (lat / 0.52) ** 2 - ((up_ - 0.14) / 0.442) ** 2  # the hair cap's front, so a raised brow rides ON the hairline
+        xh = -0.1 + 0.494 * math.sqrt(max(qh, 0.0)) if qh > 0 else xs
+        return dflt + wt * (min(dflt, max(xs, xh) + lift) - dflt)
     eye = U.flat(cc["eyes"])
     fdict = canon.get(f"characters.{cid}.face") or {}
     fv = lambda k: str(fdict.get(k) or "")  # noqa: E731
@@ -196,12 +226,13 @@ def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=No
     brow_col = U.flat(cc["brows"] or hexs("#3A2E2A"))
     arched = "arched" in fv("brows")
     for i, sgn in enumerate((-1, 1)):
-        bp = head + hf * hh * 0.42 + hr * sgn * hh * 0.17 + hu * hh * ((0.125 if arched else 0.115) + fs["brow_dy"])
+        bz = brow_z(0.17, (0.125 if arched else 0.115) + fs["brow_dy"])
+        bp = head + hf * hh * face_fwd(0.17, bz, 0.42) + hr * sgn * hh * 0.17 + hu * hh * bz
         b = U.box(f"{cid}_brow{i}", (0.008, hh * 0.19, 0.008), bp, col, brow_col, rot=rot())
         b.rotation_euler = rot(sgn * fs["brow_tilt"])
     mouth_w = hh * (0.13 if "small" in fv("mouth") or "line" in fv("mouth") else 0.16) * fs["mouth_w"]
     if not P.get("mouth_hidden"):
-        mc = head + hf * hh * 0.385 - hu * hh * 0.2
+        mc = head + hf * hh * face_fwd(0.0, -0.2, 0.385, 0.004) - hu * hh * 0.2
         mm = U.flat(hexs("#6B4444"))
         if fs["smile"] == 0.0:
             U.box(f"{cid}_mouth", (0.01, mouth_w, 0.006 * fs["mouth_h"]), mc, col, mm, rot=rot())
@@ -212,7 +243,7 @@ def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=No
                 U.box(f"{cid}_mouth{i}", (0.01, mouth_w * 0.5, 0.006 * fs["mouth_h"]), cp_, col, mm, rot=rot(-sgn * a_))
     ez = fs["eye"] * float(lids)
     for i, sgn in enumerate((-1, 1)):
-        U.sphere(f"{cid}_eye{i}", 0.012, head + hf * hh * 0.42 + hr * sgn * hh * 0.17 + hu * hh * 0.02, col, eye,
+        U.sphere(f"{cid}_eye{i}", 0.012, head + hf * hh * face_fwd(0.17, 0.02, 0.42, 0.0) + hr * sgn * hh * 0.17 + hu * hh * 0.02, col, eye,
                  **({} if ez == 1.0 else {"scale": (1.0, 1.0, max(ez, 0.12))}))
     tuft = P.get("tuft_extra_m")
     if tuft or "tuft" in style:  # stubborn crown tuft: thin spike leaning slightly back, tapered by a tip ball

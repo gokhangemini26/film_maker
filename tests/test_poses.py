@@ -399,6 +399,15 @@ def test_scramble_out_v2():
     assert PS.check_contacts(j) == []
 
 
+def test_scramble_out_legs_read_as_a_pair():
+    """The planted foot sits under the hips (not trailing far behind), so the near leg shows a bent knee and its shoe
+    instead of one long straight dark leg against the other, folded one (SC02_SH010 f4-6)."""
+    j = PS.pose("ren", "scramble_out", REN)
+    assert PS.check_lengths(j, REN) == [] and PS.check_contacts(j) == []
+    assert j["foot"][1].x - j["hipR"].x > -0.15                                            # planted foot not trailing behind
+    assert j["knee"][1].z > 0.25                                                           # a visible knee bend, not a straight drop
+
+
 def test_desk_notice_v2():
     d = PS.CTX_DEFAULT["desk"]
     j = PS.pose("hana", "desk_notice", HANA)

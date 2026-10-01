@@ -635,7 +635,7 @@ def scramble_out(props, ctx=None):
         return j["chest"] + Vector((0.42, -0.10, -0.03))
 
     j = rig(D, pelvis=Vector((0.05, 0, 0.60)), spine=(52, -4), neck_pitch=-28, head_pitch=-8, twist=8,
-            foot=(Vector((0.34, -h, 0.22)), Vector((-0.22, h, 0.04))), knee_pole=((1, 0, 0.6), (1, 0, 0.6)),
+            foot=(Vector((0.34, -h, 0.22)), Vector((-0.02, h, 0.04))), knee_pole=((1, 0, 0.6), (1, 0, 0.6)),
             hand=(phone_hand, _v(c["sill"])),
             elbow_pole=((0, -0.6, -0.5), (-0.6, 0.6, -0.6)))
     j["phone"] = j["handL"] + Vector((0.04, 0, 0.03))
