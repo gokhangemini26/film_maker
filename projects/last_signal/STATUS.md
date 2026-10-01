@@ -172,7 +172,6 @@ LOCKED: 161, PROPOSED: 37
 - stale: artifact:g5_review
 - stale: artifact:g7_review
 - stale: artifact:preview_review
-- stale: qa:stills
 - stale: render:preview_SC01_SH010
 - stale: render:preview_SC01_SH020
 - stale: render:preview_SC01_SH030

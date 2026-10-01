@@ -55,7 +55,8 @@ def check(project: Project) -> dict:
         framing = (shot.get("composition") or {}).get("framing")
         n = int(sid.split("SH")[1])
         blackout_expected = shot["scene_id"] == "SC03" and n >= 50
-        if s["std_lum"] < 0.02:
+        if s["std_lum"] < 0.02 and not (blackout_expected and s["mean_lum"] < 0.03):
+            # a designed blackout (SC03 SH050+) is legitimately flat and near-black
             row["findings"].append(["FAIL", "flat frame (no visible content)"])
         if s["mean_lum"] < 0.03 and not blackout_expected:
             row["findings"].append(["WARN", "near-black frame"])
