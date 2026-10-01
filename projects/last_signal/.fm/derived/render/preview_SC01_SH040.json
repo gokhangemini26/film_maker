@@ -1,13 +1,13 @@
 {
-  "content_hash": "sha256:6814b8d118bf47543fb0f91b467585c275f0ed1d93fa58a963b8b6bc9e73130f",
-  "created_at": "2026-09-29T21:28:48Z",
+  "content_hash": "sha256:c3be173c21a430315403ba646edca20e99cda6f277a493f379db1ee2483772a9",
+  "created_at": "2026-10-01T18:51:46Z",
   "derived_from": [
     {
-      "hash": "sha256:cefeb06a3660b2e9f68a113b0c126cae293f09fb2c2668096815d288a79156b9",
+      "hash": "sha256:21ac82f75b82fc19d7e646b13bb2f7e44c4c1c151c258a4459cc1d8d15d13bd1",
       "ref": "resolved:SC01_SH040"
     }
   ],
-  "notes": "blender 5.2.1; pinned; width 960",
+  "notes": "blender 5.2.1; pinned; width 768",
   "path": "10_blender/previews/SC01_SH040.png",
   "producer": "fm.blender.preview",
   "ref": "render:preview_SC01_SH040"
