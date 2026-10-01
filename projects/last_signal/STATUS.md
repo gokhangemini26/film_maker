@@ -71,6 +71,7 @@ LOCKED: 161, PROPOSED: 37
 | anim_sc05_sh020 | ANIMATION | PROPOSED | 96739267e57b |
 | anim_sc05_sh030 | ANIMATION | PROPOSED | 363ebe9df82f |
 | anim_sc06_sh010 | ANIMATION | PROPOSED | ddee172d1a5b |
+| animation_bible | ANIMATION | PROPOSED (stale) | 05c8c4a918a6 |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
 | audio_bible | ANIMATION_PREVIEW | PROPOSED | 3126772f9cb9 |
 | audio_cues | ANIMATION_PREVIEW | PROPOSED (stale) | ad57b7753519 |
@@ -80,14 +81,15 @@ LOCKED: 161, PROPOSED: 37
 | cinematography_bible | CINEMATOGRAPHY | APPROVED | 0ece10f8b6c2 |
 | color_bible | LOOK | APPROVED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
-| edit_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 3f3b6bc4771e |
+| edit_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 9ba470785c3b |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
 | g3_review | WORLD_CHARACTERS | APPROVED | d26db206b8cf |
 | g4_review | LOOK | APPROVED | a2c83484c758 |
 | g5_review | STORYBOARD | APPROVED (stale) | 51c65bce1415 |
+| g7_review | ANIMATION_PREVIEW | PROPOSED (stale) | 667d747da0b9 |
 | lighting_bible | LOOK | APPROVED | 95224320170d |
-| post_plan | ANIMATION_PREVIEW | PROPOSED (stale) | a758974886f6 |
+| post_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 225abb2b90a7 |
 | preview_review | PREVIEW | PROPOSED (stale) | 59ee7a61839b |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
@@ -168,9 +170,11 @@ LOCKED: 161, PROPOSED: 37
 - G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> 6274d95c0386)
 - G5: shot:SC04_SH090 was modified after approval (451cd791871b -> ba37458305d5)
 - stale: artifact:anim_sc03_sh010
+- stale: artifact:animation_bible
 - stale: artifact:audio_cues
 - stale: artifact:edit_plan
 - stale: artifact:g5_review
+- stale: artifact:g7_review
 - stale: artifact:post_plan
 - stale: artifact:preview_review
 - stale: audio:mix
@@ -201,7 +205,6 @@ LOCKED: 161, PROPOSED: 37
 - stale: render:preview_SC03_SH010
 - stale: render:preview_SC03_SH020
 - stale: render:preview_SC03_SH030
-- stale: render:preview_SC03_SH040
 - stale: render:preview_SC03_SH050
 - stale: render:preview_SC03_SH060
 - stale: render:preview_SC03_SH070
@@ -209,11 +212,9 @@ LOCKED: 161, PROPOSED: 37
 - stale: render:preview_SC04_SH020
 - stale: render:preview_SC04_SH030
 - stale: render:preview_SC04_SH040
-- stale: render:preview_SC04_SH050
 - stale: render:preview_SC04_SH060
 - stale: render:preview_SC04_SH070
 - stale: render:preview_SC04_SH080
-- stale: render:preview_SC04_SH090
 - stale: render:preview_SC05_SH010
 - stale: render:preview_SC05_SH020
 - stale: render:preview_SC05_SH030

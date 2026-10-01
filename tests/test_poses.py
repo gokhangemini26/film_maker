@@ -261,6 +261,15 @@ def test_every_vocab_face_has_a_shape():
         assert set(fs) == {"brow_dy", "brow_tilt", "eye", "mouth_w", "mouth_h", "smile"}, name
 
 
+def test_focused_calm_brows_are_level_per_canon():
+    """characters.ren.expressions (LOCKED): focused calm = brows level. No inward slant, no drop; other faces untouched."""
+    fc = PS.FACE_SHAPES["focused_calm"]
+    assert fc["brow_tilt"] == 0.0 and fc["brow_dy"] == 0.0
+    assert fc["eye"] < 1.0 and fc["smile"] == 0.0                      # calm still reads through the lids and flat mouth
+    assert PS.FACE_SHAPES["determined"]["brow_tilt"] == -0.15          # the stern face keeps its inward slant
+    assert PS.FACE_SHAPES["hesitation_at_heart"]["brow_tilt"] == 0.35
+
+
 def test_look_at_signs_and_lengths():
     j = PS.pose("ren", "car_upright", REN)
     right = PS.look_at(j, j["head"] + Vector((1.0, 1.0, 0.0)))

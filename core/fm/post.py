@@ -321,13 +321,29 @@ def _font(size: int):
         return ImageFont.load_default()
 
 
+_FRAME_NAME = re.compile(r"^(\d+)\.png$")
+
+
 def _shot_frame_files(project: Project, shot: str, count: int) -> tuple[list[Path], str]:
+    """One picture per output frame of the shot, from the first FRAME_DIRS entry holding numbered frames.
+
+    Only ``NNNN.png`` (0-based shot frame index) counts: ``strip.png`` contact sheets are never picture. Sparse
+    sets (``fm blender frames --every-key``) are step-held by frame index: output frame i shows the latest
+    rendered frame <= i (the first rendered frame before it). A complete set plays frame for frame."""
     for d in FRAME_DIRS:
         fd = project.dir / d / shot
-        if fd.is_dir():
-            files = sorted(fd.glob("*.png"))
-            if files:
-                return files, d
+        if not fd.is_dir():
+            continue
+        keyed = sorted((int(m[1]), p) for p in fd.iterdir() if (m := _FRAME_NAME.match(p.name)) and int(m[1]) < count)
+        if not keyed:
+            continue
+        out, k = [], 0
+        for i in range(count):
+            while k + 1 < len(keyed) and keyed[k + 1][0] <= i:
+                k += 1
+            out.append(keyed[k][1])
+        kind = d if len(keyed) == count else f"{d} (step-held {len(keyed)} of {count})"
+        return out, kind
     return [], ""
 
 
@@ -365,9 +381,8 @@ def _x264_args(crf: int = 18) -> list[str]:
 def build_animatic(project: Project, out: str | Path | None = None, size: tuple[int, int] = (1280, 720),
                    audio: str | Path | None = None, stamp: bool = True, no_audio: bool = False) -> dict:
     """12_post/animatic.mp4: rendered frames per shot when present, else the preview still held for the shot's
-    duration with the shot id stamped; muxed with the mix if present, else silent. H.264 yuv420p 24 fps."""
-    from PIL import Image
-
+    duration with the shot id stamped; muxed with the mix if present, else silent. H.264 yuv420p 24 fps.
+    The existing animatic is replaced only by a complete, verified encode (exactly total_frames)."""
     t = load_table(project)
     od = _rel_out(project, out, POST_DIR)
     dest = od / "animatic.mp4"
@@ -393,19 +408,51 @@ def build_animatic(project: Project, out: str | Path | None = None, size: tuple[
     if has_audio:
         cmd += ["-i", str(mix)]
     cmd += ["-map", "0:v"] + (["-map", "1:a", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2"] if has_audio else [])
+    # Encode to a temporary file and move it over dest only once it is verified complete: an interrupted run
+    # (killed agent, Ctrl-C, timeout) closes ffmpeg's stdin, ffmpeg then finalises a valid but SHORT mp4, and
+    # writing straight to dest silently replaced a good animatic with that fragment.
+    tmp = od / ".animatic.partial.mp4"
     cmd += _x264_args(18) + ["-r", str(FPS), "-fflags", "+bitexact", "-flags:v", "+bitexact",
-                             "-map_metadata", "-1", "-movflags", "+faststart", "-frames:v", str(total), str(dest)]
+                             "-map_metadata", "-1", "-movflags", "+faststart", "-frames:v", str(total), str(tmp)]
+    missing: list[str] = []
+    try:
+        info = _encode_animatic(project, t, cmd, size, stamp, sources, missing)
+        got = (info.get("video") or {}).get("frames")
+        if got != total:
+            raise FMError(f"animatic encode produced {got} frames, expected {total}: {dest.name} left unchanged")
+        tmp.replace(dest)
+    finally:
+        tmp.unlink(missing_ok=True)
+    info = probe(dest)
+    _record(project, "edit:animatic", dest, "fm.post.animatic")
+    kinds = sorted(set(v.split(":")[0] for v in sources.values()))
+    return {"file": str(dest), "duration_s": info["duration_s"], "video": info.get("video"), "audio": info.get("audio"),
+            "with_audio": has_audio, "size": list(size), "total_frames": total, "sources": kinds,
+            "per_shot": dict(sources),
+            "shots_from_stills": sum(v == "preview_still" for v in sources.values()),
+            "shots_from_frames": sum(v.startswith("frames") for v in sources.values()),
+            "shots_step_held": sum("step-held" in v for v in sources.values()),
+            "missing_sources": missing, "bytes": dest.stat().st_size}
+
+
+def _encode_animatic(project: Project, t: dict, cmd: list[str], size: tuple[int, int], stamp: bool,
+                     sources: dict[str, str], missing: list[str]) -> dict:
+    """Pipe the picture into ffmpeg (cmd ends with the temporary output path) and return its probe."""
+    from PIL import Image
+
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
-    missing = []
     try:
         for r in t["rows"]:
             files, srcdir = _shot_frame_files(project, r["shot"], r["frames"])
             n = r["frames"]
             if files:
                 sources[r["shot"]] = f"frames:{srcdir}"
+                cache: dict[Path, Any] = {}
                 for i in range(n):
-                    f = files[min(i, len(files) - 1)]
-                    im = _canvas(Image.open(f), size)
+                    f = files[i]
+                    if f not in cache:
+                        cache = {f: _canvas(Image.open(f), size)}
+                    im = cache[f].copy()
                     if stamp:
                         im = _stamp(im, f"{r['shot']}  f{i:03d}/{n}", size)
                     proc.stdin.write(im.tobytes())
@@ -429,16 +476,13 @@ def build_animatic(project: Project, out: str | Path | None = None, size: tuple[
     except BrokenPipeError:
         err = proc.stderr.read().decode("utf-8", "replace")
         rc = proc.wait()
+    except BaseException:
+        proc.kill()          # never let ffmpeg finalise a fragment on an interrupt or a source error
+        proc.wait()
+        raise
     if rc != 0:
         raise FMError("animatic encode failed:\n" + "\n".join(err.strip().splitlines()[-10:]))
-    info = probe(dest)
-    _record(project, "edit:animatic", dest, "fm.post.animatic")
-    kinds = sorted(set(v.split(":")[0] for v in sources.values()))
-    return {"file": str(dest), "duration_s": info["duration_s"], "video": info.get("video"), "audio": info.get("audio"),
-            "with_audio": has_audio, "size": list(size), "total_frames": total, "sources": kinds,
-            "shots_from_stills": sum(v == "preview_still" for v in sources.values()),
-            "shots_from_frames": sum(v.startswith("frames") for v in sources.values()),
-            "missing_sources": missing, "bytes": dest.stat().st_size}
+    return probe(cmd[-1])
 
 
 # ------------------------------------------------------------------------------- assemble

@@ -7,9 +7,9 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:edit_plan
-    hash: sha256:963f35db15fd5bf2709367598a8b68b32e47151919a3f13a71ca1663e79b91ee
+    hash: sha256:9ba470785c3ba566c77bd5b9558f251882edbbc01f1107e7a5ad0807c1ca17bf
   - ref: artifact:audio_cues
-    hash: sha256:7429405e767d311ddc2be98036e0d1da623777dee787584b4e10771d0e523e68
+    hash: sha256:ad57b77535192c291ed921e797e542e8ca319119171c92379f36852d9ccc433a
   - ref: artifact:creative_direction
     hash: sha256:2a9437a4219a84067e09241c02b4df8f14e921dda206ac46d9b8d93faaeb44a3
   - ref: canon:look.style.texture_and_grain
@@ -37,7 +37,7 @@ fm:
   summary: Locked finish steps with parameters read from canon (glare, grain, optional vignette, fades),
     titles ruling, final render settings proposal, delivery spec, licence status; human decisions D2/D3/D5/D6/D7/D9
     left UNKNOWN.
-  stamped_content_hash: sha256:a758974886f6d08533803e75e2bb646073ae38b1d6ae1c85795a79caa56591e8
+  stamped_content_hash: sha256:225abb2b90a7129c84279c7864957328ee69ce9fc0b9bb954d4e20be41198e05
 title: Post Plan
 ---
 # Post Plan: Last Signal
@@ -125,7 +125,7 @@ command line must pass `--grain` explicitly (section 2.2).
 ## 4. Final render settings proposal (D6)
 
 FACT: `config/render_profiles.yaml` `final` today reads: `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`,
-`samples: 64`, `motion_blur: true`, `output: exr`, `requires_authorization: true`.
+`samples: 64`, `motion_blur: false`, `output: exr`, `requires_authorization: true` (re-read 2026-10-01).
 
 | Setting | Current `final` | Proposed | Source / reason |
 |---|---|---|---|
@@ -134,7 +134,7 @@ FACT: `config/render_profiles.yaml` `final` today reads: `engine: BLENDER_EEVEE`
 | Engine | EEVEE | EEVEE, Blender pinned 5.2.x | FACT `look.style.render_constraints` `engine: eevee` |
 | View transform | (builder) | Standard, look None, exposure 0, gamma 1 | FACT `look.style.render_constraints` |
 | Samples | 64 | 64 | RECOMMENDATION; measure. 32 may be enough for flat toon shading, to be tested on 3 shots before the full run |
-| Motion blur | **true** | **false** | FACT: `look.style.render_constraints` (LOCKED) says `motion_blur: false`. The current profile **contradicts locked canon**, so this row is a correction, not a creative choice. |
+| Motion blur | false | false | FACT: `look.style.render_constraints` (LOCKED) says `motion_blur: false`; the profile now matches (corrected in commit 11f5007). Not a D6 question. |
 | Output | exr | 8-bit PNG sequence, RGB | RECOMMENDATION: no grade means no headroom is needed. EXR for 1440 frames is about 10 GB. `fm post assemble` reads `%04d.png`. |
 | Compositor | none | glare on the emission pass | FACT `look.style.glow` `implementation` |
 | Chunking | none | at most 48 frames per process, one shot per job, resumable | RECOMMENDATION (Windows ARM colour corruption on long processes, M6 scope 4.3) |
@@ -145,11 +145,9 @@ FACT: `config/render_profiles.yaml` `final` today reads: `engine: BLENDER_EEVEE`
 - DEPENDENCY: post does not edit `config/render_profiles.yaml`. After D6, the owner (blender-td or the
   main session, via the normal process) writes the profile or a project override
   `projects/last_signal/config/render.yaml`.
-- FACT (wave 6 re-check): `config/render_profiles.yaml` `final` still reads `motion_blur: true`. It is
-  repository-wide config (shared by every film), outside post's lane. It is also not read by any `fm` code
-  today (no consumer in `core/`), so nothing has been rendered with it yet. The motion-blur row needs no
-  creative ruling, because locked canon already decides it. The other D6 rows (output, samples, chunking)
-  do.
+- FACT (2026-10-01 re-check): `config/render_profiles.yaml` `final` now reads `motion_blur: false`, in line
+  with locked canon. The remaining D6 rows that differ from the profile are output (exr -> PNG), samples
+  (measure), compositor glare and chunking; those need the human's ruling.
 - ASSUMPTION: 1440 frames at 5-12 s each is about 2-5 hours of unattended rendering (M6 scope estimate,
   not measured on the real sets).
 - Post never runs `fm authorize` or `fm blender final`.
@@ -203,25 +201,46 @@ FACT: `config/render_profiles.yaml` `final` today reads: `engine: BLENDER_EEVEE`
 - RECOMMENDATION: `fm post export` is not run for release until every UNKNOWN above is resolved. An
   animatic with placeholders is fine for G7 review.
 
-## 7. Animatic (wave 6 run)
+## 7. Animatic (rebuilt 2026-10-01)
 
+### 7.1 Why the G7 review found a 47-frame animatic
+- FACT: the 2026-10-01 14:43:21 `fm post animatic` run (`.fm/logs/fm.log`) was interrupted about 3 s in.
+  The tool wrote straight to `12_post/animatic.mp4`; on interruption ffmpeg's input closed and it finalised
+  a valid but short file (47 frames, 1.958 s: SC01_SH010 and the first 7 frames of SC01_SH020), replacing
+  the full wave-6 animatic. No error was recorded because the process never reached its own check.
+- FACT, tool fix (`core/fm/post.py` `build_animatic`): the encode now goes to `12_post/.animatic.partial.mp4`
+  and replaces `animatic.mp4` only after ffprobe confirms exactly `total_frames`; an interrupt kills ffmpeg
+  and deletes the partial file. Regression test `test_interrupted_animatic_never_replaces_the_existing_one`.
+- FACT, second fix found on the way (`_shot_frame_files`): `10_blender/frames/<SHOT>/` holds sparse
+  `--every-key` frames plus a `strip.png` contact sheet. The tool used to play the keys back to back as
+  consecutive frames and then hold `strip.png` (the contact sheet) for the rest of the shot. It now reads
+  only `NNNN.png`, places each at its frame index and holds it until the next key. Test
+  `test_sparse_key_frames_are_step_held_and_strip_ignored`.
+
+### 7.2 This run
 FACT, `fm post animatic` output: "`12_post/animatic.mp4`: 60.000 s, 1440 frames @ 24.0 fps, 1280x720, audio:
-yes, 20 shots from frames, 18 from stills". ffprobe: video h264 1280x720, 24/1, 1440 frames, 60.000000 s;
-audio aac 48000 Hz, 2 channels, 60.000000 s.
+yes, 29 shots from frames, 9 from stills". ffprobe (`-count_frames`): video h264 1280x720, 24/1,
+nb_read_frames 1440, 60.000000 s; audio aac 48000 Hz, 2 channels, 60.000000 s.
 
 What it is and is not:
-- **Picture is mixed.** 20 shots come from rendered frames: the 15 SC01 playblasts in
-  `10_blender/playblast/` and 5 shots in `10_blender/frames/` (SC02_SH010, SC03_SH010, SC04_SH050,
-  SC04_SH080, SC05_SH020). The other 18 shots are single preview stills held for their duration, so they
-  show timing and order but not motion.
-- **Sound is the wave-6 mix** (`12_post/audio/mix_48k_stereo.wav`), with the placeholders listed in
-  section 6 and one door chime across SC02/SC03 (EDIT_PLAN section 5).
+- **Picture is mixed (38 shots).**
+  - 14 shots play every frame from the `10_blender/playblast/` sequences: SC01_SH010-SH050 and
+    SC01_SH070-SH150. ASSUMPTION (by file date): these playblasts (2026-09-30) predate the 2026-10-01 vocab-v2
+    anim migration, so their motion may not match the current anim files.
+  - 15 shots step-hold v2 draft key frames from `10_blender/frames/` (1 to 9 keys each): SC01_SH060,
+    SC02_SH010, SC03_SH010-SH070, SC04_SH050-SH090, SC05_SH020. They show key poses at the right frames,
+    not continuous motion. SC01_SH060 uses its draft keys, not its older full playblast (frames dir first).
+  - 9 shots are single preview stills held for their duration (timing and order only, no motion):
+    SC02_SH020, SC02_SH030, SC04_SH010-SH040, SC05_SH010, SC05_SH030, SC06_SH010.
+- **Sound is the 2026-10-01 mix** (`12_post/audio/mix_48k_stereo.wav`, 1440 x 2000 samples), with the
+  placeholders listed in section 6. FACT: `fm validate` lists `audio:mix` as STALE (`resolved:SC03_SH010
+  changed`); not rebuilt here (sound-designer's lane).
 - **No fades.** The animatic does not apply the head and tail fades.
-- So it is a **partial** G7 review artifact. A full G7 animatic needs motion for the remaining 18 shots
-  (animation-director / blender-td). Rebuild with `fm post animatic` once they exist.
+- So it is a full-length but **partial-motion** G7 review artifact: 24 of 38 shots lack full motion
+  (15 key-held, 9 stills). Rebuild with `fm post animatic` once playblasts exist (blender-td).
 
-FACT, `fm qa delivery 12_post/animatic.mp4` (report `qa/delivery_report.json`), quoted summary line:
-"1 delivery file(s): 1 FAIL, 2 WARN finding(s) (1 row(s) failing)". The command exits non-zero on FAIL.
+FACT, `fm qa delivery projects/last_signal/12_post/animatic.mp4` (report `qa/delivery_report.json`), quoted
+summary line: "1 delivery file(s): 1 FAIL, 2 WARN finding(s) (1 row(s) failing)". The command exits non-zero on FAIL.
 - FAIL: resolution 1280x720, render canon says 1920x1080. **Expected**: the animatic is a preview-size
   review file (`--size` default 1280x720), not a delivery file.
 - WARN: first frame is not black although a fade-in is specified; WARN: last frame is not black although
@@ -234,11 +253,10 @@ FACT, `fm qa delivery 12_post/animatic.mp4` (report `qa/delivery_report.json`), 
 
 ## 8. Risks
 
-1. 18 of 38 shots still have no motion in the animatic (section 7). Owners: animation-director,
-   blender-td. The mix exists (wave 6).
-2. The final profile still contradicts locked canon (`motion_blur: true`, re-checked in wave 6). If nobody
-   corrects it before `fm authorize final-render`, the whole render is wrong. The fix is one line in
-   `config/render_profiles.yaml`, made by its owner; D6 closes the rest.
+1. 24 of 38 shots lack full motion in the animatic: 9 held stills, 15 step-held draft keys; the 14 full
+   playblasts may predate the v2 anim files (section 7.2). Owners: animation-director, blender-td.
+2. The final profile now matches locked canon on motion blur (`motion_blur: false`). D6 (output, samples,
+   compositor, chunking) is still open; the profile must reflect the ruling before `fm authorize final-render`.
 3. The grain amplitude mapping has not been measured (2.2). If it is wrong, the grain is too strong or
    too weak on every frame. Verify on one shot first.
 4. Compositor glare is untested (2.1). It must pass A0 before the final render.

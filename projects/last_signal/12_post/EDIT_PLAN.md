@@ -40,7 +40,7 @@ fm:
   - intent.soft_but_cinematic
   summary: Readable cut list generated from the resolved frame table; hard cuts, FADE IN (length D7, UNKNOWN)
     and 18-frame FADE OUT from canon; scene-time and sound-cut notes.
-  stamped_content_hash: sha256:3f3b6bc4771ea8b60717b565a9848207fe2498cf5135dc82d71339fa3ceec329
+  stamped_content_hash: sha256:9ba470785c3ba566c77bd5b9558f251882edbbc01f1107e7a5ad0807c1ca17bf
 title: Edit Plan
 ---
 # Edit Plan: Last Signal
@@ -126,6 +126,8 @@ Record out is exclusive, as in the EDL.
 - FACT (2026-10-01 re-run): `fm post edl` after the SC03 blocking/camera change and the cue update printed
   "38 events, 1440 frames, end 00:01:00:00, fade in 12 / out 18 frames". The new `EDIT.edl` is byte-identical
   to the previous one. No shot duration changed, so no record frame in this table moved.
+- FACT (2026-10-01 animatic rebuild): `fm post edl` again printed "38 events, 1440 frames, end 00:01:00:00,
+  fade in 12 / out 18 frames"; `git diff` shows `EDIT.edl` and `edit.ffconcat` unchanged.
 
 ### 2.1 SC03 blocking and camera change (recorded 2026-10-01)
 
@@ -138,10 +140,12 @@ Record out is exclusive, as in the EDL.
   unchanged.
 - FACT: SC03 still runs 576-815 (240 f); every SC03 shot keeps its frame count. The SC02 -> SC03 cut (575/576)
   and the SC03 -> SC04 hard cut, black to dusk (815/816), are unchanged.
-- FACT: the picture for SC03 in the animatic (re-run 2026-10-01) is **not** the new blocking. `10_blender/frames/SC03_SH010`
-  holds 4 stills rendered 2026-09-30, before the change, and SC03_SH020-SH070 use preview stills that
-  `fm validate` lists as stale (`render:preview_SC03_SH0x0: resolved changed`). Re-render (blender-td)
-  before G7 judges SC03 staging. Post judges only timing there.
+- FACT (animatic rebuild 2026-10-01, evening): all seven SC03 shots now take their picture from the v2 draft
+  key frames in `10_blender/frames/SC03_SH0x0/` (rendered 2026-10-01 20:23-20:56, after the blocking change),
+  step-held by frame index: 1 to 8 keys per shot, so SC03 shows the new staging as key poses, not full
+  motion. SC03_SH060 has a single key (f12) held for all 26 frames. FACT: `fm validate` still lists
+  `artifact:anim_sc03_sh010` and `resolved:SC03_SH010` as stale (`shot:SC03_SH010 changed`), so the SC03_SH010
+  keys may not match the current shot file. Post judges only timing in SC03.
 
 ## 3. Head and tail
 
@@ -201,4 +205,5 @@ These are edit-side requirements for the sound-designer, not mix decisions.
 ## 6. Outputs
 
 - `12_post/EDIT.edl`, `12_post/edit.ffconcat` (`fm post edl`, recorded as `edit:edl`).
-- `12_post/animatic.mp4`: see POST_PLAN section 7 for what this first animatic is and is not.
+- `12_post/animatic.mp4` (`fm post animatic`, recorded as `edit:animatic`): 1440 frames, 60.000 s, with the
+  mix. See POST_PLAN section 7 for the per-shot picture source and what it is and is not.

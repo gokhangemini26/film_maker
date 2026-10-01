@@ -116,6 +116,48 @@ def test_animatic_with_audio_and_stale_mix(sandbox, tmp_path):
         post.build_animatic(sandbox, tmp_path / "o2", size=(128, 72), audio=mix)
 
 
+def test_sparse_key_frames_are_step_held_and_strip_ignored(sandbox):
+    """`fm blender frames --every-key` writes sparse NNNN.png keys plus strip.png: keys are held by frame index,
+    the contact strip is never picture (it used to be held as the tail of the shot)."""
+    _film(sandbox)
+    d = sandbox.dir / post.FRAME_DIRS[0] / "SC01_SH020"
+    d.mkdir(parents=True)
+    for i in (5, 12):
+        _frame(0, i).save(d / f"{i:04d}.png")
+    _frame(9, 0).save(d / "strip.png")
+    files, kind = post._shot_frame_files(sandbox, "SC01_SH020", 30)
+    assert len(files) == 30 and "step-held 2 of 30" in kind
+    assert [f.name for f in files[:6]] == ["0005.png"] * 6
+    assert {f.name for f in files[12:]} == {"0012.png"} and files[11].name == "0005.png"
+    full = sandbox.dir / post.FRAME_DIRS[1] / "SC01_SH010"
+    full.mkdir(parents=True)
+    for i in range(24):
+        _frame(1, i).save(full / f"{i:04d}.png")
+    files, kind = post._shot_frame_files(sandbox, "SC01_SH010", 24)
+    assert [f.name for f in files] == [f"{i:04d}.png" for i in range(24)] and kind == post.FRAME_DIRS[1]
+
+
+@needs_ffmpeg
+def test_interrupted_animatic_never_replaces_the_existing_one(sandbox, tmp_path, monkeypatch):
+    """Regression (G7): an interrupted run let ffmpeg finalise a 47-frame fragment over the 1440-frame animatic."""
+    _film(sandbox)
+    _previews(sandbox)
+    good = post.build_animatic(sandbox, tmp_path, size=(128, 72), no_audio=True)
+    before = (tmp_path / "animatic.mp4").read_bytes()
+    real = post.preview_still
+
+    def interrupted(project, shot, base=None):
+        if shot == "SC02_SH010":
+            raise KeyboardInterrupt
+        return real(project, shot, base)
+
+    monkeypatch.setattr(post, "preview_still", interrupted)
+    with pytest.raises(KeyboardInterrupt):
+        post.build_animatic(sandbox, tmp_path, size=(128, 72), no_audio=True)
+    assert (tmp_path / "animatic.mp4").read_bytes() == before and good["video"]["frames"] == TOTAL
+    assert not list(tmp_path.glob(".animatic.partial*"))
+
+
 @needs_ffmpeg
 def test_animatic_is_deterministic(sandbox, tmp_path):
     _film(sandbox)

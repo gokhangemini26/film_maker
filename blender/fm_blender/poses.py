@@ -87,7 +87,8 @@ FACE_SHAPES = {
     "wary": dict(brow_dy=-0.01, brow_tilt=0.0, eye=0.85, mouth_w=0.85, mouth_h=0.7, smile=-0.05),
     "determined": dict(brow_dy=0.0, brow_tilt=-0.15, eye=1.0, mouth_w=0.8, mouth_h=0.7, smile=0.0),
     # ren, tender set
-    "focused_calm": dict(brow_dy=-0.03, brow_tilt=-0.10, eye=0.85, mouth_w=0.85, mouth_h=1.0, smile=0.0),
+    # canon characters.ren.expressions: "focused calm (brows level, eyes on the phone)" -> no tilt, no drop; calm comes from the lids
+    "focused_calm": dict(brow_dy=0.0, brow_tilt=0.0, eye=0.85, mouth_w=0.85, mouth_h=1.0, smile=0.0),
     "hesitation_at_heart": dict(brow_dy=0.02, brow_tilt=0.35, eye=0.95, mouth_w=0.7, mouth_h=1.0, smile=-0.10),
     "release_after_send": dict(brow_dy=0.04, brow_tilt=0.18, eye=0.55, mouth_w=0.9, mouth_h=1.0, smile=0.15),
     "final_look_up": dict(brow_dy=0.06, brow_tilt=0.20, eye=1.1, mouth_w=0.9, mouth_h=1.0, smile=0.22),

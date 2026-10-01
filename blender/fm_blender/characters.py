@@ -175,7 +175,7 @@ def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=No
     hd.rotation_euler = (0, 0, yaw) if (hyaw == 0.0 and hpit == 0.0) else rot()
     hair_o = U.sphere(f"{cid}_hair", hh * 0.52, head + hu * hh * 0.14 - hf * hh * 0.1, col, hair, scale=(0.95, 1.0, 0.85))
     pitched = hpit < 0.0  # tipped back (+ pitch = looking down keeps its authored face exactly)
-    wt = min(1.0, -hpit / 0.35) if pitched else 0.0  # fades the surface fit in over the first 20 deg, so no pop
+    wt = min(1.0, -hpit / 0.12) if pitched else 0.0  # fades the surface fit in over the first ~7 deg (full by the 8 deg relief tip), so no pop and no floating decals
     if pitched:  # the hair cap turns with the head, so the hairline stays where the face is
         hair_o.rotation_euler = rot()
 
