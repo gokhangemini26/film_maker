@@ -481,8 +481,9 @@ def clock_angles(t):
     return m, m / 12 + 300
 
 
-def sh140(cv, t, cam_x=None):
-    bg(cv, t, "#0b1430", "#16244a")
+def sh140(cv, t, cam_x=None, robot=True, bg_on=True):
+    if bg_on:
+        bg(cv, t, "#0b1430", "#16244a")
     cx = cam_x if cam_x is not None else W / 2
     cv.save()
     Cam(cx, H / 2, 1.0 + 0.04 * ease_in_out(remap(t, T["sh140"], T["sh150"]))).apply(cv)
@@ -494,7 +495,8 @@ def sh140(cv, t, cam_x=None):
     draw_clock(cv, 230, m, h, frost=fr)
     cv.restore()
     # frozen robot (already frozen since SH120)
-    frozen_robot(cv, t, W / 2 - 300, 930, 1.0, 1.0, True, CUE["dondur"] + 0.3)
+    if robot:
+        frozen_robot(cv, t, W / 2 - 300, 930, 1.0, 1.0, True, CUE["dondur"] + 0.3)
     # genius halo over the ice
     dk = remap(t, CUE["dahi"] - 0.1, CUE["dahi"] + 0.4)
     if dk > 0:
@@ -608,8 +610,8 @@ def sh150(cv, t):
             S2.mark(cv, hb[0] + 10 + math.cos(a) * 300, hb[1] - 410 + math.sin(a) * 300, kind, mk)
     cv.restore()
     cv.restore()
-    # robot (right) frozen, dim
-    frozen_robot(cv, t, 1460, 930, 1.0, 1.0, True, CUE["dondur"] + 0.3)
+    # robot slides from its SH140 spot to the right, frozen
+    frozen_robot(cv, t, lerp(W / 2 - 300 + 40 * 0, 1460, pan), 930, 1.0, 1.0, True, CUE["dondur"] + 0.3)
     yk = remap(t, CUE["yoksun"] - 0.15, CUE["yoksun"] + 0.25)
     if yk > 0:
         cv.save()
@@ -663,6 +665,11 @@ def render(cv, t):
         glitch(cv, t, 0.8 * (1 - remap(t, T["sh140"], T["sh140"] + 0.3)), seed=8)
     else:
         sh150(cv, t)
+        k = remap(t, T["sh150"], T["sh150"] + 0.5)
+        if k < 1:
+            cv.saveLayerAlpha(None, int(255 * (1 - k)))
+            sh140(cv, t, robot=False, bg_on=False)
+            cv.restore()
 
 
 if __name__ == "__main__":
