@@ -448,7 +448,7 @@
     "ambient_ref": "look.color.scene.sc03.blackout.dominant",
     "background": "faint warm door rectangle",
     "contrast": "16:1",
-    "exposure_target": 0.08,
+    "exposure_target": 0.12,
     "exposure_target_ref": "look.exposure.scene_keys.SC03_blackout",
     "fill": "none",
     "floor": {

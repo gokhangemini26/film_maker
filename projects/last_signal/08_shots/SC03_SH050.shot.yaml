@@ -67,7 +67,7 @@ lighting:
     ambient: '#1E2030'
     ambient_ref: look.color.scene.sc03.blackout.dominant
     floor: '#1B1C29'
-    exposure_target: 0.08
+    exposure_target: 0.12
     exposure_target_ref: look.exposure.scene_keys.SC03_blackout
 color:
   dominant: look.color.scene.sc03
@@ -116,7 +116,9 @@ rationale:
   composition: Nothing changes in the frame except the light, which is the joke; he stays small at the
     far end.
   lighting: All shop sources off in one frame on the clunk; no fill; the phone's glow is the only source
-    left (look.lighting.sc03 blackout). The phone motif is born here (look.style.motifs).
+    left (look.lighting.sc03 blackout). The phone motif is born here (look.style.motifs). Exposure target
+    0.12 mean brightness is the human-ruled value, within the locked look.exposure.scene_keys.SC03_blackout
+    tolerance 0.08±0.06, matching look.lighting.sc03_blackout_render checks.mean_luma_target.
   movement: Static; no shake on the clunk (camera.movement.forbidden).
   color: 'From cool bright to near-black with one warm-white point: the phone glow colour''s first appearance
     (look.color.phone_glow).'
@@ -237,4 +239,4 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:fe6d162c8fe336bdf88659bc425297b8ce8015bc24171ccd724131e4ba560f20
+stamped_content_hash: sha256:e1e411f9e315f2b742a00e797f055c5ab9dbf6d4fe1fa86db88a46a31bb57bda

@@ -66,7 +66,7 @@ lighting:
   ambient: '#1E2030'
   ambient_ref: look.color.scene.sc03.blackout.dominant
   floor: '#1B1C29'
-  exposure_target: 0.08
+  exposure_target: 0.12
   exposure_target_ref: look.exposure.scene_keys.SC03_blackout
 color:
   dominant: look.color.scene.sc03
@@ -128,7 +128,9 @@ rationale:
     he crossed is now just a far light (the lighting bible''s post-blackout hierarchy). The phone is the
     brightest thing near his face (L9).'
   lighting: Phone key from below-front, soft 0.5 m falloff, no fill; faint door rectangle; contrast 16:1
-    (look.lighting.sc03 blackout).
+    (look.lighting.sc03 blackout). Exposure target 0.12 mean brightness is the human-ruled value, within
+    the locked look.exposure.scene_keys.SC03_blackout tolerance 0.08±0.06, matching look.lighting.sc03_blackout_render
+    checks.mean_luma_target.
   movement: 'Static: the held stillness is the beat and the first time the film stops.'
   color: 'Warm-white glow on skin against blue-black: the colour that will carry the rest of the film.'
   blocking: He stays exactly still (screenplay 'He doesn't move'); the only motion is one slow blink.
@@ -247,4 +249,4 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:e06563d294197113c8a20c3f5e4c6d2545fc841d26fba98f476debb9b7428a1b
+stamped_content_hash: sha256:103af7cc154f759dc03710e3c883ba4cef525b2029bf693a473449870b80ecee

@@ -385,7 +385,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
     tgt = target(cam_c.get("look_at", ""))
     aim(cam, tgt)
     if cam_c.get("dof", {}).get("enabled"):
-        cam_data.dof.focus_distance = max((target(cam_c.get("look_at", "")) - cpos).length, 0.1)
+        cam_data.dof.focus_distance = SL.focus_clamp((target(cam_c.get("look_at", "")) - cpos).length)
 
     if "ren" in figs:
         i = figs["ren"][0]
@@ -418,7 +418,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
                 cpos = cam.location.copy()
             aim_up(cam, i["phone"] + sh_, yv)
             if cam_c.get("dof", {}).get("enabled"):
-                cam_data.dof.focus_distance = max(((i["phone"] + sh_) - cpos).length, 0.1)
+                cam_data.dof.focus_distance = SL.focus_clamp(((i["phone"] + sh_) - cpos).length)
     # crank charger: built for every shot that lists it (world.props.crank_charger); the pip is the only amber
     if "ren" in figs and "world.props.crank_charger" in shot.get("assets", []):
         i = figs["ren"][0]
@@ -512,9 +512,9 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
         yv_ = zup_ - nz_ * zup_.dot(nz_)
         yv_ = yv_.normalized() if yv_.length > 1e-4 else Vector((0, 1, 0))
         xv_ = yv_.cross(nz_)
-        pts = [i_["phone"] + xv_ * a_ * 0.034 + yv_ * b_ * 0.072 for a_ in (-1, 0, 1) for b_ in (-1, 0, 1)]
+        pts = [Vector(p_) for p_ in SL.phone_goals(tuple(i_["phone"]), tuple(xv_), tuple(yv_))]
     elif is_ins:
-        pts = [tgt + Vector((a_, b_, c_)) * 0.05 for a_ in (-1, 1) for b_ in (-1, 1) for c_ in (0,)] + [tgt]
+        pts = [Vector(p_) for p_ in SL.point_goals(tuple(tgt))]
     else:
         for cid_, (info_, _t) in figs.items():
             pts += [info_["head"], info_["chest"], info_["hip"], (info_["chest"] + info_["hip"]) / 2]
@@ -538,22 +538,7 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
             bpy.data.objects[n_]["fm_culled_by_preview"] = 1
             culled.append(n_)
     if pts:
-        dg = bpy.context.evaluated_depsgraph_get()
-        for goal in pts:
-            org = cam.location.copy()
-            for _ in range(10):
-                d_ = goal - org
-                dist = d_.length
-                if dist < 0.05:
-                    break
-                hit, loc, _nrm, _idx, ho, _m = bpy.context.scene.ray_cast(dg, org, d_.normalized(), distance=dist - 0.03)
-                if not hit:
-                    break
-                if not ho.get("fm_shot") and not ho.hide_render and (is_ins or ho.name.startswith(CAR_PIECES)):
-                    ho.hide_render = True
-                    ho["fm_culled_by_preview"] = 1
-                    culled.append(ho.name)
-                org = loc + d_.normalized() * 0.01
+        culled += sight_clearance(cam.location, pts, is_ins, bpy.context.scene)
     if (shot.get("composition") or {}).get("framing") == "insert":
         for cid, (info, tmp) in figs.items():
             for o in tmp.objects:
@@ -668,6 +653,27 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
     for _, tmp in figs.values():
         U.remove_collection(tmp)
     return path
+
+
+def sight_clearance(lens, goals, is_insert, scene=None, tag="fm_culled_by_preview"):
+    """Hide the static set pieces standing between the lens and `goals` (Vectors). Inserts: any static piece may go. Other
+    shots: car body pieces only (CAR_PIECES); the subject (fm_shot objects) is never touched. Hidden objects get `tag`=1.
+    Shared by the static assembly and by every animated frame. Returns the hidden object names."""
+    scene = scene or bpy.context.scene
+    dg = bpy.context.evaluated_depsgraph_get()
+
+    def cast(org, u, dist):
+        hit, loc, _n, _i, ho, _m = scene.ray_cast(dg, Vector(org), Vector(u), distance=dist)
+        return (tuple(loc), ho) if hit else None
+
+    def hideable(ho):
+        return not ho.get("fm_shot") and not ho.hide_render and (is_insert or ho.name.startswith(CAR_PIECES))
+
+    def hide(ho):
+        ho.hide_render = True
+        ho[tag] = 1
+
+    return [o.name for o in SL.clear_sight_lines(cast, tuple(lens), [tuple(g) for g in goals], hideable, hide)]
 
 
 def init_scene(resolved_dir, width):

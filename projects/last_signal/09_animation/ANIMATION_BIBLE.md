@@ -79,11 +79,11 @@ fm:
   - ref: artifact:anim_sc01_sh110
     hash: sha256:43b58eddc63ec89284be787ddcaf2c1dd2bfa4d6270f646bb2f5dd20e9aacf46
   - ref: artifact:anim_sc01_sh120
-    hash: sha256:34347251a334dca256cb7e10c3d9b21da3aa13dee9bbc33118467055f620bbcc
+    hash: sha256:67724356ea6ab791e11dc2df1a56b8c7094a166e41fffceef99983f6f5d53438
   - ref: artifact:anim_sc01_sh130
     hash: sha256:243861eae4be628218e260e49d9d59bd6f4e6c7405b2cef8dbdd281f81c44e45
   - ref: artifact:anim_sc01_sh140
-    hash: sha256:826c1833ee777c4a6424887801f33d7058d5d645ad2849a9fd049c2a27e8ad3b
+    hash: sha256:0897f383ff32d0ad34077f02d4c8c864925938c27a76e76d3cadfcb33da01ff1
   - ref: artifact:anim_sc01_sh150
     hash: sha256:838b5e24815c1e61ad1d895bf4097b2cec953bf8d0e4e2fbb51dbc69ab42e9f8
   - ref: artifact:anim_sc02_sh010
@@ -140,7 +140,7 @@ fm:
   - intent.anime_feel
   summary: Movement philosophy, vocabulary v1+v2, per-character movement language, timing and holds, event
     naming, and the open animation items for G7.
-  stamped_content_hash: sha256:0991004f83be93116451b1337f541643ea9811a282d496ef118a6e1b6a40740c
+  stamped_content_hash: sha256:f5a4ae0f4c360d0f51767ca3c8fb6155673898c3dde7b1c01f2e663300018614
 title: Animation Bible — Last Signal
 ---
 # Animation Bible — Last Signal
@@ -233,6 +233,13 @@ once. Rejected: one bump per gap, or editing v1 entries in place.
 - **Hold scopes:** `body`, `face`, `phone` (insert legibility, with `min_f` where the shot sets a minimum
   read time) and `all` (nothing moves, which also blocks lids). FACT: 49 holds across the film
   (17 body, 14 phone, 14 all, 4 face).
+- **DECISION: in a phone insert the pose is a phone carrier.** The builder hides the body in inserts, so
+  the pose is chosen for where it puts the phone, not for the off-screen acting: the SC01 status-bar inserts
+  (SH080, SH090, SH120, SH140) all use `car_phone_up` (phone at face height), so they share one frame and
+  one phone place. Pose changes across those cuts (SH110/SH130 upright or reclined) are hidden by the cut.
+  Rationale: SH140 on `car_recline` put the phone in his lap and the insert framed nothing; SH120 on
+  `car_upright` put it on the wheel rim and it rendered small. Consequence: the rig's right hand sits beside
+  the phone, so a cable held in `hand_r` during an insert is keyed `state: hidden` (SH120 f0-1).
 - **Speeds.** Walk/run distance ÷ speed is checked per shot in the anim file. The SC03_SH010 aisle sprint
   peaks at 5.0 m/s (stride 1.25 m, a step every 6 f). ASSUMPTION: with the phone arm rigid and the arms
   not swinging, this reads as urgent rather than manic. QA could not judge it without a playblast (see 7.4).

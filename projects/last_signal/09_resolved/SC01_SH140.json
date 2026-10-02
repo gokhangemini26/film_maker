@@ -609,7 +609,7 @@
           {
             "f": 0,
             "f_abs": 460,
-            "target": "closed"
+            "target": "phone"
           }
         ],
         "move": {
@@ -621,7 +621,7 @@
             "ease": "hold",
             "f": 0,
             "f_abs": 460,
-            "ref": "car_recline"
+            "ref": "car_phone_up"
           }
         ]
       }

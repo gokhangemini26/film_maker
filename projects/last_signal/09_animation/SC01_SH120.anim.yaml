@@ -33,7 +33,7 @@ fm:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Bolt insert: amber bolt on in one frame at f2 with the charging chime, held 18 frames.'
-  stamped_content_hash: sha256:34347251a334dca256cb7e10c3d9b21da3aa13dee9bbc33118467055f620bbcc
+  stamped_content_hash: sha256:67724356ea6ab791e11dc2df1a56b8c7094a166e41fffceef99983f6f5d53438
 shot_id: SC01_SH120
 frames: 20
 vocab_version: 2
@@ -44,16 +44,21 @@ characters:
   ren:
     pose:
     - f: 0
-      ref: car_upright
+      ref: car_phone_up
       ease: hold
-      note: body off frame; he plugs the cable into the console adapter off frame with the right hand;
-        phone in the left hand (insert framing reference cheats the screen to about (1.29, -0.09, 0.97))
+      note: 'insert cheat: the body is hidden in inserts, so the pose only carries the phone. car_upright
+        put the phone on the wheel rim (about 1.15 m from the lens), so the status bar rendered small.
+        car_phone_up holds it at face height (rig: screen centre about (1.28, 0.62, 1.00)), the same pose
+        and place as SH080 / SH090 / SH140, so the status-bar inserts are one frame. He plugs in off frame
+        with the right hand (the cable track carries that); SH110 ends and SH130 opens car_upright, both
+        changes hidden by the cuts'
     move:
       gait: none
     look:
     - f: 0
-      target: dash
-      note: off frame (on the adapter)
+      target: phone
+      note: off frame (head hidden); he plugs in by feel and watches the screen for the bolt (the insert
+        sits on his eyeline)
 props:
   phone_ren:
   - f: 0
@@ -61,10 +66,13 @@ props:
   charging_cable:
   - f: 0
     loc: hand_r
-    state: posed
-    note: plug end in the right hand off frame at the console adapter (chained from SC01_SH110 f18)
+    state: hidden
+    note: 'plug end in the right hand off frame at the console adapter (chained from SC01_SH110 f18).
+      Hidden for f0-1: car_phone_up puts the rig''s right hand beside the phone, so a posed cable would
+      run its source end into the insert frame; the story hand is off frame at the adapter'
   - f: 2
     loc: car_usb_adapter
+    state: posed
     note: plugged into the car USB adapter on the bolt frame (event bolt_on); stays there through SC01_SH150
     rationale: the cable goes live the frame the bolt lights (look.lighting.power_indicators), so the
       plug-in and bolt_on share f2 (animation.vocab.v2.prop.charging_cable chain_by_shot SC01_SH120)
@@ -91,3 +99,7 @@ notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
 - preview_frame 5 kept from the shot file (bolt on beside the red 4 %).
+- 'Pose fix (phone placement): car_upright -> car_phone_up, look dash -> phone. Events (bolt_on, charging_chime
+  at f2), holds, cable keys and frame count unchanged, so audio sync is untouched. The shot''s framing
+  reference (screen about (1.29, -0.09, 0.97), lens (1.29, -0.34, 1.14)) predates the v2 car interior;
+  the lens has to follow the phone (cinematographer).'

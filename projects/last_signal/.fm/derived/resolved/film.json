@@ -1,6 +1,6 @@
 {
   "content_hash": "sha256:bcc4a741073037f71e621452daa0342fe9f0ff6cbaed9b8d7891a93e4adca0b9",
-  "created_at": "2026-10-01T19:49:27Z",
+  "created_at": "2026-10-01T20:24:05Z",
   "derived_from": [
     {
       "hash": "sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b",
@@ -627,15 +627,15 @@
       "ref": "shot:SC03_SH040"
     },
     {
-      "hash": "sha256:fe6d162c8fe336bdf88659bc425297b8ce8015bc24171ccd724131e4ba560f20",
+      "hash": "sha256:e1e411f9e315f2b742a00e797f055c5ab9dbf6d4fe1fa86db88a46a31bb57bda",
       "ref": "shot:SC03_SH050"
     },
     {
-      "hash": "sha256:c43f37e77fdfb715025916595237f38107227a3a83f65b70f5254c459e0fec4c",
+      "hash": "sha256:8b236ef64586590d78e7dc802a9fcc6e635b0170467cebd8b3c2c5739b5c0708",
       "ref": "shot:SC03_SH060"
     },
     {
-      "hash": "sha256:e06563d294197113c8a20c3f5e4c6d2545fc841d26fba98f476debb9b7428a1b",
+      "hash": "sha256:103af7cc154f759dc03710e3c883ba4cef525b2029bf693a473449870b80ecee",
       "ref": "shot:SC03_SH070"
     },
     {

@@ -59,7 +59,7 @@ lighting:
   ambient: '#1E2030'
   ambient_ref: look.color.scene.sc03.blackout.dominant
   floor: '#1B1C29'
-  exposure_target: 0.08
+  exposure_target: 0.12
   exposure_target_ref: look.exposure.scene_keys.SC03_blackout
 color:
   dominant: look.color.ui
@@ -100,8 +100,10 @@ rationale:
     the approved spec put the lens behind him, 0.66 m from the screen, looking past his chin, for a 157
     mm frame in which the digits fall to about 1.4 %, under the 3 % minimum, and not ''as SC01_SH080''.
     At 0.30 m on his eyeline the frame is 71 mm, the same as the car.'
-  composition: 'The status bar floats on black: the room has gone and only the meter is left.'
-  lighting: Screen only; no defocused emissive in the background (camera.dof.inserts).
+  composition: 'The status bar floats on blue-black: the room has gone and only the meter is left.'
+  lighting: Screen only; no defocused emissive in the background (camera.dof.inserts). Exposure target
+    0.12 mean brightness is the human-ruled value, within the locked look.exposure.scene_keys.SC03_blackout
+    tolerance 0.08±0.06, matching look.lighting.sc03_blackout_render checks.mean_luma_target.
   movement: Static.
   color: 'Red number, no amber: amber has now failed twice (look.style.motifs).'
   blocking: 'None in frame. He kneels at the stand (builder reach fix: at (3.45, 8.66) facing +y his right
@@ -217,4 +219,4 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:c43f37e77fdfb715025916595237f38107227a3a83f65b70f5254c459e0fec4c
+stamped_content_hash: sha256:8b236ef64586590d78e7dc802a9fcc6e635b0170467cebd8b3c2c5739b5c0708

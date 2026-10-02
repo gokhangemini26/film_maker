@@ -25,7 +25,7 @@ fm:
   - ref: shot:SC03_SH010
     hash: sha256:1f76a5f9b1d9f67b45b4d32494cd8fa297d0e56eeec18ea1eaacf0bb5c82e63f
   - ref: shot:SC03_SH070
-    hash: sha256:c943fa8776bee45915f96d41d7cbb2c060a78f6a93e0cee3910c79ca39dff1fd
+    hash: sha256:103af7cc154f759dc03710e3c883ba4cef525b2029bf693a473449870b80ecee
   - ref: shot:SC04_SH090
     hash: sha256:ba37458305d5c99080be0a44998f4f3680a91d45b3f9a2c2106e97e19ae494d8
   - ref: shot:SC05_SH010
@@ -38,9 +38,10 @@ fm:
   - intent.comic_then_tender
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
-  summary: Readable cut list generated from the resolved frame table; hard cuts, FADE IN (length D7, UNKNOWN)
-    and 18-frame FADE OUT from canon; scene-time and sound-cut notes.
-  stamped_content_hash: sha256:5cf11cfaeb28b7f2a843e37958d8e195506e08d343755daad330c96dd87aff08
+  summary: Readable cut list generated from the resolved frame table; hard cuts, FADE IN 12 frames (D7,
+    decided under the human's 2026-10-01 delegation, to be ratified at G7) and 18-frame FADE OUT from
+    canon; scene-time and sound-cut notes.
+  stamped_content_hash: sha256:dd10bf78377a9cd487d206c7f62cc0edd241466b575b89c76f0563293760cc6c
 title: Edit Plan
 ---
 # Edit Plan: Last Signal
@@ -60,12 +61,20 @@ both written by `fm post edl` from `09_resolved/film.json`.
   request against `camera.rhythm.transitions`, not an edit step.
 - FACT: `camera.format` (LOCKED) gives 24 fps and 1920x1080. The film is 1440 frames = 00:01:00:00 by
   the frame table (`total_frames: 1440`). The EDL also has 1440 frames, ending at 00:01:00:00.
-- UNKNOWN (D7): FADE IN length. Canon says only "head" and gives no number (`SC01_SH010` notes:
-  "length set by post"). `fm post edl` used its default of 12 frames and labelled it in the EDL header as
-  "source: default (M6_SCOPE D7 recommendation)". RECOMMENDATION: 12 frames (0.5 s). Rejected: 24 frames
-  (eats more than half of the 40-frame opening shot, and the hand that is already moving at f0 would be
-  lost in the fade); 0/6 frames (a snap open, which is harsher than the "soft" register asks for). The EDL
-  must be regenerated if the human rules a different value.
+- DECISION (D7): FADE IN = **12 frames (0.5 s)**, record frames 0-11, audio fading in over the same frames.
+  Delegated by the human 2026-10-01; to be ratified at G7. Canon says only `fade_in: head` with no number
+  (`SC01_SH010` notes: "length set by post"). Rationale: half a second clears before the mirror gag reads, so
+  the hand already moving at f0 is seen arriving out of black (soft, `intent.soft_but_cinematic`) while the
+  comic beat still lands in the clear (`intent.comic_then_tender`). Rejected: 24 frames (eats more than half
+  of the 40-frame opening shot and buries the gag set-up in the fade); 0/6 frames (a snap open, harsher than
+  the soft register). FACT: 12 equals the tool default `fm post edl` already used (EDL header "source: default
+  (M6_SCOPE D7 recommendation)"), so the EDL, `edit.ffconcat` and the animatic do not change and were not
+  re-run. DEPENDENCY: the value still lives in code, not canon; a canon home (`post.fade_in`, which the tool
+  already reads) needs the human to adopt a `post` canon domain at G7. Post does not create that domain.
+- Status of D7 (2026-10-02): a RECOMMENDED RULING, UNKNOWN until the human rules at G7; the register of
+  D1-D10 is `12_post/DECISIONS.md`. No ruling there changes a value in this cut list. FACT: `fm post edl`
+  re-run 2026-10-02 (after the SC01_SH120/SH140 re-resolve) printed "38 events, 1440 frames, end
+  00:01:00:00, fade in 12 / out 18 frames"; `git diff` shows `EDIT.edl` and `edit.ffconcat` unchanged.
 
 ## 2. Cut list (record frames from `09_resolved/film.json`)
 
@@ -74,7 +83,7 @@ Record out is exclusive, as in the EDL.
 
 | # | Shot | Record frames | Frames | Rec in | Rec out | Transition in |
 |---|---|---|---|---|---|---|
-| 001 | SC01_SH010 | 0-39 | 40 | 00:00:00:00 | 00:00:01:16 | FADE IN (12 f, D7) |
+| 001 | SC01_SH010 | 0-39 | 40 | 00:00:00:00 | 00:00:01:16 | FADE IN (12 f, D7 decided) |
 | 002 | SC01_SH020 | 40-77 | 38 | 00:00:01:16 | 00:00:03:06 | cut |
 | 003 | SC01_SH030 | 78-105 | 28 | 00:00:03:06 | 00:00:04:10 | cut |
 | 004 | SC01_SH040 | 106-135 | 30 | 00:00:04:10 | 00:00:05:16 | cut |
@@ -161,9 +170,17 @@ Record out is exclusive, as in the EDL.
   So the animatic does not yet show the posed cable in that wide. Post judges only its timing (816-861).
   Owner of the re-render: blender-td.
 
+### 2.3 SC03 blackout render spec (commit 9de166d, 2026-10-01 night)
+
+- FACT: commit 9de166d added a render spec to the SC03 shots (blackout builder, pool light). `SC03_SH070`
+  still has `frames: 48` and `09_resolved/film.json` still totals 1440 frames, so no record frame in section 2
+  moved. The `shot:SC03_SH070` hash in `derived_from` was refreshed on that basis. `fm validate` still lists
+  `anim_sc03_sh050/060/070` and `audio_cues` as stale upstream of this plan; their owners are the
+  animation-director and the sound-designer.
+
 ## 3. Head and tail
 
-- **Head.** FADE IN from black over record frames 0-11 (if D7 = 12). FACT: the `SC01_SH010` camera notes
+- **Head.** FADE IN from black over record frames 0-11 (D7 = 12, delegated decision, to be ratified at G7). FACT: the `SC01_SH010` camera notes
   start the acting at f0 "so the hand is already in motion as the FADE IN clears". With 12 frames the
   mirror move (f6-9) happens under the fade. RECOMMENDATION: acceptable, because the gag lands after the
   fade clears.

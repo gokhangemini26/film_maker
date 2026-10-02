@@ -31,6 +31,7 @@ except ImportError:  # the standalone python: importing bpy registers the mathut
 
 from . import blackout as BO
 from . import poses as PS
+from . import sightline as SL
 from .anchors import CAR_V2, CAR_SEAT_SHIFT_V2, car_layout, shop_anchors
 from .framesel import contact_strip, parse_frames, select_frames  # noqa: F401  (pure helpers, re-exported)
 
@@ -1038,6 +1039,8 @@ class _FrameRig:
         for o in self.lights:
             o["fm_base_energy"] = o.data.energy
         self._extra_props_built = False
+        self._sight_hidden = []
+        self.sight_hidden_names = []
         self._setup_shop()
         self._setup_extras()
 
@@ -1123,6 +1126,35 @@ class _FrameRig:
         for o in self.frame_col.all_objects:
             o["fm_shot"] = True
         bpy.context.view_layer.update()
+        self._sight_clearance(S, infos)
+
+    def _sight_clearance(self, S, infos):
+        """Per-frame sight line: hide the static set pieces (seat backs, dash, walls) that stand between the live lens and the
+        live target of an insert: the phone screen corners, or the crank / named prop. The pieces hidden for the previous frame
+        are shown again first, so a piece comes back as soon as the lens or the target moves clear of it. Same rule and same
+        function as the static assembly (preview.sight_clearance); the subject (fm_shot) is never touched."""
+        if not self.is_insert:
+            return
+        bpy, P = self.bpy, self.P
+        for o in self._sight_hidden:
+            if o.name in bpy.data.objects:
+                o.hide_render = False
+                o["fm_sight_hidden"] = None
+        self._sight_hidden = []
+        ren = infos.get("ren") or {}
+        if self.look_at == "phone_ren" and "phone_axes" in ren:
+            xv, yv, _nz = ren["phone_axes"]
+            goals = [Vector(g) for g in SL.phone_goals(tuple(ren["phone_w"]), tuple(xv), tuple(yv))]
+        else:
+            tgt = self._subject_target(S, infos)
+            if tgt is None:
+                tgt = self.c.get("tgt")
+            if tgt is None:
+                return
+            goals = [Vector(g) for g in SL.point_goals(tuple(tgt))]
+        names = P.sight_clearance(self.cam.matrix_world.translation, goals, True, bpy.context.scene, tag="fm_sight_hidden")
+        self._sight_hidden = [bpy.data.objects[n] for n in names]
+        self.sight_hidden_names = names
 
     def _camera_setup(self, S):
         if S["camera"]["move"] != "none":
@@ -1353,14 +1385,14 @@ class _FrameRig:
             cam.location = base + sh
             P.aim_up(cam, pos + sh, yv)
             if self.cam_data.dof.use_dof:
-                self.cam_data.dof.focus_distance = max(((pos + sh) - cam.location).length, 0.1)
+                self.cam_data.dof.focus_distance = SL.focus_clamp(((pos + sh) - cam.location).length)
             return
         if not getattr(self, "_aimed", False):
             tgt = self._subject_target(S, infos)
             if tgt is not None:
                 P.aim(cam, tgt)
                 if self.cam_data.dof.use_dof:
-                    self.cam_data.dof.focus_distance = max((tgt - self.cam0).length, 0.1)
+                    self.cam_data.dof.focus_distance = SL.focus_clamp((tgt - self.cam0).length)
             self._aimed = True
 
     def _subject_target(self, S, infos):

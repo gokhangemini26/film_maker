@@ -7,7 +7,7 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:edit_plan
-    hash: sha256:5cf11cfaeb28b7f2a843e37958d8e195506e08d343755daad330c96dd87aff08
+    hash: sha256:dd10bf78377a9cd487d206c7f62cc0edd241466b575b89c76f0563293760cc6c
   - ref: artifact:audio_cues
     hash: sha256:ad57b77535192c291ed921e797e542e8ca319119171c92379f36852d9ccc433a
   - ref: artifact:creative_direction
@@ -35,16 +35,38 @@ fm:
   - intent.anime_feel
   - intent.open_hopeful_ending
   summary: Locked finish steps with parameters read from canon (glare, grain, optional vignette, fades),
-    titles ruling, final render settings proposal, delivery spec, licence status; human decisions D2/D3/D5/D6/D7/D9
-    left UNKNOWN.
-  stamped_content_hash: sha256:ec1c50f9e73e85162aae91267e024fc806a55548eb5619e5a65d7f8dea754558
+    titles ruling, final render settings, delivery spec, licence status; D1-D10 carried as recommended
+    rulings (register in 12_post/DECISIONS.md), UNKNOWN until the human rules at G7.
+  stamped_content_hash: sha256:49a06c04dcec5b604c1614089109b0e16c998bd5be819926c1661040baa6a15f
+  stamp_note: EDIT_PLAN only gained a section 2.3 note (SC03 render spec, no record frame moved); nothing
+    in the post plan depends on it
 title: Post Plan
 ---
 # Post Plan: Last Signal
 
 Post adds only the finish the look canon locks. There is no creative grade. Every parameter below is
-read from a canon value and names its source, so a canon change restales this plan. Human decisions
-are recommendations and stay **UNKNOWN** until ruled.
+read from a canon value and names its source, so a canon change restales this plan.
+
+## 0. Delegated decisions (recommended rulings, 2026-10-02)
+
+FACT (as relayed to post by the main session): the human delegated all open decisions D1-D10 to the
+production team (2026-10-01 "hepsini sen belirle"; repeated 2026-10-02). The full register, with rationale
+and rejected alternatives, is `12_post/DECISIONS.md`. Every item is a **RECOMMENDED RULING** with status
+**UNKNOWN until the human rules** at G7; where this plan says "DECISION Dn" below, read "recommended ruling
+Dn, not human-approved".
+
+| # | Recommended ruling | Where | Canon already decides? |
+|---|---|---|---|
+| D1 | No underscore (sound-designer domain; no post step) | DECISIONS | Proposed: `audio.score` (PROPOSED) |
+| D2 | No on-screen titles or credits, in or around the master; title and credits travel as delivery metadata (MANIFEST.json, delivery description). No bumper. | 3 | Yes, in effect: `tone.wordless` and `world.rules.no_readable_text` (LOCKED) |
+| D3 | -16 LUFS integrated (+-1 LU), true peak <= -1 dBTP, 2-pass loudnorm; plus a 3 dB post-turn bed duck in the mix (sound-designer) | 5 | Proposed only: `audio.mix` (PROPOSED) carries these values; approving it is the human's step |
+| D4 | Shot files win over storyboard prose (all `audio.conflicts` items) | DECISIONS | Proposed (ASSUMPTION): `audio.conflicts` |
+| D5 | Vignette off | 2.3 | No (canon allows 0-10 %) |
+| D6 | `final` profile as it stands: EEVEE, 1920x1080, 64 samples, no motion blur, 8-bit PNG, 48-frame chunks, authorization required; glare from the emission pass per `look.style.glow` | 4 | Partly: format, engine, view transform, motion blur and glare are LOCKED canon |
+| D7 | FADE IN 12 frames | 2.4 | No (`fade_in: head`, no length) |
+| D8 | Ratify vocab v1 + v2; `face.ren` only together with CHANGE-005 | DECISIONS | Proposed: `animation.vocab.*` |
+| D9 | Add a G9 Delivery gate after G8 | 5 | No (state machine) |
+| D10 | Human records body sounds; CC0/own library foley with written licences; headphone leak dropped (SC05 room tone only) | 6 | No |
 
 ## 1. Order of operations (POST phase, after G8)
 
@@ -64,8 +86,8 @@ command line must pass `--grain` explicitly (section 2.2).
   `implementation: compositor_glare_bloom_on_emission_pass`.
 - DECISION: applied in the Blender compositor at final render (owner: blender-td), not in post.
   Rejected: a post bloom in ffmpeg (it cannot isolate emissives without the emission pass).
-- UNKNOWN: whether the compositor glare path has been verified on this machine (M6 task A0). Until it is,
-  the final profile cannot be called ready (section 4).
+- FACT: no code implements the compositor glare yet (section 4 table). Until it is built and verified on
+  this machine (M6 task A0), the final render cannot start with the locked look (risk 4).
 
 ### 2.2 Grain (assembly)
 - Source: `look.style.texture_and_grain` (LOCKED). `grain.type: monochrome`, `amplitude_luma: 0.015`,
@@ -80,20 +102,22 @@ command line must pass `--grain` explicitly (section 2.2).
 
 ### 2.3 Vignette (optional, D5)
 - Source: `look.style.texture_and_grain` `vignette_max: 0.1` ("the same on every shot").
-- **D5: UNKNOWN.** RECOMMENDATION: **off**. The composition canon already places light and value. A
-  vignette can be added at assembly at no cost later (`--vignette 0..0.1`) with no re-render, so deciding
-  "off" now closes no doors. Rejected: 10 % on (darkens the phone inserts' corners, where the pip and the
-  status bar sit); a per-shot vignette (canon forbids it).
+- **DECISION D5: vignette off** (`fm post assemble` without `--vignette`). Delegated by the human 2026-10-01;
+  to be ratified at G7. Rationale: the composition and lighting canon already place light and value; the
+  phone inserts carry the battery pip and status icons near the corners, which a vignette would darken
+  (`intent.race_against_battery`); and it can be added later at assembly (`--vignette 0..0.1`) with no
+  re-render, so "off" closes no doors. Rejected: 10 % on (dims the insert corners for a framing the shots
+  already do); a per-shot vignette (canon forbids it: "the same on every shot").
 
 ### 2.4 Fades
 - FADE OUT: 18 frames at the tail, after the final-image hold. Source: `camera.rhythm.transitions`
   `fade_out.frames: 18` (LOCKED). Record 1422-1439 (see EDIT_PLAN section 3).
-- FADE IN: **D7 UNKNOWN.** Canon says `fade_in: head` with no length. RECOMMENDATION: **12 frames**.
-  Rejected: 24 and 0/6 frames (reasons in EDIT_PLAN section 1). FACT: `fm post edl` and
-  `fm post assemble` currently use a code default of 12, labelled "default (M6_SCOPE D7 recommendation)",
-  because no canon `post.fade_in` exists. Once the human rules, the value should become canon (a `post`
-  domain entry `post.fade_in`, if the human adopts that domain), so that the EDL and the master read it
-  instead of a default.
+- **DECISION D7: FADE IN 12 frames** (record 0-11). Delegated by the human 2026-10-01; to be ratified at G7.
+  Canon says `fade_in: head` with no length. Rationale and rejected alternatives (24 and 0/6 frames) are in
+  EDIT_PLAN section 1. FACT: `fm post edl` and `fm post assemble` already use a code default of 12 ("default
+  (M6_SCOPE D7 recommendation)"), so the EDL, ffconcat and animatic are unchanged and were not regenerated.
+  DEPENDENCY: to move the value from code into canon, the human would adopt a `post` domain with
+  `post.fade_in` (the tool already reads it). Post does not create that domain.
 - Audio follows picture: the sound fades in and out over the same frames (EDIT_PLAN section 5).
 
 ### 2.5 Not applied (canon forbids)
@@ -109,7 +133,7 @@ command line must pass `--grain` explicitly (section 2.2).
 - FACT: CREATIVE_DIRECTION says "The confession happens after the credits, in the viewer's head", so
   credits are expected creatively. This question has been open since G1 (G1 review item 1; G4 review
   finding 11).
-- **D2: UNKNOWN.** Options:
+- Options considered:
   - **A. No on-screen text in the 60 s master.** The title and credits go in the file metadata
     (title, artist, comment) and in the delivery description. Consistent with canon; no change request.
   - **B. A 3-4 s title/credit card as a separate bumper file**, outside the 60 s runtime and never cut
@@ -117,10 +141,19 @@ command line must pass `--grain` explicitly (section 2.2).
     outside the story, or approve a change request scoping it to story frames.
   - **C. Title card inside the runtime (head or tail).** Rejected: it breaks the FADE IN onto the car
     (or the held final image and the fade to black), and it spends frames the LOCKED budget does not have.
-- RECOMMENDATION: **A for the master**, plus **an optional B bumper delivered as its own file** only if a
-  festival or platform requires a card. If B is chosen, post does not build it until the human rules on
-  `tone.wordless` scope (ruling or `fm change propose` by the creative-director). Post will not propose
-  that change itself.
+- **DECISION D2: A.** No on-screen title or credits in the master and no bumper. The title ("Last Signal")
+  and the credits go in `13_delivery/MANIFEST.json` and the delivery description. Delegated by the human
+  2026-10-01; to be ratified at G7. Rationale: canon already decides this: `tone.wordless` is a LOCKED
+  USER_REQUIREMENT ("the typed English dinner invitation is the ONLY readable text in the film"). Keeping the
+  invitation the only words the viewer ever reads is what lets it land at the send
+  (`intent.race_against_battery`, `intent.open_hopeful_ending`). CREATIVE_DIRECTION's "after the credits, in
+  the viewer's head" describes where the confession happens, not an on-screen credit card. Rejected: B (a
+  bumper is still readable text; a delegated post call cannot reinterpret the scope of the human's own locked
+  requirement, so a card needs the human's ruling or a creative-director change request if a festival ever
+  demands one); C (breaks the FADE IN onto the car or the held final image, and spends frames the LOCKED
+  budget does not have).
+- DEPENDENCY: `fm post assemble`/`export` strip container metadata (`-map_metadata -1`); a container title
+  tag would need a tool option. MANIFEST.json and the delivery description are enough for D2.
 
 ## 4. Final render settings proposal (D6)
 
@@ -134,22 +167,30 @@ committed): `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `mo
 | Frame rate | (from scene) | 24/1 | FACT `camera.format` `fps: 24` |
 | Engine | EEVEE | EEVEE, Blender pinned 5.2.x | FACT `look.style.render_constraints` `engine: eevee` |
 | View transform | (builder) | Standard, look None, exposure 0, gamma 1 | FACT `look.style.render_constraints` |
-| Samples | 64 | 64 | RECOMMENDATION; measure. 32 may be enough for flat toon shading, to be tested on 3 shots before the full run (`fm blender final --samples` overrides per run) |
+| Samples | 64 | 64 | DECISION (D6). Unmeasured; 64 is the safe side for the soft light-radius shadows and the 1.5 % glow halo, at an estimated 2-5 h for the film. Rejected: 32 now (cheaper but untested on the real sets; adopt later only after a 3-shot comparison, recorded as a change) |
 | Motion blur | false | false | FACT: `look.style.render_constraints` (LOCKED) says `motion_blur: false`; the profile matches. Not a D6 question. |
 | Output | png | 8-bit PNG sequence, RGB | FACT: the profile now says `png`, matching this proposal; `fm blender final` refuses any other output ("set output: png"), because `fm post assemble` reads `%04d.png`. Rejected: EXR (about 10 GB for 1440 frames, no grade needs the headroom). |
-| Compositor | (builder) | glare on the emission pass | FACT `look.style.glow` `implementation`; UNKNOWN whether the final builder path applies it (A0, section 2.1) |
+| Compositor | (builder) | glare on the emission pass | FACT `look.style.glow` `implementation` (LOCKED). FACT (case-insensitive grep of the repo outside `projects/` and `.git`, 2026-10-01): "glare" appears only in docs, the post skill and this agent's file, never in code, so **no builder applies it today**. Blocks the final render (risk 4) |
 | Chunking | 48 frames per process | at most 48 frames per process, resumable | FACT: profile `chunk_frames: 48`; `fm blender final` reads it (override `--chunk-frames`) and has `--resume`. Reason: colour corruption in long Blender processes on Windows ARM (M6 scope 4.3). |
 | Authorization | required | required: `fm authorize final-render` by the human | FACT: `fm blender final` "REFUSES without the human's `fm authorize final-render`", and refuses shots the recorded authorization's scope does not cover |
 
 - FACT: the final render tool exists: `fm blender final` renders every frame to `11_render/final/<SHOT>/NNNN.png`
   in chunks, then `MANIFEST.json`; route `exe` (pinned Blender) is the only one G8 accepts. It needs the
   human's `fm authorize final-render` in the ledger first. Post never runs `fm authorize` or `fm blender final`.
-- **D6: UNKNOWN.** The profile now already carries the proposed output and chunking; what the human still
-  rules is the profile as a whole (samples 64 vs a measured lower value, glare verified) and then the
-  authorization itself. RECOMMENDATION: approve as proposed. Rejected: EXR output; motion blur on (canon
-  forbids it, and blur smears the cel outline and the phone number).
-- DEPENDENCY: post does not edit `config/render_profiles.yaml` (the PNG/chunk change came from the main
-  session's final-render work, uncommitted at the time of this check).
+- **DECISION D6: the `final` profile as it stands** (table above): EEVEE, scale 1.0 = 1920x1080, 64 samples,
+  no motion blur, 8-bit PNG, 48-frame resumable chunks, authorization required; glare from the emission pass
+  as `look.style.glow` locks it. Delegated by the human 2026-10-01; to be ratified at G7. Rationale: every
+  look-bearing setting is already fixed by LOCKED canon (`camera.format`, `look.style.render_constraints`,
+  `look.style.glow`); the open fields are chosen for reproducibility on this machine (PNG feeds
+  `fm post assemble` directly; 48-frame chunks avoid the Windows ARM colour corruption) and a clean first
+  pass (64 samples). Rejected: EXR output (about 10 GB, no grade needs the headroom); motion blur on (canon
+  forbids it; it smears the cel outline and the phone number); 32 samples without a test.
+- FACT: no config change was needed. `config/render_profiles.yaml` already carries these values, and
+  `git status` (2026-10-01) shows the file unmodified, so they are committed. Glare is not a profile field:
+  it comes from canon through the builder.
+- DEPENDENCY (blocks the final render, not the decision): implement and verify the compositor glare on the
+  emission pass (blender-td, M6 task A0). D6 authorizes nothing: the human still runs
+  `fm authorize final-render` before `fm blender final` will start.
 - ASSUMPTION: 1440 frames at 5-12 s each is about 2-5 hours of unattended rendering (M6 scope estimate,
   not measured on the real sets).
 - Post never runs `fm authorize` or `fm blender final`.
@@ -162,25 +203,37 @@ committed): `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `mo
 | `13_delivery/last_signal_1080p.mp4` (web) | H.264 High, about 12 Mbps, yuv420p, AAC 320 kbps 48 kHz stereo, `+faststart` | `fm post export` |
 | review proxy | small H.264 for review | `fm post export` (unless `--no-proxy`) |
 | `13_delivery/MANIFEST.json` | files, sha256, probe facts, settings, `fm` and Blender versions (tracked in git) | `fm post export` |
-| optional bumper (only if D2 = A+B) | separate file, never inside the master | not built until ruled |
+| title and credits (D2 = A) | text fields in `MANIFEST.json` and the delivery description; no on-screen card, no bumper | `fm post export` / delivery description |
 
 - FACT: ffmpeg 6.1.1 in this environment has `prores_ks`, so the tool would write `.mov`. Without ProRes
   it falls back to lossless-ish H.264 in `.mkv`. ASSUMPTION: the assembly machine has the same encoder.
-- **Loudness, D3: UNKNOWN.** RECOMMENDATION: **-16 LUFS integrated, -1 dBTP true peak**, 2-pass loudnorm.
-  This is the web/mobile norm, and the quiet ending keeps its dynamics. Rejected: -14 LUFS (louder, and
+- **DECISION D3: -16 LUFS integrated (+-1 LU), true peak <= -1 dBTP**, 2-pass loudnorm, 48 kHz 24-bit stereo.
+  Delegated by the human 2026-10-01; to be ratified at G7. Rationale: the web/mobile norm, and the quiet
+  ending and the clunk/ratchet transients keep their dynamics (`intent.soft_but_cinematic`,
+  `intent.comic_then_tender`). Rejected: -14 LUFS (louder, and
   platforms turn it down anyway, at the cost of the tender half's range); -23 LUFS / EBU R128 (right for
   broadcast, far too quiet on phones and laptops). FACT: `audio.mix` now exists as **PROPOSED** canon
   (sound-designer: `integrated_lufs: -16.0`, `lufs_tolerance: 1.0`, `true_peak_dbtp: -1.0`, 48 kHz, 24-bit,
-  stereo, `decision: D3`). It is not LOCKED, so D3 is still open. FACT: the wave-6 mix measures
+  stereo, `decision: D3`): the same values. Approving it is the human's step at G7; post proposes no further
+  canon. FACT: the wave-6 mix measures
   -16.39 LUFS (ffmpeg ebur128), true peak -1.7 dBTP (`fm qa audio`), inside the proposed target.
+- DEPENDENCY (D3, 2026-10-02, owner sound-designer): G7 review #11 measured the post-turn street beds at the
+  same RMS as the comic car. The recommended ruling keeps -16 LUFS and lowers the beds from SC04_SH040 to the
+  end by 3 dB relative to the pre-turn beds, so `tone.the_turn` reads as level. Fallback if it still sounds
+  flat at G7: -20 LUFS, which changes only the loudnorm target here. Rationale and rejected alternatives in
+  `12_post/DECISIONS.md`.
 - `fm qa delivery` checks (all must PASS at POST): 1920x1080; exactly 24/1 fps; 1440 frames (+-0); duration
   60.000 s; audio 48 kHz stereo; integrated loudness within +-1 LU of target; true peak <= -1 dBTP; black
   only inside the fades; checksums match the manifest.
 - DEPENDENCY: the master and the encodes are gitignored. Only `MANIFEST.json` is tracked.
-- **D9 (gate G9 Delivery): UNKNOWN.** POST and DELIVERY have no gate today. RECOMMENDATION: add G9 (frames
-  approved at G8, then the finished file approved at G9). Rejected: folding the master into G8 (it mixes
-  "frames are right" with "the file is right" in one approval). This is a state-machine change the human
-  must OK. Post only recommends it.
+- **DECISION D9: add a G9 Delivery gate** (frames approved at G8; the finished master, the encodes, an
+  all-PASS `fm qa delivery` report and a cleared licence table approved at G9). Delegated by the human
+  2026-10-01; to be ratified at G7. Rationale: G8 judges pictures before grain, fades, loudness and encoding
+  exist; a separate gate makes "the file is right" a human approval and gives the licence blockers
+  (section 6) a gate to clear at. Rejected: folding the master into G8 (mixes two approvals and lets a file
+  ship on a frame approval).
+- DEPENDENCY: G9 is an `fm` state-machine change (main session / tool owner), not a post edit. Until it
+  lands, post treats an all-PASS `fm qa delivery` and zero UNKNOWN licences as the release condition.
 
 ## 6. Licence status (blocks final export while UNKNOWN)
 
@@ -193,7 +246,7 @@ committed): `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `mo
 | foley: seat creak, headphones, pencil, phone grip (`fx.plastic_scuff` placeholder, 3 asks) | SC01_SH060, SC04_SH040, SC05_SH020 | library files, human picks | UNKNOWN | **yes** |
 | street bird | SC01_SH010, SC01_SH150 | library file | UNKNOWN | **yes** |
 | distant traffic | SC03_SH070, SC04_SH010, SC06_SH010 | library file | UNKNOWN | **yes** |
-| headphone leak music | SC05_SH010, SC05_SH020 | licensed track to be supplied (agents never generate music) | UNKNOWN | **yes** |
+| headphone leak music | SC05_SH010, SC05_SH020 | recommended D10 ruling: dropped, SC05 room tone only (agents never generate music) | UNKNOWN until D10 is ruled; not used if ruled | **yes**, until D10 is ruled; then removed from the mix and this table |
 | phone UI font | typed invitation, numbers (`look.style.phone_ui` `font: open_licence_humanist_sans`) | not yet chosen (Noto Sans / Inter suggested) | UNKNOWN (canon notes: "Font licence UNKNOWN until verified") | **yes** |
 | procedural sound recipes (`fm audio synth`) | all other cues | generated in-house | ASSUMPTION: own work, no third-party licence. To be confirmed by the sound-designer's registry | no, if confirmed |
 | 3D assets, sky | all shots | built procedurally, no `library/assets` in use (the directory is empty) | FACT: nothing third-party found | no |
@@ -273,14 +326,18 @@ summary line: "1 delivery file(s): 1 FAIL, 2 WARN finding(s) (1 row(s) failing)"
 
 1. 24 of 38 shots lack full motion in the animatic: 9 held stills, 15 step-held draft keys; the 14 full
    playblasts may predate the v2 anim files (section 7.2). Owners: animation-director, blender-td.
-2. The final profile now carries `output: png` and `chunk_frames: 48` and matches locked canon on motion
-   blur. D6 (samples, glare verified, the profile as a whole) is still open; the human rules it before
-   `fm authorize final-render`, which `fm blender final` requires.
+2. D6 is decided (delegated, to be ratified at G7), but the final render still needs the glare (risk 4)
+   and the human's `fm authorize final-render`, which `fm blender final` requires.
 3. The grain amplitude mapping has not been measured (2.2). If it is wrong, the grain is too strong or
    too weak on every frame. Verify on one shot first.
-4. Compositor glare is untested (2.1). It must pass A0 before the final render.
-5. D7 comes from a code default, and D3 from PROPOSED (not LOCKED) canon `audio.mix`. A later change to the default would silently
-   change the film. Put the rulings in canon.
+4. Compositor glare is not implemented in any code (section 4 table), so LOCKED `look.style.glow` would be
+   silently missing from every final frame. It must be built and pass A0 before the final render.
+   Owner: blender-td.
+5. D7 still comes from a code default, and D3 from PROPOSED (not LOCKED) canon `audio.mix`. Tool defect
+   (FACT, `core/fm/post.py` `finish_params`): the loudness target is read from `audio.mix` key
+   `loudness_lufs`, but the canon key is `integrated_lufs`, so the tool always falls back to the constant
+   -16.0; the true peak is the constant `TARGET_TP = -1.0`, never read from canon. Same values today, but a
+   canon change to D3 would not reach the master. Owner: main session (tool fix).
 6. UNKNOWN licences (section 6) block release, and the font one also blocks the final render of the
    insert shots.
 7. G5 is DRIFTED. A different re-approved shot timing moves every record frame here. Regenerate by

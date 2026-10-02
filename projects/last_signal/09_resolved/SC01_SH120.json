@@ -596,7 +596,7 @@
           {
             "f": 0,
             "f_abs": 406,
-            "target": "dash"
+            "target": "phone"
           }
         ],
         "move": {
@@ -608,7 +608,7 @@
             "ease": "hold",
             "f": 0,
             "f_abs": 406,
-            "ref": "car_upright"
+            "ref": "car_phone_up"
           }
         ]
       }
@@ -684,12 +684,13 @@
           "f": 0,
           "f_abs": 406,
           "loc": "hand_r",
-          "state": "posed"
+          "state": "hidden"
         },
         {
           "f": 2,
           "f_abs": 408,
-          "loc": "car_usb_adapter"
+          "loc": "car_usb_adapter",
+          "state": "posed"
         }
       ],
       "phone_ren": [

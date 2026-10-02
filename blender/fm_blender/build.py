@@ -153,7 +153,7 @@ def build_shot(sid, film, shot, col):
         tgt = Vector((cpos.x, cpos.y + 3, cpos.z))
     aim(cam, tgt)
     if dof.get("enabled"):
-        cd.dof.focus_distance = max((tgt - cpos).length, 0.1)
+        cd.dof.focus_distance = max((tgt - cpos).length, 0.025)   # clip_start 0.02 + eps (sightline.focus_clamp)
     cam["fm_look_at"] = look
     cam["fm_scene"] = scene
     cam["fm_start_position"] = list(sp)
