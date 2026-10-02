@@ -1,6 +1,6 @@
 {
   "content_hash": "sha256:479eb2ce8cbd4c10925343e7e1189ac7021b03d15157f6c9b8451752a7620500",
-  "created_at": "2026-10-01T20:23:59Z",
+  "created_at": "2026-10-02T20:05:58Z",
   "derived_from": [
     {
       "hash": "sha256:10e5fd013ae8af51fb14173396a7eff243f4b5e90c9f4428567a2de030384642",
@@ -75,7 +75,7 @@
       "ref": "canon:camera.movement.push_in"
     },
     {
-      "hash": "sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3",
+      "hash": "sha256:3873f578a9e2b5d6613f0a212ba1ccb3b4118c33c65a5d9329fe8c87deafd055",
       "ref": "canon:characters.ren.expressions"
     },
     {
@@ -179,7 +179,7 @@
       "ref": "canon:look.color.ui_heart"
     },
     {
-      "hash": "sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4",
+      "hash": "sha256:8e2d662d272976f9442271ae8ec97ae1a85ccd45826490ef6ce1cbbf022cabc4",
       "ref": "canon:look.exposure.scene_keys"
     },
     {
@@ -263,11 +263,11 @@
       "ref": "canon:world.rules.weather"
     },
     {
-      "hash": "sha256:ec237fef5176be584b10788bc38d48cf14cd937c1e42b64cb332319ef4e59f26",
+      "hash": "sha256:83a5d4461396bb77833fef48c3f0d4f88f961877ec3de8920a84276fd0294aab",
       "ref": "canon:world.sets.corner_shop"
     },
     {
-      "hash": "sha256:238ade8c11d56ccb22e595cd9e42829e593e23808c6d83fbff3d5e00f541cb99",
+      "hash": "sha256:bf6eefd9493d59782cdf474b040586f9e2065cf0f369c48f9cf49a1583b3382c",
       "ref": "canon:world.sets.ren_car"
     },
     {

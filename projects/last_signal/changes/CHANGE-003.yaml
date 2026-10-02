@@ -1,5 +1,5 @@
 id: CHANGE-003
-status: PROPOSED
+status: APPROVED
 target: world.sets.corner_shop
 reason: 'G6 preview: corner shop canon gives the socket only height/depth and the ceiling panels only
   a count; no lateral positions for socket, stand or fridges (fridge 3 and the stand overlap in the build)
@@ -119,6 +119,12 @@ proposed_by: agent:claude-code
 proposed_at: '2026-09-29T21:39:24Z'
 impact:
   CANON:
+  - canon:animation.vocab.pose.hana
+  - canon:animation.vocab.pose.ren
+  - canon:animation.vocab.ui_event
+  - canon:animation.vocab.v2
+  - canon:animation.vocab.v2.pose.hana
+  - canon:animation.vocab.v2.pose.ren
   - canon:camera.dof.default_deep
   - canon:camera.format
   - canon:camera.framing.space_and_size
@@ -138,22 +144,77 @@ impact:
   - canon:look.exposure.value_structure
   - canon:look.lighting.eevee_feasibility
   - canon:look.lighting.sc03
+  - canon:look.lighting.sc03_blackout_render
+  - canon:look.lighting.sc03_sh070_style_break
   - canon:look.style.background_shading
   - canon:look.style.character_shading
   - canon:look.style.outlines
+  - canon:look.style.phone_screen.call
+  - canon:look.style.phone_screen.compose
+  - canon:look.style.phone_screen.geometry
+  - canon:look.style.phone_screen.hana
+  - canon:look.style.phone_screen.map
+  - canon:look.style.phone_screen.sent
+  - canon:look.style.phone_screen.states_by_shot
+  - canon:look.style.phone_screen.status_bar
   - canon:look.style.realism
   - canon:look.style.render_constraints
   - canon:look.style.texture_and_grain
   - canon:world.props.shop_socket
   ARTIFACT:
+  - artifact:anim_sc01_sh010
+  - artifact:anim_sc01_sh020
+  - artifact:anim_sc01_sh030
+  - artifact:anim_sc01_sh040
+  - artifact:anim_sc01_sh050
+  - artifact:anim_sc01_sh060
+  - artifact:anim_sc01_sh070
+  - artifact:anim_sc01_sh080
+  - artifact:anim_sc01_sh090
+  - artifact:anim_sc01_sh100
+  - artifact:anim_sc01_sh110
+  - artifact:anim_sc01_sh120
+  - artifact:anim_sc01_sh130
+  - artifact:anim_sc01_sh140
+  - artifact:anim_sc01_sh150
+  - artifact:anim_sc02_sh010
+  - artifact:anim_sc02_sh020
+  - artifact:anim_sc02_sh030
+  - artifact:anim_sc03_sh010
+  - artifact:anim_sc03_sh020
+  - artifact:anim_sc03_sh030
+  - artifact:anim_sc03_sh040
+  - artifact:anim_sc03_sh050
+  - artifact:anim_sc03_sh060
+  - artifact:anim_sc03_sh070
+  - artifact:anim_sc04_sh010
+  - artifact:anim_sc04_sh020
+  - artifact:anim_sc04_sh030
+  - artifact:anim_sc04_sh040
+  - artifact:anim_sc04_sh050
+  - artifact:anim_sc04_sh060
+  - artifact:anim_sc04_sh070
+  - artifact:anim_sc04_sh080
+  - artifact:anim_sc04_sh090
+  - artifact:anim_sc05_sh010
+  - artifact:anim_sc05_sh020
+  - artifact:anim_sc05_sh030
+  - artifact:anim_sc06_sh010
+  - artifact:animation_bible
   - artifact:art_direction_bible
+  - artifact:audio_bible
+  - artifact:audio_cues
   - artifact:character_bible
   - artifact:cinematography_bible
   - artifact:color_bible
+  - artifact:edit_plan
   - artifact:g3_review
   - artifact:g4_review
   - artifact:g5_review
+  - artifact:g7_review
   - artifact:lighting_bible
+  - artifact:post_decisions
+  - artifact:post_plan
   - artifact:preview_review
   - artifact:shot_list
   - artifact:storyboard
@@ -276,5 +337,16 @@ impact:
   - render:preview_SC05_SH020
   - render:preview_SC05_SH030
   - render:preview_SC06_SH010
+  AUDIO:
+  - audio:mix
+  EDIT:
+  - edit:animatic
+  - edit:edl
   QA:
+  - qa:audio
+  - qa:delivery
+  - qa:motion
   - qa:stills
+decided_by: human:gokhan_guler
+decided_at: '2026-10-02T19:45:21Z'
+new_hash: sha256:83a5d4461396bb77833fef48c3f0d4f88f961877ec3de8920a84276fd0294aab

@@ -1,5 +1,5 @@
 id: CHANGE-006
-status: PROPOSED
+status: APPROVED
 target: look.exposure.scene_keys
 reason: 'SC03 blackout exposure is measured on the room, not the source. FACT: draft frames measure SC03_SH060
   ~0.40 (the lit screen fills about half the 71 mm insert; surround blue-black) and SC03_SH070 0.27 (westmost
@@ -37,6 +37,7 @@ proposed_at: '2026-10-02T14:17:59Z'
 impact:
   CANON:
   - canon:look.lighting.sc03_blackout_render
+  - canon:look.lighting.sc03_sh070_style_break
   ARTIFACT:
   - artifact:anim_sc01_sh010
   - artifact:anim_sc01_sh020
@@ -219,3 +220,6 @@ impact:
   - qa:delivery
   - qa:motion
   - qa:stills
+decided_by: human:gokhan_guler
+decided_at: '2026-10-02T19:46:20Z'
+new_hash: sha256:8e2d662d272976f9442271ae8ec97ae1a85ccd45826490ef6ce1cbbf022cabc4

@@ -1688,10 +1688,12 @@ entries:
   source: agent:look-director
   version: 1
 - id: look.exposure.scene_keys
-  statement: |
-    Target mean frame luminance per scene (0-1, display-referred): SC01 0.62, SC02 0.70,
-    SC03 lit 0.74 then blackout 0.08, SC04 0.46, SC05 0.52, SC06 0.42. A tolerance of
-    plus or minus 0.06 per shot.
+  statement: 'Target mean frame luminance per scene (0-1, display-referred): SC01 0.62, SC02 0.70, SC03
+    lit 0.74 then blackout 0.08, SC04 0.46, SC05 0.52, SC06 0.42. A tolerance of plus or minus 0.06 per
+    shot. The SC03 blackout key is measured on the room, not on the light source that is the subject:
+    whole frame in SC03_SH050, the frame minus the phone screen in SC03_SH060, the frame minus Ren lit
+    tones, the phone and the door rectangle in SC03_SH070 (regions and caps in look.lighting.sc03_blackout_render
+    checks). Every other scene and the SC03 lit state stay whole-frame.'
   value:
     SC01: 0.62
     SC02: 0.7
@@ -1701,6 +1703,10 @@ entries:
     SC05: 0.52
     SC06: 0.42
     tolerance: 0.06
+    measured_on:
+      default: whole_frame
+      SC03_blackout: room_region_per_shot
+      SC03_blackout_regions_ref: look.lighting.sc03_blackout_render.checks.mean_luma_region
   rationale: |
     Plots the direction's energy curve as light: brisk and bright through the comedy,
     peaking at the shop, a drop at the blackout, then a lower, steady tender key that
@@ -1721,7 +1727,31 @@ entries:
   tag: DECISION
   status: LOCKED
   source: agent:look-director
-  version: 1
+  version: 2
+  history:
+  - version: 1
+    hash: sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4
+    status: SUPERSEDED
+    change: CHANGE-006
+    at: '2026-10-02T19:46:20Z'
+    statement: |
+      Target mean frame luminance per scene (0-1, display-referred): SC01 0.62, SC02 0.70,
+      SC03 lit 0.74 then blackout 0.08, SC04 0.46, SC05 0.52, SC06 0.42. A tolerance of
+      plus or minus 0.06 per shot.
+    value:
+      SC01: 0.62
+      SC02: 0.7
+      SC03_lit: 0.74
+      SC03_blackout: 0.08
+      SC04: 0.46
+      SC05: 0.52
+      SC06: 0.42
+      tolerance: 0.06
+    rationale: |
+      Plots the direction's energy curve as light: brisk and bright through the comedy,
+      peaking at the shop, a drop at the blackout, then a lower, steady tender key that
+      settles slightly for the final image without going dark. Numbers make the arc testable
+      at G6 on rendered frames. Rejected: one exposure for the whole film (loses the arc).
 - id: look.lighting.principles
   statement: |
     Every light names a source in the world (look.color.light_sources, the LIGHTING_BIBLE

@@ -1,5 +1,5 @@
 id: CHANGE-005
-status: PROPOSED
+status: APPROVED
 target: characters.ren.expressions
 reason: 'G7 review #3: animation.vocab.v2.face.ren adds wary and determined to Ren''s comic set, used
   in SC01_SH060 f18, SC02_SH010 f0, SC03_SH020 f0 and SC03_SH030 f0, but LOCKED characters.ren.expressions
@@ -114,6 +114,8 @@ impact:
   - canon:look.exposure.scene_keys
   - canon:look.exposure.value_structure
   - canon:look.lighting.eevee_feasibility
+  - canon:look.lighting.sc03_blackout_render
+  - canon:look.lighting.sc03_sh070_style_break
   - canon:look.style.background_shading
   - canon:look.style.character_shading
   - canon:look.style.outlines
@@ -179,6 +181,7 @@ impact:
   - artifact:g5_review
   - artifact:g7_review
   - artifact:lighting_bible
+  - artifact:post_decisions
   - artifact:post_plan
   - artifact:preview_review
   - artifact:shot_list
@@ -312,3 +315,6 @@ impact:
   - qa:delivery
   - qa:motion
   - qa:stills
+decided_by: human:gokhan_guler
+decided_at: '2026-10-02T19:46:12Z'
+new_hash: sha256:3873f578a9e2b5d6613f0a212ba1ccb3b4118c33c65a5d9329fe8c87deafd055

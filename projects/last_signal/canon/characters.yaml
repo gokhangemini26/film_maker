@@ -213,11 +213,14 @@ entries:
     (cheeks fill, eyes shut, then open), the letdown (inner brows up, mouth flat), the
     freeze (eyes wide, pupils small, whole body held), relief (eyes close, long exhale, head
     back), the stunned stillness in the dark shop (face lit from below, brows lifted, no
-    movement). Tender set (SC04, SC06): focused calm (brows level, eyes on the phone), the
-    hesitation at the heart (lips pressed, a slow blink), the release after the send (eyes
-    close, breath out), the final look up (eyelids low, mouth soft, the faintest ease at the
-    corners). Every comic reaction is a held pose, not a rubbery take. No sweat drops,
-    anger marks, super-deformed faces or other graphic comic symbols.
+    movement), wary (brows level and very slightly lowered, eyes a touch narrowed, mouth
+    pressed, no smile: he expects the catch) and determined (brows level and knit, eyes fully
+    open and forward, mouth pressed small: the reset after a setback). Tender set (SC04, SC06):
+    focused calm (brows level, eyes on the phone), the hesitation at the heart (lips pressed, a
+    slow blink), the release after the send (eyes close, breath out), the final look up
+    (eyelids low, mouth soft, the faintest ease at the corners). Focused calm keeps its brows
+    level so it never reads as determined. Every comic reaction is a held pose, not a rubbery
+    take. No sweat drops, anger marks, super-deformed faces or other graphic comic symbols.
   value:
     comic_set:
     - rehearsed_breath
@@ -225,11 +228,28 @@ entries:
     - freeze
     - relief
     - stunned_stillness
+    - wary
+    - determined
+    comic_set_defs:
+      wary: brows level and very slightly lowered, eyes a touch narrowed, mouth pressed closed, no smile;
+        a held pose
+      determined: brows level and knit (inner ends slightly down), eyes fully open and forward, mouth
+        pressed small; the reset of freeze-sag-reset; a held pose
+    comic_set_used_in:
+      wary:
+      - SC03_SH020
+      - SC03_SH030
+      determined:
+      - SC01_SH060
+      - SC02_SH010
     tender_set:
     - focused_calm
     - hesitation_at_heart
     - release_after_send
     - final_look_up
+    tender_distinct_from_comic: focused_calm keeps brows level (no knit, no inner-end drop) so it never
+      reads as determined
+    comic_illegal_from_shot: SC04_SH030
     comic_style: held_pose_reactions
     graphic_symbols: false
     super_deformed: false
@@ -248,6 +268,27 @@ entries:
     they are the loud end of anime comedy, they read as manic, and they would break the
     "framed and lit like cinema" half of intent.soft_but_cinematic. Rejected: a big
     triumphant grin at the tick (turns a small earned triumph into a victory lap).
+
+    v2 additions (wary, determined). The comedy is bad timing plus persistence
+    (tone.comedy_source), and characters.ren.movement gives every setback the pattern
+    freeze, sag, reset. The v1 set has a face for the freeze and the sag (freeze, letdown)
+    but none for the reset, so the beat that makes the next setback funny had no face of its
+    own; determined is that face (SC01_SH060 f18, the storyboard's "resolve"; SC02_SH010 f0,
+    the same resolve, bigger, as he bursts out to run). The SC03 "wary relief" (G3 finding 7)
+    is a two-part gag: he expects the catch, nothing happens, then the exhale; the v1 set
+    has the relief half but not the expectation half; wary is that half (SC03_SH020 f0,
+    SC03_SH030 f0). Both are held poses with no graphic symbols, mouth closed, so they keep
+    comic_style held_pose_reactions and intent.soft_but_cinematic. Both join the comic set,
+    so the turn rule bans them from SC04_SH030 on and the change of key stays intact
+    (intent.comic_then_tender); the tender focused_calm must keep level brows so it does not
+    collapse into determined (G7 review #4). The persistence these faces show is what makes
+    the last signal earned (intent.earned_last_signal). Rejected: revert the four keys to
+    neutral or to an existing v1 face. neutral drops the expectation half of the wary gag and
+    the reset of freeze-sag-reset, so the setbacks lose their rhythm; freeze in SC03 would
+    pre-empt the freeze already keyed at SC03_SH030 f2 and flatten the gag; relief would
+    spend the exhale saved for SC03_SH040; letdown on the reset reads as giving up, the
+    opposite of persistence. Low on-screen risk: the face is legible only in SC03_SH030 f0
+    (SC01_SH060 rear 3/4, SC02_SH010 back of head), per G7 review #3.
   serves:
   - intent.comic_then_tender
   - intent.earned_last_signal
@@ -263,7 +304,53 @@ entries:
   tag: DECISION
   status: LOCKED
   source: agent:character-designer
-  version: 1
+  version: 2
+  history:
+  - version: 1
+    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
+    status: SUPERSEDED
+    change: CHANGE-005
+    at: '2026-10-02T19:46:12Z'
+    statement: |
+      Two expression sets split at the turn. Comic set (SC01-SC03): the rehearsed breath
+      (cheeks fill, eyes shut, then open), the letdown (inner brows up, mouth flat), the
+      freeze (eyes wide, pupils small, whole body held), relief (eyes close, long exhale, head
+      back), the stunned stillness in the dark shop (face lit from below, brows lifted, no
+      movement). Tender set (SC04, SC06): focused calm (brows level, eyes on the phone), the
+      hesitation at the heart (lips pressed, a slow blink), the release after the send (eyes
+      close, breath out), the final look up (eyelids low, mouth soft, the faintest ease at the
+      corners). Every comic reaction is a held pose, not a rubbery take. No sweat drops,
+      anger marks, super-deformed faces or other graphic comic symbols.
+    value:
+      comic_set:
+      - rehearsed_breath
+      - letdown
+      - freeze
+      - relief
+      - stunned_stillness
+      tender_set:
+      - focused_calm
+      - hesitation_at_heart
+      - release_after_send
+      - final_look_up
+      comic_style: held_pose_reactions
+      graphic_symbols: false
+      super_deformed: false
+      mouth_open_max: slight
+      lip_sync: false
+      face_hidden_beats:
+      - forehead_on_wheel_SC01
+    rationale: |
+      The comic reactions are timed on held frames (CREATIVE_DIRECTION: frozen stare,
+      slumped shoulder, pause before he tries again), so each is a pose with a clear read
+      rather than a flurry of shapes, which also suits the proxy face. Splitting the sets at
+      the turn makes the change of key visible on his face as well as in the pace
+      (tone.the_turn): after the crank begins he never uses a comic expression again. The
+      final look up stays short of a smile: his effort is done and the answer is not his to
+      see (tone.ending_restraint). Graphic symbols and super-deformed takes are excluded:
+      they are the loud end of anime comedy, they read as manic, and they would break the
+      "framed and lit like cinema" half of intent.soft_but_cinematic. Rejected: a big
+      triumphant grin at the tick (turns a small earned triumph into a victory lap).
 - id: characters.ren.wardrobe.jacket
   statement: |
     A light, unlined cotton overshirt jacket in soft cornflower blue, cut to the hip, with

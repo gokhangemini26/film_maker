@@ -313,9 +313,9 @@ canon:
     ledger_seq: 20
   characters.ren.expressions:
     status: LOCKED
-    hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
-    version: 1
-    ledger_seq: 20
+    hash: sha256:3873f578a9e2b5d6613f0a212ba1ccb3b4118c33c65a5d9329fe8c87deafd055
+    version: 2
+    ledger_seq: 41
   characters.ren.face:
     status: LOCKED
     hash: sha256:d63dc6a6bbfd4e2727ffacbab7f2bee8865a5c2ee0adce14c658f8b82489657d
@@ -468,19 +468,19 @@ canon:
     ledger_seq: 20
   world.sets.corner_shop:
     status: LOCKED
-    hash: sha256:ec237fef5176be584b10788bc38d48cf14cd937c1e42b64cb332319ef4e59f26
-    version: 1
-    ledger_seq: 20
+    hash: sha256:83a5d4461396bb77833fef48c3f0d4f88f961877ec3de8920a84276fd0294aab
+    version: 2
+    ledger_seq: 38
   world.sets.hana_room:
     status: LOCKED
-    hash: sha256:e19f0783497b907cbcdc58e82b81c8905c0c3456cc964bf467302f3e053c3114
-    version: 1
-    ledger_seq: 20
+    hash: sha256:b660c59609417d160450f124e0de21729bc72c33df948f010bb9fae0f95bf21e
+    version: 2
+    ledger_seq: 39
   world.sets.ren_car:
     status: LOCKED
-    hash: sha256:238ade8c11d56ccb22e595cd9e42829e593e23808c6d83fbff3d5e00f541cb99
-    version: 1
-    ledger_seq: 20
+    hash: sha256:bf6eefd9493d59782cdf474b040586f9e2065cf0f369c48f9cf49a1583b3382c
+    version: 2
+    ledger_seq: 40
   world.sets.street:
     status: LOCKED
     hash: sha256:f512f2320f0fdb1de518a7e82ed173a6a4f51a31f62540e2f3e4d2c4149180f1
@@ -618,9 +618,9 @@ canon:
     ledger_seq: 21
   look.exposure.scene_keys:
     status: LOCKED
-    hash: sha256:9fdeafa836b270c25f85eaa495aaf38ff25821a39a86cb46c3aafa92651fc4a4
-    version: 1
-    ledger_seq: 21
+    hash: sha256:8e2d662d272976f9442271ae8ec97ae1a85ccd45826490ef6ce1cbbf022cabc4
+    version: 2
+    ledger_seq: 42
   look.exposure.value_structure:
     status: LOCKED
     hash: sha256:db1c7cc7ca191389eda39900701b3da8966d7e7bcd26e084e3e01bd6b5d0df38
@@ -1015,10 +1015,10 @@ shots:
 authorizations: []
 changes:
   CHANGE-001: APPROVED
-  CHANGE-002: PROPOSED
-  CHANGE-003: PROPOSED
-  CHANGE-004: PROPOSED
-  CHANGE-005: PROPOSED
-  CHANGE-006: PROPOSED
-ledger_seq: 37
-ledger_head: sha256:6702ebe14b7a99ead27cc71cbe9d8921076b3b7e58946002e819ded9883494a7
+  CHANGE-002: APPROVED
+  CHANGE-003: APPROVED
+  CHANGE-004: APPROVED
+  CHANGE-005: APPROVED
+  CHANGE-006: APPROVED
+ledger_seq: 42
+ledger_head: sha256:8b1b77df77d76f5c7b4363fa4e3c6bd2d928a7031f84e2867caf494e944b9132

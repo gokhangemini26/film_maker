@@ -926,13 +926,30 @@
       }
     },
     "characters.ren.expressions": {
+      "comic_illegal_from_shot": "SC04_SH030",
       "comic_set": [
         "rehearsed_breath",
         "letdown",
         "freeze",
         "relief",
-        "stunned_stillness"
+        "stunned_stillness",
+        "wary",
+        "determined"
       ],
+      "comic_set_defs": {
+        "determined": "brows level and knit (inner ends slightly down), eyes fully open and forward, mouth pressed small; the reset of freeze-sag-reset; a held pose",
+        "wary": "brows level and very slightly lowered, eyes a touch narrowed, mouth pressed closed, no smile; a held pose"
+      },
+      "comic_set_used_in": {
+        "determined": [
+          "SC01_SH060",
+          "SC02_SH010"
+        ],
+        "wary": [
+          "SC03_SH020",
+          "SC03_SH030"
+        ]
+      },
       "comic_style": "held_pose_reactions",
       "face_hidden_beats": [
         "forehead_on_wheel_SC01"
@@ -941,6 +958,7 @@
       "lip_sync": false,
       "mouth_open_max": "slight",
       "super_deformed": false,
+      "tender_distinct_from_comic": "focused_calm keeps brows level (no knit, no inner-end drop) so it never reads as determined",
       "tender_set": [
         "focused_calm",
         "hesitation_at_heart",
@@ -3862,6 +3880,11 @@
       "SC04": 0.46,
       "SC05": 0.52,
       "SC06": 0.42,
+      "measured_on": {
+        "SC03_blackout": "room_region_per_shot",
+        "SC03_blackout_regions_ref": "look.lighting.sc03_blackout_render.checks.mean_luma_region",
+        "default": "whole_frame"
+      },
       "tolerance": 0.06
     },
     "look.exposure.value_structure": {
@@ -6080,6 +6103,22 @@
         "strip_curtain": true
       },
       "ceiling_m": 2.7,
+      "ceiling_panel_layout": {
+        "face_z_m": 2.69,
+        "long_axis": "depth",
+        "mount": "flush",
+        "size_m": [
+          0.6,
+          1.2
+        ],
+        "x_m": 0.0,
+        "y_m": [
+          1.125,
+          3.375,
+          5.625,
+          7.875
+        ]
+      },
       "ceiling_panels": 4,
       "counter": {
         "position": "front_left",
@@ -6090,6 +6129,10 @@
         ]
       },
       "display_stand": {
+        "centre_m": [
+          1.7,
+          8.55
+        ],
         "gap_to_wall_m": 0.25,
         "size_m": [
           0.6,
@@ -6110,8 +6153,31 @@
         4.5,
         9.0
       ],
+      "frame": {
+        "interior_x_m": [
+          -2.25,
+          2.25
+        ],
+        "interior_y_m": [
+          0.0,
+          9.0
+        ],
+        "origin": "door_threshold_centre",
+        "origin_in_street_m": [
+          -1.8,
+          12.0
+        ],
+        "plus_x": "right_as_seen_entering_west",
+        "plus_y": "depth_into_shop_south"
+      },
       "fridges": {
+        "centres_x_m": [
+          -0.6,
+          0.1,
+          0.8
+        ],
         "count": 3,
+        "front_face_y_m": 8.3,
         "size_m": [
           0.7,
           0.7,
@@ -6123,14 +6189,23 @@
         "corner": "right",
         "depth_from_door_m": 8.9,
         "height_m": 0.3,
-        "wall": "back"
+        "wall": "back",
+        "x_m": 1.95
       }
     },
     "world.sets.hana_room": {
       "ceiling_m": 2.4,
       "chair": "simple_desk_chair",
+      "chair_centre_m": [
+        0.0,
+        -0.85
+      ],
       "desk": {
         "against": "window_wall",
+        "centre_m": [
+          0.0,
+          -0.275
+        ],
         "height_m": 0.72,
         "size_m": [
           1.1,
@@ -6141,15 +6216,65 @@
         "position": "desk_left",
         "switched_on": true
       },
+      "desk_layout_m": {
+        "desk_lamp_base": [
+          -0.45,
+          -0.2
+        ],
+        "pencil_cup": [
+          -0.3,
+          -0.12
+        ],
+        "phone_hana_centre": [
+          0.25,
+          -0.3
+        ],
+        "sketchbook_centre": [
+          -0.05,
+          -0.25
+        ]
+      },
       "detail_zone": "window_wall_and_desk",
       "footprint_m": [
         3.0,
         3.6
       ],
+      "frame": {
+        "interior_x_m": [
+          -1.5,
+          1.5
+        ],
+        "interior_y_m": [
+          -3.6,
+          0.0
+        ],
+        "origin": "window_wall_inner_face_centre_at_floor",
+        "plus_x": "north",
+        "plus_y": "west",
+        "z": "up"
+      },
       "phone_position": "desk_right_of_sketchbook_face_up",
       "rest_of_room": "low_detail_in_shadow",
+      "wall_sketch_zones": {
+        "on": "window_wall_either_side_of_window",
+        "x_m": [
+          [
+            -1.15,
+            -0.7
+          ],
+          [
+            0.7,
+            1.15
+          ]
+        ],
+        "z_m": [
+          1.1,
+          1.95
+        ]
+      },
       "wall_sketches": "4-6_pinned_above_desk",
       "window": {
+        "centre_x_m": 0.0,
         "curtains": "open",
         "height_m": 1.1,
         "sill_height_m": 0.9,
@@ -6158,9 +6283,66 @@
       }
     },
     "world.sets.ren_car": {
+      "belt_line_z_m": 0.95,
+      "bonnet_front_edge_m": {
+        "y": 1.5,
+        "z": 0.8
+      },
       "dash_socket": "centre_console_12v_with_usb_adapter",
+      "dashboard": {
+        "rear_face_y_m": 0.5,
+        "top_z_m": 0.92,
+        "x_m": [
+          0.26,
+          1.62
+        ]
+      },
+      "door_hinge_y_m": 0.525,
       "door_length_m": 1.05,
       "door_open_angle_deg": 60,
+      "floor_z_m": 0.22,
+      "frame": "world.sets.street coordinates (+y west = car forward, +x north, z up); car centreline x 0.94",
+      "front_seats": {
+        "back": {
+          "height_m": 0.6,
+          "pivot_m": {
+            "y": -0.35,
+            "z": 0.5
+          },
+          "recline_from_vertical_deg": 20,
+          "top_m": {
+            "y": -0.555,
+            "z": 1.064
+          },
+          "width_m": 0.48
+        },
+        "cushion_m": {
+          "top_z": 0.45,
+          "width": 0.48,
+          "y": [
+            -0.35,
+            0.15
+          ]
+        },
+        "driver_h_point_m": [
+          1.29,
+          -0.3,
+          0.45
+        ],
+        "headrest_m": {
+          "gap_above_back": 0.04,
+          "size": [
+            0.26,
+            0.08,
+            0.2
+          ]
+        },
+        "passenger_h_point_m": [
+          0.6,
+          -0.3,
+          0.45
+        ]
+      },
       "glovebox": {
         "contents": [
           "crank_charger",
@@ -6168,24 +6350,114 @@
           "paper_napkins"
         ],
         "depth_m": 0.2,
+        "face_centre_m": [
+          0.6,
+          0.5,
+          0.68
+        ],
         "lid": "hinged_at_bottom_drops_down",
+        "lid_hinge_m": {
+          "axis": "x",
+          "y": 0.5,
+          "z": 0.605
+        },
+        "lid_open_angle_deg": 80,
+        "lid_open_free_edge_m": {
+          "y": 0.352,
+          "z": 0.631
+        },
+        "lid_size_m": [
+          0.32,
+          0.15,
+          0.02
+        ],
         "opening_m": [
           0.32,
           0.15
         ],
-        "reach_from_driver_seat_m": 0.75
+        "reach_from_driver_seat_m": 0.75,
+        "reach_measured_from": "steering_wheel_centre"
       },
+      "headliner_y_m": [
+        -1.45,
+        0.05
+      ],
+      "headliner_z_m": 1.4,
       "height_m": 1.45,
       "interior_detail": "front_half_only",
       "length_m": 3.4,
+      "rear_bench": {
+        "back": {
+          "height_m": 0.55,
+          "pivot_m": {
+            "y": -1.25,
+            "z": 0.45
+          },
+          "recline_from_vertical_deg": 25,
+          "top_m": {
+            "y": -1.48,
+            "z": 0.95
+          }
+        },
+        "cushion_top_z_m": 0.42,
+        "cushion_y_m": [
+          -1.3,
+          -0.85
+        ],
+        "detail": "simplified_dark"
+      },
+      "rear_hatch": {
+        "angle_from_vertical_deg": 18,
+        "boot_behind_rear_bench": "dark_unbuilt",
+        "bottom_edge_m": {
+          "y": -1.78,
+          "z": 0.55
+        },
+        "hinge_m": {
+          "y": -1.5,
+          "z": 1.43
+        },
+        "rear_window_z_m": [
+          0.95,
+          1.4
+        ],
+        "state": "closed_whole_film"
+      },
       "rear_view_mirror_m": [
         0.22,
         0.06
       ],
+      "roof": {
+        "front_edge_header_y_m": 0.08,
+        "outer_z_m": 1.45,
+        "rear_edge_y_m": -1.5,
+        "skin_plus_headliner_m": 0.05
+      },
       "seat_height_m": 0.45,
+      "side_window_top_z_m": 1.38,
       "sill_height_m": 0.32,
+      "steering_wheel": {
+        "centre_m": [
+          1.29,
+          0.22,
+          0.85
+        ],
+        "diameter_m": 0.38,
+        "rim_plane_from_vertical_deg": 30
+      },
       "wheelbase_m": 2.3,
       "width_m": 1.48,
+      "windscreen": {
+        "base_cowl_m": {
+          "y": 0.95,
+          "z": 0.95
+        },
+        "rake_reference": "from_horizontal",
+        "top_at_header_m": {
+          "y": 0.08,
+          "z": 1.45
+        }
+      },
       "windscreen_rake_deg": 30
     },
     "world.sets.street": {
