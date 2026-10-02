@@ -461,6 +461,7 @@ FOSSILS = [  # (kind, world x, world y) - between the age ticks, alternating sid
     ("worm", TIMELINE_X + 380, GROUND + TICK_SPACING * 5.55),
 ]
 _STRATA = None
+HIDE_BRAIN = False  # set by later scenes that take over the brain
 
 
 def strata_image():
@@ -601,6 +602,36 @@ def world(cv, t):
                           fill(hexc("#ffe2b0", a * 0.9)), align="right")
 
     # brain
+    if not HIDE_BRAIN:
+        world_brain(cv, t)
+
+    # dust in the strata
+    if view_bottom > GROUND:
+        cv.save()
+        cv.translate(0, cam.y - H / 2)
+        DUST.area = (TIMELINE_X - 1200, 0, TIMELINE_X + 1200, H)
+        DUST.draw(cv, t, "#ffe2b0", 0.55 * remap(t, CUE["tabiri"], CUE["tozlu"] + 0.3), blur=1.5)
+        cv.restore()
+    cv.restore()
+
+    # god rays from above while descending
+    gr = remap(t, 19.6, 20.6)
+    if gr > 0:
+        for i in range(5):
+            x = 300 + i * 360 + math.sin(t * 0.6 + i) * 40
+            ray = skia.Path()
+            ray.moveTo(x - 40, -50)
+            ray.lineTo(x + 40, -50)
+            ray.lineTo(x + 260, H + 50)
+            ray.lineTo(x + 60, H + 50)
+            ray.close()
+            cv.drawPath(ray, fill(0, shader=lin((0, 0), (0, H), [hexc("#ffe2b0", 0.10 * gr), hexc("#ffe2b0", 0)]),
+                                  blur=20))
+    # counter (screen space)
+    counter(cv, t)
+
+
+def world_brain(cv, t):
     cv.save()
     cv.translate(*BRAIN_POS)
     bob = math.sin(t * 1.3) * 6
@@ -640,30 +671,6 @@ def world(cv, t):
                           fill(hexc("#fff1c9", 1 - burst), blur=2))
     cv.restore()
 
-    # dust in the strata
-    if view_bottom > GROUND:
-        cv.save()
-        cv.translate(0, cam.y - H / 2)
-        DUST.area = (TIMELINE_X - 1200, 0, TIMELINE_X + 1200, H)
-        DUST.draw(cv, t, "#ffe2b0", 0.55 * remap(t, CUE["tabiri"], CUE["tozlu"] + 0.3), blur=1.5)
-        cv.restore()
-    cv.restore()
-
-    # god rays from above while descending
-    gr = remap(t, 19.6, 20.6)
-    if gr > 0:
-        for i in range(5):
-            x = 300 + i * 360 + math.sin(t * 0.6 + i) * 40
-            ray = skia.Path()
-            ray.moveTo(x - 40, -50)
-            ray.lineTo(x + 40, -50)
-            ray.lineTo(x + 260, H + 50)
-            ray.lineTo(x + 60, H + 50)
-            ray.close()
-            cv.drawPath(ray, fill(0, shader=lin((0, 0), (0, H), [hexc("#ffe2b0", 0.10 * gr), hexc("#ffe2b0", 0)]),
-                                  blur=20))
-    # counter (screen space)
-    counter(cv, t)
 
 
 def timeline_tip(t):

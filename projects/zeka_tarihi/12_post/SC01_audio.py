@@ -32,15 +32,14 @@ vo[-fade:] *= np.linspace(1, 0, fade)
 vo = vo / max(1e-9, np.abs(vo).max()) * 0.89
 mix.add(0, vo, 1.0)
 
-# music bed: A minor-ish, warm, opening up into a hopeful major at the brain reveal
-chords = [[45, 57, 64, 69], [41, 57, 65, 69], [48, 60, 64, 67], [43, 55, 62, 71],
-          [45, 57, 64, 72], [41, 60, 65, 69], [48, 60, 67, 76], [40, 59, 64, 68]]
-bed = A.pad(DUR + 1.5, chords, amp=0.10)[: int(DUR * A.SR)]
-t = np.arange(len(bed)) / A.SR
-bed *= np.minimum(1, t / 1.5) * np.minimum(1, (DUR - t) / 0.6)
-mix.add(0, bed, 1.0, -0.15)
-mix.add(0, A.pad(DUR + 1.5, [[c + 12 for c in ch] for ch in chords], amp=0.035)[: len(bed)] * np.minimum(1, t / 1.5)
-        * np.minimum(1, (DUR - t) / 0.6), 1.0, 0.25)
+# music bed: continuous film bed (12_post/music.py), sliced for this scene
+sys.path.insert(0, str(HERE))
+import music  # noqa: E402
+
+bed = music.slice_bed(0, DUR, fade_in=1.5)
+n = min(len(bed), len(mix.L))
+mix.L[:n] += bed[:n, 0]
+mix.R[:n] += bed[:n, 1]
 
 # SH010
 mix.add(0.62, A.page_flip(), 1.0, 0.3)

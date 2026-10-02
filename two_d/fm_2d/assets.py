@@ -11,7 +11,7 @@ from functools import lru_cache
 
 import skia
 
-from .core import (clamp, ease_out, fill, hexc, lerp, lin, mix, partial_path, poly, rad, rrect, smooth,
+from .core import (clamp, ease_out, ease_out_back, fill, hexc, lerp, lin, mix, partial_path, poly, rad, rrect, smooth,
                    smooth_path, stroke)
 
 # Shared palette (proposed look; becomes canon at G4).
@@ -701,3 +701,262 @@ def draw_strata(cv, width=2400, top=0, band_h=260, n=9):
     for (x, y, r) in pebbles:
         cv.drawCircle(x, y, r, fill(hexc("#000000", 0.18)))
         cv.drawCircle(x - r * 0.3, y - r * 0.3, r * 0.5, fill(hexc("#ffffff", 0.06)))
+
+
+# ============================================================== EVOLUTION CREATURES (all face right)
+STAGE_COLS = ["#56b08f", "#38a3d6", "#ffb347", "#ff7a6b", "#b48bff"]
+
+
+def draw_worm(cv, t, length=240, r=22, col="#f2a5a0", speed=3.0):
+    """Living segmented worm crawling right; origin = belly centre."""
+    n = 16
+    pts = []
+    for i in range(n):
+        u = i / (n - 1)
+        x = (u - 0.5) * length
+        y = math.sin(u * 5.0 - t * speed) * 12 * (0.4 + 0.6 * u)
+        pts.append((x, y))
+    for i, (x, y) in enumerate(pts):
+        u = i / (n - 1)
+        rr = r * (0.62 + 0.38 * math.sin(math.pi * (0.12 + 0.7 * u)))
+        cv.drawCircle(x, y + 3, rr, fill(hexc("#000000", 0.18), blur=4))
+    for i, (x, y) in enumerate(pts):
+        u = i / (n - 1)
+        rr = r * (0.62 + 0.38 * math.sin(math.pi * (0.12 + 0.7 * u)))
+        cv.drawCircle(x, y, rr, fill(0, shader=rad((x - rr * 0.3, y - rr * 0.4), rr * 1.6,
+                                                    [hexc("#ffd6cf"), hexc(col), hexc("#c46f74")], [0, 0.5, 1])))
+        if i % 2 == 0:
+            cv.drawCircle(x, y, rr, stroke(hexc("#b8606a", 0.35), 2))
+    # clitellum band
+    bx, by = pts[11]
+    cv.drawCircle(bx, by, r * 1.02, fill(hexc("#e3858a", 0.85)))
+    hx, hy = pts[-1]
+    cv.drawCircle(hx + 6, hy - 4, 3.2, fill(hexc("#3a1f2a")))
+    cv.drawCircle(hx + 7, hy - 5, 1.1, fill(hexc("#ffffff")))
+
+
+def draw_fish(cv, t, s=1.0, col="#38a3d6", dark="#1f5f9a"):
+    cv.save()
+    cv.scale(s, s)
+    sw = math.sin(t * 7)
+    # tail
+    cv.save()
+    cv.translate(-62, 0)
+    cv.rotate(sw * 16)
+    tail = skia.Path()
+    tail.moveTo(4, 0)
+    tail.cubicTo(-20, -10, -40, -36, -52, -40)
+    tail.cubicTo(-42, -12, -42, 12, -52, 40)
+    tail.cubicTo(-40, 36, -20, 10, 4, 0)
+    cv.drawPath(tail, fill(0, shader=lin((0, 0), (-52, 0), [hexc(col), hexc(dark)])))
+    cv.restore()
+    body = skia.Path()
+    body.moveTo(78, 4)
+    body.cubicTo(66, -40, -10, -52, -66, -6)
+    body.cubicTo(-10, 46, 60, 40, 78, 4)
+    body.close()
+    cv.drawPath(body, fill(hexc("#000000", 0.2), blur=8))
+    # dorsal + pectoral fin
+    dor = skia.Path()
+    dor.moveTo(-10, -38)
+    dor.cubicTo(0, -66, 26, -66, 34, -40)
+    cv.drawPath(dor, fill(hexc(dark)))
+    cv.drawPath(body, fill(0, shader=lin((0, -46), (0, 40), [hexc(col), hexc(col), hexc("#cfefff")], [0, 0.55, 1])))
+    cv.save()
+    cv.clipPath(body, doAntiAlias=True)
+    for k in range(3):
+        x = -30 + k * 26
+        cv.drawLine(x, -50, x - 8, 50, stroke(hexc(dark, 0.35), 7))
+    cv.restore()
+    cv.drawPath(body, stroke(hexc(dark, 0.8), 2.5))
+    pec = skia.Path()
+    pec.moveTo(18, 12)
+    pec.cubicTo(6, 26 + sw * 4, -12, 30, -18, 22)
+    pec.cubicTo(-6, 18, 6, 14, 18, 12)
+    cv.drawPath(pec, fill(hexc(dark, 0.85)))
+    # gill + eye + mouth
+    gill = skia.Path()
+    gill.moveTo(40, -20)
+    gill.quadTo(30, 2, 40, 22)
+    cv.drawPath(gill, stroke(hexc(dark, 0.7), 3))
+    cv.drawCircle(56, -8, 9, fill(hexc("#ffffff")))
+    cv.drawCircle(58, -8, 5, fill(hexc("#0b1026")))
+    cv.drawCircle(59.5, -10, 1.8, fill(hexc("#ffffff")))
+    cv.drawLine(74, 10, 66, 12, stroke(hexc(dark), 2.5))
+    cv.restore()
+
+
+def draw_mouse(cv, t, s=1.0, col="#c8b6a6"):
+    """Small mammal sitting, facing right. Origin = ground under feet."""
+    cv.save()
+    cv.scale(s, s)
+    br = math.sin(t * 3) * 1.5
+    cv.drawOval(skia.Rect.MakeXYWH(-80, -8, 160, 16), fill(hexc("#000000", 0.3), blur=6))
+    # tail
+    tail = skia.Path()
+    tail.moveTo(-50, -18)
+    tail.cubicTo(-110, -10, -120, -70, -90 + math.sin(t * 2) * 6, -90)
+    cv.drawPath(tail, stroke(hexc("#e7a3a0"), 6))
+    body = skia.Path()
+    body.moveTo(-60, -4)
+    body.cubicTo(-80, -70, -20, -110 - br, 30, -96)
+    body.cubicTo(70, -84, 64, -30, 50, -4)
+    body.close()
+    cv.drawPath(body, fill(0, shader=rad((-10, -80), 120, [hexc("#e4d6c8"), hexc(col), hexc("#8f7d6e")],
+                                          [0, 0.6, 1])))
+    # head
+    cv.save()
+    cv.translate(46, -96 - br)
+    cv.rotate(math.sin(t * 2.2) * 4)
+    head = skia.Path()
+    head.moveTo(-34, 6)
+    head.cubicTo(-36, -34, 10, -40, 34, -10)
+    head.cubicTo(50, 0, 56, 8, 58, 14)
+    head.cubicTo(40, 26, -10, 34, -34, 6)
+    head.close()
+    cv.drawPath(head, fill(0, shader=rad((-6, -16), 70, [hexc("#ece0d4"), hexc(col)])))
+    cv.drawCircle(-14, -34, 24, fill(hexc(col)))
+    cv.drawCircle(-14, -34, 15, fill(hexc("#f2b8b4")))
+    cv.drawCircle(22, -6, 6, fill(hexc("#0b1026")))
+    cv.drawCircle(24, -8, 2, fill(hexc("#ffffff")))
+    cv.drawCircle(57, 13, 5, fill(hexc("#ff8f9a")))
+    for dy in (-4, 4, 11):
+        cv.drawLine(50, 14, 80, 14 + dy * 1.4, stroke(hexc("#ffffff", 0.6), 1.5))
+    cv.restore()
+    # paws
+    cv.drawOval(skia.Rect.MakeXYWH(30, -38, 22, 14), fill(hexc("#f2c9c4")))
+    cv.drawOval(skia.Rect.MakeXYWH(-10, -10, 30, 12), fill(hexc("#f2c9c4")))
+    cv.drawOval(skia.Rect.MakeXYWH(22, -10, 30, 12), fill(hexc("#f2c9c4")))
+    cv.restore()
+
+
+def draw_monkey(cv, t, s=1.0, col="#8a5a3c"):
+    """Primate sitting, 3/4 facing right. Origin = ground."""
+    cv.save()
+    cv.scale(s, s)
+    cv.drawOval(skia.Rect.MakeXYWH(-80, -8, 160, 16), fill(hexc("#000000", 0.3), blur=6))
+    tail = skia.Path()
+    tail.moveTo(-40, -20)
+    tail.cubicTo(-110, -20, -110, -110, -70, -110)
+    tail.cubicTo(-50, -110, -50, -86, -66, -86)
+    cv.drawPath(tail, stroke(hexc(col), 9))
+    body = skia.Path()
+    body.moveTo(-50, -4)
+    body.cubicTo(-70, -80, -30, -130, 10, -130)
+    body.cubicTo(50, -130, 66, -70, 46, -4)
+    body.close()
+    cv.drawPath(body, fill(0, shader=rad((-10, -90), 130, [hexc("#a87652"), hexc(col), hexc("#5a3824")],
+                                          [0, 0.6, 1])))
+    cv.drawOval(skia.Rect.MakeXYWH(-24, -96, 56, 76), fill(hexc("#d9b08c")))
+    # arms + legs
+    cv.drawOval(skia.Rect.MakeXYWH(-46, -26, 44, 26), fill(hexc("#6e4630")))
+    cv.drawOval(skia.Rect.MakeXYWH(14, -26, 44, 26), fill(hexc("#6e4630")))
+    arm = skia.Path()
+    arm.moveTo(30, -100)
+    arm.quadTo(70, -80, 56, -44)
+    cv.drawPath(arm, stroke(hexc("#6e4630"), 18))
+    # head
+    cv.save()
+    cv.translate(12, -150 + math.sin(t * 2) * 2)
+    cv.rotate(math.sin(t * 1.5) * 5)
+    for sx in (-1, 1):
+        cv.drawCircle(sx * 50, -2, 20, fill(hexc(col)))
+        cv.drawCircle(sx * 50, -2, 12, fill(hexc("#e8c39e")))
+    cv.drawCircle(0, 0, 50, fill(0, shader=rad((-14, -18), 70, [hexc("#a87652"), hexc(col)])))
+    face = skia.Path()
+    face.moveTo(0, -8)
+    face.cubicTo(-14, -34, -46, -24, -38, 4)
+    face.cubicTo(-34, 30, -12, 40, 0, 40)
+    face.cubicTo(12, 40, 34, 30, 38, 4)
+    face.cubicTo(46, -24, 14, -34, 0, -8)
+    face.close()
+    cv.save()
+    cv.translate(6, 4)
+    cv.drawPath(face, fill(hexc("#e8c39e")))
+    for sx in (-1, 1):
+        cv.drawCircle(sx * 15, -2, 7, fill(hexc("#2a1a12")))
+        cv.drawCircle(sx * 15 + 2, -4, 2.2, fill(hexc("#ffffff")))
+    cv.drawCircle(-4, 14, 2.5, fill(hexc("#5a3824")))
+    cv.drawCircle(4, 14, 2.5, fill(hexc("#5a3824")))
+    sm = skia.Path()
+    sm.moveTo(-12, 24)
+    sm.quadTo(0, 32, 12, 24)
+    cv.drawPath(sm, stroke(hexc("#5a3824"), 3))
+    cv.restore()
+    cv.restore()
+    cv.restore()
+
+
+@lru_cache(maxsize=None)
+def human_head_path():
+    """Head + neck profile facing right, origin at base of neck; ~300 tall."""
+    pts = [(-40, 0), (-44, -60), (-70, -100), (-86, -160), (-80, -220), (-50, -268), (0, -290), (50, -282),
+           (86, -250), (98, -210), (100, -184), (118, -150), (106, -142), (108, -126), (102, -116), (108, -106),
+           (100, -94), (96, -76), (78, -66), (50, -66), (40, -40), (40, 0)]
+    return smooth_path(pts, closed=True, tension=0.9)
+
+
+def draw_human(cv, t, s=1.0, skin="#f0b48c", hair="#2b2147", shirt="#b48bff", glass=False, a=1.0):
+    """Stylised human bust in profile facing right. Origin = chest bottom centre.
+    glass=True draws a translucent head so a brain can be shown inside."""
+    cv.save()
+    cv.scale(s, s)
+    head = human_head_path()
+    # shoulders
+    sh = skia.Path()
+    sh.moveTo(-150, 0)
+    sh.cubicTo(-150, -70, -90, -110, -30, -110)
+    sh.lineTo(60, -110)
+    sh.cubicTo(120, -110, 150, -70, 150, 0)
+    sh.close()
+    cv.save()
+    cv.translate(0, -0)
+    if not glass:
+        cv.drawPath(sh, fill(0, shader=lin((0, -110), (0, 0), [hexc(shirt), mix(shirt, "#1a1438", 0.4)])))
+    else:
+        cv.drawPath(sh, fill(hexc("#9fb4ff", 0.10 * a)))
+        cv.drawPath(sh, stroke(hexc("#9fb4ff", 0.5 * a), 3))
+    cv.restore()
+    cv.save()
+    cv.translate(0, -96)
+    if not glass:
+        cv.drawPath(head, fill(0, shader=lin((-90, 0), (110, 0), [hexc(skin), hexc(skin)])))
+        cv.drawPath(head, fill(0, shader=lin((-90, 0), (110, 0), [hexc("#000000", 0.18), hexc("#000000", 0)])))
+        # hair
+        hp = skia.Path()
+        hp.moveTo(94, -228)
+        hp.cubicTo(76, -304, -46, -318, -88, -206)
+        hp.cubicTo(-96, -170, -88, -140, -76, -116)
+        hp.cubicTo(-50, -130, -40, -170, -26, -198)
+        hp.cubicTo(6, -238, 56, -246, 94, -228)
+        hp.close()
+        cv.drawPath(hp, fill(hexc(hair)))
+        # ear + eye + brow
+        cv.drawOval(skia.Rect.MakeXYWH(-30, -176, 30, 44), fill(hexc("#e09a74")))
+        cv.drawCircle(74, -176, 6, fill(hexc("#1a1438")))
+        cv.drawLine(62, -194, 88, -196, stroke(hexc(hair), 5))
+        mo = skia.Path()
+        mo.moveTo(86, -104)
+        mo.quadTo(94, -100, 100, -104)
+        cv.drawPath(mo, stroke(hexc("#9a4a3a"), 3))
+    else:
+        cv.drawPath(head, fill(hexc("#9fb4ff", 0.10 * a)))
+        cv.drawPath(head, stroke(hexc("#bfe0ff", 0.55 * a), 10, blur=10))
+        cv.drawPath(head, stroke(hexc("#dfeeff", 0.9 * a), 3))
+    cv.restore()
+    cv.restore()
+
+
+def bubble(cv, x, y, w, h, k=1.0, col="#ffffff", tail=(-1, 1), a=1.0):
+    """Thought/speech bubble centred at x,y with a small tail toward tail direction."""
+    if k <= 0:
+        return
+    cv.save()
+    cv.translate(x, y)
+    cv.scale(ease_out(k), ease_out(k))
+    cv.drawPath(rrect(-w / 2, -h / 2, w, h, h / 2.4), fill(hexc("#000000", 0.25 * a), blur=10))
+    cv.drawPath(rrect(-w / 2, -h / 2, w, h, h / 2.4), fill(hexc(col, 0.95 * a)))
+    tx, ty = tail
+    cv.drawCircle(tx * w * 0.35, ty * h * 0.62, 12, fill(hexc(col, 0.95 * a)))
+    cv.drawCircle(tx * w * 0.45, ty * h * 0.9, 7, fill(hexc(col, 0.95 * a)))
+    cv.restore()
