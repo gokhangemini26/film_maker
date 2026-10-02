@@ -1,5 +1,97 @@
 {
   "$defs": {
+    "Atmosphere": {
+      "additionalProperties": false,
+      "properties": {
+        "fog": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Fog"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "hdri": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hdri"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        }
+      },
+      "title": "Atmosphere",
+      "type": "object"
+    },
+    "Box": {
+      "additionalProperties": false,
+      "properties": {
+        "center": {
+          "default": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center",
+          "type": "array"
+        },
+        "size": {
+          "default": [
+            10.0,
+            10.0,
+            3.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Size",
+          "type": "array"
+        }
+      },
+      "title": "Box",
+      "type": "object"
+    },
     "Camera": {
       "additionalProperties": false,
       "properties": {
@@ -116,6 +208,155 @@
         }
       },
       "title": "Camera",
+      "type": "object"
+    },
+    "ColorBalance": {
+      "additionalProperties": false,
+      "description": "Blender Color Balance node. lift_gamma_gain: colours where 1.0 is neutral (Blender's convention);\ncdl: ASC CDL slope/power neutral 1.0, offset neutral 0.0.",
+      "properties": {
+        "gain": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Gain",
+          "type": "array"
+        },
+        "gamma": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Gamma",
+          "type": "array"
+        },
+        "lift": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Lift",
+          "type": "array"
+        },
+        "mode": {
+          "default": "lift_gamma_gain",
+          "enum": [
+            "lift_gamma_gain",
+            "cdl"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "offset": {
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Offset",
+          "type": "array"
+        },
+        "power": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Power",
+          "type": "array"
+        },
+        "slope": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Slope",
+          "type": "array"
+        }
+      },
+      "title": "ColorBalance",
       "type": "object"
     },
     "Composition": {
@@ -337,6 +578,267 @@
       "title": "Environment",
       "type": "object"
     },
+    "Fog": {
+      "additionalProperties": false,
+      "description": "Volumetric scatter. `density` is the scatter coefficient per metre (0.005 haze .. 0.05 thick fog).",
+      "properties": {
+        "anisotropy": {
+          "default": 0.0,
+          "description": "0 isotropic, >0 forward scatter (light shafts)",
+          "maximum": 0.99,
+          "minimum": -0.99,
+          "title": "Anisotropy",
+          "type": "number"
+        },
+        "bounds": {
+          "default": "world",
+          "enum": [
+            "world",
+            "box"
+          ],
+          "title": "Bounds",
+          "type": "string"
+        },
+        "box": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Box"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "colour": {
+          "default": "#FFFFFF",
+          "title": "Colour",
+          "type": "string"
+        },
+        "density": {
+          "exclusiveMinimum": 0,
+          "maximum": 10,
+          "title": "Density",
+          "type": "number"
+        },
+        "height_falloff": {
+          "default": 0.0,
+          "description": "1/m: density * exp(-falloff * z); 0 = uniform",
+          "maximum": 10,
+          "minimum": 0,
+          "title": "Height Falloff",
+          "type": "number"
+        }
+      },
+      "required": [
+        "density"
+      ],
+      "title": "Fog",
+      "type": "object"
+    },
+    "Grade": {
+      "additionalProperties": false,
+      "description": "Compositor grade, applied in this order: exposure -> color balance -> saturation -> curves -> glare.",
+      "properties": {
+        "color_balance": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ColorBalance"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "curves": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "master RGB curve control points (x, y) in 0..1",
+          "title": "Curves"
+        },
+        "exposure_ev": {
+          "anyOf": [
+            {
+              "maximum": 10,
+              "minimum": -10,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exposure Ev"
+        },
+        "glare": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GradeGlare"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "look": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Look"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "saturation": {
+          "anyOf": [
+            {
+              "maximum": 4,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "1.0 neutral",
+          "title": "Saturation"
+        },
+        "view_transform": {
+          "anyOf": [
+            {
+              "enum": [
+                "Standard",
+                "AgX",
+                "Filmic",
+                "Khronos PBR Neutral",
+                "Raw"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "View Transform"
+        }
+      },
+      "title": "Grade",
+      "type": "object"
+    },
+    "GradeGlare": {
+      "additionalProperties": false,
+      "properties": {
+        "size": {
+          "default": 0.02,
+          "description": "fraction of the frame width (Blender 5.x)",
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Size",
+          "type": "number"
+        },
+        "strength": {
+          "default": 0.3,
+          "maximum": 10,
+          "minimum": 0,
+          "title": "Strength",
+          "type": "number"
+        },
+        "threshold": {
+          "default": 1.0,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Threshold",
+          "type": "number"
+        },
+        "type": {
+          "default": "bloom",
+          "enum": [
+            "bloom",
+            "fog_glow"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "title": "GradeGlare",
+      "type": "object"
+    },
+    "Hdri": {
+      "additionalProperties": false,
+      "description": "Image-based environment light from `library/hdri/<id>/` (Poly Haven CC0 expected).",
+      "properties": {
+        "camera_visible": {
+          "default": true,
+          "description": "false: the HDRI only lights; camera rays keep the painted sky",
+          "title": "Camera Visible",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "library/hdri/<id>/ (asset.yaml + the .hdr/.exr it names)",
+          "title": "Id",
+          "type": "string"
+        },
+        "rotation_deg": {
+          "default": 0.0,
+          "description": "rotation about the vertical axis",
+          "maximum": 360,
+          "minimum": -360,
+          "title": "Rotation Deg",
+          "type": "number"
+        },
+        "strength": {
+          "default": 1.0,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Strength",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "Hdri",
+      "type": "object"
+    },
     "ShotCharacter": {
       "additionalProperties": false,
       "properties": {
@@ -551,6 +1053,18 @@
       "title": "Assets",
       "type": "array"
     },
+    "atmosphere": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Atmosphere"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "opt-in: HDRI environment + volumetric fog (docs/CINEMATIC_PIPELINE.md)"
+    },
     "camera": {
       "anyOf": [
         {
@@ -626,6 +1140,18 @@
         }
       ],
       "default": null
+    },
+    "grade": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Grade"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "opt-in: compositor colour grade for this shot (overrides canon look.grade)"
     },
     "lighting": {
       "anyOf": [

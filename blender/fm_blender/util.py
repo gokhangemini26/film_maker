@@ -58,9 +58,16 @@ def _mat(name):
     return m
 
 
+# "toon" (default, every existing film) or "pbr" (the opt-in Cycles cinematic profile, set by preview.setup_render). Shader to
+# RGB, the heart of the cel material, only exists in EEVEE, so a Cycles render shades the same colours with Principled instead.
+SHADING = ["toon"]
+
+
 def toon(color, shadow=None, threshold=0.5, outline=False, name=None):
     """Two-tone cel material. `color` is lit tone; shadow defaults to a cooler, darker mix."""
     lit = lin(color)
+    if SHADING[0] == "pbr":
+        return _pbr(lit, name)
     sh = lin(shadow) if shadow else [c * 0.72 for c in lit]
     key = name or f"fm.toon.{'%.3f_%.3f_%.3f' % tuple(lit)}.{threshold}"
     m = bpy.data.materials.get(key)
@@ -84,6 +91,21 @@ def toon(color, shadow=None, threshold=0.5, outline=False, name=None):
     nt.links.new(bw.outputs[0], ramp.inputs[0])
     nt.links.new(ramp.outputs[0], em.inputs[0])
     nt.links.new(em.outputs[0], out.inputs[0])
+    return m
+
+
+def _pbr(lit, name=None):
+    key = (name or f"fm.toon.{'%.3f_%.3f_%.3f' % tuple(lit)}") + ".pbr"
+    m = bpy.data.materials.get(key)
+    if m is not None:
+        return m
+    m = _mat(key)
+    nt = m.node_tree
+    p = nt.nodes.new("ShaderNodeBsdfPrincipled")
+    p.inputs["Base Color"].default_value = (*lit, 1)
+    p.inputs["Roughness"].default_value = 0.6
+    out = nt.nodes.new("ShaderNodeOutputMaterial")
+    nt.links.new(p.outputs[0], out.inputs[0])
     return m
 
 
@@ -192,6 +214,8 @@ def between(name, a, b, radius, col, mat, segs=12):
 
 def add_outline(obj, color, thickness=0.012):
     """Coloured inverted-hull outline as a Solidify modifier using a second material slot."""
+    if SHADING[0] == "pbr":          # no painted outline in the physically shaded (cinematic) look
+        return obj
     if len(obj.data.materials) < 2:
         obj.data.materials.append(outline_mat(color))
     mod = obj.modifiers.new("fm_outline", "SOLIDIFY")

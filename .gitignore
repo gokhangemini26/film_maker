@@ -26,6 +26,9 @@ projects/*/13_delivery/**/*.mov
 projects/*/13_delivery/**/*.mkv
 projects/*/13_delivery/**/*.wav
 library/assets/**/*.blend1
+# HDRI image files (Poly Haven downloads, 6-30 MB): asset.yaml (with its sha256) is committed, the image is fetched by the human
+library/hdri/*/*.hdr
+library/hdri/*/*.exr
 
 # Local-only
 # regenerable demo project: python scripts/demo_m1.py --clean

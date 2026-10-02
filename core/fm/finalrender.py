@@ -24,10 +24,11 @@ from pathlib import Path
 from .blender import require_blender
 from .blenderrun import _fm_finish, _fm_framesel, _frame_cmd, scope_shots
 from .errors import FMError
-from .io import hash_obj, load_yaml, now_iso, write_json
+from .io import hash_obj, now_iso, write_json
 from .ops import load_state, record_derived
 from .phases import FINAL_FRAMES_REPORT
 from .project import Project
+from .renderprofile import cycles_settings, is_cycles, load_profile, subprocess_env
 from .resolve import resolve
 
 FINAL_DIR = "11_render/final"
@@ -39,18 +40,6 @@ _PNG_SIG = b"\x89PNG\r\n\x1a\n"
 
 
 # ------------------------------------------------------------------------------------------------ helpers
-def load_profile(project: Project, repo: Path, name: str = "final") -> dict:
-    """Render profile `name` from config/render_profiles.yaml, overridden by projects/<film>/config/render.yaml."""
-    base = (load_yaml(repo / "config" / "render_profiles.yaml") or {}).get("profiles", {})
-    if name not in base:
-        raise FMError(f"config/render_profiles.yaml has no profile '{name}'")
-    prof = dict(base[name])
-    override = project.dir / "config" / "render.yaml"
-    if override.exists():
-        prof.update(((load_yaml(override) or {}).get("profiles") or {}).get(name) or {})
-    return prof
-
-
 def png_info(path: Path) -> tuple[int, int] | None:
     """(width, height) of a structurally complete PNG (signature, IHDR, IEND trailer), else None. No decoding."""
     try:
@@ -141,12 +130,12 @@ def _authorized(project: Project, auths: list, ids: list[str]) -> list[str]:
 # ------------------------------------------------------------------------------------------------ fm blender final
 def final(project: Project, repo: Path, *, scope: str | None = None, resume: bool = False, width: int | None = None,
           samples: int | None = None, route: str = "exe", chunk_frames: int | None = None, frames: str | None = None,
-          jobs: int = 1, timeout_s: int = 3600) -> dict:
+          jobs: int = 1, timeout_s: int = 3600, profile: str = "final") -> dict:
     if route not in ROUTES:
         raise FMError(f"--route must be one of {', '.join(ROUTES)}")
-    prof = load_profile(project, repo)
+    prof = load_profile(project, repo, profile)
     if str(prof.get("output", "png")).lower() != "png":
-        raise FMError(f"render profile 'final' has output: {prof.get('output')}, but `fm post assemble` reads PNG frames: "
+        raise FMError(f"render profile '{profile}' has output: {prof.get('output')}, but `fm post assemble` reads PNG frames: "
                       "set output: png in config/render_profiles.yaml")
     auths = _check_authorization(project)        # refuse before touching anything else
     resolve(project, "film")
@@ -187,6 +176,9 @@ def final(project: Project, repo: Path, *, scope: str | None = None, resume: boo
     settings = {"route": route, "width": exp_w, "height": exp_h, "samples": samples, "pinned": not draft,
                 "profile": {**{k: prof.get(k) for k in ("engine", "resolution_scale", "samples", "motion_blur", "output")},
                             "glare": glare}}   # canon-derived: a canon change re-renders the shot, never mixes settings
+    if is_cycles(prof):   # opt-in cinematic profile: every Cycles setting joins the fingerprint (EEVEE profiles keep the old one)
+        settings["profile"]["cycles"] = cycles_settings(prof, samples)
+    env = subprocess_env(prof, repo, samples)
     out = project.dir / FINAL_DIR
     out.mkdir(parents=True, exist_ok=True)
     logs = project.dir / "10_blender" / "logs"
@@ -241,7 +233,7 @@ def final(project: Project, repo: Path, *, scope: str | None = None, resume: boo
         cmd, ver = _frame_cmd(repo, draft=draft, resolved=resolved, out=out, sid=sid, width=width, spec=_spec(a, b), stamp=False,
                               samples=samples, fast=False, resume=resume, final=True)
         try:
-            r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s)
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s, **({"env": env} if env is not None else {}))
             text, ok = r.stdout + "\n" + r.stderr, "FM_OK" in r.stdout
         except (subprocess.TimeoutExpired, OSError) as exc:
             text, ok = f"{type(exc).__name__}: {exc}", False

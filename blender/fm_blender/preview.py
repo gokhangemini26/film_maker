@@ -55,6 +55,11 @@ def setup_render(film, width):
         sc.eevee.taa_render_samples = 16
     except Exception:  # noqa: BLE001
         pass
+    # OPT-IN cinematic profile (FM_RENDER_PROFILE, set by `fm blender ... --profile <cycles profile>`): Cycles + denoiser +
+    # physically shaded materials. Without the variable (every default profile, last_signal) this is a no-op.
+    from . import render_engine as RE
+    if RE.apply_from_env(sc) is not None:
+        U.SHADING[0] = "pbr"
 
 
 def world_sky(dusk, canon):
@@ -645,6 +650,10 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
         near = sorted(((o.matrix_world.translation - cpos).length, o.name) for o in bpy.data.objects
                       if o.type in ("MESH", "LIGHT") and not o.hide_render)[:6]
         print("FM_NEAR", sid, [(round(d, 2), nme) for d, nme in near], flush=True)
+    # opt-in cinematic atmosphere (HDRI + volumetric fog) and compositor grade; no-ops without a Cycles profile and a spec
+    from . import atmosphere as AT, grade as GR
+    AT.apply_for_shot(bpy.context.scene, shot)
+    GR.apply_for_shot(bpy.context.scene, shot)
     if animate is not None:  # animate.render_frames re-poses this assembled shot and renders its frames itself
         return animate(dict(film=film, shot=shot, canon=canon, units=units, rig=rig, car=car, bg=bg, cam=cam, cam_data=cam_data,
                             cpos=cpos, tgt=tgt, off=off, figs=figs, out_dir=out_dir, culled=culled))

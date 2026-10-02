@@ -16,7 +16,7 @@ from pydantic import ValidationError
 from .errors import FMError
 from .io import canonical_json, hash_obj, load_json, load_yaml, normalize_text, read_front_matter, sha256_text
 from .schemas import (
-    SHOT_NON_CONTENT, ArtifactMeta, Brief, CanonEntry, CanonFile, ChangeRequest, DerivedRecord,
+    SHOT_NON_CONTENT, SHOT_OPTIONAL_CONTENT, ArtifactMeta, Brief, CanonEntry, CanonFile, ChangeRequest, DerivedRecord,
     AnimationTracks, AudioCues, SceneIndex, ShotSpec,
 )
 from .schemas.common import SLUG_RE
@@ -53,7 +53,8 @@ def canon_hash(entry: CanonEntry) -> str:
 
 
 def shot_hash(spec: ShotSpec) -> str:
-    return hash_obj(spec.model_dump(mode="json", exclude=set(SHOT_NON_CONTENT)))
+    skip = set(SHOT_NON_CONTENT) | {k for k in SHOT_OPTIONAL_CONTENT if getattr(spec, k) is None}
+    return hash_obj(spec.model_dump(mode="json", exclude=skip))
 
 
 def md_artifact_hash(meta: dict, body: str) -> str:

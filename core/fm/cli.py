@@ -572,12 +572,13 @@ def blender_group():
 @click.option("--width", default=768, show_default=True)
 @click.option("--draft", is_flag=True, help="Use the bpy module (not the pinned Blender): fast drafts only, never G6 evidence.")
 @click.option("--jobs", default=1, show_default=True, help="Parallel Blender processes.")
+@click.option("--profile", "profile", default=None, help="Render profile from config/render_profiles.yaml or the project's config/render.yaml. Default: none (the film's own EEVEE look). A Cycles profile (e.g. cinematic_preview) is the opt-in cinematic pipeline.")
 @click.pass_obj
-def blender_preview(c: Ctx, shots, width, draft, jobs):
+def blender_preview(c: Ctx, shots, width, draft, jobs, profile):
     """Render one still per shot into 10_blender/previews/ and record each as a derived node."""
     from .blenderrun import preview as run
 
-    r = run(c.project(), c.repo, shots=shots.split(",") if shots else None, width=width, draft=draft, jobs=jobs)
+    r = run(c.project(), c.repo, shots=shots.split(",") if shots else None, width=width, draft=draft, jobs=jobs, profile=profile)
     click.echo(f"rendered {len(r['rendered'])} preview(s) with {r['backend']}; failed: {', '.join(r['failed']) or 'none'}")
     if r["failed"]:
         sys.exit(1)
@@ -591,13 +592,15 @@ def blender_preview(c: Ctx, shots, width, draft, jobs):
 @click.option("--draft", is_flag=True, help="Use the bpy module (not the pinned Blender): never evidence.")
 @click.option("--width", default=480, show_default=True)
 @click.option("--jobs", default=1, show_default=True, help="Parallel Blender processes.")
+@click.option("--samples", type=int, default=None, help="Render samples (Cycles profile: overrides the profile's samples).")
+@click.option("--profile", "profile", default=None, help="Render profile from config/render_profiles.yaml or the project's config/render.yaml. Default: none (the film's own EEVEE look). A Cycles profile (e.g. cinematic_preview) is the opt-in cinematic pipeline.")
 @click.pass_obj
-def blender_frames(c: Ctx, scope, frames_spec, every_key, preview_frame, draft, width, jobs):
+def blender_frames(c: Ctx, scope, frames_spec, every_key, preview_frame, draft, width, jobs, samples, profile):
     """Render chosen animation frames to 10_blender/frames/<SHOT>/ plus a contact strip (working images, not recorded)."""
     from .blenderrun import frames as run
 
     r = run(c.project(), c.repo, scope=scope, frames=frames_spec, every_key=every_key, preview_frame=preview_frame,
-            draft=draft, width=width, jobs=jobs)
+            draft=draft, width=width, jobs=jobs, samples=samples, profile=profile)
     click.echo(f"rendered frames for {len(r['rendered'])} shot(s) with {r['backend']}; failed: {', '.join(r['failed']) or 'none'}")
     for sid, p in r["strips"].items():
         click.echo(f"  {sid}: {p}")
@@ -611,12 +614,13 @@ def blender_frames(c: Ctx, scope, frames_spec, every_key, preview_frame, draft, 
 @click.option("--width", default=640, show_default=True)
 @click.option("--jobs", default=1, show_default=True, help="Parallel Blender processes.")
 @click.option("--resume", is_flag=True, help="Keep frames already on disk.")
+@click.option("--profile", "profile", default=None, help="Render profile from config/render_profiles.yaml or the project's config/render.yaml. Default: none (the film's own EEVEE look). A Cycles profile (e.g. cinematic_preview) is the opt-in cinematic pipeline.")
 @click.pass_obj
-def blender_playblast(c: Ctx, scope, draft, width, jobs, resume):
+def blender_playblast(c: Ctx, scope, draft, width, jobs, resume, profile):
     """Render every frame of the shots in scope, stamp shot id + frame, encode <SHOT>.mp4 (and film.mp4 for the whole film)."""
     from .blenderrun import playblast as run
 
-    r = run(c.project(), c.repo, scope=scope, draft=draft, width=width, jobs=jobs, resume=resume)
+    r = run(c.project(), c.repo, scope=scope, draft=draft, width=width, jobs=jobs, resume=resume, profile=profile)
     click.echo(f"playblast of {len(r['rendered'])} shot(s) with {r['backend']}; failed: {', '.join(r['failed']) or 'none'}")
     if r["film"]:
         click.echo(f"  film: {r['film']}")
@@ -635,13 +639,15 @@ def blender_playblast(c: Ctx, scope, draft, width, jobs, resume):
 @click.option("--frames", "frames_spec", help="Shot-local frames to (re)render, e.g. 30-47 (needs a one-shot scope).")
 @click.option("--jobs", default=1, show_default=True, help="Parallel Blender processes (chunks).")
 @click.option("--timeout", "timeout_s", default=3600, show_default=True, help="Seconds allowed per Blender process.")
+@click.option("--profile", "profile", default="final", show_default=True,
+              help="Render profile. `final` = the film's EEVEE final; `cinematic_final` = the opt-in Cycles + denoiser pipeline. Authorization is required either way.")
 @click.pass_obj
-def blender_final(c: Ctx, scope, resume, width, samples, route, chunk_frames, frames_spec, jobs, timeout_s):
+def blender_final(c: Ctx, scope, resume, width, samples, route, chunk_frames, frames_spec, jobs, timeout_s, profile):
     """Final render: every frame to 11_render/final/<SHOT>/NNNN.png in chunks, then MANIFEST.json. REFUSES without the human's `fm authorize final-render`."""
     from .finalrender import final as run
 
     r = run(c.project(), c.repo, scope=scope, resume=resume, width=width, samples=samples, route=route,
-            chunk_frames=chunk_frames, frames=frames_spec, jobs=jobs, timeout_s=timeout_s)
+            chunk_frames=chunk_frames, frames=frames_spec, jobs=jobs, timeout_s=timeout_s, profile=profile)
     click.echo(f"final render with {r['backend']} ({r['route']}): {r['width']}x{r['height']}, {r['samples']} samples, "
                f"{r['rendered_chunks']} chunk(s) ok, {len(r['failed_chunks'])} failed; complete shots: {len(r['complete'])}")
     if r["failed_chunks"]:
@@ -953,6 +959,24 @@ def post_export(c: Ctx, out, master, no_proxy):
     for f in r["files"]:
         click.echo(f"{f['path']}  {f['bytes']} bytes  sha256 {f['sha256'][:16]}...")
     click.echo(r["manifest"])
+
+
+@post_group.command("grade-handoff")
+@click.option("--out", type=click.Path(path_type=Path), default=None, help="Output dir (default 13_delivery/resolve_handoff).")
+@click.option("--frames", "frames_dir", type=click.Path(path_type=Path), default=None,
+              help="Final frames root, <SHOT>/%04d.png (default 11_render/final).")
+@click.pass_obj
+def post_grade_handoff(c: Ctx, out, frames_dir):
+    """Hand-off package for grading in DaVinci Resolve: per-shot grade spec + README. Resolve itself is NOT automated."""
+    from .handoff import grade_handoff
+
+    r = grade_handoff(c.project(), out, frames_dir)
+    click.echo(f"{r['dir']}: {', '.join(r['files'])}")
+    click.echo(f"  {r['shots_with_grade']} of {r['shots']} shot(s) carry a grade block; Resolve is not driven by fm: a colourist grades by hand")
+    if r["shots_without_frames"]:
+        click.secho("  no rendered frames yet for: " + ", ".join(r["shots_without_frames"]), fg="yellow")
+    if r["shots_8bit"]:
+        click.secho("  8-bit PNG frames (little grading headroom): " + ", ".join(r["shots_8bit"]), fg="yellow")
 
 
 @qa_group.command("delivery")

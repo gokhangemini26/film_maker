@@ -1,0 +1,317 @@
+{
+  "$defs": {
+    "ColorBalance": {
+      "additionalProperties": false,
+      "description": "Blender Color Balance node. lift_gamma_gain: colours where 1.0 is neutral (Blender's convention);\ncdl: ASC CDL slope/power neutral 1.0, offset neutral 0.0.",
+      "properties": {
+        "gain": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Gain",
+          "type": "array"
+        },
+        "gamma": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Gamma",
+          "type": "array"
+        },
+        "lift": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Lift",
+          "type": "array"
+        },
+        "mode": {
+          "default": "lift_gamma_gain",
+          "enum": [
+            "lift_gamma_gain",
+            "cdl"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "offset": {
+          "default": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Offset",
+          "type": "array"
+        },
+        "power": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Power",
+          "type": "array"
+        },
+        "slope": {
+          "default": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Slope",
+          "type": "array"
+        }
+      },
+      "title": "ColorBalance",
+      "type": "object"
+    },
+    "GradeGlare": {
+      "additionalProperties": false,
+      "properties": {
+        "size": {
+          "default": 0.02,
+          "description": "fraction of the frame width (Blender 5.x)",
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Size",
+          "type": "number"
+        },
+        "strength": {
+          "default": 0.3,
+          "maximum": 10,
+          "minimum": 0,
+          "title": "Strength",
+          "type": "number"
+        },
+        "threshold": {
+          "default": 1.0,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Threshold",
+          "type": "number"
+        },
+        "type": {
+          "default": "bloom",
+          "enum": [
+            "bloom",
+            "fog_glow"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "title": "GradeGlare",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Compositor grade, applied in this order: exposure -> color balance -> saturation -> curves -> glare.",
+  "properties": {
+    "color_balance": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ColorBalance"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "curves": {
+      "anyOf": [
+        {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "master RGB curve control points (x, y) in 0..1",
+      "title": "Curves"
+    },
+    "exposure_ev": {
+      "anyOf": [
+        {
+          "maximum": 10,
+          "minimum": -10,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Exposure Ev"
+    },
+    "glare": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/GradeGlare"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "look": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Look"
+    },
+    "rationale": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rationale"
+    },
+    "saturation": {
+      "anyOf": [
+        {
+          "maximum": 4,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "1.0 neutral",
+      "title": "Saturation"
+    },
+    "view_transform": {
+      "anyOf": [
+        {
+          "enum": [
+            "Standard",
+            "AgX",
+            "Filmic",
+            "Khronos PBR Neutral",
+            "Raw"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "View Transform"
+    }
+  },
+  "title": "Grade",
+  "type": "object"
+}

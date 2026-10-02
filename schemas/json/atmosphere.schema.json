@@ -1,0 +1,189 @@
+{
+  "$defs": {
+    "Box": {
+      "additionalProperties": false,
+      "properties": {
+        "center": {
+          "default": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center",
+          "type": "array"
+        },
+        "size": {
+          "default": [
+            10.0,
+            10.0,
+            3.0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Size",
+          "type": "array"
+        }
+      },
+      "title": "Box",
+      "type": "object"
+    },
+    "Fog": {
+      "additionalProperties": false,
+      "description": "Volumetric scatter. `density` is the scatter coefficient per metre (0.005 haze .. 0.05 thick fog).",
+      "properties": {
+        "anisotropy": {
+          "default": 0.0,
+          "description": "0 isotropic, >0 forward scatter (light shafts)",
+          "maximum": 0.99,
+          "minimum": -0.99,
+          "title": "Anisotropy",
+          "type": "number"
+        },
+        "bounds": {
+          "default": "world",
+          "enum": [
+            "world",
+            "box"
+          ],
+          "title": "Bounds",
+          "type": "string"
+        },
+        "box": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Box"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "colour": {
+          "default": "#FFFFFF",
+          "title": "Colour",
+          "type": "string"
+        },
+        "density": {
+          "exclusiveMinimum": 0,
+          "maximum": 10,
+          "title": "Density",
+          "type": "number"
+        },
+        "height_falloff": {
+          "default": 0.0,
+          "description": "1/m: density * exp(-falloff * z); 0 = uniform",
+          "maximum": 10,
+          "minimum": 0,
+          "title": "Height Falloff",
+          "type": "number"
+        }
+      },
+      "required": [
+        "density"
+      ],
+      "title": "Fog",
+      "type": "object"
+    },
+    "Hdri": {
+      "additionalProperties": false,
+      "description": "Image-based environment light from `library/hdri/<id>/` (Poly Haven CC0 expected).",
+      "properties": {
+        "camera_visible": {
+          "default": true,
+          "description": "false: the HDRI only lights; camera rays keep the painted sky",
+          "title": "Camera Visible",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "library/hdri/<id>/ (asset.yaml + the .hdr/.exr it names)",
+          "title": "Id",
+          "type": "string"
+        },
+        "rotation_deg": {
+          "default": 0.0,
+          "description": "rotation about the vertical axis",
+          "maximum": 360,
+          "minimum": -360,
+          "title": "Rotation Deg",
+          "type": "number"
+        },
+        "strength": {
+          "default": 1.0,
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Strength",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "Hdri",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "fog": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Fog"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "hdri": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Hdri"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "rationale": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rationale"
+    }
+  },
+  "title": "Atmosphere",
+  "type": "object"
+}

@@ -92,7 +92,7 @@ missing ones instead of pretending they ran:
 | `fm post assemble|export`, `fm qa delivery` | F4 (landed) |
 
 ```
-fm blender final [--scope S] [--resume] [--width N] [--samples N] [--route exe|cloud] [--chunk-frames N] [--frames SPEC] [--jobs N] [--timeout S]
+fm blender final [--scope S] [--resume] [--width N] [--samples N] [--route exe|cloud] [--chunk-frames N] [--frames SPEC] [--jobs N] [--timeout S] [--profile NAME]
 fm qa final [--allow-reduced]
 ```
 
@@ -103,6 +103,13 @@ shot). It refuses unless the human's `fm authorize final-render` is in the ledge
 is the pinned Blender and the only route `fm qa final` accepts; `cloud` is the bpy draft. `fm qa final` writes `qa/final_frames_report.json`
 (frame counts vs the resolved film, size, corrupt and black frames, hashes vs the manifest, stale frames): the G8 contract file.
 See `docs/PRODUCTION_RUNBOOK.md`.
+
+**Opt-in cinematic pipeline** (Cycles, AI denoiser, Poly Haven HDRI + fog, compositor grade; `docs/CINEMATIC_PIPELINE.md`):
+`fm blender preview|frames|playblast` accept `--profile NAME` and `fm blender final` accepts `--profile NAME` (default `final`).
+With no `--profile` (or an EEVEE profile such as `preview`/`final`) nothing changes. `--profile cinematic_preview` / `cinematic_final`
+select Cycles; a final render still needs the human's `fm authorize final-render`. `fm post grade-handoff [--out DIR] [--frames DIR]`
+writes a DaVinci Resolve hand-off package (per-shot grade spec + README) under `13_delivery/resolve_handoff/`; Resolve itself is not automated.
+New `fm validate` codes: `HDRI_ASSET` (library/hdri record missing/UNKNOWN licence/missing file), `CINEMATIC_SCHEMA`, `CINEMATIC_AMBIGUOUS`.
 
 ```
 fm qa motion [--strict] [--no-record]     # alias: fm check anim; tier 0, no Blender; exit 1 on FAIL

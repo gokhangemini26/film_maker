@@ -22,3 +22,40 @@ profiles:
     # Final renders need a human authorization recorded in the ledger
     # (`fm authorize final-render`) before any backend may start them.
     requires_authorization: true
+
+  # ---------------------------------------------------------------------------------------------------------------------
+  # OPT-IN cinematic pipeline (docs/CINEMATIC_PIPELINE.md): Cycles, AI denoiser, HDRI + volumetric fog, compositor grade.
+  # Nothing above changes, and no film uses these unless it asks: `fm blender preview|frames|playblast --profile cinematic_preview`,
+  # `fm blender final --profile cinematic_final`. A film can also point its own `preview`/`final` at them (or define its own
+  # profile) in projects/<film>/config/render.yaml. The Cycles keys only apply to engine: CYCLES.
+  #   denoiser: oidn | optix | auto | none. oidn = Intel Open Image Denoise on the CPU (works anywhere); optix needs an NVIDIA GPU;
+  #             auto = optix when an OptiX device is in use, else oidn. Fallback chain optix -> oidn -> none, logged as FM_DENOISER.
+  #   device:   auto | cpu | optix | cuda | hip | metal | oneapi (a missing GPU falls back to CPU, logged as FM_RENDER_ENGINE).
+  # Seconds per frame are UNKNOWN until measured on the target machine: Cycles on a CPU is slow (docs/CINEMATIC_PIPELINE.md).
+  cinematic_preview:
+    engine: CYCLES
+    resolution_scale: 0.5
+    samples: 32
+    adaptive_sampling: true
+    adaptive_threshold: 0.03
+    denoiser: oidn
+    device: auto
+    motion_blur: false
+    output: png
+  cinematic_final:
+    engine: CYCLES
+    resolution_scale: 1.0
+    samples: 256
+    adaptive_sampling: true
+    adaptive_threshold: 0.01
+    adaptive_min_samples: 32
+    denoiser: auto
+    device: auto
+    motion_blur: false
+    # 16-bit PNG: grading headroom for the compositor grade / a Resolve hand-off (fm blender final writes PNG, never EXR).
+    output: png
+    color_depth: 16
+    # Cycles frames are slow on a CPU: few frames per Blender process, so one chunk fits the per-process --timeout (default 3600 s).
+    chunk_frames: 12
+    # Same rule as `final`: the human's `fm authorize final-render` is required before any backend starts.
+    requires_authorization: true

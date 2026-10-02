@@ -1,9 +1,10 @@
 """FILM_MAKER data model. All models export to JSON Schema (`fm schema export`)."""
 from .artifacts import (  # noqa: F401
-    BRIEF_FIELDS, SHOT_NON_CONTENT, ArtifactMeta, Brief, BriefField, Camera, Composition,
+    BRIEF_FIELDS, SHOT_NON_CONTENT, SHOT_OPTIONAL_CONTENT, ArtifactMeta, Brief, BriefField, Camera, Composition,
     CreativeIntent, SceneEntry, SceneIndex,
     Environment, ShotCharacter, ShotRationale, ShotSpec, StyleBreak,
 )
+from .cinematic import Atmosphere, Fog, Grade, Hdri  # noqa: F401
 from .animation import AnimationTracks, anim_artifact_id, anim_path  # noqa: F401
 from .audio import AUDIO_CUES_ID, AUDIO_CUES_PATH, AudioCues  # noqa: F401
 from .canon import (  # noqa: F401
@@ -23,6 +24,8 @@ EXPORTED = {
     "scene_index": SceneIndex,
     "artifact_meta": ArtifactMeta,
     "shot": ShotSpec,
+    "atmosphere": Atmosphere,
+    "grade": Grade,
     "project_state": ProjectState,
     "ledger_record": LedgerRecord,
     "change_request": ChangeRequest,

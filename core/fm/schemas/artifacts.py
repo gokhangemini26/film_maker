@@ -5,6 +5,7 @@ from typing import Any, Literal
 
 from pydantic import Field, field_validator, model_validator
 
+from .cinematic import Atmosphere, Grade
 from .common import (
     SCENE_ID_RE, SEQUENCE_ID_RE, SHOT_ID_RE, SLUG_RE, DepRef, Status, StrictModel,
 )
@@ -197,6 +198,8 @@ class ShotSpec(StrictModel):
     color: dict[str, Any] | None = None
     animation: dict[str, Any] | None = None
     render: dict[str, Any] | None = None
+    atmosphere: Atmosphere | None = Field(default=None, description="opt-in: HDRI environment + volumetric fog (docs/CINEMATIC_PIPELINE.md)")
+    grade: Grade | None = Field(default=None, description="opt-in: compositor colour grade for this shot (overrides canon look.grade)")
     assets: list[str] = Field(default_factory=list)
     rationale: ShotRationale = Field(default_factory=ShotRationale)
     style_break: StyleBreak | None = None
@@ -235,6 +238,14 @@ class ShotSpec(StrictModel):
         return v
 
     @model_validator(mode="after")
+    def _cinematic_rationale(self) -> "ShotSpec":
+        for name in ("atmosphere", "grade"):
+            block = getattr(self, name)
+            if block is not None and not (block.rationale or "").strip():
+                raise ValueError(f"{name} needs a rationale (say why this atmosphere/grade serves the shot's intent)")
+        return self
+
+    @model_validator(mode="after")
     def _scene_prefix(self) -> "ShotSpec":
         if not self.shot_id.startswith(self.scene_id + "_"):
             raise ValueError(f"shot_id '{self.shot_id}' does not belong to scene '{self.scene_id}'")
@@ -243,3 +254,6 @@ class ShotSpec(StrictModel):
 
 # Shot fields excluded from the content hash: lifecycle + bookkeeping.
 SHOT_NON_CONTENT = ("status", "derived_from", "stamped_content_hash", "stamp_note")
+# Optional fields added after films existed: they join the content hash only when set, so a shot that never uses them
+# hashes exactly as it did before they were introduced (no existing node goes stale).
+SHOT_OPTIONAL_CONTENT = ("atmosphere", "grade")

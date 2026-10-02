@@ -1548,10 +1548,14 @@ def render_frames(resolved_dir, shot_id, frames, out_dir, width, *, stamp=False,
             log("FM_GLARE " + " ".join(f"{k}={v}" for k, v in glare.items() if k != "nodes"))
     ev = bpy.context.scene.eevee
     try:
-        if samples:
-            ev.taa_render_samples = int(samples)
-        if fast:  # draft playblast: cheaper shadows (the costly part of an EEVEE frame here), same look otherwise
-            ev.shadow_ray_count, ev.shadow_step_count, ev.shadow_resolution_scale = 1, 1, 0.25
+        if bpy.context.scene.render.engine == "CYCLES":      # opt-in cinematic profile: --samples overrides the profile's
+            if samples:
+                bpy.context.scene.cycles.samples = int(samples)
+        else:
+            if samples:
+                ev.taa_render_samples = int(samples)
+            if fast:  # draft playblast: cheaper shadows (the costly part of an EEVEE frame here), same look otherwise
+                ev.shadow_ray_count, ev.shadow_step_count, ev.shadow_resolution_scale = 1, 1, 0.25
     except Exception:  # noqa: BLE001
         pass
     shot = shots[shot_id]

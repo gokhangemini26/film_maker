@@ -214,6 +214,11 @@ def validate(project: Project) -> Report:  # noqa: C901 - a checklist by design
             if not loaded.exists(d.ref):
                 add("ERROR", "DANGLING_REF", where, f"derived_from unknown '{d.ref}'")
 
+    # ---- opt-in cinematic blocks (atmosphere / grade): CINEMATIC_* and HDRI_ASSET rules; silent for films without them
+    from .cinematic import check_cinematic
+    for lvl, code, where, msg in check_cinematic(project, loaded):
+        add(lvl, code, where, msg)
+
     # ---- structured shot animation (M6): ANIM_* rules
     from .animcheck import check_animation
     for lvl, code, where, msg in check_animation(project, loaded):

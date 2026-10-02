@@ -17,6 +17,8 @@ the truth about what you see.
 - Running `fm resolve` and `fm blender preview` (never `--draft` output as G6 evidence).
 - M6: `fm blender frames|playblast`, `fm qa motion`; in FINAL_RENDER `fm blender final` only after the human has run
   `fm authorize final-render`. These land incrementally (M6 steps C4, D1/D2, F3); if `fm` says a command is unknown, report that.
+- Opt-in cinematic renders (Cycles, HDRI + fog, compositor grade) with `--profile cinematic_preview|cinematic_final`, only for a film that
+  asks for them (`docs/CINEMATIC_PIPELINE.md`); report the denoiser actually used from the logs. You never download an HDRI.
 - The builders under `blender/fm_blender/` when the task is a builder fix (code, not creative content).
 - `10_blender/` outputs (previews, frames, playblast, final frames) and a per-shot report.
 

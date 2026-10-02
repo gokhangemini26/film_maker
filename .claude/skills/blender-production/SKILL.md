@@ -42,6 +42,15 @@ FINAL_RENDER (M6): chunked final render, only after the human authorized it (`/f
 11. Motion QA: `fm qa motion` tier 0 (spec level, no Blender), then tier 1 (bake report: foot slide, limb drift, attach
     fidelity, reach, keyframe coverage, idempotence). Technical results only, never evidence of creative correctness.
 
+### Opt-in cinematic pipeline (Cycles, HDRI + fog, grade)
+12. Only when the film asks (a shot `atmosphere:`/`grade:` block, canon `look.atmosphere*`/`look.grade*`, or a project `config/render.yaml`
+    selecting a Cycles profile): `fm blender preview|frames|playblast --profile cinematic_preview`, final with `--profile cinematic_final`.
+    Without `--profile` nothing changes; never add these to a film whose canon locks `blender_eevee_toon` (last_signal).
+13. After a Cycles run read `10_blender/logs/*.log` for `FM_RENDER_ENGINE`, `FM_DENOISER requested=.. used=..`, `FM_HDRI`, `FM_FOG`,
+    `FM_GRADE`: report the denoiser actually used and any `skipped` line. An HDRI error (missing asset.yaml / UNKNOWN licence / file) is a
+    spec/library problem for the human (see `library/hdri/README.md`), never something to work around: do not download or fabricate an HDRI.
+14. Seconds per frame are UNKNOWN until you measure one frame at target width; say so instead of estimating. See `docs/CINEMATIC_PIPELINE.md`.
+
 ## Output format
 Per-shot list: shot id, OK / builder problem / spec problem, evidence, owner. Builder problems are fixed in `blender/`;
 spec problems go to the owning specialist.

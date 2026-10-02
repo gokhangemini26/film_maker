@@ -19,6 +19,10 @@ colour and lighting as one look. What the human approves at G4 becomes the
 - `05_look/VISUAL_BIBLE.md`, `05_look/COLOR_BIBLE.md`, `05_look/LIGHTING_BIBLE.md`
 - Canon domain: `look` (`canon/look.yaml`) — `look.style.*`, `look.color.*`
   (hex, validated), `look.lighting.*`, `look.exposure.*`
+- Optional, only when the brief asks for a realistic/cinematic image (never in a film whose style lock is toon/EEVEE): canon
+  `look.atmosphere*` (Poly Haven HDRI id + volumetric fog) and `look.grade*` (compositor colour grade), each with a `rationale` and
+  `applies_to` scene/shot ids when scoped. The HDRI file itself is chosen and downloaded by the human (`library/hdri/README.md`);
+  you only name its id. Shape and rules: `docs/CINEMATIC_PIPELINE.md`.
 
 ## Read first
 `fm status`, all locked canon (intent, tone, story, world, characters),

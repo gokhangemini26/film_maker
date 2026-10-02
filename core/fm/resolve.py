@@ -18,6 +18,7 @@ from typing import Any
 from .deps import build_graph, implicit_shot_deps
 from .errors import FMError
 from .animcheck import lint_tracks
+from .cinematic import resolve_blocks
 from .io import hash_file_bytes, write_json
 from .motion import build_motion, vocab_canon_refs
 from .ops import record_derived
@@ -159,6 +160,9 @@ def resolve_shot(project: Project, loaded: Loaded, shot_id: str, table: dict, fm
         out["characters"].append(entry)
     out["provenance"] = {"shot": item.ref, "canon": sorted(ex.used)}
     from_refs = {item.ref, *implicit_shot_deps(loaded, sp), *(f"canon:{c}" for c in ex.used)}
+    cinematic, cinematic_refs = resolve_blocks(loaded, sp)     # opt-in atmosphere / grade: nothing added when a film has none
+    out.update(cinematic)
+    from_refs |= cinematic_refs
     motion, ui_events = _motion(loaded, item, row)
     out["motion"] = motion
     if motion is not None:
