@@ -144,6 +144,14 @@ def _fm_framesel():
     return framesel
 
 
+def _fm_finish():
+    """The pure finish-step parameters (compositor glare from canon) from the builders package; no bpy needed."""
+    if str(BUILDERS) not in sys.path:
+        sys.path.insert(0, str(BUILDERS))
+    from fm_blender import finish
+    return finish
+
+
 def scope_shots(project: Project, scope: str | None) -> list[str]:
     """Shot ids for a scope: None/film (all), shot:ID[,ID], shots:A..B, scene:SC01, or a bare shot id."""
     ids = _shot_ids(project, None)
@@ -167,9 +175,10 @@ def scope_shots(project: Project, scope: str | None) -> list[str]:
 
 
 def _frame_cmd(repo: Path, *, draft: bool, resolved: Path, out: Path, sid: str, width: int, spec: str, stamp: bool,
-               samples: int | None, fast: bool, resume: bool) -> tuple[list[str], str]:
+               samples: int | None, fast: bool, resume: bool, final: bool = False) -> tuple[list[str], str]:
+    """`final=True` is the final profile only (`fm blender final`): the builder then adds the locked compositor glare."""
     tail = [str(resolved), str(out), sid, str(width), spec, "stamp" if stamp else "no", str(samples or "-"), "fast" if fast else "-",
-            "resume" if resume else "-"]
+            "resume" if resume else "-", "final" if final else "-"]
     script = str(BUILDERS / "run_frames.py")
     if draft:
         if importlib.util.find_spec("bpy") is None:

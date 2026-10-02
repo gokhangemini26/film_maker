@@ -6,7 +6,8 @@ entries:
     answer; non-verbal breaths, sighs and a nose-laugh only. Dynamic range is soft but cinematic: quiet
     beds, sparse sounds with real transients, one real silence. Before the turn (SC01-SC03) the sound is
     comically dense and busy (starter, coughs, clunks, hums, chimes); from the moment he takes up the crank
-    (SC04_SH040) the film hears only the ratchet, his breath and the quiet street.
+    (SC04_SH040) the film hears only the ratchet, his breath and the quiet street, and the street itself
+    drops 3 dB, so the turn is quieter as level, not only as density (D3 recommended ruling, G7 review #11).
   value:
     speech: false
     tts: false
@@ -14,6 +15,7 @@ entries:
     density_before_turn: busy
     density_after_turn: ratchet_breath_street_only
     turn_point: SC04_SH040
+    street_bed_after_turn_db: -3
     world_never_digitally_silent_except: SC03_SH050 f16 to SC03_SH060 end
   rationale: |
     Choice: carry tone.wordless into sound exactly, and make the tonal turn audible as a drop in density.
@@ -21,7 +23,10 @@ entries:
     up, so the mishaps read as the world talking back; after the turn, removing everything except the
     ratchet and breath makes the audience listen to his effort, which is what makes the send feel earned.
     Rejected: a uniform medium density across the film, which flattens the turn so the crank sequence
-    sounds like one more mishap.
+    sounds like one more mishap. Level: with density alone the post-turn street bed measured at the same
+    RMS as the comic car (G7 review #11), so the street beds from SC04_SH040 to the end sit 3 dB under
+    the pre-turn beds; rejected: a lower integrated target (-20 LUFS), which quietens both halves equally
+    and leaves the turn just as flat.
   serves:
   - intent.comic_then_tender
   - intent.earned_last_signal
@@ -36,19 +41,21 @@ entries:
   version: 1
 - id: audio.score
   statement: |
-    No underscore. The film has no non-diegetic music; the ratchet and his breath are the score. Human
-    decision D1. Hana's headphone leak in SC05 is diegetic and is a separate human-supplied asset, not
-    score; no agent composes or generates it.
+    No music of any kind. The film has no non-diegetic music; the ratchet and his breath are the score.
+    Human decision D1. Hana's headphone leak in SC05 is dropped (D10 recommended ruling): SC05 is room
+    tone only, so there is no diegetic music either, and nothing is composed, generated or licensed.
   value:
     underscore: none
     decision: D1
-    diegetic_music: SC05 headphone leak, human-supplied only (never generated)
+    diegetic_music: none (D10 recommended ruling; SC05 room tone only)
   rationale: |
     Choice: no score. Mechanism: the crank's 1 Hz click is already a pulse the audience can feel; a
     music cue would compete with it and tell the audience what to feel, when the intent is that they hear
     his effort and feel it themselves. Rejected: a light comic cue before the turn (it pushes toward the
     manic register tone.anti_goals exclude) and a tender cue at the send (saccharine, and it would bury
-    the last click).
+    the last click). Headphone leak dropped (D10): it removes the film's only licence that would need
+    negotiation and keeps D1 absolute; SC05 rests on the light reaching her and the nose-laugh. Rejected:
+    a licensed lyric-free 3-5 s track (licence cost and risk for a beat that sits under the softest moment).
   serves:
   - intent.earned_last_signal
   - intent.comic_then_tender
@@ -59,7 +66,8 @@ entries:
   status: PROPOSED
   source: agent:sound-designer
   version: 1
-  notes: The human decides D1. If a score is chosen it must be a human-supplied or licensed asset.
+  notes: The human decides D1 and D10 at G7 (recommended rulings in 12_post/DECISIONS.md). If a score or the
+    leak is chosen after all, it must be a human-supplied asset with a written licence.
 - id: audio.palette
   statement: |
     Six sound families and their ids. Every id is a synth recipe (`fm audio list`) or a human-supplied
@@ -76,9 +84,9 @@ entries:
     room: [amb.car_interior, amb.street_dusk, amb.shop_room, amb.hana_room, amb.distant_car_pass, amb.silence]
     human_supplied_pending: [body.breath (recorded), body.sigh (recorded), body.nose_laugh (recorded),
       foley.footsteps_pavement, foley.footsteps_shop, foley.knees_and_body, foley.cloth, foley.seat_creak,
-      foley.pencil, foley.headphones_slide, foley.phone_handling, street.bird, street.distant_traffic,
-      music.headphone_leak]
-    excluded: [hum.phone_buzz (D4), ui.message_chime (D4), music.headphone_leak_placeholder (generated music),
+      foley.pencil, foley.headphones_slide, foley.phone_handling, street.bird, street.distant_traffic]
+    excluded: [hum.phone_buzz (D4), ui.message_chime (D4), music.headphone_leak (D10, dropped: SC05 room tone only),
+      music.headphone_leak_placeholder (generated music),
       car.door_close (the door is never closed on screen)]
   rationale: |
     Choice: soft, rounded UI sounds (sine bodies, no harsh beeps), mechanical car and crank sounds with
@@ -205,15 +213,15 @@ entries:
     forward. SC03 shop: fridge hum and panel buzz present in every shot until the blackout, then true
     silence, then a near-silent dead room with a distant car outside. SC04 kerb: open quiet street at
     dusk, the crank close and centred (the loudest thing in the scene is a 90 ms click). SC05 Hana's
-    room: near silence, a lamp-lit room tone, the headphone leak only if supplied. SC06 kerb: the same
-    street as SC04, fading out with the picture.
+    room: near silence, a lamp-lit room tone only (no headphone leak, D10). SC06 kerb: the same street as
+    SC04, fading out with the picture. The street bed is 3 dB lower from SC04_SH040 to the end (D3).
   value:
     SC01: {bed: amb.car_interior, ui: close, outside: muffled}
     SC02: {bed: amb.street_dusk, focus: footsteps}
     SC03: {bed: amb.shop_room until SC03_SH050 f8, then silence, SC03_SH070: amb.hana_room preset as dead-room tone + amb.distant_car_pass}
-    SC04: {bed: amb.street_dusk, focus: crank.click, breath}
-    SC05: {bed: amb.hana_room}
-    SC06: {bed: amb.street_dusk, tail: fades with the picture from fade_out_start}
+    SC04: {bed: amb.street_dusk, focus: crank.click, breath, bed_gain_db: '-21 to SC04_SH030 end, -24 from SC04_SH040 (4 f crossfade)'}
+    SC05: {bed: amb.hana_room, music: none}
+    SC06: {bed: amb.street_dusk, bed_gain_db: -24, tail: fades with the picture from fade_out_start}
   rationale: |
     Choice: one clear room per scene with a hard bed change on the scene cut. Mechanism: the rooms tell
     the audience where the battery race has moved without words, and the cabin's closed sound makes the
@@ -232,8 +240,9 @@ entries:
   statement: |
     Master delivery: -16 LUFS integrated (tolerance +-1 LU), true peak at or below -1 dBTP, 48 kHz,
     24-bit, stereo, 1440 frames x 2000 samples. No limiter or normaliser hides problems: the level is set
-    with an explicit master gain. No dialogue, so no dialogue-based levelling. The loudness target is
-    human decision D3.
+    with an explicit master gain. No dialogue, so no dialogue-based levelling. Inside that target the
+    street beds from SC04_SH040 to the end sit 3 dB under the pre-turn beds (relative turn duck). The
+    loudness target is human decision D3.
   value:
     integrated_lufs: -16.0
     lufs_tolerance: 1.0
@@ -242,42 +251,57 @@ entries:
     bit_depth: 24
     channels: 2
     silence_floor_db: -50.0
+    post_turn_street_bed_offset_db: -3.0
+    post_turn_from: SC04_SH040
     decision: D3
   rationale: |
     Choice: -16 LUFS / -1 dBTP. Mechanism: it is the common web and festival-screener default, loud
     enough on laptops and phones, with enough headroom that the clunk and the ratchet keep real
-    transients instead of being squashed. Rejected: -23 LUFS broadcast (too quiet for the likely web
-    delivery) and -14 LUFS streaming (would force limiting of the transients the comedy relies on).
+    transients instead of being squashed. The 3 dB post-turn street duck makes the turn quieter
+    relative to the comic half without moving the delivery target. Rejected: -23 LUFS broadcast (too
+    quiet for the likely web delivery), -20 LUFS (4 dB under neighbouring web content and still no
+    relative turn) and -14 LUFS streaming (would force limiting of the transients the comedy relies on).
   serves:
   - intent.soft_but_cinematic
+  - intent.comic_then_tender
   tag: DECISION
   status: PROPOSED
   source: agent:sound-designer
   version: 1
-  notes: The target is the human's decision D3; this is the proposed value.
+  notes: The target is the human's decision D3 (recommended ruling in 12_post/DECISIONS.md); this is the
+    proposed value. Fallback if the turn still does not read as quieter at G7 is -20 LUFS (post changes the
+    loudnorm target only).
 - id: audio.sources
   statement: |
     Every sound id has a source. Synth: deterministic recipes in the `fm audio` registry, rendered by
     `fm audio synth`/`fm audio mix` (project code, no third-party audio). Recorded (human): breaths,
     sighs, the nose-laugh. Library (human downloads, licence per file in library/audio/<id>/asset.yaml):
     footsteps, knees and body contacts, cloth, seat creak, pencil, headphones slide, phone handling, bird,
-    distant traffic. Licensed or own (human): Hana's headphone track. Stand-ins in the mix are marked
-    PLACEHOLDER and listed in AUDIO_CUES `human_supply`. No licence is assumed: every supplied file is
-    UNKNOWN until its licence is written in its manifest; UNKNOWN blocks final export.
+    distant traffic. Accepted licences are CC0 or `own` (the human's own recording) only, written in the
+    file's manifest with the source URL or recording note; attribution licences (CC-BY and the like) are
+    not accepted, because D2 keeps credits off screen. No music asset (D10: the headphone leak is
+    dropped). Stand-ins in the mix are marked PLACEHOLDER and listed in AUDIO_CUES `human_supply`, each
+    with its target asset id and file name. No licence is assumed: every supplied file is UNKNOWN until
+    its licence is written in its manifest; UNKNOWN blocks final export.
   value:
     synth: registry recipes (`fm audio list`)
     recorded: [body.breath, body.sigh, body.nose_laugh]
     library: [foley.footsteps_pavement, foley.footsteps_shop, foley.knees_and_body, foley.cloth, foley.seat_creak,
       foley.pencil, foley.headphones_slide, foley.phone_handling, street.bird, street.distant_traffic]
-    licensed_or_own: [music.headphone_leak]
+    licensed_or_own: []
+    music_assets: none (D10)
+    accepted_licences: [CC0, own]
+    manifest: library/audio/<asset id>/asset.yaml (file, licence, source_url or recorded_by, tags)
     speech_assets: none
     licence_default: UNKNOWN
   rationale: |
     Choice: synthesise what synthesis does credibly (UI, hums, mechanisms, room tone) and ask the human
     for what it cannot (bodies, feet, cloth, birds, music). Mechanism: synth recipes are deterministic
     and carry no licence risk; body sounds made by a noise generator read as fake and would break the
-    tenderness the breaths must carry. Rejected: synthesising every sound (the breath placeholders are
-    audibly noise) and using unverified downloaded files (licence risk blocks export).
+    tenderness the breaths must carry. CC0/own only keeps the licence table clearable without legal
+    review. Rejected: synthesising every sound (the breath placeholders are audibly noise), using
+    unverified downloaded files (licence risk blocks export) and CC-BY files (need a credit line that D2
+    keeps off screen).
   serves:
   - intent.earned_last_signal
   - intent.soft_but_cinematic

@@ -233,7 +233,7 @@ continuity_refs:
 - continuity.battery
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
+  hash: sha256:c8958df2dd63827b86c9f243f23b5d32274ae9604f1fb006f63cbf79fa59745e
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -348,6 +348,12 @@ derived_from:
   hash: sha256:165a0917dbbe9c6105f478c90c6845377f0c9dc0a4ca322bbe534ed3da7cfa71
 - ref: canon:look.style.phone_screen.states_by_shot
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
 stamped_content_hash: sha256:ac63b166dbc778b4b8bcf2712e1fb00f0ab9e003b97dfc6c5873185082001a1d
-stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
-  and shots); no content revision needed.
+stamp_note: SHOT_LIST changed only the height column of SC01_SH070/080/120/140 (v2 car interior insert
+  lens move); this shot's row and content are untouched.

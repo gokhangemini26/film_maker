@@ -97,7 +97,10 @@ def prod(_template, tmp_path, monkeypatch):
     script.write_text(FAKE)
     calls = tmp_path / "calls.log"
 
-    def fake_cmd(repo, *, draft, resolved, out, sid, width, spec, stamp, samples, fast, resume):
+    sandbox.final_flags = []
+
+    def fake_cmd(repo, *, draft, resolved, out, sid, width, spec, stamp, samples, fast, resume, final=False):
+        sandbox.final_flags.append(final)
         h = int(round(width / (16 / 9)))
         return [sys.executable, str(script), str(out), sid, str(width), str(h), spec, str(calls)], \
             ("bpy 5.0.1 (DRAFT, not the pinned series)" if draft else "blender 5.2.0")
@@ -363,3 +366,51 @@ def test_ranges_and_png_info(tmp_path):
     assert FR.png_info(p) == (70, 40)
     p.write_bytes(p.read_bytes()[:-3])
     assert FR.png_info(p) is None and FR.png_info(tmp_path / "none.png") is None
+
+
+GLOW = {"glow_sources": "emissives_only", "max_radius_pct_frame_width": 1.5, "streaks": False, "star_glare": False,
+        "ghosts": False, "bokeh_discs": False, "implementation": "compositor_glare_bloom_on_emission_pass"}
+
+
+def _with_glow(monkeypatch, **over):
+    real = FR._read_film
+
+    def read(project):
+        film = real(project)
+        film.setdefault("canon", {})["look.style.glow"] = {**GLOW, **over}
+        return film
+
+    monkeypatch.setattr(FR, "_read_film", read)
+
+
+def test_final_command_asks_the_builder_for_the_glare_and_records_it(prod, monkeypatch):
+    _authorize(prod)
+    _with_glow(monkeypatch)
+    r = FR.final(prod, prod.repo, width=64)
+    assert r["failed_chunks"] == [] and prod.final_flags and all(prod.final_flags)      # every chunk is a final-profile render
+    g = _manifest(prod)["shots"]["SC01_SH010"]["profile"]["glare"]
+    assert g["source"] == "look.style.glow" and g["size"] == 0.015 and g["type"] == "BLOOM"
+    assert g["max_radius_px"] == round(0.015 * 64, 2)
+
+
+def test_changed_glow_canon_never_mixes_settings_in_one_shot(prod, monkeypatch):
+    _authorize(prod)
+    _with_glow(monkeypatch)
+    FR.final(prod, prod.repo, width=64, scope="shot:SC01_SH010")
+    _with_glow(monkeypatch, max_radius_pct_frame_width=1.0)
+    with pytest.raises(FMError, match="other settings"):
+        FR.final(prod, prod.repo, width=64, scope="shot:SC01_SH010", frames="1-2", resume=True)
+
+
+def test_glow_canon_the_builder_cannot_honour_refuses_before_rendering(prod, monkeypatch):
+    _authorize(prod)
+    _with_glow(monkeypatch, streaks=True)
+    with pytest.raises(FMError, match="streaks"):
+        FR.final(prod, prod.repo, width=64)
+    assert prod.final_flags == [] and not (prod.dir / "11_render" / "final").exists()
+
+
+def test_film_without_glow_canon_renders_without_glare(prod):
+    _authorize(prod)
+    FR.final(prod, prod.repo, width=64, scope="shot:SC01_SH010")
+    assert _manifest(prod)["shots"]["SC01_SH010"]["profile"]["glare"] is None

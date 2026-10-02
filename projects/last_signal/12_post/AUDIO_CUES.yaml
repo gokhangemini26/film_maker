@@ -26,9 +26,9 @@ fm:
   - ref: artifact:anim_sc01_sh100
     hash: sha256:3e727eb2f3081bbe006b7aced60fd2c34196f5f84e7ec651b5ee7f4f76204931
   - ref: artifact:anim_sc01_sh110
-    hash: sha256:43b58eddc63ec89284be787ddcaf2c1dd2bfa4d6270f646bb2f5dd20e9aacf46
+    hash: sha256:e06b49ccfb9417d61a24986cfadc53d76499c53700cc30beec63ed836171d081
   - ref: artifact:anim_sc01_sh120
-    hash: sha256:34347251a334dca256cb7e10c3d9b21da3aa13dee9bbc33118467055f620bbcc
+    hash: sha256:67724356ea6ab791e11dc2df1a56b8c7094a166e41fffceef99983f6f5d53438
   - ref: artifact:anim_sc01_sh130
     hash: sha256:243861eae4be628218e260e49d9d59bd6f4e6c7405b2cef8dbdd281f81c44e45
   - ref: artifact:anim_sc01_sh150
@@ -46,9 +46,9 @@ fm:
   - ref: artifact:anim_sc03_sh040
     hash: sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90
   - ref: artifact:anim_sc03_sh050
-    hash: sha256:d6aa76ac62e7151a391211b703d2ff0991300ae091e9307f3f93399d281fe9f7
+    hash: sha256:3c11c5cd4d48cecce9eff3617544ac58aa90d9cee26535a2844513f500d7db08
   - ref: artifact:anim_sc03_sh070
-    hash: sha256:0343633f7b721a1aca1b3f7ffd95846613f600ba7507e32242ad138bd34dd2d7
+    hash: sha256:6ec95c3080c839aaa01b965ffa4e4eccb3131e96c1fe954c619ba21bc9b6163f
   - ref: artifact:anim_sc04_sh010
     hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
   - ref: artifact:anim_sc04_sh020
@@ -88,9 +88,9 @@ fm:
   - ref: shot:SC01_SH060
     hash: sha256:a137c047da23405b913fc34b40d27682f1b503d685cd844ddf1fd6d74738257d
   - ref: shot:SC01_SH070
-    hash: sha256:16b4ec9d94ad86fcb4258dff110a619a6834609ba83cb3bb4f7f36815422b929
+    hash: sha256:30042d9fc89a19bba21af41b35ac93e518a9b2022ad67f984d3cefbde595f501
   - ref: shot:SC01_SH080
-    hash: sha256:71b49b1bd1391b1ed8a3b1604a47a2ae4d93645ea5fe5e4000150cd02f826bec
+    hash: sha256:2ddfa6a723cc95a8fc576e9b9643d2edc58dc79c1849c739a9d2a05c146cbb38
   - ref: shot:SC01_SH090
     hash: sha256:ced7b32486ed4d040bd12165f24216e6db8e82ddc82562637f02aa43db797d6b
   - ref: shot:SC01_SH100
@@ -98,7 +98,7 @@ fm:
   - ref: shot:SC01_SH110
     hash: sha256:b76e5460354748a8b00dd6191f88adaed0e1238a17bd1d169363aa39eccb4165
   - ref: shot:SC01_SH120
-    hash: sha256:2d764a28641d19b14065ed0026354cd5f889a21a43c0f4bf238f96dbceb42b0f
+    hash: sha256:bfe3e7e13f27d08c4a21103977c15cea88d711d9f0c1e78c4f6b12a395c6ed47
   - ref: shot:SC01_SH130
     hash: sha256:8cc649e0e5b4be56b4c014462a5204889ccdcc3fee7989d30ce5bfa2cfc5b080
   - ref: shot:SC01_SH150
@@ -116,9 +116,9 @@ fm:
   - ref: shot:SC03_SH040
     hash: sha256:1020cdbc37450a1d9b016968b8c442e36d3bc59e91447dbe3cd3c941513c22e4
   - ref: shot:SC03_SH050
-    hash: sha256:6d33bc402d926df5233ad93a87333c57736ab06a62d818b2973238da758e2d69
+    hash: sha256:e1e411f9e315f2b742a00e797f055c5ab9dbf6d4fe1fa86db88a46a31bb57bda
   - ref: shot:SC03_SH070
-    hash: sha256:c943fa8776bee45915f96d41d7cbb2c060a78f6a93e0cee3910c79ca39dff1fd
+    hash: sha256:103af7cc154f759dc03710e3c883ba4cef525b2029bf693a473449870b80ecee
   - ref: shot:SC04_SH010
     hash: sha256:86660ae172a141b63b4cfe45f1699051822606d3152f9a0e01774d5c74cff776
   - ref: shot:SC04_SH020
@@ -146,23 +146,23 @@ fm:
   - ref: shot:SC06_SH010
     hash: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd
   - ref: artifact:anim_sc01_sh140
-    hash: sha256:826c1833ee777c4a6424887801f33d7058d5d645ad2849a9fd049c2a27e8ad3b
+    hash: sha256:0897f383ff32d0ad34077f02d4c8c864925938c27a76e76d3cadfcb33da01ff1
   - ref: artifact:anim_sc02_sh020
     hash: sha256:0879c17e5ae247692af922bcddf6391eeda2974b98ce067ef4179417995574d9
   - ref: artifact:anim_sc03_sh060
-    hash: sha256:88856bdccd1ee3d8033737be802370565eb42f5a534cb2fa84ba1505aa516cf9
+    hash: sha256:5ea5f1daa7b8299784bf622691323b64fba4e1c8e3bfb854ad656d3e36dd87e6
   - ref: shot:SC01_SH140
-    hash: sha256:209db68556feab291fba285ddf380490e5dc1bd6f4e72fbab9f119708345bd51
+    hash: sha256:de7d7d041f564db5c53829b14fadb39e979998bae11f774fefd643cf437ce759
   - ref: shot:SC02_SH020
     hash: sha256:783ca6dc0c914156c5b4dd7b6e25ae9f2c4fb2afce34a03973fd60b4f77b2de9
   - ref: shot:SC03_SH060
-    hash: sha256:ded035b15ea796e0efdee325911aac7d94676bdda993d717268ac7f81cf48be9
+    hash: sha256:8b236ef64586590d78e7dc802a9fcc6e635b0170467cebd8b3c2c5739b5c0708
   - ref: canon:audio.principles
-    hash: sha256:2ed0685e13a4ee7ef1d37d1ab31f5403fb357a506b856c86dbef5bf932da5661
+    hash: sha256:575a17a531edd2b16da2ce24401a12126e78fc9a42e054d3927179f8bdd4d4b4
   - ref: canon:audio.score
-    hash: sha256:ba175fbaf4350e9bb3d9a208454900db2cf9789779cf443cb2bc74e54541bb4c
+    hash: sha256:ce4ecd489ab13d322a77d749e27db91f1ba564de8273e004da6eb19510253dd2
   - ref: canon:audio.palette
-    hash: sha256:d295ae4564d6179c10237ad9582b5267c1f22f8674b6d28e592cb8e0cb717e1e
+    hash: sha256:54b18dedd40516567bafb44ac9d7d7511bec38092d95b73262c54f7dd6c45c86
   - ref: canon:audio.motifs
     hash: sha256:b57836b997a1df4f976c3ed5cb9c18534b3f7799db3f5bf129a2c9c690946dd0
   - ref: canon:audio.silence_map
@@ -170,11 +170,11 @@ fm:
   - ref: canon:audio.ratchet
     hash: sha256:9cb25aef670f215e3375d4cc6ee5487fde85d40728d408d97739ac5eeaf50bdb
   - ref: canon:audio.perspective
-    hash: sha256:25a13b6b5e3db8e0af9ac55be3c9a107dffa81af124274e3d44abadd16260826
+    hash: sha256:099b8c847ed8cf44a0da6cd28156665d6751ca671f87546b1787773d68817564
   - ref: canon:audio.mix
-    hash: sha256:6928de0e3e54edc5d62ed70cec1108d335e08443b7d45148af2206cd5b5c0c60
+    hash: sha256:dd10c4767db381b6a23ee351aaa51e12de78423dbb6b8a527d92e9be707484b6
   - ref: canon:audio.sources
-    hash: sha256:f6591a7d497aff372318d2b159c24a3cbd26dfe4a97369e1926919a47d80043d
+    hash: sha256:646f49fa76f35f969f1b383ce098be7ea6f28b2af12890e8a43a53929d53d2ef
   - ref: canon:audio.conflicts
     hash: sha256:6ed601c6debe4079741c5088600614a0437e50428fc5b79880ed65368bcec11b
   - ref: canon:tone.wordless
@@ -182,7 +182,7 @@ fm:
   - ref: canon:tone.the_turn
     hash: sha256:653b9a834c3b4f01813d471792c37227f6b7476e3a4d314cc4792b6e51f5b361
   - ref: artifact:audio_bible
-    hash: sha256:3126772f9cb95dfdc7d6dac505a55c55923fed0a8c1180e1a5ee5a7cd75ec1ff
+    hash: sha256:496cfd2ebec66ea0b0ca6909a80422696583b6e6f27a0bc247532550c5f48293
   - ref: artifact:storyboard
     hash: sha256:891aec9e44443e0c00e161d46f5cdf7a23346d513b4fbd2cb228e807f7f18523
   summary: 'Complete cue sheet: every cue on an animation event id (handle_top derived for the ratchet),
@@ -193,11 +193,12 @@ fm:
   - intent.earned_last_signal
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
-  stamped_content_hash: sha256:ad57b77535192c291ed921e797e542e8ca319119171c92379f36852d9ccc433a
-  stamp_note: 'Re-sync after SC04 cable posing (anim_sc04_sh010 cable prop_state hidden->posed, anim_sc04_sh050
-    rationale text only) and the SC03_SH010 restamp: all three anim files compared against 1598a4f^, frame
-    counts and every event id/frame/kind identical, no sound-bearing motion changed; all event-anchored
-    cues resolve (handle_top is derived from crank_turn in SC04_SH050-080). No cue revision needed.'
+  stamped_content_hash: sha256:3938a7a3ff047e56c4d85dde64f08d16b8f308bdb1e5bb0064e56cd56af0ac76
+  stamp_note: 'D3/D10 revision (post-turn street beds -3 dB, headphone leak declined, human_supply rewritten,
+    master gain 21.9). Upstream refreshes checked against 4acd6b7: anim SC01_SH110/120/140, SC03_SH050/060/070
+    events and frame counts identical (SH110 pose ref car_upright->car_sag only); shots SC01_SH070/080/120/140
+    and SC03_SH050/060/070 changed camera/composition/lighting/rationale only, no sound_sync change. No
+    cue moved.'
 mix:
   integrated_lufs: -16.0
   lufs_tolerance: 1.0
@@ -206,7 +207,7 @@ mix:
   sample_rate: 48000
   bit_depth: 24
   channels: 2
-  master_gain_db: 21.3
+  master_gain_db: 21.9
 cues:
 - id: c_SC01_SH010_heat_ticks
   shot: SC01_SH010
@@ -1576,8 +1577,8 @@ cues:
   params:
     speed: 8
   placeholder: true
-  note: PLACEHOLDER headphones slide down f12-19 (human_supply foley.headphones_slide); her music, if
-    supplied, drops away here
+  note: PLACEHOLDER headphones slide down f12-19 (human_supply foley.headphones_slide); prop sound only,
+    no music leak (D10)
   serves:
   - intent.open_hopeful_ending
 - id: c_SC05_SH020_phone_grip
@@ -1651,12 +1652,13 @@ cues:
   at:
     event: fade_out_start
     offset_f: -4
-  gain_db: -23
+  gain_db: -26
   layer: amb
   duration_f: 22
   fade_in_f: 4
   fade_out_f: 18
-  note: the street bed's tail, fading out with the picture f64-81
+  note: the street bed's tail, fading out with the picture f64-81; 3 dB under its pre-turn level (D3 turn
+    duck)
   serves:
   - intent.open_hopeful_ending
 beds:
@@ -1707,28 +1709,44 @@ beds:
   xfade_f: 6
   note: near-silent dead-room tone (the registry's quiet-room preset) after the power is gone
   rationale: audio.perspective
-- id: bed_SC04_street
+- id: bed_SC04_street_pre_turn
   scene: SC04
+  from_f: 0
+  to_f: 118
   recipe: amb.street_dusk
   gain_db: -21
   xfade_f: 4
-  note: the quiet street at dusk; SC04_SH010 hears nothing else (audio.silence_map street_only)
+  seed: 61204
+  note: the quiet street at dusk, SC04_SH010-SH030 (scene f0-113); SC04_SH010 hears nothing else (audio.silence_map
+    street_only). Runs 4 f past the SC04_SH040 cut (scene f114) so its 4 f fade-out overlaps the turn
+    bed's fade-in
   rationale: audio.perspective
+- id: bed_SC04_street_turn
+  scene: SC04
+  from_f: 114
+  recipe: amb.street_dusk
+  gain_db: -24
+  xfade_f: 4
+  seed: 61204
+  note: 'the turn (D3, G7 review #11): from the SC04_SH040 cut (scene f114 = film f930) to the end of
+    SC04 the street sits 3 dB under the pre-turn beds; 4 f crossfade with bed_SC04_street_pre_turn'
+  rationale: audio.principles, audio.mix (post_turn_street_bed_offset_db -3)
 - id: bed_SC05_hana_room
   scene: SC05
   recipe: amb.hana_room
   gain_db: -25
   xfade_f: 2
-  note: Hana's room, near silence; the headphone leak is human_supply (not generated)
+  note: Hana's room, near silence; room tone only (D10 recommended ruling - no headphone leak, no music)
   rationale: audio.perspective
 - id: bed_SC06_street
   shot: SC06_SH010
   from_f: 0
   to_f: 64
   recipe: amb.street_dusk
-  gain_db: -21
+  gain_db: -24
   xfade_f: 4
-  note: the street; hands over to the tail cue at fade_out_start
+  note: the street, 3 dB under the pre-turn beds (D3 turn duck, as SC04 from SH040); hands over to the
+    tail cue at fade_out_start
   rationale: audio.perspective
 silence:
 - id: sil_SC01_SH140
@@ -1746,13 +1764,19 @@ silence:
   note: 2 %, no bolt, in true silence
 human_supply:
 - sound: body.breath_placeholder
-  need: 'Ren''s breaths, recorded by phone, 48 kHz mono, about 16 short takes: rehearsed breath in (SC01_SH040
-    breath_in, 6 f); stuck exhale (SC01_SH090 stuck_exhale, 7 f); long relieved exhale (SC01_SH130 relieved_breath,
-    17 f); small out-breath (SC01_SH150 out_breath, 10 f); running breath (SC02_SH020 step_l_1); long
-    exhale (SC03_SH040 long_exhale, 15 f); small breath in (SC04_SH030 breath_in, 9 f); breath in at the
-    knob (SC04_SH050 arm_out_stop); a crank-locked cycle (in 8-12 f / out 12 f, one per handle_top, SC04_SH050-SH080);
-    the long release (SC04_SH090 release_breath, 15 f); long easy in/out (SC06_SH010 look_up_arrives,
-    12 f + 14 f)'
+  need: 'Ren''s breaths, phone recording, 48 kHz, no voice. 11 assets (one file each, 2-3 takes recorded,
+    best one kept): body.ren_breath_in_short -> ren_breath_in_short.wav (0.3-0.4 s; cues c_SC01_SH040_breath_in,
+    c_SC04_SH030_breath_in, c_SC04_SH050_breath_knob); body.ren_exhale_stuck -> ren_exhale_stuck.wav (0.3
+    s; c_SC01_SH090_exhale); body.ren_exhale_relief -> ren_exhale_relief.wav (0.7 s; c_SC01_SH130_relief);
+    body.ren_out_breath_small -> ren_out_breath_small.wav (0.4 s; c_SC01_SH150_out_breath); body.ren_run_breath
+    -> ren_run_breath.wav (0.2 s; c_SC02_SH020_run_breath); body.ren_exhale_long -> ren_exhale_long.wav
+    (0.6 s; c_SC03_SH040_exhale); body.ren_crank_breath_out -> ren_crank_breath_out.wav (0.5 s, effort
+    out on each handle top; c_SC04_SH050_breath_out0, c_SC04_SH050_breath_out, c_SC04_SH060_breath_out,
+    c_SC04_SH070_breath_out, c_SC04_SH080_breath_out); body.ren_crank_breath_in -> ren_crank_breath_in.wav
+    (0.35-0.45 s; c_SC04_SH050_breath_in0, c_SC04_SH050_breath_in1, c_SC04_SH060_breath_in, c_SC04_SH070_breath_in,
+    c_SC04_SH080_breath_in0, c_SC04_SH080_breath_in1); body.ren_exhale_release -> ren_exhale_release.wav
+    (0.6 s; c_SC04_SH090_release); body.ren_easy_breath_in -> ren_easy_breath_in.wav (0.5 s; c_SC06_SH010_breath_in);
+    body.ren_easy_breath_out -> ren_easy_breath_out.wav (0.6 s; c_SC06_SH010_breath_out)'
   shots:
   - SC01_SH040
   - SC01_SH090
@@ -1770,109 +1794,100 @@ human_supply:
   source: recorded
   licence: UNKNOWN
   status: NEEDED
-  note: 'no voice, no words: breath only (tone.wordless)'
+  note: 'PLACEHOLDER in the mix (22 cues). Licence becomes own once recorded and written in each asset.yaml.
+    No voice, no words: breath only (tone.wordless)'
 - sound: body.sigh_placeholder
-  need: Ren's small sigh as the held breath goes out (SC01_SH060 held_breath_out, about 10 f); 3 takes
+  need: 'body.ren_sigh -> ren_sigh.wav: Ren''s small sigh as the held breath goes out, about 0.4 s (cue
+    c_SC01_SH060_sigh, event held_breath_out); 3 takes recorded, best kept'
   shots:
   - SC01_SH060
   source: recorded
   licence: UNKNOWN
   status: NEEDED
+  note: PLACEHOLDER in the mix; licence own once recorded
 - sound: body.nose_laugh_placeholder
-  need: 'Hana: a breath through the nose that might be a laugh (SC05_SH030 smile_onset +6 f, about 9 f);
-    3 takes, no voice'
+  need: 'body.hana_nose_laugh -> hana_nose_laugh.wav: Hana, a breath through the nose that might be a
+    laugh, about 0.4 s (cue c_SC05_SH030_nose_laugh, event smile_onset +6 f); 3 takes recorded, best kept,
+    no voice'
   shots:
   - SC05_SH030
   source: recorded
   licence: UNKNOWN
   status: NEEDED
+  note: PLACEHOLDER in the mix; licence own once recorded. The only voice-like sound in SC05 (D10)
 - sound: fx.soft_bump
-  need: 'foley.footsteps_pavement: running footsteps on dry pavement, trainers, 9 single steps (SC02_SH010
-    foot_pavement_r/l, run_contact_1/2; SC02_SH020 step_r_1, step_l_1, step_r_2; SC02_SH030 step_l_1,
-    step_r_plant)'
+  need: 'Footsteps, CC0 or own. foley.footstep_pavement_r -> footstep_pavement_r.wav and foley.footstep_pavement_l
+    -> footstep_pavement_l.wav: single running steps, trainers on dry pavement (cues c_SC02_SH010_foot_pavement_r,
+    c_SC02_SH010_run_contact_2, c_SC02_SH020_step_r_1, c_SC02_SH020_step_r_2, c_SC02_SH030_step_r_plant
+    use _r; c_SC02_SH010_foot_pavement_l, c_SC02_SH010_run_contact_1, c_SC02_SH020_step_l_1, c_SC02_SH030_step_l_1
+    use _l). foley.footstep_shop_run -> footstep_shop_run.wav: running step on a vinyl/tile shop floor
+    (6 cues c_SC03_SH010_step_entry_step_00..30); foley.footstep_shop_brake -> footstep_shop_brake.wav:
+    braking scuff-step on the same floor (c_SC03_SH010_step_brake_steps_00, _04)'
   shots:
   - SC02_SH010
   - SC02_SH020
   - SC02_SH030
-  source: library
-  licence: UNKNOWN
-  status: NEEDED
-  note: 'stand-in in the mix: fx.soft_bump PLACEHOLDER'
-- sound: fx.soft_bump
-  need: 'foley.footsteps_shop: running steps on a shop floor (vinyl/tile), 6 run + 2 braking steps (SC03_SH010
-    entry_step +0/6/12/18/24/30, brake_steps +0/4)'
-  shots:
   - SC03_SH010
   source: library
   licence: UNKNOWN
   status: NEEDED
-  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+  note: 'stand-in in the mix: fx.soft_bump PLACEHOLDER (17 cues). Licence must be CC0 or own'
 - sound: fx.soft_bump
-  need: 'foley.knees_and_body: both knees down on a shop floor (SC03_SH010 knees_land); one knee on pavement
-    (SC04_SH040 knee_down); sitting down softly on a kerb (SC04_SH040 seat_land)'
+  need: 'Body contacts, CC0 or own. foley.knees_shop_floor -> knees_shop_floor.wav: both knees down on
+    a shop floor (c_SC03_SH010_knees, knees_land); foley.knee_pavement -> knee_pavement.wav: one knee
+    on pavement (c_SC04_SH040_knee, knee_down); foley.kerb_sit -> kerb_sit.wav: sitting down softly on
+    a kerb (c_SC04_SH040_seat, seat_land)'
   shots:
   - SC03_SH010
   - SC04_SH040
   source: library
   licence: UNKNOWN
   status: NEEDED
-  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+  note: 'stand-in: fx.soft_bump PLACEHOLDER. Licence must be CC0 or own'
 - sound: fx.soft_bump
-  need: 'foley.shop_door_push: a glass shop door pushed open by hand (SC02_SH030 door_push); and the same
-    door''s closer pulling it back, soft, no slam or latch, about 1 s that can run past the cut (SC02_SH030
-    door_push +4 = f14, swing_back; stand-in fx.plastic_scuff)'
+  need: 'Shop door, CC0 or own. foley.shop_door_push -> shop_door_push.wav: a glass shop door pushed open
+    by hand (c_SC02_SH030_door_push, door_push); foley.shop_door_swing_back -> shop_door_swing_back.wav:
+    the same door''s closer pulling it back, soft, no slam or latch, about 1 s that may run past the cut
+    (c_SC02_SH030_door_swing_back, door_push +4 = f14)'
   shots:
   - SC02_SH030
   source: library
   licence: UNKNOWN
   status: NEEDED
-  note: 'stand-ins: fx.soft_bump (push) and fx.plastic_scuff (swing-back) PLACEHOLDER'
+  note: 'stand-ins: fx.soft_bump (push) and fx.plastic_scuff (swing-back) PLACEHOLDER. Licence must be
+    CC0 or own'
 - sound: fx.soft_bump
-  need: 'foley.pencil: a pencil laid down on a sketchbook page (SC05_SH020 pencil_down)'
+  need: 'foley.pencil_down -> pencil_down.wav: a pencil laid down on a sketchbook page (c_SC05_SH020_pencil_down,
+    pencil_down); foley.phone_on_chest -> phone_on_chest.wav: a phone laid on a jacket chest under a flat
+    hand (c_SC06_SH010_phone_chest, phone_on_chest). CC0 or own'
   shots:
   - SC05_SH020
-  source: library
-  licence: UNKNOWN
-  status: NEEDED
-  note: 'stand-in: fx.soft_bump PLACEHOLDER'
-- sound: fx.soft_bump
-  need: 'foley.cloth: a phone laid on a jacket chest under a flat hand (SC06_SH010 phone_on_chest)'
-  shots:
   - SC06_SH010
   source: library
   licence: UNKNOWN
   status: NEEDED
-  note: 'stand-in: fx.soft_bump PLACEHOLDER'
+  note: 'stand-in: fx.soft_bump PLACEHOLDER. Licence must be CC0 or own'
 - sound: fx.plastic_scuff
-  need: 'foley.seat_creak: a car seat (fabric, springs) creaking as he sits up (SC01_SH060 reset_burst)'
+  need: 'CC0 or own. foley.car_seat_creak -> car_seat_creak.wav: fabric car seat creaking as he sits up
+    (c_SC01_SH060_seat_creak, reset_burst); foley.cloth_jacket -> cloth_jacket.wav: jacket/trouser cloth
+    as he backs out of the car with the crank (c_SC04_SH040_cloth, crank_lift); foley.pencil_stroke ->
+    pencil_stroke.wav: a short pencil stroke on paper (c_SC05_SH020_pencil_stroke, f0-2); foley.headphones_slide
+    -> headphones_slide.wav: over-ear headphones slid down past hair to the neck, 0.3 s (c_SC05_SH020_headphones,
+    headphones_slide); foley.phone_lift_desk -> phone_lift_desk.wav: a phone lifted off a wooden desk
+    (c_SC05_SH020_phone_grip, phone_grip)'
   shots:
   - SC01_SH060
-  source: library
-  licence: UNKNOWN
-  status: NEEDED
-  note: 'stand-in: fx.plastic_scuff PLACEHOLDER'
-- sound: fx.plastic_scuff
-  need: 'foley.cloth: jacket/trouser cloth as he backs out of the car with the crank (SC04_SH040 crank_lift)'
-  shots:
   - SC04_SH040
-  source: library
-  licence: UNKNOWN
-  status: NEEDED
-  note: 'stand-in: fx.plastic_scuff PLACEHOLDER'
-- sound: fx.plastic_scuff
-  need: 'foley.pencil: a short pencil stroke on paper (SC05_SH020 f0-2); foley.headphones_slide: over-ear
-    headphones slid down past hair to the neck (SC05_SH020 headphones_slide, 7 f); foley.phone_handling:
-    a phone lifted off a wooden desk (SC05_SH020 phone_grip)'
-  shots:
   - SC05_SH020
   source: library
   licence: UNKNOWN
   status: NEEDED
-  note: 'stand-in: fx.plastic_scuff PLACEHOLDER'
+  note: 'stand-in: fx.plastic_scuff PLACEHOLDER (6 cues incl. the door swing-back above). Licence must
+    be CC0 or own'
 - sound: street.bird
-  need: 'one or two soft birdsong phrases outside a closed car, dusk (SC01_SH010, around f10; SC01_SH150,
-    around f28): board ''a bird''. Not in the mix yet: no synth stand-in (a fake bird would be worse than
-    none)'
+  need: 'street.bird_dusk -> bird_dusk.wav: one or two soft birdsong phrases outside a closed car at dusk
+    (SC01_SH010 around f10; SC01_SH150 around f28): board ''a bird''. CC0 or own. Not in the mix yet:
+    no synth stand-in (a fake bird would be worse than none); new cues are added when the file exists'
   shots:
   - SC01_SH010
   - SC01_SH150
@@ -1880,8 +1895,9 @@ human_supply:
   licence: UNKNOWN
   status: NEEDED
 - sound: street.distant_traffic
-  need: a distant traffic wash for the dusk street (SC04, SC06) and a better distant car pass for SC03_SH070
-    (replaces amb.distant_car_pass). Optional
+  need: 'Optional, CC0 or own. street.distant_traffic -> distant_traffic.wav: a distant traffic wash for
+    the dusk street (SC04, SC06), at least 20 s; street.distant_car_pass -> distant_car_pass.wav: one
+    distant car pass for SC03_SH070 (would replace synth amb.distant_car_pass)'
   shots:
   - SC03_SH070
   - SC04_SH010
@@ -1889,23 +1905,25 @@ human_supply:
   source: library
   licence: UNKNOWN
   status: NEEDED
+  note: optional; the synth beds stand without it
 - sound: music.headphone_leak
-  need: 'Hana''s headphone music: 3-5 s of a track she would listen to, leaking faintly from closed headphones;
-    the pipeline lowpasses and levels it (SC05_SH010 f0-23, drops away at SC05_SH020 headphones_slide
-    f12-19). Not in the mix: agents do not generate music; without it SC05 is room tone only'
+  need: Hana's headphone music leak in SC05 - not needed
   shots:
   - SC05_SH010
   - SC05_SH020
   source: licensed
   licence: UNKNOWN
-  status: NEEDED
-  note: must be the human's own composition or a track with a written licence; no lyrics (tone.wordless)
+  status: DECLINED
+  note: 'Dropped per the D10 recommended ruling (12_post/DECISIONS.md; UNKNOWN until the human rules at
+    G7): SC05 is room tone only, no music anywhere. Kept here only as the record; reopen if the human
+    overrules D10'
 conflicts:
 - shots:
   - SC05_SH010
   storyboard: 'under her headphones: faint music leaking; a soft buzz on the desk'
   shot_file: 'phone_hana: face up, no vibration or shift (the light is what reaches her)'
-  assumption: 'ASSUMPTION (D4): no buzz; hum.phone_buzz not used'
+  assumption: 'ASSUMPTION (D4): no buzz; hum.phone_buzz not used. The storyboard''s music leak is dropped
+    by the D10 recommended ruling (SC05 room tone only)'
 - shots:
   - SC04_SH070
   storyboard: the ratchet; a soft chime
@@ -1954,3 +1972,9 @@ scaffold_notes:
   and after the turn the film hears only ratchet, breath and street (audio.principles).'
 - 'Asked of the animation-director (via the orchestrator): a sound event on SC02_SH030 f14 (shop_door
   swing_back) so c_SC02_SH030_door_swing_back can anchor on it instead of door_push +4.'
+- 'D3/D10 revision (sound-designer, applying the recommended rulings in 12_post/DECISIONS.md, UNKNOWN
+  until the human rules at G7): bed_SC04_street split at the SC04_SH040 cut into bed_SC04_street_pre_turn
+  (-21 dB) and bed_SC04_street_turn (-24 dB), same seed, 4 f crossfade; bed_SC06_street -21 -> -24; c_SC06_SH010_street_tail
+  -23 -> -26. Master gain re-set from the mix suggestion to hold -16 LUFS +-1 / TP <= -1 dBTP. Headphone
+  leak DECLINED (SC05 room tone only). human_supply rewritten with exact asset ids, file names and the
+  cues each replaces; licences CC0 or own only. No cue moved, no event reference changed.'

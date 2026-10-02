@@ -35,11 +35,11 @@ fm:
   - ref: canon:animation.vocab.event_kind
     hash: sha256:14744df8191ecde7d93d67b53053d743d520722a07c59b7f4322e14696d5f603
   - ref: canon:audio.principles
-    hash: sha256:2ed0685e13a4ee7ef1d37d1ab31f5403fb357a506b856c86dbef5bf932da5661
+    hash: sha256:575a17a531edd2b16da2ce24401a12126e78fc9a42e054d3927179f8bdd4d4b4
   - ref: canon:audio.score
-    hash: sha256:ba175fbaf4350e9bb3d9a208454900db2cf9789779cf443cb2bc74e54541bb4c
+    hash: sha256:ce4ecd489ab13d322a77d749e27db91f1ba564de8273e004da6eb19510253dd2
   - ref: canon:audio.palette
-    hash: sha256:d295ae4564d6179c10237ad9582b5267c1f22f8674b6d28e592cb8e0cb717e1e
+    hash: sha256:54b18dedd40516567bafb44ac9d7d7511bec38092d95b73262c54f7dd6c45c86
   - ref: canon:audio.motifs
     hash: sha256:b57836b997a1df4f976c3ed5cb9c18534b3f7799db3f5bf129a2c9c690946dd0
   - ref: canon:audio.silence_map
@@ -47,11 +47,11 @@ fm:
   - ref: canon:audio.ratchet
     hash: sha256:9cb25aef670f215e3375d4cc6ee5487fde85d40728d408d97739ac5eeaf50bdb
   - ref: canon:audio.perspective
-    hash: sha256:25a13b6b5e3db8e0af9ac55be3c9a107dffa81af124274e3d44abadd16260826
+    hash: sha256:099b8c847ed8cf44a0da6cd28156665d6751ca671f87546b1787773d68817564
   - ref: canon:audio.mix
-    hash: sha256:6928de0e3e54edc5d62ed70cec1108d335e08443b7d45148af2206cd5b5c0c60
+    hash: sha256:dd10c4767db381b6a23ee351aaa51e12de78423dbb6b8a527d92e9be707484b6
   - ref: canon:audio.sources
-    hash: sha256:f6591a7d497aff372318d2b159c24a3cbd26dfe4a97369e1926919a47d80043d
+    hash: sha256:646f49fa76f35f969f1b383ce098be7ea6f28b2af12890e8a43a53929d53d2ef
   - ref: canon:audio.conflicts
     hash: sha256:6ed601c6debe4079741c5088600614a0437e50428fc5b79880ed65368bcec11b
   - ref: artifact:storyboard
@@ -62,10 +62,10 @@ fm:
   - intent.earned_last_signal
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
-  summary: The sound world of Last Signal. It is wordless and has no score. The mishaps are busy with
-    sound until the crank, after which only the ratchet and breath are heard. There is one true silence,
-    and the human supplies the bodies, feet and music.
-  stamped_content_hash: sha256:3126772f9cb95dfdc7d6dac505a55c55923fed0a8c1180e1a5ee5a7cd75ec1ff
+  summary: The sound world of Last Signal. It is wordless and has no music at all. The mishaps are busy
+    with sound until the crank, after which only the ratchet, breath and a 3 dB quieter street are heard.
+    There is one true silence, and the human supplies the breaths (recorded) and the foley (CC0 or own).
+  stamped_content_hash: sha256:496cfd2ebec66ea0b0ca6909a80422696583b6e6f27a0bc247532550c5f48293
 title: Audio Bible
 ---
 # Audio Bible: Last Signal
@@ -79,13 +79,14 @@ levels.
 | Intent | What sound does | What its absence does |
 |---|---|---|
 | `intent.race_against_battery` | Gentle UI sounds count the battery down: blip at 4 %, chime, loss. | The unanswered call is three rings and **nothing**. There is no voice and no fourth ring. |
-| `intent.comic_then_tender` | Up to the crank, the world talks back. The starter, coughs, clunks, hums and chimes land on the frame. | After the turn (SC04_SH040) nothing is funny, and all the density goes. |
+| `intent.comic_then_tender` | Up to the crank, the world talks back. The starter, coughs, clunks, hums and chimes land on the frame. | After the turn (SC04_SH040) nothing is funny, all the density goes, and the street itself drops 3 dB. |
 | `intent.earned_last_signal` | The ratchet, one click per handle top, is the film's pulse. His breath locks to it. | No chime answers the crank's 1 % to 2 %, and no music swells at the send. |
 | `intent.open_hopeful_ending` | A breath through Hana's nose that might be a laugh. His long, easy breath out. | The phone dies in silence (no power-down sound). The street fades with the picture. |
 | `intent.soft_but_cinematic` | Soft, rounded UI; real transients; one room per scene. | One true silence (SC03 blackout) gives the film real dynamic range. |
 
-DECISION (`audio.principles`, `audio.score`): strictly wordless, with no underscore (D1 recommendation,
-the human decides).
+DECISION (`audio.principles`, `audio.score`): strictly wordless, with no music of any kind: no underscore
+(D1) and no headphone leak (D10). Both are recommended rulings in `12_post/DECISIONS.md`; the human rules
+at G7.
 
 ## 2. Palette (`audio.palette`)
 
@@ -100,7 +101,8 @@ the human decides).
 - **body**: breaths, sigh, nose-laugh. These are PLACEHOLDERS until the human records them.
 - **room**: car cabin, dusk street, shop, quiet room. SC03_SH070 uses the quiet-room preset as a dead
   room. There is also a distant car pass and exact silence.
-- Excluded: desk buzz and message chime (D4), generated headphone music (agents never generate music),
+- Excluded: desk buzz and message chime (D4), Hana's headphone leak (D10: SC05 is room tone only; agents
+  never generate music either),
   car door close (the door stays open on screen), blink sounds (the vocab v2 `lids` blinks in SC03_SH070,
   SC04_SH010, SC04_SH030 and SC05_SH030 stay silent).
 
@@ -127,9 +129,9 @@ the human decides).
 | SC01 car | Closed cabin tone, outside muffled | UI close; the engine as the comic antagonist |
 | SC02 street | Open dusk street | Footsteps, the door, the shop chime on the cut; the closer's soft swing-back decays under the cut, never a slam |
 | SC03 shop | Shop tone, fridge hum and panel buzz in every shot | The CLUNK; then true silence; then a dead room and a distant car |
-| SC04 kerb | Quiet street at dusk (SC04_SH010: nothing else) | The ratchet and his breath only |
-| SC05 Hana's room | Near silence | Pencil, headphones, the nose-laugh; the headphone leak only if supplied |
-| SC06 kerb | The same street | A long breath out; the street fades with the picture from `fade_out_start` |
+| SC04 kerb | Quiet street at dusk (SC04_SH010: nothing else); from the SH040 cut the street is 3 dB lower | The ratchet and his breath only |
+| SC05 Hana's room | Near silence, room tone only (no music, D10) | Pencil, headphones (the prop), the nose-laugh |
+| SC06 kerb | The same street, still 3 dB under the pre-turn level | A long breath out; the street fades with the picture from `fade_out_start` |
 
 ## 5. Silence (`audio.silence_map`)
 
@@ -146,39 +148,54 @@ the human decides).
   sound for a library take after listening.
 - **Recorded by the human.** Breaths, the sigh and Hana's nose-laugh. Licence: `own` once recorded.
   Until then the licence is UNKNOWN.
-- **Library, downloaded by the human.** Footsteps (pavement and shop), knees and body contacts, cloth,
-  seat creak, pencil, headphones slide, phone handling, bird, distant traffic. Each file gets
-  `library/audio/<id>/asset.yaml` with its licence written down. No licence is assumed, and UNKNOWN
-  blocks final export.
-- **Licensed or own.** Hana's headphone track. It must have no lyrics (`tone.wordless`). It is not in
-  the mix yet.
+- **Library, chosen and downloaded by the human.** Footsteps (pavement and shop), knees and body
+  contacts, cloth, seat creak, pencil, headphones slide, phone handling, bird, distant traffic.
+  **CC0 or the human's own recording only** (D10); CC-BY and other attribution licences are not
+  accepted, because D2 keeps credits off screen. Each file gets `library/audio/<asset id>/asset.yaml`
+  with `file`, `licence`, and `source_url` (library) or `recorded_by` (own). No licence is assumed, and
+  UNKNOWN blocks final export.
+- **No music asset.** Hana's headphone track is dropped (D10); SC05 is room tone only.
 - Stand-ins in the current mix are marked PLACEHOLDER. They are `body.*_placeholder` (24 cues),
   `fx.soft_bump` (23 cues) and `fx.plastic_scuff` (6 cues), all listed in AUDIO_CUES `human_supply`.
 ## 7. What the human must supply
 
-This is the full asks list, with shot and event ids, in `12_post/AUDIO_CUES.yaml` under `human_supply`.
-In short:
+The full list, with the cues each file replaces, is in `12_post/AUDIO_CUES.yaml` under `human_supply`.
+Every file goes to `library/audio/<asset id>/<file>.wav` (48 kHz WAV) with an `asset.yaml` beside it.
+Once a file exists, the sound-designer swaps the cue from the placeholder recipe to `asset: <asset id>`.
 
-1. About 16 breath takes for Ren, a sigh, and Hana's nose-laugh (phone recording, 48 kHz).
-2. Footsteps on pavement (9) and on a shop floor (8), plus knees, kerb sit and the shop door push and swing-back.
-3. Cloth, seat creak, pencil (stroke and set-down), headphones slide, phone lift, phone on chest.
-4. Birdsong for SC01_SH010 and SC01_SH150. Optionally, distant traffic for the streets and a better
-   car pass for SC03_SH070.
-5. Hana's headphone track, 3 to 5 s, with a written licence (or the human's own). If none is supplied,
-   SC05 is room tone only.
+1. **Recorded by the human (licence `own`, phone, 48 kHz, no voice).** Ren: `body.ren_breath_in_short`,
+   `body.ren_exhale_stuck`, `body.ren_exhale_relief`, `body.ren_out_breath_small`, `body.ren_run_breath`,
+   `body.ren_exhale_long`, `body.ren_crank_breath_out`, `body.ren_crank_breath_in`,
+   `body.ren_exhale_release`, `body.ren_easy_breath_in`, `body.ren_easy_breath_out`, `body.ren_sigh`.
+   Hana: `body.hana_nose_laugh`. About 16 takes in total. These stay declared PLACEHOLDERS in the mix
+   until the files exist.
+2. **Library foley (CC0 or own).** `foley.footstep_pavement_r`, `foley.footstep_pavement_l`,
+   `foley.footstep_shop_run`, `foley.footstep_shop_brake`, `foley.knees_shop_floor`,
+   `foley.knee_pavement`, `foley.kerb_sit`, `foley.shop_door_push`, `foley.shop_door_swing_back`,
+   `foley.car_seat_creak`, `foley.cloth_jacket`, `foley.pencil_stroke`, `foley.pencil_down`,
+   `foley.headphones_slide`, `foley.phone_lift_desk`, `foley.phone_on_chest`, `street.bird_dusk`.
+3. **Optional (CC0 or own).** `street.distant_traffic`, `street.distant_car_pass`.
+4. **Not needed.** `music.headphone_leak` is DECLINED (D10).
 
 ## 8. Mix (`audio.mix`, D3)
 
-The master is -16 LUFS integrated with true peak at or below -1 dBTP, 48 kHz / 24-bit stereo, and
-exactly 2,880,000 samples. There is no limiter. `mix.master_gain_db` is 21.3 dB.
+The master is -16 LUFS integrated (+-1 LU) with true peak at or below -1 dBTP, 48 kHz / 24-bit stereo,
+and exactly 2,880,000 samples. There is no limiter.
 
-FACT (measured): -16.4 LUFS (ffmpeg ebur128), true peak -1.7 dBTP.
+DECISION (D3 recommended ruling, G7 review #11): the street beds from the SC04_SH040 cut to the end
+(`bed_SC04_street_turn`, `bed_SC06_street`, `c_SC06_SH010_street_tail`) sit 3 dB under the pre-turn
+beds. The cut gets a 4-frame crossfade between two segments of the same street bed (same seed). The
+turn is then quieter as level as well as density, without moving the delivery target. Rejected: -20
+LUFS for the whole film, which quietens both halves equally.
 
-For D3: -16 LUFS with a -1 dBTP ceiling allows a peak-to-loudness ratio of only about 15 dB. In this
-sparse, wordless film the room-tone beds therefore carry most of the loudness (the ambience stem
-measures about -17.7 LUFS on its own). They sit several dB higher, relative to the clunk, the coughs
-and the ratchet, than a quieter target would need. If the beds sound too present at G7, the options
-are a lower target (about -20 LUFS allows about 19 dB) or limiting the transient peaks in post.
+FACT (measured by `fm audio mix` on this revision, `mix.master_gain_db` 21.9): about -16.5 LUFS,
+true peak -1.13 dBTP. The ambience stem RMS is -18.7 dBFS in SC04 before the cut and -21.7 dBFS after
+it, and -21.8 dBFS in SC06.
+
+The mix tool suggests a master gain of 22.4 dB, which would hit -16.0 LUFS but push the true peak to
+about -0.6 dBTP, over the ceiling. 21.9 dB is the highest gain that holds both limits with margin. The
+human judges at G7 whether the turn now reads as quieter. If it does not, the documented fallback is
+-20 LUFS.
 
 ## 9. Conflicts for the human (`audio.conflicts`, ASSUMPTION)
 

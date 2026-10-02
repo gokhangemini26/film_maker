@@ -29,6 +29,7 @@ DEFAULT_FADE_IN_FRAMES = 12           # M6_SCOPE D7 recommendation; overridable 
 DEFAULT_FADE_OUT_FRAMES = 18          # fallback only; canon camera.rhythm.transitions is read first
 TARGET_LUFS = -16.0
 TARGET_TP = -1.0
+TARGET_TOL = 1.0
 GRAIN_SEED = 1337
 POST_DIR = "12_post"
 DELIVERY_DIR = "13_delivery"
@@ -192,6 +193,11 @@ def load_table(project: Project) -> dict:
     return {"rows": rows, "total": total, "fps": fps, "format": film.get("format") or {}, "scenes": scenes}
 
 
+def _num(d: dict, key: str, default: float) -> float:
+    v = d.get(key, default)
+    return float(v) if isinstance(v, (int, float)) and not isinstance(v, bool) else float(default)
+
+
 def finish_params(project: Project) -> dict:
     """Locked finish parameters, read from canon (never hard-coded where canon has them)."""
     loaded = project.load()
@@ -215,7 +221,12 @@ def finish_params(project: Project) -> dict:
         "grain_amplitude_luma": float(grain.get("amplitude_luma", 0.015)),
         "vignette_max": float(tex.get("vignette_max", 0.1)),
         "resolution": tuple(fmt.get("resolution_px", (1920, 1080))),
-        "loudness_lufs": float(aud.get("loudness_lufs", TARGET_LUFS)) if isinstance(aud.get("loudness_lufs", TARGET_LUFS), (int, float)) else TARGET_LUFS,
+        # canon audio.mix keys (integrated_lufs, true_peak_dbtp, lufs_tolerance); the module constants are only the fallback
+        # for a film whose canon has no audio.mix entry
+        "loudness_lufs": _num(aud, "integrated_lufs", TARGET_LUFS),
+        "true_peak_dbtp": _num(aud, "true_peak_dbtp", TARGET_TP),
+        "lufs_tolerance": _num(aud, "lufs_tolerance", TARGET_TOL),
+        "loudness_source": "canon audio.mix" if "integrated_lufs" in aud else "default (D3 recommendation)",
     }
 
 
@@ -583,7 +594,7 @@ def assemble(project: Project, out: str | Path | None = None, *, frames_dir: str
                "-i", str(seq / "%06d.png")]
         if not silent:
             wav = tdp / "audio_norm.wav"
-            loud = _loudnorm(mix, wav, dur, fin["loudness_lufs"], TARGET_TP)
+            loud = _loudnorm(mix, wav, dur, fin["loudness_lufs"], fin["true_peak_dbtp"])
             cmd += ["-i", str(wav)]
         cmd += ["-filter_threads", "1", "-vf", vf, "-map", "0:v"] + (["-map", "1:a", "-c:a", "pcm_s24le"] if not silent else [])
         if prores:
@@ -651,7 +662,8 @@ def export(project: Project, out: str | Path | None = None, *, master: str | Pat
 
     manifest = {"schema": "fm.delivery_manifest/1", "project": project.slug, "created": now_iso(),
                 "fm_version": __version__, "ffmpeg": ffmpeg_version(), "ffmpeg_source": find_ffmpeg()[1],
-                "fps": FPS, "loudness_target": {"lufs": fin["loudness_lufs"], "true_peak_dbtp": TARGET_TP},
+                "fps": FPS, "loudness_target": {"lufs": fin["loudness_lufs"], "true_peak_dbtp": fin["true_peak_dbtp"],
+                                    "tolerance_lu": fin["lufs_tolerance"], "source": fin["loudness_source"]},
                 "files": files}
     rm = project.dir / FINAL_DIR / "MANIFEST.json"
     if rm.exists():
@@ -765,11 +777,12 @@ def qa_delivery(project: Project, out: str | Path | None = None, *, files: list[
             ld = _measure_loudness(f)
             row["loudness"] = ld
             if ld and ld["integrated_lufs"] is not None:
-                if abs(ld["integrated_lufs"] - target) > 1.0:
-                    fnd.append(["FAIL" if abs(ld["integrated_lufs"] - target) > 2.0 else "WARN",
-                                f"integrated loudness {ld['integrated_lufs']} LUFS, target {target} +-1"])
-                if ld["true_peak_dbtp"] is not None and ld["true_peak_dbtp"] > TARGET_TP + 0.1:
-                    fnd.append(["FAIL", f"true peak {ld['true_peak_dbtp']} dBTP above {TARGET_TP}"])
+                tol = fin["lufs_tolerance"]
+                if abs(ld["integrated_lufs"] - target) > tol:
+                    fnd.append(["FAIL" if abs(ld["integrated_lufs"] - target) > 2 * tol else "WARN",
+                                f"integrated loudness {ld['integrated_lufs']} LUFS, target {target} +-{tol:g}"])
+                if ld["true_peak_dbtp"] is not None and ld["true_peak_dbtp"] > fin["true_peak_dbtp"] + 0.1:
+                    fnd.append(["FAIL", f"true peak {ld['true_peak_dbtp']} dBTP above {fin['true_peak_dbtp']:g}"])
             elif ld is None:
                 fnd.append(["WARN", "loudness could not be measured"])
         # head and tail: the fades are black by design at their extreme frame only, and the picture must move

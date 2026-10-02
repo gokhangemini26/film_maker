@@ -223,3 +223,50 @@ def test_delivery_summary_counts_findings_not_files():
     s = post.delivery_summary(rows, 2)
     assert s == {"files": 2, "rows": 3, "fail": 2, "warn": 3, "files_failing": 1, "files_warning": 2}
     assert post.delivery_summary([], 0)["fail"] == 0
+
+
+# ---------------------------------------------------------------------------- loudness target comes from canon audio.mix
+def _fake_project(canon):
+    from types import SimpleNamespace as NS
+
+    entries = {cid: NS(entry=NS(value=v)) for cid, v in canon.items()}
+    return NS(load=lambda: NS(canon=entries))
+
+
+def test_finish_params_read_the_audio_mix_canon_keys():
+    fin = post.finish_params(_fake_project({"audio.mix": {"integrated_lufs": -18.0, "true_peak_dbtp": -2.0, "lufs_tolerance": 0.5}}))
+    assert (fin["loudness_lufs"], fin["true_peak_dbtp"], fin["lufs_tolerance"]) == (-18.0, -2.0, 0.5)
+    assert fin["loudness_source"] == "canon audio.mix"
+
+
+def test_finish_params_of_the_locked_last_signal_canon_are_minus16_and_minus1():
+    from pathlib import Path
+
+    import yaml
+
+    p = Path(__file__).resolve().parents[1] / "projects" / "last_signal" / "canon" / "audio.yaml"
+    if not p.exists():
+        pytest.skip("last_signal canon absent")
+    data = yaml.safe_load(p.read_text(encoding="utf-8"))
+    entries = data.get("entries") if isinstance(data, dict) else data
+    mix = next(e for e in entries if e["id"] == "audio.mix")["value"]
+    fin = post.finish_params(_fake_project({"audio.mix": mix}))
+    assert fin["loudness_lufs"] == -16.0 and fin["true_peak_dbtp"] == -1.0 and fin["lufs_tolerance"] == 1.0
+    assert fin["loudness_source"] == "canon audio.mix"
+
+
+def test_a_canon_target_other_than_the_default_is_not_silently_replaced_by_the_constant():
+    fin = post.finish_params(_fake_project({"audio.mix": {"integrated_lufs": -20.0, "true_peak_dbtp": -1.5}}))
+    assert fin["loudness_lufs"] == -20.0 and fin["true_peak_dbtp"] == -1.5      # the old code read `loudness_lufs` and gave -16
+    assert fin["lufs_tolerance"] == post.TARGET_TOL                              # a key the canon omits falls back
+
+
+def test_old_loudness_lufs_key_is_not_a_canon_key():
+    fin = post.finish_params(_fake_project({"audio.mix": {"loudness_lufs": -20.0}}))
+    assert fin["loudness_lufs"] == post.TARGET_LUFS and fin["loudness_source"].startswith("default")
+
+
+def test_film_without_audio_mix_canon_gets_the_d3_defaults():
+    fin = post.finish_params(_fake_project({}))
+    assert (fin["loudness_lufs"], fin["true_peak_dbtp"], fin["lufs_tolerance"]) == (-16.0, -1.0, 1.0)
+    assert fin["loudness_source"].startswith("default")

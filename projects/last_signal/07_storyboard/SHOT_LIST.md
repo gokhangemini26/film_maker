@@ -71,7 +71,7 @@ fm:
   - intent.earned_last_signal
   summary: 38 shots, 1440 frames (60.00 s at 24 fps); per-scene totals equal the human-accepted camera
     budget (SC01 528, SC02 48, SC03 240, SC04 434, SC05 108, SC06 82).
-  stamped_content_hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
+  stamped_content_hash: sha256:c8958df2dd63827b86c9f243f23b5d32274ae9604f1fb006f63cbf79fa59745e
   stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
     and shots); no content revision needed.
 title: Shot List
@@ -120,14 +120,14 @@ serves are unchanged.
 | SC01_SH040 | SC01 | 1.25 s (30 f) | MCU | 24 | eye level 1.12 m | static | Practised breath, taps call | race_against_battery, comic_then_tender | cut |
 | SC01_SH050 | SC01 | 1.83 s (44 f) | INS | 85 | insert 1.32 m | static | Call button pulses x3, greys | race_against_battery, comic_then_tender | cut |
 | SC01_SH060 | SC01 | 1.42 s (34 f) | MS | 24 | mild low 1.0 m | static | Letdown, sits up to text | comic_then_tender, race_against_battery | cut |
-| SC01_SH070 | SC01 | 2.42 s (58 f) | INS | 85 | insert 1.14 m | static | Types 'Are you free tonight?' | race_against_battery, open_hopeful_ending | cut |
-| SC01_SH080 | SC01 | 1.25 s (30 f) | INS | 85 | insert 1.14 m | static | 5 % -> red 4 % | race_against_battery, comic_then_tender | cut |
+| SC01_SH070 | SC01 | 2.42 s (58 f) | INS | 85 | insert 1.17 m | static | Types 'Are you free tonight?' | race_against_battery, open_hopeful_ending | cut |
+| SC01_SH080 | SC01 | 1.25 s (30 f) | INS | 85 | insert 1.17 m | static | 5 % -> red 4 % | race_against_battery, comic_then_tender | cut |
 | SC01_SH090 | SC01 | 1.00 s (24 f) | MCU | 50 | eye level 1.2 m | static | Freeze, stuck exhale | comic_then_tender, race_against_battery | cut |
 | SC01_SH100 | SC01 | 2.00 s (48 f) | MS | 24 | eye level 1.2 m | static | Key, glovebox, crank clunks onto lap | earned_last_signal, comic_then_tender, race_against_battery | cut |
 | SC01_SH110 | SC01 | 1.33 s (32 f) | INS | 85 | insert 1.0 m | static | Crank in lap, shoved back, cable out | earned_last_signal, comic_then_tender | cut |
-| SC01_SH120 | SC01 | 0.83 s (20 f) | INS | 85 | insert 1.14 m | static | Bolt appears beside 4 % | race_against_battery, comic_then_tender | cut |
+| SC01_SH120 | SC01 | 0.83 s (20 f) | INS | 85 | insert 1.17 m | static | Bolt appears beside 4 % | race_against_battery, comic_then_tender | cut |
 | SC01_SH130 | SC01 | 1.42 s (34 f) | MS | 24 | eye level 1.2 m | static | Relief; engine dies, dash dark | comic_then_tender, race_against_battery | cut on the stall frame |
-| SC01_SH140 | SC01 | 1.33 s (32 f) | INS | 85 | insert 1.14 m | static | Bolt gone, 4 -> 3 % | race_against_battery, comic_then_tender | cut |
+| SC01_SH140 | SC01 | 1.33 s (32 f) | INS | 85 | insert 1.17 m | static | Bolt gone, 4 -> 3 % | race_against_battery, comic_then_tender | cut |
 | SC01_SH150 | SC01 | 1.50 s (36 f) | MS | 50 | mild high 1.72 m | static | Forehead to the wheel | comic_then_tender, race_against_battery | cut |
 
 **SC01 total: 15 shots, 528 frames = 22.00 s** (average 1.47 s per shot).

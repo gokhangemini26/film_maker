@@ -1098,7 +1098,7 @@ class _FrameRig:
             m["fm_shot"] = True
             self.mirror = m
         if a and "dash_lights_and_adapter_ring" in pr:
-            on = U.cyl("adapter_ring_on", 0.014, 0.004, a["adapter"], self.rig, U.flat({"hex": "#F5B940", "linear": U.lin("#F5B940")}, strength=4.0))
+            on = U.cyl("adapter_ring_on", 0.014, 0.004, a["adapter"], self.rig, U.flat({"hex": "#F5B940", "linear": U.lin("#F5B940")}, strength=4.0, glow=True))
             off = U.cyl("adapter_ring_off", 0.014, 0.004, a["adapter"], self.rig, U.flat({"hex": "#3A3630", "linear": U.lin("#3A3630")}))
             for o in (on, off):
                 o["fm_shot"] = True
@@ -1439,13 +1439,26 @@ def _stamp(sid, on):
     r.stamp_background = (0, 0, 0, 0.6)
 
 
-def render_frames(resolved_dir, shot_id, frames, out_dir, width, *, stamp=False, samples=None, fast=False, skip_existing=False, log=print):
+def render_frames(resolved_dir, shot_id, frames, out_dir, width, *, stamp=False, samples=None, fast=False, skip_existing=False,
+                  final=False, log=print):
     """Render the given shot-local frames of one shot to <out_dir>/<shot_id>/%04d.png. Builds the shot once with the
-    static assembly (preview.render_shot), then re-poses everything per frame. Returns the list of PNG paths."""
+    static assembly (preview.render_shot), then re-poses everything per frame. Returns the list of PNG paths.
+    `final=True` (the final profile, `fm blender final`) also builds the locked compositor glare (finish.py, canon
+    look.style.glow); without it nothing about the scene or the pixels differs from a draft frame."""
     bpy = _bpy()
     from . import preview as P
     CAR_V2[0] = True      # frames use the v2 car interior (wheel/glovebox within the canon reach); stills keep v1
+    if final:
+        from . import finish as FN
+        FN.enable_glow_aov()                      # before any material is built
     film, shots, canon, units, rig, door = P.init_scene(resolved_dir, width)
+    if final:
+        gp = FN.glare_params(canon, width)
+        if gp is None:
+            log("FM_GLARE none (canon has no look.style.glow)")
+        else:
+            glare = FN.apply_glare(bpy, bpy.context.scene, gp)
+            log("FM_GLARE " + " ".join(f"{k}={v}" for k, v in glare.items() if k != "nodes"))
     ev = bpy.context.scene.eevee
     try:
         if samples:
@@ -1492,17 +1505,19 @@ def render_frames(resolved_dir, shot_id, frames, out_dir, width, *, stamp=False,
 
 # ===================================================================================== entry point for run_frames.py
 def main(argv):
-    """run_frames.py <resolved_dir> <out_dir> <shot_id> <width> <frames: 12,24,30-40|all> [stamp|no] [samples|-] [fast|-] [resume|-]"""
+    """run_frames.py <resolved_dir> <out_dir> <shot_id> <width> <frames: 12,24,30-40|all> [stamp|no] [samples|-] [fast|-] [resume|-] [final|-]"""
     resolved_dir, out_dir, shot_id, width, spec = argv[:5]
     stamp = len(argv) > 5 and argv[5] in ("stamp", "1", "true")
     samples = int(argv[6]) if len(argv) > 6 and argv[6].isdigit() else None
     fast = len(argv) > 7 and argv[7] == "fast"
     resume = len(argv) > 8 and argv[8] == "resume"
+    final = len(argv) > 9 and argv[9] == "final"
     shot = __import__("json").load(open(os.path.join(resolved_dir, shot_id + ".json"), encoding="utf-8"))
     n = int(shot["frames"]["count"])
     frames = parse_frames(spec, n)
     try:
-        render_frames(resolved_dir, shot_id, frames, out_dir, int(width), stamp=stamp, samples=samples, fast=fast, skip_existing=resume)
+        render_frames(resolved_dir, shot_id, frames, out_dir, int(width), stamp=stamp, samples=samples, fast=fast, skip_existing=resume,
+                      final=final)
         print("FM_OK", shot_id, len(frames), flush=True)
     except Exception as e:  # noqa: BLE001
         import traceback

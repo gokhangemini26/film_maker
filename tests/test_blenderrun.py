@@ -65,4 +65,4 @@ def test_scope_shots_and_frame_command(sandbox, monkeypatch, tmp_path):
                                        stamp=True, samples=None, fast=False, resume=False)
     except FMError:  # version pin check not satisfiable without a real Blender
         return
-    assert "--python" in cmd and cmd[-9:][2] == "S" and "stamp" in cmd
+    assert "--python" in cmd and cmd[-10:][2] == "S" and "stamp" in cmd

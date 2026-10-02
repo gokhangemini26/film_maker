@@ -1,6 +1,6 @@
 {
-  "content_hash": "sha256:8ebc207e6c76cb0b042356e12eb7ee9376220bad236abcbf09410a33aa115255",
-  "created_at": "2026-10-01T11:20:35Z",
+  "content_hash": "sha256:fbd2677c066682d5b776a4d65b00d2451e21dcd652a22dbfd696ce9ec1948dec",
+  "created_at": "2026-10-02T08:40:28Z",
   "derived_from": [
     {
       "hash": "sha256:fa336523cafb18489c30c446d12fbd2e568e6e1b02cd80267c41af10730c92c3",
@@ -247,7 +247,7 @@
       "ref": "canon:world.sets.street"
     },
     {
-      "hash": "sha256:71b49b1bd1391b1ed8a3b1604a47a2ae4d93645ea5fe5e4000150cd02f826bec",
+      "hash": "sha256:ec08eab9349a63936af06dd2d74a19ee0a26eb5b176f62b45504b94a97f7be50",
       "ref": "shot:SC01_SH080"
     }
   ],

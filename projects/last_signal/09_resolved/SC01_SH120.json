@@ -56,7 +56,7 @@
       "focus_target": "phone_ren_screen_plane"
     },
     "fov_h_deg": 23.9132,
-    "height_m": 1.14,
+    "height_m": 1.17,
     "lens_mm": 85.0,
     "look_at": "phone_ren",
     "movement": "static",
@@ -64,9 +64,9 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      1.29,
-      -0.34,
-      1.14
+      1.28,
+      0.37,
+      1.17
     ]
   },
   "characters": [
@@ -536,7 +536,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "insert",
-    "notes": "Same framing as SC01_SH080 (71 mm frame, 85 mm at 0.30 m). Bolt at 3 % of frame height or more; it appears at frame 2 and holds 18 frames (minimum 18). Framing reference (DEPENDENCY for the animation hold and the builder): screen centre at about (1.29, -0.09, 0.97), 0.40 m from his eyes. Lens 0.30 m from it on his eyeline, between his face and the phone (his head is behind the lens), camera's up = the phone's top edge. For the part of the screen named here, shift the lens parallel to the screen; never tilt it.",
+    "notes": "Same framing as SC01_SH080 (71 mm frame, 85 mm at 0.30 m). Bolt at 3 % of frame height or more; it appears at frame 2 and holds 18 frames (minimum 18). Framing reference (DEPENDENCY for the animation hold and the builder): screen centre at about (1.28, 0.62, 1.00) in the v2 car interior used by the animated frames (front seats 0.25 m forward, anchors.CAR_V2), about 0.34 m in front of his head. Lens 0.30 m from it on his eyeline. In the v2 interior his eyes are only about 0.22 m from the screen, so the lens sits just inside his head; inserts do not render his head or face (DEPENDENCY for the builder: every head and face piece is hidden, fringe, brows and mouth included), camera's up = the phone's top edge. For the part of the screen named here, shift the lens parallel to the screen; never tilt it.",
     "subject_position": "upper_right"
   },
   "environment": {

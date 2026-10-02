@@ -32,7 +32,7 @@ fm:
   - intent.comic_then_tender
   summary: 'Crank insert: one hand grips, lifts, rolls the brick once, shoves it back to the glovebox;
     returns with the cable end and pulls it toward the adapter.'
-  stamped_content_hash: sha256:43b58eddc63ec89284be787ddcaf2c1dd2bfa4d6270f646bb2f5dd20e9aacf46
+  stamped_content_hash: sha256:1cb9c447f77427338106ad3eab71ed7a514b5115dcf8761beb89b10c26db21b0
 shot_id: SC01_SH110
 frames: 32
 vocab_version: 2
@@ -45,11 +45,14 @@ characters:
   ren:
     pose:
     - f: 0
-      ref: car_upright
+      ref: car_sag
       ease: hold
-      note: body off frame except the right hand; left hand keeps the phone out of frame. Right hand enters
-        from frame right f1 (quick burst), grips f3, lifts 5 cm f4, wrist roll 180 deg f6-10, 2-frame
-        hold f11-12 (VOCAB GAP - hand-only actions have no preset)
+      note: 'insert cheat: car_sag (hands resting in the lap) replaces car_upright, whose right hand on
+        the wheel rim carried the crank (loc hand_r f3) out of the lap insert (NDC y about 2.4). With
+        car_sag the crank stays in frame f0-13 and exits frame left by f18, as the brief intends. The
+        letdown reading of car_sag is not visible: only hands and lap show. Body off frame except the
+        right hand. Right hand enters from frame right f1 (quick burst), grips f3, lifts 5 cm f4, wrist
+        roll 180 deg f6-10, 2-frame hold f11-12 (VOCAB GAP - hand-only actions have no preset)'
     - f: 13
       ref: car_lean_glovebox
       ease: ease_in
@@ -57,18 +60,18 @@ characters:
       note: one-handed shove out frame left toward the glovebox (accelerates out); brick gone by f17
       rationale: ease_in = the shove speeds up as it leaves, a dismissal
     - f: 18
-      ref: car_upright
+      ref: car_sag
       ease: ease_out
       blend_f: 3
       note: hand comes back in from frame left holding the cable end
     - f: 21
-      ref: car_upright
+      ref: car_sag
       ease: ease_in_out
       blend_f: 8
       note: pulls the cable across the frame toward the console adapter; hand leaves frame by f29 (VOCAB
         GAP - no console/adapter reach preset)
     - f: 29
-      ref: car_upright
+      ref: car_sag
       ease: hold
       note: empty lap with the cable lying across it; still to the cut
     move:
@@ -185,3 +188,7 @@ notes:
   version of it.
 - 'Cable (vocabulary v2, animation.vocab.v2.prop.charging_cable): a posed curve with a hook at the hand,
   dragged along the hand path; keep the visible length short (M3 risk from the shot).'
+- 'Pose fix (crank in frame): car_upright -> car_sag at f0, f18, f21, f29 (f13 car_lean_glovebox unchanged).
+  Events, holds, prop keys, look keys and frame count unchanged, so audio sync is untouched. Known side
+  effect: car_sag rests the phone (attach hand_l) in the lap, so it shows beside the crank, against the
+  brief''s "left hand keeps the phone out of frame"; see the handoff.'

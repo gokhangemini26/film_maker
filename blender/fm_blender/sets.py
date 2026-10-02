@@ -105,7 +105,7 @@ def build_street(col, canon):
     steel = _t(col, pal(10))
     for i, (px, py) in enumerate(s.get("lamp_poles", [])):
         U.cyl(f"lamp_pole{i}", 0.07, 5.0, (px, py, 2.5), col, steel)
-        U.sphere(f"lamp_head{i}", 0.22, (px + 0.5, py, 5.0), col, U.flat({"hex": "#F6DCA6", "linear": U.lin("#F6DCA6")}))
+        U.sphere(f"lamp_head{i}", 0.22, (px + 0.5, py, 5.0), col, U.flat({"hex": "#F6DCA6", "linear": U.lin("#F6DCA6")}, glow=True))
     for i, (px, py) in enumerate(s.get("utility_poles_extra", [])):
         U.cyl(f"utility_pole{i}", 0.09, 7.0, (px, py, 3.5), col, steel)
     # distant western railing and open sky beyond
@@ -223,7 +223,7 @@ def build_shop(col, canon):
     # ceiling panels (emissive; switched by the preview via property fm_shop_light)
     for i in range(c["ceiling_panels"]):
         p = U.box(f"shop_panel{i}", (0.9, 0.9, 0.03), (O.x + xm, O.y + fd * (i + 0.5) / c["ceiling_panels"], H - 0.03), col,
-                  U.flat({"hex": "#FFF6E4", "linear": U.lin("#FFF6E4")}, strength=3.0))
+                  U.flat({"hex": "#FFF6E4", "linear": U.lin("#FFF6E4")}, strength=3.0, glow=True))
         p["fm_shop_light"] = True
     # counter front-left with a plain till box (no screen)
     cw, cd, ch = c["counter"]["size_m"]
@@ -283,7 +283,7 @@ def build_shop(col, canon):
         fx_ = O.x + 0.95 + i * 0.95
         U.box(f"fridge{i}", tuple(fz), (fx_, O.y + fd - fz[1] / 2 - 0.05, fz[2] / 2), col, frame)
         g = U.box(f"fridge_glow{i}", (fz[0] * 0.85, 0.02, fz[2] * 0.8), (fx_, O.y + fd - fz[1] - 0.06, fz[2] / 2), col,
-                  U.flat({"hex": "#DDF3F4", "linear": U.lin("#DDF3F4")}, strength=2.0))
+                  U.flat({"hex": "#DDF3F4", "linear": U.lin("#DDF3F4")}, strength=2.0, glow=True))
         g["fm_shop_light"] = True
         for r, zb in enumerate((0.55, 0.95, 1.35)):  # bottle silhouettes standing on the lit shelves
             U.box(f"fridge{i}_shelf{r}", (fz[0] * 0.85, 0.03, 0.02), (fx_, O.y + fd - fz[1] - 0.075, zb), col, frame)
@@ -381,10 +381,10 @@ def build_room(col, canon):
     U.cyl("desk_lamp_base", 0.07, 0.02, (O.x - 0.45, O.y - 0.2, dh + 0.03), col, dark)
     U.between("desk_lamp_arm", (O.x - 0.45, O.y - 0.2, dh + 0.03), (O.x - 0.35, O.y - 0.28, dh + 0.42), 0.012, col, dark)
     U.cyl("desk_lamp_shade", 0.075, 0.08, (O.x - 0.35, O.y - 0.28, dh + 0.43), col, dark)
-    U.sphere("desk_lamp_head", 0.035, (O.x - 0.35, O.y - 0.28, dh + 0.38), col, U.flat({"hex": "#FFD6A0", "linear": U.lin("#FFD6A0")}, strength=4.0))
+    U.sphere("desk_lamp_head", 0.035, (O.x - 0.35, O.y - 0.28, dh + 0.38), col, U.flat({"hex": "#FFD6A0", "linear": U.lin("#FFD6A0")}, strength=4.0, glow=True))
     U.box("phone_hana", (0.071, 0.147, 0.0085), (O.x + 0.25, O.y - 0.3, dh + 0.03), col, dark)
     U.box("phone_hana_screen", (0.06, 0.13, 0.002), (O.x + 0.25, O.y - 0.3, dh + 0.036), col,
-          U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=2.5))
+          U.flat({"hex": "#FFF1DE", "linear": U.lin("#FFF1DE")}, strength=2.5, glow=True))
     # five pinned sketches either side of the window (pictures only: window view, rooftops, plant, cat, cup shapes)
     for i, sxp in enumerate((-1.24, -1.02, 0.98, 1.16, 1.34)):
         sz = 1.55 - (i % 3) * 0.14

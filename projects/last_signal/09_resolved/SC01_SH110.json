@@ -667,7 +667,7 @@
             "ease": "hold",
             "f": 0,
             "f_abs": 374,
-            "ref": "car_upright"
+            "ref": "car_sag"
           },
           {
             "blend_f": 4,
@@ -681,20 +681,20 @@
             "ease": "ease_out",
             "f": 18,
             "f_abs": 392,
-            "ref": "car_upright"
+            "ref": "car_sag"
           },
           {
             "blend_f": 8,
             "ease": "ease_in_out",
             "f": 21,
             "f_abs": 395,
-            "ref": "car_upright"
+            "ref": "car_sag"
           },
           {
             "ease": "hold",
             "f": 29,
             "f_abs": 403,
-            "ref": "car_upright"
+            "ref": "car_sag"
           }
         ]
       }

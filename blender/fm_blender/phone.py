@@ -222,7 +222,8 @@ def _lerp_hex(a, b, t):
 
 
 class Screen:
-    def __init__(self, parent, col, sid, colors, sw=SW, sh=SH, zs=None, bright=1.0):
+    def __init__(self, parent, col, sid, colors, sw=SW, sh=SH, zs=None, bright=1.0, glow=True):
+        self.glow = glow     # False for the off-glass (a dark plate, not a light): only the lit screen feeds the final glare
         self.p, self.col, self.sid, self.c = parent, col, sid, colors
         self.sw, self.sh = sw, sh
         self.zs = zs if zs is not None else T / 2 + 0.0004
@@ -238,7 +239,7 @@ class Screen:
         return (0.5 - fy) * self.sh
 
     def _mat(self, hexv):
-        return U.flat({"hex": hexv, "linear": U.lin(hexv)}, strength=self.bright)
+        return U.flat({"hex": hexv, "linear": U.lin(hexv)}, strength=self.bright, glow=self.glow)
 
     def poly(self, pts, hexv, layer=1):
         """Flat emissive n-gon (points in local metres) at painter's-order layer."""
@@ -603,7 +604,7 @@ def build_phone(col, sid, center, x_axis, y_axis, z_axis, ui_assets, st, colors,
     bright = st.get("brightness", 1.0)
     # front glass (screen_off colour), always present; the case shows as a lip around it
     gw, gh = d["GW"] * (sw_ / d["SW"]), d["GH"] * (sh_ / d["SH"])
-    glass = Screen(e, col, sid, colors, sw_, sh_, zs, 1.0)
+    glass = Screen(e, col, sid, colors, sw_, sh_, zs, 1.0, glow=False)
     glass.poly(_rrect_pts(-gw / 2, -gh / 2, gw / 2, gh / 2, 0.006), colors["screen_off"], -1)
     if not screen_on or bright <= 0.001:
         return e

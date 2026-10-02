@@ -14,12 +14,12 @@ creative_intent:
   audience_effect: 'The viewer counts along: three left.'
 camera:
   lens_mm: 85
-  height_m: 1.14
+  height_m: 1.17
   movement: static
   start_position:
-  - 1.29
-  - -0.34
-  - 1.14
+  - 1.28
+  - 0.37
+  - 1.17
   end_position: null
   look_at: phone_ren
   dof:
@@ -33,9 +33,12 @@ composition:
   notes: 'Same framing as SH080/SH120 (71 mm frame, 85 mm at 0.30 m). The 3-frame dip (look.style.phone_ui)
     straddles the cut; 30 frames held after the change (minimum 24); bolt absence held well beyond 18
     frames. Framing reference (DEPENDENCY for the animation hold and the builder): screen centre at about
-    (1.29, -0.09, 0.97), 0.40 m from his eyes. Lens 0.30 m from it on his eyeline, between his face and
-    the phone (his head is behind the lens), camera''s up = the phone''s top edge. For the part of the
-    screen named here, shift the lens parallel to the screen; never tilt it.'
+    (1.28, 0.62, 1.00) in the v2 car interior used by the animated frames (front seats 0.25 m forward,
+    anchors.CAR_V2), about 0.34 m in front of his head. Lens 0.30 m from it on his eyeline. In the v2
+    interior his eyes are only about 0.22 m from the screen, so the lens sits just inside his head; inserts
+    do not render his head or face (DEPENDENCY for the builder: every head and face piece is hidden, fringe,
+    brows and mouth included), camera''s up = the phone''s top edge. For the part of the screen named
+    here, shift the lens parallel to the screen; never tilt it.'
 characters:
 - id: ren
   position:
@@ -104,7 +107,18 @@ rationale:
     after the first preview: the approved spec put the lens about 0.38 m from the screen and inside his
     head, which gives a frame about 91-93 mm tall, so a 2.2 mm digit falls to about 2.4 % (under the 3
     % minimum). At 0.30 m on his eyeline the frame is 71 mm as promised. Rejected: keeping the old position
-    and asking the builder to push the lens (the frame size would still be undefined in the spec).'
+    and asking the builder to push the lens (the frame size would still be undefined in the spec). Lens
+    moved with the phone for the v2 car interior (seats 0.25 m forward): the phone now rests at about
+    (1.28, 0.62, 1.00), so the old lens at (1.29, -0.34, 1.14) was 0.97 m from it, a frame about 230 mm
+    tall in which the 2.2 mm digit is about 1 % of frame height. The lens keeps its old offset from the
+    screen, 0.30 m back along his eyeline (0, -0.25, +0.17), and now sits at (1.28, 0.37, 1.17); lens,
+    tilt, framing, screen direction and owner-side view are unchanged. Rejected: tilting or re-aiming
+    the old lens (the screen would skew past the 15-degree limit of camera.dof.inserts) and a longer lens
+    (85 mm is the locked insert lens). In the v2 interior his eyes are about 0.22 m from the screen, so
+    no 0.30 m lens position fits between his face and the phone; the lens sits inside his hidden head
+    instead. Rejected: a 0.20 m lens in front of his face (a 48 mm frame that crops the status bar and
+    changes the approved composition) and swinging the lens off his eyeline to clear his head (the owner''s-eye
+    view of the screen is the insert language).'
   composition: Identical to SH120 minus the bolt, so the loss is a subtraction the eye sees at once.
   lighting: 'The screen''s dip is seen recovering in the first frames: the phone flinches.'
   movement: Static.
@@ -122,7 +136,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
+  hash: sha256:c8958df2dd63827b86c9f243f23b5d32274ae9604f1fb006f63cbf79fa59745e
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -231,6 +245,12 @@ derived_from:
   hash: sha256:c2074a56f9675d9b4455c4737845b1618f9c550b936174cdf46b7407a76b423c
 - ref: canon:look.color.ui_portraits
   hash: sha256:f5263c8c6933611c25502ea6c49e2868203bccd8da4a63e2b0b1509536d9e90c
-stamped_content_hash: sha256:209db68556feab291fba285ddf380490e5dc1bd6f4e72fbab9f119708345bd51
+- ref: canon:animation.vocab.v2.prop.charging_cable
+  hash: sha256:06b0072b9573eef18df3d2f731f6e3084dcdb24b98ec49369b9f6a3834def2bc
+- ref: canon:animation.vocab.v2.pose.ren
+  hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
+- ref: canon:animation.vocab.v2.face.ren
+  hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
+stamped_content_hash: sha256:2e0e915f0eaf71dbf7339201311e4e9bee1593e2f0f5abc48f3603e7378372c9
 stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
   and shots); no content revision needed.

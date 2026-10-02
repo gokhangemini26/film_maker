@@ -22,7 +22,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from .blender import require_blender
-from .blenderrun import _fm_framesel, _frame_cmd, scope_shots
+from .blenderrun import _fm_finish, _fm_framesel, _frame_cmd, scope_shots
 from .errors import FMError
 from .io import hash_obj, load_yaml, now_iso, write_json
 from .ops import load_state, record_derived
@@ -172,6 +172,11 @@ def final(project: Project, repo: Path, *, scope: str | None = None, resume: boo
     if chunk < 1 or width < 16 or samples < 1:
         raise FMError("--chunk-frames, --width and --samples must be positive")
     exp_w, exp_h = _expected_size(film, width)
+    fin = _fm_finish()
+    try:   # the locked finish step the builder applies at render time (look.style.glow); refuse before any work if canon asks for more
+        glare = fin.glare_params(film.get("canon") or {}, width)
+    except fin.FinishError as exc:
+        raise FMError(f"final render refused: {exc}") from exc
 
     draft = route == "cloud"
     if draft:       # bpy module: never the pinned series; recorded as such and rejected by `fm qa final`
@@ -180,7 +185,8 @@ def final(project: Project, repo: Path, *, scope: str | None = None, resume: boo
     else:           # the pin is checked before any work
         version = f"blender {require_blender(repo).version}"
     settings = {"route": route, "width": exp_w, "height": exp_h, "samples": samples, "pinned": not draft,
-                "profile": {k: prof.get(k) for k in ("engine", "resolution_scale", "samples", "motion_blur", "output")}}
+                "profile": {**{k: prof.get(k) for k in ("engine", "resolution_scale", "samples", "motion_blur", "output")},
+                            "glare": glare}}   # canon-derived: a canon change re-renders the shot, never mixes settings
     out = project.dir / FINAL_DIR
     out.mkdir(parents=True, exist_ok=True)
     logs = project.dir / "10_blender" / "logs"
@@ -233,7 +239,7 @@ def final(project: Project, repo: Path, *, scope: str | None = None, resume: boo
     def one(job):
         sid, a, b = job
         cmd, ver = _frame_cmd(repo, draft=draft, resolved=resolved, out=out, sid=sid, width=width, spec=_spec(a, b), stamp=False,
-                              samples=samples, fast=False, resume=resume)
+                              samples=samples, fast=False, resume=resume, final=True)
         try:
             r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_s)
             text, ok = r.stdout + "\n" + r.stderr, "FM_OK" in r.stdout

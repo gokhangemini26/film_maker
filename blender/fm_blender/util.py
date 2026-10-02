@@ -87,9 +87,22 @@ def toon(color, shadow=None, threshold=0.5, outline=False, name=None):
     return m
 
 
-def flat(color, name=None, strength=1.0):
+# Final profile only (set by finish.enable_glow_aov before the scene is built): glow=True flat materials also write their
+# emitted colour to the "fm_glow" AOV, which the compositor glare reads. Off by default, so draft and preview materials
+# (and every pixel they render) are exactly what they were.
+GLOW_AOV = [False]
+GLOW_AOV_NAME = "fm_glow"              # colour AOV: what the source emits (the glare's input)
+GLOW_MASK_AOV_NAME = "fm_glow_mask"    # value AOV: 1 where a glow source is (the halo is not added on top of it)
+
+
+def flat(color, name=None, strength=1.0, glow=False):
+    """Unlit emissive material. `glow=True` marks a real light source (phone screen, lamp, panel, fridge glass, adapter ring):
+    only those feed the final compositor glare (look.style.glow: emissives only)."""
     lit = lin(color)
     key = name or f"fm.flat.{'%.3f_%.3f_%.3f' % tuple(lit)}.{strength}"
+    glow = bool(glow and GLOW_AOV[0])
+    if glow:
+        key += ".glow"
     m = bpy.data.materials.get(key)
     if m is not None:
         return m
@@ -100,6 +113,13 @@ def flat(color, name=None, strength=1.0):
     em.inputs[1].default_value = strength
     out = nt.nodes.new("ShaderNodeOutputMaterial")
     nt.links.new(em.outputs[0], out.inputs[0])
+    if glow:
+        ao = nt.nodes.new("ShaderNodeOutputAOV")
+        ao.aov_name = GLOW_AOV_NAME
+        ao.inputs[0].default_value = (*[c * strength for c in lit], 1.0)   # what the emission node emits
+        mk = nt.nodes.new("ShaderNodeOutputAOV")
+        mk.aov_name = GLOW_MASK_AOV_NAME
+        mk.inputs[1].default_value = 1.0
     return m
 
 

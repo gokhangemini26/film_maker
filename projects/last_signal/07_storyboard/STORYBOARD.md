@@ -7,7 +7,7 @@ fm:
   owner_role: cinematographer
   derived_from:
   - ref: artifact:shot_list
-    hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
+    hash: sha256:c8958df2dd63827b86c9f243f23b5d32274ae9604f1fb006f63cbf79fa59745e
   - ref: artifact:screenplay
     hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
   - ref: artifact:cinematography_bible
@@ -26,6 +26,9 @@ fm:
   summary: Text storyboard for all 38 shots of Last Signal - frame layers, eye path, movement, sound cue
     and transition per shot, in film order.
   stamped_content_hash: sha256:891aec9e44443e0c00e161d46f5cdf7a23346d513b4fbd2cb228e807f7f18523
+  stamp_note: SHOT_LIST changed only the height column of SC01_SH070/080/120/140 (v2 car interior lens
+    move, 1.14 -> 1.17 m); the storyboard describes these frames as 0.30 m on his eyeline, which still
+    holds.
 title: Storyboard
 ---
 # Storyboard: Last Signal

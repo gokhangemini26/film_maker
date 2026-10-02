@@ -229,6 +229,6 @@ def add_door_rectangle(bpy, col, origin, shop_width, sp):
     from . import util as U
     from mathutils import Vector
     o = U.box("shop_door_glass", (0.9, 0.01, 2.05), (origin.x + shop_width / 2, origin.y + 0.03, 1.025), col,
-              U.flat({"hex": sp["door"], "linear": sp["door_lin"]}, strength=DOOR_STRENGTH))
+              U.flat({"hex": sp["door"], "linear": sp["door_lin"]}, strength=DOOR_STRENGTH, glow=True))
     o["fm_shot"] = True
     return o
