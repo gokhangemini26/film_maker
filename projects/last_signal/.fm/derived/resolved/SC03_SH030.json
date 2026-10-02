@@ -1,6 +1,6 @@
 {
   "content_hash": "sha256:fd9797abf28455fafe1382233c7a822cfb45c4673f9c6dfdf02914f291569658",
-  "created_at": "2026-10-02T14:19:34Z",
+  "created_at": "2026-10-02T19:19:23Z",
   "derived_from": [
     {
       "hash": "sha256:bcfd4a65630bd081e94aabf7e4877a2587b792db60282c613f4496491e509c08",
@@ -153,6 +153,10 @@
     {
       "hash": "sha256:93e5e852cf0656d319d1e2914771dd9605dd0fbd5d86fa9dce3b3b1a7bfb2095",
       "ref": "canon:look.lighting.sc03_blackout_render"
+    },
+    {
+      "hash": "sha256:7c662d04979c9820a23d93640fa49c2359cb4de2b919ef417243cb5039959c1f",
+      "ref": "canon:look.lighting.sc03_sh070_style_break"
     },
     {
       "hash": "sha256:cecc332e20ce168aa800837394373deec64b95e721f4c4ae4f4e7c58a4560d9f",

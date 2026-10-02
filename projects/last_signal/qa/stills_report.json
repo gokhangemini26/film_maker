@@ -9,28 +9,28 @@
    "shot": "SC01_SH010",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.719,
-    "std_lum": 0.116,
+    "mean_lum": 0.698,
+    "std_lum": 0.148,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     189,
-     183,
-     174
+     182,
+     178,
+     170
     ]
    },
-   "colour_distance_to_dominant": 66
+   "colour_distance_to_dominant": 74
   },
   {
    "shot": "SC01_SH020",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.801,
-    "std_lum": 0.158,
-    "clipped_frac": 0.043,
+    "mean_lum": 0.791,
+    "std_lum": 0.153,
+    "clipped_frac": 0.08,
     "mean_rgb": [
-     215,
-     204,
-     173
+     210,
+     202,
+     175
     ]
    }
   },
@@ -38,13 +38,13 @@
    "shot": "SC01_SH030",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.824,
-    "std_lum": 0.199,
-    "clipped_frac": 0.0,
+    "mean_lum": 0.744,
+    "std_lum": 0.167,
+    "clipped_frac": 0.014,
     "mean_rgb": [
-     218,
-     210,
-     188
+     197,
+     190,
+     166
     ]
    }
   },
@@ -52,8 +52,8 @@
    "shot": "SC01_SH040",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.739,
-    "std_lum": 0.132,
+    "mean_lum": 0.738,
+    "std_lum": 0.133,
     "clipped_frac": 0.0,
     "mean_rgb": [
      193,
@@ -67,13 +67,13 @@
    "shot": "SC01_SH050",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.796,
-    "std_lum": 0.162,
-    "clipped_frac": 0.005,
+    "mean_lum": 0.782,
+    "std_lum": 0.159,
+    "clipped_frac": 0.001,
     "mean_rgb": [
-     214,
-     203,
-     171
+     209,
+     199,
+     172
     ]
    }
   },
@@ -81,28 +81,28 @@
    "shot": "SC01_SH060",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.753,
-    "std_lum": 0.151,
+    "mean_lum": 0.751,
+    "std_lum": 0.149,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     196,
+     195,
      192,
-     180
+     181
     ]
    },
-   "colour_distance_to_dominant": 57
+   "colour_distance_to_dominant": 58
   },
   {
    "shot": "SC01_SH070",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.836,
-    "std_lum": 0.196,
-    "clipped_frac": 0.03,
+    "mean_lum": 0.753,
+    "std_lum": 0.168,
+    "clipped_frac": 0.021,
     "mean_rgb": [
-     221,
-     213,
-     191
+     199,
+     192,
+     168
     ]
    }
   },
@@ -110,13 +110,13 @@
    "shot": "SC01_SH080",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.773,
-    "std_lum": 0.239,
-    "clipped_frac": 0.005,
+    "mean_lum": 0.761,
+    "std_lum": 0.168,
+    "clipped_frac": 0.013,
     "mean_rgb": [
-     206,
-     197,
-     173
+     202,
+     194,
+     170
     ]
    }
   },
@@ -124,43 +124,43 @@
    "shot": "SC01_SH090",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.719,
-    "std_lum": 0.116,
+    "mean_lum": 0.698,
+    "std_lum": 0.148,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     189,
-     183,
-     174
+     182,
+     178,
+     170
     ]
    },
-   "colour_distance_to_dominant": 66
+   "colour_distance_to_dominant": 74
   },
   {
    "shot": "SC01_SH100",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.711,
-    "std_lum": 0.129,
+    "mean_lum": 0.712,
+    "std_lum": 0.123,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     185,
+     186,
      181,
-     171
+     172
     ]
    },
-   "colour_distance_to_dominant": 70
+   "colour_distance_to_dominant": 69
   },
   {
    "shot": "SC01_SH110",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.609,
-    "std_lum": 0.112,
+    "mean_lum": 0.699,
+    "std_lum": 0.053,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     161,
-     154,
-     152
+     185,
+     177,
+     166
     ]
    }
   },
@@ -168,13 +168,13 @@
    "shot": "SC01_SH120",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.773,
-    "std_lum": 0.239,
-    "clipped_frac": 0.005,
+    "mean_lum": 0.761,
+    "std_lum": 0.168,
+    "clipped_frac": 0.013,
     "mean_rgb": [
-     206,
-     197,
-     173
+     202,
+     194,
+     170
     ]
    }
   },
@@ -182,28 +182,28 @@
    "shot": "SC01_SH130",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.71,
-    "std_lum": 0.129,
+    "mean_lum": 0.712,
+    "std_lum": 0.124,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     185,
+     186,
      181,
-     171
+     172
     ]
    },
-   "colour_distance_to_dominant": 70
+   "colour_distance_to_dominant": 69
   },
   {
    "shot": "SC01_SH140",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.773,
-    "std_lum": 0.239,
-    "clipped_frac": 0.005,
+    "mean_lum": 0.761,
+    "std_lum": 0.168,
+    "clipped_frac": 0.013,
     "mean_rgb": [
-     206,
-     197,
-     173
+     202,
+     194,
+     170
     ]
    }
   },
@@ -212,7 +212,7 @@
    "findings": [],
    "metrics": {
     "mean_lum": 0.681,
-    "std_lum": 0.124,
+    "std_lum": 0.128,
     "clipped_frac": 0.0,
     "mean_rgb": [
      178,
@@ -226,16 +226,16 @@
    "shot": "SC02_SH010",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.722,
-    "std_lum": 0.183,
+    "mean_lum": 0.725,
+    "std_lum": 0.182,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     191,
-     184,
-     164
+     192,
+     185,
+     165
     ]
    },
-   "colour_distance_to_dominant": 62
+   "colour_distance_to_dominant": 61
   },
   {
    "shot": "SC02_SH020",
@@ -257,7 +257,7 @@
    "findings": [],
    "metrics": {
     "mean_lum": 0.786,
-    "std_lum": 0.119,
+    "std_lum": 0.118,
     "clipped_frac": 0.0,
     "mean_rgb": [
      204,
@@ -286,31 +286,31 @@
    "shot": "SC03_SH020",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.735,
-    "std_lum": 0.157,
+    "mean_lum": 0.705,
+    "std_lum": 0.124,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     178,
-     189,
-     199
+     181,
+     180,
+     178
     ]
    },
-   "colour_distance_to_dominant": 81
+   "colour_distance_to_dominant": 96
   },
   {
    "shot": "SC03_SH030",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.728,
-    "std_lum": 0.137,
-    "clipped_frac": 0.009,
+    "mean_lum": 0.739,
+    "std_lum": 0.119,
+    "clipped_frac": 0.006,
     "mean_rgb": [
-     187,
-     185,
-     181
+     188,
+     189,
+     187
     ]
    },
-   "colour_distance_to_dominant": 88
+   "colour_distance_to_dominant": 82
   },
   {
    "shot": "SC03_SH040",
@@ -331,13 +331,13 @@
    "shot": "SC03_SH050",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.16,
-    "std_lum": 0.013,
+    "mean_lum": 0.128,
+    "std_lum": 0.052,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     40,
-     41,
-     40
+     30,
+     32,
+     47
     ]
    }
   },
@@ -345,13 +345,13 @@
    "shot": "SC03_SH060",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.586,
-    "std_lum": 0.398,
-    "clipped_frac": 0.005,
+    "mean_lum": 0.325,
+    "std_lum": 0.15,
+    "clipped_frac": 0.0,
     "mean_rgb": [
-     152,
-     149,
-     146
+     109,
+     76,
+     77
     ]
    }
   },
@@ -359,13 +359,13 @@
    "shot": "SC03_SH070",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.315,
-    "std_lum": 0.263,
+    "mean_lum": 0.203,
+    "std_lum": 0.207,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     80,
-     80,
-     81
+     51,
+     51,
+     62
     ]
    }
   },
@@ -373,13 +373,13 @@
    "shot": "SC04_SH010",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.662,
-    "std_lum": 0.136,
+    "mean_lum": 0.663,
+    "std_lum": 0.134,
     "clipped_frac": 0.0,
     "mean_rgb": [
      170,
      169,
-     162
+     163
     ]
    },
    "colour_distance_to_dominant": 83
@@ -402,13 +402,13 @@
    "shot": "SC04_SH030",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.611,
-    "std_lum": 0.202,
+    "mean_lum": 0.613,
+    "std_lum": 0.199,
     "clipped_frac": 0.0,
     "mean_rgb": [
      161,
      156,
-     141
+     142
     ]
    },
    "colour_distance_to_dominant": 68
@@ -417,31 +417,31 @@
    "shot": "SC04_SH040",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.697,
-    "std_lum": 0.122,
+    "mean_lum": 0.704,
+    "std_lum": 0.117,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     180,
-     178,
-     171
+     182,
+     179,
+     172
     ]
    },
-   "colour_distance_to_dominant": 97
+   "colour_distance_to_dominant": 99
   },
   {
    "shot": "SC04_SH050",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.638,
-    "std_lum": 0.181,
+    "mean_lum": 0.642,
+    "std_lum": 0.174,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     169,
-     163,
-     146
+     170,
+     164,
+     147
     ]
    },
-   "colour_distance_to_dominant": 78
+   "colour_distance_to_dominant": 79
   },
   {
    "shot": "SC04_SH060",
@@ -489,16 +489,16 @@
    "shot": "SC04_SH090",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.621,
-    "std_lum": 0.195,
+    "mean_lum": 0.626,
+    "std_lum": 0.188,
     "clipped_frac": 0.0,
     "mean_rgb": [
-     164,
-     158,
-     143
+     166,
+     159,
+     144
     ]
    },
-   "colour_distance_to_dominant": 71
+   "colour_distance_to_dominant": 73
   },
   {
    "shot": "SC05_SH010",
@@ -548,13 +548,13 @@
    "shot": "SC06_SH010",
    "findings": [],
    "metrics": {
-    "mean_lum": 0.661,
-    "std_lum": 0.136,
+    "mean_lum": 0.662,
+    "std_lum": 0.134,
     "clipped_frac": 0.0,
     "mean_rgb": [
      170,
      169,
-     162
+     163
     ]
    },
    "colour_distance_to_dominant": 83
