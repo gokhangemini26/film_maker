@@ -1,11 +1,15 @@
-"""Build all sets once, then render a mid-shot still per shot. Run inside Blender:
+"""Build the sets, then render one representative-frame still per shot (framesel.still_frame: animation.preview_frame, else
+the hero state event, else mid-shot). Shots with an anim file are rendered through animate.render_frames, i.e. exactly as
+the playblast poses them; shots without one use the static assembly. Run inside Blender:
 
 blender -b --factory-startup --python blender/run_preview.py -- <resolved_dir> <out_dir> [shot,shot..] [width]
 """
 import json
 import math
 import os
+import shutil
 import sys
+import tempfile
 
 import bpy
 from mathutils import Vector
@@ -17,6 +21,7 @@ from . import phone as PH
 from . import anchors as AN
 from . import sightline as SL
 from . import blackout as BO
+from . import framesel as FS
 
 STREET_SCENES = {"SC01", "SC02", "SC04", "SC06"}
 DUSK = {"SC04", "SC05", "SC06"}
@@ -703,22 +708,51 @@ def main(argv):
     only = set(argv[2].split(",")) if len(argv) > 2 and argv[2] not in ("", "all") else None
     width = int(argv[3]) if len(argv) > 3 else 960
     os.makedirs(out_dir, exist_ok=True)
-    film, shots, canon, units, rig, door = init_scene(resolved_dir, width)
+    scene_ready = None
     done = []
-    for sid, shot in shots.items():
+    picks = {}
+    # the shots come from the resolved dir; the shared static scene is built lazily (an animated shot builds its own)
+    order = list(json.load(open(os.path.join(resolved_dir, "film.json"), encoding="utf-8"))["shots"])
+    for sid in order:
         if only and sid not in only:
             continue
-        world_sky(shot["scene_id"] in DUSK, canon)
-        bg = bpy.context.scene.world.node_tree.nodes["Background"]
         try:
-            done.append(render_shot(film, shot, canon, units, rig, door, out_dir, bg, shots))
+            if scene_ready is None:
+                scene_ready = init_scene(resolved_dir, width)
+            film, shots, canon, units, rig, door = scene_ready
+            shot = shots[sid]
+            frame, source = FS.still_frame(shot)
+            if shot.get("motion"):
+                # animated shot: the still is the animated frame (same poses, props, camera and holds as the playblast),
+                # never the static rest assembly, which has no animation (hand over the lens, phone missing)
+                from . import animate as ANIM
+                tmp = tempfile.mkdtemp(prefix="fm_prev_")
+                paths = ANIM.render_frames(resolved_dir, sid, [frame], tmp, width)
+                scene_ready = None  # render_frames rebuilt the scene from scratch; rebuild the shared one on demand
+                path = os.path.join(out_dir, sid + ".png")
+                shutil.copyfile(paths[0], path)
+                shutil.rmtree(tmp, ignore_errors=True)
+                done.append(path)
+                picks[sid] = {"frame": frame, "source": source, "route": "animated"}
+            else:
+                world_sky(shot["scene_id"] in DUSK, canon)
+                bg = bpy.context.scene.world.node_tree.nodes["Background"]
+                done.append(render_shot(film, shot, canon, units, rig, door, out_dir, bg, shots))
+                picks[sid] = {"frame": frame, "source": source, "route": "static", "note": "no anim file: static pose from the shot's mid-frame key"}
+            print("FM_PICK", sid, json.dumps(picks[sid]), flush=True)
             print("FM_OK", sid, flush=True)
         except Exception as e:  # noqa: BLE001
             import traceback
             traceback.print_exc()
             print("FM_FAIL", sid, e, flush=True)
-    json.dump({"rendered": [os.path.basename(p) for p in done], "builder": __import__("fm_blender").BUILDER_VERSION},
-              open(os.path.join(out_dir, "preview_report.json"), "w"), indent=1)
+    rp = os.path.join(out_dir, "preview_report.json")
+    try:
+        rep = json.load(open(rp))
+    except Exception:  # noqa: BLE001
+        rep = {}
+    rep.update({"rendered": [os.path.basename(p) for p in done], "builder": __import__("fm_blender").BUILDER_VERSION})
+    rep["frames"] = {**(rep.get("frames") or {}), **picks}
+    json.dump(rep, open(rp, "w"), indent=1)
 
 
 if __name__ == "__main__":

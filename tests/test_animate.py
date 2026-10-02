@@ -131,6 +131,29 @@ def test_parse_frames_and_select():
     assert pf == [s["animation"]["preview_frame"]]
 
 
+def test_still_frame_is_a_representative_key_frame_not_frame_zero():
+    # designated preview_frame wins (SH060: a still insert, f12)
+    assert FS.still_frame(shot("SC03_SH060")) == (12, "animation.preview_frame")
+    # no preview_frame: the first state event after f0 is the hero beat (SH020: bolt_on f14, not the rest pose at f0)
+    s = shot("SC03_SH020")
+    assert not (s.get("animation") or {}).get("preview_frame")
+    assert FS.still_frame(s) == (14, "hero_event:bolt_on")
+    # nothing usable: mid-shot; deterministic; out-of-range preview_frame ignored
+    bare = {"frames": {"count": 30}, "animation": {"preview_frame": 99}, "motion": {"events": [{"f": 0, "id": "x", "kind": "state"}]}}
+    assert FS.still_frame(bare) == (15, "mid_shot") == FS.still_frame(bare)
+    # every shot of the film gets a frame inside the shot and never the default of 0 unless it is the only frame
+    for f in sorted(RES.glob("SC*.json")):
+        sh = json.loads(f.read_text(encoding="utf-8"))
+        fr, src = FS.still_frame(sh)
+        assert 0 <= fr < sh["frames"]["count"] and src
+        assert FS.select_frames(sh, preview_frame=True) == [fr]
+
+
+def test_preview_main_renders_animated_shots_through_the_playblast_path():
+    src = (ROOT / "blender" / "fm_blender" / "preview.py").read_text(encoding="utf-8")
+    assert "ANIM.render_frames(" in src and "FS.still_frame(" in src and "FM_PICK" in src
+
+
 # ------------------------------------------------------------------ vocabulary v2 builder pieces
 def _motion_with(sid, chars=None, props=None):
     s = shot(sid)

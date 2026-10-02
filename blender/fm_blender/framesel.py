@@ -27,6 +27,24 @@ def parse_frames(spec, n):
     return sorted(set(out))
 
 
+def still_frame(shot):
+    """The representative key frame for a shot's static preview still: (frame, source). Deterministic, pure.
+    1. the shot's designated `animation.preview_frame` (when inside the shot);
+    2. the hero event: the first `state` event after f0 of the anim file's `motion.events` (the beat the shot is about);
+    3. mid-shot (n // 2).
+    Frame 0 is never chosen by default: it is the rest/entry pose, which is often not what the shot is about."""
+    n = int((shot.get("frames") or {}).get("count") or 1)
+    pf = (shot.get("animation") or {}).get("preview_frame")
+    if isinstance(pf, (int, float)) and not isinstance(pf, bool) and 0 <= pf < n:
+        return int(pf), "animation.preview_frame"
+    evs = [e for e in ((shot.get("motion") or {}).get("events") or [])
+           if e.get("kind") == "state" and isinstance(e.get("f"), int) and 0 < e["f"] < n]
+    if evs:
+        e = min(evs, key=lambda e: (e["f"], str(e.get("id", ""))))
+        return int(e["f"]), "hero_event:" + str(e.get("id", "state"))
+    return n // 2, "mid_shot"
+
+
 def select_frames(shot, *, frames=None, every_key=False, preview_frame=False, first_last=False):
     """The frame numbers to render for `shot` from the CLI options (union of everything asked for)."""
     n = int((shot.get("frames") or {}).get("count") or 1)
@@ -39,8 +57,7 @@ def select_frames(shot, *, frames=None, every_key=False, preview_frame=False, fi
         if not motion.get("preview_frames"):
             out |= {k["f"] for c in (motion.get("characters") or {}).values() for k in c.get("pose", [])} | {n - 1}
     if preview_frame:
-        pf = (shot.get("animation") or {}).get("preview_frame")
-        out.add(int(pf) if isinstance(pf, (int, float)) and 0 <= pf < n else n // 2)
+        out.add(still_frame(shot)[0])
     if first_last:
         out |= {0, n - 1}
     if not out:

@@ -59,10 +59,20 @@ def preview(project: Project, repo: Path, *, shots: list[str] | None = None, wid
         cmd = lambda sid: [info.executable, "-b", "--factory-startup", "--python",  # noqa: E731
                            str(BUILDERS / "run_preview.py"), "--", str(resolved), str(out), sid, str(width)]
 
+    picks: dict = {}
+
     def one(sid: str):
         r = subprocess.run(cmd(sid), capture_output=True, text=True, timeout=timeout_s)
         (logs / f"preview_{sid}.log").write_text(r.stdout + "\n" + r.stderr, encoding="utf-8")
         png = out / f"{sid}.png"
+        pick = None
+        for line in r.stdout.splitlines():
+            if line.startswith(f"FM_PICK {sid} "):
+                try:
+                    pick = json.loads(line.split(" ", 2)[2])
+                except ValueError:
+                    pass
+        picks[sid] = pick
         return sid, ("FM_OK" in r.stdout and png.exists()), png
 
     with ThreadPoolExecutor(max(1, jobs)) as ex:
@@ -72,8 +82,10 @@ def preview(project: Project, repo: Path, *, shots: list[str] | None = None, wid
         if ok:
             record_derived(project, f"render:preview_{sid}", [f"resolved:{sid}"], file=png,
                            producer="fm.blender.preview",
-                           note=f"{version}; {'draft' if draft else 'pinned'}; width {width}")
-    report = {"rendered": [s for s, ok, _ in results if ok], "failed": failed, "backend": version, "draft": draft}
+                           note=f"{version}; {'draft' if draft else 'pinned'}; width {width}"
+                                + (f"; frame {picks[sid]['frame']} ({picks[sid]['source']})" if picks.get(sid) else ""))
+    report = {"rendered": [s for s, ok, _ in results if ok], "failed": failed, "backend": version, "draft": draft,
+              "frames": {s: p for s, p in picks.items() if p}}
     (project.dir / "10_blender" / "preview_report.json").write_text(json.dumps(report, indent=1), encoding="utf-8")
     return report
 
