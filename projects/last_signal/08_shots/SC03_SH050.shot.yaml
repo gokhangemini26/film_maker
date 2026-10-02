@@ -115,10 +115,13 @@ rationale:
     spot (2.2, 8.0) was about 2.05 m from the stand, reach error about 1.22 m).'
   composition: Nothing changes in the frame except the light, which is the joke; he stays small at the
     far end.
-  lighting: All shop sources off in one frame on the clunk; no fill; the phone's glow is the only source
+  lighting: 'All shop sources off in one frame on the clunk; no fill; the phone''s glow is the only source
     left (look.lighting.sc03 blackout). The phone motif is born here (look.style.motifs). Exposure target
-    0.12 mean brightness is the human-ruled value, within the locked look.exposure.scene_keys.SC03_blackout
-    tolerance 0.08±0.06, matching look.lighting.sc03_blackout_render checks.mean_luma_target.
+    0.12 mean brightness: USER_REQUIREMENT, the human''s ruling of 2026-10-02 (recorded here at the human''s
+    instruction; the look-director still owns its canon record, look.lighting.sc03_blackout_render is
+    PROPOSED). It sits inside the locked look.exposure.scene_keys.SC03_blackout tolerance 0.08±0.06 and
+    matches look.lighting.sc03_blackout_render checks.mean_luma_target. FACT (draft frames f12 and f24,
+    2026-10-02): mean luma 0.13, inside the 0.08-0.14 band.'
   movement: Static; no shake on the clunk (camera.movement.forbidden).
   color: 'From cool bright to near-black with one warm-white point: the phone glow colour''s first appearance
     (look.color.phone_glow).'
@@ -136,7 +139,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+  hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -200,7 +203,7 @@ derived_from:
 - ref: canon:look.lighting.sc03
   hash: sha256:32462060af0a84d74d1aa75c41df1ac8a20f33d0262c8463342eb0a2f58d3ec0
 - ref: canon:look.lighting.sc03_blackout_render
-  hash: sha256:ed20ed56e432664997ca31b24d8dbd844a769b9b708734cd04c720a1517a31f6
+  hash: sha256:93e5e852cf0656d319d1e2914771dd9605dd0fbd5d86fa9dce3b3b1a7bfb2095
 - ref: canon:look.lighting.power_indicators
   hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
 - ref: canon:world.rules.weather
@@ -239,6 +242,7 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:e1e411f9e315f2b742a00e797f055c5ab9dbf6d4fe1fa86db88a46a31bb57bda
-stamp_note: SHOT_LIST changed only by the v2 frontal revision note (SC01_SH010/SH090 lens moved to y 1.50,
-  no table cell changed); this shot's row and content are untouched.
+stamped_content_hash: sha256:ca589c920fd0b6a0e8fad30b2902cd2d3954bf90535beaf6a2ce09540e20310e
+stamp_note: 'Re-checked 2026-10-02 against the amended look.lighting.sc03_blackout_render: SH050 keeps
+  the whole-frame region and the default 175 deg cone (rule 6 narrows only SH070, to keep the SH050 pool
+  area_frac), so lighting.after needs no change; draft luma 0.13 already inside the band.'

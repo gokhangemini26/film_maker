@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH070
-    hash: sha256:103af7cc154f759dc03710e3c883ba4cef525b2029bf693a473449870b80ecee
+    hash: sha256:9e7bd8545796d52e69078aa95ecaff2a57520212df8b7a408eedc94707b0bb11
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -35,7 +35,7 @@ fm:
   - intent.soft_but_cinematic
   summary: 'Structured tracks for the stunned stillness: a true 28-frame hold, one slow 12-frame blink
     f28-39, held to the cut.'
-  stamped_content_hash: sha256:203bba621964656c184dd90e9455f5c4fdc4b1182c3e9e25e3e78c7410a723d4
+  stamped_content_hash: sha256:c2ee02ab72f7b171576ead2a8659b8a8e3132fad86e68e70c1668ed2c22fb926
 shot_id: SC03_SH070
 frames: 48
 vocab_version: 2
@@ -129,3 +129,12 @@ notes:
 - 'Reviewed against the human-ruled exposure change (shot lighting.exposure_target 0.08 -> 0.12, within
   the locked SC03_blackout tolerance): the brighter floor helps the face read, not the timing. Frames
   48, both holds, slow_blink / blink_open events and the breath hold stand unchanged.'
+- 'Reviewed 2026-10-02 against the shot''s updated notes (back wall hidden by the thin-wall rule; 0.12
+  recorded as USER_REQUIREMENT; measured draft luma 0.27, the fridge flank inside the phone pool, open
+  for the look-director). Camera and lighting text only, no motion asked: frames 48, both holds, the slow_blink
+  / blink_open events and the breath hold stand unchanged.'
+- 'Reviewed 2026-10-02 against the restamped shot (key cone_deg 100 aimed at his face, falloff 0.5 m;
+  exposure_region frame minus his lit tone, phone and door rectangle; look.lighting.sc03_blackout_render
+  rules 6-7, PROPOSED) and the resolved shot (48 frames, f768-815). The cone keeps his face and hands
+  lit for the blink; he does not move, so nothing leaves the lobe. Lighting only: frames 48, both holds,
+  the slow_blink / blink_open events and the breath hold stand unchanged.'

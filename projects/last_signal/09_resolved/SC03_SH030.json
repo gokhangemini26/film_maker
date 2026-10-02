@@ -66,17 +66,17 @@
       "enabled": false
     },
     "fov_h_deg": 73.7398,
-    "height_m": 0.85,
+    "height_m": 0.9,
     "lens_mm": 24.0,
-    "look_at": "ceiling_panels",
+    "look_at": "ren",
     "movement": "static",
     "sensor_fit": "HORIZONTAL",
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
       3.85,
-      9.4,
-      0.85
+      10.15,
+      0.9
     ]
   },
   "characters": [
@@ -698,9 +698,9 @@
   },
   "composition": {
     "aspect_ratio": 1.778,
-    "framing": "medium_close",
-    "notes": "From behind the back wall, looking north up the west aisle toward the ceiling panels. The back wall is wild for this shot (camera.geography.sc03 reverse wild_piece): the lens is about 0.35 m outside the wall plane (wall y 8.95-9.05). DEPENDENCY for the builder: the preview only drops set pieces whose box contains the lens, so shop_wall_back must be hidden for this shot. Mild low: lens 0.20 m under his kneeling eye (camera.height.low, SC03 wary check). Computed frame: his face low right (about x 0.64, y 0.58), the stand a foreground block at frame left, the westmost fridge's flank at frame right, three panels receding up the middle toward the door. Tilt up is about 20 deg (look_at ceiling_panels), see rationale.camera.",
-    "subject_position": "lower_right"
+    "framing": "medium",
+    "notes": "From beyond the back wall, looking north toward the door with the ceiling panels above him. The back wall is wild for this shot (camera.geography.sc03 reverse wild_piece): the lens is about 1.1 m outside the wall plane (wall y 8.95-9.05); the builder hides the wall by its thin-wall rule (sightline.walls_to_hide), no shot-specific handling needed. look_at ren: the builder aims once at f0, at his head 0.1 m below its centre; computed tilt up 6.9 deg (draft probe 2026-10-02), inside the 8 deg of camera.height.low. Lens 0.90 m: 0.15 m under the canon kneeling eye (1.05 m), about 0.27 m under the rig's eye. FACT (draft frames f0/f8/f14/f22): his head just above centre (frame x 0.50, y 0.58 from the bottom, about 1.5 m away), the display stand a block at frame left, the westmost fridge's flank closing the right third, two to three panels above-left of his head receding toward the door. The freeze (f5-f18) reads as his face tipped up toward the panels.",
+    "subject_position": "centre"
   },
   "environment": {
     "location": "corner shop (interior)",

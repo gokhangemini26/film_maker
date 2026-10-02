@@ -168,3 +168,56 @@ def test_pool_light_is_the_canon_glow_colour_and_a_soft_shadowless_spot(scene):
     BO.aim_pool(o, Vector((0, -1, 0)))
     assert (o.rotation_quaternion @ Vector((0, 0, -1))).y < -0.99          # shines along the screen normal
     assert BO.pool_position(Vector((1, 5, 1)), Vector((0, 1, 0))).y < 5   # on the screen side of the phone
+
+
+def test_cone_comes_from_the_shot_key_then_the_canon_per_shot_then_the_default():
+    c = canon()
+    assert BO.spec(shot("SC03_SH070"), c)["cone_deg"] == 100.0
+    s = copy.deepcopy(shot("SC03_SH070"))
+    s["lighting"]["key"].pop("cone_deg", None)
+    assert BO.spec(s, c)["cone_deg"] == 100.0                  # canon pool.cone_deg[SC03_SH070]
+    s["lighting"]["key"]["cone_deg"] = 80
+    assert BO.spec(s, c)["cone_deg"] == 80.0                   # the shot wins
+    assert BO.spec(shot("SC03_SH050"), c)["cone_deg"] == 175.0   # canon default
+    assert BO.spec(shot("SC03_SH050"), {})["cone_deg"] == 175.0  # no canon at all
+    assert BO.spec(shot("SC03_SH050"), c)["cone_blend"] == pytest.approx(0.6)
+
+
+def test_pool_light_takes_cone_and_blend_as_arguments():
+    import bpy
+    o = BO.make_pool_light(bpy, "cone_test", __import__("mathutils").Vector((0, 0, 0)), 1.0, [1, 1, 1], bpy.context.scene.collection, 100.0, 0.4)
+    assert __import__("math").degrees(o.data.spot_size) == pytest.approx(100.0, abs=0.01)
+    assert o.data.spot_blend == pytest.approx(0.4)
+
+
+# ----------------------------------------------------------------------------- canon fallback: fridge0-2 out of the pool, SH070 only
+def test_pool_link_out_is_a_sh070_only_entry():
+    c = canon()
+    assert BO.spec(shot("SC03_SH070"), c)["link_out"]
+    assert BO.spec(shot("SC03_SH050"), c)["link_out"] is None and BO.spec(shot("SC03_SH060"), c)["link_out"] is None
+    import re
+    rx = re.compile(BO.spec(shot("SC03_SH070"), c)["link_out"])
+    assert all(rx.search(n) for n in ("fridge0", "fridge2", "fridge1_shelf2", "fridge0_b13", "fridge_glow1"))
+    assert not any(rx.search(n) for n in ("fridge3", "shop_counter", "ren_head", "stock_a"))
+
+
+def test_receiver_side_light_link_excludes_only_the_fridges_and_picks_up_new_objects(scene):
+    """The receiver collection holds every mesh except fridge0-2 (a blocker collection does nothing for illumination), and
+    sync_pool_link adds objects built later (animate.py rebuilds Ren every frame)."""
+    cn, units = scene
+    sp = BO.spec(shot("SC03_SH070"), cn)
+    light = BO.make_pool_light(bpy, "phone.link_test", __import__("mathutils").Vector((0, 0, 1)), 1.0, [1, 1, 1],
+                               bpy.context.scene.collection)
+    coll = BO.link_pool(bpy, light, sp)
+    assert light.light_linking.receiver_collection is coll and light.light_linking.blocker_collection is None
+    names = {o.name for o in coll.objects}
+    fridges = {o.name for o in bpy.context.scene.objects if o.name.startswith("fridge")}
+    assert fridges and not (names & fridges)
+    assert names and names == {o.name for o in bpy.context.scene.objects if o.type not in ("LIGHT", "CAMERA") and o.name not in fridges}
+    late = bpy.data.objects.new("late_prop", bpy.data.meshes.new("late_prop"))
+    bpy.context.scene.collection.objects.link(late)
+    assert BO.sync_pool_link(bpy, light, sp) == 1 and "late_prop" in {o.name for o in coll.objects}
+    assert BO.sync_pool_link(bpy, light, sp) == 0          # idempotent
+    # a shot with no link_out is untouched
+    other = BO.make_pool_light(bpy, "phone.nolink", __import__("mathutils").Vector((0, 0, 1)), 1.0, [1, 1, 1], bpy.context.scene.collection)
+    assert BO.link_pool(bpy, other, BO.spec(shot("SC03_SH050"), cn)) is None and other.light_linking.receiver_collection is None

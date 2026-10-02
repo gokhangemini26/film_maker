@@ -7,9 +7,9 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:edit_plan
-    hash: sha256:dd10bf78377a9cd487d206c7f62cc0edd241466b575b89c76f0563293760cc6c
+    hash: sha256:3e3e8068c5909778ae2e5553c051754fde3a98a7cdddd387701aac566c0e053a
   - ref: artifact:audio_cues
-    hash: sha256:ad57b77535192c291ed921e797e542e8ca319119171c92379f36852d9ccc433a
+    hash: sha256:3938a7a3ff047e56c4d85dde64f08d16b8f308bdb1e5bb0064e56cd56af0ac76
   - ref: artifact:creative_direction
     hash: sha256:2a9437a4219a84067e09241c02b4df8f14e921dda206ac46d9b8d93faaeb44a3
   - ref: canon:look.style.texture_and_grain
@@ -29,7 +29,7 @@ fm:
   - ref: canon:world.rules.no_readable_text
     hash: sha256:a21cccd660b3af6cffb29094f0fab852e3e2fe1bd316dd2e7dcb094615bad1ae
   - ref: canon:audio.mix
-    hash: sha256:6928de0e3e54edc5d62ed70cec1108d335e08443b7d45148af2206cd5b5c0c60
+    hash: sha256:dd10c4767db381b6a23ee351aaa51e12de78423dbb6b8a527d92e9be707484b6
   serves:
   - intent.soft_but_cinematic
   - intent.anime_feel
@@ -37,9 +37,9 @@ fm:
   summary: Locked finish steps with parameters read from canon (glare, grain, optional vignette, fades),
     titles ruling, final render settings, delivery spec, licence status; D1-D10 carried as recommended
     rulings (register in 12_post/DECISIONS.md), UNKNOWN until the human rules at G7.
-  stamped_content_hash: sha256:49a06c04dcec5b604c1614089109b0e16c998bd5be819926c1661040baa6a15f
-  stamp_note: EDIT_PLAN only gained a section 2.3 note (SC03 render spec, no record frame moved); nothing
-    in the post plan depends on it
+  stamped_content_hash: sha256:d4a5c361d69f9537085dc5c729a05488725a5ded11c46285aeb44ccd657e1e96
+  stamp_note: 2026-10-02 refresh - glare implemented (final-only), loudness read from audio.mix, D3 duck
+    and D10 applied in the mix, licence table and animatic status (STALE, not rebuilt) updated
 title: Post Plan
 ---
 # Post Plan: Last Signal
@@ -59,14 +59,14 @@ Dn, not human-approved".
 |---|---|---|---|
 | D1 | No underscore (sound-designer domain; no post step) | DECISIONS | Proposed: `audio.score` (PROPOSED) |
 | D2 | No on-screen titles or credits, in or around the master; title and credits travel as delivery metadata (MANIFEST.json, delivery description). No bumper. | 3 | Yes, in effect: `tone.wordless` and `world.rules.no_readable_text` (LOCKED) |
-| D3 | -16 LUFS integrated (+-1 LU), true peak <= -1 dBTP, 2-pass loudnorm; plus a 3 dB post-turn bed duck in the mix (sound-designer) | 5 | Proposed only: `audio.mix` (PROPOSED) carries these values; approving it is the human's step |
+| D3 | -16 LUFS integrated (+-1 LU), true peak <= -1 dBTP, 2-pass loudnorm; plus a 3 dB post-turn bed duck in the mix (sound-designer; applied in the 2026-10-02 mix) | 5 | Proposed only: `audio.mix` (PROPOSED) carries these values, and `fm post` now reads them; approving it is the human's step |
 | D4 | Shot files win over storyboard prose (all `audio.conflicts` items) | DECISIONS | Proposed (ASSUMPTION): `audio.conflicts` |
 | D5 | Vignette off | 2.3 | No (canon allows 0-10 %) |
 | D6 | `final` profile as it stands: EEVEE, 1920x1080, 64 samples, no motion blur, 8-bit PNG, 48-frame chunks, authorization required; glare from the emission pass per `look.style.glow` | 4 | Partly: format, engine, view transform, motion blur and glare are LOCKED canon |
 | D7 | FADE IN 12 frames | 2.4 | No (`fade_in: head`, no length) |
 | D8 | Ratify vocab v1 + v2; `face.ren` only together with CHANGE-005 | DECISIONS | Proposed: `animation.vocab.*` |
 | D9 | Add a G9 Delivery gate after G8 | 5 | No (state machine) |
-| D10 | Human records body sounds; CC0/own library foley with written licences; headphone leak dropped (SC05 room tone only) | 6 | No |
+| D10 | Human records body sounds; CC0/own library foley with written licences; headphone leak dropped (SC05 room tone only; applied in the 2026-10-02 mix) | 6 | Proposed: `audio.sources` `music_assets: none (D10)`, `audio.score` (PROPOSED) |
 
 ## 1. Order of operations (POST phase, after G8)
 
@@ -86,8 +86,15 @@ command line must pass `--grain` explicitly (section 2.2).
   `implementation: compositor_glare_bloom_on_emission_pass`.
 - DECISION: applied in the Blender compositor at final render (owner: blender-td), not in post.
   Rejected: a post bloom in ffmpeg (it cannot isolate emissives without the emission pass).
-- FACT: no code implements the compositor glare yet (section 4 table). Until it is built and verified on
-  this machine (M6 task A0), the final render cannot start with the locked look (risk 4).
+- FACT (commit 5e7d6e1): the glare is implemented in `blender/fm_blender/finish.py`, final renders only
+  (draft, preview, frames and playblast never call it). `glare_params` reads `look.style.glow` from the
+  resolved film canon: BLOOM on the `fm_glow` emission AOV, `size` = 1.5 % of frame width (28.8 px at 1920),
+  the halo masked off the emitter itself. It refuses (and `fm blender final` refuses "final render refused")
+  if canon asks for anything it does not implement (streaks, star glare, ghosts, another implementation or
+  source). `core/fm/finalrender.py` records the canon-derived glare in the render settings. FACT:
+  `pytest tests/test_finish.py tests/test_post.py` 31 passed (2026-10-02, this environment, no Blender).
+- UNKNOWN: not yet verified headless in the pinned Blender on the laptop (M6 task A0: "compositor glare works
+  headless"). No final frame exists (`11_render/` absent). Risk 4 is reduced, not closed.
 
 ### 2.2 Grain (assembly)
 - Source: `look.style.texture_and_grain` (LOCKED). `grain.type: monochrome`, `amplitude_luma: 0.015`,
@@ -157,8 +164,8 @@ command line must pass `--grain` explicitly (section 2.2).
 
 ## 4. Final render settings proposal (D6)
 
-FACT: `config/render_profiles.yaml` `final` now reads (re-read 2026-10-01, late; working-tree change, not yet
-committed): `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `motion_blur: false`,
+FACT: `config/render_profiles.yaml` `final` reads (re-read 2026-10-02; committed, `git status` clean):
+`engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `motion_blur: false`,
 **`output: png`**, **`chunk_frames: 48`**, `requires_authorization: true`.
 
 | Setting | Current `final` | Proposed | Source / reason |
@@ -170,7 +177,7 @@ committed): `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `mo
 | Samples | 64 | 64 | DECISION (D6). Unmeasured; 64 is the safe side for the soft light-radius shadows and the 1.5 % glow halo, at an estimated 2-5 h for the film. Rejected: 32 now (cheaper but untested on the real sets; adopt later only after a 3-shot comparison, recorded as a change) |
 | Motion blur | false | false | FACT: `look.style.render_constraints` (LOCKED) says `motion_blur: false`; the profile matches. Not a D6 question. |
 | Output | png | 8-bit PNG sequence, RGB | FACT: the profile now says `png`, matching this proposal; `fm blender final` refuses any other output ("set output: png"), because `fm post assemble` reads `%04d.png`. Rejected: EXR (about 10 GB for 1440 frames, no grade needs the headroom). |
-| Compositor | (builder) | glare on the emission pass | FACT `look.style.glow` `implementation` (LOCKED). FACT (case-insensitive grep of the repo outside `projects/` and `.git`, 2026-10-01): "glare" appears only in docs, the post skill and this agent's file, never in code, so **no builder applies it today**. Blocks the final render (risk 4) |
+| Compositor | (builder, final only) | glare on the emission pass | FACT `look.style.glow` `implementation` (LOCKED). FACT (2026-10-02): implemented in `blender/fm_blender/finish.py`, parameters read from canon, final-only (section 2.1). UNKNOWN: headless verification on the laptop's pinned Blender (A0) not yet recorded (risk 4) |
 | Chunking | 48 frames per process | at most 48 frames per process, resumable | FACT: profile `chunk_frames: 48`; `fm blender final` reads it (override `--chunk-frames`) and has `--resume`. Reason: colour corruption in long Blender processes on Windows ARM (M6 scope 4.3). |
 | Authorization | required | required: `fm authorize final-render` by the human | FACT: `fm blender final` "REFUSES without the human's `fm authorize final-render`", and refuses shots the recorded authorization's scope does not cover |
 
@@ -188,9 +195,9 @@ committed): `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `mo
 - FACT: no config change was needed. `config/render_profiles.yaml` already carries these values, and
   `git status` (2026-10-01) shows the file unmodified, so they are committed. Glare is not a profile field:
   it comes from canon through the builder.
-- DEPENDENCY (blocks the final render, not the decision): implement and verify the compositor glare on the
-  emission pass (blender-td, M6 task A0). D6 authorizes nothing: the human still runs
-  `fm authorize final-render` before `fm blender final` will start.
+- DEPENDENCY (blocks the final render, not the decision): verify the now-implemented compositor glare headless
+  on the laptop's pinned Blender (blender-td, M6 task A0), e.g. on one insert shot with a lit screen. D6
+  authorizes nothing: the human still runs `fm authorize final-render` before `fm blender final` will start.
 - ASSUMPTION: 1440 frames at 5-12 s each is about 2-5 hours of unattended rendering (M6 scope estimate,
   not measured on the real sets).
 - Post never runs `fm authorize` or `fm blender final`.
@@ -215,13 +222,17 @@ committed): `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `mo
   broadcast, far too quiet on phones and laptops). FACT: `audio.mix` now exists as **PROPOSED** canon
   (sound-designer: `integrated_lufs: -16.0`, `lufs_tolerance: 1.0`, `true_peak_dbtp: -1.0`, 48 kHz, 24-bit,
   stereo, `decision: D3`): the same values. Approving it is the human's step at G7; post proposes no further
-  canon. FACT: the wave-6 mix measures
-  -16.39 LUFS (ffmpeg ebur128), true peak -1.7 dBTP (`fm qa audio`), inside the proposed target.
-- DEPENDENCY (D3, 2026-10-02, owner sound-designer): G7 review #11 measured the post-turn street beds at the
-  same RMS as the comic car. The recommended ruling keeps -16 LUFS and lowers the beds from SC04_SH040 to the
-  end by 3 dB relative to the pre-turn beds, so `tone.the_turn` reads as level. Fallback if it still sounds
-  flat at G7: -20 LUFS, which changes only the loudnorm target here. Rationale and rejected alternatives in
-  `12_post/DECISIONS.md`.
+  canon. FACT (`qa/audio_report.json`, 2026-10-02 mix): integrated -16.5 LUFS (ffmpeg ebur128), true peak
+  -1.1 dBTP, inside the proposed target; the report reads its targets from `audio.mix`.
+- FACT (D3 duck applied, sound-designer, 2026-10-02): `audio.mix` now carries
+  `post_turn_street_bed_offset_db: -3.0`, `post_turn_from: SC04_SH040`; the mix has `bed_SC04_street_pre_turn`
+  at -21 dB (816-934) and `bed_SC04_street_turn` / `bed_SC06_street` at -24 dB from 930. Whether the turn now
+  reads as level is a G7 listening judgement. Fallback if it still sounds flat: -20 LUFS, which changes only
+  the `audio.mix` `integrated_lufs` value. Rationale and rejected alternatives in `12_post/DECISIONS.md`.
+- FACT (tool fix, commit 5e7d6e1): `core/fm/post.py` `finish_params` now reads `integrated_lufs`,
+  `true_peak_dbtp` and `lufs_tolerance` from `audio.mix` (constants only as fallback for a film without the
+  entry); `fm post assemble` loudnorm, the export manifest (`loudness_target.source`) and `fm qa delivery` use
+  them. A canon change to D3 now reaches the master.
 - `fm qa delivery` checks (all must PASS at POST): 1920x1080; exactly 24/1 fps; 1440 frames (+-0); duration
   60.000 s; audio 48 kHz stereo; integrated loudness within +-1 LU of target; true peak <= -1 dBTP; black
   only inside the fades; checksums match the manifest.
@@ -246,13 +257,14 @@ committed): `engine: BLENDER_EEVEE`, `resolution_scale: 1.0`, `samples: 64`, `mo
 | foley: seat creak, headphones, pencil, phone grip (`fx.plastic_scuff` placeholder, 3 asks) | SC01_SH060, SC04_SH040, SC05_SH020 | library files, human picks | UNKNOWN | **yes** |
 | street bird | SC01_SH010, SC01_SH150 | library file | UNKNOWN | **yes** |
 | distant traffic | SC03_SH070, SC04_SH010, SC06_SH010 | library file | UNKNOWN | **yes** |
-| headphone leak music | SC05_SH010, SC05_SH020 | recommended D10 ruling: dropped, SC05 room tone only (agents never generate music) | UNKNOWN until D10 is ruled; not used if ruled | **yes**, until D10 is ruled; then removed from the mix and this table |
+| headphone leak music | (none) | FACT: removed from the 2026-10-02 mix per the D10 recommended ruling (SC05 is `bed_SC05_hana_room` only; `audio.sources` `music_assets: none (D10)`); `fm qa audio` lists it as "not needed" | not used | no, while the human upholds D10 at G7; if D10 is overruled it returns as a blocker |
 | phone UI font | typed invitation, numbers (`look.style.phone_ui` `font: open_licence_humanist_sans`) | not yet chosen (Noto Sans / Inter suggested) | UNKNOWN (canon notes: "Font licence UNKNOWN until verified") | **yes** |
 | procedural sound recipes (`fm audio synth`) | all other cues | generated in-house | ASSUMPTION: own work, no third-party licence. To be confirmed by the sound-designer's registry | no, if confirmed |
 | 3D assets, sky | all shots | built procedurally, no `library/assets` in use (the directory is empty) | FACT: nothing third-party found | no |
 
-- FACT: `fm qa audio` (wave 6) lists 15 human-supply items with status NEEDED and licence UNKNOWN; the table
-  above groups them.
+- FACT: `qa/audio_report.json` (2026-10-02) lists 11 human-supply rows, `human_supply_open: 10` (the 11th is
+  the dropped headphone leak), all licence UNKNOWN; the table above groups them. 5 placeholder recipes remain
+  in the mix.
 - RECOMMENDATION: `fm post export` is not run for release until every UNKNOWN above is resolved. An
   animatic with placeholders is fine for G7 review.
 
@@ -322,22 +334,33 @@ summary line: "1 delivery file(s): 1 FAIL, 2 WARN finding(s) (1 row(s) failing)"
   failing)": the same expected 1280x720 FAIL and no-fade WARNs as 7.2; loudness -16.5 LUFS, true peak
   -1.8 dBTP. Note the report file `qa/delivery_report.json` holds the animatic run (the last one).
 
+### 7.4 Status 2026-10-02: animatic STALE, not rebuilt here
+- FACT: `fm validate` lists `edit:animatic` STALE (resolved SC01 shots changed). `12_post/animatic.mp4` is dated
+  2026-10-01 21:37; the 2026-10-02 mix (`mix_48k_stereo.wav`, 13:14) with the D3 duck and D10 is newer, so the
+  animatic's sound predates both. Its SC01 picture predates the lens/layout commits (fba52bf, 0ac12ba), and
+  its SC03 keys predate the blackout luma spec (0.12).
+- DECISION (procedural): `fm post animatic` was **not run** in this environment. The pinned frames and
+  playblasts live on the human's laptop; here the tool would fall back to stills and overwrite the
+  animatic with a worse one.
+- Required: re-render the SC01 (and stale SC03/SC04_SH010) frames/playblasts on the laptop (blender-td), then
+  `fm post animatic` there, then `fm qa delivery projects/last_signal/12_post/animatic.mp4` and ffprobe, and
+  update section 7. Until then, the G7 animatic has the old mix and old SC01 framing; no claim about the new
+  animatic is made here.
+
 ## 8. Risks
 
-1. 24 of 38 shots lack full motion in the animatic: 9 held stills, 15 step-held draft keys; the 14 full
-   playblasts may predate the v2 anim files (section 7.2). Owners: animation-director, blender-td.
-2. D6 is decided (delegated, to be ratified at G7), but the final render still needs the glare (risk 4)
-   and the human's `fm authorize final-render`, which `fm blender final` requires.
+1. The animatic is STALE (7.4) and, when last built, 24 of 38 shots lacked full motion (9 held stills, 15
+   step-held keys). Rebuild on the laptop after the re-render. Owners: blender-td, animation-director.
+2. D6 is decided (delegated, to be ratified at G7), but the final render still needs the glare verified on
+   the laptop (risk 4) and the human's `fm authorize final-render`, which `fm blender final` requires.
 3. The grain amplitude mapping has not been measured (2.2). If it is wrong, the grain is too strong or
    too weak on every frame. Verify on one shot first.
-4. Compositor glare is not implemented in any code (section 4 table), so LOCKED `look.style.glow` would be
-   silently missing from every final frame. It must be built and pass A0 before the final render.
-   Owner: blender-td.
-5. D7 still comes from a code default, and D3 from PROPOSED (not LOCKED) canon `audio.mix`. Tool defect
-   (FACT, `core/fm/post.py` `finish_params`): the loudness target is read from `audio.mix` key
-   `loudness_lufs`, but the canon key is `integrated_lufs`, so the tool always falls back to the constant
-   -16.0; the true peak is the constant `TARGET_TP = -1.0`, never read from canon. Same values today, but a
-   canon change to D3 would not reach the master. Owner: main session (tool fix).
+4. Compositor glare is implemented (final-only, read from `look.style.glow`) but not yet verified headless in
+   the pinned Blender on the laptop (A0). If it silently no-ops there, LOCKED `look.style.glow` is missing from
+   every final frame. Verify on one shot before the full render. Owner: blender-td.
+5. D7 still comes from a code default, and D3 from PROPOSED (not LOCKED) canon `audio.mix`. The loudness
+   key defect is fixed (2026-10-02, section 5): `fm post` now reads `integrated_lufs`, `true_peak_dbtp` and
+   `lufs_tolerance` from `audio.mix`.
 6. UNKNOWN licences (section 6) block release, and the font one also blocks the final render of the
    insert shots.
 7. G5 is DRIFTED. A different re-approved shot timing moves every record frame here. Regenerate by

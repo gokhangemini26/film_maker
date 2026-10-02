@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH030
-    hash: sha256:eb9d6abd324e0a1cf42011b8f002ade0a3ec30a58f25b70addc887a85f7a46fa
+    hash: sha256:244095b3d6537dbe3c06651869f981dfce6ef4cfb2760c3eb148180aa5399771
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:animation.vocab.pose.ren
@@ -33,7 +33,7 @@ fm:
   - intent.race_against_battery
   summary: 'Swipe insert: right thumb swipes right to left f1-6, her call screen slides in f1-7, photo
     held clean f8-27.'
-  stamped_content_hash: sha256:4f0072aa443c60439ab686387c554b3d90de1dbdf5525d77f5dfabbcfff8fc5d
+  stamped_content_hash: sha256:3d0ecff29f644b637bbd9139dc7e998d1b3d8b87c4a25d29aca0e01a37092b56
 shot_id: SC01_SH030
 frames: 28
 vocab_version: 2
@@ -101,3 +101,6 @@ notes:
 - Reviewed against the v2 lens move (lens (1.29, -0.34, 1.14) -> (1.28, 0.37, 1.17), 0.30 m on his eyeline
   from the screen at (1.28, 0.62, 1.00); head and face hidden in inserts). car_phone_up already places
   the phone there; the right-to-left swipe, holds, events and frames 28 stand unchanged.
+- Reviewed 2026-10-02 against the shot's composition note now recording the two builder dependencies as
+  handled (INSERT_HIDE_PREFIXES head hide, anchors.insert_shift ui.call_screen case). Camera text only;
+  tracks, holds, events and frames 28 stand unchanged.

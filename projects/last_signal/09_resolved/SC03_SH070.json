@@ -416,7 +416,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "Reverse from behind the back wall, looking north up the west aisle (camera.geography.sc03). The back wall is wild for this shot: the lens is about 0.5 m outside the wall plane (wall y 8.95-9.05). DEPENDENCY for the builder: the preview only drops set pieces whose box contains the lens, so shop_wall_back must be hidden for this shot. Lens 0.3 m west of his axis (about 20 deg off his facing, on his right, within the 45 deg lit side). FG: phone and hands at the frame bottom (source in frame, camera.phone_lit.framing); MG: his lit face, centred; BG: the dark west aisle and the west strip of the warm door rectangle above his right shoulder, about a quarter of frame width left of his face (computed), the dark stand flanking frame left and the westmost fridge's flank at frame right. 48 frames: the longest comic hold (2.0 s minimum). Hard cut to the dusk kerb.",
+    "notes": "Reverse from behind the back wall, looking north up the west aisle (camera.geography.sc03). The back wall is wild for this shot: the lens is about 0.5 m outside the wall plane (wall y 8.95-9.05); the builder hides it by its thin-wall rule (sightline.walls_to_hide). Lens 0.3 m west of his axis (about 20 deg off his facing, on his right, within the 45 deg lit side). FG: phone and hands at the frame bottom (source in frame, camera.phone_lit.framing); MG: his lit face, centred; BG: the dark west aisle and the west strip of the warm door rectangle above his right shoulder, about a quarter of frame width left of his face (computed), the dark stand flanking frame left and the westmost fridge's flank at frame right. 48 frames: the longest comic hold (2.0 s minimum). Hard cut to the dusk kerb.",
     "subject_position": "centre"
   },
   "environment": {
@@ -448,6 +448,8 @@
     "ambient_ref": "look.color.scene.sc03.blackout.dominant",
     "background": "faint warm door rectangle",
     "contrast": "16:1",
+    "exposure_region": "frame_minus_ren_lit_tone_phone_and_door_rectangle",
+    "exposure_region_ref": "look.lighting.sc03_blackout_render.checks.mean_luma_region",
     "exposure_target": 0.12,
     "exposure_target_ref": "look.exposure.scene_keys.SC03_blackout",
     "fill": "none",
@@ -465,6 +467,8 @@
       ]
     },
     "key": {
+      "cone_deg": 100,
+      "cone_ref": "look.lighting.sc03_blackout_render.pool.cone_deg",
       "falloff_m": 0.5,
       "quality": "soft",
       "source": "phone screen, below-front"
@@ -518,11 +522,21 @@
         "applies_from": "SC03_SH050_f8",
         "checks": {
           "dip_visible_SC03_SH050": "pool_mean_luma_f8_to_f10_at_least_15pct_below_f11",
+          "fridge_flank_SC03_SH070": {
+            "luma_max": 0.14,
+            "visible_pixels_at_floor_or_ambient_min_frac": 0.95
+          },
           "mean_luma": [
             0.08,
             0.14
           ],
+          "mean_luma_region": {
+            "SC03_SH050": "whole_frame",
+            "SC03_SH060": "frame_minus_phone_screen_and_bezel",
+            "SC03_SH070": "frame_minus_ren_lit_tone_phone_and_door_rectangle"
+          },
           "mean_luma_target": 0.12,
+          "mean_luma_target_source": "human ruling 2026-10-02 (USER_REQUIREMENT)",
           "pastel_merch_identifiable": false,
           "pool": {
             "area_frac_SC03_SH050": [
@@ -544,8 +558,17 @@
             ],
             "neutral_grey_forbidden": true
           },
+          "set_surface_lit_area_frac_max": {
+            "SC03_SH070": 0.02
+          },
           "sh060_surround": "#1B1C29 to #1E2030, not neutral grey",
-          "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool"
+          "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool",
+          "whole_frame_max": {
+            "SC03_SH070": 0.18
+          },
+          "whole_frame_reported_not_gated": [
+            "SC03_SH060"
+          ]
         },
         "door_rectangle": {
           "hex_max": {
@@ -566,6 +589,7 @@
           ]
         },
         "pool": {
+          "aim": "screen_normal_toward_holder_face",
           "colour": {
             "hex": "#FFF1DE",
             "linear": [
@@ -578,6 +602,11 @@
               0.945098,
               0.870588
             ]
+          },
+          "cone_blend": 0.6,
+          "cone_deg": {
+            "SC03_SH070": 100,
+            "default": 175
           },
           "follows_screen_dip": true,
           "lit_tone": "mix(base, base_x_key_colour, 0.30)",

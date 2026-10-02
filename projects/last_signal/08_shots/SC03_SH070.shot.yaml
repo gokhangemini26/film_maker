@@ -32,14 +32,13 @@ composition:
   aspect_ratio: 1.778
   subject_position: centre
   notes: 'Reverse from behind the back wall, looking north up the west aisle (camera.geography.sc03).
-    The back wall is wild for this shot: the lens is about 0.5 m outside the wall plane (wall y 8.95-9.05).
-    DEPENDENCY for the builder: the preview only drops set pieces whose box contains the lens, so shop_wall_back
-    must be hidden for this shot. Lens 0.3 m west of his axis (about 20 deg off his facing, on his right,
-    within the 45 deg lit side). FG: phone and hands at the frame bottom (source in frame, camera.phone_lit.framing);
-    MG: his lit face, centred; BG: the dark west aisle and the west strip of the warm door rectangle above
-    his right shoulder, about a quarter of frame width left of his face (computed), the dark stand flanking
-    frame left and the westmost fridge''s flank at frame right. 48 frames: the longest comic hold (2.0
-    s minimum). Hard cut to the dusk kerb.'
+    The back wall is wild for this shot: the lens is about 0.5 m outside the wall plane (wall y 8.95-9.05);
+    the builder hides it by its thin-wall rule (sightline.walls_to_hide). Lens 0.3 m west of his axis
+    (about 20 deg off his facing, on his right, within the 45 deg lit side). FG: phone and hands at the
+    frame bottom (source in frame, camera.phone_lit.framing); MG: his lit face, centred; BG: the dark
+    west aisle and the west strip of the warm door rectangle above his right shoulder, about a quarter
+    of frame width left of his face (computed), the dark stand flanking frame left and the westmost fridge''s
+    flank at frame right. 48 frames: the longest comic hold (2.0 s minimum). Hard cut to the dusk kerb.'
 characters:
 - id: ren
   position:
@@ -59,6 +58,8 @@ lighting:
     source: phone screen, below-front
     quality: soft
     falloff_m: 0.5
+    cone_deg: 100
+    cone_ref: look.lighting.sc03_blackout_render.pool.cone_deg
   background: faint warm door rectangle
   fill: none
   contrast: '16:1'
@@ -68,6 +69,8 @@ lighting:
   floor: '#1B1C29'
   exposure_target: 0.12
   exposure_target_ref: look.exposure.scene_keys.SC03_blackout
+  exposure_region: frame_minus_ren_lit_tone_phone_and_door_rectangle
+  exposure_region_ref: look.lighting.sc03_blackout_render.checks.mean_luma_region
 color:
   dominant: look.color.scene.sc03
   accent: look.color.phone_glow
@@ -127,10 +130,23 @@ rationale:
   composition: 'Centred and still with the door as a tiny warm strip above his right shoulder: the room
     he crossed is now just a far light (the lighting bible''s post-blackout hierarchy). The phone is the
     brightest thing near his face (L9).'
-  lighting: Phone key from below-front, soft 0.5 m falloff, no fill; faint door rectangle; contrast 16:1
-    (look.lighting.sc03 blackout). Exposure target 0.12 mean brightness is the human-ruled value, within
-    the locked look.exposure.scene_keys.SC03_blackout tolerance 0.08±0.06, matching look.lighting.sc03_blackout_render
-    checks.mean_luma_target.
+  lighting: 'Phone key from below-front, soft 0.5 m falloff, no fill; faint door rectangle; contrast 16:1
+    (look.lighting.sc03 blackout). Exposure target 0.12 mean brightness: USER_REQUIREMENT, the human''s
+    ruling of 2026-10-02 (recorded here at the human''s instruction; the look-director still owns its
+    canon record, look.lighting.sc03_blackout_render is PROPOSED). It sits inside the locked look.exposure.scene_keys.SC03_blackout
+    tolerance 0.08±0.06 and matches look.lighting.sc03_blackout_render checks.mean_luma_target. FACT (draft
+    frames f0/f24/f47, 2026-10-02, lens unchanged): mean luma 0.27, above the 0.08-0.14 band: the westmost
+    fridge''s flank, 0.25 m east of him and inside the 0.5 m pool, takes the lit tone and fills the right
+    third of the frame behind his head. Lens trials at x 4.00 and 3.55 and 0.35 m further back measured
+    0.23-0.34, so a reframe alone does not reach the band; open for the look-director (pool reach on the
+    flank) and the human. 2026-10-02 amendment (look.lighting.sc03_blackout_render rules 6-7, PROPOSED):
+    the key becomes the screen''s forward lobe, cone_deg 100 aimed at his face (falloff_m 0.5 unchanged),
+    so face, hands and stand top stay lit and the grazing fridge flank drops to the film floor; the exposure
+    is measured on the room (`exposure_region`: frame minus his lit-tone pixels, the phone and the door
+    rectangle), with the whole frame capped at 0.18 and lit set surface at most 2 % of frame. ASSUMPTION
+    (look-director''s): 100 deg keeps the flank below the cel threshold; confirm on the re-render. Named
+    fallback only if it fails: light-link fridge0-2 out of the pool, recorded as a style_break. Rejected:
+    another reframe (lens trials 0.23-0.34 already failed) and moving him (the reach fix holds his spot).'
   movement: 'Static: the held stillness is the beat and the first time the film stops.'
   color: 'Warm-white glow on skin against blue-black: the colour that will carry the rest of the film.'
   blocking: He stays exactly still (screenplay 'He doesn't move'); the only motion is one slow blink.
@@ -139,14 +155,30 @@ rationale:
     his face. The blink is the hinge: before it the freeze is funny, after it the stillness is a little
     sad, which hands the film to the tender half. Rejected: a sigh or a head drop (would resolve the hold
     and give him a reset he no longer makes) and a breathing idle (softens the stop).'
-style_break: null
+style_break:
+  reason: 'rule: L10 (look.lighting.principles.motivation_required); also bends look.lighting.sc03_blackout_render
+    rule 3 (pool reach) for fridge0-2 only. canon: look.lighting.sc03_sh070_style_break (PROPOSED, look-director);
+    protocol look.style.style_break_protocol, one break per sequence, this is the only one in SQ01. Reason:
+    Fallback named in look.lighting.sc03_blackout_render: the 100 deg cone re-render still failed checks.fridge_flank_SC03_SH070
+    (87.4 % of flank pixels at luma <= 0.14, min 95 %). Method: receiver_side_light_linking, the phone-glow
+    pool light (phoneglow) excludes objects matching ^fridge(_glow)?[0-2](_|$) (fridge0-2 body, shelves,
+    bottles, glass) in this shot only; his face, hands, the phone, the stand and the floor stay lit exactly
+    per the render spec (100 deg lobe, 0.5 m reach, #FFF1DE). Measured (animated route, scratch re-render,
+    to be confirmed in the project frames): whole frame 0.142 (max 0.18), flank 99.9 % at the floor. Known
+    limit: the static run_preview still measures 0.203 whole frame (not gated). Rejected: (a) cone 80
+    deg or less (passes the flank but loses the lit face); (b) moving the lens or Ren (lens trials 0.23-0.34
+    failed; the reach fix holds his spot); (c) raising or exempting the flank check (would pass a visibly
+    lit pastel fridge); (d) a global exposure drop (render spec rule 1, L19).'
+  approved_by_intent:
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
 continuity_refs:
 - continuity.sc03.environment
 - continuity.props.cable
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+  hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -210,7 +242,13 @@ derived_from:
 - ref: canon:look.lighting.sc03
   hash: sha256:32462060af0a84d74d1aa75c41df1ac8a20f33d0262c8463342eb0a2f58d3ec0
 - ref: canon:look.lighting.sc03_blackout_render
-  hash: sha256:ed20ed56e432664997ca31b24d8dbd844a769b9b708734cd04c720a1517a31f6
+  hash: sha256:93e5e852cf0656d319d1e2914771dd9605dd0fbd5d86fa9dce3b3b1a7bfb2095
+- ref: canon:look.lighting.sc03_sh070_style_break
+  hash: sha256:7c662d04979c9820a23d93640fa49c2359cb4de2b919ef417243cb5039959c1f
+- ref: canon:look.style.style_break_protocol
+  hash: sha256:32ec77ca6ba6e215a533776e3b681e195f6ffcec4bc827f0cb5299409df6aa27
+- ref: canon:look.lighting.principles
+  hash: sha256:03b2116d60f30c84b30086516e12e9c1912f081257b0c0614c596881fa132a00
 - ref: canon:look.lighting.power_indicators
   hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
 - ref: canon:world.rules.weather
@@ -249,6 +287,7 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:103af7cc154f759dc03710e3c883ba4cef525b2029bf693a473449870b80ecee
-stamp_note: SHOT_LIST changed only by the v2 frontal revision note (SC01_SH010/SH090 lens moved to y 1.50,
-  no table cell changed); this shot's row and content are untouched.
+stamped_content_hash: sha256:06c0782a2c4591b1fe2c23d03c0f26447dbb2f47c948bef85f01f570945f9b98
+stamp_note: 'Content revised since the G5 approval (8e9b8b7): reverse 0.5 m behind the back wall, 0.3
+  m west of his axis; blackout render spec; 2026-10-02 the 0.12 ruling, the measured draft luma and the
+  handled thin-wall note recorded. Restamped 2026-10-02 after the SHOT_LIST G5-fix revision.'

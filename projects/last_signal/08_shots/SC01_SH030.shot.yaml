@@ -35,13 +35,13 @@ composition:
     the builder): screen centre at about (1.28, 0.62, 1.00) in the v2 car interior used by the animated
     frames (front seats 0.25 m forward, anchors.CAR_V2), about 0.34 m in front of his head. Lens 0.30
     m from it on his eyeline (the SC01_SH070 setup). In the v2 interior his eyes are only about 0.22 m
-    from the screen, so the lens sits just inside his head; inserts do not render his head or face (DEPENDENCY
-    for the builder: every head and face piece is hidden, fringe, brows and mouth included), camera''s
-    up = the phone''s top edge. For the part of the screen named here, shift the lens parallel to the
-    screen; never tilt it: about 0.03 m toward the phone''s top edge, so the frame runs from just above
-    the status bar to the screen centre (DEPENDENCY for the builder: the insert shift has no ui.call_screen
-    case yet, so a centred 72 mm frame would leave the status bar, about 62 mm above the screen centre,
-    out of frame).'
+    from the screen, so the lens sits just inside his head; inserts do not render his head or face (handled
+    by the builder: animate.INSERT_HIDE_PREFIXES hides every head and face piece, fringe, brows and mouth
+    included), camera''s up = the phone''s top edge. For the part of the screen named here, shift the
+    lens parallel to the screen; never tilt it: about 0.03 m toward the phone''s top edge, so the frame
+    runs from just above the status bar to the screen centre (handled by the builder: anchors.insert_shift
+    has a ui.call_screen case, 0.03 m toward the top edge; a centred 72 mm frame would leave the status
+    bar, about 62 mm above the screen centre, out of frame).'
 characters:
 - id: ren
   position:
@@ -143,7 +143,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+  hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -256,6 +256,8 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:eb9d6abd324e0a1cf42011b8f002ade0a3ec30a58f25b70addc887a85f7a46fa
-stamp_note: SHOT_LIST changed only by the v2 frontal revision note (SC01_SH010/SH090 lens moved to y 1.50,
-  no table cell changed); this shot's row and content are untouched.
+stamped_content_hash: sha256:244095b3d6537dbe3c06651869f981dfce6ef4cfb2760c3eb148180aa5399771
+stamp_note: 'Content revised since the G5 approval (8e9b8b7): text-insert lens to (1.28, 0.37, 1.17),
+  0.30 m from the screen on his eyeline (the frame was 91-231 mm; v2 car interior revision). 2026-10-02:
+  the two builder DEPENDENCY notes now say they are handled (head-hide list, ui.call_screen shift). Restamped
+  2026-10-02 after the SHOT_LIST G5-fix revision.'

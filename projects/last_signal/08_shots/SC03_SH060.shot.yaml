@@ -12,12 +12,12 @@ creative_intent:
   audience_effect: The viewer tracks the countdown precisely.
 camera:
   lens_mm: 85
-  height_m: 0.97
+  height_m: 1.18
   movement: static
   start_position:
   - 3.45
-  - 8.78
-  - 0.97
+  - 8.72
+  - 1.18
   end_position: null
   look_at: phone_ren
   dof:
@@ -31,13 +31,12 @@ composition:
   notes: 'Text-size status-bar insert (as SC01_SH080: frame about 71 mm tall, 85 mm at 0.30 m). The change
     to 2 % happened on the blackout frame; this insert holds the result 26 frames (minimum 24). No dip
     and no change inside the shot: in the shop the damage is already done (camera.gags.no_repeat: insert
-    after the loss). Framing reference (DEPENDENCY for the animation hold and the builder): kneeling at
-    (3.45, 8.66) facing +y, eyes at 1.05 m; the lens keeps exactly its old relation to him (0.12 m ahead
-    of his pelvis, 0.97 m high), on his eyeline with his head behind the lens; camera''s up = the phone''s
-    top edge; shift parallel to the screen for the status bar, never tilt. The screen-centre reference
-    used so far (0.29 m ahead of him, 0.72 m high) now falls on the back-wall face (y 8.95); the kneel
-    rig holds the phone 0.22 m ahead at 0.93 m (y 8.88, 7 cm off the wall), about 0.11 m from this lens:
-    check the 71 mm frame at the next preview.'
+    after the loss). Lens on his eyeline, 0.30 m from the kneel-rig phone (3.45, 8.88, 0.93): 0.16 m toward
+    him and 0.25 m up, inside his head volume (inserts hide every head and body piece; the jacket collar
+    stays out of this sight line). The builder squares the screen to the lens, camera up = the phone''s
+    top edge, and shifts the frame parallel to the screen onto the status bar (anchors.insert_shift, status_bar
+    case), never a tilt. FACT (draft frames f0/f12/f25, 2026-10-02): lens-to-screen 0.30 m, the red ''2
+    %'' digits about 6 % of frame height and sharp at f/5.6, no bolt, the back-wall face out of frame.'
 characters:
 - id: ren
   position:
@@ -61,6 +60,8 @@ lighting:
   floor: '#1B1C29'
   exposure_target: 0.12
   exposure_target_ref: look.exposure.scene_keys.SC03_blackout
+  exposure_region: frame_minus_phone_screen_and_bezel
+  exposure_region_ref: look.lighting.sc03_blackout_render.checks.mean_luma_region
 color:
   dominant: look.color.ui
   accent: look.color.accent_battery_red
@@ -96,14 +97,25 @@ assets:
 - ui.status_bar
 rationale:
   camera: '85 mm, the same status-bar framing as the car so the number is read the same way. Rejected:
-    skipping the insert (2 % would not read in the master). Lens position corrected after the first preview:
-    the approved spec put the lens behind him, 0.66 m from the screen, looking past his chin, for a 157
-    mm frame in which the digits fall to about 1.4 %, under the 3 % minimum, and not ''as SC01_SH080''.
-    At 0.30 m on his eyeline the frame is 71 mm, the same as the car.'
+    skipping the insert (2 % would not read in the master). Re-placed for the G5 re-review finding 2:
+    the previous lens (3.45, 8.78, 0.97) sat 0.11 m from the kneel-rig phone, a 26 mm frame with the digits
+    a defocused red smear. At 0.30 m on his eyeline the frame is 71 mm, the same as the car. Rejected:
+    (a) the QA estimate (3.45, 8.62, 1.07) (its sight line crosses the jacket collar, a blurred dark block
+    over the lower frame); (b) straight down his head axis at (3.45, 8.80, 1.215) (the phone-lit back
+    wall shows as a bright band along the top edge: a second light in the dark).'
   composition: 'The status bar floats on blue-black: the room has gone and only the meter is left.'
-  lighting: Screen only; no defocused emissive in the background (camera.dof.inserts). Exposure target
-    0.12 mean brightness is the human-ruled value, within the locked look.exposure.scene_keys.SC03_blackout
-    tolerance 0.08±0.06, matching look.lighting.sc03_blackout_render checks.mean_luma_target.
+  lighting: 'Screen only; no defocused emissive in the background (camera.dof.inserts). Exposure target
+    0.12 mean brightness: USER_REQUIREMENT, the human''s ruling of 2026-10-02 (recorded here at the human''s
+    instruction; the look-director still owns its canon record, look.lighting.sc03_blackout_render is
+    PROPOSED). It sits inside the locked look.exposure.scene_keys.SC03_blackout tolerance 0.08±0.06 and
+    matches look.lighting.sc03_blackout_render checks.mean_luma_target. FACT (draft f12): this insert
+    measures mean luma about 0.40, because at the 71 mm text framing the lit screen fills about half the
+    frame; the room pixels around it are blue-black. Whether checks.mean_luma applies to a screen-filling
+    insert is open for the look-director and the human (handoff). 2026-10-02 amendment (look.lighting.sc03_blackout_render
+    rule 7, PROPOSED, depends on CHANGE-006): the key is measured on the room, so `exposure_region` is
+    the frame minus the phone screen and bezel; the whole-frame value is reported, not gated. The screen
+    is the shot and its brightness is governed by look.exposure.value_structure. Rejected: dimming the
+    screen to pull the whole frame into the band (it would dim the 2 % payoff).'
   movement: Static.
   color: 'Red number, no amber: amber has now failed twice (look.style.motifs).'
   blocking: 'None in frame. He kneels at the stand (builder reach fix: at (3.45, 8.66) facing +y his right
@@ -120,7 +132,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+  hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -180,7 +192,7 @@ derived_from:
 - ref: canon:look.lighting.sc03
   hash: sha256:32462060af0a84d74d1aa75c41df1ac8a20f33d0262c8463342eb0a2f58d3ec0
 - ref: canon:look.lighting.sc03_blackout_render
-  hash: sha256:ed20ed56e432664997ca31b24d8dbd844a769b9b708734cd04c720a1517a31f6
+  hash: sha256:93e5e852cf0656d319d1e2914771dd9605dd0fbd5d86fa9dce3b3b1a7bfb2095
 - ref: canon:look.lighting.power_indicators
   hash: sha256:9f2adfa25f993c9c8b870cbaca6e3feb7dccb77052c69ca5b0ef0e1f5b8cc43f
 - ref: canon:world.rules.weather
@@ -219,6 +231,7 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:8b236ef64586590d78e7dc802a9fcc6e635b0170467cebd8b3c2c5739b5c0708
-stamp_note: SHOT_LIST changed only by the v2 frontal revision note (SC01_SH010/SH090 lens moved to y 1.50,
-  no table cell changed); this shot's row and content are untouched.
+stamped_content_hash: sha256:84f6e811e6d82d1139cee22f8e341ba33a59dc063dfc5ab96d776aa4b127e75d
+stamp_note: 'Content revised since the G5 approval (8e9b8b7): blackout render spec; 2026-10-02 (G5 finding
+  2) lens to (3.45, 8.72, 1.18), 0.30 m from the kneel-rig phone; 0.12 ruling and measured luma recorded.
+  Restamped 2026-10-02 after the SHOT_LIST G5-fix revision.'

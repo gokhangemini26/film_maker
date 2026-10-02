@@ -7,13 +7,13 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:edit_plan
-    hash: sha256:dd10bf78377a9cd487d206c7f62cc0edd241466b575b89c76f0563293760cc6c
+    hash: sha256:3e3e8068c5909778ae2e5553c051754fde3a98a7cdddd387701aac566c0e053a
   - ref: artifact:post_plan
-    hash: sha256:49a06c04dcec5b604c1614089109b0e16c998bd5be819926c1661040baa6a15f
+    hash: sha256:d4a5c361d69f9537085dc5c729a05488725a5ded11c46285aeb44ccd657e1e96
   - ref: artifact:audio_bible
-    hash: sha256:3126772f9cb95dfdc7d6dac505a55c55923fed0a8c1180e1a5ee5a7cd75ec1ff
+    hash: sha256:496cfd2ebec66ea0b0ca6909a80422696583b6e6f27a0bc247532550c5f48293
   - ref: artifact:animation_bible
-    hash: sha256:f5a4ae0f4c360d0f51767ca3c8fb6155673898c3dde7b1c01f2e663300018614
+    hash: sha256:b29f78456ea9b03415d618ae905bf71d6098e814b2bbe205eb92b778a48a1cca
   - ref: artifact:g7_review
     hash: sha256:667d747da0b93242a8d4b6d42a3623d279caab4252ed239338cb768cd55bcd23
   - ref: canon:tone.wordless
@@ -33,13 +33,13 @@ fm:
   - ref: canon:look.style.render_constraints
     hash: sha256:5ff198e989a3e2bfe6217768a89180fee793f10f9c349cccdf50a71f00958c0e
   - ref: canon:audio.score
-    hash: sha256:ba175fbaf4350e9bb3d9a208454900db2cf9789779cf443cb2bc74e54541bb4c
+    hash: sha256:ce4ecd489ab13d322a77d749e27db91f1ba564de8273e004da6eb19510253dd2
   - ref: canon:audio.mix
-    hash: sha256:6928de0e3e54edc5d62ed70cec1108d335e08443b7d45148af2206cd5b5c0c60
+    hash: sha256:dd10c4767db381b6a23ee351aaa51e12de78423dbb6b8a527d92e9be707484b6
   - ref: canon:audio.conflicts
     hash: sha256:6ed601c6debe4079741c5088600614a0437e50428fc5b79880ed65368bcec11b
   - ref: canon:audio.sources
-    hash: sha256:f6591a7d497aff372318d2b159c24a3cbd26dfe4a97369e1926919a47d80043d
+    hash: sha256:646f49fa76f35f969f1b383ce098be7ea6f28b2af12890e8a43a53929d53d2ef
   - ref: canon:animation.vocab.v2
     hash: sha256:8b44ad00375ed7ae85539a9a9a04da4c190036ce937433a27570ff25ad8a3942
   - ref: canon:animation.vocab.v2.face.ren
@@ -58,7 +58,7 @@ fm:
   summary: Recommended rulings on open decisions D1-D10 (plus the G7 side questions), each with rationale
     and the rejected alternative, prepared under the human's delegation; every ruling is UNKNOWN until
     the human confirms it at G7.
-  stamped_content_hash: sha256:0c8e98f54f324637b2604edbffad102c658bca01f55ca64800bceb0cced2f522
+  stamped_content_hash: sha256:def85808995579e0696f663e67dd3ee15b066640d7ad5d1db41d99def131aa66
 title: Open decisions D1-D10 â€” recommended rulings
 ---
 # Open decisions D1-D10 â€” recommended rulings
@@ -79,14 +79,14 @@ Selection test for every item: the option that best serves the locked intents â€
 |---|---|---|---|---|
 | D1 | Score | No underscore; ratchet + breath + diegetic sound only | No (`audio.score` already says so) | UNKNOWN |
 | D2 | Titles and credits vs `tone.wordless` | A: no on-screen text in or around the master; title and credits as delivery metadata | No | UNKNOWN |
-| D3 | Loudness | -16 LUFS integrated (+-1 LU), true peak <= -1 dBTP; plus a 3 dB post-turn bed duck | Adds a mix dependency (sound-designer) | UNKNOWN |
+| D3 | Loudness | -16 LUFS integrated (+-1 LU), true peak <= -1 dBTP; plus a 3 dB post-turn bed duck | Duck applied in the 2026-10-02 mix (sound-designer) | UNKNOWN |
 | D4 | Doc conflicts (`audio.conflicts`, ASSUMPTION) | Shot files win, all 3 D4 items and the 4 extras as written | No | UNKNOWN |
 | D5 | Vignette | Off | No | UNKNOWN |
 | D6 | Final render profile | `final` as it stands: EEVEE 1920x1080, 64 samples, no motion blur, 8-bit PNG, 48-frame resumable chunks, authorization required | No | UNKNOWN |
 | D7 | FADE IN length | 12 frames (0.5 s) | No | UNKNOWN |
 | D8 | Ratify the vocabulary | Ratify v1 + v2 entire, with `face.ren` ratified only together with CHANGE-005 | No | UNKNOWN |
 | D9 | Delivery gate | Add G9 Delivery | No (tool change) | UNKNOWN |
-| D10 | Foley, breaths, headphone track | Human records body sounds; human picks CC0/own library foley with written licences; SC05 headphone leak dropped (room tone only) | Yes: removes `music.headphone_leak` from the export blockers | UNKNOWN |
+| D10 | Foley, breaths, headphone track | Human records body sounds; human picks CC0/own library foley with written licences; SC05 headphone leak dropped (room tone only) | Yes: leak already removed from the 2026-10-02 mix and the export blockers | UNKNOWN |
 
 ## D1 â€” Score
 
@@ -131,9 +131,13 @@ Selection test for every item: the option that best serves the locked intents â€
   -23 LUFS / EBU R128 (broadcast spec, far too quiet on phones).
 - Fallback, for the human's ears at G7: if after the duck the turn still does not feel quieter, take
   -20 LUFS instead; post changes only the loudnorm target.
-- DEPENDENCY (tool, main session): `core/fm/post.py` `finish_params` reads `audio.mix` key `loudness_lufs`,
-  but the canon key is `integrated_lufs`, and the true peak is the constant `TARGET_TP`. Same values today;
-  fix before a non-default D3 could reach the master (POST_PLAN risk 5).
+- FACT (2026-10-02, sound-designer): the duck is applied. `audio.mix` (PROPOSED) carries
+  `post_turn_street_bed_offset_db: -3.0` from `SC04_SH040`; the mix places the pre-turn SC04 bed at -21 dB and
+  the turn and SC06 beds at -24 dB; `fm qa audio`: -16.5 LUFS integrated, true peak -1.1 dBTP. Whether the turn
+  reads as level is for the human's ears at G7.
+- FACT (tool fix, commit 5e7d6e1): `core/fm/post.py` `finish_params` now reads `integrated_lufs`,
+  `true_peak_dbtp` and `lufs_tolerance` from `audio.mix`, so a non-default D3 (e.g. the -20 LUFS fallback)
+  reaches the master and `fm qa delivery`.
 
 ## D4 â€” Documented conflicts (`audio.conflicts`, ASSUMPTION)
 
@@ -177,10 +181,12 @@ Selection test for every item: the option that best serves the locked intents â€
 - Rejected: EXR (about 10 GB, no grade needs the headroom, assembly does not read it); motion blur on
   (canon forbids it; it smears the cel outline and the battery number); 32 samples without a 3-shot test
   (adopt later only after a recorded comparison).
-- DEPENDENCY (blocks the render, not the ruling): compositor glare on the emission pass is still not in
-  any builder code (FACT: no match for "glare" in `blender/fm_blender/*.py`, 2026-10-02). blender-td must
-  build and verify it (M6 task A0). D6 authorizes nothing: the human still runs
-  `fm authorize final-render` before `fm blender final` will start.
+- FACT (commit 5e7d6e1): compositor glare on the emission pass is now implemented
+  (`blender/fm_blender/finish.py`, final renders only, parameters read from `look.style.glow`; `fm blender
+  final` refuses if canon asks for more than it implements). Unit tests pass in this environment.
+- DEPENDENCY (blocks the render, not the ruling): verify it headless in the pinned Blender on the laptop
+  (blender-td, M6 task A0). D6 authorizes nothing: the human still runs `fm authorize final-render` before
+  `fm blender final` will start.
 
 ## D7 â€” FADE IN length
 
@@ -244,9 +250,10 @@ Selection test for every item: the option that best serves the locked intents â€
   files (CC-BY needs a credits line, which D2 keeps off screen; usable only if the metadata credit is
   accepted); a licensed lyric-free track for the leak (licence cost and risk for 3-5 s that sits under the
   film's softest beat).
-- Effect: if ruled, `music.headphone_leak` leaves the export blockers (POST_PLAN section 6); the sound-designer
-  removes it from `audio.sources` / `audio.palette` `human_supplied_pending` at the next revision. The
-  `headphones_slide` foley stays (it is a prop sound, not music).
+- FACT (2026-10-02, sound-designer, ahead of the ruling): the leak is out of the mix (SC05 is
+  `bed_SC05_hana_room` only), `audio.sources` (PROPOSED) says `music_assets: none (D10)`, and `fm qa audio`
+  lists the leak as "not needed". POST_PLAN section 6 no longer counts it as a blocker. If the human overrules
+  D10 it returns to the mix and the blocker list. The `headphones_slide` foley stays (a prop sound, not music).
 - Time (M6 scope estimate): about 1.5 human days.
 
 ## Other G7 rulings the human was asked for (recommended)

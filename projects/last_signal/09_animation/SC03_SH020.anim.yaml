@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH020
-    hash: sha256:17749ce74a849d3eba33ea4bf0956df92d31b5356e2e09a7de3aa480ef97db77
+    hash: sha256:60688ac06ab4bb3fd5f58c2ad9f2b85c0770fe08a82dee955db936b62e32f006
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -43,15 +43,21 @@ fm:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Structured tracks for the plug-in: reach behind the stand, a short fumble, plug in at f12,
-    bolt at f14, eyes to the phone at f15; phone locked still f10-35 so the bolt reads; no relief.'
-  stamped_content_hash: sha256:dfed90e33553c261e053632097aac7de32c018546b392fe8ec3418c21df7ceec
+    bolt at f14, eyes to the phone at f15; phone locked still, upright and tipped toward the lens f10-35
+    (delegated ruling 2026-10-02) so the bolt and screen read; no relief.'
+  stamped_content_hash: sha256:b4bc551f29fa0263bc6224beaf89b7d91c7b538c1ed6ca5b3a780a9b9321bd5d
 shot_id: SC03_SH020
 frames: 36
 vocab_version: 2
 rationale: 'Hope again, a notch warier: he only watches the bolt, no relief (camera.gags.no_repeat, G3
-  finding 7). The phone is locked still from f10 so the small bolt reads over his shoulder at f14 and
-  holds 22 frames; the bolt itself comes from the canon screen table (SC03_SH020 bolt f14), the anim file
-  names the sync points and enforces the hold.'
+  finding 7). The phone is locked still from f10, upright with its screen tipped toward the lens, so the
+  small bolt and the red 3 % read over his shoulder from f14 and hold 22 frames; his body still leans
+  back after the plug-in, but the phone does not follow his face. DECISION (the human delegated this ruling,
+  2026-10-02): the phone stays still and tipped toward the lens from about f10; no change request to camera.inserts.legibility
+  (the bolt stays at about 1.5 % of frame height, read as the one amber point beside 3 %). The bolt itself
+  comes from the canon screen table (SC03_SH020 bolt f14); the anim file names the sync points and enforces
+  the hold. Known limit (accepted, delegated ruling 2026-10-02): his head and hair cover the phone from
+  about f20, so the bolt reads from f14 to about f20, not the full 22 frames.'
 characters:
   ren:
     pose:
@@ -121,9 +127,17 @@ holds:
 - f0: 10
   f1: 35
   scope: phone
+  character: ren
   min_f: 18
-  note: phone locked still from f10 so the bolt (f14-35, 22 frames, minimum 18) reads over his shoulder
-  rationale: insert legibility without an insert (camera.gags.no_repeat shop)
+  note: 'phone and thumb stay put f10-35 (26 frames, minimum 18): the phone keeps the world position and
+    orientation it has at f10, upright with the screen square to the lens and the status bar at the top,
+    while his body withdraws and his head comes back over it (f16-26); the bolt (f14-35, 22 frames) and
+    the red 3 % read over his shoulder. The builder must honour this hold for orientation as well as position:
+    see the BUILDER FIX note (DONE). Known limit, accepted: his head and hair cover the phone from about
+    f20 (see the KNOWN LIMIT note)'
+  rationale: 'insert legibility without an insert (camera.gags.no_repeat shop); the delegated 2026-10-02
+    ruling: still and tipped toward the lens from about f10 so the bolt and screen read, no change request
+    to camera.inserts.legibility'
 events:
 - f: 6
   id: arm_behind_stand
@@ -137,6 +151,10 @@ events:
   id: plug_in
   kind: sound
   note: plug goes into the socket; shoulder pushes forward 1 cm (f12-13)
+- f: 10
+  id: phone_still
+  kind: visual
+  note: the phone hold starts (holds[0]); from here the phone neither moves nor turns toward his face
 - f: 14
   id: bolt_on
   kind: state
@@ -161,8 +179,9 @@ notes:
   version of it.
 - 'Screen (from canon, not overlaid here): compose_1_line, 3 % red, bolt off f0-13 and on from f14. No
   ui_timeline events are needed; the bolt has no ui event type and the table already carries it.'
-- 'DEPENDENCY carried from the shot: the bolt glyph must be about 4.4 mm tall on the phone model to reach
-  3 % of frame height here; check at preview.'
+- 'Bolt size (ruled 2026-10-02): no change request to camera.inserts.legibility; the shot measures the
+  bolt at about 1.5 % of frame height (4.8 mm glyph, 225 mm frame), read as the one amber point beside
+  3 % over 22 frames. The old 4.4 mm / 3 % dependency is closed by that ruling.'
 - 'DEPENDENCY (human ruling needed): the face ref wary is a v2 addition to Ren''s comic set (animation.vocab.v2.face.ren).
   characters.ren.expressions is LOCKED and does not list it; the key stands only if the human rules that
   animation faces may refine a listed expression, or approves a character-designer change request. Fallback
@@ -170,3 +189,45 @@ notes:
 - 'Reviewed against the SC03 blocking fix (kneel at (3.45, 8.66) facing +y, stand about 0.3 m to his right,
   socket about 0.8 m right and 0.3 m ahead of his pelvis): the reach behind the stand, the f12 plug-in
   and all tracks are position-free and stand unchanged; no coordinates in this file.'
+- Reviewed 2026-10-02 against the G5 finding 3 re-placement (lens (3.62, 8.90, 1.28) over his right shoulder,
+  close, look_at phone_ren aimed once at f0). Body, face, look, breath, cable and every event id and frame
+  (arm_behind_stand f6, plug_fumble f8, plug_in f12, bolt_on f14, eyes_to_phone f15, arm_withdraw f16)
+  are unchanged, so the audio cues on plug_fumble and plug_in stay valid; phone_still f10 is a new visual
+  event only (no audio consumer).
+- 'BUILDER FIX: DONE (2026-10-02, blender-td; reported by the orchestrator: phone hold, screen aimed at
+  the lens, f6-9 turn-in; the builder reads motion.holds for the phone and tests/test_phone_hold.py exists).
+  The original request is kept below for the record. (blender-td, required before the next SC03_SH020
+  preview; the shot''s draft FACT shows the kneel rig turning the screen toward his face, flat under his
+  chin from about f24). Vocabulary v2 has no phone-orientation field, so the ruling is carried by the
+  phone hold, holds[0] f10-35, and the builder must honour it: (1) blender/fm_blender/animate.py frame_state():
+  pass the active hold spans of scope phone or all (motion.holds) into the frame state; while one is active
+  for ren, take the phone''s position and axes from the hold''s first frame (f10) instead of the current
+  frame. (2) animate.py _phones() (line ~1234, toward = cam0 - pos only when is_insert): inside a phone
+  or all hold of a non-insert shot whose camera.look_at is phone_ren, aim the screen normal at the lens
+  (cam0 - pos at f10) with the up vector from world up, so the status bar stays at the top; slerp from
+  the rig aim (head - pos) over the 4 frames before the hold (f6-f9, while the arm crosses frame and the
+  hand is busy) so nothing pops at f10. Only SC03_SH020 matches this condition in the film (every other
+  phone hold is an insert or not aimed at the phone), so no other shot changes. (3) _cable_ends() (line
+  ~822) and _cable() (line ~1280): the cable''s phone end must use the same frozen position and axes.
+  (4) the left hand: kneel_reach_stand and kneel_upright may differ by up to 0.03 m at the phone hand
+  (checks.left_hand_and_phone_vs_kneel_upright_m_max), so inside the hold move hand_l by the offset between
+  the rig phone point and the frozen phone so the palm stays on the phone. (5) preview.py line ~395 (static
+  assembly, same head-aim rule): apply the same lens aim for preview frames inside the hold. (6) a test
+  (tests/, beside test_poses.py): for SC03_SH020 f10-35 the phone position varies under 1 mm, its normal
+  is within 10 deg of cam0 - pos and its up vector within 15 deg of world up projected on the screen plane.
+  fm check anim and fm qa motion do not check phone orientation, so only this test and the preview frames
+  can confirm it.'
+- 'RISK carried for the cinematographer (not an animation change): with the phone held toward the lens,
+  his head still returns over it f16-26 (the withdraw), and the shot''s FACT puts his hair at frame right
+  from about f24; whether the hair now covers the status bar must be checked on the f26 and f35 preview
+  frames. The ruling keeps the withdraw; if the hair covers the bolt, the fix is a camera or pose question
+  for the human, not a new vocabulary name.'
+- 'KNOWN LIMIT, accepted (closes the RISK above). FACT (post-fix frames, reported by the orchestrator):
+  the phone is still and square to the lens from f10, but his head and hair cover it from about f20, so
+  the screen reads about f10-20 (the relayed figure "bolt reads f10-20"; the bolt itself is only on from
+  bolt_on f14, so it reads about f14-20, some 7 frames) instead of f14-35. DECISION (the user''s delegated
+  ruling, 2026-10-02): accept. Rejected: (a) repositioning the camera for a cleaner over-the-shoulder
+  (cinematographer''s; earlier lens trials already lost the bolt in his hair or crown); (b) a change request
+  for an exemption from camera.inserts.legibility. No key, hold or event changes: the f10-35 phone hold,
+  the f16-26 withdraw and every event id and frame stand, so the audio cues stay valid. The 3 % / bolt
+  state carries forward unread into SH030-SH050 per canon; nothing downstream depends on reading it here.'

@@ -4044,11 +4044,21 @@
       "applies_from": "SC03_SH050_f8",
       "checks": {
         "dip_visible_SC03_SH050": "pool_mean_luma_f8_to_f10_at_least_15pct_below_f11",
+        "fridge_flank_SC03_SH070": {
+          "luma_max": 0.14,
+          "visible_pixels_at_floor_or_ambient_min_frac": 0.95
+        },
         "mean_luma": [
           0.08,
           0.14
         ],
+        "mean_luma_region": {
+          "SC03_SH050": "whole_frame",
+          "SC03_SH060": "frame_minus_phone_screen_and_bezel",
+          "SC03_SH070": "frame_minus_ren_lit_tone_phone_and_door_rectangle"
+        },
         "mean_luma_target": 0.12,
+        "mean_luma_target_source": "human ruling 2026-10-02 (USER_REQUIREMENT)",
         "pastel_merch_identifiable": false,
         "pool": {
           "area_frac_SC03_SH050": [
@@ -4070,8 +4080,17 @@
           ],
           "neutral_grey_forbidden": true
         },
+        "set_surface_lit_area_frac_max": {
+          "SC03_SH070": 0.02
+        },
         "sh060_surround": "#1B1C29 to #1E2030, not neutral grey",
-        "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool"
+        "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool",
+        "whole_frame_max": {
+          "SC03_SH070": 0.18
+        },
+        "whole_frame_reported_not_gated": [
+          "SC03_SH060"
+        ]
       },
       "door_rectangle": {
         "hex_max": {
@@ -4092,6 +4111,7 @@
         ]
       },
       "pool": {
+        "aim": "screen_normal_toward_holder_face",
         "colour": {
           "hex": "#FFF1DE",
           "linear": [
@@ -4104,6 +4124,11 @@
             0.945098,
             0.870588
           ]
+        },
+        "cone_blend": 0.6,
+        "cone_deg": {
+          "SC03_SH070": 100,
+          "default": 175
         },
         "follows_screen_dip": true,
         "lit_tone": "mix(base, base_x_key_colour, 0.30)",
@@ -4184,6 +4209,36 @@
         "lights_w": 0,
         "world_strength": 0
       }
+    },
+    "look.lighting.sc03_sh070_style_break": {
+      "also_bends": "look.lighting.sc03_blackout_render rule 3 (pool reach) for fridge0-2 only",
+      "excluded_objects_regex": "^fridge(_glow)?[0-2](_|$)",
+      "known_limit": {
+        "exceeds": "whole_frame_max SC03_SH070 0.18",
+        "fridge_flank_frac_at_luma_le_0_14": 0.999,
+        "gated": false,
+        "note": "the static still is not the measured render for SH070; the animated route is",
+        "route": "static run_preview (preview.py)",
+        "whole_frame_mean_luma": 0.203
+      },
+      "light": "phoneglow (pool light of SC03_SH070)",
+      "measured": {
+        "fridge_flank_frac_at_luma_le_0_14": 0.999,
+        "fridge_flank_frac_min": 0.95,
+        "whole_frame_max": 0.18,
+        "whole_frame_mean_luma": 0.142
+      },
+      "measured_route": "animated (fm_blender animate.py frames)",
+      "method": "receiver_side_light_linking",
+      "reason": "Fallback named in look.lighting.sc03_blackout_render: the 100 deg cone re-render still failed checks.fridge_flank_SC03_SH070 (87.4 % of flank pixels at luma <= 0.14, min 95 %).\n",
+      "rule": "L10",
+      "rule_canon": "look.lighting.principles.motivation_required",
+      "serves": [
+        "intent.comic_then_tender",
+        "intent.soft_but_cinematic"
+      ],
+      "shot": "SC03_SH070",
+      "shot_spec_declaration": "pending (cinematographer, 08_shots/SC03_SH070.shot.yaml style_break)"
     },
     "look.lighting.sc04": {
       "ambient": {

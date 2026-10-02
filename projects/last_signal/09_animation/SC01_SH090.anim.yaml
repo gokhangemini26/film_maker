@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH090
-    hash: sha256:00d0f5a2bc7e995387c1bd8a144e74e2388f554c28b8bb37952a4f571d12a8e4
+    hash: sha256:e267b8de87447fc9570ac8951db2a136b662de5730d329d52fc2a1d6229b5e27
   - ref: canon:characters.ren.expressions
     hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
   - ref: canon:characters.ren.movement
@@ -26,7 +26,7 @@ fm:
   serves:
   - intent.comic_then_tender
   summary: 'Structured tracks for the freeze: a true 16-frame hold, then one small stuck exhale.'
-  stamped_content_hash: sha256:c9e510ca480a8c0d2d78b5a113808e72e41725a49ff26750badceca3bc9b5828
+  stamped_content_hash: sha256:bf9f198c83bd52c13d5e07889f6aec9522311ff8e0683ff3e0b9114c2a938755
 shot_id: SC01_SH090
 frames: 24
 vocab_version: 2
@@ -40,9 +40,9 @@ characters:
     - f: 0
       ref: car_phone_up
       ease: hold
-      note: 'freeze already hit on the cut: eyes wide, small pupils, right thumb up over the phone (kept
-        in the action but deliberately not framed: fists and phone sit behind the ring at the bottom of
-        frame), phone in the left hand, whole body held; the deadpan face carries the gag'
+      note: 'freeze already hit on the cut: eyes wide, small pupils, right thumb up over the phone (in
+        the action and in frame: fists and phone sit inside the ring at the bottom centre, per the shot''s
+        2026-10-02 ruling), phone in the left hand, whole body held; the deadpan face carries the gag'
       rationale: one preset for the whole shot; the exhale is a breath key, not a pose change
     move:
       gait: none
@@ -64,7 +64,8 @@ characters:
     - f: 16
       ref: out_slow
       dur_f: 6
-      note: 'small stuck exhale: shoulders drop 1 cm (ease-in, f16-21); thumb stays up (unframed)'
+      note: 'small stuck exhale: shoulders drop 1 cm (ease-in, f16-21); thumb stays up (in frame, inside
+        the ring)'
       rationale: the only motion in the shot; stuck, so slow and small
 props:
   phone_ren:
@@ -98,3 +99,17 @@ notes:
 - 'DEPENDENCY: the shot file''s prose animation block still says "thumb up in the air over the phone (lower
   frame)" (key f0); this file supersedes it (the animation-director does not edit a shot that has an anim
   file).'
+- 'Reviewed 2026-10-02 against the shot''s delegated thumb ruling (rationale.blocking DECISION): the camera
+  stays at y 1.50 and the raised-thumb hand is now in frame inside the ring at the bottom centre; the
+  thumb is still up f0-23 in this file, so tracks, the f0-15 all hold, the stuck_exhale event at f16 and
+  frames 24 are unchanged. The shot''s prose key f0 ("thumb up in the air over the phone (lower frame)")
+  now agrees with the shot; the DEPENDENCY above is closed. Builder DEPENDENCY (blender-td / character-designer,
+  as the shot records): a readable thumb needs a thumb piece on the figure''s hand (characters.py builds
+  mitts); no animation key can supply it.'
+- 'Thumb piece, post-fix (2026-10-02, reported by the orchestrator). FACT: the builder now adds a thumb
+  piece (characters.py figure(thumbs=True)), but the raised thumb sits behind the steering-wheel rim,
+  so it is not readable in this framing. DECISION (the user''s delegated ruling, 2026-10-02): accept;
+  the thumb is not readable. Recorded deviation from SCREENPLAY line 93 ("He freezes, thumb in the air."):
+  the freeze, the deadpan face and the stuck exhale carry the beat; the thumb stays up f0-23 in the action
+  but is not seen. No key, hold or event changes (f0-15 all hold, stuck_exhale f16, frames 24), so the
+  audio cue stays valid. The builder DEPENDENCY above is closed by this ruling.'

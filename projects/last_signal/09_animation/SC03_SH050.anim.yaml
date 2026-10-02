@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH050
-    hash: sha256:e1e411f9e315f2b742a00e797f055c5ab9dbf6d4fe1fa86db88a46a31bb57bda
+    hash: sha256:ca589c920fd0b6a0e8fad30b2902cd2d3954bf90535beaf6a2ce09540e20310e
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -41,7 +41,7 @@ fm:
   - intent.anime_feel
   summary: 'Structured tracks for the blackout: 8 lit frames of a relaxed man, the room off in one frame
     on the clunk at f8, 22 frames of dark; he does not move; the phone glow dips and comes back.'
-  stamped_content_hash: sha256:3aa551ef3df7ee2ca54fcab15c964cae5f3f99cd3650456aab33949747c793b0
+  stamped_content_hash: sha256:49e7b9479391ad12d1a511e2cc36d8a228a04fe1bc1de23297257f799403f1b0
 shot_id: SC03_SH050
 frames: 30
 vocab_version: 2
@@ -147,3 +147,6 @@ notes:
   within the locked look.exposure.scene_keys.SC03_blackout tolerance 0.08 +/- 0.06): the exposure 0.08
   in the note above now reads 0.12. Lighting only: frames 30, the f8 events (blackout, clunk, fridge_hum_stop,
   charge_lost) and the hold stand unchanged, so audio cues stay valid.'
+- 'Reviewed 2026-10-02 against the shot''s rationale.lighting now recording the 0.12 value as the human''s
+  USER_REQUIREMENT and the measured draft luma 0.13 (f12, f24). Lighting text only: frames 30, the four
+  f8 events and the hold stand unchanged.'

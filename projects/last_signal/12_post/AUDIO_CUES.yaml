@@ -6,29 +6,29 @@ fm:
   owner_role: sound-designer
   derived_from:
   - ref: artifact:anim_sc01_sh010
-    hash: sha256:b749f224559d8be2e0a06281e9c441772c9aea3445fb0df3349bf53f83b4108a
+    hash: sha256:06ffd1ced0e3a6cd9375a14731a422b9d1a85c913a1a0dd412fe9c22629e70a1
   - ref: artifact:anim_sc01_sh020
-    hash: sha256:165676c4f0dbd2eca2c9462560b1d3bcc3678c36b8710c95d672b6ef2a137869
+    hash: sha256:46baea0074b14730c02b0d2115b594a1f584d65f73e65f2d6cc03fc2f7cf850d
   - ref: artifact:anim_sc01_sh030
-    hash: sha256:141491680d97201cdb3895f423b627f3bb6cdfcb0f4dac0d44192d2dc3cf22b8
+    hash: sha256:4f0072aa443c60439ab686387c554b3d90de1dbdf5525d77f5dfabbcfff8fc5d
   - ref: artifact:anim_sc01_sh040
     hash: sha256:25b07967c26ffda6960b4347fdedb3de9da11e4d8c14abd8038e4c7e28067e80
   - ref: artifact:anim_sc01_sh050
-    hash: sha256:e344369ce2adf6fad048878113f3210b2a38041cff359fcc5e62edc5646d538c
+    hash: sha256:ddc1e94716faf6ac08ccc23620c059a3106130f94439228faf5f4a340cf2ff42
   - ref: artifact:anim_sc01_sh060
     hash: sha256:3afd76076cf7659408d73988e5749959dcf3b52d501ca79aa3c3f728b4a8f9d9
   - ref: artifact:anim_sc01_sh070
-    hash: sha256:4abb568eeea7b67d4accb0a72009da5452fa1a61cb48e1253d4c7322cc2f00c2
+    hash: sha256:bfa2ec61dd93d63b6d270c4012e3fdcf2028a5c025a9b1c0382df269f9dcff7f
   - ref: artifact:anim_sc01_sh080
-    hash: sha256:fa336523cafb18489c30c446d12fbd2e568e6e1b02cd80267c41af10730c92c3
+    hash: sha256:25aa350b3c8b13a657a3bf5c3c3e7bbdc4858ad3ec3dd9f38eabd628ef56ef0b
   - ref: artifact:anim_sc01_sh090
-    hash: sha256:4742205134c353232504da38be3aba8ecefdfac1683403148fc1857b3b9b1649
+    hash: sha256:c9e510ca480a8c0d2d78b5a113808e72e41725a49ff26750badceca3bc9b5828
   - ref: artifact:anim_sc01_sh100
     hash: sha256:3e727eb2f3081bbe006b7aced60fd2c34196f5f84e7ec651b5ee7f4f76204931
   - ref: artifact:anim_sc01_sh110
-    hash: sha256:e06b49ccfb9417d61a24986cfadc53d76499c53700cc30beec63ed836171d081
+    hash: sha256:1cb9c447f77427338106ad3eab71ed7a514b5115dcf8761beb89b10c26db21b0
   - ref: artifact:anim_sc01_sh120
-    hash: sha256:67724356ea6ab791e11dc2df1a56b8c7094a166e41fffceef99983f6f5d53438
+    hash: sha256:4c3ef6483e1599330303d86620f7a995898c1e7444ece73701407fb0899feda9
   - ref: artifact:anim_sc01_sh130
     hash: sha256:243861eae4be628218e260e49d9d59bd6f4e6c7405b2cef8dbdd281f81c44e45
   - ref: artifact:anim_sc01_sh150
@@ -46,9 +46,9 @@ fm:
   - ref: artifact:anim_sc03_sh040
     hash: sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90
   - ref: artifact:anim_sc03_sh050
-    hash: sha256:3c11c5cd4d48cecce9eff3617544ac58aa90d9cee26535a2844513f500d7db08
+    hash: sha256:3aa551ef3df7ee2ca54fcab15c964cae5f3f99cd3650456aab33949747c793b0
   - ref: artifact:anim_sc03_sh070
-    hash: sha256:6ec95c3080c839aaa01b965ffa4e4eccb3131e96c1fe954c619ba21bc9b6163f
+    hash: sha256:203bba621964656c184dd90e9455f5c4fdc4b1182c3e9e25e3e78c7410a723d4
   - ref: artifact:anim_sc04_sh010
     hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
   - ref: artifact:anim_sc04_sh020
@@ -76,29 +76,29 @@ fm:
   - ref: artifact:anim_sc06_sh010
     hash: sha256:ddee172d1a5bc97e90175aa013becd8ac65954a79212ae9ea5f46a1dcc197bf7
   - ref: shot:SC01_SH010
-    hash: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
+    hash: sha256:f9fb0e2c41db15728c90aa029190765b68f8dffbf26f47fc7ff8a76376d7f33b
   - ref: shot:SC01_SH020
-    hash: sha256:7941cdc7602dd3ba6196687b287f11f1bd476f897f6363e990b8bbf6c6bfde7e
+    hash: sha256:b3eb95e48fc7f5d2232c69e7dee26595e607479c4d5fc9f81f3a2aff66384bf9
   - ref: shot:SC01_SH030
-    hash: sha256:8699e51bfb186dba0264c42419a8a2cdae365aab80f76e052777657e96023cc8
+    hash: sha256:eb9d6abd324e0a1cf42011b8f002ade0a3ec30a58f25b70addc887a85f7a46fa
   - ref: shot:SC01_SH040
     hash: sha256:6d7c21340e8fa08d14e537476be053e78dfb439ec00561158dc21a691a0e885d
   - ref: shot:SC01_SH050
-    hash: sha256:fd8ca343ac306f9e9fffb06fd2bbf4f2edcf56d2aa685ee01f014c284a3b7d81
+    hash: sha256:011a13f442e585f2b616e65779e3bf5a3f2841ac4b55c73993539d104cb8924a
   - ref: shot:SC01_SH060
     hash: sha256:a137c047da23405b913fc34b40d27682f1b503d685cd844ddf1fd6d74738257d
   - ref: shot:SC01_SH070
-    hash: sha256:30042d9fc89a19bba21af41b35ac93e518a9b2022ad67f984d3cefbde595f501
+    hash: sha256:7adc5204a2efb840c218753a419b48d80229bf18598a94c7014f25a0e6a04bab
   - ref: shot:SC01_SH080
-    hash: sha256:2ddfa6a723cc95a8fc576e9b9643d2edc58dc79c1849c739a9d2a05c146cbb38
+    hash: sha256:ec08eab9349a63936af06dd2d74a19ee0a26eb5b176f62b45504b94a97f7be50
   - ref: shot:SC01_SH090
-    hash: sha256:ced7b32486ed4d040bd12165f24216e6db8e82ddc82562637f02aa43db797d6b
+    hash: sha256:00d0f5a2bc7e995387c1bd8a144e74e2388f554c28b8bb37952a4f571d12a8e4
   - ref: shot:SC01_SH100
     hash: sha256:7fc62ddf5d0deaa1587c815f733988268664f01c621b1569e321a73cdb7d980d
   - ref: shot:SC01_SH110
     hash: sha256:b76e5460354748a8b00dd6191f88adaed0e1238a17bd1d169363aa39eccb4165
   - ref: shot:SC01_SH120
-    hash: sha256:bfe3e7e13f27d08c4a21103977c15cea88d711d9f0c1e78c4f6b12a395c6ed47
+    hash: sha256:d335956335a15bb47f3b5be9dc8d3e16eab549443515783630c49d19af3c3958
   - ref: shot:SC01_SH130
     hash: sha256:8cc649e0e5b4be56b4c014462a5204889ccdcc3fee7989d30ce5bfa2cfc5b080
   - ref: shot:SC01_SH150
@@ -146,13 +146,13 @@ fm:
   - ref: shot:SC06_SH010
     hash: sha256:eec626a9a5695ed8fc717c735aba806479066922e0e1cb99ad5a2215622680bd
   - ref: artifact:anim_sc01_sh140
-    hash: sha256:0897f383ff32d0ad34077f02d4c8c864925938c27a76e76d3cadfcb33da01ff1
+    hash: sha256:813d954dfd9bdf8b94b80e96e2fef5c2e377e7e6490bbfaaa55289d284e8f4eb
   - ref: artifact:anim_sc02_sh020
     hash: sha256:0879c17e5ae247692af922bcddf6391eeda2974b98ce067ef4179417995574d9
   - ref: artifact:anim_sc03_sh060
-    hash: sha256:5ea5f1daa7b8299784bf622691323b64fba4e1c8e3bfb854ad656d3e36dd87e6
+    hash: sha256:be47c6c0896c52c123361bf4084dc1223964ca583bf1e2b3e25e872c2f8c8607
   - ref: shot:SC01_SH140
-    hash: sha256:de7d7d041f564db5c53829b14fadb39e979998bae11f774fefd643cf437ce759
+    hash: sha256:2e0e915f0eaf71dbf7339201311e4e9bee1593e2f0f5abc48f3603e7378372c9
   - ref: shot:SC02_SH020
     hash: sha256:783ca6dc0c914156c5b4dd7b6e25ae9f2c4fb2afce34a03973fd60b4f77b2de9
   - ref: shot:SC03_SH060
@@ -184,7 +184,7 @@ fm:
   - ref: artifact:audio_bible
     hash: sha256:496cfd2ebec66ea0b0ca6909a80422696583b6e6f27a0bc247532550c5f48293
   - ref: artifact:storyboard
-    hash: sha256:891aec9e44443e0c00e161d46f5cdf7a23346d513b4fbd2cb228e807f7f18523
+    hash: sha256:6c462b07661257a0c7e8093ec6e8cb0f88db0a871800d7a4531f05441e8fbbe3
   summary: 'Complete cue sheet: every cue on an animation event id (handle_top derived for the ratchet),
     beds per scene, the silence map, mix targets and the human_supply asks.'
   serves:
@@ -194,11 +194,11 @@ fm:
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
   stamped_content_hash: sha256:3938a7a3ff047e56c4d85dde64f08d16b8f308bdb1e5bb0064e56cd56af0ac76
-  stamp_note: 'D3/D10 revision (post-turn street beds -3 dB, headphone leak declined, human_supply rewritten,
-    master gain 21.9). Upstream refreshes checked against 4acd6b7: anim SC01_SH110/120/140, SC03_SH050/060/070
-    events and frame counts identical (SH110 pose ref car_upright->car_sag only); shots SC01_SH070/080/120/140
-    and SC03_SH050/060/070 changed camera/composition/lighting/rationale only, no sound_sync change. No
-    cue moved.'
+  stamp_note: 'Upstream restamps checked against 5e7d6e1 (last cue edit): all 37 anim files have identical
+    event ids, event frames and frame counts (changes are SC01 v2 lens/eyeline notes, SC03 blackout 0.12
+    prose); no shot sound_sync or duration changed; STORYBOARD changed SC01_SH010/SH090 framing prose
+    only, no Sound line. All 126 cue references resolve (handle_top is the derived crank event, as before).
+    No cue moved.'
 mix:
   integrated_lufs: -16.0
   lufs_tolerance: 1.0

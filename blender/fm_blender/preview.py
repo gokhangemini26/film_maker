@@ -392,7 +392,12 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
         i = figs["ren"][0]
         is_insert = (shot.get("composition") or {}).get("framing") == "insert" and cam_c.get("look_at", "") == "phone_ren"
         zup = Vector((0, 0, 1))
-        toward = (cpos - i["phone"]) if is_insert else (i["head"] - i["phone"])
+        # a phone hold in a non-insert shot aimed at the phone (SC03_SH020, anim holds scope phone | all): the screen squares to
+        # the lens with world up on top, the same rule as the animated frames (animate._phones)
+        held_at_lens = (not is_insert and cam_c.get("look_at", "") == "phone_ren" and any(
+            h.get("scope") in ("phone", "all") and h.get("character") in (None, "ren")
+            for h in ((shot.get("motion") or {}).get("holds") or [])))
+        toward = (cpos - i["phone"]) if (is_insert or held_at_lens) else (i["head"] - i["phone"])
         nz = toward.normalized() if toward.length > 1e-6 else zup
         yv = zup - nz * zup.dot(nz)
         yv = yv.normalized() if yv.length > 1e-4 else Vector((1, 0, 0))
@@ -612,10 +617,11 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
             bo_spec = BO.spec(shot, canon)
             i = figs["ren"][0]
             pool = BO.make_pool_light(bpy, "phone." + sid, BO.pool_position(i["phone"], i["facing"]), bo_spec["pool_w"] * flick,
-                                      bo_spec["key_lin"], col)
+                                      bo_spec["key_lin"], col, bo_spec["cone_deg"], bo_spec["cone_blend"])
             BO.aim_pool(pool, i["head"] - i["phone"])      # the screen faces the holder's face
             if sid in bo_spec["door_shots"]:
                 BO.add_door_rectangle(bpy, units["shop"], S.SHOP_ORIGIN, canon["world.sets.corner_shop"]["footprint_m"][0], bo_spec)
+            BO.link_pool(bpy, pool, bo_spec)     # SC03_SH070: fridge0-2 out of the pool (canon fallback); no-op elsewhere
         # emissives (panels, fridge glass, fascia) -> dark non-emissive "off" material in the blackout, originals otherwise
         BO.apply(bpy, bo_on, BO.spec(shot, canon))
 

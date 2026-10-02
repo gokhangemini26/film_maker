@@ -7,7 +7,7 @@ fm:
   owner_role: cinematographer
   derived_from:
   - ref: artifact:shot_list
-    hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+    hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
   - ref: artifact:screenplay
     hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
   - ref: artifact:cinematography_bible
@@ -25,7 +25,7 @@ fm:
   - intent.earned_last_signal
   summary: Text storyboard for all 38 shots of Last Signal - frame layers, eye path, movement, sound cue
     and transition per shot, in film order.
-  stamped_content_hash: sha256:6c462b07661257a0c7e8093ec6e8cb0f88db0a871800d7a4531f05441e8fbbe3
+  stamped_content_hash: sha256:61654c415ba79404f9dcbaa7a2bb7fc0dbc02f7bd511e1c656da9820229e428d
 title: Storyboard
 ---
 # Storyboard: Last Signal
@@ -116,8 +116,9 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 
 **SC01_SH090 · 24 f · MCU · 50 mm frontal (as SH010) · eye level**
 - Frame: Ren centred, boxed by the pillars, the same frame as SH010; his
-  hands one frozen shape behind the wheel ring at the bottom of frame (the
-  thumb is not framed for: the face carries the freeze).
+  hands one frozen shape inside the wheel ring at the bottom of frame, the
+  raised-thumb hand among them (in frame, but on the mitt hands it does not read
+  as a thumb: a recorded deviation from SCREENPLAY line 93, see the shot file).
 - Eye: his face, deadpan, and it stays there.
 - Moves: nothing, then a small stuck exhale.
 - Sound: the exhale.
@@ -217,19 +218,24 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: chime tail; fridge hum; his quick steps.
 - Out: cut.
 
-**SC03_SH020 · 36 f · MCU · 35 mm over his left shoulder · eye level (kneeling)**
-- Frame: FG the phone over his left shoulder; MG his right arm reaching
-  behind the stand at right; BG the back-wall corner behind the stand (the
-  westmost fridge is wild for this lens; its cool light comes from behind us).
-- Eye: the phone; the amber bolt appears at frame 14 beside 3 %.
-- Moves: arm reaching, plug going in.
+**SC03_SH020 · 36 f · CU (OTS) · 35 mm over his right shoulder · his eyeline (1.28 m)**
+- Frame: looking down past his right shoulder: FG the phone large in the
+  centre, his left hand on it; his right arm crossing frame left to the stand
+  (f6-f16); the floor and the back-wall base beyond; his hair at the top edge
+  once he leans back over the phone.
+- Eye: the phone's status bar; the amber bolt appears at frame 14 beside the red
+  3 % (upright until about f22, then sideways at frame right as the phone settles
+  flat under his face; visible to f35, about 1.5 % of frame height).
+- Moves: arm reaching, plug going in; the phone tips from upright to flat as he
+  leans back.
 - Sound: a scrape, a click, the charging chime.
 - Out: cut.
 
-**SC03_SH030 · 26 f · MCU · 24 mm from behind the back wall (wild) · mild low**
-- Frame: Ren's upturned face low right, eyes on the ceiling; the ceiling panels
-  glowing steadily up the middle toward the door; the stand a dark foreground
-  block at frame left, the westmost fridge's flank at frame right.
+**SC03_SH030 · 26 f · MS · 24 mm from beyond the back wall (wild) · mild low, tilt up 6.9°**
+- Frame: Ren's face just above centre, tipping up to the ceiling; two to three
+  ceiling panels glowing steadily above-left of his head, receding toward the
+  door; the stand a block at frame left, the westmost fridge's flank closing the
+  right third.
 - Eye: his eyes, then the panels, then back.
 - Moves: he freezes, looking up; nothing happens; eyes come down.
 - Sound: the fridge hum, unchanged.
@@ -252,8 +258,9 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Sound: CLUNK; the fridges' hum dies with it; silence.
 - Out: cut.
 
-**SC03_SH060 · 26 f · insert · 85 mm · status bar (0.30 m, his eyeline)**
-- Frame: status bar floating on black: red 2 %, no bolt.
+**SC03_SH060 · 26 f · insert · 85 mm · status bar (0.30 m, his eyeline, lens 1.18 m)**
+- Frame: status bar floating on blue-black at the top right of the lit screen:
+  red 2 % (about 6 % of frame height), no bolt.
 - Eye: the number.
 - Moves: nothing.
 - Sound: silence.

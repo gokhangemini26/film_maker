@@ -7,11 +7,11 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:shot_list
-    hash: sha256:92b3bcc6a1e21d96ab99793feca0f3a485f4dd5eb8713306e20fa1161705c27a
+    hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
   - ref: artifact:scenes
     hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
   - ref: artifact:audio_cues
-    hash: sha256:ad57b77535192c291ed921e797e542e8ca319119171c92379f36852d9ccc433a
+    hash: sha256:3938a7a3ff047e56c4d85dde64f08d16b8f308bdb1e5bb0064e56cd56af0ac76
   - ref: canon:camera.rhythm.transitions
     hash: sha256:0ff059c432a2227bfbe4eebceef37bc953cd834328d87d7ae75970a866ddcb15
   - ref: canon:camera.rhythm.scene_budget
@@ -21,7 +21,7 @@ fm:
   - ref: canon:camera.format
     hash: sha256:2501c716273516ebe3e4dba470a0e8896aff0761fda6926bbb09cfc7bad1eeea
   - ref: shot:SC01_SH010
-    hash: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
+    hash: sha256:f9fb0e2c41db15728c90aa029190765b68f8dffbf26f47fc7ff8a76376d7f33b
   - ref: shot:SC03_SH010
     hash: sha256:1f76a5f9b1d9f67b45b4d32494cd8fa297d0e56eeec18ea1eaacf0bb5c82e63f
   - ref: shot:SC03_SH070
@@ -41,7 +41,7 @@ fm:
   summary: Readable cut list generated from the resolved frame table; hard cuts, FADE IN 12 frames (D7,
     decided under the human's 2026-10-01 delegation, to be ratified at G7) and 18-frame FADE OUT from
     canon; scene-time and sound-cut notes.
-  stamped_content_hash: sha256:dd10bf78377a9cd487d206c7f62cc0edd241466b575b89c76f0563293760cc6c
+  stamped_content_hash: sha256:3e3e8068c5909778ae2e5553c051754fde3a98a7cdddd387701aac566c0e053a
 title: Edit Plan
 ---
 # Edit Plan: Last Signal
@@ -75,6 +75,8 @@ both written by `fm post edl` from `09_resolved/film.json`.
   D1-D10 is `12_post/DECISIONS.md`. No ruling there changes a value in this cut list. FACT: `fm post edl`
   re-run 2026-10-02 (after the SC01_SH120/SH140 re-resolve) printed "38 events, 1440 frames, end
   00:01:00:00, fade in 12 / out 18 frames"; `git diff` shows `EDIT.edl` and `edit.ffconcat` unchanged.
+  FACT: re-run again 2026-10-02 after the SC01 lens/layout commits (fba52bf, 0ac12ba): same output line,
+  `EDIT.edl` and `edit.ffconcat` byte-identical (section 2.4).
 
 ## 2. Cut list (record frames from `09_resolved/film.json`)
 
@@ -178,6 +180,19 @@ Record out is exclusive, as in the EDL.
   `anim_sc03_sh050/060/070` and `audio_cues` as stale upstream of this plan; their owners are the
   animation-director and the sound-designer.
 
+### 2.4 Re-run after the SC01 lens/layout changes, glare and audio D3/D10 (2026-10-02)
+
+- FACT: upstream commits 769eff5, 5e7d6e1, fba52bf, 05645f1, 0ac12ba changed SC01 camera lens/layout (frontal
+  lens y=1.50, inserts lens, SH110 pose, car v2 layout, steering wheel ring), the SC03 blackout render check
+  (`look.lighting.sc03_blackout_render` `mean_luma_target: 0.12`, PROPOSED), the builder (sight-line clearance,
+  compositor glare in `blender/fm_blender/finish.py`, final-only), and the cues/mix (D3 duck, D10). The anim
+  files and AUDIO_CUES/AUDIO_BIBLE were then restamped with no sync change (working tree).
+- FACT: `09_resolved/film.json` still totals 1440 frames. `fm post edl` printed "38 events, 1440 frames, end
+  00:01:00:00, fade in 12 / out 18 frames"; `git diff --stat` shows `EDIT.edl` and `edit.ffconcat` unchanged.
+  Only `.fm/derived/edit/edl.json` changed (input hashes). No record frame in section 2 moved.
+- FACT: lens, layout and blackout changes are picture content, not timing; post judges none of them. They make
+  the SC01 previews/playblasts and the SC03 keys stale for the animatic (section 6).
+
 ## 3. Head and tail
 
 - **Head.** FADE IN from black over record frames 0-11 (D7 = 12, delegated decision, to be ratified at G7). FACT: the `SC01_SH010` camera notes
@@ -216,23 +231,24 @@ Record out is exclusive, as in the EDL.
 ## 5. Sound-cut relationships
 
 Frames below are record frames. FACT: placements are read from `12_post/audio/mix_report.json`, written by
-the 2026-10-01 `fm audio mix` (138 placements, 1440 frames, 3 silence windows, 5 placeholder recipes; cues hash
-`ad57b775...`, which matches the stamped `12_post/AUDIO_CUES.yaml`, PROPOSED). FACT (late 2026-10-01 re-run):
-`fm audio mix` again "mixed 138 placement(s)", ~-16.39 LUFS, true peak -1.73 dBTP, and `mix_report.json` is
-identical to the previous one key for key, so every placement below still holds. Against the wave-6 mix
-(136 placements) two cues were added and none removed or moved: `c_SC01_SH120_plug_click` (408-412, inside
-SC01_SH120, no cut involved) and `c_SC02_SH030_door_swing_back` (574-582, across the SC02 -> SC03 cut, below).
-These are edit-side requirements for the sound-designer, not mix decisions.
+the 2026-10-02 `fm audio mix` (sound-designer, after D3/D10): 139 placements, 1440 frames, 3 silence windows,
+5 placeholder recipes, `measure.lufs_approx` -16.47, sample peak -1.14 dBFS; cues hash `3938a7a3...`, which
+matches the `stamped_content_hash` of `12_post/AUDIO_CUES.yaml` (PROPOSED). FACT, `qa/audio_report.json`:
+integrated -16.5 LUFS (ffmpeg ebur128), true peak -1.1 dBTP, targets read as -16.0 +-1.0 / -1.0 dBTP, 0 FAIL,
+10 WARN. Changes that touch cuts: the SC04 street bed is split at the turn (D3 duck, below), SC05 is room
+tone only (D10), and the SC06 bed sits 3 dB under the pre-turn level. These are edit-side requirements for
+the sound-designer, not mix decisions.
 
 | Cut | Picture | Sound relationship (RECOMMENDATION unless tagged) |
 |---|---|---|
 | Head, f0 | FADE IN | FACT: `bed_SC01_car_interior` starts at f0 with no fade in the mix report; `c_SC01_SH010_heat_ticks` starts at f0 with a 4-frame fade in. RECOMMENDATION: fade the sound in over the same length as the picture (D7) at assembly, so no sound arrives before the image. |
 | SC01 -> SC02, 527/528 | cut | FACT: `car.door_open` (`c_SC02_SH010_door_open`) at 528, with the door already swinging on the cut. The car bed hands over to `bed_SC02_street` at 528. The SC01_SH140 silence (460-491) sits before this cut. A door sound that straddles the cut is fine. |
 | SC02 -> SC03, 575/576 | cut | FACT, **resolved (wave 6)**: the mix has exactly one `shop.door_chime` (`c_SC02_SH030_door_chime`, 575-603.8). It strikes on SC02_SH030 f15, the cut point, and its second note and decay ring on under SC03_SH010 as the board's "chime tail". There is no chime at SC03_SH010 f0. The cue's `rationale` records the keep-one ruling. The fridge and panel hums and the shop bed start on the cut at 576. FACT (2026-10-01 mix): the door's swing-back (`c_SC02_SH030_door_swing_back`, `fx.plastic_scuff` placeholder, -38 dB) runs 574-582, so it straddles the cut by 6 frames under the chime and Ren's first SC03 steps (576 on). RECOMMENDATION: acceptable, it is the same door continuing behind him; check by ear at G7 that it does not mask the chime's first note. |
-| SC03 end -> SC04, 815/816 | hard cut, black to dusk | FACT: after the clunk at SC03_SH050 f8 (720-728) the shop is silent (`sil_SC03_SH050_after_clunk` 728-742, `sil_SC03_SH060` 742-768). SC03_SH070 (768-815) carries `amb.distant_car_pass` over `bed_SC03_SH070_dead_room`. `bed_SC04_street` starts on the cut at 816, a hard sound cut to match the hard picture cut. RECOMMENDATION: its `xfade_f: 4` should run inside SC04 and not pre-lap into the black. Post checks this by ear at G7. |
+| SC03 end -> SC04, 815/816 | hard cut, black to dusk | FACT: after the clunk at SC03_SH050 f8 (720-728) the shop is silent (`sil_SC03_SH050_after_clunk` 728-742, `sil_SC03_SH060` 742-768). SC03_SH070 (768-815) carries `amb.distant_car_pass` over `bed_SC03_SH070_dead_room`. `bed_SC04_street_pre_turn` (-21 dB) starts on the cut at 816, a hard sound cut to match the hard picture cut. RECOMMENDATION: its `xfade_f: 4` should run inside SC04 and not pre-lap into the black. Post checks this by ear at G7. |
+| Turn, SC04_SH030 -> SH040, 929/930 | cut | FACT (D3 duck, `audio.mix` `post_turn_street_bed_offset_db: -3.0`, `post_turn_from: SC04_SH040`): `bed_SC04_street_turn` (-24 dB) starts at 930 and overlaps the pre-turn bed (816-934) by 4 frames (`xfade_f: 4`), so the 3 dB drop lands on the cut and runs through 1250. RECOMMENDATION: check by ear at G7 that the drop reads as the turn and not as a level fault. |
 | Ratchet across SC04_SH050-SH090 | four hard cuts | FACT (mix report): `crank.click` placements at 1046, 1070, 1094, 1118, 1142, 1166, 1190, 1214, then the stop at 1229 (SH090 f7). That is every 24 frames across the cuts, so the cuts do not reset the ratchet rhythm. |
-| SC04 -> SC05, 1249/1250 | cut on light | Send at SC04_SH080 (`send_press`), the delivered tick at f34 (1198), his release breath at SC04_SH090 f8 (1230). FACT: SC05_SH010 holds 2 dark frames before her screen wakes. RECOMMENDATION: the street bed hard-cuts out at 1250 and her room tone or headphone leak starts at 1250, with no sound on the waking screen (D4 desk buzz conflict: follow the shot file). |
-| SC05 -> SC06, 1357/1358 | cut on direction | The room tone ends with her held smile. The street dusk bed returns at 1358, a hard cut. The same bed as SC04 gives the bookend by ear too. |
+| SC04 -> SC05, 1249/1250 | cut on light | Send at SC04_SH080 (`send_press`), the delivered tick at f34 (1198), his release breath at SC04_SH090 f8 (1230). FACT: SC05_SH010 holds 2 dark frames before her screen wakes. FACT (mix report): `bed_SC04_street_turn` ends at 1250 and `bed_SC05_hana_room` (-25 dB) starts at 1250; there is no headphone-leak placement (D10 recommended ruling; `c_SC05_SH020_headphones` is the slide foley, not music). No sound on the waking screen (D4 desk buzz conflict: follow the shot file). |
+| SC05 -> SC06, 1357/1358 | cut on direction | FACT: `bed_SC05_hana_room` ends at 1358; `bed_SC06_street` returns at 1358 at -24 dB, the post-turn level of `bed_SC04_street_turn`, so the bookend matches SC04's tender half by ear, not its comic start. |
 | Tail, 1422-1439 | FADE OUT 18 f | FACT (mix report): `bed_SC06_street` ends at 1422. `c_SC06_SH010_street_tail` runs 1418-1440 with an 18-frame fade out. The out-breath `c_SC06_SH010_breath_out` (1426-1440, a placeholder) is the last sound. RECOMMENDATION: fade the audio out over the same 18 frames so picture and sound reach black and silence together at 1439. |
 
 ## 6. Outputs
@@ -240,3 +256,7 @@ These are edit-side requirements for the sound-designer, not mix decisions.
 - `12_post/EDIT.edl`, `12_post/edit.ffconcat` (`fm post edl`, recorded as `edit:edl`).
 - `12_post/animatic.mp4` (`fm post animatic`, recorded as `edit:animatic`): 1440 frames, 60.000 s, with the
   mix. See POST_PLAN section 7 for the per-shot picture source and what it is and is not.
+- FACT: `edit:animatic` is STALE in `fm validate` (resolved shots changed). The file on disk (2026-10-01 21:37)
+  predates the 2026-10-02 mix (13:14) and the SC01 lens/layout changes. It was **not** rebuilt here: the
+  pinned frames live on the human's laptop and this environment would rebuild it from stills. It must be
+  rebuilt with `fm post animatic` after the laptop re-render (POST_PLAN 7.4).

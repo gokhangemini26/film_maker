@@ -10,7 +10,8 @@ creative_intent:
   narrative_purpose: He freezes, thumb in the air, and lets out a small stuck exhale.
   emotional_purpose: 'Laughter with him: the deadpan freeze.'
   visual_purpose: 'The frontal medium close-up again, now centred and still: the deadpan face carries
-    the freeze; his hands are one held shape behind the wheel ring at the bottom of frame.'
+    the freeze; his raised-thumb hand and the phone are one held shape inside the wheel ring at the bottom
+    of frame.'
   audience_effect: The viewer shares the held beat and expects him to try something.
 camera:
   lens_mm: 50
@@ -30,9 +31,12 @@ composition:
   subject_position: centre
   notes: 'Same setup as SC01_SH010 (frontal through the windscreen), v2 interior lens at (1.29, 1.50,
     1.20), 0.50 m back from the approved y 1.00 (inside car_body_y max 1.55). Held 24 frames: the minimum
-    1 s reaction hold after a gag (camera.rhythm.pace). The raised thumb is deliberately not a frame element:
-    the frame is built on the face; his fists and the phone''s back sit inside the ring''s opening at
-    the bottom of frame, and the frame is not re-aimed to find the thumb (see rationale.blocking).'
+    1 s reaction hold after a gag (camera.rhythm.pace). The hands are in frame: FACT (draft frames f0
+    and f18, bpy 5.0.1, 2026-10-02) both fists and the phone''s back sit inside the ring''s opening at
+    the bottom centre (phone at frame y about 0.17 from the bottom, his head at 0.71), so the raised thumb,
+    which the animation keeps up f0-f23, is placed in frame. It does not read as a thumb: the preview
+    figure''s hands are rounded mitts with no thumb piece (characters.py builds no thumb). The frame is
+    not re-aimed or re-cut to find it (see rationale.blocking).'
 characters:
 - id: ren
   position:
@@ -108,16 +112,22 @@ rationale:
   lighting: 'Unchanged hard sun: the world does not notice.'
   movement: 'Static: the freeze is funny only if nothing moves.'
   color: Unchanged cabin palette.
-  blocking: 'Face deadpan and centred; the exhale in the last frames. The raised thumb stays in the action
-    but is deliberately not framed for: at y 1.50 his fists and the phone sit behind the ring at the bottom
-    of frame, and the preview figure''s hands are rounded mitts, so a thumb does not read at medium close-up
-    even when the hands are in frame. The laugh is the dead-still face against the earlier hopeful SH010
-    face, which the frame keeps whole. Rejected: look_at phone_ren (the frame drops to his chest and cuts
-    the top of the face that carries the gag); a lower lens (with look_at ren the frame centre stays on
-    his head, so a lower lens only tilts up into a low angle, breaking eye level and the SH010 callback);
-    a thumb insert (a new shot inside a 24 f hold, and it explains the joke); a pose that lifts the hand
-    above the ring (the gap between the ring''s top arc and his chin is a few centimetres, so the hand
-    would cover the mouth that does the exhale).'
+  blocking: 'DECISION (the human delegated this ruling, 2026-10-02: keep the camera change; put ''thumb
+    in the air'' back in frame if the geometry allows, else record the deviation). Ruling: the camera
+    change stays (lens y 1.50, the SH010 callback frame), and the geometry does allow the hand: at y 1.50
+    his fists and the phone sit inside the ring at the bottom of frame, so the raised-thumb hand is in
+    frame below the deadpan face, which carries the gag. Recorded deviation from SCREENPLAY line 93 (''He
+    freezes, thumb in the air''): the thumb is in the action and in frame, but at medium close-up on a
+    mitt hand it does not read as a thumb, so the screen image is ''he freezes, hands held over the phone''.
+    DEPENDENCY: a readable thumb needs a thumb piece on the figure (character-designer / blender-td),
+    not a camera change; the screenwriter should note the deviation in SCREENPLAY/SCENES at the next revision
+    (G5 finding 4). Rejected: look_at phone_ren (the frame drops to his chest and cuts the top of the
+    face that carries the gag); a lower lens (with look_at ren the frame centre stays on his head, so
+    a lower lens only tilts up into a low angle, breaking eye level and the SH010 callback); a thumb insert
+    (a new shot inside a 24 f hold, and it explains the joke); a pose that lifts the hand above the ring
+    (the gap between the ring''s top arc and his chin is a few centimetres, so the hand would cover the
+    mouth that does the exhale); dropping the thumb from the action (it is the approved story image and
+    the animation''s ''he has not given up'').'
   animation: 'Cutting straight into a fully held freeze is the anime comic timing the character canon
     asks for (held-pose reactions, no rubbery take). Sixteen dead frames are the laugh; the small exhale
     is the only give, and the thumb staying up says he has not given up. Rejected: a sweat drop or a face-fault
@@ -128,7 +138,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+  hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -243,4 +253,7 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:00d0f5a2bc7e995387c1bd8a144e74e2388f554c28b8bb37952a4f571d12a8e4
+stamped_content_hash: sha256:e267b8de87447fc9570ac8951db2a136b662de5730d329d52fc2a1d6229b5e27
+stamp_note: 'Content revised since the G5 approval (8e9b8b7): lens y 1.00 to 1.50 (v2 frontal revision);
+  2026-10-02 the delegated thumb ruling recorded as a DECISION (rationale.blocking, composition.notes,
+  visual_purpose). Restamped 2026-10-02 after the SHOT_LIST G5-fix revision.'

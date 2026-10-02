@@ -55,7 +55,7 @@ fm:
   - ref: canon:audio.conflicts
     hash: sha256:6ed601c6debe4079741c5088600614a0437e50428fc5b79880ed65368bcec11b
   - ref: artifact:storyboard
-    hash: sha256:891aec9e44443e0c00e161d46f5cdf7a23346d513b4fbd2cb228e807f7f18523
+    hash: sha256:6c462b07661257a0c7e8093ec6e8cb0f88db0a871800d7a4531f05441e8fbbe3
   serves:
   - intent.race_against_battery
   - intent.comic_then_tender
@@ -66,6 +66,8 @@ fm:
     with sound until the crank, after which only the ratchet, breath and a 3 dB quieter street are heard.
     There is one true silence, and the human supplies the breaths (recorded) and the foley (CC0 or own).
   stamped_content_hash: sha256:496cfd2ebec66ea0b0ca6909a80422696583b6e6f27a0bc247532550c5f48293
+  stamp_note: STORYBOARD change is SC01_SH010/SH090 framing prose (mirror upper-right, thumb not framed);
+    no Sound line changed and the bible names no framing. Cue sheet restamped first with no cue moved.
 title: Audio Bible
 ---
 # Audio Bible: Last Signal

@@ -842,6 +842,77 @@ def _cable_ends(cab, cs, props, stage):
     return {"src": src, "phone_end": phone_w + Vector((0.0, 0.0, -0.07)), "ground_z": stage.ground_z(phone_w)}
 
 
+# ----------------------------------------------------------------------------------- one character, and the phone hold
+PHONE_HOLD_LEAD_F = 5       # frames before a phone hold over which a lens-aimed screen turns from the rig aim to the hold's aim
+
+
+def _char_at(cid, mc, stage, f, n, props):
+    """Joints, frame, look and face of character cid at frame f (props = the prop states of that frame)."""
+    j, frame, pinfo = _pose_track(cid, mc, stage, f, n, props.get("crank_charger"))
+    ang = j.get("crank_angle")
+    if cid == "ren" and "crank_charger" in props:
+        props["crank_charger"]["world"] = _crank_place(props["crank_charger"], j, frame, stage)
+    j, look, closed = _apply_look(stage, cid, mc, j, frame, f, props)
+    j = _lift(j, _breath_at(mc, f, ang))
+    face = _face_at(mc, f)
+    j["face"] = face
+    return {"j": j, "frame": frame, "pose": pinfo, "ang": ang, "look": look, "closed": closed, "face": face}
+
+
+def _phone_hold(motion, cid, f):
+    """The phone hold (scope phone or all, for cid) that is active at frame f, or the one starting within the next
+    PHONE_HOLD_LEAD_F frames. Returns {"f0", "f1", "active"} or None. Of overlapping holds the earliest start wins."""
+    act, pre = None, None
+    for h in motion.get("holds") or []:
+        if h.get("scope") not in ("phone", "all") or h.get("character") not in (None, cid):
+            continue
+        f0, f1 = int(h["f0"]), int(h["f1"])
+        if f0 <= f <= f1:
+            if act is None or f0 < act["f0"]:
+                act = {"f0": f0, "f1": f1, "active": True}
+        elif f0 - PHONE_HOLD_LEAD_F <= f < f0 and (pre is None or f0 < pre["f0"]):
+            pre = {"f0": f0, "f1": f1, "active": False}
+    return act or pre
+
+
+def _hold_phone(cid, mc, stage, motion, f, n, j, frame, attach, hd):
+    """Phone hold (animation holds, scope phone | all): while it is active the phone keeps the position (and the head
+    point its facing is taken from) it has at the hold's first frame, in the character's own frame; the hand that carries
+    the phone is pinned to it (the rig phone point and the frozen phone differ by up to 3 cm). Before the hold (the lead
+    frames) nothing moves; the entry only carries the frozen point so the screen can turn toward its aim.
+    Returns (joints, info) with info {"f0", "f1", "active", "pos", "head", "t"} (pos and head in the frame's local space)."""
+    f0 = hd["f0"]
+    if f == f0:
+        pos0, head0 = _phone_local(j, attach, stage.ctx), j["head"].copy()
+    else:
+        props0 = _prop_states(motion, f0, stage, None)
+        c0 = _char_at(cid, mc, stage, f0, n, props0)
+        att0 = (props0.get("phone_ren") or {}).get("attach")
+        w0 = PS.to_world(_phone_local(c0["j"], att0, stage.ctx), *c0["frame"])
+        wh = PS.to_world(c0["j"]["head"], *c0["frame"])
+        pos0, head0 = PS.to_local(w0, *frame), PS.to_local(wh, *frame)
+    info = {"f0": f0, "f1": hd["f1"], "active": hd["active"], "pos": pos0, "head": head0,
+            "t": 1.0 if hd["active"] else _clip01((f - (f0 - PHONE_HOLD_LEAD_F)) / float(PHONE_HOLD_LEAD_F))}
+    if not hd["active"]:
+        return j, info
+    cur = _phone_local(j, attach, stage.ctx)
+    delta = pos0 - cur
+    o = PS._copy(j)
+    hands = {"hand_l": (0,), "hand_r": (1,), "hands_both": (0, 1)}.get(attach, ())
+    d = o["_dims"]
+    el = list(o["elbow"])
+    for k in hands:
+        hk, sk = ("handL", "shL") if k == 0 else ("handR", "shR")
+        o[hk] = o[hk] + delta
+        e, h2, _ = PS._ik2(o[sk], o[hk], d["up"], d["fore"], o["elbow_pole"][k])
+        el[k], o[hk] = e, h2
+    o["elbow"] = el
+    if o.get("phone") is not None:
+        o["phone"] = pos0.copy()
+    o["phone_hold_local"] = pos0.copy()
+    return o, info
+
+
 # ----------------------------------------------------------------------------------- the public function
 def frame_state(shot, motion, ui_timeline, f, *, stage=None):
     """Everything one frame of `shot` needs, as a pure function of the resolved shot, its motion block, its ui_timeline
@@ -862,20 +933,21 @@ def frame_state(shot, motion, ui_timeline, f, *, stage=None):
     for cid, mc in (motion.get("characters") or {}).items():
         if cid not in stage.home:
             continue
-        j, frame, pinfo = _pose_track(cid, mc, stage, f, n, props.get("crank_charger"))
-        ang = j.get("crank_angle")
-        if cid == "ren" and "crank_charger" in props:
-            props["crank_charger"]["world"] = _crank_place(props["crank_charger"], j, frame, stage)
-        j, look, closed = _apply_look(stage, cid, mc, j, frame, f, props)
-        j = _lift(j, _breath_at(mc, f, ang))
-        face = _face_at(mc, f)
-        j["face"] = face
+        c = _char_at(cid, mc, stage, f, n, props)
+        j, frame, look, closed = c["j"], c["frame"], c["look"], c["closed"]
+        face = c["face"]
         att = (props.get("phone_ren") if cid == "ren" else props.get("phone_hana")) or {}
+        phone_hold = None
+        if cid == "ren":
+            hd = _phone_hold(motion, cid, f)
+            if hd is not None:
+                j, phone_hold = _hold_phone(cid, mc, stage, motion, f, n, j, frame, att.get("attach"), hd)
         chars[cid] = {
             "frame": frame, "joints": j, "face": face, "look": look, "eyes_closed": closed,
             "lids": lids_at(mc.get("lids"), f),
-            "pose": pinfo, "phone_attach": att.get("attach"), "gait": (mc.get("move") or {}).get("gait", "none"),
-            "crank_angle": ang, "handle_top": bool(j.get("handle_top")),
+            "pose": c["pose"], "phone_attach": att.get("attach"), "gait": (mc.get("move") or {}).get("gait", "none"),
+            "crank_angle": c["ang"], "handle_top": bool(j.get("handle_top")),
+            "phone_hold": phone_hold,
         }
     if "crank_charger" in props and "world" not in props["crank_charger"]:
         props["crank_charger"]["world"] = None
@@ -963,7 +1035,9 @@ _insert_shift = insert_shift      # one rule for stills (preview.py) and frames 
 
 
 def _phone_local(j, attach, ctx):
-    """Local centre of a held or resting phone."""
+    """Local centre of a held or resting phone (the frozen point while a phone hold is active)."""
+    if j.get("phone_hold_local") is not None:
+        return j["phone_hold_local"]
     if j.get("phone") is not None and attach in (None, "hand_l", "hand_r", "hands_both"):
         return j["phone"]
     if attach == "hand_r":
@@ -981,6 +1055,22 @@ def _phone_local(j, attach, ctx):
     if attach == "desk":
         return Vector(ctx["desk"]["phone"])
     return (j["handL"] + j["handR"]) / 2 + Vector((0.03, 0, 0.02))
+
+
+def ren_phone_toward(hold, pos, w, cam0, is_insert, look_at, head_w):
+    """Where Ren's phone screen faces (world vector, not normalised). `hold` = characters.ren.phone_hold of the frame state,
+    `pos` the phone's world position, `w` the character's local->world map, `head_w` the rig head point.
+    Insert on the phone: the lens. A phone hold in a shot aimed at the phone (SC03_SH020): the lens too, world up on top
+    (the caller derives up), turning from the rig aim over the lead frames so nothing pops when the hold starts. Otherwise the
+    head (frozen at the hold's first frame while a hold is active)."""
+    if hold and hold["active"]:
+        head_w = w(hold["head"])
+    if is_insert and look_at == "phone_ren":
+        return cam0 - pos
+    if hold and look_at == "phone_ren":
+        lens = (cam0 - w(hold["pos"])).normalized()
+        return lens if hold["active"] else (head_w - pos).normalized().slerp(lens, hold["t"])
+    return head_w - pos
 
 
 class _FrameRig:
@@ -1060,9 +1150,11 @@ class _FrameRig:
         # the blackout pool: canon look.color.phone_glow (#FFF1DE), not a kelvin value; power from blackout.POOL_W
         self.bo = BO.spec(self.shot, self.canon)
         self.bo_shot = BO.is_blackout_shot(self.shot, self.canon)
-        glow = BO.make_pool_light(bpy, "phoneglow." + self.sid, Vector((0, 0, 0)), self.bo["pool_w"], self.bo["key_lin"], self.rig)
+        glow = BO.make_pool_light(bpy, "phoneglow." + self.sid, Vector((0, 0, 0)), self.bo["pool_w"], self.bo["key_lin"], self.rig,
+                                self.bo["cone_deg"], self.bo["cone_blend"])
         glow["fm_base_energy"] = self.bo["pool_w"]
         self.shop_glow = glow
+        BO.link_pool(bpy, glow, self.bo)     # SC03_SH070: fridge0-2 out of the pool (canon fallback); no-op elsewhere
 
     def _setup_extras(self):
         """Props the set does not build but the vocabulary animates: the rear-view mirror and the adapter ring LED."""
@@ -1210,7 +1302,8 @@ class _FrameRig:
                 PS.FACE_SHAPES[face] = dict(PS.FACE_SHAPES[cs["face"]], eye=0.12)
         col = bpy.data.collections.new("fm.frame." + cid)
         self.frame_col.children.link(col)
-        info = figure(col, cid, self.canon, pr, base, fac, joints=cs["joints"], face=face, lids=cs.get("lids", 1.0))
+        info = figure(col, cid, self.canon, pr, base, fac, joints=cs["joints"], face=face, lids=cs.get("lids", 1.0),
+                      thumbs=(self.shot.get("composition") or {}).get("framing") in THUMB_FRAMINGS)
         if self.is_insert:
             for o in col.objects:
                 n_ = o.name.split("_", 1)[1] if "_" in o.name else o.name
@@ -1230,8 +1323,8 @@ class _FrameRig:
             i = infos["ren"]
             att = S["characters"]["ren"]["phone_attach"]
             pos = i["w"](_phone_local(S["characters"]["ren"]["joints"], att, self.stage.ctx))
-            head = i["w"](S["characters"]["ren"]["joints"]["head"])
-            toward = (self.cam0 - pos) if (self.is_insert and self.look_at == "phone_ren") else (head - pos)
+            toward = ren_phone_toward(S["characters"]["ren"].get("phone_hold"), pos, i["w"], self.cam0, self.is_insert, self.look_at,
+                                      i["w"](S["characters"]["ren"]["joints"]["head"]))
             nz = toward.normalized() if toward.length > 1e-6 else zup
             yv = zup - nz * zup.dot(nz)
             yv = yv.normalized() if yv.length > 1e-4 else Vector((1, 0, 0))
@@ -1360,6 +1453,7 @@ class _FrameRig:
                     self.shop_glow.location = BO.pool_position(ph, infos["ren"]["fac"])
                     axes = infos["ren"].get("phone_axes")
                     BO.aim_pool(self.shop_glow, axes[2] if axes else -infos["ren"]["fac"])     # along the screen normal
+                BO.sync_pool_link(self.bpy, self.shop_glow, self.bo)    # this frame's new objects (Ren, props) still receive
 
     def _camera_aim(self, S, infos):
         """Static cameras keep the rotation from the static assembly (but aim once at the animated subject); inserts stay
@@ -1406,6 +1500,7 @@ class _FrameRig:
 
 # figure pieces an insert hides (the lens sits inside the head / body volume): every head piece (skull, hair cap, bob, fringe, brows,
 # mouth, ears, eyes, crown tuft, worn headphones) plus the torso and limbs. Names are characters.figure's "<cid>_<piece>".
+THUMB_FRAMINGS = ("close", "medium_close", "extreme_close")      # framings where the hand is large enough for a thumb to read
 INSERT_HIDE_PREFIXES = ("head", "hair", "bob", "fringe", "brow", "mouth", "ear", "eye", "tuft", "cup", "cush", "band",
                         "neck", "thigh", "shin", "torso", "uarm", "farm", "hand")
 

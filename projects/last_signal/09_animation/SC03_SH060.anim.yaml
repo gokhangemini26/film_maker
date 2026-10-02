@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH060
-    hash: sha256:8b236ef64586590d78e7dc802a9fcc6e635b0170467cebd8b3c2c5739b5c0708
+    hash: sha256:84f6e811e6d82d1139cee22f8e341ba33a59dc063dfc5ab96d776aa4b127e75d
   - ref: canon:continuity.props.phone_ren
     hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
   - ref: canon:continuity.battery
@@ -25,7 +25,7 @@ fm:
   - intent.race_against_battery
   summary: 'Structured tracks for the 2 % insert: nothing moves for 26 frames (minimum 24); no hand in
     frame.'
-  stamped_content_hash: sha256:be47c6c0896c52c123361bf4084dc1223964ca583bf1e2b3e25e872c2f8c8607
+  stamped_content_hash: sha256:e2c784fc12195233ab3066762b487d32985362e8ebd2b1a2c7be85233e70786e
 shot_id: SC03_SH060
 frames: 26
 vocab_version: 2
@@ -80,6 +80,15 @@ notes:
 - 'Reviewed against the blackout render spec (surround at floor #1B1C29 to ambient #1E2030, exposure 0.08).
   Lighting only: frames 26, the insert_2pct event and the 24-frame minimum hold stand unchanged. The shot
   rationale''s "floats on black" wording is the cinematographer''s, not edited here.'
+- Reviewed 2026-10-02 against the G5 finding 2 re-placement (lens (3.45, 8.72, 1.18), 0.30 m from the
+  kneel-rig phone, inside his head volume; inserts hide every head and body piece, so the near-plane note
+  on the f0 pose key is now handled by the builder) and the recorded 0.12 ruling with the measured insert
+  luma (lighting only). Nothing moves in this shot, so frames 26, kneel_upright, phone_ren hand_l, the
+  insert_2pct event and the 24-frame minimum all hold stand unchanged.
 - 'Reviewed against the human-ruled exposure change (shot lighting.exposure_target 0.08 -> 0.12) and the
   rationale now reading "floats on blue-black" (the wording gap above is closed). Lighting only: frames
   26, the insert_2pct event and the 24-frame minimum hold stand unchanged.'
+- 'Reviewed 2026-10-02 against the restamped shot (lighting.exposure_region frame_minus_phone_screen_and_bezel,
+  look.lighting.sc03_blackout_render rule 7, PROPOSED; rationale.lighting amendment) and the resolved
+  shot (26 frames, f742-767). Exposure measurement only, no motion asked: frames 26, kneel_upright, phone_ren
+  hand_l, the insert_2pct event and the 24-frame minimum all hold stand unchanged.'

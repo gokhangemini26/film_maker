@@ -61,7 +61,7 @@ fm:
   - ref: artifact:anim_sc01_sh020
     hash: sha256:46baea0074b14730c02b0d2115b594a1f584d65f73e65f2d6cc03fc2f7cf850d
   - ref: artifact:anim_sc01_sh030
-    hash: sha256:4f0072aa443c60439ab686387c554b3d90de1dbdf5525d77f5dfabbcfff8fc5d
+    hash: sha256:3d0ecff29f644b637bbd9139dc7e998d1b3d8b87c4a25d29aca0e01a37092b56
   - ref: artifact:anim_sc01_sh040
     hash: sha256:25b07967c26ffda6960b4347fdedb3de9da11e4d8c14abd8038e4c7e28067e80
   - ref: artifact:anim_sc01_sh050
@@ -73,7 +73,7 @@ fm:
   - ref: artifact:anim_sc01_sh080
     hash: sha256:25aa350b3c8b13a657a3bf5c3c3e7bbdc4858ad3ec3dd9f38eabd628ef56ef0b
   - ref: artifact:anim_sc01_sh090
-    hash: sha256:c9e510ca480a8c0d2d78b5a113808e72e41725a49ff26750badceca3bc9b5828
+    hash: sha256:bf9f198c83bd52c13d5e07889f6aec9522311ff8e0683ff3e0b9114c2a938755
   - ref: artifact:anim_sc01_sh100
     hash: sha256:3e727eb2f3081bbe006b7aced60fd2c34196f5f84e7ec651b5ee7f4f76204931
   - ref: artifact:anim_sc01_sh110
@@ -95,17 +95,17 @@ fm:
   - ref: artifact:anim_sc03_sh010
     hash: sha256:2b068e497045ca68624e4b3965cdca22d44910847e0107e2128d9d1b38c64ec0
   - ref: artifact:anim_sc03_sh020
-    hash: sha256:dfed90e33553c261e053632097aac7de32c018546b392fe8ec3418c21df7ceec
+    hash: sha256:b4bc551f29fa0263bc6224beaf89b7d91c7b538c1ed6ca5b3a780a9b9321bd5d
   - ref: artifact:anim_sc03_sh030
-    hash: sha256:1353c981eadef8ca8cb30081399c778ca2f07e2a88d1d1f37e6a7f683eed7ad4
+    hash: sha256:bcfd4a65630bd081e94aabf7e4877a2587b792db60282c613f4496491e509c08
   - ref: artifact:anim_sc03_sh040
     hash: sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90
   - ref: artifact:anim_sc03_sh050
-    hash: sha256:3aa551ef3df7ee2ca54fcab15c964cae5f3f99cd3650456aab33949747c793b0
+    hash: sha256:49e7b9479391ad12d1a511e2cc36d8a228a04fe1bc1de23297257f799403f1b0
   - ref: artifact:anim_sc03_sh060
-    hash: sha256:be47c6c0896c52c123361bf4084dc1223964ca583bf1e2b3e25e872c2f8c8607
+    hash: sha256:e2c784fc12195233ab3066762b487d32985362e8ebd2b1a2c7be85233e70786e
   - ref: artifact:anim_sc03_sh070
-    hash: sha256:203bba621964656c184dd90e9455f5c4fdc4b1182c3e9e25e3e78c7410a723d4
+    hash: sha256:c2ee02ab72f7b171576ead2a8659b8a8e3132fad86e68e70c1668ed2c22fb926
   - ref: artifact:anim_sc04_sh010
     hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
   - ref: artifact:anim_sc04_sh020
@@ -140,7 +140,7 @@ fm:
   - intent.anime_feel
   summary: Movement philosophy, vocabulary v1+v2, per-character movement language, timing and holds, event
     naming, and the open animation items for G7.
-  stamped_content_hash: sha256:b29f78456ea9b03415d618ae905bf71d6098e814b2bbe205eb92b778a48a1cca
+  stamped_content_hash: sha256:95b1aa19a882987694b707feff5e6dc66faa17dd50c9b0507f231ce0fd7eddd4
 title: Animation Bible — Last Signal
 ---
 # Animation Bible — Last Signal
@@ -244,6 +244,14 @@ once. Rejected: one bump per gap, or editing v1 entries in place.
   Rationale: SH140 on `car_recline` put the phone in his lap and the insert framed nothing; SH120 on
   `car_upright` put it on the wheel rim and it rendered small. Consequence: the rig's right hand sits beside
   the phone, so a cable held in `hand_r` during an insert is keyed `state: hidden` (SH120 f0-1).
+- **DECISION: a `phone` hold freezes the phone's place and its facing.** Inside a `phone` or `all` hold
+  the phone keeps the world position and orientation it has on the hold's first frame, even when the body
+  around it moves. In SC03_SH020 (the one non-insert over-the-shoulder aimed at the phone) the human's
+  delegated ruling of 2026-10-02 sets that facing: still, upright and tipped toward the lens from f10 to
+  f35, so the bolt (about 1.5 % of frame height, no change request to `camera.inserts.legibility`) and
+  the red 3 % read while he withdraws his arm. Rationale: the kneel rig otherwise turns the screen toward
+  his face and lays it flat under his chin from about f24, so the beat the hold exists for disappears. The
+  builder does not yet do this (see 7.4).
 - **Speeds.** Walk/run distance ÷ speed is checked per shot in the anim file. The SC03_SH010 aisle sprint
   peaks at 5.0 m/s (stride 1.25 m, a step every 6 f). ASSUMPTION: with the phone arm rigid and the arms
   not swinging, this reads as urgent rather than manic. QA could not judge it without a playblast (see 7.4).
@@ -370,3 +378,32 @@ timing alone.
   effect: `car_sag` rests the phone (hand_l) in the lap beside the crank, against the brief's "left hand
   keeps the phone out of frame". The orchestrator relays that the producer finds this acceptable
   (ASSUMPTION until the human rules on it at G7); no key changed for it.
+- 2026-10-02 shot revisions (cinematographer G5 fixes and recorded rulings). Done: SC01_SH030 (builder
+  dependency notes now handled), SC01_SH090 (thumb ruling: the raised-thumb hand is now in frame inside the
+  ring; a readable thumb still needs a thumb piece on the figure, blender-td / character-designer; the
+  prose-block DEPENDENCY above is closed for SH090), SC03_SH030 (look_at ren, tilt 6.9 deg; the freeze
+  still reads as his face tipped to the panels), SC03_SH050/060/070 (lens and lighting text, measured
+  luma), SC03_SH020 (lens over his right shoulder) re-checked: no frame count, event id or event frame
+  changed in any of them, so the audio cues stay valid. SC03_SH020 adds a visual event `phone_still` at
+  f10 and the phone-hold ruling above.
+- SC01_SH090 thumb piece: the builder now adds a thumb piece, but the raised thumb sits behind the
+  steering-wheel rim and does not read. DECISION (the user's delegated ruling, 2026-10-02): accept; the
+  thumb is not readable. Deviation from SCREENPLAY line 93 ("He freezes, thumb in the air.") recorded in
+  the SH090 anim file; the freeze and the stuck exhale carry the beat. No key, hold or event changed.
+- SC03_SH060/070 restamped upstream (exposure measured on the room via `exposure_region`; SH070 key as
+  a 100 deg forward cone at his face; look.lighting.sc03_blackout_render rules 6-7, PROPOSED). Done:
+  re-checked against the resolved shots (26 / 48 frames); lighting only, no key, event or hold changed;
+  review notes added and restamped.
+- **DONE (2026-10-02)** DEPENDENCY, blender-td: the SC03_SH020 builder fixes landed (phone hold honoured
+  for position and orientation, screen aimed at the lens, f6-9 turn-in; `tests/test_phone_hold.py`).
+  Known limit, accepted: his head and hair cover the phone from about f20, so the bolt (on from f14)
+  reads only to about f20. DECISION (the user's delegated ruling, 2026-10-02): accept. Rejected: a camera
+  reposition for a cleaner over-the-shoulder, and a change request for a legibility exemption. No key,
+  hold or event changed. Original request, for the record: honour `phone` / `all` holds for
+  the phone's orientation as well as its position. `animate.frame_state` does not read `motion.holds`, and
+  `animate._phones` aims the screen at the head (`head - pos`) except in inserts. The exact changes are in
+  the SC03_SH020 anim file's BUILDER FIX note: freeze the phone's position and axes at the hold's first
+  frame; in a non-insert shot with `camera.look_at: phone_ren`, aim the screen at the lens with world up
+  (slerp in over f6-f9); use the frozen phone for the cable's phone end and pin `hand_l` to it; apply the
+  same rule in the static `preview.py` assembly; add a test. `fm check anim` and `fm qa motion` do not
+  see phone orientation.

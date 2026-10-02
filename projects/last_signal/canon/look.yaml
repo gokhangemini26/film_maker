@@ -2156,22 +2156,40 @@ entries:
     digits; the final UI uses the font of look.style.phone_ui.
   value:
     phone_ren:
-      body_m: {w: 0.071, h: 0.147, t: 0.0085}
+      body_m:
+        w: 0.071
+        h: 0.147
+        t: 0.0085
       body_source: world.props.phone_ren
-      screen_m: {w: 0.062, h: 0.134}
+      screen_m:
+        w: 0.062
+        h: 0.134
       screen_corner_radius_m: 0.005
-      screen_centre_offset_m: [0.0, 0.0]
-      glass_m: {w: 0.068, h: 0.141}
+      screen_centre_offset_m:
+      - 0.0
+      - 0.0
+      glass_m:
+        w: 0.068
+        h: 0.141
       glass_hex: '#1F2029'
       case_hex: '#5E6B7A'
       case_source: look.color.props.phone_case_ren
     phone_hana:
-      body_m: {w: 0.072, h: 0.150, t: 0.009}
+      body_m:
+        w: 0.072
+        h: 0.15
+        t: 0.009
       body_source: world.props.phone_hana
-      screen_m: {w: 0.063, h: 0.137}
+      screen_m:
+        w: 0.063
+        h: 0.137
       screen_corner_radius_m: 0.005
-      screen_centre_offset_m: [0.0, 0.0]
-      glass_m: {w: 0.069, h: 0.144}
+      screen_centre_offset_m:
+      - 0.0
+      - 0.0
+      glass_m:
+        w: 0.069
+        h: 0.144
       glass_hex: '#1F2029'
       case_hex: '#E9DFCF'
       case_source: look.color.props.phone_case_hana
@@ -2181,7 +2199,9 @@ entries:
       x: fraction_of_screen_width_left_to_right
       y: fraction_of_screen_height_top_to_bottom
       orientation: upright_for_owner
-    status_bar_on: {phone_ren: every_screen_on_state, phone_hana: never}
+    status_bar_on:
+      phone_ren: every_screen_on_state
+      phone_hana: never
     screen_states:
       map: look.style.phone_screen.map
       call: look.style.phone_screen.call
@@ -2216,10 +2236,10 @@ entries:
   - look.color.props
   - look.color.ui
   - look.style.outlines
-  applies_to: []
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
 - id: look.style.phone_screen.status_bar
   statement: |
     Status bar on Ren's phone: an opaque band in screen_background across the top, y 0 to
@@ -2237,35 +2257,71 @@ entries:
     At 1 % the whole icon (outline, fill and nub) blinks at 1 Hz, 50 % duty, each shot
     starting in the visible phase; the digit and % stay steady.
   value:
-    band: {y: [0.0, 0.075], fill_role: screen_background, opaque: true}
-    centre_y: 0.040
-    order_right_to_left: [battery_icon, percent_sign, digit, bolt_slot]
+    band:
+      y:
+      - 0.0
+      - 0.075
+      fill_role: screen_background
+      opaque: true
+    centre_y: 0.04
+    order_right_to_left:
+    - battery_icon
+    - percent_sign
+    - digit
+    - bolt_slot
     battery_icon:
-      body_x: [0.785, 0.935]
-      body_h_frac_screen_h: 0.030
+      body_x:
+      - 0.785
+      - 0.935
+      body_h_frac_screen_h: 0.03
       outline_stroke_mm: 0.6
       corner_radius_frac_body_h: 0.2
-      nub_x: [0.935, 0.950]
+      nub_x:
+      - 0.935
+      - 0.95
       nub_h_frac_body_h: 0.4
       fill_inset_mm: 1.2
       fill_anchor: left
       fill_width_frac_inner: 0.06_x_percent
-      fill_by_percent: {'5': 0.30, '4': 0.24, '3': 0.18, '2': 0.12, '1': 0.06}
-    percent_sign_x: [0.710, 0.765]
+      fill_by_percent:
+        '5': 0.3
+        '4': 0.24
+        '3': 0.18
+        '2': 0.12
+        '1': 0.06
+    percent_sign_x:
+    - 0.71
+    - 0.765
     digit:
-      x: [0.657, 0.700]
+      x:
+      - 0.657
+      - 0.7
       h_frac_screen_h: 0.036
       h_mm_ren: 4.8
       w_frac_h: 0.55
       stroke_frac_h: 0.16
       count: 1
     bolt:
-      slot_x: [0.593, 0.638]
+      slot_x:
+      - 0.593
+      - 0.638
       h_frac_screen_h: 0.036
       h_mm_ren: 4.8
       colour_role: look.color.accent_power_amber
       shape: single_zigzag_polygon
-      polygon_in_glyph_box_x_right_y_down: [[0.62, 0.0], [0.10, 0.58], [0.46, 0.58], [0.36, 1.0], [0.90, 0.40], [0.54, 0.40]]
+      polygon_in_glyph_box_x_right_y_down:
+      - - 0.62
+        - 0.0
+      - - 0.1
+        - 0.58
+      - - 0.46
+        - 0.58
+      - - 0.36
+        - 1.0
+      - - 0.9
+        - 0.4
+      - - 0.54
+        - 0.4
       slot_reserved_when_off: true
     colour_by_percent:
       '5': '#2B303B'
@@ -2274,8 +2330,14 @@ entries:
       '2': '#E5483B'
       '1': '#E5483B'
     blink_at_1pct:
-      parts: [battery_outline, battery_fill, battery_nub]
-      steady_parts: [digit, percent_sign, bolt]
+      parts:
+      - battery_outline
+      - battery_fill
+      - battery_nub
+      steady_parts:
+      - digit
+      - percent_sign
+      - bolt
       hz: 1.0
       duty: 0.5
       phase: each_shot_starts_visible
@@ -2311,10 +2373,16 @@ entries:
   - look.color.accent_power_amber
   - camera.inserts.legibility
   - continuity.battery
-  applies_to: [SC01, SC02, SC03, SC04, SC06]
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC06
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
 - id: look.style.phone_screen.map
   statement: |
     Map state (SC01): below the status bar the whole screen (y 0.075-1.0) is an
@@ -2327,21 +2395,50 @@ entries:
     road, in map_pin #4A6FA5; a white (map_pin_glyph) fork-and-knife glyph centred in the
     head, 60 % of its diameter tall: a three-tine fork on the left, a knife on the right.
   value:
-    region_y: [0.075, 1.0]
+    region_y:
+    - 0.075
+    - 1.0
     land_role: map_land
     road_role: map_road
     road_width_frac_screen_w: 0.085
     roads:
-      vertical_x: [0.24, 0.73]
-      horizontal_y: [0.24, 0.66, 0.87]
-      diagonal: [[0.0, 0.40], [1.0, 0.70]]
-    park: {role: map_park, x: [0.00, 0.19], y: [0.70, 0.83]}
-    water: {role: map_water, x: [0.78, 1.0], y: [0.075, 0.20]}
+      vertical_x:
+      - 0.24
+      - 0.73
+      horizontal_y:
+      - 0.24
+      - 0.66
+      - 0.87
+      diagonal:
+      - - 0.0
+        - 0.4
+      - - 1.0
+        - 0.7
+    park:
+      role: map_park
+      x:
+      - 0.0
+      - 0.19
+      y:
+      - 0.7
+      - 0.83
+    water:
+      role: map_water
+      x:
+      - 0.78
+      - 1.0
+      y:
+      - 0.075
+      - 0.2
     pin:
       role: map_pin
-      head_centre: [0.50, 0.475]
+      head_centre:
+      - 0.5
+      - 0.475
       head_diameter_frac_screen_w: 0.16
-      tip: [0.50, 0.555]
+      tip:
+      - 0.5
+      - 0.555
       total_h_mm_ren: 15.7
       glyph_role: map_pin_glyph
       glyph: fork_three_tines_left_knife_right
@@ -2351,7 +2448,7 @@ entries:
     checks:
     - pin >= 6 % of frame height near frame centre in a 0.16 m screen insert (15.7 mm = 9.8 %)
     - the glyph reads as fork and knife (two white strokes, one with tines), not a bar
-    - pin hex #4A6FA5 (no red, look.color.rule.only_red)
+    - pin hex
   rationale: |
     The pin at the screen's centre lets the camera's "pin near frame centre" rule
     (camera.inserts.legibility) hold without reframing, and placing its tip on the
@@ -2369,10 +2466,12 @@ entries:
   - look.color.ui
   - look.color.rule.only_red
   - camera.inserts.legibility
-  applies_to: [SC01]
+  applies_to:
+  - SC01
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
 - id: look.style.phone_screen.call
   statement: |
     Call state (SC01): status bar, then her circular photo centred at (0.50, 0.30),
@@ -2386,8 +2485,10 @@ entries:
     glyph stays #FDFCFA. No name, no timer, no other buttons.
   value:
     photo:
-      centre: [0.50, 0.30]
-      diameter_frac_screen_w: 0.60
+      centre:
+      - 0.5
+      - 0.3
+      diameter_frac_screen_w: 0.6
       diameter_mm_ren: 37.2
       ring_role: photo_frame_ring
       ring_width_mm: 1.2
@@ -2395,8 +2496,10 @@ entries:
       portrait: look.color.ui_portraits
       subject: hana
     call_button:
-      centre: [0.50, 0.80]
-      diameter_frac_screen_w: 0.30
+      centre:
+      - 0.5
+      - 0.8
+      diameter_frac_screen_w: 0.3
       colour: '#5DB37E'
       colour_source: look.color.accent_call_green
       glyph: handset_bar_with_end_lobes
@@ -2404,9 +2507,26 @@ entries:
       glyph_len_frac_diameter: 0.55
       glyph_thickness_frac_diameter: 0.14
       glyph_direction: lower_left_to_upper_right
-    ring_pulse: {frames: 11, scale_pct: [100, 112, 100], halo_scale_pct: [100, 150], halo_fades: true}
-    unanswered: {button_hex: '#A3A8B0', switch: one_frame, glyph_hex: '#FDFCFA'}
-    forbidden: [name, number, timer, other_buttons, text]
+    ring_pulse:
+      frames: 11
+      scale_pct:
+      - 100
+      - 112
+      - 100
+      halo_scale_pct:
+      - 100
+      - 150
+      halo_fades: true
+    unanswered:
+      button_hex: '#A3A8B0'
+      switch: one_frame
+      glyph_hex: '#FDFCFA'
+    forbidden:
+    - name
+    - number
+    - timer
+    - other_buttons
+    - text
     checks:
     - photo >= 15 % of frame height in the SC01_SH050 screen insert (37.2 mm / 160 mm = 23 %)
     - SC01_SH030 text insert (71 mm from the top) holds status bar and photo, call button below frame
@@ -2432,10 +2552,12 @@ entries:
   - look.color.accent_call_green
   - look.color.ui_portraits
   - camera.inserts.legibility
-  applies_to: [SC01]
+  applies_to:
+  - SC01
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
 - id: look.style.phone_screen.compose
   statement: |
     Compose state (SC01_SH070 to the send in SC04_SH080): status bar; the thread area
@@ -2456,17 +2578,28 @@ entries:
     (x 0.855-0.99). A pressed key turns keyboard_key_pressed for 1-2 frames. No legends,
     no shift key, no other glyphs.
   value:
-    thread_area: {y: [0.075, 0.485], contents: empty, fill_role: screen_background}
+    thread_area:
+      y:
+      - 0.075
+      - 0.485
+      contents: empty
+      fill_role: screen_background
     text:
       ink_role: ink_text_and_glyphs
       cap_h_frac_screen_h: 0.021
       cap_h_mm_ren: 2.8
       font_size_mm_ren: 4.0
-      line_pitch_frac_screen_h: 0.040
+      line_pitch_frac_screen_h: 0.04
       align: left
       inset_x_mm: 2.2
-      line_breaks_fixed: ['Are you free tonight?', 'Dinner at 8?', 'My treat.']
-      lines_by_beat: {SC01_SH070: 1, SC04_SH050: 2, SC04_SH060: 3}
+      line_breaks_fixed:
+      - Are you free tonight?
+      - Dinner at 8?
+      - My treat.
+      lines_by_beat:
+        SC01_SH070: 1
+        SC04_SH050: 2
+        SC04_SH060: 3
     heart:
       hex: '#E5483B'
       colour_source: look.color.ui_heart
@@ -2474,37 +2607,86 @@ entries:
       position: after_line_3_one_space
     compose_field:
       role: compose_field
-      x: [0.03, 0.86]
+      x:
+      - 0.03
+      - 0.86
       bottom_y: 0.545
       height_frac_screen_h: 0.020_plus_0.040_per_line
-      y_by_lines: {'1': [0.485, 0.545], '2': [0.445, 0.545], '3': [0.405, 0.545]}
+      y_by_lines:
+        '1':
+        - 0.485
+        - 0.545
+        '2':
+        - 0.445
+        - 0.545
+        '3':
+        - 0.405
+        - 0.545
       corner_radius_mm: 4.0
       cursor: steady_ink_bar_1.3x_cap
     send_button:
-      centre: [0.925, 0.515]
+      centre:
+      - 0.925
+      - 0.515
       diameter_frac_screen_w: 0.105
       fill_role: icon_neutral
       pressed_role: ink_text_and_glyphs
       glyph: up_arrow
       glyph_hex: '#FDFCFA'
     keyboard:
-      base: {role: keyboard_base, x: [0.0, 1.0], y: [0.56, 1.0]}
+      base:
+        role: keyboard_base
+        x:
+        - 0.0
+        - 1.0
+        y:
+        - 0.56
+        - 1.0
       key_role: keyboard_key
       key_pressed_role: keyboard_key_pressed
-      key_pitch_frac_screen_w: 0.10
-      key_mm_ren: {w: 5.4, h: 10.7}
-      row_centre_y: [0.610, 0.708, 0.806, 0.904]
+      key_pitch_frac_screen_w: 0.1
+      key_mm_ren:
+        w: 5.4
+        h: 10.7
+      row_centre_y:
+      - 0.61
+      - 0.708
+      - 0.806
+      - 0.904
       rows:
-      - {keys: 10}
-      - {keys: 9}
-      - {keys: 7, then: {backspace: {x: [0.855, 0.99], glyph: backspace_arrow, glyph_role: ink_text_and_glyphs}}}
-      - {emoji_key: {x: [0.01, 0.145], glyph: emoji_face_outline_two_dots_smile, glyph_role: icon_neutral}, space_bar: {x: [0.26, 0.74]}, blank_key: {x: [0.855, 0.99]}}
+      - keys: 10
+      - keys: 9
+      - keys: 7
+        then:
+          backspace:
+            x:
+            - 0.855
+            - 0.99
+            glyph: backspace_arrow
+            glyph_role: ink_text_and_glyphs
+      - emoji_key:
+          x:
+          - 0.01
+          - 0.145
+          glyph: emoji_face_outline_two_dots_smile
+          glyph_role: icon_neutral
+        space_bar:
+          x:
+          - 0.26
+          - 0.74
+        blank_key:
+          x:
+          - 0.855
+          - 0.99
       legends: none
       shift_key: false
-      press_frames: [1, 2]
+      press_frames:
+      - 1
+      - 2
     checks:
     - cap height >= 3.5 % of frame in a text insert up to 80 mm tall (2.8 mm / 71 mm = 3.9 %)
-    - 'line 1 (Are you free tonight?) fits one line: about 42 mm at 4.0 mm humanist sans, field text width 47 mm'
+    - 'line 1 (Are you free tonight?) fits one line: about 42 mm at 4.0 mm humanist sans, field text width
+      47 mm'
     - only glyphs on the keyboard are the emoji face and the backspace arrow
     - the heart and the status bar can be framed apart (field top at y 0.405, status bar bottom at 0.075)
   rationale: |
@@ -2534,10 +2716,15 @@ entries:
   - story.message
   - camera.inserts.legibility
   - camera.inserts.heart
-  applies_to: [SC01, SC02, SC03, SC04]
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
   notes: |
     DEPENDENCY for the cinematographer: SC01_SH070's note asks for "compose field in the
     upper half, top row of keys at the lower edge" in a 71 mm frame. With the field on the
@@ -2557,13 +2744,22 @@ entries:
     1.3 mm, short arm lower left, long arm rising right. It never touches the line or the
     bubble.
   value:
-    compose_field_after_send: {lines: 0, y: [0.485, 0.545], send_button: as_compose}
+    compose_field_after_send:
+      lines: 0
+      y:
+      - 0.485
+      - 0.545
+      send_button: as_compose
     keyboard: as_compose
     bubble:
       role: sent_bubble
       align: right
-      x: [0.19, 0.95]
-      y: [0.265, 0.405]
+      x:
+      - 0.19
+      - 0.95
+      y:
+      - 0.265
+      - 0.405
       corner_radius_mm: 3.7
       tail: false
       text: as_compose_fixed_line_breaks
@@ -2573,24 +2769,36 @@ entries:
       hex: '#F5B940'
       centre_y: 0.435
       thickness_frac_screen_h: 0.008
-      x: [0.19, 0.80]
+      x:
+      - 0.19
+      - 0.8
       ends: round
       fill: left_to_right
       after_fill: stays_full
     tick:
       colour_source: look.color.accent_power_amber
       hex: '#F5B940'
-      centre: [0.885, 0.435]
+      centre:
+      - 0.885
+      - 0.435
       h_frac_screen_h: 0.045
       h_mm_ren: 6.0
       w_mm_ren: 6.6
       stroke_mm_ren: 1.3
-      polyline_in_glyph_box_x_right_y_down: [[0.0, 0.55], [0.38, 1.0], [1.0, 0.0]]
-      clear_of: [bubble, progress_line]
+      polyline_in_glyph_box_x_right_y_down:
+      - - 0.0
+        - 0.55
+      - - 0.38
+        - 1.0
+      - - 1.0
+        - 0.0
+      clear_of:
+      - bubble
+      - progress_line
     checks:
     - tick >= 5 % of frame height in a 71 mm text insert (6.0 mm = 8.5 %) and >= 3.6 mm on the model
     - tick about 11 mm above the send button centre (the thumb's last position)
-    - bubble text contrast 9.9:1 (ink on #D3E0F2) >= 7:1 (look.style.phone_ui)
+    - bubble text contrast 9.9:1 (ink on
     - one amber tick only, no second tick, no label
   rationale: |
     In the builder the tick crossed both the progress line and the bubble corner and read
@@ -2614,10 +2822,13 @@ entries:
   - look.color.ui
   - look.color.accent_power_amber
   - camera.inserts.legibility
-  applies_to: [SC04, SC06]
+  applies_to:
+  - SC04
+  - SC06
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
 - id: look.style.phone_screen.hana
   statement: |
     Hana's phone (SC05), same UI system with no status bar. Off: the whole screen is
@@ -2629,26 +2840,45 @@ entries:
     keyboard, no tick.
   value:
     status_bar: false
-    'off': {hex: '#1F2029', emission: 0}
+    'off':
+      hex: '#1F2029'
+      emission: 0
     wake:
       background_role: screen_background
       photo:
-        centre: [0.50, 0.30]
-        diameter_frac_screen_w: 0.60
+        centre:
+        - 0.5
+        - 0.3
+        diameter_frac_screen_w: 0.6
         diameter_mm_hana: 37.8
         ring_role: photo_frame_ring
         ring_width_mm: 1.2
         clip_to_circle: true
         portrait: look.color.ui_portraits
         subject: ren
-      forbidden: [name, text, buttons, status_bar]
+      forbidden:
+      - name
+      - text
+      - buttons
+      - status_bar
     received:
-      bubble: {role: sent_bubble, align: left, x: [0.05, 0.81], y: [0.265, 0.405], corner_radius_mm: 3.7, tail: false}
+      bubble:
+        role: sent_bubble
+        align: left
+        x:
+        - 0.05
+        - 0.81
+        y:
+        - 0.265
+        - 0.405
+        corner_radius_mm: 3.7
+        tail: false
       text: as_compose_fixed_line_breaks
       keyboard: false
       tick: false
     checks:
-    - photo about 25 % of frame height in the SC05_SH010 insert (37.8 mm / 160 mm = 23.6 %; minimum 5 %)
+    - photo about 25 % of frame height in the SC05_SH010 insert (37.8 mm / 160 mm = 23.6 %; minimum 5
+      %)
     - no battery, no status bar, no text other than the invitation
   rationale: |
     look.style.phone_ui says Hana's phone uses the same system; reusing the call photo's
@@ -2671,10 +2901,12 @@ entries:
   - look.color.ui_portraits
   - continuity.battery
   - world.props.phone_hana
-  applies_to: [SC05]
+  applies_to:
+  - SC05
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
 - id: look.style.phone_screen.states_by_shot
   statement: |
     The phone screen state, battery and screen brightness for every shot and frame (f is
@@ -2691,47 +2923,278 @@ entries:
   value:
     fps: 24
     frame_index: 0_based
-    SC01_SH010: {ui: map, pct: 5, colour: charcoal, bolt: false}
-    SC01_SH020: {ui: map, pct: 5, colour: charcoal, bolt: false}
-    SC01_SH030: {ui: map_to_call_f1_7, pct: 5, colour: charcoal, bolt: false}
-    SC01_SH040: {ui: call, pct: 5, colour: charcoal, bolt: false}
-    SC01_SH050: {ui: call_ringing_then_unanswered_f33, pct: 5, colour: charcoal, bolt: false}
-    SC01_SH060: {ui: call_unanswered, pct: 5, colour: charcoal, bolt: false}
-    SC01_SH070: {ui: compose_typing_line_1_f0_15, pct: 5, colour: charcoal, bolt: false}
-    SC01_SH080: {ui: compose_1_line, pct: {f0: 5, f4: 4}, colour: {f0: charcoal, f4: red}, bolt: false}
-    SC01_SH090: {ui: compose_1_line, pct: 4, colour: red, bolt: false}
-    SC01_SH100: {ui: compose_1_line, pct: 4, colour: red, bolt: false}
-    SC01_SH110: {ui: compose_1_line, pct: 4, colour: red, bolt: false}
-    SC01_SH120: {ui: compose_1_line, pct: 4, colour: red, bolt: {f0: false, f2: true}}
-    SC01_SH130: {ui: compose_1_line, pct: 4, colour: red, bolt: {f0: true, f32: false}, brightness: {f32: 0.7}}
-    SC01_SH140: {ui: compose_1_line, pct: {f0: 4, f2: 3}, colour: red, bolt: false, brightness: {f0: 0.7, f1: 1.0}}
-    SC01_SH150: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
-    SC02_SH010: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
-    SC02_SH020: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
-    SC02_SH030: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
-    SC03_SH010: {ui: compose_1_line, pct: 3, colour: red, bolt: false}
-    SC03_SH020: {ui: compose_1_line, pct: 3, colour: red, bolt: {f0: false, f14: true}}
-    SC03_SH030: {ui: compose_1_line, pct: 3, colour: red, bolt: true}
-    SC03_SH040: {ui: compose_1_line, pct: 3, colour: red, bolt: true}
-    SC03_SH050: {ui: compose_1_line, pct: {f0: 3, f8: 2}, colour: red, bolt: {f0: true, f8: false}, brightness: {f8: 0.7, f11: 1.0}}
-    SC03_SH060: {ui: compose_1_line, pct: 2, colour: red, bolt: false, brightness: 1.0}
-    SC03_SH070: {ui: compose_1_line, pct: 2, colour: red, bolt: false, brightness: 1.0}
-    SC04_SH010: {ui: compose_1_line, pct: 1, colour: red, icon_blink: true, bolt: false, brightness: flicker}
-    SC04_SH020: {ui: compose_1_line, pct: 1, colour: red, icon_blink: {visible: [0, 11], hidden: [12, 23], visible_2: [24, 31]}, bolt: false, brightness: {f14: 0.7, f17: 1.0, f20: 0.7, f22: 1.0}}
-    SC04_SH030: {ui: compose_1_line, pct: 1, colour: red, icon_blink: true, bolt: false, brightness: flicker}
-    SC04_SH040: {ui: compose_1_line, pct: 1, colour: red, icon_blink: true, bolt: false, brightness: flicker}
-    SC04_SH050: {ui: {f0: compose_1_line, f56: compose_typing_line_2}, pct: 1, colour: red, icon_blink: true, bolt: {f0: false, f30: true}, brightness: {f0: flicker, f30: steady}}
-    SC04_SH060: {ui: compose_3_lines_heart_f21_54, pct: 1, colour: red, icon_blink: true, bolt: true, brightness: steady}
-    SC04_SH070: {ui: compose_3_lines, pct: {f0: 1, f2: 2}, colour: red, icon_blink: {f0: visible, f2: off}, bolt: true, brightness: steady}
-    SC04_SH080: {ui: compose_to_sent, pct: 2, colour: red, bolt: true, brightness: steady}
-    SC04_SH090: {ui: sent, pct: 2, colour: red, bolt: {f0: true, f7: false}, brightness: steady}
-    SC05_SH010: {phone: hana, ui: {f0: 'off', f2: wake}, brightness: {f0: 0.0, f2: ramp_to_1.0_by_f4_ease_out}, photo_scale_pct: {f2: 96, f5: 100}}
-    SC05_SH020: {phone: hana, ui: wake}
-    SC05_SH030: {phone: hana, ui: received}
-    SC06_SH010: {ui: sent, pct: 2, colour: red, bolt: false, brightness: {f0: 1.0, f24: 0.0, easing: ease_out}, after_f24: screen_off}
-    colour_hex: {charcoal: '#2B303B', red: '#E5483B'}
+    SC01_SH010:
+      ui: map
+      pct: 5
+      colour: charcoal
+      bolt: false
+    SC01_SH020:
+      ui: map
+      pct: 5
+      colour: charcoal
+      bolt: false
+    SC01_SH030:
+      ui: map_to_call_f1_7
+      pct: 5
+      colour: charcoal
+      bolt: false
+    SC01_SH040:
+      ui: call
+      pct: 5
+      colour: charcoal
+      bolt: false
+    SC01_SH050:
+      ui: call_ringing_then_unanswered_f33
+      pct: 5
+      colour: charcoal
+      bolt: false
+    SC01_SH060:
+      ui: call_unanswered
+      pct: 5
+      colour: charcoal
+      bolt: false
+    SC01_SH070:
+      ui: compose_typing_line_1_f0_15
+      pct: 5
+      colour: charcoal
+      bolt: false
+    SC01_SH080:
+      ui: compose_1_line
+      pct:
+        f0: 5
+        f4: 4
+      colour:
+        f0: charcoal
+        f4: red
+      bolt: false
+    SC01_SH090:
+      ui: compose_1_line
+      pct: 4
+      colour: red
+      bolt: false
+    SC01_SH100:
+      ui: compose_1_line
+      pct: 4
+      colour: red
+      bolt: false
+    SC01_SH110:
+      ui: compose_1_line
+      pct: 4
+      colour: red
+      bolt: false
+    SC01_SH120:
+      ui: compose_1_line
+      pct: 4
+      colour: red
+      bolt:
+        f0: false
+        f2: true
+    SC01_SH130:
+      ui: compose_1_line
+      pct: 4
+      colour: red
+      bolt:
+        f0: true
+        f32: false
+      brightness:
+        f32: 0.7
+    SC01_SH140:
+      ui: compose_1_line
+      pct:
+        f0: 4
+        f2: 3
+      colour: red
+      bolt: false
+      brightness:
+        f0: 0.7
+        f1: 1.0
+    SC01_SH150:
+      ui: compose_1_line
+      pct: 3
+      colour: red
+      bolt: false
+    SC02_SH010:
+      ui: compose_1_line
+      pct: 3
+      colour: red
+      bolt: false
+    SC02_SH020:
+      ui: compose_1_line
+      pct: 3
+      colour: red
+      bolt: false
+    SC02_SH030:
+      ui: compose_1_line
+      pct: 3
+      colour: red
+      bolt: false
+    SC03_SH010:
+      ui: compose_1_line
+      pct: 3
+      colour: red
+      bolt: false
+    SC03_SH020:
+      ui: compose_1_line
+      pct: 3
+      colour: red
+      bolt:
+        f0: false
+        f14: true
+    SC03_SH030:
+      ui: compose_1_line
+      pct: 3
+      colour: red
+      bolt: true
+    SC03_SH040:
+      ui: compose_1_line
+      pct: 3
+      colour: red
+      bolt: true
+    SC03_SH050:
+      ui: compose_1_line
+      pct:
+        f0: 3
+        f8: 2
+      colour: red
+      bolt:
+        f0: true
+        f8: false
+      brightness:
+        f8: 0.7
+        f11: 1.0
+    SC03_SH060:
+      ui: compose_1_line
+      pct: 2
+      colour: red
+      bolt: false
+      brightness: 1.0
+    SC03_SH070:
+      ui: compose_1_line
+      pct: 2
+      colour: red
+      bolt: false
+      brightness: 1.0
+    SC04_SH010:
+      ui: compose_1_line
+      pct: 1
+      colour: red
+      icon_blink: true
+      bolt: false
+      brightness: flicker
+    SC04_SH020:
+      ui: compose_1_line
+      pct: 1
+      colour: red
+      icon_blink:
+        visible:
+        - 0
+        - 11
+        hidden:
+        - 12
+        - 23
+        visible_2:
+        - 24
+        - 31
+      bolt: false
+      brightness:
+        f14: 0.7
+        f17: 1.0
+        f20: 0.7
+        f22: 1.0
+    SC04_SH030:
+      ui: compose_1_line
+      pct: 1
+      colour: red
+      icon_blink: true
+      bolt: false
+      brightness: flicker
+    SC04_SH040:
+      ui: compose_1_line
+      pct: 1
+      colour: red
+      icon_blink: true
+      bolt: false
+      brightness: flicker
+    SC04_SH050:
+      ui:
+        f0: compose_1_line
+        f56: compose_typing_line_2
+      pct: 1
+      colour: red
+      icon_blink: true
+      bolt:
+        f0: false
+        f30: true
+      brightness:
+        f0: flicker
+        f30: steady
+    SC04_SH060:
+      ui: compose_3_lines_heart_f21_54
+      pct: 1
+      colour: red
+      icon_blink: true
+      bolt: true
+      brightness: steady
+    SC04_SH070:
+      ui: compose_3_lines
+      pct:
+        f0: 1
+        f2: 2
+      colour: red
+      icon_blink:
+        f0: visible
+        f2: false
+      bolt: true
+      brightness: steady
+    SC04_SH080:
+      ui: compose_to_sent
+      pct: 2
+      colour: red
+      bolt: true
+      brightness: steady
+    SC04_SH090:
+      ui: sent
+      pct: 2
+      colour: red
+      bolt:
+        f0: true
+        f7: false
+      brightness: steady
+    SC05_SH010:
+      phone: hana
+      ui:
+        f0: 'off'
+        f2: wake
+      brightness:
+        f0: 0.0
+        f2: ramp_to_1.0_by_f4_ease_out
+      photo_scale_pct:
+        f2: 96
+        f5: 100
+    SC05_SH020:
+      phone: hana
+      ui: wake
+    SC05_SH030:
+      phone: hana
+      ui: received
+    SC06_SH010:
+      ui: sent
+      pct: 2
+      colour: red
+      bolt: false
+      brightness:
+        f0: 1.0
+        f24: 0.0
+        easing: ease_out
+      after_f24: screen_off
+    colour_hex:
+      charcoal: '#2B303B'
+      red: '#E5483B'
     flicker: look.style.phone_ui.screen_behaviour.flicker_at_1pct
-    never: [zero_percent, bolt_while_not_charging, digit_hidden]
+    never:
+    - zero_percent
+    - bolt_while_not_charging
+    - digit_hidden
   rationale: |
     The builder keyed battery state on shot-number thresholds, which drifted from the
     locked continuity and the approved shots in 24 of the 35 rows for Ren's phone (checked
@@ -2757,10 +3220,17 @@ entries:
   - look.lighting.power_indicators
   - story.escalation
   - story.message
-  applies_to: [SC01, SC02, SC03, SC04, SC05, SC06]
+  applies_to:
+  - SC01
+  - SC02
+  - SC03
+  - SC04
+  - SC05
+  - SC06
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
   notes: |
     Screen-state choices not written in any shot, tagged ASSUMPTION: the medium shots
     SC01_SH010 (map), SC01_SH040/SH060 (call) and SC02/SC03 (compose, one line) show the
@@ -2821,10 +3291,13 @@ entries:
   - characters.ren.wardrobe.outfit
   - look.color.secondary
   - look.color.rule.only_red
-  applies_to: [SC01, SC05]
+  applies_to:
+  - SC01
+  - SC05
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
+  version: 1
 - id: look.lighting.sc03_blackout_render
   statement: |
     How the SC03 blackout must render (SC03_SH050 from f8, SH060, SH070), so that it reads
@@ -2845,13 +3318,30 @@ entries:
     pool on the display stand and the floor in front of him. His lit face is saved for
     SH070. (5) The door glass is the only other light: a small warm rectangle, #C9A77E or
     darker, visible only where the camera faces the front of the shop (SH070). It is out
-    of frame in SH050.
+    of frame in SH050. (6) The pool is the screen's forward lobe, not a sphere: it lights
+    what faces the screen (his face, hands, the stand top, the floor in front of him) and
+    does not throw the lit tone sideways onto surfaces beside him. In SH070 the westmost
+    fridge's flank stays at the film floor. (7) What the exposure key measures: the room.
+    The blackout key (target 0.12, band 0.08-0.14) is the brightness of the dark shop, so
+    it is measured on the room, never on the light source that is the subject of the
+    shot. SH050 (wide, pool under 4 % of frame): the whole frame. SH060 (screen insert):
+    the surround, i.e. the frame minus the phone screen and bezel. SH070 (lit-face reverse):
+    the frame minus Ren's lit-tone pixels, the phone and the door rectangle; the set
+    surfaces in it may carry lit tone on at most 2 % of the frame and the whole frame is
+    capped at 0.18. Rule 7 depends on CHANGE-006 (look.exposure.scene_keys measured_on);
+    until the human decides it, the locked whole-frame reading stands.
   value:
     applies_from: SC03_SH050_f8
-    shots: [SC03_SH050, SC03_SH060, SC03_SH070]
+    shots:
+    - SC03_SH050
+    - SC03_SH060
+    - SC03_SH070
     sources_off:
       lights_w: 0
-      emissives: {shop_panel: off_material, fridge_glow: off_material, fascia_sign: off_material}
+      emissives:
+        shop_panel: off_material
+        fridge_glow: off_material
+        fascia_sign: off_material
       emissive_off_hex: '#1B1C29'
       world_strength: 0
       exposure_or_grade_lift: none
@@ -2867,23 +3357,51 @@ entries:
       reach_m: 0.5
       lit_tone: mix(base, base_x_key_colour, 0.30)
       follows_screen_dip: true
+      cone_deg:
+        default: 175
+        SC03_SH070: 100
+      cone_blend: 0.6
+      aim: screen_normal_toward_holder_face
     silhouette:
       SC03_SH050: ren_back_head_tuft_at_floor_against_pool
     door_rectangle:
       hex_max: '#C9A77E'
-      in_frame: [SC03_SH070]
+      in_frame:
+      - SC03_SH070
     checks:
-      mean_luma: [0.08, 0.14]
+      mean_luma:
+      - 0.08
+      - 0.14
       mean_luma_target: 0.12
+      mean_luma_target_source: human ruling 2026-10-02 (USER_REQUIREMENT)
+      mean_luma_region:
+        SC03_SH050: whole_frame
+        SC03_SH060: frame_minus_phone_screen_and_bezel
+        SC03_SH070: frame_minus_ren_lit_tone_phone_and_door_rectangle
+      whole_frame_reported_not_gated:
+      - SC03_SH060
+      whole_frame_max:
+        SC03_SH070: 0.18
+      set_surface_lit_area_frac_max:
+        SC03_SH070: 0.02
+      fridge_flank_SC03_SH070:
+        visible_pixels_at_floor_or_ambient_min_frac: 0.95
+        luma_max: 0.14
       room_pixels_outside_pool:
-        hue_deg: [225, 245]
+        hue_deg:
+        - 225
+        - 245
         chroma_max_8bit: 20
-        luma: [0.10, 0.14]
+        luma:
+        - 0.1
+        - 0.14
         neutral_grey_forbidden: true
       pastel_merch_identifiable: false
       pool:
         peak_luma_min: 0.55
-        area_frac_SC03_SH050: [0.005, 0.04]
+        area_frac_SC03_SH050:
+        - 0.005
+        - 0.04
         brightest_non_screen_element: true
       silhouette_contrast_SC03_SH050: ren_mean_luma_at_least_0.25_below_adjacent_pool
       dip_visible_SC03_SH050: pool_mean_luma_f8_to_f10_at_least_15pct_below_f11
@@ -2909,6 +3427,35 @@ entries:
     floor, and look.color.scene.sc03 asks for blue-violet); a cool street or moon fill (no
     such source: outside is golden hour and the door is warm, look.lighting.sc03 says no
     fill).
+
+    Amendment 2026-10-02 (rules 6-7, measurement regions, SH070 cone). FACT (draft
+    frames, recorded in the shot rationales): SH060 measures mean luma ~0.40 because the
+    lit screen fills about half the 71 mm insert while its surround is blue-black; SH070
+    measures 0.27 because the westmost fridge's flank, 0.25 m east of him and inside the
+    0.5 m pool, takes the pastel lit tone over the right third of the frame; lens trials
+    gave 0.23-0.34. FACT (arithmetic): the room itself sits at luma ~0.11 (#1B1C29) to
+    ~0.13 (#1E2030), so the 0.12 key is essentially the room's own value, and any frame in
+    which a lit subject covers more than a few per cent cannot hold a whole-frame 0.14
+    without pushing the room below the film floor. So the key is read as the brightness of
+    the dark shop, measured on the room. The wide SH050 keeps the whole-frame test (its
+    pool is 0.5-4 % of frame, inside tolerance). In SH060 the screen IS the shot, and its
+    brightness is governed elsewhere (look.exposure.value_structure lets the phone UI
+    clip), so the surround is what proves the blackout. SH070 is different: the excess is
+    not the subject but a set surface wrongly lit. A pastel fridge flank also fails the
+    existing pastel_merch_identifiable: false check and breaks rule 3 in spirit (the pool
+    should read as small). The fix is the light, not the measure: a phone screen
+    throws most of its light forward toward the face that looks at it, so the pool
+    becomes the screen's forward lobe (100 deg cone, aimed at his face) in SH070, which
+    keeps his face, hands and the stand lit and drops the grazing flank beside him to the
+    film floor. The 0.18 whole-frame cap in SH070 stops the room-only measure from
+    excusing another lit set surface. Rejected: (a) gating all three shots on the whole
+    frame (forces SH060 to dim the 2 % screen, the payoff, or forces a global exposure
+    drop, which rule 1 forbids); (b) exempting SH070 from the luma check (would pass the
+    lit fridge, a second light in the dark); (c) moving the lens or Ren (lens trials
+    already failed; the reach fix fixes his position); (d) light-linking the fridges out
+    of the pool as the first move (an invisible exception to a motivated source; kept
+    only as the named fallback); (e) narrowing the cone in all shots (would shrink the
+    SH050 pool on the floor and stand below its area_frac minimum).
   serves:
   - intent.comic_then_tender
   - intent.race_against_battery
@@ -2922,11 +3469,13 @@ entries:
   - look.exposure.scene_keys
   - look.style.character_shading
   - look.style.composition
-  applies_to: [SC03]
+  applies_to:
+  - SC03
   tag: DECISION
   status: PROPOSED
   source: agent:look-director
-  notes: |
+  version: 1
+  notes: |-
     Field owners. Cinematographer: in SC03_SH050 `lighting.after`, SC03_SH060 `lighting` and
     SC03_SH070 `lighting`, add `render_spec: look.lighting.sc03_blackout_render`,
     `ambient: look.color.scene.sc03` (blackout.dominant #1E2030), `floor: '#1B1C29'` and
@@ -2940,3 +3489,113 @@ entries:
     colour); calibrate phone-light power and position so the pool meets the checks and the
     f8-10 dip shows. ASSUMPTION: the area fractions above were estimated from the SH050 lens
     (35 mm, about 8.5 m to Ren) and need confirming on the first re-render.
+    Amendment 2026-10-02, field owners. Blender-td (builder): blackout.py `spec()` returns
+    `cone_deg` = shot lighting.key.cone_deg, else canon pool.cone_deg[shot_id], else
+    pool.cone_deg.default (175), and `cone_blend` (0.6); `make_pool_light()` takes
+    cone_deg/cone_blend as arguments instead of the module constant POOL_CONE_DEG; pass
+    bo_spec["cone_deg"] at preview.py (blackout branch, BO.make_pool_light) and
+    self.bo["cone_deg"] at animate.py (BO.make_pool_light, phoneglow). Pool power,
+    position and aim unchanged. QA/stills: measure mean luma on the per-shot region in
+    checks.mean_luma_region (SH060 mask = phone screen + bezel quad; SH070 mask = Ren's
+    lit-tone pixels + phone + door rectangle); report SH060 whole-frame without gating.
+    Cinematographer: SC03_SH070 lighting.key add `cone_deg: 100` (falloff_m 0.5 stays);
+    in SC03_SH060 and SC03_SH070 `lighting` add `exposure_region:` with the value from
+    checks.mean_luma_region. Fallback only if the 100 deg re-render still fails
+    fridge_flank_SC03_SH070: light-link fridge0-2 out of phoneglow.SC03_SH070, recorded
+    as a style_break with its reason. ASSUMPTION: 100 deg keeps the flank below the cel
+    threshold (geometric estimate: lower flank about 70 deg off the phone-to-face axis);
+    confirm on the SH070 re-render. ASSUMPTION: SH070 whole-frame will land about
+    0.14-0.16 with face, hands and phone as the only lit area.
+    Fallback taken 2026-10-02: the 100 deg SH070 re-render failed the flank check (87.4 %);
+    fridge0-2 are light-linked out of the SH070 pool. Recorded as the SC03 style_break in
+    look.lighting.sc03_sh070_style_break (PROPOSED), with measurements and the static-route limit.
+- id: look.lighting.sc03_sh070_style_break
+  statement: |
+    Declared style break for SC03_SH070, the one break of sequence SC03
+    (look.style.style_break_protocol). The phone-glow pool light does not illuminate
+    fridge0-2 (body, shelves, bottles, glass) in this shot only. It is receiver-side light
+    linking: the pool still lights Ren's face, hands, the phone, the stand and the floor
+    exactly as look.lighting.sc03_blackout_render specifies (100 deg forward lobe, 0.5 m
+    reach, #FFF1DE). The rule bent is L10 / look.lighting.principles (motivation_required):
+    the light keeps its named source, but for three objects it does not behave as that
+    source would, since the westmost fridge flank sits about 0.25 m from the screen, inside
+    the 0.5 m reach. In the frame it is invisible by design. The flank holds at the film floor
+    #1B1C29 like the rest of the dark shop. No other shot, light or object is affected.
+  value:
+    shot: SC03_SH070
+    rule: L10
+    rule_canon: look.lighting.principles.motivation_required
+    also_bends: look.lighting.sc03_blackout_render rule 3 (pool reach) for fridge0-2 only
+    reason: |
+      Fallback named in look.lighting.sc03_blackout_render: the 100 deg cone re-render still failed checks.fridge_flank_SC03_SH070 (87.4 % of flank pixels at luma <= 0.14, min 95 %).
+    serves:
+    - intent.comic_then_tender
+    - intent.soft_but_cinematic
+    method: receiver_side_light_linking
+    light: phoneglow (pool light of SC03_SH070)
+    excluded_objects_regex: ^fridge(_glow)?[0-2](_|$)
+    measured_route: animated (fm_blender animate.py frames)
+    measured:
+      whole_frame_mean_luma: 0.142
+      whole_frame_max: 0.18
+      fridge_flank_frac_at_luma_le_0_14: 0.999
+      fridge_flank_frac_min: 0.95
+    known_limit:
+      route: static run_preview (preview.py)
+      whole_frame_mean_luma: 0.203
+      exceeds: whole_frame_max SC03_SH070 0.18
+      fridge_flank_frac_at_luma_le_0_14: 0.999
+      gated: false
+      note: the static still is not the measured render for SH070; the animated route is
+    shot_spec_declaration: pending (cinematographer, 08_shots/SC03_SH070.shot.yaml style_break)
+  rationale: |
+    The point of SH070 is his lit face: the first time the film stops, the warm-white glow
+    on skin against blue-black that will carry the rest of the film. FACT (cone trials,
+    SH070 frame 0, same lens and pose, 768x432, luma = Rec.709 weights on sRGB 8-bit): 100 deg
+    gives whole-frame 0.171, flank 87.4 % at the floor (FAIL), and a pale grey fridge flank
+    across the upper right of the frame, a second light in the dark. 90 deg gives 0.152 and
+    92.5 % (FAIL). 80 deg gives 0.139 and 96.4 % (pass), but the lit tone falls off his
+    upper face: eyes, brows and hair go to the floor and only a crescent of cheek and chin
+    stays lit. 70 deg gives 0.130 and 99.1 %, with the face mostly dark. With the fridges
+    linked out at 100 deg, the result is 0.142 and 99.9 %, with the whole face, hands and
+    phone lit and the flank at the floor. The cheat is invisible: a screen's light grazing a
+    surface beside the viewer is real but reads as noise, and the audience only reads the
+    face. Recording it as a declared break keeps an exception to the motivated-light rule
+    visible and reviewable instead of buried in builder code.
+    Rejected: (a) a narrower cone (80 deg or less passes the flank check but loses the
+    lit face, the subject of the shot); (b) moving the lens or Ren (lens trials 0.23-0.34
+    already failed, and the reach fix holds his position); (c) raising the flank's
+    threshold or exempting it from the check (it would pass a visibly lit pastel fridge,
+    against pastel_merch_identifiable: false); (d) a global exposure drop (forbidden by
+    rule 1 of the render spec and L19). Not tried: lowering the pool power in SH070 only
+    (ASSUMPTION: like the narrow cone, it would take the face below the cel threshold
+    before the flank, because both sit inside the same 0.5 m reach).
+  serves:
+  - intent.comic_then_tender
+  - intent.soft_but_cinematic
+  depends_on:
+  - look.lighting.sc03_blackout_render
+  - look.lighting.principles
+  - look.style.style_break_protocol
+  - look.lighting.sc03
+  applies_to:
+  - SC03
+  tag: DECISION
+  status: PROPOSED
+  source: agent:look-director
+  version: 1
+  notes: |
+    Field owners. Cinematographer: 08_shots/SC03_SH070.shot.yaml `style_break` (now null)
+    should declare {rule: L10, reason: <value.reason>, serves: [intent.comic_then_tender,
+    intent.soft_but_cinematic], canon: look.lighting.sc03_sh070_style_break}; the protocol
+    requires the declaration in the shot spec, and this shot is in G5 (approved, DRIFTED),
+    so the break needs the human's review. Blender-td: blackout.py hardcodes LINK_OUT
+    {"SC03_SH070": "^fridge(_glow)?[0-2](_|$)"} rather than reading it from this entry; keep
+    the two in step. Both routes apply the link (preview.py BO.link_pool, animate.py
+    BO.link_pool). FACT: the static run_preview still measures whole-frame 0.203 with the
+    flank already at 99.9 %, so its excess comes from something other than the fridges
+    (UNKNOWN: likely pose or phone placement differs from the animated route). Only the
+    animated route is the measured SH070 render. FACT: the project frames in
+    10_blender/frames/SC03_SH070 (0000/0024/0047, written 17:12) predate the link-out builder
+    change (17:36) and still measure 0.270; the 0.142 figure comes from a scratch re-render
+    and must be confirmed by re-running the SH070 frames into the project.

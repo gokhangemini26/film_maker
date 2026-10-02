@@ -44,7 +44,7 @@
       "focus_target": "phone_ren_screen_plane"
     },
     "fov_h_deg": 23.9132,
-    "height_m": 0.97,
+    "height_m": 1.18,
     "lens_mm": 85.0,
     "look_at": "phone_ren",
     "movement": "static",
@@ -53,8 +53,8 @@
     "sensor_width_mm": 36.0,
     "start_position": [
       3.45,
-      8.78,
-      0.97
+      8.72,
+      1.18
     ]
   },
   "characters": [
@@ -524,7 +524,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "insert",
-    "notes": "Text-size status-bar insert (as SC01_SH080: frame about 71 mm tall, 85 mm at 0.30 m). The change to 2 % happened on the blackout frame; this insert holds the result 26 frames (minimum 24). No dip and no change inside the shot: in the shop the damage is already done (camera.gags.no_repeat: insert after the loss). Framing reference (DEPENDENCY for the animation hold and the builder): kneeling at (3.45, 8.66) facing +y, eyes at 1.05 m; the lens keeps exactly its old relation to him (0.12 m ahead of his pelvis, 0.97 m high), on his eyeline with his head behind the lens; camera's up = the phone's top edge; shift parallel to the screen for the status bar, never tilt. The screen-centre reference used so far (0.29 m ahead of him, 0.72 m high) now falls on the back-wall face (y 8.95); the kneel rig holds the phone 0.22 m ahead at 0.93 m (y 8.88, 7 cm off the wall), about 0.11 m from this lens: check the 71 mm frame at the next preview.",
+    "notes": "Text-size status-bar insert (as SC01_SH080: frame about 71 mm tall, 85 mm at 0.30 m). The change to 2 % happened on the blackout frame; this insert holds the result 26 frames (minimum 24). No dip and no change inside the shot: in the shop the damage is already done (camera.gags.no_repeat: insert after the loss). Lens on his eyeline, 0.30 m from the kneel-rig phone (3.45, 8.88, 0.93): 0.16 m toward him and 0.25 m up, inside his head volume (inserts hide every head and body piece; the jacket collar stays out of this sight line). The builder squares the screen to the lens, camera up = the phone's top edge, and shifts the frame parallel to the screen onto the status bar (anchors.insert_shift, status_bar case), never a tilt. FACT (draft frames f0/f12/f25, 2026-10-02): lens-to-screen 0.30 m, the red '2 %' digits about 6 % of frame height and sharp at f/5.6, no bolt, the back-wall face out of frame.",
     "subject_position": "upper_right"
   },
   "environment": {
@@ -554,6 +554,8 @@
       ]
     },
     "ambient_ref": "look.color.scene.sc03.blackout.dominant",
+    "exposure_region": "frame_minus_phone_screen_and_bezel",
+    "exposure_region_ref": "look.lighting.sc03_blackout_render.checks.mean_luma_region",
     "exposure_target": 0.12,
     "exposure_target_ref": "look.exposure.scene_keys.SC03_blackout",
     "floor": {
@@ -619,11 +621,21 @@
         "applies_from": "SC03_SH050_f8",
         "checks": {
           "dip_visible_SC03_SH050": "pool_mean_luma_f8_to_f10_at_least_15pct_below_f11",
+          "fridge_flank_SC03_SH070": {
+            "luma_max": 0.14,
+            "visible_pixels_at_floor_or_ambient_min_frac": 0.95
+          },
           "mean_luma": [
             0.08,
             0.14
           ],
+          "mean_luma_region": {
+            "SC03_SH050": "whole_frame",
+            "SC03_SH060": "frame_minus_phone_screen_and_bezel",
+            "SC03_SH070": "frame_minus_ren_lit_tone_phone_and_door_rectangle"
+          },
           "mean_luma_target": 0.12,
+          "mean_luma_target_source": "human ruling 2026-10-02 (USER_REQUIREMENT)",
           "pastel_merch_identifiable": false,
           "pool": {
             "area_frac_SC03_SH050": [
@@ -645,8 +657,17 @@
             ],
             "neutral_grey_forbidden": true
           },
+          "set_surface_lit_area_frac_max": {
+            "SC03_SH070": 0.02
+          },
           "sh060_surround": "#1B1C29 to #1E2030, not neutral grey",
-          "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool"
+          "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool",
+          "whole_frame_max": {
+            "SC03_SH070": 0.18
+          },
+          "whole_frame_reported_not_gated": [
+            "SC03_SH060"
+          ]
         },
         "door_rectangle": {
           "hex_max": {
@@ -667,6 +688,7 @@
           ]
         },
         "pool": {
+          "aim": "screen_normal_toward_holder_face",
           "colour": {
             "hex": "#FFF1DE",
             "linear": [
@@ -679,6 +701,11 @@
               0.945098,
               0.870588
             ]
+          },
+          "cone_blend": 0.6,
+          "cone_deg": {
+            "SC03_SH070": 100,
+            "default": 175
           },
           "follows_screen_dip": true,
           "lit_tone": "mix(base, base_x_key_colour, 0.30)",

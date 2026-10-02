@@ -47,11 +47,12 @@ def aim_head(head, facing, target, max_yaw_deg=75.0, max_pitch_deg=50.0):
             max(-math.radians(max_pitch_deg), min(math.radians(max_pitch_deg), p)))
 
 
-def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=None, face=None, look=None, lids=1.0):
+def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=None, face=None, look=None, lids=1.0, thumbs=False):
     """Build a proxy figure. pos = (x,y,z) of feet/base; facing = unit XY Vector.
 
     pose   one of the stances stand|kneel|sit_car|sit_kerb|sit_chair (the original behaviour, unchanged), or
     joints a joint dict from poses.py (local frame, see poses.py) which replaces the stance entirely.
+    thumbs True adds a thumb piece to the hand(s) on the phone (close framings only: it changes the pixels of the hand).
     face   a vocabulary face ref (poses.FACE_SHAPES) for brows, eyes and mouth; None keeps joints['face'] or neutral.
     look   a WORLD point the head turns toward (clamped); None keeps the pose's own head yaw and pitch.
     lids   0..1 factor on the face's eye openness (v2 lids track: open 1.0, low 0.55, closed 0.0). It scales the eye
@@ -154,6 +155,18 @@ def figure(col, cid, canon, props, pos, facing, pose=None, hold=False, joints=No
         U.between(f"{cid}_uarm{i}", s, el, limb * 0.9, col, cloth)
         U.between(f"{cid}_farm{i}", el, hnd, limb * 0.8, col, skin)
         U.sphere(f"{cid}_hand{i}", P.get("hand_length_m", 0.18) * 0.3, hnd, col, skin)
+        if thumbs and joints is not None and joints.get("phone") is not None:
+            # named hand* so inserts hide the thumb with the hand. The hand that carries the phone lays its thumb across the
+            # screen side; with both hands on the phone ("both") the right thumb is raised, poised over the screen.
+            ph_hand = joints.get("phone_hand")
+            if ph_hand == "both" and i == 1:
+                U.between(f"{cid}_handthumb{i}", hnd + up * 0.03 + f * 0.01, hnd + up * 0.085 + f * 0.02, 0.0115, col, skin)
+            elif (ph_hand == "both" or ph_hand == ("L", "R")[i]) and (phone - hnd).length < 0.12:
+                d_ = phone - hnd
+                d_ = d_.normalized() if d_.length > 1e-6 else f
+                n_ = head - phone
+                n_ = n_.normalized() if n_.length > 1e-6 else f
+                U.between(f"{cid}_handthumb{i}", hnd + d_ * 0.03 + n_ * 0.012, hnd + d_ * 0.085 + n_ * 0.026, 0.0115, col, skin)
     # head frame: the body frame unless the pose or `look` turns it (yaw + toward the right, pitch + looking down)
     hyaw = joints.get("head_yaw", 0.0) if joints is not None else 0.0
     hpit = joints.get("head_pitch", 0.0) if joints is not None else 0.0

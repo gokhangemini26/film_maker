@@ -71,9 +71,11 @@ fm:
   - intent.earned_last_signal
   summary: 38 shots, 1440 frames (60.00 s at 24 fps); per-scene totals equal the human-accepted camera
     budget (SC01 528, SC02 48, SC03 240, SC04 434, SC05 108, SC06 82).
-  stamped_content_hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
-  stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
-    and shots); no content revision needed.
+  stamped_content_hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
+  stamp_note: 'Content revised since the G5 approval (8e9b8b7): preview pass 1, v2 car interior, v2 frontal
+    and G5-fix revision sections; height cells of the 13 insert rows; SC04_SH090 height 0.95 to 0.92;
+    SC03_SH020/030/060 rows (scale, height) and the bolt legibility note (2026-10-02). Restamped after
+    those revisions, not to silence staleness.'
 title: Shot List
 ---
 # Shot List: Last Signal
@@ -121,9 +123,9 @@ SC01_SH020/050 sit at (1.01, 0.12, 1.35), 0.67 m from the screen above his left
 shoulder (frame 159 mm; the sight line clears his head and hair). Measured with
 the pure-Python frame state (animate.frame_state). Before the move the old
 lenses were 0.97 m (text inserts) and 1.28 m (screen inserts) from the phone,
-and no legibility minimum was met. DEPENDENCY for the builder: the insert shift
-has no `ui.call_screen` case, so SC01_SH030 needs about 0.03 m toward the
-phone's top edge to frame the status bar with her photo. Other SC01 and SC02
+and no legibility minimum was met. SC01_SH030 needs about 0.03 m toward the
+phone's top edge to frame the status bar with her photo: handled by the builder
+(`anchors.insert_shift` has a `ui.call_screen` case). Other SC01 and SC02
 shots keep their framing.
 
 **v2 frontal revision (PROPOSED, re-approval needed at G5).** With the ring
@@ -134,16 +136,36 @@ their lens 0.50 m back along the same axis, from (1.29, 1.00, 1.20) to
 unchanged, so no table cell changes. At y 1.00 the v2 seats had made the MCU a
 close-up with the crown and tuft cut; y 1.25 and 1.45 still clip the tuft; at
 y 1.50 the preview shows the headliner edge at the top, crown and tuft whole,
-the ring behind his hands and the phone uncovered (SH010). SH090: the raised
-thumb is deliberately not framed for. The frame is built on the deadpan face
-(the SH010 callback); his fists and phone sit behind the ring at the bottom of
-frame and the preview hands do not show a thumb at this scale. Rejected:
-re-aiming to the phone, a lower lens, a thumb insert (rationale in the shot
-file). DEPENDENCY for the animation-director: SH090's key text still says
+the ring behind his hands and the phone uncovered (SH010). SH090: superseded
+by the G5-fix revision below (the thumb ruling). DEPENDENCY for the animation-director: SH090's key text still says
 "thumb up ... (lower frame)" and SH010's eyeline says "frame top-left" for the
 mirror, which the v2 preview shows in the upper frame on the right. No other
 shot shares this lens position (SC01_SH150 is the exterior frontal at
 (1.29, 1.75, 1.72) and is not changed).
+
+**G5-fix revision (PROPOSED, 2026-10-02; re-review needed at G5).** This
+revision answers the FAIL findings 1-3 of the G5 re-review. It also records the
+human's rulings on SC01_SH090 and the blackout exposure. Durations, lenses and
+serves are unchanged.
+- SC03_SH030 (finding 1): `look_at` moves from `ceiling_panels` to `ren`. The
+  lens moves to (3.85, 10.15, 0.90), beyond the wild back wall. The computed
+  tilt up is 6.9°, inside the locked 8° of `camera.height.low`. The panels
+  still hang in the upper frame. The scale is now MS.
+- SC03_SH020 (finding 3): the lens moves to (3.62, 8.90, 1.28), over his right
+  shoulder at his own eyeline. The phone's face shows f4-f22 and the bolt is
+  visible from f14 to f35. Its size is about 1.5 %, under the 3 % minimum (see
+  the legibility section).
+- SC03_SH060 (finding 2): the lens moves to (3.45, 8.72, 1.18), 0.30 m from the
+  kneel-rig phone on his eyeline. The frame is 71 mm and the "2 %" is sharp, at
+  about 6 % of frame height.
+- SC01_SH090 (finding 4, ruling delegated by the human): the camera change
+  stays. The raised-thumb hand is in frame, inside the ring at the bottom. It
+  does not read as a thumb because the figure's hands are mitts. The deviation
+  from SCREENPLAY line 93 is recorded as a DECISION in the shot file.
+- SC03_SH050/SH060/SH070: the human's 0.12 exposure ruling (2026-10-02) is
+  recorded in each shot's `rationale.lighting`.
+- Stale dependency notes now say what the builder handles: the
+  `ui.call_screen` shift and the thin-wall rule.
 
 ### SC01 INT. REN'S CAR - GOLDEN HOUR (budget 22.00 s / 528 f)
 
@@ -182,11 +204,11 @@ shot shares this lens position (SC01_SH150 is the exterior frontal at
 | shot | scene | dur | scale | lens | height | movement | subject | serves | transition |
 |---|---|---|---|---|---|---|---|---|---|
 | SC03_SH010 | SC03 | 2.17 s (52 f) | WS | 35 | strong high 2.3 m | static | Master: enters, crosses, kneels | comic_then_tender, race_against_battery, anime_feel | cut |
-| SC03_SH020 | SC03 | 1.50 s (36 f) | MCU | 35 | eye level 1.15 m | static | OTS plug-in, bolt beside 3 % | race_against_battery, comic_then_tender | cut |
-| SC03_SH030 | SC03 | 1.08 s (26 f) | MCU | 24 | mild low 0.85 m | static | Wary look up at the panels: nothing | comic_then_tender | cut |
+| SC03_SH020 | SC03 | 1.50 s (36 f) | CU (OTS) | 35 | his eyeline 1.28 m | static | OTS plug-in, bolt beside 3 % | race_against_battery, comic_then_tender | cut |
+| SC03_SH030 | SC03 | 1.08 s (26 f) | MS | 24 | mild low 0.9 m | static | Wary look up at the panels: nothing | comic_then_tender | cut |
 | SC03_SH040 | SC03 | 0.92 s (22 f) | MCU | 35 | eye level 1.05 m | static | Long exhale | comic_then_tender | cut |
 | SC03_SH050 | SC03 | 1.25 s (30 f) | WS | 35 | strong high 2.3 m | static | Master: blackout | comic_then_tender, race_against_battery, anime_feel | cut |
-| SC03_SH060 | SC03 | 1.08 s (26 f) | INS | 85 | insert 0.97 m | static | 2 %, bolt gone | race_against_battery | cut |
+| SC03_SH060 | SC03 | 1.08 s (26 f) | INS | 85 | insert 1.18 m | static | 2 %, bolt gone | race_against_battery | cut |
 | SC03_SH070 | SC03 | 2.00 s (48 f) | MCU | 35 | eye level 1.05 m | static | Reverse: phone-lit face, door far behind (held) | comic_then_tender, race_against_battery, soft_but_cinematic | hard cut, black to dusk |
 
 **SC03 total: 7 shots, 240 frames = 10.00 s** (average 1.43 s per shot).
@@ -252,7 +274,7 @@ of its estimate.
 
 No focal length outside `camera.lens_set`; no `style_break` anywhere. High
 angles: SC01_SH150 (mild), SC03_SH010/SH050 (strong); none after the turn.
-Low angles: SC01_SH060, SC02_SH010, SC03_SH030 (mild), SC04_SH040 (strong,
+Low angles: SC01_SH060, SC02_SH010, SC03_SH030 (mild, tilt up 6.9°), SC04_SH040 (strong,
 once). Moves: exactly two push-ins, both in SC04 (SH030, SH050), each at or
 under 0.135 m/s; every other shot is static; nothing moves after the send.
 
@@ -263,7 +285,7 @@ under 0.135 m/s; every other shot is static; nothing moves after the send.
 | Map pin | 6 % height, near centre, 36 f | SC01_SH020 | centre, 38 f on screen |
 | Her photo on the call screen | 15 % height | SC01_SH030, SH050 | about 25-55 % |
 | Battery digits when they change or are the beat | 3 %, 24 f after change | SC01_SH030 (5 %), SH080 (4 % red, 26 f), SH140 (3 %, 30 f); SC03_SH060 (2 %, 26 f); SC04_SH020 (1 %, 32 f), SH070 (2 %, 24 f) | text-size framing (about 71 mm of frame at the screen) |
-| Charging bolt | 3 %, 18 f | SC01_SH120 (18 f after appearing), SH140 (absence 32 f); SC03_SH020 (22 f, see DEPENDENCY); SC04_SH070 | as planned |
+| Charging bolt | 3 %, 18 f | SC01_SH120 (18 f after appearing), SH140 (absence 32 f); SC03_SH020 (22 f; about 1.5 %, under the minimum, see below); SC04_SH070 | as planned, except SC03_SH020 |
 | Invitation, SC01 fragment (4 words) | cap 3.5 %, 0.5 + 4 x 0.3 = 1.7 s (41 f) after the last word | SC01_SH070 | 42 f |
 | Invitation, SC04 completion (5 new words) | cap 3.5 %, 0.5 + 5 x 0.3 = 2.0 s (48 f) | SC04_SH060 | 54 f (the heart beat plays inside the hold) |
 | Heart | visible 12 f, hover 20 f, plain text 12 f after delete; compose field only; emoji panel never framed | SC04_SH060 | 12 / 20 / 12 |
@@ -274,9 +296,14 @@ under 0.135 m/s; every other shot is static; nothing moves after the send.
 DEPENDENCY (look-director / M3 UI build): the sizes need the UI texture on the
 0.147 m phone model to give the invitation a cap height of at least 2.5 mm,
 battery digits at least 2.2 mm, the map pin at least 9.6 mm, the sent tick at
-least 3.6 mm and, for SC03_SH020 (an over-the-shoulder, not an insert), the
-bolt about 4.4 mm to reach 3 % of frame height. The tick's contrast is still
-open in look canon (G4 finding 4).
+least 3.6 mm. The tick's contrast is still open in look canon (G4 finding 4).
+SC03_SH020 (an over-the-shoulder, not an insert): the earlier figure of a
+4.4 mm bolt was wrong. The rendered bolt glyph is 4.8 mm, and 3 % of frame
+height needs a frame of 0.16 m or less at the phone, a 0.28 m lens distance at
+35 mm, which in this kneel rig is inside his head. Measured on draft frames
+(2026-10-02), the bolt is about 1.5 % of frame height. That is a conflict
+between `camera.inserts.legibility` and `camera.gags.no_repeat` (no insert for
+the shop's hope), left for the human.
 
 ## Changes from the bible's coverage sketch (section 12.3)
 

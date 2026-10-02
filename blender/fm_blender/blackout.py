@@ -31,6 +31,9 @@ LIT_PHONE_W = 15.0           # the phone light while the shop is still lit (befo
 DOOR_STRENGTH = 0.85         # emission strength of the door rectangle: darker than its hex, never brighter
 DEFAULT_SHOTS = ("SC03_SH050", "SC03_SH060", "SC03_SH070")
 DEFAULT_DOOR_SHOTS = ("SC03_SH070",)
+# canon fallback look.lighting.sc03_blackout_render (checks.fridge_flank_SC03_SH070): "light-link fridge0-2 out of
+# phoneglow.SC03_SH070" -- only that shot, only those objects (body, shelves, bottles, glass of fridge0..2)
+LINK_OUT = {"SC03_SH070": r"^fridge(_glow)?[0-2](_|$)"}
 
 # objects of the shop set that are merchandise-like (film floor), by name; every other shop object is a set surface
 _MERCH = re.compile(r"^(stock|wall_stock|fridge\d|poster|shop_counter|shop_till|display_stand_tin|gondola\d+_end)")
@@ -71,6 +74,10 @@ def _canon_value(canon, key):
     return e.get("value", e) if isinstance(e, dict) and "value" in e else e
 
 
+POOL_CONE_DEG = 175.0        # the fallback cone (canon pool.cone_deg.default): the screen emits forward only, nothing onto the wall behind it
+POOL_CONE_BLEND = 0.6
+
+
 def spec(shot, canon):
     """The blackout look for this shot: hex colours (+ linear), shot lists, pool power. Pure python."""
     canon = canon or {}
@@ -100,17 +107,26 @@ def spec(shot, canon):
     shots = tuple(cv.get("shots") or DEFAULT_SHOTS) if isinstance(cv, dict) else DEFAULT_SHOTS
     door_shots = tuple(door.get("in_frame") or DEFAULT_DOOR_SHOTS)
     reach = float(pool.get("reach_m") or 0.5)
+    sid = (shot or {}).get("shot_id")
+    key_blk = lt.get("key") if isinstance(lt.get("key"), dict) else {}
+    cones = pool.get("cone_deg")
+    if isinstance(cones, dict):
+        canon_cone = cones.get(sid, cones.get("default"))
+    else:
+        canon_cone = cones
+    cone_deg = float(next(c for c in (key_blk.get("cone_deg"), canon_cone, POOL_CONE_DEG) if c is not None))
+    cone_blend = float(pool.get("cone_blend") if pool.get("cone_blend") is not None else POOL_CONE_BLEND)
     return {
         "ambient": ambient, "floor": floor, "key": key, "door": door_hex,
         "ambient_lin": _lin(ambient), "floor_lin": _lin(floor), "key_lin": _lin(key), "door_lin": _lin(door_hex),
         "lit_mix": float(pool.get("lit_mix", LIT_MIX)), "reach_m": reach,
         "shots": shots, "door_shots": door_shots,
-        "pool_w": POOL_W, "lit_phone_w": LIT_PHONE_W,
+        "cone_deg": cone_deg, "cone_blend": cone_blend, "pool_w": POOL_W, "lit_phone_w": LIT_PHONE_W,
         "render_spec": field("render_spec"),
+        "link_out": LINK_OUT.get(sid),      # regex of object names the pool light must not illuminate (None: nothing excluded)
     }
 
 
-POOL_CONE_DEG = 175.0        # the screen emits forward only: a wide cone toward the holder, nothing onto the wall behind the phone
 
 
 def pool_position(phone, facing):
@@ -118,15 +134,48 @@ def pool_position(phone, facing):
     return phone - facing * 0.08
 
 
-def make_pool_light(bpy, name, loc, energy, colour_lin, collection):
-    """The phone's glow: a wide soft spot, no shadows (Ren's own hands do not carve it), colour = canon phone_glow."""
+def make_pool_light(bpy, name, loc, energy, colour_lin, collection, cone_deg=POOL_CONE_DEG, cone_blend=POOL_CONE_BLEND):
+    """The phone's glow: a soft spot of cone_deg (spec()["cone_deg"]: shot key, else canon, else 175), no shadows (Ren's own
+    hands do not carve it), colour = canon phone_glow."""
     from . import preview as P
     o = P.add_light("SPOT", name, loc, energy, colour_lin, collection)
     o.data.shadow_soft_size = 0.1
-    o.data.spot_size = __import__("math").radians(POOL_CONE_DEG)
-    o.data.spot_blend = 0.6
+    o.data.spot_size = __import__("math").radians(cone_deg)
+    o.data.spot_blend = cone_blend
     o.data.use_shadow = False
     return o
+
+
+def link_pool(bpy, light, sp):
+    """RECEIVER-side light linking (Blender 4.x/5.x): the pool light illuminates only the objects of a receiver collection
+    that holds every mesh EXCEPT those matching sp["link_out"] (the fridges in SC03_SH070). A blocker collection does nothing
+    for this (it only blocks shadows from its members). No-op for shots with no link_out. Returns the receiver collection."""
+    if not sp.get("link_out"):
+        return None
+    name = f"fm.poolrecv.{light.name}"
+    coll = bpy.data.collections.get(name) or bpy.data.collections.new(name)    # never linked to the scene: it only lists receivers
+    light.light_linking.receiver_collection = coll
+    sync_pool_link(bpy, light, sp)
+    return coll
+
+
+def sync_pool_link(bpy, light, sp):
+    """Put every non-excluded scene object into the receiver collection. Call again whenever objects are added (animate.py
+    rebuilds Ren and the props every frame), or those new objects would receive nothing from the pool."""
+    coll = light.light_linking.receiver_collection
+    if coll is None or not sp.get("link_out"):
+        return 0
+    rx = re.compile(sp["link_out"])
+    have = set(coll.objects)
+    n = 0
+    for o in bpy.data.objects:
+        if o.type in ("LIGHT", "CAMERA") or o in have or rx.search(o.name):
+            continue
+        if o.name not in bpy.context.scene.objects:
+            continue
+        coll.objects.link(o)
+        n += 1
+    return n
 
 
 def aim_pool(obj, axis):

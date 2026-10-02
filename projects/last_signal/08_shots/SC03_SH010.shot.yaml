@@ -167,7 +167,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+  hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -269,7 +269,8 @@ derived_from:
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
 - ref: canon:look.lighting.sc03_blackout_render
-  hash: sha256:ed20ed56e432664997ca31b24d8dbd844a769b9b708734cd04c720a1517a31f6
+  hash: sha256:93e5e852cf0656d319d1e2914771dd9605dd0fbd5d86fa9dce3b3b1a7bfb2095
 stamped_content_hash: sha256:1f76a5f9b1d9f67b45b4d32494cd8fa297d0e56eeec18ea1eaacf0bb5c82e63f
-stamp_note: SHOT_LIST changed only by the v2 frontal revision note (SC01_SH010/SH090 lens moved to y 1.50,
-  no table cell changed); this shot's row and content are untouched.
+stamp_note: 'Re-checked 2026-10-02 against the amended look.lighting.sc03_blackout_render (rules 6-7:
+  forward-lobe pool, cone_deg per shot, room-only mean_luma_region). Applies from SC03_SH050_f8 to SH050-070
+  only; this shot is lit (pre-blackout), so no content change.'

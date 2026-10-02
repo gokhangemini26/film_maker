@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH030
-    hash: sha256:d1561f8bdeadad2d570fde17acecdc7c4b9a6e7feb9d54c9e3c6ece5edb27b20
+    hash: sha256:9d7b4b98905139138e765831df2b34138b9392b47867af4d08721f4542e5fb62
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -33,7 +33,7 @@ fm:
   - intent.comic_then_tender
   summary: 'Structured tracks for the wary look up: eyes flick to the panels at f1, head follows, a 14-frame
     dead hold f5-18, slow return to the phone, shoulders start to drop on f23 into SH040.'
-  stamped_content_hash: sha256:1353c981eadef8ca8cb30081399c778ca2f07e2a88d1d1f37e6a7f683eed7ad4
+  stamped_content_hash: sha256:bcfd4a65630bd081e94aabf7e4877a2587b792db60282c613f4496491e509c08
 shot_id: SC03_SH030
 frames: 26
 vocab_version: 2
@@ -130,3 +130,8 @@ notes:
   if refused: neutral (the v1 stand-in).'
 - 'Reviewed against the SC03 blocking fix (kneel at (3.45, 8.66) facing +y, lens moved behind the wild
   back wall): the look up to the panels and all tracks are position-free and stand unchanged.'
+- Reviewed 2026-10-02 against the G5 finding 1 re-aim (look_at ceiling_panels -> ren, lens (3.85, 10.15,
+  0.90), tilt up 6.9 deg, framing medium, his head just above centre with the panels stacked above it).
+  The camera stays locked off; the shot's draft-frame FACT says the f5-f18 freeze reads as his face tipped
+  up toward the panels, which is this file's look ceiling at f1 and the head following f2-5. Frames, the
+  look/face/breath tracks, the 14-frame all hold and every event id stand unchanged.

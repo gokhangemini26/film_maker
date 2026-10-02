@@ -9,31 +9,35 @@ serves:
 creative_intent:
   narrative_purpose: He reaches behind the stand and plugs in; the charging bolt appears beside 3 %.
   emotional_purpose: Hope again, a notch warier.
-  visual_purpose: 'Over his left shoulder, the phone large in the foreground: his arm behind the stand,
-    the bolt coming on.'
+  visual_purpose: 'Over his right shoulder at his own eyeline, the phone large in the foreground: his
+    arm reaching past it to the stand, the bolt coming on beside 3 %.'
   audience_effect: The viewer sees the same hope as in the car told differently, and waits for the catch.
 camera:
   lens_mm: 35
-  height_m: 1.15
+  height_m: 1.28
   movement: static
   start_position:
-  - 2.95
-  - 8.3
-  - 1.15
+  - 3.62
+  - 8.9
+  - 1.28
   end_position: null
   look_at: phone_ren
   dof:
     enabled: false
 composition:
-  framing: medium_close
+  framing: close
   aspect_ratio: 1.778
-  subject_position: phone_foreground_left
-  notes: 'Over the shoulder (no insert: camera.gags.no_repeat shop). Lens inside the footprint of the
-    westmost fridge, which is wild for this shot (the builder drops a set piece whose box contains the
-    lens); the lens is about 0.8 m from the phone and about 41 deg off his back axis on his left. The
-    stand is at frame right, its back edge near the right frame edge; the socket sits just below the frame.
-    The bolt appears at frame 14 and holds 22 frames. DEPENDENCY: the bolt glyph must be about 4.4 mm
-    tall on the phone model to reach 3 % of frame height here; check at the next preview.'
+  subject_position: phone_centre
+  notes: 'Over the shoulder (no insert: camera.gags.no_repeat shop). Lens above his right shoulder at
+    (3.62, 8.90, 1.28): 5 cm in front of the back-wall face, east of the display stand''s top tier, about
+    0.39 m from the kneel-rig phone (3.45, 8.88, 0.93); the builder aims once at the phone at f0 (tilt
+    down about 64 deg, computed). No wild piece. FACT (draft frames f0/f6/f14/f20/f26/f32, bpy 5.0.1,
+    2026-10-02): the rig turns the screen toward his face, so f4-f22, while he leans to the stand, the
+    phone stands upright facing this lens with the status bar at the top; the bolt appears at f14 beside
+    the red 3 % and stays in frame to f35; from about f24 his head is back over the phone, the phone lies
+    flat and the status bar (bolt, 3 %, battery) reads sideways at frame right under his hair. His right
+    arm crosses frame left to the stand f6-f16. Bolt size: about 1.5 % of frame height (4.8 mm glyph,
+    225 mm frame at the phone), under the 3 % of camera.inserts.legibility: see rationale.camera.'
 characters:
 - id: ren
   position:
@@ -117,21 +121,33 @@ assets:
 - world.props.charging_cable
 - world.props.shop_socket
 rationale:
-  camera: '35 mm over the shoulder at his kneeling eye level (lens 1.15 m, within 0.1 m of 1.05 m): the
-    hope is seen in the room, not in an insert, so the second gag is not the car''s again (camera.gags.no_repeat).
-    Rejected: the car''s status-bar insert (beat-for-beat repeat, G2 finding 2). Moved with him to the
-    stand (builder reach fix: at (3.45, 8.66) facing +y his right hand reaches the socket within 2 cm;
-    the old spot (2.2, 8.0) was about 2.05 m from the stand, reach error about 1.22 m): the same over-the-left-shoulder
-    relation (was 0.9 m and 30 deg off his back axis, now 0.8 m and about 41 deg). The westmost fridge
-    now stands 0.25 m east of him, so any lens behind his left shoulder and in front of the fridge face
-    loses the phone behind the fridge corner; the lens therefore sits inside the fridge footprint with
-    the fridge wild. Rejected: a lens straight behind him (x 3.25, y 7.95, no wild piece), where his head
-    covers the phone.'
-  composition: 'Phone in the foreground over his left shoulder, his reaching arm and the stand at right,
-    the back-wall corner behind the stand: hope and the place he trusted in one frame. The fridges are
-    no longer behind the stand (they are beside him, behind the lens).'
-  lighting: Panels from above; the fridges' cool light comes from behind the lens and edges his left shoulder
-    and the phone; the amber bolt is the warmest point in frame.
+  camera: '35 mm over his right shoulder at his own eyeline: the hope is seen in the room, from where
+    he is looking, not in an insert, so the second gag is not the car''s again (camera.gags.no_repeat).
+    Rejected: the car''s status-bar insert (beat-for-beat repeat, G2 finding 2). Re-placed for the G5
+    re-review finding 3: from the previous lens inside the westmost fridge (2.95, 8.30, 1.15) the phone
+    never showed its face, because the kneel rig holds the phone 0.22 m ahead of him at 0.93 m and turns
+    the screen toward his face: flat under his chin at f0 and f26-f35, upright toward the stand while
+    he leans to plug in, so from his left-back the screen was edge-on or turned away exactly when the
+    bolt came on (f14). The lens now sits where his eyes go: up and to his right, outside his head''s
+    path to the stand. Height: the rig''s eye in this pose is about 1.15 m (head centre 1.17-1.18 m, measured),
+    so the lens is about 0.13 m above his eye looking down his own sightline; it is not the high angle
+    of camera.height.high (that needs 0.5 m above the eye and is spent on the master). Rejected: (a) the
+    lens inside the fridge (screen edge-on or away, bolt invisible, G5 finding 3); (b) a lens 0.30 m from
+    the phone for a 3 % bolt (inside his hair at f0 and f26, and the frame becomes an insert, which camera.gags.no_repeat
+    rules out for the shop''s hope); (c) a lens west of his head at (3.765, 8.90, 1.21) (his head passes
+    through it at f20 and the frame goes to hair); (d) a higher lens at (3.60, 8.92, 1.36) (his crown
+    covers the phone from f24 and the culled back wall renders black). Conflict, flagged and not hidden:
+    no over-the-shoulder this rig allows reaches the 3 % bolt of camera.inserts.legibility (3 % of frame
+    height needs a frame of 0.16 m or less at the phone, a 0.28 m lens distance at 35 mm, inside his head).
+    Here the bolt reads as the one amber point appearing beside 3 %, at about 1.5 % of frame height, for
+    22 frames. Raised for a human decision in the handoff.'
+  composition: 'The phone large in the centre with his left hand on it, his right arm crossing to the
+    stand at frame left (f6-f16), his hair at the frame edge when he leans back over it: hope and the
+    place he trusted in one frame, seen from where he looks. Rejected: the phone smaller at the frame
+    edge with more room around it (the bolt drops under 1 % of frame height and stops reading).'
+  lighting: Panels from above and behind the lens; the fridges' cool light edges the phone from the east;
+    the screen faces the lens side through the bolt; the amber bolt is the only saturated warm point on
+    the phone.
   movement: Static.
   color: Cool shop, amber bolt.
   blocking: The cable runs from the phone over his knee and behind the stand, a short posed length (continuity.props.cable).
@@ -149,7 +165,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+  hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -249,7 +265,8 @@ derived_from:
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
 - ref: canon:look.lighting.sc03_blackout_render
-  hash: sha256:ed20ed56e432664997ca31b24d8dbd844a769b9b708734cd04c720a1517a31f6
-stamped_content_hash: sha256:17749ce74a849d3eba33ea4bf0956df92d31b5356e2e09a7de3aa480ef97db77
-stamp_note: SHOT_LIST changed only by the v2 frontal revision note (SC01_SH010/SH090 lens moved to y 1.50,
-  no table cell changed); this shot's row and content are untouched.
+  hash: sha256:93e5e852cf0656d319d1e2914771dd9605dd0fbd5d86fa9dce3b3b1a7bfb2095
+stamped_content_hash: sha256:60688ac06ab4bb3fd5f58c2ad9f2b85c0770fe08a82dee955db936b62e32f006
+stamp_note: 'Re-checked 2026-10-02 against the amended look.lighting.sc03_blackout_render (rules 6-7:
+  forward-lobe pool, cone_deg per shot, room-only mean_luma_region). Applies from SC03_SH050_f8 to SH050-070
+  only; this shot is lit (pre-blackout), so no content change.'

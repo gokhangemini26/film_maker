@@ -85,7 +85,7 @@
       "enabled": false
     },
     "fov_h_deg": 54.4322,
-    "height_m": 1.15,
+    "height_m": 1.28,
     "lens_mm": 35.0,
     "look_at": "phone_ren",
     "movement": "static",
@@ -93,9 +93,9 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      2.95,
-      8.3,
-      1.15
+      3.62,
+      8.9,
+      1.28
     ]
   },
   "characters": [
@@ -434,9 +434,9 @@
   },
   "composition": {
     "aspect_ratio": 1.778,
-    "framing": "medium_close",
-    "notes": "Over the shoulder (no insert: camera.gags.no_repeat shop). Lens inside the footprint of the westmost fridge, which is wild for this shot (the builder drops a set piece whose box contains the lens); the lens is about 0.8 m from the phone and about 41 deg off his back axis on his left. The stand is at frame right, its back edge near the right frame edge; the socket sits just below the frame. The bolt appears at frame 14 and holds 22 frames. DEPENDENCY: the bolt glyph must be about 4.4 mm tall on the phone model to reach 3 % of frame height here; check at the next preview.",
-    "subject_position": "phone_foreground_left"
+    "framing": "close",
+    "notes": "Over the shoulder (no insert: camera.gags.no_repeat shop). Lens above his right shoulder at (3.62, 8.90, 1.28): 5 cm in front of the back-wall face, east of the display stand's top tier, about 0.39 m from the kneel-rig phone (3.45, 8.88, 0.93); the builder aims once at the phone at f0 (tilt down about 64 deg, computed). No wild piece. FACT (draft frames f0/f6/f14/f20/f26/f32, bpy 5.0.1, 2026-10-02): the rig turns the screen toward his face, so f4-f22, while he leans to the stand, the phone stands upright facing this lens with the status bar at the top; the bolt appears at f14 beside the red 3 % and stays in frame to f35; from about f24 his head is back over the phone, the phone lies flat and the status bar (bolt, 3 %, battery) reads sideways at frame right under his hair. His right arm crosses frame left to the stand f6-f16. Bolt size: about 1.5 % of frame height (4.8 mm glyph, 225 mm frame at the phone), under the 3 % of camera.inserts.legibility: see rationale.camera.",
+    "subject_position": "phone_centre"
   },
   "environment": {
     "location": "corner shop (interior)",
@@ -588,6 +588,13 @@
         "source": "anim"
       },
       {
+        "f": 10,
+        "f_abs": 638,
+        "id": "phone_still",
+        "kind": "visual",
+        "source": "anim"
+      },
+      {
         "f": 12,
         "f_abs": 640,
         "id": "plug_in",
@@ -620,6 +627,7 @@
     "frames": 36,
     "holds": [
       {
+        "character": "ren",
         "f0": 10,
         "f1": 35,
         "min_f": 18,

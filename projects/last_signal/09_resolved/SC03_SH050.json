@@ -499,11 +499,21 @@
           "applies_from": "SC03_SH050_f8",
           "checks": {
             "dip_visible_SC03_SH050": "pool_mean_luma_f8_to_f10_at_least_15pct_below_f11",
+            "fridge_flank_SC03_SH070": {
+              "luma_max": 0.14,
+              "visible_pixels_at_floor_or_ambient_min_frac": 0.95
+            },
             "mean_luma": [
               0.08,
               0.14
             ],
+            "mean_luma_region": {
+              "SC03_SH050": "whole_frame",
+              "SC03_SH060": "frame_minus_phone_screen_and_bezel",
+              "SC03_SH070": "frame_minus_ren_lit_tone_phone_and_door_rectangle"
+            },
             "mean_luma_target": 0.12,
+            "mean_luma_target_source": "human ruling 2026-10-02 (USER_REQUIREMENT)",
             "pastel_merch_identifiable": false,
             "pool": {
               "area_frac_SC03_SH050": [
@@ -525,8 +535,17 @@
               ],
               "neutral_grey_forbidden": true
             },
+            "set_surface_lit_area_frac_max": {
+              "SC03_SH070": 0.02
+            },
             "sh060_surround": "#1B1C29 to #1E2030, not neutral grey",
-            "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool"
+            "silhouette_contrast_SC03_SH050": "ren_mean_luma_at_least_0.25_below_adjacent_pool",
+            "whole_frame_max": {
+              "SC03_SH070": 0.18
+            },
+            "whole_frame_reported_not_gated": [
+              "SC03_SH060"
+            ]
           },
           "door_rectangle": {
             "hex_max": {
@@ -547,6 +566,7 @@
             ]
           },
           "pool": {
+            "aim": "screen_normal_toward_holder_face",
             "colour": {
               "hex": "#FFF1DE",
               "linear": [
@@ -559,6 +579,11 @@
                 0.945098,
                 0.870588
               ]
+            },
+            "cone_blend": 0.6,
+            "cone_deg": {
+              "SC03_SH070": 100,
+              "default": 175
             },
             "follows_screen_dip": true,
             "lit_tone": "mix(base, base_x_key_colour, 0.30)",

@@ -145,7 +145,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+  hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -261,5 +261,6 @@ derived_from:
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
 stamped_content_hash: sha256:7adc5204a2efb840c218753a419b48d80229bf18598a94c7014f25a0e6a04bab
-stamp_note: SHOT_LIST changed only by the v2 frontal revision note (SC01_SH010/SH090 lens moved to y 1.50,
-  no table cell changed); this shot's row and content are untouched.
+stamp_note: 'Content revised since the G5 approval (8e9b8b7): text-insert lens to (1.28, 0.37, 1.17),
+  0.30 m from the screen on his eyeline (the frame was 91-231 mm; v2 car interior revision). Restamped
+  2026-10-02 after the SHOT_LIST G5-fix revision.'

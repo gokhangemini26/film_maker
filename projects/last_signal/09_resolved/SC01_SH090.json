@@ -434,7 +434,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "Same setup as SC01_SH010 (frontal through the windscreen), v2 interior lens at (1.29, 1.50, 1.20), 0.50 m back from the approved y 1.00 (inside car_body_y max 1.55). Held 24 frames: the minimum 1 s reaction hold after a gag (camera.rhythm.pace). The raised thumb is deliberately not a frame element: the frame is built on the face; his fists and the phone's back sit inside the ring's opening at the bottom of frame, and the frame is not re-aimed to find the thumb (see rationale.blocking).",
+    "notes": "Same setup as SC01_SH010 (frontal through the windscreen), v2 interior lens at (1.29, 1.50, 1.20), 0.50 m back from the approved y 1.00 (inside car_body_y max 1.55). Held 24 frames: the minimum 1 s reaction hold after a gag (camera.rhythm.pace). The hands are in frame: FACT (draft frames f0 and f18, bpy 5.0.1, 2026-10-02) both fists and the phone's back sit inside the ring's opening at the bottom centre (phone at frame y about 0.17 from the bottom, his head at 0.71), so the raised thumb, which the animation keeps up f0-f23, is placed in frame. It does not read as a thumb: the preview figure's hands are rounded mitts with no thumb piece (characters.py builds no thumb). The frame is not re-aimed or re-cut to find it (see rationale.blocking).",
     "subject_position": "centre"
   },
   "environment": {
