@@ -304,7 +304,7 @@ class Dust:
 class Finisher:
     """Vignette + film grain + subtle chroma, applied on the numpy frame."""
 
-    def __init__(self, vignette=0.35, grain=6.0, seed=7):
+    def __init__(self, vignette=0.35, grain=2.6, seed=7):
         yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
         d = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2) / math.sqrt(2)
         self.vig = (1 - vignette * np.clip(d, 0, 1) ** 2.2)[..., None].astype(np.float32)
