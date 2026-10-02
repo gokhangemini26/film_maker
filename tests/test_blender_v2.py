@@ -1,6 +1,7 @@
 """Vocabulary v2, Blender builder side: car interior vs pose reach, phone ui events (photo_scale, pulse, key_press).
 Pure python (bpy/mathutils only as a library); needs the resolved shots of projects/last_signal/09_resolved."""
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -16,6 +17,7 @@ try:
     from fm_blender import poses as PS  # noqa: E402
     from fm_blender import anchors as AN  # noqa: E402
     from mathutils import Vector  # noqa: E402
+    import bpy  # noqa: E402
 except ImportError:  # pragma: no cover
     pytest.skip("mathutils/bpy not importable", allow_module_level=True)
 
@@ -130,3 +132,40 @@ def test_insert_shift_has_a_call_screen_case_and_one_rule_everywhere():
     assert AN.insert_shift(["ui.call_screen"], 0.67, xv, yv).length == 0.0                     # SH020/050 (0.67 m): no shift
     assert AN.insert_shift(["ui.status_bar"], 0.30, xv, yv).length > 0.05
     assert A._insert_shift is AN.insert_shift
+
+
+def _wheel():
+    import bpy
+    from fm_blender import sets as SE
+    col = bpy.data.collections.new("wheel_test")
+    w = SE.steering_wheel("steering_wheel_test", (0, 0, 0), col, None)
+    return w, SE
+
+
+def test_steering_wheel_is_a_ring_with_spokes_not_a_disk():
+    w, SE = _wheel()
+    w.rotation_euler = (0, 0, 0)                      # test in the wheel plane: axis Z, +Y top
+    me = w.data
+    R = SE.WHEEL_RADIUS_M
+
+    from mathutils.bvhtree import BVHTree
+    tree = BVHTree.FromPolygons([v.co.copy() for v in me.vertices], [tuple(p.vertices) for p in me.polygons])
+
+    def hit(x, y):
+        return tree.ray_cast(Vector((x, y, 1.0)), Vector((0, 0, -1)))[0] is not None
+    assert hit(R, 0.0) and hit(0.0, R) and hit(-R, 0.0) and hit(0.0, -R)                 # the rim is there all round
+    assert hit(0.0, 0.0)                                                                  # the hub
+    r45 = R * 0.6
+    assert not hit(r45 * math.cos(math.radians(45)), r45 * math.sin(math.radians(45)))   # open between the spokes (upper right)
+    assert not hit(-r45 * math.cos(math.radians(45)), r45 * math.sin(math.radians(45)))  # upper left
+    assert not hit(0.0, R * 0.6)                                                          # no spoke at the top: rim top and thumbs clear
+    assert hit(R * 0.6, 0.0) and hit(-R * 0.6, 0.0) and hit(0.0, -R * 0.6)                # side and bottom spokes
+    rmax = max(math.hypot(v.co.x, v.co.y) for v in me.vertices)
+    assert rmax == pytest.approx(R + SE.WHEEL_TUBE_M, abs=1e-3)                          # rim centre line = the poses' wheel_radius
+
+
+def test_steering_wheel_rake_matches_the_poses_wheel_plane():
+    w, SE = _wheel()
+    up = w.rotation_euler.to_matrix() @ Vector((0, 1, 0))
+    assert (up - Vector((0, *PS.CTX_DEFAULT["car"]["wheel_up"][:1], PS.CTX_DEFAULT["car"]["wheel_up"][2]))).length < 1e-3
+    assert SE.WHEEL_RADIUS_M == PS.CTX_DEFAULT["car"]["wheel_radius"]

@@ -2,7 +2,7 @@
 import math
 
 import bpy
-from mathutils import Vector
+from mathutils import Matrix, Vector
 
 from . import util as U
 from .anchors import car_layout, shop_anchors
@@ -113,6 +113,46 @@ def build_street(col, canon):
     U.box("distant_roofs", (10, 2.0, 5.0), (3.0, 80.0, 2.5), col, _t(col, Pal(canon, "look.color.street", "#8F95A3")(12)))
 
 
+WHEEL_RADIUS_M = 0.19        # rim centre-line radius = poses.CTX_DEFAULT wheel_radius (hand contacts land on the tube axis)
+WHEEL_TUBE_M = 0.013         # rim tube radius (a real ring: the cabin and the hands read through it)
+WHEEL_SPOKE_W_M = 0.026
+WHEEL_HUB_R_M = 0.05
+
+
+def steering_wheel(name, loc, col, mat, rake_deg=60.0, segs=40, tube_segs=8):
+    """Steering wheel as ONE object: a torus rim, a hub and three flat spokes (left, right, bottom: no spoke at the top so the
+    rim-top forehead rest and the thumbs stay unobstructed). Built in the wheel plane (local XY, axis Z, +Y = top), then raked
+    by rake_deg about X exactly as the old disk was, so poses.py's wheel_center / wheel_radius / wheel_up are unchanged."""
+    import bmesh
+    R, r = WHEEL_RADIUS_M, WHEEL_TUBE_M
+    bm = bmesh.new()
+    rows = []
+    for i in range(segs):
+        a = 2 * math.pi * i / segs
+        ca, sa = math.cos(a), math.sin(a)
+        rows.append([bm.verts.new(((R + r * math.cos(b)) * ca, (R + r * math.cos(b)) * sa, r * math.sin(b)))
+                     for b in (2 * math.pi * j / tube_segs for j in range(tube_segs))])
+    for i in range(segs):
+        for j in range(tube_segs):
+            bm.faces.new((rows[i][j], rows[i][(j + 1) % tube_segs], rows[(i + 1) % segs][(j + 1) % tube_segs], rows[(i + 1) % segs][j]))
+    # spokes: from the hub out to the rim centre-line, 0.5 r thick
+    for ang in (0.0, math.pi, 1.5 * math.pi):          # +X, -X, -Y (bottom)
+        length = R - WHEEL_HUB_R_M
+        g = bmesh.ops.create_cube(bm, size=1.0)
+        for v in g["verts"]:
+            v.co.x *= length
+            v.co.y *= WHEEL_SPOKE_W_M
+            v.co.z *= r
+        bmesh.ops.rotate(bm, verts=g["verts"], cent=(0, 0, 0), matrix=Matrix.Rotation(ang, 3, "Z"))
+        bmesh.ops.translate(bm, verts=g["verts"], vec=(math.cos(ang) * (WHEEL_HUB_R_M + length / 2), math.sin(ang) * (WHEEL_HUB_R_M + length / 2), 0))
+    bmesh.ops.create_cone(bm, cap_ends=True, segments=16, radius1=WHEEL_HUB_R_M, radius2=WHEEL_HUB_R_M, depth=0.045)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    me = bpy.data.meshes.new(name)
+    bm.to_mesh(me)
+    bm.free()
+    return U._obj(name, me, col, mat, loc, (math.radians(rake_deg), 0, 0))
+
+
 def build_car(col, canon):
     s = canon["world.sets.street"]
     c = canon["world.sets.ren_car"]
@@ -147,7 +187,7 @@ def build_car(col, canon):
         b.rotation_euler = (math.radians(-20), 0, 0)
     U.box("dashboard", (W - 0.1, 0.35, 0.28), (cx, y1 - 0.55, sill + 0.45), col, dark)
     U.box("console", (0.22, 0.5, 0.22), (cx, fy + 0.25, seat_z + 0.05), col, dark)
-    U.cyl("steering_wheel", 0.19, 0.03, (drv_x, y1 - 0.85, sill + 0.62), col, dark, rot=(math.radians(60), 0, 0))
+    steering_wheel("steering_wheel", (drv_x, y1 - 0.85, sill + 0.62), col, dark)
     gb_w, gb_h = c["glovebox"]["opening_m"]
     gb_y, gb_z = y1 - 0.72 + gb_dy, sill + 0.4
     U.box("glovebox", (gb_w, 0.2, gb_h), (pas_x, gb_y, gb_z), col, U.toon({"hex": "#3A3630", "linear": U.lin("#3A3630")}))
