@@ -7,7 +7,7 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:shot_list
-    hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
+    hash: sha256:0df8869673943062b5d6299f81beb7a8c81a6812572cda84343c6d26c64550cb
   - ref: artifact:scenes
     hash: sha256:137da02c736eaa6e9e9e5d0e0288b49020e337d14fbb636cb1797ee1d002461b
   - ref: artifact:audio_cues
@@ -25,7 +25,7 @@ fm:
   - ref: shot:SC03_SH010
     hash: sha256:1f76a5f9b1d9f67b45b4d32494cd8fa297d0e56eeec18ea1eaacf0bb5c82e63f
   - ref: shot:SC03_SH070
-    hash: sha256:103af7cc154f759dc03710e3c883ba4cef525b2029bf693a473449870b80ecee
+    hash: sha256:06c0782a2c4591b1fe2c23d03c0f26447dbb2f47c948bef85f01f570945f9b98
   - ref: shot:SC04_SH090
     hash: sha256:ba37458305d5c99080be0a44998f4f3680a91d45b3f9a2c2106e97e19ae494d8
   - ref: shot:SC05_SH010
@@ -41,7 +41,7 @@ fm:
   summary: Readable cut list generated from the resolved frame table; hard cuts, FADE IN 12 frames (D7,
     decided under the human's 2026-10-01 delegation, to be ratified at G7) and 18-frame FADE OUT from
     canon; scene-time and sound-cut notes.
-  stamped_content_hash: sha256:3e3e8068c5909778ae2e5553c051754fde3a98a7cdddd387701aac566c0e053a
+  stamped_content_hash: sha256:603fceb0350f0917493700d2933af04ee80a6f1fb7d3df24631ae22509efab4a
 title: Edit Plan
 ---
 # Edit Plan: Last Signal
@@ -130,8 +130,9 @@ Record out is exclusive, as in the EDL.
   cuts, 14-19 frames". Every other shot is at least 20 frames, above `shortest_shot_frames: 12`.
 - FACT: from SC04_SH010 on, no shot is shorter than 24 frames (SC05_SH010 = 24, SC04_SH070 = 26), which
   meets `camera.rhythm.pace` `tender_min_shot_s: 1.0`.
-- DEPENDENCY: 21 of the 38 shots are PROPOSED (modified after G5 approval; G5 is DRIFTED): SC01_SH020/030/050/
-  070/080/120/140, all seven SC03 shots, SC04_SH020/030/050-090. The cut follows the frame table as it
+- DEPENDENCY: 23 of the 38 shots are PROPOSED (modified after G5 approval; G5 is DRIFTED; `fm status`
+  2026-10-02): SC01_SH010/020/030/050/070/080/090/120/140, all seven SC03 shots, SC04_SH020/030/050-090. The
+  cut follows the frame table as it
   stands. If the human re-approves G5 with different durations, `fm resolve` then `fm post edl` regenerate
   everything here.
 - FACT (2026-10-01 re-run): `fm post edl` after the SC03 blocking/camera change and the cue update printed
@@ -193,6 +194,24 @@ Record out is exclusive, as in the EDL.
 - FACT: lens, layout and blackout changes are picture content, not timing; post judges none of them. They make
   the SC01 previews/playblasts and the SC03 keys stale for the animatic (section 6).
 
+### 2.5 G5-fix revision (227696e) and the laptop re-run (6c0b9b2), 2026-10-02 evening
+
+- FACT: commit 227696e revised SHOT_LIST (G5-fix section: SC03_SH020/030/060 lens and scale, SC01_SH090 thumb
+  ruling, the 0.12 exposure ruling), STORYBOARD (framing prose) and shots SC01_SH010-SC06_SH010 (restamps;
+  SC01_SH030/090 and SC03_SH020/030/050/060/070 content). SC03_SH070 gained a `style_break` (phone pool
+  light-linked away from fridge0-2). Every change is camera or lighting; none is timing.
+- FACT: the `shots` table of `09_resolved/film.json` (start and frames for all 38 shots) is identical
+  before (0ac12ba) and after these commits, and `total_frames` is 1440. The `transition` column of SHOT_LIST is
+  unchanged. No record frame in section 2 moved and no transition changed.
+- FACT: the laptop run in 6c0b9b2 recorded `edit:edl` (2026-10-02T19:44:11Z) with content hash `e8b5c6cb...`,
+  which is the sha256 of `12_post/EDIT.edl` in this checkout: the EDL is byte-identical. `fm post edl` was not
+  re-run here (it would only rewrite the record).
+- FACT: `fm validate` listed `edit:edl`/`edit:animatic` STALE only because `artifact:anim_sc03_sh070` had not
+  been restamped after the SC03_SH070 `style_break`. A review was recorded on it by `fm stamp --note`
+  (post-supervisor at the main session's request; the file's owner, the animation-director, may revisit it):
+  lighting only, frames, holds and events unchanged. That clears the chain without changing the anim file's
+  content hash.
+
 ## 3. Head and tail
 
 - **Head.** FADE IN from black over record frames 0-11 (D7 = 12, delegated decision, to be ratified at G7). FACT: the `SC01_SH010` camera notes
@@ -235,7 +254,10 @@ the 2026-10-02 `fm audio mix` (sound-designer, after D3/D10): 139 placements, 14
 5 placeholder recipes, `measure.lufs_approx` -16.47, sample peak -1.14 dBFS; cues hash `3938a7a3...`, which
 matches the `stamped_content_hash` of `12_post/AUDIO_CUES.yaml` (PROPOSED). FACT, `qa/audio_report.json`:
 integrated -16.5 LUFS (ffmpeg ebur128), true peak -1.1 dBTP, targets read as -16.0 +-1.0 / -1.0 dBTP, 0 FAIL,
-10 WARN. Changes that touch cuts: the SC04 street bed is split at the turn (D3 duck, below), SC05 is room
+10 WARN. FACT (6c0b9b2): the laptop's `fm audio mix` (recorded 2026-10-02T19:44:10Z) produced content hash
+`dec4205c...`, the sha256 of `mix_48k_stereo.wav` in this checkout, so the mix is byte-identical and every
+placement below still holds; AUDIO_CUES was re-reviewed against the G5-fix anim files with no cue anchor
+moved (only SC03_SH020 gained a visual event, `phone_still` f10). Changes that touch cuts: the SC04 street bed is split at the turn (D3 duck, below), SC05 is room
 tone only (D10), and the SC06 bed sits 3 dB under the pre-turn level. These are edit-side requirements for
 the sound-designer, not mix decisions.
 
@@ -256,7 +278,9 @@ the sound-designer, not mix decisions.
 - `12_post/EDIT.edl`, `12_post/edit.ffconcat` (`fm post edl`, recorded as `edit:edl`).
 - `12_post/animatic.mp4` (`fm post animatic`, recorded as `edit:animatic`): 1440 frames, 60.000 s, with the
   mix. See POST_PLAN section 7 for the per-shot picture source and what it is and is not.
-- FACT: `edit:animatic` is STALE in `fm validate` (resolved shots changed). The file on disk (2026-10-01 21:37)
-  predates the 2026-10-02 mix (13:14) and the SC01 lens/layout changes. It was **not** rebuilt here: the
-  pinned frames live on the human's laptop and this environment would rebuild it from stills. It must be
-  rebuilt with `fm post animatic` after the laptop re-render (POST_PLAN 7.4).
+- FACT (6c0b9b2): the human's laptop rebuilt the animatic after the G5 fixes: the ledger record `edit:animatic`
+  is dated 2026-10-02T19:44:46Z with content hash `9ce5d06b...`. The `.mp4` is gitignored, so that file is
+  **not** in this checkout. The `12_post/animatic.mp4` here is still the 2026-10-01 21:37 build (sha256
+  `dda75883...`, which matches no current record). It was not rebuilt here (this environment has only the
+  2026-09-30 playblasts and would overwrite it with a worse one). POST_PLAN 7.5 has the probe facts and what
+  is still unverified.

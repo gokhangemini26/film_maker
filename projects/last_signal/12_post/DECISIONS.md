@@ -7,13 +7,13 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:edit_plan
-    hash: sha256:3e3e8068c5909778ae2e5553c051754fde3a98a7cdddd387701aac566c0e053a
+    hash: sha256:603fceb0350f0917493700d2933af04ee80a6f1fb7d3df24631ae22509efab4a
   - ref: artifact:post_plan
-    hash: sha256:d4a5c361d69f9537085dc5c729a05488725a5ded11c46285aeb44ccd657e1e96
+    hash: sha256:792d0f041d41cab704ad327a10b46bbcad0aeb848e7f6861d86ffd260f3aeb7f
   - ref: artifact:audio_bible
     hash: sha256:496cfd2ebec66ea0b0ca6909a80422696583b6e6f27a0bc247532550c5f48293
   - ref: artifact:animation_bible
-    hash: sha256:b29f78456ea9b03415d618ae905bf71d6098e814b2bbe205eb92b778a48a1cca
+    hash: sha256:95b1aa19a882987694b707feff5e6dc66faa17dd50c9b0507f231ce0fd7eddd4
   - ref: artifact:g7_review
     hash: sha256:667d747da0b93242a8d4b6d42a3623d279caab4252ed239338cb768cd55bcd23
   - ref: canon:tone.wordless
@@ -58,7 +58,7 @@ fm:
   summary: Recommended rulings on open decisions D1-D10 (plus the G7 side questions), each with rationale
     and the rejected alternative, prepared under the human's delegation; every ruling is UNKNOWN until
     the human confirms it at G7.
-  stamped_content_hash: sha256:def85808995579e0696f663e67dd3ee15b066640d7ad5d1db41d99def131aa66
+  stamped_content_hash: sha256:835096d3b75e20cefe986a34966b7982f439fc087f61f2041acd640017ea4e2f
 title: Open decisions D1-D10 — recommended rulings
 ---
 # Open decisions D1-D10 — recommended rulings
@@ -220,6 +220,12 @@ Selection test for every item: the option that best serves the locked intents �
   corrects the value text at the next revision (v3).
 - Known gap, not ratified by D8: no thumb/hand track for SC04_SH020/SH060 (G7 review #8;
   ANIMATION_BIBLE 7.3 option B is a v3 proposal after G7).
+- FACT (ANIMATION_BIBLE, G5-fix revision 2026-10-02): the bible now records a DECISION that a `phone` or `all`
+  hold freezes the phone's world position **and facing** (used by SC03_SH020), plus the delegated SC01_SH090
+  thumb and SC03_SH020 head-cover rulings. None of these adds or renames a vocabulary name: the hold scopes
+  are already in `animation.vocab.event_kind`, and SC03_SH020's new `phone_still` event uses the existing
+  `visual` kind. So the D8 recommendation is unchanged; the hold semantics are a bible/builder rule, which the
+  human may want written into the vocabulary at v3 (animation-director).
 
 ## D9 — Delivery gate
 
@@ -266,7 +272,7 @@ Selection test for every item: the option that best serves the locked intents �
 ## Human commands (none run by agents)
 
 - Change request: `fm change approve CHANGE-005` (before or with G7) — required for the D8 ruling as written.
-- Canon still PROPOSED (38), for `fm canon approve <id>` — note that approving G7 locks every PROPOSED
+- Canon still PROPOSED (39 per `fm canon list`, 2026-10-02 evening), for `fm canon approve <id>` — note that approving G7 locks every PROPOSED
   `animation.*` and `audio.*` entry in one step (G7 review, `decide_gate to_lock`), so individual approvals
   are only needed to rule ahead of the gate:
   - animation (18): `animation.vocab.breath`, `animation.vocab.ease`, `animation.vocab.event_kind`,
@@ -278,7 +284,8 @@ Selection test for every item: the option that best serves the locked intents �
     `animation.vocab.v2.prop_state.hidden`
   - audio (10): `audio.conflicts`, `audio.mix`, `audio.motifs`, `audio.palette`, `audio.perspective`,
     `audio.principles`, `audio.ratchet`, `audio.score`, `audio.silence_map`, `audio.sources`
-  - look (10): `look.color.ui_portraits`, `look.lighting.sc03_blackout_render`,
+  - look (11): `look.color.ui_portraits`, `look.lighting.sc03_blackout_render`,
+    `look.lighting.sc03_sh070_style_break` (new with the G5 fixes: the SC03_SH070 light-link style break),
     `look.style.phone_screen.call`, `look.style.phone_screen.compose`, `look.style.phone_screen.geometry`,
     `look.style.phone_screen.hana`, `look.style.phone_screen.map`, `look.style.phone_screen.sent`,
     `look.style.phone_screen.states_by_shot`, `look.style.phone_screen.status_bar`

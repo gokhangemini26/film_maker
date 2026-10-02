@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH070
-    hash: sha256:9e7bd8545796d52e69078aa95ecaff2a57520212df8b7a408eedc94707b0bb11
+    hash: sha256:06c0782a2c4591b1fe2c23d03c0f26447dbb2f47c948bef85f01f570945f9b98
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -36,6 +36,11 @@ fm:
   summary: 'Structured tracks for the stunned stillness: a true 28-frame hold, one slow 12-frame blink
     f28-39, held to the cut.'
   stamped_content_hash: sha256:c2ee02ab72f7b171576ead2a8659b8a8e3132fad86e68e70c1668ed2c22fb926
+  stamp_note: 'Reviewed 2026-10-02 (post-supervisor, at the main session''s request) against shot:SC03_SH070
+    06c0782a: the only change since the last review is the style_break (phoneglow pool light-linked away
+    from fridge0-2 in this shot, look.lighting.sc03_sh070_style_break PROPOSED) and its derived_from refs.
+    Lighting only: his face, hands and phone stay lit, he does not move; frames 48 (f768-815), both holds,
+    slow_blink / blink_open events and the breath hold unchanged. No content revision needed.'
 shot_id: SC03_SH070
 frames: 48
 vocab_version: 2

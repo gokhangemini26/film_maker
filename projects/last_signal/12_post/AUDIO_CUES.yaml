@@ -10,7 +10,7 @@ fm:
   - ref: artifact:anim_sc01_sh020
     hash: sha256:46baea0074b14730c02b0d2115b594a1f584d65f73e65f2d6cc03fc2f7cf850d
   - ref: artifact:anim_sc01_sh030
-    hash: sha256:4f0072aa443c60439ab686387c554b3d90de1dbdf5525d77f5dfabbcfff8fc5d
+    hash: sha256:3d0ecff29f644b637bbd9139dc7e998d1b3d8b87c4a25d29aca0e01a37092b56
   - ref: artifact:anim_sc01_sh040
     hash: sha256:25b07967c26ffda6960b4347fdedb3de9da11e4d8c14abd8038e4c7e28067e80
   - ref: artifact:anim_sc01_sh050
@@ -22,7 +22,7 @@ fm:
   - ref: artifact:anim_sc01_sh080
     hash: sha256:25aa350b3c8b13a657a3bf5c3c3e7bbdc4858ad3ec3dd9f38eabd628ef56ef0b
   - ref: artifact:anim_sc01_sh090
-    hash: sha256:c9e510ca480a8c0d2d78b5a113808e72e41725a49ff26750badceca3bc9b5828
+    hash: sha256:bf9f198c83bd52c13d5e07889f6aec9522311ff8e0683ff3e0b9114c2a938755
   - ref: artifact:anim_sc01_sh100
     hash: sha256:3e727eb2f3081bbe006b7aced60fd2c34196f5f84e7ec651b5ee7f4f76204931
   - ref: artifact:anim_sc01_sh110
@@ -40,15 +40,15 @@ fm:
   - ref: artifact:anim_sc03_sh010
     hash: sha256:2b068e497045ca68624e4b3965cdca22d44910847e0107e2128d9d1b38c64ec0
   - ref: artifact:anim_sc03_sh020
-    hash: sha256:dfed90e33553c261e053632097aac7de32c018546b392fe8ec3418c21df7ceec
+    hash: sha256:b4bc551f29fa0263bc6224beaf89b7d91c7b538c1ed6ca5b3a780a9b9321bd5d
   - ref: artifact:anim_sc03_sh030
-    hash: sha256:1353c981eadef8ca8cb30081399c778ca2f07e2a88d1d1f37e6a7f683eed7ad4
+    hash: sha256:bcfd4a65630bd081e94aabf7e4877a2587b792db60282c613f4496491e509c08
   - ref: artifact:anim_sc03_sh040
     hash: sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90
   - ref: artifact:anim_sc03_sh050
-    hash: sha256:3aa551ef3df7ee2ca54fcab15c964cae5f3f99cd3650456aab33949747c793b0
+    hash: sha256:49e7b9479391ad12d1a511e2cc36d8a228a04fe1bc1de23297257f799403f1b0
   - ref: artifact:anim_sc03_sh070
-    hash: sha256:203bba621964656c184dd90e9455f5c4fdc4b1182c3e9e25e3e78c7410a723d4
+    hash: sha256:c2ee02ab72f7b171576ead2a8659b8a8e3132fad86e68e70c1668ed2c22fb926
   - ref: artifact:anim_sc04_sh010
     hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
   - ref: artifact:anim_sc04_sh020
@@ -80,7 +80,7 @@ fm:
   - ref: shot:SC01_SH020
     hash: sha256:b3eb95e48fc7f5d2232c69e7dee26595e607479c4d5fc9f81f3a2aff66384bf9
   - ref: shot:SC01_SH030
-    hash: sha256:eb9d6abd324e0a1cf42011b8f002ade0a3ec30a58f25b70addc887a85f7a46fa
+    hash: sha256:244095b3d6537dbe3c06651869f981dfce6ef4cfb2760c3eb148180aa5399771
   - ref: shot:SC01_SH040
     hash: sha256:6d7c21340e8fa08d14e537476be053e78dfb439ec00561158dc21a691a0e885d
   - ref: shot:SC01_SH050
@@ -92,7 +92,7 @@ fm:
   - ref: shot:SC01_SH080
     hash: sha256:ec08eab9349a63936af06dd2d74a19ee0a26eb5b176f62b45504b94a97f7be50
   - ref: shot:SC01_SH090
-    hash: sha256:00d0f5a2bc7e995387c1bd8a144e74e2388f554c28b8bb37952a4f571d12a8e4
+    hash: sha256:e267b8de87447fc9570ac8951db2a136b662de5730d329d52fc2a1d6229b5e27
   - ref: shot:SC01_SH100
     hash: sha256:7fc62ddf5d0deaa1587c815f733988268664f01c621b1569e321a73cdb7d980d
   - ref: shot:SC01_SH110
@@ -110,15 +110,15 @@ fm:
   - ref: shot:SC03_SH010
     hash: sha256:1f76a5f9b1d9f67b45b4d32494cd8fa297d0e56eeec18ea1eaacf0bb5c82e63f
   - ref: shot:SC03_SH020
-    hash: sha256:17749ce74a849d3eba33ea4bf0956df92d31b5356e2e09a7de3aa480ef97db77
+    hash: sha256:60688ac06ab4bb3fd5f58c2ad9f2b85c0770fe08a82dee955db936b62e32f006
   - ref: shot:SC03_SH030
-    hash: sha256:d1561f8bdeadad2d570fde17acecdc7c4b9a6e7feb9d54c9e3c6ece5edb27b20
+    hash: sha256:9d7b4b98905139138e765831df2b34138b9392b47867af4d08721f4542e5fb62
   - ref: shot:SC03_SH040
     hash: sha256:1020cdbc37450a1d9b016968b8c442e36d3bc59e91447dbe3cd3c941513c22e4
   - ref: shot:SC03_SH050
-    hash: sha256:e1e411f9e315f2b742a00e797f055c5ab9dbf6d4fe1fa86db88a46a31bb57bda
+    hash: sha256:ca589c920fd0b6a0e8fad30b2902cd2d3954bf90535beaf6a2ce09540e20310e
   - ref: shot:SC03_SH070
-    hash: sha256:103af7cc154f759dc03710e3c883ba4cef525b2029bf693a473449870b80ecee
+    hash: sha256:06c0782a2c4591b1fe2c23d03c0f26447dbb2f47c948bef85f01f570945f9b98
   - ref: shot:SC04_SH010
     hash: sha256:86660ae172a141b63b4cfe45f1699051822606d3152f9a0e01774d5c74cff776
   - ref: shot:SC04_SH020
@@ -150,13 +150,13 @@ fm:
   - ref: artifact:anim_sc02_sh020
     hash: sha256:0879c17e5ae247692af922bcddf6391eeda2974b98ce067ef4179417995574d9
   - ref: artifact:anim_sc03_sh060
-    hash: sha256:be47c6c0896c52c123361bf4084dc1223964ca583bf1e2b3e25e872c2f8c8607
+    hash: sha256:e2c784fc12195233ab3066762b487d32985362e8ebd2b1a2c7be85233e70786e
   - ref: shot:SC01_SH140
     hash: sha256:2e0e915f0eaf71dbf7339201311e4e9bee1593e2f0f5abc48f3603e7378372c9
   - ref: shot:SC02_SH020
     hash: sha256:783ca6dc0c914156c5b4dd7b6e25ae9f2c4fb2afce34a03973fd60b4f77b2de9
   - ref: shot:SC03_SH060
-    hash: sha256:8b236ef64586590d78e7dc802a9fcc6e635b0170467cebd8b3c2c5739b5c0708
+    hash: sha256:84f6e811e6d82d1139cee22f8e341ba33a59dc063dfc5ab96d776aa4b127e75d
   - ref: canon:audio.principles
     hash: sha256:575a17a531edd2b16da2ce24401a12126e78fc9a42e054d3927179f8bdd4d4b4
   - ref: canon:audio.score
@@ -184,7 +184,7 @@ fm:
   - ref: artifact:audio_bible
     hash: sha256:496cfd2ebec66ea0b0ca6909a80422696583b6e6f27a0bc247532550c5f48293
   - ref: artifact:storyboard
-    hash: sha256:6c462b07661257a0c7e8093ec6e8cb0f88db0a871800d7a4531f05441e8fbbe3
+    hash: sha256:61654c415ba79404f9dcbaa7a2bb7fc0dbc02f7bd511e1c656da9820229e428d
   summary: 'Complete cue sheet: every cue on an animation event id (handle_top derived for the ratchet),
     beds per scene, the silence map, mix targets and the human_supply asks.'
   serves:
@@ -194,11 +194,13 @@ fm:
   - intent.open_hopeful_ending
   - intent.soft_but_cinematic
   stamped_content_hash: sha256:3938a7a3ff047e56c4d85dde64f08d16b8f308bdb1e5bb0064e56cd56af0ac76
-  stamp_note: 'Upstream restamps checked against 5e7d6e1 (last cue edit): all 37 anim files have identical
-    event ids, event frames and frame counts (changes are SC01 v2 lens/eyeline notes, SC03 blackout 0.12
-    prose); no shot sound_sync or duration changed; STORYBOARD changed SC01_SH010/SH090 framing prose
-    only, no Sound line. All 126 cue references resolve (handle_top is the derived crank event, as before).
-    No cue moved.'
+  stamp_note: 'Reviewed 2026-10-02 (post-supervisor, at the main session''s request) against the G5-fix
+    anim and shot revisions: anim SC01_SH030/SC03_SH030/SH050/SH060/SH070 notes only; SC01_SH090 character
+    note text only (thumb in frame); SC03_SH020 adds the visual event phone_still f10 and a richer phone
+    hold note, every other event id/frame identical (fumble f8, plug_in f12, bolt_on f14 unchanged); shots
+    changed lens/lighting/style_break text, no frame count moved (film.json shot table identical, 1440
+    f). No cue anchor moved; no cue revision needed. Laptop fm audio mix 2026-10-02T19:44Z reproduced
+    the same mix hash dec4205c.'
 mix:
   integrated_lufs: -16.0
   lufs_tolerance: 1.0

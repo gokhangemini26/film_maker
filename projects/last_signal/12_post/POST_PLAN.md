@@ -7,7 +7,7 @@ fm:
   owner_role: post-supervisor
   derived_from:
   - ref: artifact:edit_plan
-    hash: sha256:3e3e8068c5909778ae2e5553c051754fde3a98a7cdddd387701aac566c0e053a
+    hash: sha256:603fceb0350f0917493700d2933af04ee80a6f1fb7d3df24631ae22509efab4a
   - ref: artifact:audio_cues
     hash: sha256:3938a7a3ff047e56c4d85dde64f08d16b8f308bdb1e5bb0064e56cd56af0ac76
   - ref: artifact:creative_direction
@@ -37,9 +37,10 @@ fm:
   summary: Locked finish steps with parameters read from canon (glare, grain, optional vignette, fades),
     titles ruling, final render settings, delivery spec, licence status; D1-D10 carried as recommended
     rulings (register in 12_post/DECISIONS.md), UNKNOWN until the human rules at G7.
-  stamped_content_hash: sha256:d4a5c361d69f9537085dc5c729a05488725a5ded11c46285aeb44ccd657e1e96
-  stamp_note: 2026-10-02 refresh - glare implemented (final-only), loudness read from audio.mix, D3 duck
-    and D10 applied in the mix, licence table and animatic status (STALE, not rebuilt) updated
+  stamped_content_hash: sha256:792d0f041d41cab704ad327a10b46bbcad0aeb848e7f6861d86ffd260f3aeb7f
+  stamp_note: 2026-10-02 evening refresh after the G5 fixes and the laptop rebuild (6c0b9b2) - section
+    7.5 (mix and EDL byte-identical; new animatic not in this checkout, unprobed), licence counts per
+    the current audio report, risk 1
 title: Post Plan
 ---
 # Post Plan: Last Signal
@@ -253,18 +254,22 @@ FACT: `config/render_profiles.yaml` `final` reads (re-read 2026-10-02; committed
 | breath (placeholder) | SC01_SH040/090/130/150, SC02_SH020, SC03_SH040, SC04_SH030/050-090, SC06_SH010 | to be recorded by the human | UNKNOWN | **yes** |
 | sigh (placeholder) | SC01_SH060 | to be recorded | UNKNOWN | **yes** |
 | nose laugh (placeholder) | SC05_SH030 | to be recorded | UNKNOWN | **yes** |
-| foley: footsteps, door push, knees, cloth (`fx.soft_bump` placeholder, 6 asks) | SC02_SH010-030, SC03_SH010, SC04_SH040, SC05_SH020, SC06_SH010 | library files, human picks | UNKNOWN | **yes** |
-| foley: seat creak, headphones, pencil, phone grip (`fx.plastic_scuff` placeholder, 3 asks) | SC01_SH060, SC04_SH040, SC05_SH020 | library files, human picks | UNKNOWN | **yes** |
+| foley: footsteps, knees/kerb, shop door, pencil down, phone on chest (`fx.soft_bump` placeholder, 4 asks, 11 files) | SC02_SH010-030, SC03_SH010, SC04_SH040, SC05_SH020, SC06_SH010 | library files, human picks | UNKNOWN | **yes** |
+| foley: seat creak, jacket cloth, pencil stroke, headphones slide, phone lift (`fx.plastic_scuff` placeholder, 1 ask, 5 files) | SC01_SH060, SC04_SH040, SC05_SH020 | library files, human picks | UNKNOWN | **yes** |
 | street bird | SC01_SH010, SC01_SH150 | library file | UNKNOWN | **yes** |
-| distant traffic | SC03_SH070, SC04_SH010, SC06_SH010 | library file | UNKNOWN | **yes** |
+| distant traffic, distant car pass (optional ask, 2 files) | SC03_SH070, SC04_SH010, SC06_SH010 | library files | UNKNOWN | **yes** if used; the synth `amb.distant_car_pass` stands in meanwhile |
 | headphone leak music | (none) | FACT: removed from the 2026-10-02 mix per the D10 recommended ruling (SC05 is `bed_SC05_hana_room` only; `audio.sources` `music_assets: none (D10)`); `fm qa audio` lists it as "not needed" | not used | no, while the human upholds D10 at G7; if D10 is overruled it returns as a blocker |
 | phone UI font | typed invitation, numbers (`look.style.phone_ui` `font: open_licence_humanist_sans`) | not yet chosen (Noto Sans / Inter suggested) | UNKNOWN (canon notes: "Font licence UNKNOWN until verified") | **yes** |
 | procedural sound recipes (`fm audio synth`) | all other cues | generated in-house | ASSUMPTION: own work, no third-party licence. To be confirmed by the sound-designer's registry | no, if confirmed |
 | 3D assets, sky | all shots | built procedurally, no `library/assets` in use (the directory is empty) | FACT: nothing third-party found | no |
 
 - FACT: `qa/audio_report.json` (2026-10-02) lists 11 human-supply rows, `human_supply_open: 10` (the 11th is
-  the dropped headphone leak), all licence UNKNOWN; the table above groups them. 5 placeholder recipes remain
-  in the mix.
+  the dropped headphone leak, status DECLINED), all licence UNKNOWN; the table above groups them. Counted by
+  target file name in those rows (post count, 2026-10-02 evening): **32 files** still to supply, 13 body
+  recordings by the human (11 breaths, 1 sigh, 1 nose laugh) and 19 library foley/ambience files (2 of them,
+  the distant traffic pair, optional). The figure "15 human-supply item(s)" in 7.3 is the 2026-10-01 count of
+  rows, before the cue sheet grouped them; it is superseded. 5 placeholder recipes remain in the mix (22 breath
+  cues on `body.breath_placeholder`). The mix was not changed by the G5 fixes (7.5), so neither was this table.
 - RECOMMENDATION: `fm post export` is not run for release until every UNKNOWN above is resolved. An
   animatic with placeholders is fine for G7 review.
 
@@ -345,12 +350,37 @@ summary line: "1 delivery file(s): 1 FAIL, 2 WARN finding(s) (1 row(s) failing)"
 - Required: re-render the SC01 (and stale SC03/SC04_SH010) frames/playblasts on the laptop (blender-td), then
   `fm post animatic` there, then `fm qa delivery projects/last_signal/12_post/animatic.mp4` and ffprobe, and
   update section 7. Until then, the G7 animatic has the old mix and old SC01 framing; no claim about the new
-  animatic is made here.
+  animatic is made here. (Superseded in part by 7.5: the laptop has now rebuilt it.)
+
+### 7.5 Laptop rebuild after the G5 fixes (commit 6c0b9b2, 2026-10-02 evening)
+- FACT (ledger records pushed in 6c0b9b2): on the human's laptop `fm audio mix` (2026-10-02T19:44:10Z,
+  `audio:mix` hash `dec4205c...`), `fm post edl` (19:44:11Z, `edit:edl` `e8b5c6cb...`) and `fm post animatic`
+  (19:44:46Z, `edit:animatic` `9ce5d06b...`) were re-run after the pinned previews were re-rendered (38 preview
+  PNGs and `qa/playblast_sheet.jpg` updated in the same commit).
+- FACT: in this checkout `sha256(12_post/audio/mix_48k_stereo.wav)` = `dec4205c...` and `sha256(12_post/EDIT.edl)`
+  = `e8b5c6cb...`: the mix and the EDL are byte-identical to the laptop's. The G5 fixes changed no timing
+  (EDIT_PLAN 2.5) and no cue anchor (AUDIO_CUES review note), which is consistent.
+- FACT: `12_post/animatic.mp4` is gitignored (`.gitignore:18`), so the laptop's new animatic did **not** arrive
+  with the push. The file here is the 2026-10-01 21:37 build, sha256 `dda75883...`, which matches no current
+  record. ffprobe of that local file (`-count_frames`): video h264 1280x720, `r_frame_rate` 24/1, nb_read_frames
+  1440, 60.000000 s, yuv420p; audio aac 48000 Hz, 2 channels, 60.000000 s. These describe the **old** build only.
+- FACT: `qa/delivery_report.json` was not re-run on the laptop (record `qa:delivery` 2026-10-01T18:37:55Z): it
+  still describes the old animatic (1 FAIL, 1280x720, expected for a review file; 2 WARN, no fades; -16.5 LUFS,
+  true peak -1.8 dBTP after AAC). FACT, `qa/audio_report.json` (2026-10-02T10:15Z, on the same mix bytes as
+  now): integrated -16.5 LUFS (ffmpeg ebur128), true peak -1.1 dBTP, sample peak -1.14 dBFS, targets -16.0
+  +-1.0 LU / -1.0 dBTP read from `audio.mix`; 0 FAIL, 10 WARN; 66 sync points; 3 silence windows at the floor.
+- UNKNOWN: the frame count, duration, picture sources (frames / playblast / stills per shot) and AAC loudness
+  of the laptop's `9ce5d06b` animatic. Not verified here; no claim is made. Required before G7 review: on the
+  laptop, `ffprobe -count_frames 12_post/animatic.mp4` and `fm qa delivery projects/last_signal/12_post/animatic.mp4`,
+  then commit `qa/delivery_report.json`; or copy the `.mp4` into this checkout and run both here. Expected
+  (not yet observed): 1440 frames, 60.000 s, 24/1, 1280x720 (`--size` default), the same expected FAIL/WARNs.
 
 ## 8. Risks
 
-1. The animatic is STALE (7.4) and, when last built, 24 of 38 shots lacked full motion (9 held stills, 15
-   step-held keys). Rebuild on the laptop after the re-render. Owners: blender-td, animation-director.
+1. The animatic was rebuilt on the laptop after the G5 fixes (7.5), but that file is not in this checkout and
+   has not been probed or `fm qa delivery`-checked by post; its picture sources (how many shots play motion
+   vs held keys/stills) are unknown here. The 2026-10-01 build had 24 of 38 shots without full motion.
+   Owners: the human (copy or probe on the laptop), blender-td.
 2. D6 is decided (delegated, to be ratified at G7), but the final render still needs the glare verified on
    the laptop (risk 4) and the human's `fm authorize final-render`, which `fm blender final` requires.
 3. The grain amplitude mapping has not been measured (2.2). If it is wrong, the grain is too strong or

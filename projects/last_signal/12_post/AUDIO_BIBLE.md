@@ -55,7 +55,7 @@ fm:
   - ref: canon:audio.conflicts
     hash: sha256:6ed601c6debe4079741c5088600614a0437e50428fc5b79880ed65368bcec11b
   - ref: artifact:storyboard
-    hash: sha256:6c462b07661257a0c7e8093ec6e8cb0f88db0a871800d7a4531f05441e8fbbe3
+    hash: sha256:61654c415ba79404f9dcbaa7a2bb7fc0dbc02f7bd511e1c656da9820229e428d
   serves:
   - intent.race_against_battery
   - intent.comic_then_tender
@@ -66,8 +66,11 @@ fm:
     with sound until the crank, after which only the ratchet, breath and a 3 dB quieter street are heard.
     There is one true silence, and the human supplies the breaths (recorded) and the foley (CC0 or own).
   stamped_content_hash: sha256:496cfd2ebec66ea0b0ca6909a80422696583b6e6f27a0bc247532550c5f48293
-  stamp_note: STORYBOARD change is SC01_SH010/SH090 framing prose (mirror upper-right, thumb not framed);
-    no Sound line changed and the bible names no framing. Cue sheet restamped first with no cue moved.
+  stamp_note: 'Reviewed 2026-10-02 (post-supervisor, at the main session''s request) against STORYBOARD
+    61654c41 (G5-fix revision): changes are framing only (SC01_SH090 thumb in frame inside the ring; SC03_SH020
+    CU OTS over his right shoulder at 1.28 m; SC03_SH030 MS, tilt 6.9 deg; SC03_SH060 lens 1.18 m). No
+    sound beat, sync point, perspective or conflict item (audio.conflicts / D4) changed; the shot files
+    still win. No content revision needed.'
 title: Audio Bible
 ---
 # Audio Bible: Last Signal

@@ -57,7 +57,7 @@ LOCKED: 161, PROPOSED: 39
 | anim_sc03_sh040 | ANIMATION | PROPOSED | 75673aa63ff1 |
 | anim_sc03_sh050 | ANIMATION | PROPOSED | 49e7b9479391 |
 | anim_sc03_sh060 | ANIMATION | PROPOSED | e2c784fc1219 |
-| anim_sc03_sh070 | ANIMATION | PROPOSED (stale) | c2ee02ab72f7 |
+| anim_sc03_sh070 | ANIMATION | PROPOSED | c2ee02ab72f7 |
 | anim_sc04_sh010 | ANIMATION | PROPOSED | eb079680b80a |
 | anim_sc04_sh020 | ANIMATION | PROPOSED | df20290707bd |
 | anim_sc04_sh030 | ANIMATION | PROPOSED | 3738966a71d6 |
@@ -71,26 +71,26 @@ LOCKED: 161, PROPOSED: 39
 | anim_sc05_sh020 | ANIMATION | PROPOSED | 96739267e57b |
 | anim_sc05_sh030 | ANIMATION | PROPOSED | 363ebe9df82f |
 | anim_sc06_sh010 | ANIMATION | PROPOSED | ddee172d1a5b |
-| animation_bible | ANIMATION | PROPOSED (stale) | 95b1aa19a882 |
+| animation_bible | ANIMATION | PROPOSED | 95b1aa19a882 |
 | art_direction_bible | WORLD_CHARACTERS | APPROVED | b55a2438747b |
-| audio_bible | ANIMATION_PREVIEW | PROPOSED (stale) | 496cfd2ebec6 |
-| audio_cues | ANIMATION_PREVIEW | PROPOSED (stale) | 3938a7a3ff04 |
+| audio_bible | ANIMATION_PREVIEW | PROPOSED | 496cfd2ebec6 |
+| audio_cues | ANIMATION_PREVIEW | PROPOSED | 3938a7a3ff04 |
 | brief | BRIEF | APPROVED | f4a7feac5c70 |
 | brief_analysis | BRIEF | APPROVED | 1f2799750368 |
 | character_bible | WORLD_CHARACTERS | APPROVED | 71e9d285acb3 |
 | cinematography_bible | CINEMATOGRAPHY | APPROVED | 0ece10f8b6c2 |
 | color_bible | LOOK | APPROVED | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
-| edit_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 3e3e8068c590 |
+| edit_plan | ANIMATION_PREVIEW | PROPOSED | 603fceb0350f |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
 | g3_review | WORLD_CHARACTERS | APPROVED | d26db206b8cf |
 | g4_review | LOOK | APPROVED | a2c83484c758 |
-| g5_review | STORYBOARD | APPROVED (stale) | 9130ba3f9b76 |
+| g5_review | STORYBOARD | APPROVED | be1f210ebfbb |
 | g7_review | ANIMATION_PREVIEW | PROPOSED (stale) | 667d747da0b9 |
 | lighting_bible | LOOK | APPROVED | 95224320170d |
-| post_decisions | ANIMATION_PREVIEW | PROPOSED (stale) | def858089955 |
-| post_plan | ANIMATION_PREVIEW | PROPOSED (stale) | d4a5c361d69f |
+| post_decisions | ANIMATION_PREVIEW | PROPOSED (stale) | 835096d3b75e |
+| post_plan | ANIMATION_PREVIEW | PROPOSED | 792d0f041d41 |
 | preview_review | PREVIEW | PROPOSED (stale) | 59ee7a61839b |
 | scenes | SCREENPLAY | APPROVED | 137da02c736e |
 | screenplay | SCREENPLAY | APPROVED | 56d22d2e73f9 |
@@ -146,7 +146,7 @@ LOCKED: 161, PROPOSED: 39
 
 ## Attention
 
-- G5: artifact:g5_review was modified after approval (51c65bce1415 -> 9130ba3f9b76)
+- G5: artifact:g5_review was modified after approval (51c65bce1415 -> be1f210ebfbb)
 - G5: artifact:shot_list was modified after approval (a6a2b5dffb75 -> 0df886967394)
 - G5: artifact:storyboard was modified after approval (3463a5cadda1 -> 61654c415ba7)
 - G5: shot:SC01_SH010 was modified after approval (451ee18abe33 -> f9fb0e2c41db)
@@ -172,25 +172,10 @@ LOCKED: 161, PROPOSED: 39
 - G5: shot:SC04_SH070 was modified after approval (f0af46aad1a8 -> 67f88a2f736a)
 - G5: shot:SC04_SH080 was modified after approval (0a2e4b08045c -> 6274d95c0386)
 - G5: shot:SC04_SH090 was modified after approval (451cd791871b -> ba37458305d5)
-- stale: artifact:anim_sc03_sh070
-- stale: artifact:animation_bible
-- stale: artifact:audio_bible
-- stale: artifact:audio_cues
-- stale: artifact:edit_plan
-- stale: artifact:g5_review
 - stale: artifact:g7_review
 - stale: artifact:post_decisions
-- stale: artifact:post_plan
 - stale: artifact:preview_review
-- stale: audio:mix
-- stale: edit:animatic
-- stale: edit:edl
-- stale: qa:audio
 - stale: qa:delivery
-- stale: qa:motion
-- stale: qa:stills
-- stale: render:preview_SC03_SH070
-- stale: resolved:SC03_SH070
 - change awaiting decision: CHANGE-002
 - change awaiting decision: CHANGE-003
 - change awaiting decision: CHANGE-004
