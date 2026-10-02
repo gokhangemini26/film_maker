@@ -1,0 +1,231 @@
+id: CHANGE-007
+status: PROPOSED
+target: look.exposure.scene_keys
+reason: 'G5 finding 19 follow-up (qa/EXPOSURE_ANALYSIS.md). Numbers unchanged; two definition fixes. (1)
+  FACT: the metric was never written down (G4 finding 6); CHANGE-006 and fm qa stills both use display
+  luma = Rec.709 weights on sRGB code values (#1B1C29 = 0.11), so it is stated. (2) FACT: in the SC04-SC05
+  phone inserts the lit screen (luma ~0.95, allowed to clip by look.exposure.value_structure) covers 29-38
+  % of the frame. A whole-frame 0.46 with 38 % screen needs the surround at ~0.16 luma, below the 0.30-value
+  floor (#34354F) that value_structure sets, so the key and the floor cannot both hold. Measuring the
+  surround is the same rule CHANGE-006 applied to SC03_SH060. This does NOT excuse the current renders:
+  with the screen removed, those inserts still measure 0.61-0.67 (render fix proposed in the analysis).
+  Rejected: exempting inserts (no exposure test on 5 of 13 tender shots). Serves intent.comic_then_tender,
+  intent.soft_but_cinematic.'
+set:
+  statement: 'Target mean frame luminance per scene (0-1, display-referred luma, Rec.709 weights on sRGB
+    code values): SC01 0.62, SC02 0.70, SC03 lit 0.74 then blackout 0.08, SC04 0.46, SC05 0.52, SC06 0.42.
+    A tolerance of plus or minus 0.06 per shot. The SC03 blackout key is measured on the room, not on
+    the light source that is the subject: whole frame in SC03_SH050, the frame minus the phone screen
+    in SC03_SH060, the frame minus Ren lit tones, the phone and the door rectangle in SC03_SH070 (regions
+    and caps in look.lighting.sc03_blackout_render checks). In SC04-SC06, an insert whose subject is a
+    lit phone screen is measured on the frame minus that screen (the screen may clip, look.exposure.value_structure).
+    Every other shot, and the SC03 lit state, stays whole-frame.'
+  value:
+    SC01: 0.62
+    SC02: 0.7
+    SC03_lit: 0.74
+    SC03_blackout: 0.08
+    SC04: 0.46
+    SC05: 0.52
+    SC06: 0.42
+    tolerance: 0.06
+    metric: mean_display_luma_rec709_on_srgb_codes
+    measured_on:
+      default: whole_frame
+      SC03_blackout: room_region_per_shot
+      SC03_blackout_regions_ref: look.lighting.sc03_blackout_render.checks.mean_luma_region
+      phone_screen_inserts: frame_minus_lit_phone_screen
+      phone_screen_inserts_scenes:
+      - SC04
+      - SC05
+      - SC06
+base_version: 2
+base_hash: sha256:8e2d662d272976f9442271ae8ec97ae1a85ccd45826490ef6ce1cbbf022cabc4
+proposed_by: agent:claude-code
+proposed_at: '2026-10-02T20:11:20Z'
+impact:
+  CANON:
+  - canon:look.lighting.sc03_blackout_render
+  - canon:look.lighting.sc03_sh070_style_break
+  ARTIFACT:
+  - artifact:anim_sc01_sh010
+  - artifact:anim_sc01_sh020
+  - artifact:anim_sc01_sh030
+  - artifact:anim_sc01_sh040
+  - artifact:anim_sc01_sh050
+  - artifact:anim_sc01_sh060
+  - artifact:anim_sc01_sh070
+  - artifact:anim_sc01_sh080
+  - artifact:anim_sc01_sh090
+  - artifact:anim_sc01_sh100
+  - artifact:anim_sc01_sh110
+  - artifact:anim_sc01_sh120
+  - artifact:anim_sc01_sh130
+  - artifact:anim_sc01_sh140
+  - artifact:anim_sc01_sh150
+  - artifact:anim_sc02_sh010
+  - artifact:anim_sc02_sh020
+  - artifact:anim_sc02_sh030
+  - artifact:anim_sc03_sh010
+  - artifact:anim_sc03_sh020
+  - artifact:anim_sc03_sh030
+  - artifact:anim_sc03_sh040
+  - artifact:anim_sc03_sh050
+  - artifact:anim_sc03_sh060
+  - artifact:anim_sc03_sh070
+  - artifact:anim_sc04_sh010
+  - artifact:anim_sc04_sh020
+  - artifact:anim_sc04_sh030
+  - artifact:anim_sc04_sh040
+  - artifact:anim_sc04_sh050
+  - artifact:anim_sc04_sh060
+  - artifact:anim_sc04_sh070
+  - artifact:anim_sc04_sh080
+  - artifact:anim_sc04_sh090
+  - artifact:anim_sc05_sh010
+  - artifact:anim_sc05_sh020
+  - artifact:anim_sc05_sh030
+  - artifact:anim_sc06_sh010
+  - artifact:animation_bible
+  - artifact:audio_bible
+  - artifact:audio_cues
+  - artifact:cinematography_bible
+  - artifact:color_bible
+  - artifact:edit_plan
+  - artifact:g4_review
+  - artifact:g5_review
+  - artifact:g7_review
+  - artifact:lighting_bible
+  - artifact:post_decisions
+  - artifact:post_plan
+  - artifact:preview_review
+  - artifact:shot_list
+  - artifact:storyboard
+  SHOT:
+  - shot:SC01_SH010
+  - shot:SC01_SH020
+  - shot:SC01_SH030
+  - shot:SC01_SH040
+  - shot:SC01_SH050
+  - shot:SC01_SH060
+  - shot:SC01_SH070
+  - shot:SC01_SH080
+  - shot:SC01_SH090
+  - shot:SC01_SH100
+  - shot:SC01_SH110
+  - shot:SC01_SH120
+  - shot:SC01_SH130
+  - shot:SC01_SH140
+  - shot:SC01_SH150
+  - shot:SC02_SH010
+  - shot:SC02_SH020
+  - shot:SC02_SH030
+  - shot:SC03_SH010
+  - shot:SC03_SH020
+  - shot:SC03_SH030
+  - shot:SC03_SH040
+  - shot:SC03_SH050
+  - shot:SC03_SH060
+  - shot:SC03_SH070
+  - shot:SC04_SH010
+  - shot:SC04_SH020
+  - shot:SC04_SH030
+  - shot:SC04_SH040
+  - shot:SC04_SH050
+  - shot:SC04_SH060
+  - shot:SC04_SH070
+  - shot:SC04_SH080
+  - shot:SC04_SH090
+  - shot:SC05_SH010
+  - shot:SC05_SH020
+  - shot:SC05_SH030
+  - shot:SC06_SH010
+  RESOLVED:
+  - resolved:SC01_SH010
+  - resolved:SC01_SH020
+  - resolved:SC01_SH030
+  - resolved:SC01_SH040
+  - resolved:SC01_SH050
+  - resolved:SC01_SH060
+  - resolved:SC01_SH070
+  - resolved:SC01_SH080
+  - resolved:SC01_SH090
+  - resolved:SC01_SH100
+  - resolved:SC01_SH110
+  - resolved:SC01_SH120
+  - resolved:SC01_SH130
+  - resolved:SC01_SH140
+  - resolved:SC01_SH150
+  - resolved:SC02_SH010
+  - resolved:SC02_SH020
+  - resolved:SC02_SH030
+  - resolved:SC03_SH010
+  - resolved:SC03_SH020
+  - resolved:SC03_SH030
+  - resolved:SC03_SH040
+  - resolved:SC03_SH050
+  - resolved:SC03_SH060
+  - resolved:SC03_SH070
+  - resolved:SC04_SH010
+  - resolved:SC04_SH020
+  - resolved:SC04_SH030
+  - resolved:SC04_SH040
+  - resolved:SC04_SH050
+  - resolved:SC04_SH060
+  - resolved:SC04_SH070
+  - resolved:SC04_SH080
+  - resolved:SC04_SH090
+  - resolved:SC05_SH010
+  - resolved:SC05_SH020
+  - resolved:SC05_SH030
+  - resolved:SC06_SH010
+  - resolved:film
+  RENDER:
+  - render:preview_SC01_SH010
+  - render:preview_SC01_SH020
+  - render:preview_SC01_SH030
+  - render:preview_SC01_SH040
+  - render:preview_SC01_SH050
+  - render:preview_SC01_SH060
+  - render:preview_SC01_SH070
+  - render:preview_SC01_SH080
+  - render:preview_SC01_SH090
+  - render:preview_SC01_SH100
+  - render:preview_SC01_SH110
+  - render:preview_SC01_SH120
+  - render:preview_SC01_SH130
+  - render:preview_SC01_SH140
+  - render:preview_SC01_SH150
+  - render:preview_SC02_SH010
+  - render:preview_SC02_SH020
+  - render:preview_SC02_SH030
+  - render:preview_SC03_SH010
+  - render:preview_SC03_SH020
+  - render:preview_SC03_SH030
+  - render:preview_SC03_SH040
+  - render:preview_SC03_SH050
+  - render:preview_SC03_SH060
+  - render:preview_SC03_SH070
+  - render:preview_SC04_SH010
+  - render:preview_SC04_SH020
+  - render:preview_SC04_SH030
+  - render:preview_SC04_SH040
+  - render:preview_SC04_SH050
+  - render:preview_SC04_SH060
+  - render:preview_SC04_SH070
+  - render:preview_SC04_SH080
+  - render:preview_SC04_SH090
+  - render:preview_SC05_SH010
+  - render:preview_SC05_SH020
+  - render:preview_SC05_SH030
+  - render:preview_SC06_SH010
+  AUDIO:
+  - audio:mix
+  EDIT:
+  - edit:animatic
+  - edit:edl
+  QA:
+  - qa:audio
+  - qa:delivery
+  - qa:motion
+  - qa:stills

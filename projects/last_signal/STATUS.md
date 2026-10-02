@@ -82,6 +82,7 @@ LOCKED: 161, PROPOSED: 39
 | color_bible | LOOK | APPROVED (stale) | 1613e889e602 |
 | creative_direction | CREATIVE_DIRECTION | APPROVED | 2a9437a4219a |
 | edit_plan | ANIMATION_PREVIEW | PROPOSED (stale) | 603fceb0350f |
+| exposure_analysis | PREVIEW | PROPOSED (stale) | a2b9b93c6d18 |
 | g1_review | CREATIVE_DIRECTION | APPROVED | b1adbcecb1d6 |
 | g2_review | SCREENPLAY | APPROVED | 0913c3ea1c36 |
 | g3_review | WORLD_CHARACTERS | APPROVED (stale) | d26db206b8cf |
@@ -241,6 +242,7 @@ LOCKED: 161, PROPOSED: 39
 - stale: artifact:cinematography_bible
 - stale: artifact:color_bible
 - stale: artifact:edit_plan
+- stale: artifact:exposure_analysis
 - stale: artifact:g3_review
 - stale: artifact:g4_review
 - stale: artifact:g5_review
