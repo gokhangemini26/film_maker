@@ -43,3 +43,4 @@ Thumbs.db
 # animation working frames and playblasts (never committed)
 projects/*/10_blender/frames/
 projects/*/10_blender/playblast/
+projects/*/references/**/*.wav

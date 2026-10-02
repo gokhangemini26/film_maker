@@ -1,0 +1,79 @@
+fm:
+  id: brief
+  kind: brief
+  phase: BRIEF
+  status: PROPOSED
+  owner_role: executive-producer
+  summary: 'The user''s creative brief. status: given | assumed | unknown.'
+fields:
+  title:
+    value: 'Biyolojiden Silikona: Zekanın Evrimi'
+    status: given
+  concept:
+    value: >-
+      2D animated book-summary episode of Max Bennett's "A Brief History of Intelligence"
+      (Zekanın Kısa Tarihi), driven entirely by the user's own recorded Turkish narration
+      (references/voice/narration.m4a, 125.4 s). Four narrated sections: hook + intro,
+      the five breakthroughs of brain evolution, catastrophic forgetting in AI, the sixth
+      breakthrough (biology to silicon).
+    status: given
+  genre:
+    value: educational explainer / book summary (YouTube)
+    status: given
+  duration_s:
+    value: 125.4
+    status: given
+  target_audience:
+    value: Turkish-speaking YouTube audience curious about AI, neuroscience and books
+    status: assumed
+  emotional_goal:
+    value: curiosity and wonder - from "why can't AI load a dishwasher?" to the closing provocation about moving intelligence into silicon
+    status: assumed
+  story_idea:
+    value: Locked voice-over transcript with scene notes (00:00-00:20 intro, 00:20-00:45 five stages, 00:45-01:15 catastrophic forgetting, 01:15-01:45 sixth breakthrough). Real audio timing is longer (scene 1 ends 23.5 s; total 125.4 s).
+    status: given
+  visual_style:
+    value: 2D animation, YouTube-quality and detailed. Proposed - flat vector illustration with soft gradients, glow, light grain and parallax depth (premium science-explainer look), all original designs.
+    status: assumed
+  color_palette:
+    value: Proposed - deep navy night base; warm amber/coral for biology and evolution; cool cyan/violet for silicon and AI. The warm-to-cool shift carries the title's journey from biology to silicon.
+    status: assumed
+  references:
+    value: null
+    status: unknown
+  realism:
+    value: stylised
+    status: assumed
+  animation_style:
+    value: 2D motion graphics with character animation (easing, squash/stretch, secondary motion), camera moves in 2D (push-in, pan, parallax)
+    status: assumed
+  camera_style:
+    value: virtual 2D camera; slow push-ins, match-cut transitions between ideas
+    status: assumed
+  lighting_style:
+    value: stylised rim/glow lighting, soft radial key light per scene
+    status: assumed
+  environment:
+    value: abstract explainer spaces plus concrete vignettes (chess board, kitchen, brain, rock strata with fossils)
+    status: assumed
+  characters:
+    value: An original domestic robot (the AI) as recurring character; no real persons depicted
+    status: assumed
+  era:
+    value: present day framing a 600-million-year span
+    status: given
+  location:
+    value: null
+    status: unknown
+  aspect_ratio:
+    value: '16:9'
+    status: assumed
+  fps:
+    value: 30
+    status: assumed
+  special_requirements:
+    value: >-
+      Work scene by scene - scene 1 first, iterate until the quality bar is met, then the other scenes.
+      Use the supplied narration audio unchanged as the master timeline. Renderer is the 2D backend
+      (engines/two_d, skia), not Blender, because the user asked for 2D.
+    status: given

@@ -1,0 +1,95 @@
+schema_version: 1
+project: zeka_tarihi
+title: 'Biyolojiden Silikona: Zekanın Evrimi'
+sandbox: false
+created_at: '2026-10-02T20:23:41Z'
+phase: IDEA
+phase_status: in_progress
+gates:
+  G1:
+    status: pending
+    decided_by: null
+    decided_at: null
+    notes: null
+    approved_hashes: {}
+    ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
+  G2:
+    status: pending
+    decided_by: null
+    decided_at: null
+    notes: null
+    approved_hashes: {}
+    ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
+  G3:
+    status: pending
+    decided_by: null
+    decided_at: null
+    notes: null
+    approved_hashes: {}
+    ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
+  G4:
+    status: pending
+    decided_by: null
+    decided_at: null
+    notes: null
+    approved_hashes: {}
+    ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
+  G5:
+    status: pending
+    decided_by: null
+    decided_at: null
+    notes: null
+    approved_hashes: {}
+    ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
+  G6:
+    status: pending
+    decided_by: null
+    decided_at: null
+    notes: null
+    approved_hashes: {}
+    ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
+  G7:
+    status: pending
+    decided_by: null
+    decided_at: null
+    notes: null
+    approved_hashes: {}
+    ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
+  G8:
+    status: pending
+    decided_by: null
+    decided_at: null
+    notes: null
+    approved_hashes: {}
+    ledger_seq: null
+    review_verdict: null
+    review_acknowledged: false
+    amendments: 0
+canon: {}
+artifacts: {}
+shots: {}
+authorizations: []
+changes: {}
+ledger_seq: 1
+ledger_head: sha256:1788972c76252e68515bba7a8247423bdcf99ced5afbf274286589d702892cfd

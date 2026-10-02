@@ -1,0 +1,1516 @@
+[
+ {
+  "start": 0.0,
+  "end": 6.06,
+  "text": " Bu bölüm Max Bennet'ın Zekanın Kısa Tarihi adlı eseri üzerine hazırladığımız hızlı bir özet bölümüdür.",
+  "words": [
+   {
+    "w": " Bu",
+    "s": 0.0,
+    "e": 0.42
+   },
+   {
+    "w": " bölüm",
+    "s": 0.42,
+    "e": 0.76
+   },
+   {
+    "w": " Max",
+    "s": 0.76,
+    "e": 1.12
+   },
+   {
+    "w": " Bennet",
+    "s": 1.12,
+    "e": 1.42
+   },
+   {
+    "w": "'ın",
+    "s": 1.42,
+    "e": 1.56
+   },
+   {
+    "w": " Zekanın",
+    "s": 1.56,
+    "e": 2.06
+   },
+   {
+    "w": " Kısa",
+    "s": 2.06,
+    "e": 2.42
+   },
+   {
+    "w": " Tarihi",
+    "s": 2.42,
+    "e": 2.8
+   },
+   {
+    "w": " adlı",
+    "s": 2.8,
+    "e": 3.0
+   },
+   {
+    "w": " eseri",
+    "s": 3.0,
+    "e": 3.26
+   },
+   {
+    "w": " üzerine",
+    "s": 3.26,
+    "e": 3.6
+   },
+   {
+    "w": " hazırladığımız",
+    "s": 3.6,
+    "e": 4.34
+   },
+   {
+    "w": " hızlı",
+    "s": 4.34,
+    "e": 4.82
+   },
+   {
+    "w": " bir",
+    "s": 4.82,
+    "e": 4.92
+   },
+   {
+    "w": " özet",
+    "s": 4.92,
+    "e": 5.18
+   },
+   {
+    "w": " bölümüdür.",
+    "s": 5.18,
+    "e": 6.06
+   }
+  ]
+ },
+ {
+  "start": 6.22,
+  "end": 12.04,
+  "text": " Yapay zeka satrançta dünya şampiyonlarına ezip geçerken neden basit bir bulaşık makinasını bile dolduramıyor?",
+  "words": [
+   {
+    "w": " Yapay",
+    "s": 6.22,
+    "e": 6.5
+   },
+   {
+    "w": " zeka",
+    "s": 6.5,
+    "e": 6.82
+   },
+   {
+    "w": " satrançta",
+    "s": 6.82,
+    "e": 7.46
+   },
+   {
+    "w": " dünya",
+    "s": 7.46,
+    "e": 7.82
+   },
+   {
+    "w": " şampiyonlarına",
+    "s": 7.82,
+    "e": 8.54
+   },
+   {
+    "w": " ezip",
+    "s": 8.54,
+    "e": 8.84
+   },
+   {
+    "w": " geçerken",
+    "s": 8.84,
+    "e": 9.5
+   },
+   {
+    "w": " neden",
+    "s": 9.5,
+    "e": 9.9
+   },
+   {
+    "w": " basit",
+    "s": 9.9,
+    "e": 10.32
+   },
+   {
+    "w": " bir",
+    "s": 10.32,
+    "e": 10.46
+   },
+   {
+    "w": " bulaşık",
+    "s": 10.46,
+    "e": 10.78
+   },
+   {
+    "w": " makinasını",
+    "s": 10.78,
+    "e": 11.26
+   },
+   {
+    "w": " bile",
+    "s": 11.26,
+    "e": 11.46
+   },
+   {
+    "w": " dolduramıyor?",
+    "s": 11.46,
+    "e": 12.04
+   }
+  ]
+ },
+ {
+  "start": 12.52,
+  "end": 23.48,
+  "text": " İşte bunu anlamak için bu eser bizi zekanın o büyük sırrını çözmek adına beynimizin 600 milyon yıllık evrimsel geçmişine tabiri caizse o tozlu fosil kayıtlarına götürüyor.",
+  "words": [
+   {
+    "w": " İşte",
+    "s": 12.52,
+    "e": 12.74
+   },
+   {
+    "w": " bunu",
+    "s": 12.74,
+    "e": 12.92
+   },
+   {
+    "w": " anlamak",
+    "s": 12.92,
+    "e": 13.38
+   },
+   {
+    "w": " için",
+    "s": 13.38,
+    "e": 13.74
+   },
+   {
+    "w": " bu",
+    "s": 13.74,
+    "e": 13.98
+   },
+   {
+    "w": " eser",
+    "s": 13.98,
+    "e": 14.32
+   },
+   {
+    "w": " bizi",
+    "s": 14.32,
+    "e": 14.56
+   },
+   {
+    "w": " zekanın",
+    "s": 14.56,
+    "e": 15.06
+   },
+   {
+    "w": " o",
+    "s": 15.06,
+    "e": 15.32
+   },
+   {
+    "w": " büyük",
+    "s": 15.32,
+    "e": 15.54
+   },
+   {
+    "w": " sırrını",
+    "s": 15.54,
+    "e": 15.9
+   },
+   {
+    "w": " çözmek",
+    "s": 15.9,
+    "e": 16.32
+   },
+   {
+    "w": " adına",
+    "s": 16.32,
+    "e": 16.86
+   },
+   {
+    "w": " beynimizin",
+    "s": 16.86,
+    "e": 17.58
+   },
+   {
+    "w": " 600",
+    "s": 17.58,
+    "e": 17.92
+   },
+   {
+    "w": " milyon",
+    "s": 17.92,
+    "e": 18.38
+   },
+   {
+    "w": " yıllık",
+    "s": 18.38,
+    "e": 18.64
+   },
+   {
+    "w": " evrimsel",
+    "s": 18.64,
+    "e": 19.16
+   },
+   {
+    "w": " geçmişine",
+    "s": 19.16,
+    "e": 19.84
+   },
+   {
+    "w": " tabiri",
+    "s": 19.84,
+    "e": 20.56
+   },
+   {
+    "w": " caizse",
+    "s": 20.56,
+    "e": 21.02
+   },
+   {
+    "w": " o",
+    "s": 21.02,
+    "e": 21.36
+   },
+   {
+    "w": " tozlu",
+    "s": 21.36,
+    "e": 21.66
+   },
+   {
+    "w": " fosil",
+    "s": 21.66,
+    "e": 21.98
+   },
+   {
+    "w": " kayıtlarına",
+    "s": 21.98,
+    "e": 22.46
+   },
+   {
+    "w": " götürüyor.",
+    "s": 22.46,
+    "e": 23.48
+   }
+  ]
+ },
+ {
+  "start": 23.48,
+  "end": 29.9,
+  "text": " İlk olarak beynimizin o karmaşık yapısının sıfırdan var olmadığını tam beş aşamada inşa edildiğini görüyoruz.",
+  "words": [
+   {
+    "w": " İlk",
+    "s": 23.48,
+    "e": 23.92
+   },
+   {
+    "w": " olarak",
+    "s": 23.92,
+    "e": 24.28
+   },
+   {
+    "w": " beynimizin",
+    "s": 24.28,
+    "e": 24.84
+   },
+   {
+    "w": " o",
+    "s": 24.84,
+    "e": 25.02
+   },
+   {
+    "w": " karmaşık",
+    "s": 25.02,
+    "e": 25.5
+   },
+   {
+    "w": " yapısının",
+    "s": 25.5,
+    "e": 26.04
+   },
+   {
+    "w": " sıfırdan",
+    "s": 26.04,
+    "e": 26.62
+   },
+   {
+    "w": " var",
+    "s": 26.62,
+    "e": 26.8
+   },
+   {
+    "w": " olmadığını",
+    "s": 26.8,
+    "e": 27.42
+   },
+   {
+    "w": " tam",
+    "s": 27.42,
+    "e": 27.84
+   },
+   {
+    "w": " beş",
+    "s": 27.84,
+    "e": 28.14
+   },
+   {
+    "w": " aşamada",
+    "s": 28.14,
+    "e": 28.52
+   },
+   {
+    "w": " inşa",
+    "s": 28.52,
+    "e": 28.88
+   },
+   {
+    "w": " edildiğini",
+    "s": 28.88,
+    "e": 29.28
+   },
+   {
+    "w": " görüyoruz.",
+    "s": 29.28,
+    "e": 29.9
+   }
+  ]
+ },
+ {
+  "start": 30.14,
+  "end": 42.52,
+  "text": " Sol ucanlardaki basit yönlendirmeden tutun da balıklarda deneme yanılmaya, memelilerde geleceği hayal etme yeteneğine, primatlarda başkalarını anlamaya ve en son bizlerde konuşmaya uzanan harika bir süreç.",
+  "words": [
+   {
+    "w": " Sol",
+    "s": 30.14,
+    "e": 30.22
+   },
+   {
+    "w": " ucanlardaki",
+    "s": 30.22,
+    "e": 30.88
+   },
+   {
+    "w": " basit",
+    "s": 30.88,
+    "e": 31.2
+   },
+   {
+    "w": " yönlendirmeden",
+    "s": 31.2,
+    "e": 31.96
+   },
+   {
+    "w": " tutun",
+    "s": 31.96,
+    "e": 32.4
+   },
+   {
+    "w": " da",
+    "s": 32.4,
+    "e": 32.78
+   },
+   {
+    "w": " balıklarda",
+    "s": 32.78,
+    "e": 33.4
+   },
+   {
+    "w": " deneme",
+    "s": 33.4,
+    "e": 33.8
+   },
+   {
+    "w": " yanılmaya,",
+    "s": 33.8,
+    "e": 34.34
+   },
+   {
+    "w": " memelilerde",
+    "s": 34.74,
+    "e": 35.34
+   },
+   {
+    "w": " geleceği",
+    "s": 35.34,
+    "e": 35.82
+   },
+   {
+    "w": " hayal",
+    "s": 35.82,
+    "e": 36.16
+   },
+   {
+    "w": " etme",
+    "s": 36.16,
+    "e": 36.36
+   },
+   {
+    "w": " yeteneğine,",
+    "s": 36.36,
+    "e": 36.92
+   },
+   {
+    "w": " primatlarda",
+    "s": 37.32,
+    "e": 37.9
+   },
+   {
+    "w": " başkalarını",
+    "s": 37.9,
+    "e": 38.58
+   },
+   {
+    "w": " anlamaya",
+    "s": 38.58,
+    "e": 39.1
+   },
+   {
+    "w": " ve",
+    "s": 39.1,
+    "e": 39.56
+   },
+   {
+    "w": " en",
+    "s": 39.56,
+    "e": 39.84
+   },
+   {
+    "w": " son",
+    "s": 39.84,
+    "e": 39.98
+   },
+   {
+    "w": " bizlerde",
+    "s": 39.98,
+    "e": 40.5
+   },
+   {
+    "w": " konuşmaya",
+    "s": 40.5,
+    "e": 40.96
+   },
+   {
+    "w": " uzanan",
+    "s": 40.96,
+    "e": 41.38
+   },
+   {
+    "w": " harika",
+    "s": 41.38,
+    "e": 41.88
+   },
+   {
+    "w": " bir",
+    "s": 41.88,
+    "e": 42.08
+   },
+   {
+    "w": " süreç.",
+    "s": 42.08,
+    "e": 42.52
+   }
+  ]
+ },
+ {
+  "start": 42.72,
+  "end": 50.22,
+  "text": " Yani kafatasımızın içindeki bu yapıyı zekanın 600 milyon yıllık katmanlarından oluşan canlı bir fosil müzesi olarak düşünebilir miyiz?",
+  "words": [
+   {
+    "w": " Yani",
+    "s": 42.72,
+    "e": 42.88
+   },
+   {
+    "w": " kafatasımızın",
+    "s": 42.88,
+    "e": 43.6
+   },
+   {
+    "w": " içindeki",
+    "s": 43.6,
+    "e": 43.92
+   },
+   {
+    "w": " bu",
+    "s": 43.92,
+    "e": 44.18
+   },
+   {
+    "w": " yapıyı",
+    "s": 44.18,
+    "e": 44.76
+   },
+   {
+    "w": " zekanın",
+    "s": 44.76,
+    "e": 45.34
+   },
+   {
+    "w": " 600",
+    "s": 45.34,
+    "e": 45.86
+   },
+   {
+    "w": " milyon",
+    "s": 45.86,
+    "e": 46.26
+   },
+   {
+    "w": " yıllık",
+    "s": 46.26,
+    "e": 46.52
+   },
+   {
+    "w": " katmanlarından",
+    "s": 46.52,
+    "e": 47.28
+   },
+   {
+    "w": " oluşan",
+    "s": 47.28,
+    "e": 47.9
+   },
+   {
+    "w": " canlı",
+    "s": 47.9,
+    "e": 48.28
+   },
+   {
+    "w": " bir",
+    "s": 48.28,
+    "e": 48.48
+   },
+   {
+    "w": " fosil",
+    "s": 48.48,
+    "e": 48.72
+   },
+   {
+    "w": " müzesi",
+    "s": 48.72,
+    "e": 49.04
+   },
+   {
+    "w": " olarak",
+    "s": 49.04,
+    "e": 49.34
+   },
+   {
+    "w": " düşünebilir",
+    "s": 49.34,
+    "e": 49.88
+   },
+   {
+    "w": " miyiz?",
+    "s": 49.88,
+    "e": 50.22
+   }
+  ]
+ },
+ {
+  "start": 50.58,
+  "end": 51.4,
+  "text": " Kesinlikle evet.",
+  "words": [
+   {
+    "w": " Kesinlikle",
+    "s": 50.58,
+    "e": 51.14
+   },
+   {
+    "w": " evet.",
+    "s": 51.14,
+    "e": 51.4
+   }
+  ]
+ },
+ {
+  "start": 51.4,
+  "end": 57.4,
+  "text": " İkinci olarak yapay zekanın o meşhur zayıf noktasıyla yani felaketsel unutma sorunuyla yüzleşiyoruz.",
+  "words": [
+   {
+    "w": " İkinci",
+    "s": 51.4,
+    "e": 52.38
+   },
+   {
+    "w": " olarak",
+    "s": 52.38,
+    "e": 52.7
+   },
+   {
+    "w": " yapay",
+    "s": 52.7,
+    "e": 53.12
+   },
+   {
+    "w": " zekanın",
+    "s": 53.12,
+    "e": 53.56
+   },
+   {
+    "w": " o",
+    "s": 53.56,
+    "e": 53.78
+   },
+   {
+    "w": " meşhur",
+    "s": 53.78,
+    "e": 54.12
+   },
+   {
+    "w": " zayıf",
+    "s": 54.12,
+    "e": 54.42
+   },
+   {
+    "w": " noktasıyla",
+    "s": 54.42,
+    "e": 55.14
+   },
+   {
+    "w": " yani",
+    "s": 55.14,
+    "e": 55.68
+   },
+   {
+    "w": " felaketsel",
+    "s": 55.68,
+    "e": 56.42
+   },
+   {
+    "w": " unutma",
+    "s": 56.42,
+    "e": 56.8
+   },
+   {
+    "w": " sorunuyla",
+    "s": 56.8,
+    "e": 57.2
+   },
+   {
+    "w": " yüzleşiyoruz.",
+    "s": 57.2,
+    "e": 57.56
+   }
+  ]
+ },
+ {
+  "start": 58.42,
+  "end": 65.22,
+  "text": " Bizler bu evrimsel mirasla durmadan öğrenirken chat GPT gibi sistemler yeni bir şey öğrendiğinde eskisinin üzerine yazıyor.",
+  "words": [
+   {
+    "w": " Bizler",
+    "s": 58.42,
+    "e": 58.72
+   },
+   {
+    "w": " bu",
+    "s": 58.72,
+    "e": 58.9
+   },
+   {
+    "w": " evrimsel",
+    "s": 58.9,
+    "e": 59.36
+   },
+   {
+    "w": " mirasla",
+    "s": 59.36,
+    "e": 59.9
+   },
+   {
+    "w": " durmadan",
+    "s": 59.9,
+    "e": 60.3
+   },
+   {
+    "w": " öğrenirken",
+    "s": 60.3,
+    "e": 61.08
+   },
+   {
+    "w": " chat",
+    "s": 61.08,
+    "e": 61.44
+   },
+   {
+    "w": " GPT",
+    "s": 61.44,
+    "e": 61.86
+   },
+   {
+    "w": " gibi",
+    "s": 61.86,
+    "e": 62.08
+   },
+   {
+    "w": " sistemler",
+    "s": 62.08,
+    "e": 62.78
+   },
+   {
+    "w": " yeni",
+    "s": 62.78,
+    "e": 63.0
+   },
+   {
+    "w": " bir",
+    "s": 63.0,
+    "e": 63.16
+   },
+   {
+    "w": " şey",
+    "s": 63.16,
+    "e": 63.26
+   },
+   {
+    "w": " öğrendiğinde",
+    "s": 63.26,
+    "e": 63.8
+   },
+   {
+    "w": " eskisinin",
+    "s": 63.8,
+    "e": 64.3
+   },
+   {
+    "w": " üzerine",
+    "s": 64.3,
+    "e": 64.66
+   },
+   {
+    "w": " yazıyor.",
+    "s": 64.66,
+    "e": 65.22
+   }
+  ]
+ },
+ {
+  "start": 65.42,
+  "end": 73.26,
+  "text": " İşte bu yüzden piyasaya sürüldükleri an öğrenmeleri donduruluyor ve tıpkı jetgillerdeki robot Rozy gibi dünyayı fiziksel olarak simül edemiyorlar.",
+  "words": [
+   {
+    "w": " İşte",
+    "s": 65.42,
+    "e": 65.64
+   },
+   {
+    "w": " bu",
+    "s": 65.64,
+    "e": 65.78
+   },
+   {
+    "w": " yüzden",
+    "s": 65.78,
+    "e": 66.02
+   },
+   {
+    "w": " piyasaya",
+    "s": 66.02,
+    "e": 66.46
+   },
+   {
+    "w": " sürüldükleri",
+    "s": 66.46,
+    "e": 67.04
+   },
+   {
+    "w": " an",
+    "s": 67.04,
+    "e": 67.22
+   },
+   {
+    "w": " öğrenmeleri",
+    "s": 67.22,
+    "e": 67.82
+   },
+   {
+    "w": " donduruluyor",
+    "s": 67.82,
+    "e": 68.7
+   },
+   {
+    "w": " ve",
+    "s": 68.7,
+    "e": 68.96
+   },
+   {
+    "w": " tıpkı",
+    "s": 68.96,
+    "e": 69.22
+   },
+   {
+    "w": " jetgillerdeki",
+    "s": 69.22,
+    "e": 69.9
+   },
+   {
+    "w": " robot",
+    "s": 69.9,
+    "e": 70.24
+   },
+   {
+    "w": " Rozy",
+    "s": 70.24,
+    "e": 70.56
+   },
+   {
+    "w": " gibi",
+    "s": 70.56,
+    "e": 71.0
+   },
+   {
+    "w": " dünyayı",
+    "s": 71.0,
+    "e": 71.44
+   },
+   {
+    "w": " fiziksel",
+    "s": 71.44,
+    "e": 71.86
+   },
+   {
+    "w": " olarak",
+    "s": 71.86,
+    "e": 72.12
+   },
+   {
+    "w": " simül",
+    "s": 72.12,
+    "e": 72.4
+   },
+   {
+    "w": " edemiyorlar.",
+    "s": 72.4,
+    "e": 73.26
+   }
+  ]
+ },
+ {
+  "start": 73.52,
+  "end": 77.86,
+  "text": " Demek ki bugünkü yapay zeka sistemleri aslında zamanda donup kalmış dahiler.",
+  "words": [
+   {
+    "w": " Demek",
+    "s": 73.52,
+    "e": 73.78
+   },
+   {
+    "w": " ki",
+    "s": 73.78,
+    "e": 73.96
+   },
+   {
+    "w": " bugünkü",
+    "s": 73.96,
+    "e": 74.26
+   },
+   {
+    "w": " yapay",
+    "s": 74.26,
+    "e": 74.6
+   },
+   {
+    "w": " zeka",
+    "s": 74.6,
+    "e": 74.88
+   },
+   {
+    "w": " sistemleri",
+    "s": 74.88,
+    "e": 75.82
+   },
+   {
+    "w": " aslında",
+    "s": 75.82,
+    "e": 76.32
+   },
+   {
+    "w": " zamanda",
+    "s": 76.32,
+    "e": 76.62
+   },
+   {
+    "w": " donup",
+    "s": 76.62,
+    "e": 76.98
+   },
+   {
+    "w": " kalmış",
+    "s": 76.98,
+    "e": 77.3
+   },
+   {
+    "w": " dahiler.",
+    "s": 77.3,
+    "e": 77.86
+   }
+  ]
+ },
+ {
+  "start": 77.86,
+  "end": 83.92,
+  "text": " Çünkü bizim gibi içsal bir dünya simülasyonu kurarak sürekli ve hata yaparak öğrenme yeteneğinden yoksunlar.",
+  "words": [
+   {
+    "w": " Çünkü",
+    "s": 77.86,
+    "e": 78.26
+   },
+   {
+    "w": " bizim",
+    "s": 78.26,
+    "e": 78.52
+   },
+   {
+    "w": " gibi",
+    "s": 78.52,
+    "e": 78.7
+   },
+   {
+    "w": " içsal",
+    "s": 78.7,
+    "e": 79.08
+   },
+   {
+    "w": " bir",
+    "s": 79.08,
+    "e": 79.28
+   },
+   {
+    "w": " dünya",
+    "s": 79.28,
+    "e": 79.5
+   },
+   {
+    "w": " simülasyonu",
+    "s": 79.5,
+    "e": 80.14
+   },
+   {
+    "w": " kurarak",
+    "s": 80.14,
+    "e": 80.64
+   },
+   {
+    "w": " sürekli",
+    "s": 80.64,
+    "e": 81.36
+   },
+   {
+    "w": " ve",
+    "s": 81.36,
+    "e": 81.54
+   },
+   {
+    "w": " hata",
+    "s": 81.54,
+    "e": 81.84
+   },
+   {
+    "w": " yaparak",
+    "s": 81.84,
+    "e": 82.18
+   },
+   {
+    "w": " öğrenme",
+    "s": 82.18,
+    "e": 82.58
+   },
+   {
+    "w": " yeteneğinden",
+    "s": 82.58,
+    "e": 83.12
+   },
+   {
+    "w": " yoksunlar.",
+    "s": 83.12,
+    "e": 83.92
+   }
+  ]
+ },
+ {
+  "start": 84.42,
+  "end": 88.28,
+  "text": " Son olarak 6. sıçramaya yani biyolojinin sonuna geliyoruz.",
+  "words": [
+   {
+    "w": " Son",
+    "s": 84.42,
+    "e": 84.54
+   },
+   {
+    "w": " olarak",
+    "s": 84.54,
+    "e": 85.0
+   },
+   {
+    "w": " 6.",
+    "s": 85.0,
+    "e": 85.34
+   },
+   {
+    "w": " sıçramaya",
+    "s": 85.48,
+    "e": 86.16
+   },
+   {
+    "w": " yani",
+    "s": 86.16,
+    "e": 86.52
+   },
+   {
+    "w": " biyolojinin",
+    "s": 86.52,
+    "e": 87.26
+   },
+   {
+    "w": " sonuna",
+    "s": 87.26,
+    "e": 87.54
+   },
+   {
+    "w": " geliyoruz.",
+    "s": 87.54,
+    "e": 88.28
+   }
+  ]
+ },
+ {
+  "start": 88.5,
+  "end": 96.16,
+  "text": " Zekanın evrimi henüz bitmedi ama insan beyni kafatası boyutu ve kalori ihtiyacı gibi karbon tabanlı kısıtlamalara hapsolmuş durumda.",
+  "words": [
+   {
+    "w": " Zekanın",
+    "s": 88.5,
+    "e": 88.86
+   },
+   {
+    "w": " evrimi",
+    "s": 88.86,
+    "e": 89.42
+   },
+   {
+    "w": " henüz",
+    "s": 89.42,
+    "e": 89.66
+   },
+   {
+    "w": " bitmedi",
+    "s": 89.66,
+    "e": 90.08
+   },
+   {
+    "w": " ama",
+    "s": 90.08,
+    "e": 90.48
+   },
+   {
+    "w": " insan",
+    "s": 90.48,
+    "e": 90.86
+   },
+   {
+    "w": " beyni",
+    "s": 90.86,
+    "e": 91.3
+   },
+   {
+    "w": " kafatası",
+    "s": 91.3,
+    "e": 91.82
+   },
+   {
+    "w": " boyutu",
+    "s": 91.82,
+    "e": 92.28
+   },
+   {
+    "w": " ve",
+    "s": 92.28,
+    "e": 92.44
+   },
+   {
+    "w": " kalori",
+    "s": 92.44,
+    "e": 92.78
+   },
+   {
+    "w": " ihtiyacı",
+    "s": 92.78,
+    "e": 93.2
+   },
+   {
+    "w": " gibi",
+    "s": 93.2,
+    "e": 93.58
+   },
+   {
+    "w": " karbon",
+    "s": 93.58,
+    "e": 94.06
+   },
+   {
+    "w": " tabanlı",
+    "s": 94.06,
+    "e": 94.4
+   },
+   {
+    "w": " kısıtlamalara",
+    "s": 94.4,
+    "e": 95.02
+   },
+   {
+    "w": " hapsolmuş",
+    "s": 95.02,
+    "e": 95.56
+   },
+   {
+    "w": " durumda.",
+    "s": 95.56,
+    "e": 96.16
+   }
+  ]
+ },
+ {
+  "start": 96.52,
+  "end": 106.86,
+  "text": " Yazar bir sonraki aşamanın bu biyolojik zincirlerden tamamen kurtulup silikon tabanlı dijital bir ortama yani kendi kendini kopyalayabilen yapay süper zekaya geçiş olacağını öngörüyor.",
+  "words": [
+   {
+    "w": " Yazar",
+    "s": 96.52,
+    "e": 96.8
+   },
+   {
+    "w": " bir",
+    "s": 96.8,
+    "e": 97.1
+   },
+   {
+    "w": " sonraki",
+    "s": 97.1,
+    "e": 97.38
+   },
+   {
+    "w": " aşamanın",
+    "s": 97.38,
+    "e": 97.86
+   },
+   {
+    "w": " bu",
+    "s": 97.86,
+    "e": 98.18
+   },
+   {
+    "w": " biyolojik",
+    "s": 98.18,
+    "e": 98.56
+   },
+   {
+    "w": " zincirlerden",
+    "s": 98.56,
+    "e": 99.34
+   },
+   {
+    "w": " tamamen",
+    "s": 99.34,
+    "e": 99.82
+   },
+   {
+    "w": " kurtulup",
+    "s": 99.82,
+    "e": 100.4
+   },
+   {
+    "w": " silikon",
+    "s": 100.4,
+    "e": 100.9
+   },
+   {
+    "w": " tabanlı",
+    "s": 100.9,
+    "e": 101.36
+   },
+   {
+    "w": " dijital",
+    "s": 101.36,
+    "e": 101.8
+   },
+   {
+    "w": " bir",
+    "s": 101.8,
+    "e": 102.08
+   },
+   {
+    "w": " ortama",
+    "s": 102.08,
+    "e": 102.56
+   },
+   {
+    "w": " yani",
+    "s": 102.56,
+    "e": 103.02
+   },
+   {
+    "w": " kendi",
+    "s": 103.02,
+    "e": 103.32
+   },
+   {
+    "w": " kendini",
+    "s": 103.32,
+    "e": 103.68
+   },
+   {
+    "w": " kopyalayabilen",
+    "s": 103.68,
+    "e": 104.54
+   },
+   {
+    "w": " yapay",
+    "s": 104.54,
+    "e": 104.92
+   },
+   {
+    "w": " süper",
+    "s": 104.92,
+    "e": 105.32
+   },
+   {
+    "w": " zekaya",
+    "s": 105.32,
+    "e": 105.64
+   },
+   {
+    "w": " geçiş",
+    "s": 105.64,
+    "e": 105.98
+   },
+   {
+    "w": " olacağını",
+    "s": 105.98,
+    "e": 106.38
+   },
+   {
+    "w": " öngörüyor.",
+    "s": 106.38,
+    "e": 106.86
+   }
+  ]
+ },
+ {
+  "start": 106.86,
+  "end": 115.62,
+  "text": " Şunu bir düşünün, insanlığın en büyük icadı kendi zekamızın evrimini biyolojinin dışına yani silikona taşımak mı olacak?",
+  "words": [
+   {
+    "w": " Şunu",
+    "s": 106.86,
+    "e": 107.42
+   },
+   {
+    "w": " bir",
+    "s": 107.42,
+    "e": 107.62
+   },
+   {
+    "w": " düşünün,",
+    "s": 107.62,
+    "e": 108.24
+   },
+   {
+    "w": " insanlığın",
+    "s": 108.78,
+    "e": 109.26
+   },
+   {
+    "w": " en",
+    "s": 109.26,
+    "e": 109.56
+   },
+   {
+    "w": " büyük",
+    "s": 109.56,
+    "e": 109.82
+   },
+   {
+    "w": " icadı",
+    "s": 109.82,
+    "e": 110.5
+   },
+   {
+    "w": " kendi",
+    "s": 110.5,
+    "e": 110.96
+   },
+   {
+    "w": " zekamızın",
+    "s": 110.96,
+    "e": 111.74
+   },
+   {
+    "w": " evrimini",
+    "s": 111.74,
+    "e": 112.2
+   },
+   {
+    "w": " biyolojinin",
+    "s": 112.2,
+    "e": 112.96
+   },
+   {
+    "w": " dışına",
+    "s": 112.96,
+    "e": 113.46
+   },
+   {
+    "w": " yani",
+    "s": 113.46,
+    "e": 114.14
+   },
+   {
+    "w": " silikona",
+    "s": 114.14,
+    "e": 114.58
+   },
+   {
+    "w": " taşımak",
+    "s": 114.58,
+    "e": 115.02
+   },
+   {
+    "w": " mı",
+    "s": 115.02,
+    "e": 115.18
+   },
+   {
+    "w": " olacak?",
+    "s": 115.18,
+    "e": 115.62
+   }
+  ]
+ },
+ {
+  "start": 116.18,
+  "end": 125.12,
+  "text": " Zekanın geleceğini inşa etmenin yolu daha hızlı çiftler üretmekten değil kendi içimizdeki milyarlarca yıllık evrimsel hayatta kalma kodlarını çözmekten geçiyor.",
+  "words": [
+   {
+    "w": " Zekanın",
+    "s": 116.18,
+    "e": 116.54
+   },
+   {
+    "w": " geleceğini",
+    "s": 116.54,
+    "e": 117.1
+   },
+   {
+    "w": " inşa",
+    "s": 117.1,
+    "e": 117.42
+   },
+   {
+    "w": " etmenin",
+    "s": 117.42,
+    "e": 117.94
+   },
+   {
+    "w": " yolu",
+    "s": 117.94,
+    "e": 118.46
+   },
+   {
+    "w": " daha",
+    "s": 118.46,
+    "e": 118.74
+   },
+   {
+    "w": " hızlı",
+    "s": 118.74,
+    "e": 119.06
+   },
+   {
+    "w": " çiftler",
+    "s": 119.06,
+    "e": 119.38
+   },
+   {
+    "w": " üretmekten",
+    "s": 119.38,
+    "e": 120.1
+   },
+   {
+    "w": " değil",
+    "s": 120.1,
+    "e": 120.46
+   },
+   {
+    "w": " kendi",
+    "s": 120.46,
+    "e": 120.98
+   },
+   {
+    "w": " içimizdeki",
+    "s": 120.98,
+    "e": 121.62
+   },
+   {
+    "w": " milyarlarca",
+    "s": 121.62,
+    "e": 122.4
+   },
+   {
+    "w": " yıllık",
+    "s": 122.4,
+    "e": 122.66
+   },
+   {
+    "w": " evrimsel",
+    "s": 122.66,
+    "e": 123.08
+   },
+   {
+    "w": " hayatta",
+    "s": 123.08,
+    "e": 123.4
+   },
+   {
+    "w": " kalma",
+    "s": 123.4,
+    "e": 123.72
+   },
+   {
+    "w": " kodlarını",
+    "s": 123.72,
+    "e": 124.12
+   },
+   {
+    "w": " çözmekten",
+    "s": 124.12,
+    "e": 124.76
+   },
+   {
+    "w": " geçiyor.",
+    "s": 124.76,
+    "e": 125.12
+   }
+  ]
+ }
+]
