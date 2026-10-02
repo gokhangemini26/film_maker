@@ -1,7 +1,7 @@
 shot_id: SC01_SH090
 scene_id: SC01
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 1.0
 serves:
 - intent.comic_then_tender
@@ -9,8 +9,8 @@ serves:
 creative_intent:
   narrative_purpose: He freezes, thumb in the air, and lets out a small stuck exhale.
   emotional_purpose: 'Laughter with him: the deadpan freeze.'
-  visual_purpose: The frontal medium close-up again, now centred and still, thumb raised in the lower
-    frame.
+  visual_purpose: 'The frontal medium close-up again, now centred and still: the deadpan face carries
+    the freeze; his hands are one held shape behind the wheel ring at the bottom of frame.'
   audience_effect: The viewer shares the held beat and expects him to try something.
 camera:
   lens_mm: 50
@@ -18,7 +18,7 @@ camera:
   movement: static
   start_position:
   - 1.29
-  - 1.0
+  - 1.5
   - 1.2
   end_position: null
   look_at: ren
@@ -28,8 +28,11 @@ composition:
   framing: medium_close
   aspect_ratio: 1.778
   subject_position: centre
-  notes: 'Same setup as SC01_SH010 (frontal through the windscreen). Held 24 frames: the minimum 1 s reaction
-    hold after a gag (camera.rhythm.pace).'
+  notes: 'Same setup as SC01_SH010 (frontal through the windscreen), v2 interior lens at (1.29, 1.50,
+    1.20), 0.50 m back from the approved y 1.00 (inside car_body_y max 1.55). Held 24 frames: the minimum
+    1 s reaction hold after a gag (camera.rhythm.pace). The raised thumb is deliberately not a frame element:
+    the frame is built on the face; his fists and the phone''s back sit inside the ring''s opening at
+    the bottom of frame, and the frame is not re-aimed to find the thumb (see rationale.blocking).'
 characters:
 - id: ren
   position:
@@ -97,13 +100,24 @@ assets:
 rationale:
   camera: 'Returning to the SH010 frontal (50 mm, eye level) makes the freeze a callback to his hopeful
     first frame. Rejected: a new angle (the freeze would read as a different moment rather than the same
-    face deflating).'
+    face deflating). v2 interior: the lens moves back with SH010 to y 1.50 (height, lens, aim unchanged)
+    so the callback is the same frame; at y 1.00 it had become a close-up with the crown cut. Rejected:
+    keeping y 1.00 (no longer the SH010 frame, so no callback).'
   composition: 'Centred and boxed by the windscreen pillars: the comic failure framing (camera.framing.space_and_size).
     Rejected: lead room (would promise an escape).'
   lighting: 'Unchanged hard sun: the world does not notice.'
   movement: 'Static: the freeze is funny only if nothing moves.'
   color: Unchanged cabin palette.
-  blocking: Thumb held up in the lower frame, face deadpan; the exhale in the last frames.
+  blocking: 'Face deadpan and centred; the exhale in the last frames. The raised thumb stays in the action
+    but is deliberately not framed for: at y 1.50 his fists and the phone sit behind the ring at the bottom
+    of frame, and the preview figure''s hands are rounded mitts, so a thumb does not read at medium close-up
+    even when the hands are in frame. The laugh is the dead-still face against the earlier hopeful SH010
+    face, which the frame keeps whole. Rejected: look_at phone_ren (the frame drops to his chest and cuts
+    the top of the face that carries the gag); a lower lens (with look_at ren the frame centre stays on
+    his head, so a lower lens only tilts up into a low angle, breaking eye level and the SH010 callback);
+    a thumb insert (a new shot inside a 24 f hold, and it explains the joke); a pose that lifts the hand
+    above the ring (the gap between the ring''s top arc and his chin is a few centimetres, so the hand
+    would cover the mouth that does the exhale).'
   animation: 'Cutting straight into a fully held freeze is the anime comic timing the character canon
     asks for (held-pose reactions, no rubbery take). Sixteen dead frames are the laugh; the small exhale
     is the only give, and the thumb staying up says he has not given up. Rejected: a sweat drop or a face-fault
@@ -114,7 +128,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
+  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -229,6 +243,4 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:ced7b32486ed4d040bd12165f24216e6db8e82ddc82562637f02aa43db797d6b
-stamp_note: SHOT_LIST changed only the SC01_SH020/030/050 height cells (v2 car interior lens move) and
-  added the v2 revision note; this shot's content is unchanged.
+stamped_content_hash: sha256:00d0f5a2bc7e995387c1bd8a144e74e2388f554c28b8bb37952a4f571d12a8e4

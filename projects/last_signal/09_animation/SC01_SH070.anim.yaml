@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH070
-    hash: sha256:16b4ec9d94ad86fcb4258dff110a619a6834609ba83cb3bb4f7f36815422b929
+    hash: sha256:7adc5204a2efb840c218753a419b48d80229bf18598a94c7014f25a0e6a04bab
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:animation.vocab.pose.ren
@@ -30,7 +30,7 @@ fm:
   - intent.open_hopeful_ending
   summary: 'Typing insert: 16-frame two-thumb burst types "Are you free tonight?" (21 chars), thumbs park,
     text held 42 frames.'
-  stamped_content_hash: sha256:4abb568eeea7b67d4accb0a72009da5452fa1a61cb48e1253d4c7322cc2f00c2
+  stamped_content_hash: sha256:bfa2ec61dd93d63b6d270c4012e3fdcf2028a5c025a9b1c0382df269f9dcff7f
 shot_id: SC01_SH070
 frames: 58
 vocab_version: 2
@@ -172,3 +172,6 @@ notes:
   version of it.
 - preview_frame 24 kept from the shot file (whole line typed, thumbs parked).
 - 'VOCAB GAP (minor): no cursor state (steady vs blink); the prose asks steady.'
+- Reviewed against the v2 lens move (lens (1.29, -0.34, 1.14) -> (1.28, 0.37, 1.17), 0.30 m on his eyeline
+  from the screen at (1.28, 0.62, 1.00); head and face hidden in inserts). car_phone_up already places
+  the phone there; typing f0-15, the 42-frame text hold, key-press events and frames 58 stand unchanged.

@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH090
-    hash: sha256:ced7b32486ed4d040bd12165f24216e6db8e82ddc82562637f02aa43db797d6b
+    hash: sha256:00d0f5a2bc7e995387c1bd8a144e74e2388f554c28b8bb37952a4f571d12a8e4
   - ref: canon:characters.ren.expressions
     hash: sha256:e59d1a65dbde02bb2660940e2e4c2a1a973d1088acce3d766cec064b3cd676d3
   - ref: canon:characters.ren.movement
@@ -26,7 +26,7 @@ fm:
   serves:
   - intent.comic_then_tender
   summary: 'Structured tracks for the freeze: a true 16-frame hold, then one small stuck exhale.'
-  stamped_content_hash: sha256:4742205134c353232504da38be3aba8ecefdfac1683403148fc1857b3b9b1649
+  stamped_content_hash: sha256:c9e510ca480a8c0d2d78b5a113808e72e41725a49ff26750badceca3bc9b5828
 shot_id: SC01_SH090
 frames: 24
 vocab_version: 2
@@ -40,8 +40,9 @@ characters:
     - f: 0
       ref: car_phone_up
       ease: hold
-      note: 'freeze already hit on the cut: eyes wide, small pupils, right thumb up in the air over the
-        phone (lower frame), phone in the left hand, whole body held'
+      note: 'freeze already hit on the cut: eyes wide, small pupils, right thumb up over the phone (kept
+        in the action but deliberately not framed: fists and phone sit behind the ring at the bottom of
+        frame), phone in the left hand, whole body held; the deadpan face carries the gag'
       rationale: one preset for the whole shot; the exhale is a breath key, not a pose change
     move:
       gait: none
@@ -63,7 +64,7 @@ characters:
     - f: 16
       ref: out_slow
       dur_f: 6
-      note: 'small stuck exhale: shoulders drop 1 cm (ease-in, f16-21); thumb stays up'
+      note: 'small stuck exhale: shoulders drop 1 cm (ease-in, f16-21); thumb stays up (unframed)'
       rationale: the only motion in the shot; stuck, so slow and small
 props:
   phone_ren:
@@ -89,3 +90,11 @@ preview_frames:
 notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
+- 'Reviewed against the v2 lens move (y 1.00 -> 1.50 with SH010, same frame for the callback) and the
+  cinematographer''s blocking rationale: the raised thumb stays in the action but is deliberately not
+  framed (rounded preview hands, ring at the bottom of frame); no pose lifts the hand above the ring,
+  which would cover the mouth that does the exhale. The f0-15 true hold, the stuck_exhale event at f16
+  and frames 24 are unchanged.'
+- 'DEPENDENCY: the shot file''s prose animation block still says "thumb up in the air over the phone (lower
+  frame)" (key f0); this file supersedes it (the animation-director does not edit a shot that has an anim
+  file).'

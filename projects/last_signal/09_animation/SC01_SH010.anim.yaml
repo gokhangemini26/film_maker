@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH010
-    hash: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
+    hash: sha256:f9fb0e2c41db15728c90aa029190765b68f8dffbf26f47fc7ff8a76376d7f33b
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -36,7 +36,7 @@ fm:
   - intent.anime_feel
   summary: 'Structured tracks for the vanity beat: mirror tilt, tuft press, let it be, eyes drop to the
     phone.'
-  stamped_content_hash: sha256:b749f224559d8be2e0a06281e9c441772c9aea3445fb0df3349bf53f83b4108a
+  stamped_content_hash: sha256:06ffd1ced0e3a6cd9375a14731a422b9d1a85c913a1a0dd412fe9c22629e70a1
 shot_id: SC01_SH010
 frames: 40
 vocab_version: 2
@@ -50,15 +50,17 @@ characters:
     - f: 0
       ref: car_upright
       ease: hold
-      note: 'seated upright, phone low in the left hand on his thigh; the right hand is already leaving
-        the wheel (prose: "already rising" at f0 - the rise is the f1 blend)'
+      note: 'seated upright, phone in the left hand low in frame (v2 preview: uncovered, the ring wheel
+        behind his hands); the right hand is already leaving the wheel (prose: "already rising" at f0
+        - the rise is the f1 blend)'
       rationale: start from the neutral driver pose so the first burst reads from frame 1 as the FADE
         IN clears
     - f: 1
       ref: car_reach_up
       ease: ease_out
       blend_f: 5
-      note: right hand up to the mirror, contact at f6 (quick burst)
+      note: right hand up and across his body to the mirror, which sits in the upper frame on the right
+        (right-hand drive, mirror on his left), contact at f6 (quick burst)
     - f: 10
       ref: car_reach_up
       ease: hold
@@ -104,7 +106,7 @@ characters:
     look:
     - f: 0
       target: mirror
-      note: up, frame top-left, f0-33
+      note: up to the mirror, upper frame on the right (v2 preview), f0-33
     - f: 34
       target: phone
       note: eyes drop to the phone in his lap (lead into the map insert)
@@ -131,7 +133,7 @@ props:
   phone_ren:
   - f: 0
     attach: hand_l
-    note: low in the left hand on his thigh, screen away from the lens (glow invisible in the sun)
+    note: in the left hand low in frame, uncovered, screen away from the lens (glow invisible in the sun)
   car_body:
   - f: 0
     state: still
@@ -194,3 +196,13 @@ notes:
 - 'VOCAB GAP: crown tuft has no track (squash f14-18 under the palm, spring-back with one overshoot f19-22
   ending settled at f22). Needs a tuft prop/secondary track using ease overshoot_small; M3 risk: single
   keyed bone, no physics.'
+- 'Reviewed against the v2 lens move (y 1.00 -> 1.50 on the same axis; height, 50 mm and aim unchanged;
+  medium close-up restored with crown and tuft whole). Eyeline corrected: the v2 preview puts the mirror
+  in the upper frame on the right (SHOT_LIST v2 frontal revision), not top-left; on a right-hand-drive
+  car the mirror is on his left, so the right hand reaches up and across (same car_reach_up preset). Phone
+  wording follows the new composition (in his left hand, uncovered). Pose keys, holds, frames 40 and all
+  events (mirror_tilt f6, tuft_press f14, tuft_spring f19, mirror_back f26, eyes_to_phone f34) unchanged,
+  so audio cues stay valid.'
+- 'DEPENDENCY: the shot file''s prose animation block still says "frame top-left" (keys f0, eyeline) and
+  "phone low ... on his thigh". This file supersedes it; the animation-director does not edit a shot that
+  has an anim file, so the prose stays stale until the human rules otherwise.'

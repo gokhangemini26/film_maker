@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH140
-    hash: sha256:209db68556feab291fba285ddf380490e5dc1bd6f4e72fbab9f119708345bd51
+    hash: sha256:2e0e915f0eaf71dbf7339201311e4e9bee1593e2f0f5abc48f3603e7378372c9
   - ref: canon:animation.vocab.pose.ren
     hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
   - ref: canon:animation.vocab.look_target
@@ -30,7 +30,7 @@ fm:
   - intent.comic_then_tender
   summary: 'Battery insert across the cut: last dip frame at f0, back to full at f1, 4 % to 3 % at f2,
     held 30 frames; the bolt is gone.'
-  stamped_content_hash: sha256:0897f383ff32d0ad34077f02d4c8c864925938c27a76e76d3cadfcb33da01ff1
+  stamped_content_hash: sha256:813d954dfd9bdf8b94b80e96e2fef5c2e377e7e6490bbfaaa55289d284e8f4eb
 shot_id: SC01_SH140
 frames: 32
 vocab_version: 2
@@ -97,7 +97,8 @@ notes:
   version of it.
 - preview_frame 6 kept from the shot file (bolt gone, 3 %, full brightness).
 - 'Pose fix (phone placement): car_recline -> car_phone_up, look closed -> phone. Events, ui_timeline,
-  holds and frame count unchanged, so audio sync is untouched. The shot''s framing reference (screen about
-  (1.29, -0.09, 0.97), lens (1.29, -0.34, 1.14)) predates the v2 car interior: the rig''s driver faces
-  +y with the head at about y 0.3, so no pose can put the phone at y -0.09. The lens has to follow the
-  phone (cinematographer).'
+  holds and frame count unchanged, so audio sync is untouched.'
+- 'Resolved: the cinematographer moved the lens with the phone for the v2 interior (lens (1.28, 0.37,
+  1.17), 0.30 m on his eyeline from the screen at (1.28, 0.62, 1.00); head and face hidden in inserts).
+  That matches the car_phone_up placement above; ui_timeline dip, holds, car_silence / dip_end / battery_3
+  events and frames 32 stand unchanged.'

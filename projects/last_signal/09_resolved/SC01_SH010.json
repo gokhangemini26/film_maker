@@ -97,7 +97,7 @@
     "sensor_width_mm": 36.0,
     "start_position": [
       1.29,
-      1.0,
+      1.5,
       1.2
     ]
   },
@@ -469,7 +469,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "Frontal through the windscreen (on-axis). FG: rear-view mirror top-left and the glass's painted highlights kept off his face; MG: Ren, phone low in his left hand; BG: dim rear cabin and rear window. Top frame line below the headliner (about 1.38 m). Opens from FADE IN (camera.rhythm.transitions).",
+    "notes": "Frontal through the windscreen (on-axis). FG: rear-view mirror in the upper frame and the glass's painted highlights kept off his face; MG: Ren, phone in his left hand; BG: dim rear cabin and rear window. v2 interior lens at (1.29, 1.50, 1.20), 0.50 m further back along the same axis than the approved (1.29, 1.00, 1.20) and inside the car body (car_body_y max 1.55): the headliner edge is the top of frame, then the crown and tuft whole, the ring wheel behind his hands, the phone uncovered (blender-td preview evidence, v2 interior, ring wheel). Opens from FADE IN (camera.rhythm.transitions).",
     "subject_position": "centre"
   },
   "environment": {

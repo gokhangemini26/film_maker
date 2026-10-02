@@ -71,7 +71,7 @@ fm:
   - intent.earned_last_signal
   summary: 38 shots, 1440 frames (60.00 s at 24 fps); per-scene totals equal the human-accepted camera
     budget (SC01 528, SC02 48, SC03 240, SC04 434, SC05 108, SC06 82).
-  stamped_content_hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
+  stamped_content_hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
   stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
     and shots); no content revision needed.
 title: Shot List
@@ -123,12 +123,27 @@ the pure-Python frame state (animate.frame_state). Before the move the old
 lenses were 0.97 m (text inserts) and 1.28 m (screen inserts) from the phone,
 and no legibility minimum was met. DEPENDENCY for the builder: the insert shift
 has no `ui.call_screen` case, so SC01_SH030 needs about 0.03 m toward the
-phone's top edge to frame the status bar with her photo. UNKNOWN (decision
-pending, shots not changed): the two 50 mm frontals SC01_SH010/SH090 are now
-0.64-0.78 m from his head instead of 0.90-1.04 m (MCU becomes a close-up, crown
-and tuft cut, SH090's raised thumb below frame); moving that lens back 0.25 m
-puts the steering wheel in front of his phone and hands. Other SC01 and SC02
+phone's top edge to frame the status bar with her photo. Other SC01 and SC02
 shots keep their framing.
+
+**v2 frontal revision (PROPOSED, re-approval needed at G5).** With the ring
+steering wheel in the builder, the two 50 mm frontals SC01_SH010/SH090 move
+their lens 0.50 m back along the same axis, from (1.29, 1.00, 1.20) to
+(1.29, 1.50, 1.20), inside the car body (car_body_y max 1.55). Lens, height
+(eye level 1.20 m), aim (look_at ren), scale, duration and serves are
+unchanged, so no table cell changes. At y 1.00 the v2 seats had made the MCU a
+close-up with the crown and tuft cut; y 1.25 and 1.45 still clip the tuft; at
+y 1.50 the preview shows the headliner edge at the top, crown and tuft whole,
+the ring behind his hands and the phone uncovered (SH010). SH090: the raised
+thumb is deliberately not framed for. The frame is built on the deadpan face
+(the SH010 callback); his fists and phone sit behind the ring at the bottom of
+frame and the preview hands do not show a thumb at this scale. Rejected:
+re-aiming to the phone, a lower lens, a thumb insert (rationale in the shot
+file). DEPENDENCY for the animation-director: SH090's key text still says
+"thumb up ... (lower frame)" and SH010's eyeline says "frame top-left" for the
+mirror, which the v2 preview shows in the upper frame on the right. No other
+shot shares this lens position (SC01_SH150 is the exterior frontal at
+(1.29, 1.75, 1.72) and is not changed).
 
 ### SC01 INT. REN'S CAR - GOLDEN HOUR (budget 22.00 s / 528 f)
 

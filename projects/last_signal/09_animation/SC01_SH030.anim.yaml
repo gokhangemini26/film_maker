@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH030
-    hash: sha256:8699e51bfb186dba0264c42419a8a2cdae365aab80f76e052777657e96023cc8
+    hash: sha256:eb9d6abd324e0a1cf42011b8f002ade0a3ec30a58f25b70addc887a85f7a46fa
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:animation.vocab.pose.ren
@@ -33,7 +33,7 @@ fm:
   - intent.race_against_battery
   summary: 'Swipe insert: right thumb swipes right to left f1-6, her call screen slides in f1-7, photo
     held clean f8-27.'
-  stamped_content_hash: sha256:141491680d97201cdb3895f423b627f3bb6cdfcb0f4dac0d44192d2dc3cf22b8
+  stamped_content_hash: sha256:4f0072aa443c60439ab686387c554b3d90de1dbdf5525d77f5dfabbcfff8fc5d
 shot_id: SC01_SH030
 frames: 28
 vocab_version: 2
@@ -98,3 +98,6 @@ notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
 - preview_frame 10 kept from the shot file (first clean frame after the swipe).
+- Reviewed against the v2 lens move (lens (1.29, -0.34, 1.14) -> (1.28, 0.37, 1.17), 0.30 m on his eyeline
+  from the screen at (1.28, 0.62, 1.00); head and face hidden in inserts). car_phone_up already places
+  the phone there; the right-to-left swipe, holds, events and frames 28 stand unchanged.

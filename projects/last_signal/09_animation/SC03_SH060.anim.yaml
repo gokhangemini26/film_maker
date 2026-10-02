@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH060
-    hash: sha256:c43f37e77fdfb715025916595237f38107227a3a83f65b70f5254c459e0fec4c
+    hash: sha256:8b236ef64586590d78e7dc802a9fcc6e635b0170467cebd8b3c2c5739b5c0708
   - ref: canon:continuity.props.phone_ren
     hash: sha256:64fd2f76d1d59ee172f90487f012e930022b892efb18a95e19d46926b996eaae
   - ref: canon:continuity.battery
@@ -25,7 +25,7 @@ fm:
   - intent.race_against_battery
   summary: 'Structured tracks for the 2 % insert: nothing moves for 26 frames (minimum 24); no hand in
     frame.'
-  stamped_content_hash: sha256:5ea5f1daa7b8299784bf622691323b64fba4e1c8e3bfb854ad656d3e36dd87e6
+  stamped_content_hash: sha256:be47c6c0896c52c123361bf4084dc1223964ca583bf1e2b3e25e872c2f8c8607
 shot_id: SC03_SH060
 frames: 26
 vocab_version: 2
@@ -80,3 +80,6 @@ notes:
 - 'Reviewed against the blackout render spec (surround at floor #1B1C29 to ambient #1E2030, exposure 0.08).
   Lighting only: frames 26, the insert_2pct event and the 24-frame minimum hold stand unchanged. The shot
   rationale''s "floats on black" wording is the cinematographer''s, not edited here.'
+- 'Reviewed against the human-ruled exposure change (shot lighting.exposure_target 0.08 -> 0.12) and the
+  rationale now reading "floats on blue-black" (the wording gap above is closed). Lighting only: frames
+  26, the insert_2pct event and the 24-frame minimum hold stand unchanged.'

@@ -134,7 +134,7 @@ continuity_refs:
 - continuity.hana.headphones
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
+  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -214,5 +214,5 @@ derived_from:
 - ref: canon:animation.vocab.v2.pose.hana
   hash: sha256:f636488980209afc1bce277445e2cf9676549102b13fabecd9b1e74b6251d4ce
 stamped_content_hash: sha256:fe59950a5823efe8c8ad34c1a74192a78ea62fa7a90efb08872e242264b7d7b3
-stamp_note: SHOT_LIST changed only the SC01_SH020/030/050 height cells (v2 car interior lens move) and
-  added the v2 revision note; this shot's content is unchanged.
+stamp_note: SHOT_LIST changed only by the v2 frontal revision note (SC01_SH010/SH090 lens moved to y 1.50,
+  no table cell changed); this shot's row and content are untouched.

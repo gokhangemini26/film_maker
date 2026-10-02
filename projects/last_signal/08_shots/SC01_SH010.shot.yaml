@@ -1,7 +1,7 @@
 shot_id: SC01_SH010
 scene_id: SC01
 sequence_id: SQ01
-status: APPROVED
+status: PROPOSED
 duration_s: 1.6667
 serves:
 - intent.race_against_battery
@@ -20,7 +20,7 @@ camera:
   movement: static
   start_position:
   - 1.29
-  - 1.0
+  - 1.5
   - 1.2
   end_position: null
   look_at: ren
@@ -30,9 +30,12 @@ composition:
   framing: medium_close
   aspect_ratio: 1.778
   subject_position: centre
-  notes: 'Frontal through the windscreen (on-axis). FG: rear-view mirror top-left and the glass''s painted
-    highlights kept off his face; MG: Ren, phone low in his left hand; BG: dim rear cabin and rear window.
-    Top frame line below the headliner (about 1.38 m). Opens from FADE IN (camera.rhythm.transitions).'
+  notes: 'Frontal through the windscreen (on-axis). FG: rear-view mirror in the upper frame and the glass''s
+    painted highlights kept off his face; MG: Ren, phone in his left hand; BG: dim rear cabin and rear
+    window. v2 interior lens at (1.29, 1.50, 1.20), 0.50 m further back along the same axis than the approved
+    (1.29, 1.00, 1.20) and inside the car body (car_body_y max 1.55): the headliner edge is the top of
+    frame, then the crown and tuft whole, the ring wheel behind his hands, the phone uncovered (blender-td
+    preview evidence, v2 interior, ring wheel). Opens from FADE IN (camera.rhythm.transitions).'
 characters:
 - id: ren
   position:
@@ -126,7 +129,14 @@ rationale:
   camera: '50 mm frontal: the one comic-section use of 50 mm (camera.lens.roles exception), because only
     this side gives the sun as a frontal key and a normal lens keeps the face we must like at first sight
     undistorted. Eye level (1.20 m): we are with him. Rejected: 24 mm from the passenger seat, which stretches
-    the face on its first read.'
+    the face on its first read. v2 interior: the seats moved 0.25 m toward the lens, so at the approved
+    y 1.00 the lens was 0.64-0.78 m from his head and the medium close-up became a close-up with the crown
+    and tuft cut off the top; the tuft is this shot''s gag, so the lens moves back along the same axis
+    to y 1.50 (height, lens and aim unchanged), which restores the medium close-up. Rejected: y 1.00 (close-up,
+    tuft out of frame), y 1.25 (crown and tuft still clipped, his hands fill the lower half), y 1.45 (crown
+    on the frame top, tuft cut), a wider lens to stay close (35 mm is off-role here and stretches the
+    face this shot must keep likeable), and the 1.55 m body limit itself (no margin to the car shell,
+    nothing gained in frame).'
   composition: 'Centred and boxed by the windscreen frame, the comic section''s geometric order; the mirror
     in the foreground gives a first depth layer and the vanity beat its prop. Rejected: an over-shoulder
     mirror reflection shot, which hides his face and invites reflection rendering problems.'
@@ -154,7 +164,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
+  hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -271,6 +281,4 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:451ee18abe337cfe8beac674b76d40a4822a78cfec4b4f5bf9ba095201b23135
-stamp_note: SHOT_LIST changed only the SC01_SH020/030/050 height cells (v2 car interior lens move) and
-  added the v2 revision note; this shot's content is unchanged.
+stamped_content_hash: sha256:f9fb0e2c41db15728c90aa029190765b68f8dffbf26f47fc7ff8a76376d7f33b

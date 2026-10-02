@@ -7,7 +7,7 @@ fm:
   owner_role: cinematographer
   derived_from:
   - ref: artifact:shot_list
-    hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
+    hash: sha256:d1f79224b554855248cafeea673dc44ca1a2dcc2bc37c67d4583ee45867351d1
   - ref: artifact:screenplay
     hash: sha256:56d22d2e73f971b8a0d3c17ed54478249bc67c8f37212bc6730918daaae17022
   - ref: artifact:cinematography_bible
@@ -25,10 +25,7 @@ fm:
   - intent.earned_last_signal
   summary: Text storyboard for all 38 shots of Last Signal - frame layers, eye path, movement, sound cue
     and transition per shot, in film order.
-  stamped_content_hash: sha256:891aec9e44443e0c00e161d46f5cdf7a23346d513b4fbd2cb228e807f7f18523
-  stamp_note: 'SHOT_LIST changed only the height column of SC01_SH020/030/050 (v2 car interior lens move:
-    1.32 -> 1.35 m, 1.14 -> 1.17 m) and added a v2 note; the storyboard describes these frames as 0.67
-    m above his left shoulder and 0.30 m on his eyeline, which still holds.'
+  stamped_content_hash: sha256:6c462b07661257a0c7e8093ec6e8cb0f88db0a871800d7a4531f05441e8fbbe3
 title: Storyboard
 ---
 # Storyboard: Last Signal
@@ -50,9 +47,10 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 ### SC01 · INT. REN'S CAR (528 f)
 
 **SC01_SH010 · 40 f · MCU · 50 mm frontal through the windscreen · eye level**
-- Frame: FG the rear-view mirror top left, pale glass highlights on the frame
-  edges; MG Ren centred, sun full on his face, phone low in his left hand; BG the
-  dim back seats. Frame top under the headliner.
+- Frame: FG the rear-view mirror in the upper frame, pale glass highlights on
+  the frame edges; MG Ren centred, sun full on his face, crown and tuft whole,
+  hands in front of the wheel ring, phone uncovered in his left hand; BG the dim
+  back seats. The headliner edge is the top of frame.
 - Eye: his face, then his hand and the tuft.
 - Moves: he tilts the mirror to himself, presses the tuft down, tilts it back.
 - Sound: quiet street, a bird, the car ticking in the heat.
@@ -117,8 +115,10 @@ invitation (Option A, see SHOT_LIST.md). Screen left is west in every scene.
 - Out: cut.
 
 **SC01_SH090 · 24 f · MCU · 50 mm frontal (as SH010) · eye level**
-- Frame: Ren centred, boxed by the pillars, thumb frozen in the air low in frame.
-- Eye: his face, deadpan.
+- Frame: Ren centred, boxed by the pillars, the same frame as SH010; his
+  hands one frozen shape behind the wheel ring at the bottom of frame (the
+  thumb is not framed for: the face carries the freeze).
+- Eye: his face, deadpan, and it stays there.
 - Moves: nothing, then a small stuck exhale.
 - Sound: the exhale.
 - Out: cut.

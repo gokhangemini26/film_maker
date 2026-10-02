@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH120
-    hash: sha256:2d764a28641d19b14065ed0026354cd5f889a21a43c0f4bf238f96dbceb42b0f
+    hash: sha256:d335956335a15bb47f3b5be9dc8d3e16eab549443515783630c49d19af3c3958
   - ref: canon:animation.vocab.pose.ren
     hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
   - ref: canon:animation.vocab.look_target
@@ -33,7 +33,7 @@ fm:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Bolt insert: amber bolt on in one frame at f2 with the charging chime, held 18 frames.'
-  stamped_content_hash: sha256:67724356ea6ab791e11dc2df1a56b8c7094a166e41fffceef99983f6f5d53438
+  stamped_content_hash: sha256:4c3ef6483e1599330303d86620f7a995898c1e7444ece73701407fb0899feda9
 shot_id: SC01_SH120
 frames: 20
 vocab_version: 2
@@ -100,6 +100,8 @@ notes:
   version of it.
 - preview_frame 5 kept from the shot file (bolt on beside the red 4 %).
 - 'Pose fix (phone placement): car_upright -> car_phone_up, look dash -> phone. Events (bolt_on, charging_chime
-  at f2), holds, cable keys and frame count unchanged, so audio sync is untouched. The shot''s framing
-  reference (screen about (1.29, -0.09, 0.97), lens (1.29, -0.34, 1.14)) predates the v2 car interior;
-  the lens has to follow the phone (cinematographer).'
+  at f2), holds, cable keys and frame count unchanged, so audio sync is untouched.'
+- 'Resolved: the cinematographer moved the lens with the phone for the v2 interior (lens (1.28, 0.37,
+  1.17), 0.30 m on his eyeline from the screen at (1.28, 0.62, 1.00); head and face hidden in inserts).
+  That matches the car_phone_up placement above; pose, cable keys, holds, bolt_on / charging_chime at
+  f2 and frames 20 stand unchanged.'

@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH020
-    hash: sha256:7941cdc7602dd3ba6196687b287f11f1bd476f897f6363e990b8bbf6c6bfde7e
+    hash: sha256:b3eb95e48fc7f5d2232c69e7dee26595e607479c4d5fc9f81f3a2aff66384bf9
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:animation.vocab.pose.ren
@@ -29,7 +29,7 @@ fm:
   - intent.race_against_battery
   summary: 'Map insert: the pin is still from the first frame; thumb parked at the edge; nothing else
     moves.'
-  stamped_content_hash: sha256:165676c4f0dbd2eca2c9462560b1d3bcc3678c36b8710c95d672b6ef2a137869
+  stamped_content_hash: sha256:46baea0074b14730c02b0d2115b594a1f584d65f73e65f2d6cc03fc2f7cf850d
 shot_id: SC01_SH020
 frames: 38
 vocab_version: 2
@@ -43,8 +43,8 @@ characters:
       ref: car_phone_up
       ease: hold
       note: 'body off frame; phone held square to the insert lens at the framing reference (screen centre
-        about (1.29, -0.09, 0.97)). Left thumb parked at the screen''s left edge, clear of the pin, settles
-        1 mm f0-3 (VOCAB GAP: no thumb/hand-on-phone refs; shot prose names phone_hold.thumb_parked_left_edge)'
+        about (1.28, 0.62, 1.00), v2 car interior). Left thumb parked at the screen''s left edge, clear
+        of the pin, settles 1 mm f0-3 (VOCAB GAP: no thumb/hand-on-phone refs; shot prose names phone_hold.thumb_parked_left_edge)'
       rationale: one preset for the whole insert; legibility first
     move:
       gait: none
@@ -82,3 +82,6 @@ notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
 - preview_frame 6 kept from the shot file (thumb settled, pin whole and still).
+- Reviewed against the v2 lens move (lens (1.02, -0.59, 1.32) -> (1.01, 0.12, 1.35), same 0.67 m offset
+  above his left shoulder; screen centre (1.28, 0.62, 1.00)). car_phone_up already places the phone there,
+  so pose, look, holds, the thumb_settled event (f4) and frames 38 stand unchanged.

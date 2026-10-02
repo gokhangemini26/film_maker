@@ -57,33 +57,33 @@ fm:
   - ref: artifact:cinematography_bible
     hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
   - ref: artifact:anim_sc01_sh010
-    hash: sha256:b749f224559d8be2e0a06281e9c441772c9aea3445fb0df3349bf53f83b4108a
+    hash: sha256:06ffd1ced0e3a6cd9375a14731a422b9d1a85c913a1a0dd412fe9c22629e70a1
   - ref: artifact:anim_sc01_sh020
-    hash: sha256:165676c4f0dbd2eca2c9462560b1d3bcc3678c36b8710c95d672b6ef2a137869
+    hash: sha256:46baea0074b14730c02b0d2115b594a1f584d65f73e65f2d6cc03fc2f7cf850d
   - ref: artifact:anim_sc01_sh030
-    hash: sha256:141491680d97201cdb3895f423b627f3bb6cdfcb0f4dac0d44192d2dc3cf22b8
+    hash: sha256:4f0072aa443c60439ab686387c554b3d90de1dbdf5525d77f5dfabbcfff8fc5d
   - ref: artifact:anim_sc01_sh040
     hash: sha256:25b07967c26ffda6960b4347fdedb3de9da11e4d8c14abd8038e4c7e28067e80
   - ref: artifact:anim_sc01_sh050
-    hash: sha256:e344369ce2adf6fad048878113f3210b2a38041cff359fcc5e62edc5646d538c
+    hash: sha256:ddc1e94716faf6ac08ccc23620c059a3106130f94439228faf5f4a340cf2ff42
   - ref: artifact:anim_sc01_sh060
     hash: sha256:3afd76076cf7659408d73988e5749959dcf3b52d501ca79aa3c3f728b4a8f9d9
   - ref: artifact:anim_sc01_sh070
-    hash: sha256:4abb568eeea7b67d4accb0a72009da5452fa1a61cb48e1253d4c7322cc2f00c2
+    hash: sha256:bfa2ec61dd93d63b6d270c4012e3fdcf2028a5c025a9b1c0382df269f9dcff7f
   - ref: artifact:anim_sc01_sh080
-    hash: sha256:fa336523cafb18489c30c446d12fbd2e568e6e1b02cd80267c41af10730c92c3
+    hash: sha256:25aa350b3c8b13a657a3bf5c3c3e7bbdc4858ad3ec3dd9f38eabd628ef56ef0b
   - ref: artifact:anim_sc01_sh090
-    hash: sha256:4742205134c353232504da38be3aba8ecefdfac1683403148fc1857b3b9b1649
+    hash: sha256:c9e510ca480a8c0d2d78b5a113808e72e41725a49ff26750badceca3bc9b5828
   - ref: artifact:anim_sc01_sh100
     hash: sha256:3e727eb2f3081bbe006b7aced60fd2c34196f5f84e7ec651b5ee7f4f76204931
   - ref: artifact:anim_sc01_sh110
-    hash: sha256:43b58eddc63ec89284be787ddcaf2c1dd2bfa4d6270f646bb2f5dd20e9aacf46
+    hash: sha256:1cb9c447f77427338106ad3eab71ed7a514b5115dcf8761beb89b10c26db21b0
   - ref: artifact:anim_sc01_sh120
-    hash: sha256:67724356ea6ab791e11dc2df1a56b8c7094a166e41fffceef99983f6f5d53438
+    hash: sha256:4c3ef6483e1599330303d86620f7a995898c1e7444ece73701407fb0899feda9
   - ref: artifact:anim_sc01_sh130
     hash: sha256:243861eae4be628218e260e49d9d59bd6f4e6c7405b2cef8dbdd281f81c44e45
   - ref: artifact:anim_sc01_sh140
-    hash: sha256:0897f383ff32d0ad34077f02d4c8c864925938c27a76e76d3cadfcb33da01ff1
+    hash: sha256:813d954dfd9bdf8b94b80e96e2fef5c2e377e7e6490bbfaaa55289d284e8f4eb
   - ref: artifact:anim_sc01_sh150
     hash: sha256:838b5e24815c1e61ad1d895bf4097b2cec953bf8d0e4e2fbb51dbc69ab42e9f8
   - ref: artifact:anim_sc02_sh010
@@ -101,11 +101,11 @@ fm:
   - ref: artifact:anim_sc03_sh040
     hash: sha256:75673aa63ff1966c6086702610d87dc6143756076589982705def1b476669a90
   - ref: artifact:anim_sc03_sh050
-    hash: sha256:3c11c5cd4d48cecce9eff3617544ac58aa90d9cee26535a2844513f500d7db08
+    hash: sha256:3aa551ef3df7ee2ca54fcab15c964cae5f3f99cd3650456aab33949747c793b0
   - ref: artifact:anim_sc03_sh060
-    hash: sha256:5ea5f1daa7b8299784bf622691323b64fba4e1c8e3bfb854ad656d3e36dd87e6
+    hash: sha256:be47c6c0896c52c123361bf4084dc1223964ca583bf1e2b3e25e872c2f8c8607
   - ref: artifact:anim_sc03_sh070
-    hash: sha256:6ec95c3080c839aaa01b965ffa4e4eccb3131e96c1fe954c619ba21bc9b6163f
+    hash: sha256:203bba621964656c184dd90e9455f5c4fdc4b1182c3e9e25e3e78c7410a723d4
   - ref: artifact:anim_sc04_sh010
     hash: sha256:eb079680b80a622e2a33c42f595e0b7977e00f4ed80ffc4ea1c157ffdc323eb8
   - ref: artifact:anim_sc04_sh020
@@ -140,7 +140,7 @@ fm:
   - intent.anime_feel
   summary: Movement philosophy, vocabulary v1+v2, per-character movement language, timing and holds, event
     naming, and the open animation items for G7.
-  stamped_content_hash: sha256:f5a4ae0f4c360d0f51767ca3c8fb6155673898c3dde7b1c01f2e663300018614
+  stamped_content_hash: sha256:b29f78456ea9b03415d618ae905bf71d6098e814b2bbe205eb92b778a48a1cca
 title: Animation Bible — Last Signal
 ---
 # Animation Bible — Last Signal
@@ -235,8 +235,12 @@ once. Rejected: one bump per gap, or editing v1 entries in place.
   (17 body, 14 phone, 14 all, 4 face).
 - **DECISION: in a phone insert the pose is a phone carrier.** The builder hides the body in inserts, so
   the pose is chosen for where it puts the phone, not for the off-screen acting: the SC01 status-bar inserts
-  (SH080, SH090, SH120, SH140) all use `car_phone_up` (phone at face height), so they share one frame and
-  one phone place. Pose changes across those cuts (SH110/SH130 upright or reclined) are hidden by the cut.
+  (SH080, SH120, SH140) all use `car_phone_up` (phone at face height), so they share one frame and one
+  phone place; the SH090 frontal freeze uses the same pose, so the phone does not jump between them. Pose
+  changes across those cuts (SH110 `car_sag`, SH130 reclined) are hidden by the cut. The v2 car interior
+  moved the phone to about (1.28, 0.62, 1.00); the cinematographer moved the insert lenses with it
+  (SH030/070/080/120/140 at (1.28, 0.37, 1.17), SH020/050 at (1.01, 0.12, 1.35)), which matches this
+  pose, so no insert key changed.
   Rationale: SH140 on `car_recline` put the phone in his lap and the insert framed nothing; SH120 on
   `car_upright` put it on the wheel rim and it rendered small. Consequence: the rig's right hand sits beside
   the phone, so a cable held in `hand_r` during an insert is keyed `state: hidden` (SH120 f0-1).
@@ -349,4 +353,20 @@ timing alone.
   blue-black ambient `#1E2030` over floor `#1B1C29`, exposure target 0.08; no timing change). Done: the
   three anim files were re-checked against the new resolved shots. Frames (30/26/48), the f8 blackout
   (resolved `blackout_event_frame` 9, 1-based), events, holds and the screen dip are unchanged; no key
-  changed. Each file got a review note and was restamped.
+  changed. Each file got a review note and was restamped. Re-checked again after the human-ruled exposure
+  target 0.08 -> 0.12 (within the locked SC03_blackout tolerance; SH060 rationale now "blue-black"):
+  lighting only, no key, event or hold changed; review notes added and restamped.
+- SC01 v2 interior lens moves (cinematographer). Done: SH020/030/050/070/080/120/140 re-checked against
+  the new resolved shots; frames, events and holds unchanged; the "framing reference predates v2" notes in
+  SH120/SH140 are closed. SH010/SH090 frontals moved back to y 1.50 (same 50 mm, height and aim): frames
+  40/24 and every event id and frame unchanged. SH010's mirror eyeline note now reads upper frame on the
+  right (right-hand drive, mirror on his left; the right hand reaches across), not top-left. SH090's thumb
+  stays up in the action but is deliberately not framed (cinematographer's blocking rationale).
+  DEPENDENCY: the prose `animation` blocks in the SH010 and SH090 shot files still say "frame top-left",
+  "phone low ... on his thigh" and "thumb ... (lower frame)". The anim files supersede them; the
+  animation-director does not edit a shot that has an anim file, so whether to refresh that prose is for
+  the human / cinematographer at the G5 re-approval.
+- SC01_SH110 pose fix (`car_upright` -> `car_sag`, so the crank stays in the lap insert). Known side
+  effect: `car_sag` rests the phone (hand_l) in the lap beside the crank, against the brief's "left hand
+  keeps the phone out of frame". The orchestrator relays that the producer finds this acceptable
+  (ASSUMPTION until the human rules on it at G7); no key changed for it.

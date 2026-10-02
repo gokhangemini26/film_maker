@@ -62,7 +62,7 @@
     "sensor_width_mm": 36.0,
     "start_position": [
       1.29,
-      1.0,
+      1.5,
       1.2
     ]
   },
@@ -434,7 +434,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "medium_close",
-    "notes": "Same setup as SC01_SH010 (frontal through the windscreen). Held 24 frames: the minimum 1 s reaction hold after a gag (camera.rhythm.pace).",
+    "notes": "Same setup as SC01_SH010 (frontal through the windscreen), v2 interior lens at (1.29, 1.50, 1.20), 0.50 m back from the approved y 1.00 (inside car_body_y max 1.55). Held 24 frames: the minimum 1 s reaction hold after a gag (camera.rhythm.pace). The raised thumb is deliberately not a frame element: the frame is built on the face; his fists and the phone's back sit inside the ring's opening at the bottom of frame, and the frame is not re-aimed to find the thumb (see rationale.blocking).",
     "subject_position": "centre"
   },
   "environment": {

@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH050
-    hash: sha256:fd8ca343ac306f9e9fffb06fd2bbf4f2edcf56d2aa685ee01f014c284a3b7d81
+    hash: sha256:011a13f442e585f2b616e65779e3bf5a3f2841ac4b55c73993539d104cb8924a
   - ref: canon:animation.vocab.pose.ren
     hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
   - ref: canon:animation.vocab.look_target
@@ -28,7 +28,7 @@ fm:
   - intent.comic_then_tender
   summary: 'Ring insert: three identical 11-frame pulses (rings on f0, f11, f22), button grey in one frame
     at f33, phone perfectly still.'
-  stamped_content_hash: sha256:e344369ce2adf6fad048878113f3210b2a38041cff359fcc5e62edc5646d538c
+  stamped_content_hash: sha256:ddc1e94716faf6ac08ccc23620c059a3106130f94439228faf5f4a340cf2ff42
 shot_id: SC01_SH050
 frames: 44
 vocab_version: 2
@@ -110,3 +110,6 @@ notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
 - preview_frame 36 kept from the shot file (the grey button is the beat).
+- 'Reviewed against the v2 lens move (the SH020 setup: lens (1.02, -0.59, 1.32) -> (1.01, 0.12, 1.35),
+  screen centre (1.28, 0.62, 1.00)). car_phone_up already places the phone there; pulses, the grey hold
+  f33-43, events and frames 44 stand unchanged.'

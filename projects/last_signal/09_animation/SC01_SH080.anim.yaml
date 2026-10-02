@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC01_SH080
-    hash: sha256:71b49b1bd1391b1ed8a3b1604a47a2ae4d93645ea5fe5e4000150cd02f826bec
+    hash: sha256:ec08eab9349a63936af06dd2d74a19ee0a26eb5b176f62b45504b94a97f7be50
   - ref: canon:animation.vocab.pose.ren
     hash: sha256:ae121f9b87defa4ae26e239277937a9f4b382bec1313476004191d1831fcd4f8
   - ref: canon:animation.vocab.look_target
@@ -27,7 +27,7 @@ fm:
   - intent.race_against_battery
   - intent.comic_then_tender
   summary: 'Battery insert: 5 % charcoal to 4 % red in one frame at f4, held 26 frames; nothing moves.'
-  stamped_content_hash: sha256:fa336523cafb18489c30c446d12fbd2e568e6e1b02cd80267c41af10730c92c3
+  stamped_content_hash: sha256:25aa350b3c8b13a657a3bf5c3c3e7bbdc4858ad3ec3dd9f38eabd628ef56ef0b
 shot_id: SC01_SH080
 frames: 30
 vocab_version: 2
@@ -79,3 +79,6 @@ notes:
 - Prose brief stays in the shot file's animation block (G5-approved, untouched). This file is the typed
   version of it.
 - preview_frame 8 kept from the shot file (red 4 % four frames after the switch).
+- Reviewed against the v2 lens move (lens (1.29, -0.34, 1.14) -> (1.28, 0.37, 1.17), 0.30 m on his eyeline
+  from the screen at (1.28, 0.62, 1.00); head and face hidden in inserts). car_phone_up already places
+  the phone there; the f4 switch, the 26-frame hold, events and frames 30 stand unchanged.

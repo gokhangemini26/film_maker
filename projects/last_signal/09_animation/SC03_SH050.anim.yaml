@@ -6,7 +6,7 @@ fm:
   owner_role: animation-director
   derived_from:
   - ref: shot:SC03_SH050
-    hash: sha256:fe6d162c8fe336bdf88659bc425297b8ce8015bc24171ccd724131e4ba560f20
+    hash: sha256:e1e411f9e315f2b742a00e797f055c5ab9dbf6d4fe1fa86db88a46a31bb57bda
   - ref: canon:characters.ren.movement
     hash: sha256:f5d8def0a4a653deeeddb4de65bfebe707e19ee2071d804b37bc8480b9237314
   - ref: canon:characters.ren.expressions
@@ -41,7 +41,7 @@ fm:
   - intent.anime_feel
   summary: 'Structured tracks for the blackout: 8 lit frames of a relaxed man, the room off in one frame
     on the clunk at f8, 22 frames of dark; he does not move; the phone glow dips and comes back.'
-  stamped_content_hash: sha256:3c11c5cd4d48cecce9eff3617544ac58aa90d9cee26535a2844513f500d7db08
+  stamped_content_hash: sha256:3aa551ef3df7ee2ca54fcab15c964cae5f3f99cd3650456aab33949747c793b0
 shot_id: SC03_SH050
 frames: 30
 vocab_version: 2
@@ -143,3 +143,7 @@ notes:
   blue-black, ambient #1E2030 over floor #1B1C29, exposure 0.08, not pure black). Lighting only: frames
   30, the f8 switch (resolved blackout_event_frame 9, 1-based), all events and the hold stand unchanged.
   "Dark" in this file means that blue-black floor.'
+- 'Reviewed against the human-ruled exposure change (shot lighting.after.exposure_target 0.08 -> 0.12,
+  within the locked look.exposure.scene_keys.SC03_blackout tolerance 0.08 +/- 0.06): the exposure 0.08
+  in the note above now reads 0.12. Lighting only: frames 30, the f8 events (blackout, clunk, fridge_hum_stop,
+  charge_lost) and the hold stand unchanged, so audio cues stay valid.'
