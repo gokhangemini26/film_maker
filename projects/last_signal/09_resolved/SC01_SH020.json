@@ -54,7 +54,7 @@
       "focus_target": "phone_ren_screen_plane"
     },
     "fov_h_deg": 23.9132,
-    "height_m": 1.32,
+    "height_m": 1.35,
     "lens_mm": 85.0,
     "look_at": "phone_ren",
     "movement": "static",
@@ -62,9 +62,9 @@
     "sensor_height_mm": 20.25,
     "sensor_width_mm": 36.0,
     "start_position": [
-      1.02,
-      -0.59,
-      1.32
+      1.01,
+      0.12,
+      1.35
     ]
   },
   "characters": [
@@ -519,7 +519,7 @@
   "composition": {
     "aspect_ratio": 1.778,
     "framing": "insert",
-    "notes": "Screen insert: frame height about 0.16 m at the screen (85 mm at 0.67 m), owner's side, square within 15 deg. Framing reference (DEPENDENCY for the animation hold and the builder): screen centre at about (1.29, -0.09, 0.97), 0.40 m from his eyes and 35 deg below them. Lens 0.67 m from it above his left (passenger-side) shoulder, 24 deg off his own eyeline, so the sight line clears his head by about 0.19 m; the phone is turned square to the lens (within 15 deg) and the camera's up is the phone's top edge. Pin near centre. Status bar in frame but not the beat. Lap and trousers soft behind (f/5.6).",
+    "notes": "Screen insert: frame height about 0.16 m at the screen (85 mm at 0.67 m), owner's side, square within 15 deg. Framing reference (DEPENDENCY for the animation hold and the builder): screen centre at about (1.28, 0.62, 1.00) in the v2 car interior used by the animated frames (front seats 0.25 m forward, anchors.CAR_V2), 0.34 m from his eyes and 34 deg below them. Lens 0.67 m from it above his left (passenger-side) shoulder, 24 deg off his own eyeline, so the sight line passes about 0.14 m from his head centre and clears his head and hair; the phone is turned square to the lens (within 15 deg) and the camera's up is the phone's top edge. Pin near centre. Status bar in frame but not the beat. Lap and trousers soft behind (f/5.6).",
     "subject_position": "centre"
   },
   "environment": {

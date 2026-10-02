@@ -31,8 +31,9 @@ def canon():
     return json.loads((RES / "film.json").read_text(encoding="utf-8"))["canon"]
 
 
-def test_car_layout_flag_defaults_to_v1():
-    assert AN.CAR_V2[0] is False and AN.car_layout() == (0.0, 0.0)
+def test_car_layout_defaults_to_v2():
+    assert AN.CAR_V2[0] is True and AN.car_layout() == (AN.CAR_SEAT_SHIFT_V2, -AN.CAR_GLOVEBOX_BACK_V2)
+    assert AN.car_layout(False) == (0.0, 0.0)
     assert AN.car_layout(True) == (AN.CAR_SEAT_SHIFT_V2, -AN.CAR_GLOVEBOX_BACK_V2)
 
 
@@ -108,3 +109,24 @@ def test_photo_scale_scales_the_portrait(recorded):
     sc.call_screen({"photo_scale_pct": 90.0}, "hana")
     small = max(a[2] for n, a, k in calls if n == "disc" and a[3] == c["photo_frame_ring"])
     assert small == pytest.approx(big * 0.9, rel=1e-6)
+
+
+def test_insert_hides_every_head_piece():
+    """Inserts hide the figure pieces the lens sits in; the prefix list must cover every head piece characters.figure builds
+    (a missed fringe/brow/mouth rendered flat brown in SC01_SH070/080/120/140)."""
+    import re
+    src = (ROOT / "blender" / "fm_blender" / "characters.py").read_text(encoding="utf-8")
+    names = set(re.findall(r'\{cid\}_([a-z]+)', src))
+    keep = {"shoe", "centrestrip", "pocket", "collar"}       # body wardrobe pieces an insert leaves visible
+    for n in sorted(names - keep):
+        assert n.startswith(A.INSERT_HIDE_PREFIXES), f"insert would leave {n!r} visible"
+    for n in ("fringe", "brow", "mouth", "hair", "bob", "bobback", "tuft", "tufttip", "ear"):
+        assert n.startswith(A.INSERT_HIDE_PREFIXES)
+
+
+def test_insert_shift_has_a_call_screen_case_and_one_rule_everywhere():
+    xv, yv = Vector((1, 0, 0)), Vector((0, 0, 1))
+    assert AN.insert_shift(["ui.call_screen"], 0.30, xv, yv).length == pytest.approx(0.03)     # SC01_SH030: toward the top edge
+    assert AN.insert_shift(["ui.call_screen"], 0.67, xv, yv).length == 0.0                     # SH020/050 (0.67 m): no shift
+    assert AN.insert_shift(["ui.status_bar"], 0.30, xv, yv).length > 0.05
+    assert A._insert_shift is AN.insert_shift

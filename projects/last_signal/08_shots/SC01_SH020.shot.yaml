@@ -15,12 +15,12 @@ creative_intent:
     later reads instantly.
 camera:
   lens_mm: 85
-  height_m: 1.32
+  height_m: 1.35
   movement: static
   start_position:
-  - 1.02
-  - -0.59
-  - 1.32
+  - 1.01
+  - 0.12
+  - 1.35
   end_position: null
   look_at: phone_ren
   dof:
@@ -33,11 +33,12 @@ composition:
   subject_position: centre
   notes: 'Screen insert: frame height about 0.16 m at the screen (85 mm at 0.67 m), owner''s side, square
     within 15 deg. Framing reference (DEPENDENCY for the animation hold and the builder): screen centre
-    at about (1.29, -0.09, 0.97), 0.40 m from his eyes and 35 deg below them. Lens 0.67 m from it above
-    his left (passenger-side) shoulder, 24 deg off his own eyeline, so the sight line clears his head
-    by about 0.19 m; the phone is turned square to the lens (within 15 deg) and the camera''s up is the
-    phone''s top edge. Pin near centre. Status bar in frame but not the beat. Lap and trousers soft behind
-    (f/5.6).'
+    at about (1.28, 0.62, 1.00) in the v2 car interior used by the animated frames (front seats 0.25 m
+    forward, anchors.CAR_V2), 0.34 m from his eyes and 34 deg below them. Lens 0.67 m from it above his
+    left (passenger-side) shoulder, 24 deg off his own eyeline, so the sight line passes about 0.14 m
+    from his head centre and clears his head and hair; the phone is turned square to the lens (within
+    15 deg) and the camera''s up is the phone''s top edge. Pin near centre. Status bar in frame but not
+    the beat. Lap and trousers soft behind (f/5.6).'
 characters:
 - id: ren
   position:
@@ -102,7 +103,18 @@ rationale:
     head, and the head became the dark shape at the frame top (PREVIEW_REVIEW #9). The screen is still
     square to the lens, so this is an insert, not an over-shoulder shot. Rejected: an over-shoulder map
     (screen at an angle, pin too small; camera.inserts.language), and a lens on his eyeline in front of
-    his face (only 0.40 m of room, which makes a text-size frame and loses the map).'
+    his face (only 0.40 m of room, which makes a text-size frame and loses the map). Lens moved with the
+    phone for the v2 car interior (seats 0.25 m forward): the phone now rests at about (1.28, 0.62, 1.00),
+    so the old lens at (1.02, -0.59, 1.32) was 1.28 m from it, a frame about 305 mm tall in which the
+    15.7 mm pin is about 5.2 % of frame height (minimum 6 %). The lens keeps its old offset from the screen,
+    0.67 m back above his left shoulder (-0.27, -0.50, +0.35), and now sits at (1.01, 0.12, 1.35), measured
+    0.667 m from the screen for a 159 mm frame; lens, framing, screen direction, owner-side view and the
+    24-degree swing off his eyeline are unchanged, and the sight line still clears his head and hair (about
+    0.02 m from the hair surface, 0.14 m from the head centre). Rejected: tilting or re-aiming the old
+    lens (the screen would skew past the 15-degree limit of camera.dof.inserts and the frame would stay
+    305 mm tall), a longer lens (85 mm is the locked insert lens) and leaving the lens where it was and
+    asking for the phone to come back to it (the phone follows his v2 seated pose, which the animation
+    owns).'
   composition: 'Pin at centre so the eye lands on it at once; nothing else on the map carries a shape.
     Held 38 frames, above the 36-frame minimum (camera.inserts.legibility; G2 finding 10). Rejected: a
     text-size insert on the pin alone, which loses the ''map'' read that makes it a place.'
@@ -123,7 +135,7 @@ continuity_refs:
 - continuity.battery
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:c8958df2dd63827b86c9f243f23b5d32274ae9604f1fb006f63cbf79fa59745e
+  hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -238,6 +250,6 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:7941cdc7602dd3ba6196687b287f11f1bd476f897f6363e990b8bbf6c6bfde7e
+stamped_content_hash: sha256:b3eb95e48fc7f5d2232c69e7dee26595e607479c4d5fc9f81f3a2aff66384bf9
 stamp_note: SHOT_LIST changed only the height column of SC01_SH070/080/120/140 (v2 car interior insert
   lens move); this shot's row and content are untouched.

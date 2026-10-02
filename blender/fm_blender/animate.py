@@ -32,7 +32,7 @@ except ImportError:  # the standalone python: importing bpy registers the mathut
 from . import blackout as BO
 from . import poses as PS
 from . import sightline as SL
-from .anchors import CAR_V2, CAR_SEAT_SHIFT_V2, car_layout, shop_anchors
+from .anchors import CAR_V2, CAR_SEAT_SHIFT_V2, car_layout, insert_shift, shop_anchors
 from .framesel import contact_strip, parse_frames, select_frames  # noqa: F401  (pure helpers, re-exported)
 
 LOOK_BLEND_F = 4          # frames the head takes to turn to a new look target
@@ -959,19 +959,7 @@ def _cam_up_aim(cam, target, up_vec):
 
 
 # insert shots: where the lens sits relative to the phone screen (from the static assembly, per ui asset set)
-def _insert_shift(ui_assets, cam_to_phone_dist, xv, yv):
-    if cam_to_phone_dist >= 0.4:
-        return Vector((0, 0, 0))
-    ua = set(ui_assets)
-    if ua == {"ui.status_bar"}:
-        du, dv = 0.012, 0.056
-    elif "ui.compose_field" in ua:
-        du, dv = 0.0, -0.004
-    elif "ui.thread_sent_bubble" in ua:
-        du, dv = 0.005, 0.02
-    else:
-        du, dv = 0.0, 0.0
-    return xv.normalized() * du + yv.normalized() * dv
+_insert_shift = insert_shift      # one rule for stills (preview.py) and frames (anchors.insert_shift)
 
 
 def _phone_local(j, attach, ctx):
@@ -1226,7 +1214,7 @@ class _FrameRig:
         if self.is_insert:
             for o in col.objects:
                 n_ = o.name.split("_", 1)[1] if "_" in o.name else o.name
-                if n_.startswith(("head", "hair", "eye", "tuft", "neck", "thigh", "shin", "torso", "uarm", "farm", "hand")):
+                if n_.startswith(INSERT_HIDE_PREFIXES):
                     o.hide_render = True
         info["col"] = col
         info["base"], info["fac"] = base, fac
@@ -1416,6 +1404,11 @@ class _FrameRig:
             self.frame_col = None
 
 
+# figure pieces an insert hides (the lens sits inside the head / body volume): every head piece (skull, hair cap, bob, fringe, brows,
+# mouth, ears, eyes, crown tuft, worn headphones) plus the torso and limbs. Names are characters.figure's "<cid>_<piece>".
+INSERT_HIDE_PREFIXES = ("head", "hair", "bob", "fringe", "brow", "mouth", "ear", "eye", "tuft", "cup", "cush", "band",
+                        "neck", "thigh", "shin", "torso", "uarm", "farm", "hand")
+
 P_CAR_PIECES = ("car_", "seat_passenger", "seat_driver", "dashboard", "console", "steering_wheel", "glovebox")
 
 
@@ -1447,7 +1440,6 @@ def render_frames(resolved_dir, shot_id, frames, out_dir, width, *, stamp=False,
     look.style.glow); without it nothing about the scene or the pixels differs from a draft frame."""
     bpy = _bpy()
     from . import preview as P
-    CAR_V2[0] = True      # frames use the v2 car interior (wheel/glovebox within the canon reach); stills keep v1
     if final:
         from . import finish as FN
         FN.enable_glow_aov()                      # before any material is built
@@ -1484,6 +1476,9 @@ def render_frames(resolved_dir, shot_id, frames, out_dir, width, *, stamp=False,
         rig_ = _FrameRig(ctx, stage, motion, shot.get("ui_timeline"))
         _stamp(shot_id, stamp)
         scn = bpy.context.scene
+        # the static camera aims once, at the subject as it stands at frame 0 -- never at whichever frame is rendered first --
+        # so a batch that skips f0 (or starts anywhere) gets the same camera as a full run
+        rig_.apply(frame_state(shot, motion, shot.get("ui_timeline"), 0, stage=stage))
         for f in frames:
             path = os.path.join(shot_dir, "%04d.png" % f)
             if skip_existing and os.path.exists(path) and os.path.getsize(path) > 0:

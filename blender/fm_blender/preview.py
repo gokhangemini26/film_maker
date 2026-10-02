@@ -14,6 +14,7 @@ from . import util as U
 from . import sets as S
 from .characters import figure
 from . import phone as PH
+from . import anchors as AN
 from . import sightline as SL
 from . import blackout as BO
 
@@ -402,20 +403,9 @@ def render_shot(film, shot, canon, units, rig, door_name, out_dir, bg, all_shots
         for o in figs["ren"][1].objects:
             mark(o)
         if is_insert:  # resolved camera honoured as-is: screen squared to the lens, camera up = phone top edge
-            sh_ = Vector((0, 0, 0))
-            if (cpos - i["phone"]).length < 0.4:  # 0.30 m text inserts: the spec centres the screen; shift the lens parallel to it (never tilt) to the named part
-                ua = set(ui_assets)
-                if ua == {"ui.status_bar"}:
-                    du, dv = 0.012, 0.056
-                elif "ui.compose_field" in ua:
-                    du, dv = 0.0, -0.004
-                elif "ui.thread_sent_bubble" in ua:
-                    du, dv = 0.005, 0.02
-                else:
-                    du, dv = 0.0, 0.0
-                sh_ = xv.normalized() * du + yv.normalized() * dv
-                cam.location = cam.location + sh_
-                cpos = cam.location.copy()
+            sh_ = AN.insert_shift(ui_assets, (cpos - i["phone"]).length, xv, yv)      # 0.30 m text inserts: lens shifted parallel to the screen (never tilted)
+            cam.location = cam.location + sh_
+            cpos = cam.location.copy()
             aim_up(cam, i["phone"] + sh_, yv)
             if cam_c.get("dof", {}).get("enabled"):
                 cam_data.dof.focus_distance = SL.focus_clamp(((i["phone"] + sh_) - cpos).length)

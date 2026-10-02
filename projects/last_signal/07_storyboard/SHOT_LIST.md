@@ -71,7 +71,7 @@ fm:
   - intent.earned_last_signal
   summary: 38 shots, 1440 frames (60.00 s at 24 fps); per-scene totals equal the human-accepted camera
     budget (SC01 528, SC02 48, SC03 240, SC04 434, SC05 108, SC06 82).
-  stamped_content_hash: sha256:c8958df2dd63827b86c9f243f23b5d32274ae9604f1fb006f63cbf79fa59745e
+  stamped_content_hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
   stamp_note: Invitation wording recorded by CHANGE-001 (Option A, already used in the approved screenplay
     and shots); no content revision needed.
 title: Shot List
@@ -110,15 +110,35 @@ frontal (SH090 height now equals the SH050 end, 0.92 m); every text insert
 centre as a DEPENDENCY for the animation hold. Durations, lenses, scales and
 serves are unchanged.
 
+**v2 car interior revision (PROPOSED).** The animated frames (and, from now on,
+the stills) use the v2 car interior: front seats 0.25 m forward, so his phone
+rests at about (1.28, 0.62, 1.00) instead of (1.29, -0.09, 0.97). Every SC01
+phone insert lens moved with the phone, keeping its old offset from the screen
+(no tilt, no new lens): the text inserts SC01_SH030/070/080/120/140 sit at
+(1.28, 0.37, 1.17), 0.30 m from the screen on his eyeline (frame 72 mm; the
+lens is inside his head, which inserts do not render), and the screen inserts
+SC01_SH020/050 sit at (1.01, 0.12, 1.35), 0.67 m from the screen above his left
+shoulder (frame 159 mm; the sight line clears his head and hair). Measured with
+the pure-Python frame state (animate.frame_state). Before the move the old
+lenses were 0.97 m (text inserts) and 1.28 m (screen inserts) from the phone,
+and no legibility minimum was met. DEPENDENCY for the builder: the insert shift
+has no `ui.call_screen` case, so SC01_SH030 needs about 0.03 m toward the
+phone's top edge to frame the status bar with her photo. UNKNOWN (decision
+pending, shots not changed): the two 50 mm frontals SC01_SH010/SH090 are now
+0.64-0.78 m from his head instead of 0.90-1.04 m (MCU becomes a close-up, crown
+and tuft cut, SH090's raised thumb below frame); moving that lens back 0.25 m
+puts the steering wheel in front of his phone and hands. Other SC01 and SC02
+shots keep their framing.
+
 ### SC01 INT. REN'S CAR - GOLDEN HOUR (budget 22.00 s / 528 f)
 
 | shot | scene | dur | scale | lens | height | movement | subject | serves | transition |
 |---|---|---|---|---|---|---|---|---|---|
 | SC01_SH010 | SC01 | 1.67 s (40 f) | MCU | 50 | eye level 1.2 m | static | Mirror check, tuft | race_against_battery, soft_but_cinematic, anime_feel | FADE IN / cut |
-| SC01_SH020 | SC01 | 1.58 s (38 f) | INS | 85 | insert 1.32 m | static | Map, fork-and-knife pin | race_against_battery, open_hopeful_ending | cut |
-| SC01_SH030 | SC01 | 1.17 s (28 f) | INS | 85 | insert 1.14 m | static | Swipe to her photo, 5 % | race_against_battery | cut |
+| SC01_SH020 | SC01 | 1.58 s (38 f) | INS | 85 | insert 1.35 m | static | Map, fork-and-knife pin | race_against_battery, open_hopeful_ending | cut |
+| SC01_SH030 | SC01 | 1.17 s (28 f) | INS | 85 | insert 1.17 m | static | Swipe to her photo, 5 % | race_against_battery | cut |
 | SC01_SH040 | SC01 | 1.25 s (30 f) | MCU | 24 | eye level 1.12 m | static | Practised breath, taps call | race_against_battery, comic_then_tender | cut |
-| SC01_SH050 | SC01 | 1.83 s (44 f) | INS | 85 | insert 1.32 m | static | Call button pulses x3, greys | race_against_battery, comic_then_tender | cut |
+| SC01_SH050 | SC01 | 1.83 s (44 f) | INS | 85 | insert 1.35 m | static | Call button pulses x3, greys | race_against_battery, comic_then_tender | cut |
 | SC01_SH060 | SC01 | 1.42 s (34 f) | MS | 24 | mild low 1.0 m | static | Letdown, sits up to text | comic_then_tender, race_against_battery | cut |
 | SC01_SH070 | SC01 | 2.42 s (58 f) | INS | 85 | insert 1.17 m | static | Types 'Are you free tonight?' | race_against_battery, open_hopeful_ending | cut |
 | SC01_SH080 | SC01 | 1.25 s (30 f) | INS | 85 | insert 1.17 m | static | 5 % -> red 4 % | race_against_battery, comic_then_tender | cut |

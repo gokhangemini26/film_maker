@@ -13,12 +13,12 @@ creative_intent:
   audience_effect: The viewer meets Hana through his phone and starts watching the number.
 camera:
   lens_mm: 85
-  height_m: 1.14
+  height_m: 1.17
   movement: static
   start_position:
-  - 1.29
-  - -0.34
-  - 1.14
+  - 1.28
+  - 0.37
+  - 1.17
   end_position: null
   look_at: phone_ren
   dof:
@@ -32,10 +32,16 @@ composition:
   notes: 'Text-size insert (frame about 71 mm tall at the screen, 85 mm at 0.30 m) on the upper half:
     status bar (5 %, charcoal) top right, her photo below it filling most of the frame. Call button below
     frame here; it has its own insert (SH050). Framing reference (DEPENDENCY for the animation hold and
-    the builder): screen centre at about (1.29, -0.09, 0.97), 0.40 m from his eyes. Lens 0.30 m from it
-    on his eyeline, between his face and the phone (his head is behind the lens), camera''s up = the phone''s
-    top edge. For the part of the screen named here, shift the lens parallel to the screen; never tilt
-    it.'
+    the builder): screen centre at about (1.28, 0.62, 1.00) in the v2 car interior used by the animated
+    frames (front seats 0.25 m forward, anchors.CAR_V2), about 0.34 m in front of his head. Lens 0.30
+    m from it on his eyeline (the SC01_SH070 setup). In the v2 interior his eyes are only about 0.22 m
+    from the screen, so the lens sits just inside his head; inserts do not render his head or face (DEPENDENCY
+    for the builder: every head and face piece is hidden, fringe, brows and mouth included), camera''s
+    up = the phone''s top edge. For the part of the screen named here, shift the lens parallel to the
+    screen; never tilt it: about 0.03 m toward the phone''s top edge, so the frame runs from just above
+    the status bar to the screen centre (DEPENDENCY for the builder: the insert shift has no ui.call_screen
+    case yet, so a centred 72 mm frame would leave the status bar, about 62 mm above the screen centre,
+    out of frame).'
 characters:
 - id: ren
   position:
@@ -104,7 +110,18 @@ rationale:
     the approved spec put the lens about 0.38 m from the screen and inside his head, which gives a frame
     about 91-93 mm tall, so a 2.2 mm digit falls to about 2.4 % (under the 3 % minimum). At 0.30 m on
     his eyeline the frame is 71 mm as promised. Rejected: keeping the old position and asking the builder
-    to push the lens (the frame size would still be undefined in the spec).'
+    to push the lens (the frame size would still be undefined in the spec). Lens moved with the phone
+    for the v2 car interior (seats 0.25 m forward): the phone now rests at about (1.28, 0.62, 1.00), so
+    the old lens at (1.29, -0.34, 1.14) was 0.97 m from it, a frame about 231 mm tall in which the 2.2
+    mm digit is about 1.0 % of frame height (minimum 3 %). The lens keeps its old offset from the screen,
+    0.30 m back along his eyeline (0, -0.25, +0.17), and now sits at (1.28, 0.37, 1.17), measured 0.30
+    m from the screen for a 72 mm frame (digit about 3.1 %); lens, framing, screen direction and owner-side
+    view are unchanged. Rejected: tilting or re-aiming the old lens (the screen would skew past the 15-degree
+    limit of camera.dof.inserts and the frame would stay 231 mm tall) and a longer lens (85 mm is the
+    locked insert lens). No 0.30 m position fits between his face and the phone in the v2 interior, so
+    the lens sits inside his hidden head, as in SH070. Rejected: a 0.20 m lens in front of his face (a
+    48 mm frame that loses her photo or the status bar) and swinging the lens off his eyeline to clear
+    his head (the owner''s-eye view of the screen is the insert language).'
   composition: 'Photo and number share one frame, so ''her'' and ''time'' are introduced together; the
     photo is far above the 15 % minimum. Rejected: separate photo and battery inserts (costs a cut in
     a 22 s scene).'
@@ -126,7 +143,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:c8958df2dd63827b86c9f243f23b5d32274ae9604f1fb006f63cbf79fa59745e
+  hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -239,6 +256,6 @@ derived_from:
   hash: sha256:9a872d07fa62073964f563aae1bd79081a9b43a32a1115dc6da9dbfb7d340706
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
-stamped_content_hash: sha256:8699e51bfb186dba0264c42419a8a2cdae365aab80f76e052777657e96023cc8
+stamped_content_hash: sha256:eb9d6abd324e0a1cf42011b8f002ade0a3ec30a58f25b70addc887a85f7a46fa
 stamp_note: SHOT_LIST changed only the height column of SC01_SH070/080/120/140 (v2 car interior insert
   lens move); this shot's row and content are untouched.

@@ -130,7 +130,7 @@ continuity_refs:
 - continuity.props.phone_ren
 derived_from:
 - ref: artifact:shot_list
-  hash: sha256:c8958df2dd63827b86c9f243f23b5d32274ae9604f1fb006f63cbf79fa59745e
+  hash: sha256:e840595fbbfe0061d5cd2be33fb7a5db0db8304bf15dde0bec5535d933bc1535
 - ref: artifact:cinematography_bible
   hash: sha256:0ece10f8b6c21ceaf49bb36622c7860dbe7ce588190de888782fa6b1fa08262d
 - ref: artifact:screenplay
@@ -234,5 +234,5 @@ derived_from:
 - ref: canon:animation.vocab.v2.face.ren
   hash: sha256:6131d42bb63b44ebbeb5ccfcab9d117e271f486759f2f5560c047d714c091660
 stamped_content_hash: sha256:783ca6dc0c914156c5b4dd7b6e25ae9f2c4fb2afce34a03973fd60b4f77b2de9
-stamp_note: SHOT_LIST changed only the height column of SC01_SH070/080/120/140 (v2 car interior insert
-  lens move); this shot's row and content are untouched.
+stamp_note: SHOT_LIST changed only the SC01_SH020/030/050 height cells (v2 car interior lens move) and
+  added the v2 revision note; this shot's content is unchanged.
