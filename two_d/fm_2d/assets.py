@@ -960,3 +960,168 @@ def bubble(cv, x, y, w, h, k=1.0, col="#ffffff", tail=(-1, 1), a=1.0):
     cv.drawCircle(tx * w * 0.35, ty * h * 0.62, 12, fill(hexc(col, 0.95 * a)))
     cv.drawCircle(tx * w * 0.45, ty * h * 0.9, 7, fill(hexc(col, 0.95 * a)))
     cv.restore()
+
+
+# ============================================================== AI / MEMORY PROPS
+def draw_icon(cv, kind, s=1.0):
+    """Small flat icons centred at 0,0 (~80 px)."""
+    cv.save()
+    cv.scale(s, s)
+    if kind == "apple":
+        cv.drawCircle(-12, 6, 26, fill(hexc("#ff5c6c")))
+        cv.drawCircle(12, 6, 26, fill(hexc("#ff5c6c")))
+        cv.drawCircle(-6, -2, 8, fill(hexc("#ffffff", 0.35)))
+        cv.drawLine(0, -18, 4, -36, stroke(hexc("#6b4a2a"), 5))
+        lf = skia.Path()
+        lf.moveTo(4, -30)
+        lf.quadTo(20, -46, 30, -30)
+        lf.quadTo(16, -24, 4, -30)
+        cv.drawPath(lf, fill(hexc("#5be38a")))
+    elif kind == "bike":
+        for x in (-24, 24):
+            cv.drawCircle(x, 10, 18, stroke(hexc("#38a3d6"), 5))
+        p = poly([(-24, 10), (-6, -16), (16, -16), (24, 10), (0, 10), (-6, -16)], closed=False)
+        cv.drawPath(p, stroke(hexc("#ffb347"), 5))
+        cv.drawLine(16, -16, 12, -28, stroke(hexc("#2b2147"), 5))
+        cv.drawLine(-10, -24, 0, -24, stroke(hexc("#2b2147"), 5))
+    elif kind == "cat":
+        h = skia.Path()
+        h.moveTo(-30, -6)
+        h.lineTo(-30, -38)
+        h.lineTo(-12, -22)
+        h.lineTo(12, -22)
+        h.lineTo(30, -38)
+        h.lineTo(30, -6)
+        h.cubicTo(30, 30, -30, 30, -30, -6)
+        h.close()
+        cv.drawPath(h, fill(hexc("#ffb347")))
+        cv.drawCircle(-11, 0, 4.5, fill(hexc("#2b2147")))
+        cv.drawCircle(11, 0, 4.5, fill(hexc("#2b2147")))
+        cv.drawCircle(0, 10, 3, fill(hexc("#ff7a6b")))
+        for dy in (-3, 4):
+            cv.drawLine(8, 12, 30, 12 + dy, stroke(hexc("#2b2147", 0.6), 2))
+            cv.drawLine(-8, 12, -30, 12 + dy, stroke(hexc("#2b2147", 0.6), 2))
+    elif kind == "music":
+        cv.drawOval(skia.Rect.MakeXYWH(-30, 8, 24, 18), fill(hexc("#b48bff")))
+        cv.drawOval(skia.Rect.MakeXYWH(6, 2, 24, 18), fill(hexc("#b48bff")))
+        cv.drawLine(-8, 16, -8, -30, stroke(hexc("#b48bff"), 5))
+        cv.drawLine(28, 10, 28, -36, stroke(hexc("#b48bff"), 5))
+        cv.drawLine(-8, -30, 28, -36, stroke(hexc("#b48bff"), 9))
+    elif kind == "sun":
+        cv.drawCircle(0, 0, 18, fill(hexc("#ffd34d")))
+        for k in range(8):
+            a = k * math.pi / 4
+            cv.drawLine(math.cos(a) * 26, math.sin(a) * 26, math.cos(a) * 36, math.sin(a) * 36,
+                        stroke(hexc("#ffd34d"), 5))
+    cv.restore()
+
+
+def draw_card(cv, label, icon, s=1.0, a=1.0, tint="#ffffff"):
+    """Knowledge card centred at 0,0 (~200x130)."""
+    cv.save()
+    cv.scale(s, s)
+    cv.saveLayerAlpha(None, int(255 * clamp(a)))
+    cv.drawPath(rrect(-100, -62, 200, 124, 16), fill(hexc("#000000", 0.35), blur=10))
+    cv.drawPath(rrect(-100, -66, 200, 124, 16), fill(hexc(tint)))
+    cv.drawPath(rrect(-100, -66, 200, 124, 16), stroke(hexc("#cfd8ff"), 2))
+    cv.save()
+    cv.translate(-52, -6)
+    draw_icon(cv, icon, 0.8)
+    cv.restore()
+    from .core import draw_text, font
+    draw_text(cv, label, 30, 6, font(26, 800), fill(hexc("#2b2147")), align="center")
+    cv.restore()
+    cv.restore()
+
+
+def draw_ice_block(cv, x, y, w, h, k, seed=3, t=0.0):
+    """Ice block growing from the bottom; x,y = bottom-left; k 0..1 fill height."""
+    if k <= 0:
+        return
+    hh = h * k
+    rnd = random.Random(seed)
+    top = []
+    for i in range(9):
+        top.append((x + w * i / 8, y - hh + rnd.uniform(-14, 14) * (1 if 0 < i < 8 else 0)))
+    p = skia.Path()
+    p.moveTo(x, y)
+    for q in top:
+        p.lineTo(*q)
+    p.lineTo(x + w, y)
+    p.close()
+    cv.drawPath(p, fill(hexc("#bff6ff", 0.25), blur=18))
+    cv.drawPath(p, fill(0, shader=lin((x, y - hh), (x + w, y), [hexc("#e9fbff", 0.55), hexc("#9fe8ff", 0.35),
+                                                                 hexc("#5fb8e8", 0.45)], [0, 0.5, 1])))
+    cv.save()
+    cv.clipPath(p, doAntiAlias=True)
+    for j in range(7):
+        x0 = x + rnd.uniform(0, w)
+        y0 = y - rnd.uniform(0, hh)
+        L = rnd.uniform(60, 180)
+        a = rnd.uniform(-1.2, -0.3)
+        cv.drawLine(x0, y0, x0 + math.cos(a) * L, y0 + math.sin(a) * L, stroke(hexc("#ffffff", 0.35), 3))
+    for j in range(5):
+        x0 = x + rnd.uniform(0.1, 0.9) * w
+        cv.drawLine(x0, y, x0 + rnd.uniform(-40, 40), y - hh, stroke(hexc("#ffffff", 0.10), 10))
+    cv.drawRect(skia.Rect.MakeXYWH(x + 18, y - hh + 20, 26, hh - 40), fill(hexc("#ffffff", 0.18)))
+    cv.restore()
+    cv.drawPath(p, stroke(hexc("#e9fbff", 0.85), 4))
+
+
+def snowflake(cv, x, y, r, a=1.0, col="#e9fbff"):
+    for k in range(6):
+        ang = k * math.pi / 3
+        ex, ey = x + math.cos(ang) * r, y + math.sin(ang) * r
+        cv.drawLine(x, y, ex, ey, stroke(hexc(col, a), r * 0.14))
+        for f in (0.55,):
+            bx, by = x + math.cos(ang) * r * f, y + math.sin(ang) * r * f
+            for d in (-0.6, 0.6):
+                cv.drawLine(bx, by, bx + math.cos(ang + d) * r * 0.3, by + math.sin(ang + d) * r * 0.3,
+                            stroke(hexc(col, a), r * 0.1))
+
+
+def draw_clock(cv, r, minute_angle, hour_angle, frost=0.0):
+    cv.drawCircle(0, 0, r * 1.08, fill(hexc("#000000", 0.4), blur=16))
+    cv.drawCircle(0, 0, r, fill(0, shader=rad((-r * 0.3, -r * 0.3), r * 1.4, [hexc("#fbf3e1"), hexc("#d8cbb0")])))
+    cv.drawCircle(0, 0, r, stroke(hexc("#2b2147"), r * 0.08))
+    for k in range(12):
+        a = k * math.pi / 6
+        L = 0.16 if k % 3 == 0 else 0.08
+        cv.drawLine(math.cos(a) * r * (0.86 - L), math.sin(a) * r * (0.86 - L), math.cos(a) * r * 0.86,
+                    math.sin(a) * r * 0.86, stroke(hexc("#2b2147"), r * (0.04 if k % 3 == 0 else 0.025)))
+    for ang, L, wdt, c in ((hour_angle, 0.5, 0.06, "#2b2147"), (minute_angle, 0.75, 0.04, "#2b2147")):
+        a = math.radians(ang - 90)
+        cv.drawLine(0, 0, math.cos(a) * r * L, math.sin(a) * r * L, stroke(hexc(c), r * wdt))
+    cv.drawCircle(0, 0, r * 0.06, fill(hexc("#ff7a6b")))
+    if frost > 0:
+        cv.drawCircle(0, 0, r, fill(0, shader=rad((0, 0), r, [hexc("#e9fbff", 0.0), hexc("#e9fbff", 0.55 * frost)],
+                                                   [0.4, 1])))
+        rnd = random.Random(5)
+        for i in range(int(14 * frost)):
+            a = rnd.uniform(0, math.tau)
+            snowflake(cv, math.cos(a) * r * 0.85, math.sin(a) * r * 0.85, rnd.uniform(8, 18) * r / 200, frost)
+
+
+def draw_chat_window(cv, w, h, t, lines=3, a=1.0):
+    """Generic chat UI panel centred at 0,0 (no brand)."""
+    cv.saveLayerAlpha(None, int(255 * clamp(a)))
+    cv.drawPath(rrect(-w / 2, -h / 2, w, h, 22), fill(hexc("#000000", 0.4), blur=14))
+    cv.drawPath(rrect(-w / 2, -h / 2, w, h, 22), fill(hexc("#1b2348")))
+    cv.drawPath(rrect(-w / 2, -h / 2, w, h, 22), stroke(hexc("#38e1ff", 0.6), 3))
+    for i, c in enumerate(("#ff5c6c", "#ffd34d", "#5be38a")):
+        cv.drawCircle(-w / 2 + 26 + i * 22, -h / 2 + 24, 6, fill(hexc(c)))
+    y = -h / 2 + 64
+    for i in range(lines):
+        right = i % 2 == 0
+        bw = w * (0.55 if right else 0.65)
+        x0 = w / 2 - 20 - bw if right else -w / 2 + 20
+        cv.drawPath(rrect(x0, y, bw, 34, 17), fill(hexc("#38e1ff" if right else "#3a4570", 0.9)))
+        for j in range(2):
+            cv.drawLine(x0 + 16, y + 12 + j * 10, x0 + bw * (0.8 - 0.3 * j), y + 12 + j * 10,
+                        stroke(hexc("#0b1026" if right else "#cfd8ff", 0.6), 3))
+        y += 48
+    # typing dots
+    for k in range(3):
+        ph = math.sin(t * 6 - k * 0.8) * 0.5 + 0.5
+        cv.drawCircle(-w / 2 + 40 + k * 18, h / 2 - 28 - ph * 4, 5, fill(hexc("#cfd8ff", 0.5 + 0.5 * ph)))
+    cv.restore()

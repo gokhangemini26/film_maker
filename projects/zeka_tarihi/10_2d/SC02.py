@@ -44,6 +44,7 @@ CUE = dict(ilk=23.48, beyin=24.28, karmasik=25.02, sifir=26.04, tam=27.42, bes=2
            surec=42.08, kafa=42.88, yapi=43.92, zeka=44.76, s600=45.34, katman=46.52, canli=47.90,
            fosil=48.48, muze=48.72, dusun=49.34, miyiz=49.88, kesin=50.58, evet=51.14)
 T = dict(sh080=30.20, sh090=42.60)
+EVET_ALPHA = lambda t: 1.0  # noqa: E731  (SC03 fades the stamp out)
 
 NAMES = ["SOLUCAN", "BALIK", "MEMELİ", "PRİMAT", "İNSAN"]
 ABILITY = ["Yönlendirme", "Deneme-Yanılma", "Geleceği Hayal Etme", "Başkalarını Anlama", "Konuşma"]
@@ -624,7 +625,7 @@ def head_scene(cv, t, glass_k):
         cv.rotate(-8)
         s = lerp(1.8, 1.0, ease_out(ek))
         cv.scale(s, s)
-        a = clamp(ek * 2)
+        a = clamp(ek * 2) * EVET_ALPHA(t)
         cv.drawPath(rrect(-220, -80, 440, 150, 26), fill(hexc("#5be38a", 0.35 * a), blur=20))
         cv.drawPath(rrect(-220, -80, 440, 150, 26), stroke(hexc("#5be38a", a), 10))
         draw_text(cv, "EVET!", 30, 32, font(104, 900), fill(hexc("#e9ffef", a)), tracking=6)

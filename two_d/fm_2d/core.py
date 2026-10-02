@@ -324,3 +324,34 @@ def new_surface():
 def snapshot(surface) -> np.ndarray:
     img = surface.makeImageSnapshot()
     return img.toarray(colorType=skia.kRGBA_8888_ColorType)
+
+
+def glitch(cv, t, amount, seed=0):
+    """Digital glitch on what is already drawn: displaced horizontal slices + RGB fringe."""
+    if amount <= 0:
+        return
+    surf = cv.getSurface()
+    if surf is None:
+        return
+    img = surf.makeImageSnapshot()
+    rnd = random.Random(int(t * 24) + seed)
+    n = int(4 + 10 * amount)
+    for _ in range(n):
+        y = rnd.uniform(0, H)
+        h = rnd.uniform(6, 70) * (0.5 + amount)
+        dx = rnd.uniform(-1, 1) * 90 * amount
+        src = skia.Rect.MakeXYWH(0, y, W, h)
+        dst = skia.Rect.MakeXYWH(dx, y, W, h)
+        cv.save()
+        cv.resetMatrix()
+        cv.drawImageRect(img, src, dst)
+        cv.restore()
+    # chroma fringe
+    cv.save()
+    cv.resetMatrix()
+    for col, off in ((skia.ColorSetARGB(int(70 * amount), 255, 40, 80), 8), (skia.ColorSetARGB(int(70 * amount), 40, 230, 255), -8)):
+        p = skia.Paint(ColorFilter=skia.ColorFilters.Blend(col, skia.BlendMode.kSrcIn))
+        p.setBlendMode(skia.BlendMode.kScreen)
+        p.setAlphaf(0.35 * amount)
+        cv.drawImage(img, off * amount, 0, skia.SamplingOptions(), p)
+    cv.restore()
