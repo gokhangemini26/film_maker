@@ -55,7 +55,7 @@ CUE = dict(son=84.42, altinci=85.0, sicrama=85.48, biyoloji=86.52, sonuna=87.26,
            yolu=117.94, hizli=118.74, cipler=119.38, degil=120.10, icimiz=120.98, milyarlarca=121.62,
            evrimsel=122.66, hayatta=123.08, kodlarini=123.72, cozmek=124.12, geciyor=124.76)
 T = dict(sh160=84.30, sh170=88.50, sh180=96.50, sh190=106.86, sh200=115.90)
-XF = 0.4  # soft cross-dissolve at the cuts
+XF = 0.5  # dip-to-night at the cuts
 
 AMBER, CYAN, RED = "#ffb347", "#38e1ff", "#ff5c6c"
 
@@ -735,11 +735,13 @@ def render(cv, t):
     if i > 0:
         tt = (T["sh170"], T["sh180"], T["sh190"], T["sh200"])[i - 1]
         k = remap(t, tt, tt + XF)
-        if k < 1:
-            SHOTS[i - 1](cv, t)
-            cv.saveLayerAlpha(None, int(255 * ease_in_out(k)))
-            SHOTS[i](cv, t)
-            cv.restore()
+        if k < 1:  # dip through the night colour: two busy shots never overlap
+            if k < 0.5:
+                SHOTS[i - 1](cv, t)
+                cv.drawRect(skia.Rect.MakeWH(W, H), fill(hexc("#070a1c", ease_in_out(2 * k))))
+            else:
+                SHOTS[i](cv, t)
+                cv.drawRect(skia.Rect.MakeWH(W, H), fill(hexc("#070a1c", ease_in_out(2 * (1 - k)))))
             return
     SHOTS[i](cv, t)
     if i == 0:
